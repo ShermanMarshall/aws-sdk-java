@@ -92,89 +92,92 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withModeledClass(
-                                    com.amazonaws.services.iot.model.InternalFailureException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.InternalFailureExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.iot.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TransferAlreadyCompletedException").withModeledClass(
-                                    com.amazonaws.services.iot.model.TransferAlreadyCompletedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TransferAlreadyCompletedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.TransferAlreadyCompletedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotConfiguredException").withModeledClass(
-                                    com.amazonaws.services.iot.model.NotConfiguredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotConfiguredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.NotConfiguredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withModeledClass(
-                                    com.amazonaws.services.iot.model.ThrottlingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.ThrottlingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MalformedPolicyException").withModeledClass(
-                                    com.amazonaws.services.iot.model.MalformedPolicyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MalformedPolicyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.MalformedPolicyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidQueryException").withModeledClass(
-                                    com.amazonaws.services.iot.model.InvalidQueryException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidQueryException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.InvalidQueryExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidStateTransitionException").withModeledClass(
-                                    com.amazonaws.services.iot.model.InvalidStateTransitionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidStateTransitionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.InvalidStateTransitionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceRegistrationFailureException").withModeledClass(
-                                    com.amazonaws.services.iot.model.ResourceRegistrationFailureException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceRegistrationFailureException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.ResourceRegistrationFailureExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DeleteConflictException").withModeledClass(
-                                    com.amazonaws.services.iot.model.DeleteConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DeleteConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.DeleteConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.iot.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CertificateConflictException").withModeledClass(
-                                    com.amazonaws.services.iot.model.CertificateConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CertificateConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.CertificateConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RegistrationCodeValidationException").withModeledClass(
-                                    com.amazonaws.services.iot.model.RegistrationCodeValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RegistrationCodeValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.RegistrationCodeValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidResponseException").withModeledClass(
-                                    com.amazonaws.services.iot.model.InvalidResponseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResponseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.InvalidResponseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidAggregationException").withModeledClass(
-                                    com.amazonaws.services.iot.model.InvalidAggregationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidAggregationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.InvalidAggregationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.iot.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SqlParseException").withModeledClass(
-                                    com.amazonaws.services.iot.model.SqlParseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SqlParseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.SqlParseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConflictingResourceUpdateException").withModeledClass(
-                                    com.amazonaws.services.iot.model.ConflictingResourceUpdateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictingResourceUpdateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.ConflictingResourceUpdateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.iot.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalException").withModeledClass(
-                                    com.amazonaws.services.iot.model.InternalException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.InternalExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("VersionsLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.iot.model.VersionsLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("VersionsLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.VersionsLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TransferConflictException").withModeledClass(
-                                    com.amazonaws.services.iot.model.TransferConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TransferConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.TransferConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("IndexNotReadyException").withModeledClass(
-                                    com.amazonaws.services.iot.model.IndexNotReadyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("IndexNotReadyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.IndexNotReadyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
-                                    com.amazonaws.services.iot.model.UnauthorizedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.UnauthorizedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CertificateStateException").withModeledClass(
-                                    com.amazonaws.services.iot.model.CertificateStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CertificateStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.CertificateStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("VersionConflictException").withModeledClass(
-                                    com.amazonaws.services.iot.model.VersionConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("VersionConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.VersionConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.iot.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TaskAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.TaskAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CertificateValidationException").withModeledClass(
-                                    com.amazonaws.services.iot.model.CertificateValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("CertificateValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iot.model.transform.CertificateValidationExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.iot.model.AWSIotException.class));
 
     /**
@@ -783,8 +786,8 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
     /**
      * <p>
-     * Associates a Device Defender security profile with a thing group or with this account. Each thing group or
-     * account can have up to five security profiles associated with it.
+     * Associates a Device Defender security profile with a thing group or this account. Each thing group or account can
+     * have up to five security profiles associated with it.
      * </p>
      * 
      * @param attachSecurityProfileRequest
@@ -902,6 +905,69 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
             HttpResponseHandler<AmazonWebServiceResponse<AttachThingPrincipalResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new AttachThingPrincipalResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Cancels a mitigation action task that is in progress. If the task is not in progress, an InvalidRequestException
+     * occurs.
+     * </p>
+     * 
+     * @param cancelAuditMitigationActionsTaskRequest
+     * @return Result of the CancelAuditMitigationActionsTask operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.CancelAuditMitigationActionsTask
+     */
+    @Override
+    public CancelAuditMitigationActionsTaskResult cancelAuditMitigationActionsTask(CancelAuditMitigationActionsTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeCancelAuditMitigationActionsTask(request);
+    }
+
+    @SdkInternalApi
+    final CancelAuditMitigationActionsTaskResult executeCancelAuditMitigationActionsTask(
+            CancelAuditMitigationActionsTaskRequest cancelAuditMitigationActionsTaskRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(cancelAuditMitigationActionsTaskRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CancelAuditMitigationActionsTaskRequest> request = null;
+        Response<CancelAuditMitigationActionsTaskResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CancelAuditMitigationActionsTaskRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(cancelAuditMitigationActionsTaskRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CancelAuditMitigationActionsTask");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CancelAuditMitigationActionsTaskResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CancelAuditMitigationActionsTaskResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1674,6 +1740,69 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
     /**
      * <p>
+     * Defines an action that can be applied to audit findings by using StartAuditMitigationActionsTask. Each mitigation
+     * action can apply only one type of change.
+     * </p>
+     * 
+     * @param createMitigationActionRequest
+     * @return Result of the CreateMitigationAction operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceAlreadyExistsException
+     *         The resource already exists.
+     * @throws LimitExceededException
+     *         A limit has been exceeded.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.CreateMitigationAction
+     */
+    @Override
+    public CreateMitigationActionResult createMitigationAction(CreateMitigationActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateMitigationAction(request);
+    }
+
+    @SdkInternalApi
+    final CreateMitigationActionResult executeCreateMitigationAction(CreateMitigationActionRequest createMitigationActionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createMitigationActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateMitigationActionRequest> request = null;
+        Response<CreateMitigationActionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateMitigationActionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createMitigationActionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateMitigationAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateMitigationActionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CreateMitigationActionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Creates an AWS IoT OTAUpdate on a target group of things or groups.
      * </p>
      * 
@@ -1957,6 +2086,8 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
      * @return Result of the CreateScheduledAudit operation returned by the service.
      * @throws InvalidRequestException
      *         The request is not valid.
+     * @throws ResourceAlreadyExistsException
+     *         The resource already exists.
      * @throws ThrottlingException
      *         The rate exceeds the limit.
      * @throws InternalFailureException
@@ -2668,8 +2799,8 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
      * Deletes the specified certificate.
      * </p>
      * <p>
-     * A certificate cannot be deleted if it has a policy attached to it or if its status is set to ACTIVE. To delete a
-     * certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all policies. Next, use the
+     * A certificate cannot be deleted if it has a policy or IoT thing attached to it or if its status is set to ACTIVE.
+     * To delete a certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all policies. Next, use the
      * <a>UpdateCertificate</a> API to set the certificate to the INACTIVE status.
      * </p>
      * 
@@ -2922,6 +3053,64 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
             HttpResponseHandler<AmazonWebServiceResponse<DeleteJobExecutionResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteJobExecutionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a defined mitigation action from your AWS account.
+     * </p>
+     * 
+     * @param deleteMitigationActionRequest
+     * @return Result of the DeleteMitigationAction operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.DeleteMitigationAction
+     */
+    @Override
+    public DeleteMitigationActionResult deleteMitigationAction(DeleteMitigationActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteMitigationAction(request);
+    }
+
+    @SdkInternalApi
+    final DeleteMitigationActionResult executeDeleteMitigationAction(DeleteMitigationActionRequest deleteMitigationActionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteMitigationActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteMitigationActionRequest> request = null;
+        Response<DeleteMitigationActionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteMitigationActionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteMitigationActionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteMitigationAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteMitigationActionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeleteMitigationActionResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -3896,6 +4085,130 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
     /**
      * <p>
+     * Gets information about a single audit finding. Properties include the reason for noncompliance, the severity of
+     * the issue, and when the audit that returned the finding was started.
+     * </p>
+     * 
+     * @param describeAuditFindingRequest
+     * @return Result of the DescribeAuditFinding operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.DescribeAuditFinding
+     */
+    @Override
+    public DescribeAuditFindingResult describeAuditFinding(DescribeAuditFindingRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAuditFinding(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAuditFindingResult executeDescribeAuditFinding(DescribeAuditFindingRequest describeAuditFindingRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeAuditFindingRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeAuditFindingRequest> request = null;
+        Response<DescribeAuditFindingResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeAuditFindingRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeAuditFindingRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAuditFinding");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeAuditFindingResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeAuditFindingResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets information about an audit mitigation task that is used to apply mitigation actions to a set of audit
+     * findings. Properties include the actions being applied, the audit checks to which they're being applied, the task
+     * status, and aggregated task statistics.
+     * </p>
+     * 
+     * @param describeAuditMitigationActionsTaskRequest
+     * @return Result of the DescribeAuditMitigationActionsTask operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.DescribeAuditMitigationActionsTask
+     */
+    @Override
+    public DescribeAuditMitigationActionsTaskResult describeAuditMitigationActionsTask(DescribeAuditMitigationActionsTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAuditMitigationActionsTask(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAuditMitigationActionsTaskResult executeDescribeAuditMitigationActionsTask(
+            DescribeAuditMitigationActionsTaskRequest describeAuditMitigationActionsTaskRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeAuditMitigationActionsTaskRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeAuditMitigationActionsTaskRequest> request = null;
+        Response<DescribeAuditMitigationActionsTaskResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeAuditMitigationActionsTaskRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeAuditMitigationActionsTaskRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAuditMitigationActionsTask");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeAuditMitigationActionsTaskResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeAuditMitigationActionsTaskResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Gets information about a Device Defender audit.
      * </p>
      * 
@@ -4557,6 +4870,67 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
             HttpResponseHandler<AmazonWebServiceResponse<DescribeJobExecutionResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeJobExecutionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets information about a mitigation action.
+     * </p>
+     * 
+     * @param describeMitigationActionRequest
+     * @return Result of the DescribeMitigationAction operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.DescribeMitigationAction
+     */
+    @Override
+    public DescribeMitigationActionResult describeMitigationAction(DescribeMitigationActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeMitigationAction(request);
+    }
+
+    @SdkInternalApi
+    final DescribeMitigationActionResult executeDescribeMitigationAction(DescribeMitigationActionRequest describeMitigationActionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeMitigationActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeMitigationActionRequest> request = null;
+        Response<DescribeMitigationActionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeMitigationActionRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeMitigationActionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMitigationAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeMitigationActionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeMitigationActionResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -6324,6 +6698,126 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
     /**
      * <p>
+     * Gets the status of audit mitigation action tasks that were executed.
+     * </p>
+     * 
+     * @param listAuditMitigationActionsExecutionsRequest
+     * @return Result of the ListAuditMitigationActionsExecutions operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.ListAuditMitigationActionsExecutions
+     */
+    @Override
+    public ListAuditMitigationActionsExecutionsResult listAuditMitigationActionsExecutions(ListAuditMitigationActionsExecutionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAuditMitigationActionsExecutions(request);
+    }
+
+    @SdkInternalApi
+    final ListAuditMitigationActionsExecutionsResult executeListAuditMitigationActionsExecutions(
+            ListAuditMitigationActionsExecutionsRequest listAuditMitigationActionsExecutionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listAuditMitigationActionsExecutionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListAuditMitigationActionsExecutionsRequest> request = null;
+        Response<ListAuditMitigationActionsExecutionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListAuditMitigationActionsExecutionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(listAuditMitigationActionsExecutionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAuditMitigationActionsExecutions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListAuditMitigationActionsExecutionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new ListAuditMitigationActionsExecutionsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets a list of audit mitigation action tasks that match the specified filters.
+     * </p>
+     * 
+     * @param listAuditMitigationActionsTasksRequest
+     * @return Result of the ListAuditMitigationActionsTasks operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.ListAuditMitigationActionsTasks
+     */
+    @Override
+    public ListAuditMitigationActionsTasksResult listAuditMitigationActionsTasks(ListAuditMitigationActionsTasksRequest request) {
+        request = beforeClientExecution(request);
+        return executeListAuditMitigationActionsTasks(request);
+    }
+
+    @SdkInternalApi
+    final ListAuditMitigationActionsTasksResult executeListAuditMitigationActionsTasks(
+            ListAuditMitigationActionsTasksRequest listAuditMitigationActionsTasksRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listAuditMitigationActionsTasksRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListAuditMitigationActionsTasksRequest> request = null;
+        Response<ListAuditMitigationActionsTasksResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListAuditMitigationActionsTasksRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(listAuditMitigationActionsTasksRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAuditMitigationActionsTasks");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListAuditMitigationActionsTasksResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new ListAuditMitigationActionsTasksResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Lists the Device Defender audits that have been performed during a given time period.
      * </p>
      * 
@@ -6925,6 +7419,64 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
             HttpResponseHandler<AmazonWebServiceResponse<ListJobsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListJobsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets a list of all mitigation actions that match the specified filter criteria.
+     * </p>
+     * 
+     * @param listMitigationActionsRequest
+     * @return Result of the ListMitigationActions operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.ListMitigationActions
+     */
+    @Override
+    public ListMitigationActionsResult listMitigationActions(ListMitigationActionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListMitigationActions(request);
+    }
+
+    @SdkInternalApi
+    final ListMitigationActionsResult executeListMitigationActions(ListMitigationActionsRequest listMitigationActionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listMitigationActionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListMitigationActionsRequest> request = null;
+        Response<ListMitigationActionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListMitigationActionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listMitigationActionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListMitigationActions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListMitigationActionsResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListMitigationActionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -8543,7 +9095,7 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
     /**
      * <p>
      * Lists the Device Defender security profile violations discovered during the given time period. You can use
-     * filters to limit the results to those alerts issued for a particular security profile, behavior or thing
+     * filters to limit the results to those alerts issued for a particular security profile, behavior, or thing
      * (device).
      * </p>
      * 
@@ -9445,6 +9997,71 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
             HttpResponseHandler<AmazonWebServiceResponse<SetV2LoggingOptionsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new SetV2LoggingOptionsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Starts a task that applies a set of mitigation actions to the specified target.
+     * </p>
+     * 
+     * @param startAuditMitigationActionsTaskRequest
+     * @return Result of the StartAuditMitigationActionsTask operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws TaskAlreadyExistsException
+     *         This exception occurs if you attempt to start a task with the same task-id as an existing task but with a
+     *         different clientRequestToken.
+     * @throws LimitExceededException
+     *         A limit has been exceeded.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.StartAuditMitigationActionsTask
+     */
+    @Override
+    public StartAuditMitigationActionsTaskResult startAuditMitigationActionsTask(StartAuditMitigationActionsTaskRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartAuditMitigationActionsTask(request);
+    }
+
+    @SdkInternalApi
+    final StartAuditMitigationActionsTaskResult executeStartAuditMitigationActionsTask(
+            StartAuditMitigationActionsTaskRequest startAuditMitigationActionsTaskRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(startAuditMitigationActionsTaskRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<StartAuditMitigationActionsTaskRequest> request = null;
+        Response<StartAuditMitigationActionsTaskResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new StartAuditMitigationActionsTaskRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(startAuditMitigationActionsTaskRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartAuditMitigationActionsTask");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<StartAuditMitigationActionsTaskResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new StartAuditMitigationActionsTaskResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -10548,6 +11165,66 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
     /**
      * <p>
+     * Updates the definition for the specified mitigation action.
+     * </p>
+     * 
+     * @param updateMitigationActionRequest
+     * @return Result of the UpdateMitigationAction operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.UpdateMitigationAction
+     */
+    @Override
+    public UpdateMitigationActionResult updateMitigationAction(UpdateMitigationActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateMitigationAction(request);
+    }
+
+    @SdkInternalApi
+    final UpdateMitigationActionResult executeUpdateMitigationAction(UpdateMitigationActionRequest updateMitigationActionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateMitigationActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateMitigationActionRequest> request = null;
+        Response<UpdateMitigationActionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateMitigationActionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateMitigationActionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateMitigationAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateMitigationActionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new UpdateMitigationActionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Updates a role alias.
      * </p>
      * 
@@ -10611,7 +11288,7 @@ public class AWSIotClient extends AmazonWebServiceClient implements AWSIot {
 
     /**
      * <p>
-     * Updates a scheduled audit, including what checks are performed and how often the audit takes place.
+     * Updates a scheduled audit, including which checks are performed and how often the audit takes place.
      * </p>
      * 
      * @param updateScheduledAuditRequest

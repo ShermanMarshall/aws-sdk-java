@@ -207,125 +207,126 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.ConcurrentModificationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PolicyTypeNotAvailableForOrganizationException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.PolicyTypeNotAvailableForOrganizationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PolicyTypeNotAvailableForOrganizationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.PolicyTypeNotAvailableForOrganizationExceptionUnmarshaller
+                                            .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("HandshakeNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.HandshakeNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("HandshakeNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.HandshakeNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateAccountException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.DuplicateAccountException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateAccountException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.DuplicateAccountExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MalformedPolicyDocumentException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.MalformedPolicyDocumentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MalformedPolicyDocumentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.MalformedPolicyDocumentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateHandshakeException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.DuplicateHandshakeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateHandshakeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.DuplicateHandshakeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicatePolicyException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.DuplicatePolicyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicatePolicyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.DuplicatePolicyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("HandshakeAlreadyInStateException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.HandshakeAlreadyInStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("HandshakeAlreadyInStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.HandshakeAlreadyInStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ChildNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.ChildNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ChildNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.ChildNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccountOwnerNotVerifiedException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.AccountOwnerNotVerifiedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccountOwnerNotVerifiedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.AccountOwnerNotVerifiedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.ServiceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.ServiceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RootNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.RootNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RootNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.RootNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OrganizationNotEmptyException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.OrganizationNotEmptyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OrganizationNotEmptyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.OrganizationNotEmptyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OrganizationalUnitNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.OrganizationalUnitNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OrganizationalUnitNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.OrganizationalUnitNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PolicyNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.PolicyNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PolicyNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.PolicyNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PolicyTypeAlreadyEnabledException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.PolicyTypeAlreadyEnabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PolicyTypeAlreadyEnabledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.PolicyTypeAlreadyEnabledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedForDependencyException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.AccessDeniedForDependencyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedForDependencyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.AccessDeniedForDependencyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicatePolicyAttachmentException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.DuplicatePolicyAttachmentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicatePolicyAttachmentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.DuplicatePolicyAttachmentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MasterCannotLeaveOrganizationException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.MasterCannotLeaveOrganizationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MasterCannotLeaveOrganizationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.MasterCannotLeaveOrganizationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DestinationParentNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.DestinationParentNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DestinationParentNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.DestinationParentNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PolicyTypeNotEnabledException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.PolicyTypeNotEnabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PolicyTypeNotEnabledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.PolicyTypeNotEnabledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConstraintViolationException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.ConstraintViolationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConstraintViolationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.ConstraintViolationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TargetNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.TargetNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TargetNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.TargetNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CreateAccountStatusNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.CreateAccountStatusNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CreateAccountStatusNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.CreateAccountStatusNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PolicyNotAttachedException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.PolicyNotAttachedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PolicyNotAttachedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.PolicyNotAttachedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AlreadyInOrganizationException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.AlreadyInOrganizationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AlreadyInOrganizationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.AlreadyInOrganizationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccountNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.AccountNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccountNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.AccountNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SourceParentNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.SourceParentNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SourceParentNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.SourceParentNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AWSOrganizationsNotInUseException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.AWSOrganizationsNotInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AWSOrganizationsNotInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.AWSOrganizationsNotInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedAPIEndpointException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.UnsupportedAPIEndpointException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedAPIEndpointException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.UnsupportedAPIEndpointExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ParentNotFoundException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.ParentNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ParentNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.ParentNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateOrganizationalUnitException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.DuplicateOrganizationalUnitException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateOrganizationalUnitException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.DuplicateOrganizationalUnitExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidHandshakeTransitionException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.InvalidHandshakeTransitionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidHandshakeTransitionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.InvalidHandshakeTransitionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("HandshakeConstraintViolationException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.HandshakeConstraintViolationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("HandshakeConstraintViolationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.HandshakeConstraintViolationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PolicyInUseException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.PolicyInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PolicyInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.PolicyInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FinalizingOrganizationException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.FinalizingOrganizationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FinalizingOrganizationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.FinalizingOrganizationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OrganizationalUnitNotEmptyException").withModeledClass(
-                                    com.amazonaws.services.organizations.model.OrganizationalUnitNotEmptyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OrganizationalUnitNotEmptyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.OrganizationalUnitNotEmptyExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.organizations.model.AWSOrganizationsException.class));
 
     /**
@@ -670,7 +671,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -834,30 +835,30 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <ul>
      * <li>
      * <p>
-     * If you attach an SCP to a root, it affects all accounts in the organization
+     * If you attach an SCP to a root, it affects all accounts in the organization.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If you attach an SCP to an OU, it affects all accounts in that OU and in any child OUs
+     * If you attach an SCP to an OU, it affects all accounts in that OU and in any child OUs.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If you attach the policy directly to an account, it affects only that account
+     * If you attach the policy directly to an account, it affects only that account.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * SCPs are JSON policies that specify the maximum permissions for an organization or organizational unit (OU). When
-     * you attach one SCP to a higher level root or OU, and you also attach a different SCP to a child OU or to an
-     * account, the child policy can further restrict only the permissions that pass through the parent filter and are
-     * available to the child. An SCP that is attached to a child can't grant a permission that the paren't hasn't
-     * already granted. For example, imagine that the parent SCP allows permissions A, B, C, D, and E. The child SCP
-     * allows C, D, E, F, and G. The result is that the accounts affected by the child SCP are allowed to use only C, D,
-     * and E. They can't use A or B because the child OU filtered them out. They also can't use F and G because the
-     * parent OU filtered them out. They can't be granted back by the child SCP; child SCPs can only filter the
-     * permissions they receive from the parent SCP.
+     * SCPs are JSON policies that specify the maximum permissions for an organization or organizational unit (OU). You
+     * can attach one SCP to a higher level root or OU, and a different SCP to a child OU or to an account. The child
+     * policy can further restrict only the permissions that pass through the parent filter and are available to the
+     * child. An SCP that is attached to a child can't grant a permission that the parent hasn't already granted. For
+     * example, imagine that the parent SCP allows permissions A, B, C, D, and E. The child SCP allows C, D, E, F, and
+     * G. The result is that the accounts affected by the child SCP are allowed to use only C, D, and E. They can't use
+     * A or B because the child OU filtered them out. They also can't use F and G because the parent OU filtered them
+     * out. They can't be granted back by the child SCP; child SCPs can only filter the permissions they receive from
+     * the parent SCP.
      * </p>
      * <p>
      * AWS Organizations attaches a default SCP named <code>"FullAWSAccess</code> to every root, OU, and account. This
@@ -1057,7 +1058,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -1263,7 +1264,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -1434,7 +1435,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <p/>
      * <p>
      * The user who calls the API to create an account must have the <code>organizations:CreateAccount</code>
-     * permission. If you enabled all features in the organization, AWS Organizations will create the required
+     * permission. If you enabled all features in the organization, AWS Organizations creates the required
      * service-linked role named <code>AWSServiceRoleForOrganizations</code>. For more information, see <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs"
      * >AWS Organizations and Service-Linked Roles</a> in the <i>AWS Organizations User Guide</i>.
@@ -1678,7 +1679,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -2156,7 +2157,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -2505,7 +2506,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -2850,7 +2851,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3193,7 +3194,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3401,7 +3402,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3584,7 +3585,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3773,7 +3774,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3966,7 +3967,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -4157,7 +4158,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -4342,7 +4343,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -4535,7 +4536,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -4799,7 +4800,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -4986,7 +4987,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -5148,7 +5149,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP), you're using
      * the authorization strategy of <a href=
      * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist"
-     * >blacklisting</a>.
+     * >blacklisting</a> .
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -5333,7 +5334,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -5696,7 +5697,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -5850,15 +5851,18 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * undo this by using the <a>EnablePolicyType</a> operation.
      * </p>
      * <p>
+     * This is an asynchronous request that AWS performs in the background. If you disable a policy for a root, it still
+     * appears enabled for the organization if <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">all
+     * features</a> are enabled for the organization. AWS recommends that you first use <a>ListRoots</a> to see the
+     * status of policy types for a specified root, and then use this operation.
+     * </p>
+     * <p>
      * This operation can be called only from the organization's master account.
      * </p>
-     * <note>
      * <p>
-     * If you disable a policy type for a root, it still shows as enabled for the organization if all features are
-     * enabled in that organization. Use <a>ListRoots</a> to see the status of policy types for a specified root. Use
-     * <a>DescribeOrganization</a> to see the status of policy types in the organization.
+     * To view the status of available policy types in the organization, use <a>DescribeOrganization</a>.
      * </p>
-     * </note>
      * 
      * @param disablePolicyTypeRequest
      * @return Result of the DisablePolicyType operation returned by the service.
@@ -6039,7 +6043,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -6399,7 +6403,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -6676,7 +6680,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -6827,14 +6831,15 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <a>DisablePolicyType</a> operation.
      * </p>
      * <p>
+     * This is an asynchronous request that AWS performs in the background. AWS recommends that you first use
+     * <a>ListRoots</a> to see the status of policy types for a specified root, and then use this operation.
+     * </p>
+     * <p>
      * This operation can be called only from the organization's master account.
      * </p>
      * <p>
-     * You can enable a policy type in a root only if that policy type is available in the organization. Use
-     * <a>DescribeOrganization</a> to view the status of available policy types in the organization.
-     * </p>
-     * <p>
-     * To view the status of policy type in a root, use <a>ListRoots</a>.
+     * You can enable a policy type in a root only if that policy type is available in the organization. To view the
+     * status of available policy types in the organization, use <a>DescribeOrganization</a>.
      * </p>
      * 
      * @param enablePolicyTypeRequest
@@ -7016,7 +7021,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -7307,7 +7312,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -7683,7 +7688,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8023,7 +8028,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8219,7 +8224,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8413,7 +8418,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8608,7 +8613,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8802,7 +8807,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9000,7 +9005,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9201,7 +9206,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9394,7 +9399,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9600,7 +9605,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9791,7 +9796,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9983,7 +9988,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -10185,7 +10190,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -10370,7 +10375,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -10561,7 +10566,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -10744,7 +10749,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -11113,7 +11118,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -11451,7 +11456,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -11784,7 +11789,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -11972,7 +11977,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -12310,7 +12315,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>

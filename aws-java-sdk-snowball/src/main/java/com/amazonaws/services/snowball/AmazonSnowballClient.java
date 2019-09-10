@@ -81,32 +81,32 @@ public class AmazonSnowballClient extends AmazonWebServiceClient implements Amaz
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidJobStateException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.InvalidJobStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidJobStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.InvalidJobStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.InvalidResourceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.InvalidResourceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSRequestFailedException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.KMSRequestFailedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSRequestFailedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.KMSRequestFailedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedAddressException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.UnsupportedAddressException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedAddressException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.UnsupportedAddressExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ClusterLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.ClusterLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ClusterLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.ClusterLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputCombinationException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.InvalidInputCombinationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputCombinationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.InvalidInputCombinationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("Ec2RequestFailedException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.Ec2RequestFailedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("Ec2RequestFailedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.Ec2RequestFailedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidAddressException").withModeledClass(
-                                    com.amazonaws.services.snowball.model.InvalidAddressException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidAddressException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.snowball.model.transform.InvalidAddressExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.snowball.model.AmazonSnowballException.class));
 
     /**

@@ -109,38 +109,38 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.logs.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidOperationException").withModeledClass(
-                                    com.amazonaws.services.logs.model.InvalidOperationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidOperationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.InvalidOperationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OperationAbortedException").withModeledClass(
-                                    com.amazonaws.services.logs.model.OperationAbortedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OperationAbortedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.OperationAbortedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.logs.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnrecognizedClientException").withModeledClass(
-                                    com.amazonaws.services.logs.model.UnrecognizedClientException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnrecognizedClientException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.UnrecognizedClientExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MalformedQueryException").withModeledClass(
-                                    com.amazonaws.services.logs.model.MalformedQueryException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MalformedQueryException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.MalformedQueryExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.logs.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DataAlreadyAcceptedException").withModeledClass(
-                                    com.amazonaws.services.logs.model.DataAlreadyAcceptedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DataAlreadyAcceptedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.DataAlreadyAcceptedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSequenceTokenException").withModeledClass(
-                                    com.amazonaws.services.logs.model.InvalidSequenceTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSequenceTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.InvalidSequenceTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.logs.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.logs.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.logs.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.logs.model.AWSLogsException.class));
 
     /**
@@ -495,6 +495,10 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * You can export logs from multiple log groups or multiple time ranges to the same S3 bucket. To separate out log
      * data for each export task, you can specify a prefix to be used as the Amazon S3 key prefix for all exported
      * objects.
+     * </p>
+     * <p>
+     * Exporting to S3 buckets that are encrypted with AES-256 is supported. Exporting to S3 buckets encrypted with
+     * SSE-KMS is not supported.
      * </p>
      * 
      * @param createExportTaskRequest
@@ -1996,8 +2000,7 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
 
     /**
      * <p>
-     * Returns the results from the specified query. If the query is in progress, partial results of that current
-     * execution are returned.
+     * Returns the results from the specified query.
      * </p>
      * <p>
      * Only the fields requested in the query are returned, along with a <code>@ptr</code> field which is the identifier
@@ -2005,6 +2008,11 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * </p>
      * <p>
      * <code>GetQueryResults</code> does not start a query execution. To run a query, use .
+     * </p>
+     * <p>
+     * If the value of the <code>Status</code> field in the output is <code>Running</code>, this operation returns only
+     * partial results. If you see a value of <code>Scheduled</code> or <code>Running</code> for the status, you can
+     * retry the operation later to see the final results.
      * </p>
      * 
      * @param getQueryResultsRequest
@@ -2122,14 +2130,14 @@ public class AWSLogsClient extends AmazonWebServiceClient implements AWSLogs {
      * <p>
      * Creates or updates a destination. A destination encapsulates a physical resource (such as an Amazon Kinesis
      * stream) and enables you to subscribe to a real-time stream of log events for a different account, ingested using
-     * <a>PutLogEvents</a>. Currently, the only supported physical resource is a Kinesis stream belonging to the same
-     * account as the destination.
+     * <a>PutLogEvents</a>. A destination can be an Amazon Kinesis stream, Amazon Kinesis Data Firehose strea, or an AWS
+     * Lambda function.
      * </p>
      * <p>
-     * Through an access policy, a destination controls what is written to its Kinesis stream. By default,
-     * <code>PutDestination</code> does not set any access policy with the destination, which means a cross-account user
-     * cannot call <a>PutSubscriptionFilter</a> against this destination. To enable this, the destination owner must
-     * call <a>PutDestinationPolicy</a> after <code>PutDestination</code>.
+     * Through an access policy, a destination controls what is written to it. By default, <code>PutDestination</code>
+     * does not set any access policy with the destination, which means a cross-account user cannot call
+     * <a>PutSubscriptionFilter</a> against this destination. To enable this, the destination owner must call
+     * <a>PutDestinationPolicy</a> after <code>PutDestination</code>.
      * </p>
      * 
      * @param putDestinationRequest

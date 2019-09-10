@@ -95,35 +95,35 @@ public class AWSAppMeshClient extends AmazonWebServiceClient implements AWSAppMe
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.ConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.ConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.TooManyTagsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.ForbiddenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.ForbiddenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withModeledClass(
-                                    com.amazonaws.services.appmesh.model.InternalServerErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.appmesh.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.appmesh.model.AWSAppMeshException.class));
 
     public static AWSAppMeshClientBuilder builder() {
@@ -1410,12 +1410,17 @@ public class AWSAppMeshClient extends AmazonWebServiceClient implements AWSAppMe
      * @return Result of the ListTagsForResource operation returned by the service.
      * @throws BadRequestException
      *         The request syntax was malformed. Check your request syntax and try again.
+     * @throws ForbiddenException
+     *         You don't have permissions to perform this action.
      * @throws InternalServerErrorException
      *         The request processing has failed because of an unknown error, exception, or failure.
      * @throws NotFoundException
      *         The specified resource doesn't exist. Check your request syntax and try again.
      * @throws ServiceUnavailableException
      *         The request has failed due to a temporary failure of the service.
+     * @throws TooManyRequestsException
+     *         The maximum request rate permitted by the App Mesh APIs has been exceeded for your account. For best
+     *         results, use an increasing or variable sleep interval between requests.
      * @sample AWSAppMesh.ListTagsForResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/ListTagsForResource" target="_top">AWS
      *      API Documentation</a>
@@ -1671,12 +1676,17 @@ public class AWSAppMeshClient extends AmazonWebServiceClient implements AWSAppMe
      * @return Result of the TagResource operation returned by the service.
      * @throws BadRequestException
      *         The request syntax was malformed. Check your request syntax and try again.
+     * @throws ForbiddenException
+     *         You don't have permissions to perform this action.
      * @throws InternalServerErrorException
      *         The request processing has failed because of an unknown error, exception, or failure.
      * @throws NotFoundException
      *         The specified resource doesn't exist. Check your request syntax and try again.
      * @throws ServiceUnavailableException
      *         The request has failed due to a temporary failure of the service.
+     * @throws TooManyRequestsException
+     *         The maximum request rate permitted by the App Mesh APIs has been exceeded for your account. For best
+     *         results, use an increasing or variable sleep interval between requests.
      * @throws TooManyTagsException
      *         The request exceeds the maximum allowed number of tags allowed per resource. The current limit is 50 user
      *         tags per resource. You must reduce the number of tags in the request. None of the tags in this request
@@ -1736,12 +1746,17 @@ public class AWSAppMeshClient extends AmazonWebServiceClient implements AWSAppMe
      * @return Result of the UntagResource operation returned by the service.
      * @throws BadRequestException
      *         The request syntax was malformed. Check your request syntax and try again.
+     * @throws ForbiddenException
+     *         You don't have permissions to perform this action.
      * @throws InternalServerErrorException
      *         The request processing has failed because of an unknown error, exception, or failure.
      * @throws NotFoundException
      *         The specified resource doesn't exist. Check your request syntax and try again.
      * @throws ServiceUnavailableException
      *         The request has failed due to a temporary failure of the service.
+     * @throws TooManyRequestsException
+     *         The maximum request rate permitted by the App Mesh APIs has been exceeded for your account. For best
+     *         results, use an increasing or variable sleep interval between requests.
      * @sample AWSAppMesh.UntagResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/UntagResource" target="_top">AWS API
      *      Documentation</a>

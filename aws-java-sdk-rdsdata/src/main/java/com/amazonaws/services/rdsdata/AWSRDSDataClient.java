@@ -85,23 +85,23 @@ public class AWSRDSDataClient extends AmazonWebServiceClient implements AWSRDSDa
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.rdsdata.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rdsdata.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
-                                    com.amazonaws.services.rdsdata.model.ForbiddenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rdsdata.model.transform.ForbiddenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableError").withModeledClass(
-                                    com.amazonaws.services.rdsdata.model.ServiceUnavailableErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rdsdata.model.transform.ServiceUnavailableErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("StatementTimeoutException").withModeledClass(
-                                    com.amazonaws.services.rdsdata.model.StatementTimeoutException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("StatementTimeoutException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rdsdata.model.transform.StatementTimeoutExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
-                                    com.amazonaws.services.rdsdata.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rdsdata.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withModeledClass(
-                                    com.amazonaws.services.rdsdata.model.InternalServerErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rdsdata.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.rdsdata.model.AWSRDSDataException.class));
 
     public static AWSRDSDataClientBuilder builder() {

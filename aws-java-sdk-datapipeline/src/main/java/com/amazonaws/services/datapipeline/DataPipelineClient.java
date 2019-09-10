@@ -94,20 +94,20 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TaskNotFoundException").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.TaskNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TaskNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.TaskNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PipelineDeletedException").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.PipelineDeletedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PipelineDeletedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.PipelineDeletedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PipelineNotFoundException").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.PipelineNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PipelineNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.PipelineNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceError").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.InternalServiceErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.InternalServiceErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.datapipeline.model.DataPipelineException.class));
 
     /**

@@ -174,12 +174,6 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
     private Double maxCapacity;
     /**
      * <p>
-     * Specifies configuration properties of a job run notification.
-     * </p>
-     */
-    private NotificationProperty notificationProperty;
-    /**
-     * <p>
      * The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
      * </p>
      * <ul>
@@ -229,6 +223,26 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String logGroupName;
+    /**
+     * <p>
+     * Specifies configuration properties of a job run notification.
+     * </p>
+     */
+    private NotificationProperty notificationProperty;
+    /**
+     * <p>
+     * Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     * indicates the version supported for jobs of type Spark.
+     * </p>
+     * <p>
+     * For more information about the available AWS Glue versions and corresponding Spark and Python versions, see <a
+     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer guide.
+     * </p>
+     * <p>
+     * Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * </p>
+     */
+    private String glueVersion;
 
     /**
      * <p>
@@ -1221,46 +1235,6 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies configuration properties of a job run notification.
-     * </p>
-     * 
-     * @param notificationProperty
-     *        Specifies configuration properties of a job run notification.
-     */
-
-    public void setNotificationProperty(NotificationProperty notificationProperty) {
-        this.notificationProperty = notificationProperty;
-    }
-
-    /**
-     * <p>
-     * Specifies configuration properties of a job run notification.
-     * </p>
-     * 
-     * @return Specifies configuration properties of a job run notification.
-     */
-
-    public NotificationProperty getNotificationProperty() {
-        return this.notificationProperty;
-    }
-
-    /**
-     * <p>
-     * Specifies configuration properties of a job run notification.
-     * </p>
-     * 
-     * @param notificationProperty
-     *        Specifies configuration properties of a job run notification.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public JobRun withNotificationProperty(NotificationProperty notificationProperty) {
-        setNotificationProperty(notificationProperty);
-        return this;
-    }
-
-    /**
-     * <p>
      * The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
      * </p>
      * <ul>
@@ -1638,6 +1612,134 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Specifies configuration properties of a job run notification.
+     * </p>
+     * 
+     * @param notificationProperty
+     *        Specifies configuration properties of a job run notification.
+     */
+
+    public void setNotificationProperty(NotificationProperty notificationProperty) {
+        this.notificationProperty = notificationProperty;
+    }
+
+    /**
+     * <p>
+     * Specifies configuration properties of a job run notification.
+     * </p>
+     * 
+     * @return Specifies configuration properties of a job run notification.
+     */
+
+    public NotificationProperty getNotificationProperty() {
+        return this.notificationProperty;
+    }
+
+    /**
+     * <p>
+     * Specifies configuration properties of a job run notification.
+     * </p>
+     * 
+     * @param notificationProperty
+     *        Specifies configuration properties of a job run notification.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobRun withNotificationProperty(NotificationProperty notificationProperty) {
+        setNotificationProperty(notificationProperty);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     * indicates the version supported for jobs of type Spark.
+     * </p>
+     * <p>
+     * For more information about the available AWS Glue versions and corresponding Spark and Python versions, see <a
+     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer guide.
+     * </p>
+     * <p>
+     * Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * </p>
+     * 
+     * @param glueVersion
+     *        Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     *        indicates the version supported for jobs of type Spark. </p>
+     *        <p>
+     *        For more information about the available AWS Glue versions and corresponding Spark and Python versions,
+     *        see <a href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer
+     *        guide.
+     *        </p>
+     *        <p>
+     *        Jobs that are created without specifying a Glue version default to Glue 0.9.
+     */
+
+    public void setGlueVersion(String glueVersion) {
+        this.glueVersion = glueVersion;
+    }
+
+    /**
+     * <p>
+     * Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     * indicates the version supported for jobs of type Spark.
+     * </p>
+     * <p>
+     * For more information about the available AWS Glue versions and corresponding Spark and Python versions, see <a
+     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer guide.
+     * </p>
+     * <p>
+     * Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * </p>
+     * 
+     * @return Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python
+     *         version indicates the version supported for jobs of type Spark. </p>
+     *         <p>
+     *         For more information about the available AWS Glue versions and corresponding Spark and Python versions,
+     *         see <a href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer
+     *         guide.
+     *         </p>
+     *         <p>
+     *         Jobs that are created without specifying a Glue version default to Glue 0.9.
+     */
+
+    public String getGlueVersion() {
+        return this.glueVersion;
+    }
+
+    /**
+     * <p>
+     * Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     * indicates the version supported for jobs of type Spark.
+     * </p>
+     * <p>
+     * For more information about the available AWS Glue versions and corresponding Spark and Python versions, see <a
+     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer guide.
+     * </p>
+     * <p>
+     * Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * </p>
+     * 
+     * @param glueVersion
+     *        Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     *        indicates the version supported for jobs of type Spark. </p>
+     *        <p>
+     *        For more information about the available AWS Glue versions and corresponding Spark and Python versions,
+     *        see <a href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer
+     *        guide.
+     *        </p>
+     *        <p>
+     *        Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobRun withGlueVersion(String glueVersion) {
+        setGlueVersion(glueVersion);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1681,8 +1783,6 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
             sb.append("Timeout: ").append(getTimeout()).append(",");
         if (getMaxCapacity() != null)
             sb.append("MaxCapacity: ").append(getMaxCapacity()).append(",");
-        if (getNotificationProperty() != null)
-            sb.append("NotificationProperty: ").append(getNotificationProperty()).append(",");
         if (getWorkerType() != null)
             sb.append("WorkerType: ").append(getWorkerType()).append(",");
         if (getNumberOfWorkers() != null)
@@ -1690,7 +1790,11 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
         if (getSecurityConfiguration() != null)
             sb.append("SecurityConfiguration: ").append(getSecurityConfiguration()).append(",");
         if (getLogGroupName() != null)
-            sb.append("LogGroupName: ").append(getLogGroupName());
+            sb.append("LogGroupName: ").append(getLogGroupName()).append(",");
+        if (getNotificationProperty() != null)
+            sb.append("NotificationProperty: ").append(getNotificationProperty()).append(",");
+        if (getGlueVersion() != null)
+            sb.append("GlueVersion: ").append(getGlueVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -1769,10 +1873,6 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getMaxCapacity() != null && other.getMaxCapacity().equals(this.getMaxCapacity()) == false)
             return false;
-        if (other.getNotificationProperty() == null ^ this.getNotificationProperty() == null)
-            return false;
-        if (other.getNotificationProperty() != null && other.getNotificationProperty().equals(this.getNotificationProperty()) == false)
-            return false;
         if (other.getWorkerType() == null ^ this.getWorkerType() == null)
             return false;
         if (other.getWorkerType() != null && other.getWorkerType().equals(this.getWorkerType()) == false)
@@ -1788,6 +1888,14 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
         if (other.getLogGroupName() == null ^ this.getLogGroupName() == null)
             return false;
         if (other.getLogGroupName() != null && other.getLogGroupName().equals(this.getLogGroupName()) == false)
+            return false;
+        if (other.getNotificationProperty() == null ^ this.getNotificationProperty() == null)
+            return false;
+        if (other.getNotificationProperty() != null && other.getNotificationProperty().equals(this.getNotificationProperty()) == false)
+            return false;
+        if (other.getGlueVersion() == null ^ this.getGlueVersion() == null)
+            return false;
+        if (other.getGlueVersion() != null && other.getGlueVersion().equals(this.getGlueVersion()) == false)
             return false;
         return true;
     }
@@ -1813,11 +1921,12 @@ public class JobRun implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getExecutionTime() == null) ? 0 : getExecutionTime().hashCode());
         hashCode = prime * hashCode + ((getTimeout() == null) ? 0 : getTimeout().hashCode());
         hashCode = prime * hashCode + ((getMaxCapacity() == null) ? 0 : getMaxCapacity().hashCode());
-        hashCode = prime * hashCode + ((getNotificationProperty() == null) ? 0 : getNotificationProperty().hashCode());
         hashCode = prime * hashCode + ((getWorkerType() == null) ? 0 : getWorkerType().hashCode());
         hashCode = prime * hashCode + ((getNumberOfWorkers() == null) ? 0 : getNumberOfWorkers().hashCode());
         hashCode = prime * hashCode + ((getSecurityConfiguration() == null) ? 0 : getSecurityConfiguration().hashCode());
         hashCode = prime * hashCode + ((getLogGroupName() == null) ? 0 : getLogGroupName().hashCode());
+        hashCode = prime * hashCode + ((getNotificationProperty() == null) ? 0 : getNotificationProperty().hashCode());
+        hashCode = prime * hashCode + ((getGlueVersion() == null) ? 0 : getGlueVersion().hashCode());
         return hashCode;
     }
 

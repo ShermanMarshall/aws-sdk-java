@@ -282,6 +282,39 @@ public class AWSCostExplorerAsyncClient extends AWSCostExplorerClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<GetRightsizingRecommendationResult> getRightsizingRecommendationAsync(GetRightsizingRecommendationRequest request) {
+
+        return getRightsizingRecommendationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetRightsizingRecommendationResult> getRightsizingRecommendationAsync(final GetRightsizingRecommendationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetRightsizingRecommendationRequest, GetRightsizingRecommendationResult> asyncHandler) {
+        final GetRightsizingRecommendationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetRightsizingRecommendationResult>() {
+            @Override
+            public GetRightsizingRecommendationResult call() throws Exception {
+                GetRightsizingRecommendationResult result = null;
+
+                try {
+                    result = executeGetRightsizingRecommendation(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<GetTagsResult> getTagsAsync(GetTagsRequest request) {
 
         return getTagsAsync(request, null);
@@ -299,6 +332,39 @@ public class AWSCostExplorerAsyncClient extends AWSCostExplorerClient implements
 
                 try {
                     result = executeGetTags(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetUsageForecastResult> getUsageForecastAsync(GetUsageForecastRequest request) {
+
+        return getUsageForecastAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetUsageForecastResult> getUsageForecastAsync(final GetUsageForecastRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetUsageForecastRequest, GetUsageForecastResult> asyncHandler) {
+        final GetUsageForecastRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetUsageForecastResult>() {
+            @Override
+            public GetUsageForecastResult call() throws Exception {
+                GetUsageForecastResult result = null;
+
+                try {
+                    result = executeGetUsageForecast(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

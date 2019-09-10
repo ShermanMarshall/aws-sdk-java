@@ -29,8 +29,8 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     /** Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality. */
     private String adaptiveQuantization;
     /**
-     * Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when
-     * rounded down to the nearest multiple of 1000.
+     * Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be
+     * unique when rounded down to the nearest multiple of 1000.
      */
     private Integer bitrate;
     /**
@@ -152,7 +152,12 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     private String rateControlMode;
     /** Places a PPS header on each encoded picture, even if repeated. */
     private String repeatPps;
-    /** Scene change detection (inserts I-frames on scene changes). */
+    /**
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     * (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     * https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
+     */
     private String sceneChangeDetect;
     /**
      * Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive
@@ -235,12 +240,12 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when
-     * rounded down to the nearest multiple of 1000.
+     * Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be
+     * unique when rounded down to the nearest multiple of 1000.
      * 
      * @param bitrate
-     *        Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique
-     *        when rounded down to the nearest multiple of 1000.
+     *        Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates
+     *        must be unique when rounded down to the nearest multiple of 1000.
      */
 
     public void setBitrate(Integer bitrate) {
@@ -248,11 +253,11 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when
-     * rounded down to the nearest multiple of 1000.
+     * Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be
+     * unique when rounded down to the nearest multiple of 1000.
      * 
-     * @return Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique
-     *         when rounded down to the nearest multiple of 1000.
+     * @return Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates
+     *         must be unique when rounded down to the nearest multiple of 1000.
      */
 
     public Integer getBitrate() {
@@ -260,12 +265,12 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when
-     * rounded down to the nearest multiple of 1000.
+     * Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be
+     * unique when rounded down to the nearest multiple of 1000.
      * 
      * @param bitrate
-     *        Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique
-     *        when rounded down to the nearest multiple of 1000.
+     *        Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates
+     *        must be unique when rounded down to the nearest multiple of 1000.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1747,10 +1752,16 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Scene change detection (inserts I-frames on scene changes).
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     * (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     * https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
      * 
      * @param sceneChangeDetect
-     *        Scene change detection (inserts I-frames on scene changes).
+     *        Enable this setting to insert I-frames at scene changes that the service automatically detects. This
+     *        improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     *        (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     *        https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
      * @see H264SceneChangeDetect
      */
 
@@ -1759,9 +1770,15 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Scene change detection (inserts I-frames on scene changes).
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     * (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     * https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
      * 
-     * @return Scene change detection (inserts I-frames on scene changes).
+     * @return Enable this setting to insert I-frames at scene changes that the service automatically detects. This
+     *         improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     *         (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     *         https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
      * @see H264SceneChangeDetect
      */
 
@@ -1770,10 +1787,16 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Scene change detection (inserts I-frames on scene changes).
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     * (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     * https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
      * 
      * @param sceneChangeDetect
-     *        Scene change detection (inserts I-frames on scene changes).
+     *        Enable this setting to insert I-frames at scene changes that the service automatically detects. This
+     *        improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     *        (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     *        https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see H264SceneChangeDetect
      */
@@ -1784,10 +1807,16 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Scene change detection (inserts I-frames on scene changes).
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     * (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     * https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
      * 
      * @param sceneChangeDetect
-     *        Scene change detection (inserts I-frames on scene changes).
+     *        Enable this setting to insert I-frames at scene changes that the service automatically detects. This
+     *        improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection
+     *        (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see
+     *        https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see H264SceneChangeDetect
      */

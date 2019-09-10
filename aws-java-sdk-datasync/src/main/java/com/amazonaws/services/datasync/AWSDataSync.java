@@ -81,14 +81,13 @@ public interface AWSDataSync {
      * Amazon EFS) reside. Your tasks are created in this AWS Region.
      * </p>
      * <p>
+     * You can activate the agent in a VPC (Virtual private Cloud) or provide the agent access to a VPC endpoint so you
+     * can run tasks without going over the public Internet.
+     * </p>
+     * <p>
      * You can use an agent for more than one location. If a task uses multiple agents, all of them need to have status
      * AVAILABLE for the task to run. If you use multiple agents for a source location, the status of all the agents
      * must be AVAILABLE for the task to run.
-     * </p>
-     * <p>
-     * For more information, see
-     * "https://docs.aws.amazon.com/datasync/latest/userguide/working-with-agents.html#activating-agent" (Activating an
-     * Agent) in the <i>AWS DataSync User Guide.</i>
      * </p>
      * <p>
      * Agents are automatically updated by AWS on a regular basis, using a mechanism that ensures minimal interruption
@@ -156,9 +155,7 @@ public interface AWSDataSync {
      * examples section.
      * </p>
      * <p>
-     * For more information, see
-     * "https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location"
-     * (Configuring Amazon S3 Location Settings) in the <i>AWS DataSync User Guide</i>.
+     * For more information, see Configuring Amazon S3 Location Settings in the <i>AWS DataSync User Guide.</i>
      * </p>
      * 
      * @param createLocationS3Request
@@ -173,6 +170,24 @@ public interface AWSDataSync {
      *      Documentation</a>
      */
     CreateLocationS3Result createLocationS3(CreateLocationS3Request createLocationS3Request);
+
+    /**
+     * <p>
+     * Creates an endpoint for a Server Message Block (SMB) file system.
+     * </p>
+     * 
+     * @param createLocationSmbRequest
+     *        CreateLocationSmbRequest
+     * @return Result of the CreateLocationSmb operation returned by the service.
+     * @throws InvalidRequestException
+     *         This exception is thrown when the client submits a malformed request.
+     * @throws InternalException
+     *         This exception is thrown when an error occurs in the AWS DataSync service.
+     * @sample AWSDataSync.CreateLocationSmb
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationSmb" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateLocationSmbResult createLocationSmb(CreateLocationSmbRequest createLocationSmbRequest);
 
     /**
      * <p>
@@ -337,6 +352,24 @@ public interface AWSDataSync {
 
     /**
      * <p>
+     * Returns metadata, such as the path and user information about a SMB location.
+     * </p>
+     * 
+     * @param describeLocationSmbRequest
+     *        DescribeLocationSmbRequest
+     * @return Result of the DescribeLocationSmb operation returned by the service.
+     * @throws InvalidRequestException
+     *         This exception is thrown when the client submits a malformed request.
+     * @throws InternalException
+     *         This exception is thrown when an error occurs in the AWS DataSync service.
+     * @sample AWSDataSync.DescribeLocationSmb
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationSmb" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeLocationSmbResult describeLocationSmb(DescribeLocationSmbRequest describeLocationSmbRequest);
+
+    /**
+     * <p>
      * Returns metadata about a task.
      * </p>
      * 
@@ -486,9 +519,8 @@ public interface AWSDataSync {
      * VERIFYING | SUCCESS/FAILURE.
      * </p>
      * <p>
-     * For detailed information, see <i>Task Execution</i> in
-     * "https://docs.aws.amazon.com/datasync/latest/userguide/how-datasync-works.html#terminology" (Components and
-     * Terminology) in the <i>AWS DataSync User Guide</i>.
+     * For detailed information, see the Task Execution section in the Components and Terminology topic in the <i>AWS
+     * DataSync User Guide</i>.
      * </p>
      * 
      * @param startTaskExecutionRequest

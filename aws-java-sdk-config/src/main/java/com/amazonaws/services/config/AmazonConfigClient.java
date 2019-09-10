@@ -95,122 +95,138 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoRunningConfigurationRecorderException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoRunningConfigurationRecorderException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoRunningConfigurationRecorderException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoRunningConfigurationRecorderExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotDiscoveredException").withModeledClass(
-                                    com.amazonaws.services.config.model.ResourceNotDiscoveredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotDiscoveredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.ResourceNotDiscoveredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoSuchRemediationConfigurationException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoSuchRemediationConfigurationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchRemediationConfigurationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchRemediationConfigurationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoAvailableDeliveryChannelException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoAvailableDeliveryChannelException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoAvailableDeliveryChannelException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoAvailableDeliveryChannelExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoSuchRetentionConfigurationException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoSuchRetentionConfigurationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchRemediationExceptionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchRemediationExceptionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidResultTokenException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidResultTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchRetentionConfigurationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchRetentionConfigurationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OversizedConfigurationItemException").withModeledClass(
-                                    com.amazonaws.services.config.model.OversizedConfigurationItemException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResultTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidResultTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InsufficientDeliveryPolicyException").withModeledClass(
-                                    com.amazonaws.services.config.model.InsufficientDeliveryPolicyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OversizedConfigurationItemException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.OversizedConfigurationItemExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoSuchConfigurationAggregatorException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoSuchConfigurationAggregatorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InsufficientDeliveryPolicyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InsufficientDeliveryPolicyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OrganizationAccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.config.model.OrganizationAccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchConfigurationAggregatorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchConfigurationAggregatorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoAvailableConfigurationRecorderException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoAvailableConfigurationRecorderException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RemediationInProgressException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.RemediationInProgressExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoAvailableOrganizationException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoAvailableOrganizationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OrganizationAccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.OrganizationAccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoSuchDeliveryChannelException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoSuchDeliveryChannelException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoAvailableConfigurationRecorderException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoAvailableConfigurationRecorderExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoAvailableOrganizationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoAvailableOrganizationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.config.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchDeliveryChannelException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchDeliveryChannelExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LastDeliveryChannelDeleteFailedException").withModeledClass(
-                                    com.amazonaws.services.config.model.LastDeliveryChannelDeleteFailedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OrganizationAllFeaturesNotEnabledException").withModeledClass(
-                                    com.amazonaws.services.config.model.OrganizationAllFeaturesNotEnabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.config.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LastDeliveryChannelDeleteFailedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.LastDeliveryChannelDeleteFailedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidLimitException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidLimitException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OrganizationAllFeaturesNotEnabledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.OrganizationAllFeaturesNotEnabledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfDeliveryChannelsExceededException").withModeledClass(
-                                    com.amazonaws.services.config.model.MaxNumberOfDeliveryChannelsExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoSuchConfigurationRecorderException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoSuchConfigurationRecorderException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidLimitException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidLimitExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withModeledClass(
-                                    com.amazonaws.services.config.model.ValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchOrganizationConfigRuleException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchOrganizationConfigRuleExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfConfigRulesExceededException").withModeledClass(
-                                    com.amazonaws.services.config.model.MaxNumberOfConfigRulesExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfDeliveryChannelsExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.MaxNumberOfDeliveryChannelsExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InsufficientPermissionsException").withModeledClass(
-                                    com.amazonaws.services.config.model.InsufficientPermissionsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchConfigurationRecorderException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchConfigurationRecorderExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidExpressionException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidExpressionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.ValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValueException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidParameterValueException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfConfigRulesExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.MaxNumberOfConfigRulesExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.config.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InsufficientPermissionsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InsufficientPermissionsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfConfigurationRecordersExceededException").withModeledClass(
-                                    com.amazonaws.services.config.model.MaxNumberOfConfigurationRecordersExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidExpressionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidExpressionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoSuchBucketException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoSuchBucketException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfOrganizationConfigRulesExceededException")
+                                    .withExceptionUnmarshaller(
+                                            com.amazonaws.services.config.model.transform.MaxNumberOfOrganizationConfigRulesExceededExceptionUnmarshaller
+                                                    .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRecordingGroupException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidRecordingGroupException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValueException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidParameterValueExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidConfigurationRecorderNameException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidConfigurationRecorderNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withModeledClass(
-                                    com.amazonaws.services.config.model.TooManyTagsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfConfigurationRecordersExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.MaxNumberOfConfigurationRecordersExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSNSTopicARNException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidSNSTopicARNException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchBucketException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchBucketExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfRetentionConfigurationsExceededException").withModeledClass(
-                                    com.amazonaws.services.config.model.MaxNumberOfRetentionConfigurationsExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRecordingGroupException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidRecordingGroupExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTimeRangeException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidTimeRangeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidConfigurationRecorderNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidConfigurationRecorderNameExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoSuchConfigRuleException").withModeledClass(
-                                    com.amazonaws.services.config.model.NoSuchConfigRuleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRoleException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidRoleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSNSTopicARNException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidSNSTopicARNExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidDeliveryChannelNameException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidDeliveryChannelNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaxNumberOfRetentionConfigurationsExceededException")
+                                    .withExceptionUnmarshaller(
+                                            com.amazonaws.services.config.model.transform.MaxNumberOfRetentionConfigurationsExceededExceptionUnmarshaller
+                                                    .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3KeyPrefixException").withModeledClass(
-                                    com.amazonaws.services.config.model.InvalidS3KeyPrefixException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTimeRangeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidTimeRangeExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("NoSuchConfigRuleException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.NoSuchConfigRuleExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRoleException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidRoleExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDeliveryChannelNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidDeliveryChannelNameExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3KeyPrefixException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.config.model.transform.InvalidS3KeyPrefixExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.config.model.AmazonConfigException.class));
 
     /**
@@ -640,8 +656,37 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      *         One or more AWS Config rules in the request are invalid. Verify that the rule names are correct and try
      *         again.
      * @throws ResourceInUseException
-     *         The rule is currently being deleted or the rule is deleting your evaluation results. Try your request
+     *         You see this exception in the following cases: </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, AWS Config is deleting this rule. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, the rule is deleting your evaluation results. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, a remediation action is associated with the rule and AWS Config cannot delete
+     *         this rule. Delete the remediation action associated with the rule before deleting the rule and try your
+     *         request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For PutConfigOrganizationRule, organization config rule deletion is in progress. Try your request again
+     *         later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteOrganizationConfigRule, organization config rule creation is in progress. Try your request
      *         again later.
+     *         </p>
+     *         </li>
      * @sample AmazonConfig.DeleteConfigRule
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteConfigRule" target="_top">AWS API
      *      Documentation</a>
@@ -890,8 +935,37 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      *         One or more AWS Config rules in the request are invalid. Verify that the rule names are correct and try
      *         again.
      * @throws ResourceInUseException
-     *         The rule is currently being deleted or the rule is deleting your evaluation results. Try your request
+     *         You see this exception in the following cases: </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, AWS Config is deleting this rule. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, the rule is deleting your evaluation results. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, a remediation action is associated with the rule and AWS Config cannot delete
+     *         this rule. Delete the remediation action associated with the rule before deleting the rule and try your
+     *         request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For PutConfigOrganizationRule, organization config rule deletion is in progress. Try your request again
+     *         later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteOrganizationConfigRule, organization config rule creation is in progress. Try your request
      *         again later.
+     *         </p>
+     *         </li>
      * @sample AmazonConfig.DeleteEvaluationResults
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteEvaluationResults" target="_top">AWS
      *      API Documentation</a>
@@ -930,6 +1004,105 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
             HttpResponseHandler<AmazonWebServiceResponse<DeleteEvaluationResultsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new DeleteEvaluationResultsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes the specified organization config rule and all of its evaluation results from all member accounts in that
+     * organization. Only a master account can delete an organization config rule.
+     * </p>
+     * <p>
+     * AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the deletion is complete. You cannot update a
+     * rule while it is in this state.
+     * </p>
+     * 
+     * @param deleteOrganizationConfigRuleRequest
+     * @return Result of the DeleteOrganizationConfigRule operation returned by the service.
+     * @throws NoSuchOrganizationConfigRuleException
+     *         You specified one or more organization config rules that do not exist.
+     * @throws ResourceInUseException
+     *         You see this exception in the following cases: </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, AWS Config is deleting this rule. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, the rule is deleting your evaluation results. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, a remediation action is associated with the rule and AWS Config cannot delete
+     *         this rule. Delete the remediation action associated with the rule before deleting the rule and try your
+     *         request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For PutConfigOrganizationRule, organization config rule deletion is in progress. Try your request again
+     *         later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteOrganizationConfigRule, organization config rule creation is in progress. Try your request
+     *         again later.
+     *         </p>
+     *         </li>
+     * @throws OrganizationAccessDeniedException
+     *         For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.</p>
+     *         <p>
+     *         For all OrganizationConfigRule APIs, AWS Config throws an exception if APIs are called from member
+     *         accounts. All APIs must be called from organization master account.
+     * @sample AmazonConfig.DeleteOrganizationConfigRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteOrganizationConfigRule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteOrganizationConfigRuleResult deleteOrganizationConfigRule(DeleteOrganizationConfigRuleRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteOrganizationConfigRule(request);
+    }
+
+    @SdkInternalApi
+    final DeleteOrganizationConfigRuleResult executeDeleteOrganizationConfigRule(DeleteOrganizationConfigRuleRequest deleteOrganizationConfigRuleRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteOrganizationConfigRuleRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteOrganizationConfigRuleRequest> request = null;
+        Response<DeleteOrganizationConfigRuleResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteOrganizationConfigRuleRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteOrganizationConfigRuleRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Config Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteOrganizationConfigRule");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteOrganizationConfigRuleResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeleteOrganizationConfigRuleResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1007,6 +1180,9 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      * @return Result of the DeleteRemediationConfiguration operation returned by the service.
      * @throws NoSuchRemediationConfigurationException
      *         You specified an AWS Config rule without a remediation configuration.
+     * @throws RemediationInProgressException
+     *         Remediation action is in progress. You can either cancel execution in AWS Systems Manager or wait and try
+     *         again later.
      * @sample AmazonConfig.DeleteRemediationConfiguration
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationConfiguration"
      *      target="_top">AWS API Documentation</a>
@@ -1045,6 +1221,63 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
             HttpResponseHandler<AmazonWebServiceResponse<DeleteRemediationConfigurationResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new DeleteRemediationConfigurationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes one or more remediation exceptions mentioned in the resource keys.
+     * </p>
+     * 
+     * @param deleteRemediationExceptionsRequest
+     * @return Result of the DeleteRemediationExceptions operation returned by the service.
+     * @throws NoSuchRemediationExceptionException
+     *         You tried to delete a remediation exception that does not exist.
+     * @sample AmazonConfig.DeleteRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteRemediationExceptionsResult deleteRemediationExceptions(DeleteRemediationExceptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteRemediationExceptions(request);
+    }
+
+    @SdkInternalApi
+    final DeleteRemediationExceptionsResult executeDeleteRemediationExceptions(DeleteRemediationExceptionsRequest deleteRemediationExceptionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteRemediationExceptionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteRemediationExceptionsRequest> request = null;
+        Response<DeleteRemediationExceptionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteRemediationExceptionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deleteRemediationExceptionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Config Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRemediationExceptions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteRemediationExceptionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeleteRemediationExceptionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1202,8 +1435,8 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      * </p>
      * <note>
      * <p>
-     * The results can return an empty result page, but if you have a nextToken, the results are displayed on the next
-     * page.
+     * The results can return an empty result page, but if you have a <code>nextToken</code>, the results are displayed
+     * on the next page.
      * </p>
      * </note>
      * 
@@ -2076,6 +2309,166 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
 
     /**
      * <p>
+     * Provides organization config rule deployment status for an organization.
+     * </p>
+     * <note>
+     * <p>
+     * The status is not considered successful until organization config rule is successfully deployed in all the member
+     * accounts with an exception of excluded accounts.
+     * </p>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response. Limit and next token are not
+     * applicable if you specify organization config rule names. It is only applicable, when you request all the
+     * organization config rules.
+     * </p>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param describeOrganizationConfigRuleStatusesRequest
+     * @return Result of the DescribeOrganizationConfigRuleStatuses operation returned by the service.
+     * @throws NoSuchOrganizationConfigRuleException
+     *         You specified one or more organization config rules that do not exist.
+     * @throws InvalidLimitException
+     *         The specified limit is outside the allowable range.
+     * @throws InvalidNextTokenException
+     *         The specified next token is invalid. Specify the <code>nextToken</code> string that was returned in the
+     *         previous response to get the next page of results.
+     * @throws OrganizationAccessDeniedException
+     *         For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.</p>
+     *         <p>
+     *         For all OrganizationConfigRule APIs, AWS Config throws an exception if APIs are called from member
+     *         accounts. All APIs must be called from organization master account.
+     * @sample AmazonConfig.DescribeOrganizationConfigRuleStatuses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConfigRuleStatuses"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeOrganizationConfigRuleStatusesResult describeOrganizationConfigRuleStatuses(DescribeOrganizationConfigRuleStatusesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeOrganizationConfigRuleStatuses(request);
+    }
+
+    @SdkInternalApi
+    final DescribeOrganizationConfigRuleStatusesResult executeDescribeOrganizationConfigRuleStatuses(
+            DescribeOrganizationConfigRuleStatusesRequest describeOrganizationConfigRuleStatusesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeOrganizationConfigRuleStatusesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeOrganizationConfigRuleStatusesRequest> request = null;
+        Response<DescribeOrganizationConfigRuleStatusesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeOrganizationConfigRuleStatusesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeOrganizationConfigRuleStatusesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Config Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeOrganizationConfigRuleStatuses");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeOrganizationConfigRuleStatusesResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new DescribeOrganizationConfigRuleStatusesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns a list of organization config rules.
+     * </p>
+     * <note>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response. Limit and next token are not
+     * applicable if you specify organization config rule names. It is only applicable, when you request all the
+     * organization config rules.
+     * </p>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param describeOrganizationConfigRulesRequest
+     * @return Result of the DescribeOrganizationConfigRules operation returned by the service.
+     * @throws NoSuchOrganizationConfigRuleException
+     *         You specified one or more organization config rules that do not exist.
+     * @throws InvalidNextTokenException
+     *         The specified next token is invalid. Specify the <code>nextToken</code> string that was returned in the
+     *         previous response to get the next page of results.
+     * @throws InvalidLimitException
+     *         The specified limit is outside the allowable range.
+     * @throws OrganizationAccessDeniedException
+     *         For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.</p>
+     *         <p>
+     *         For all OrganizationConfigRule APIs, AWS Config throws an exception if APIs are called from member
+     *         accounts. All APIs must be called from organization master account.
+     * @sample AmazonConfig.DescribeOrganizationConfigRules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConfigRules"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeOrganizationConfigRulesResult describeOrganizationConfigRules(DescribeOrganizationConfigRulesRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeOrganizationConfigRules(request);
+    }
+
+    @SdkInternalApi
+    final DescribeOrganizationConfigRulesResult executeDescribeOrganizationConfigRules(
+            DescribeOrganizationConfigRulesRequest describeOrganizationConfigRulesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeOrganizationConfigRulesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeOrganizationConfigRulesRequest> request = null;
+        Response<DescribeOrganizationConfigRulesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeOrganizationConfigRulesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeOrganizationConfigRulesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Config Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeOrganizationConfigRules");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeOrganizationConfigRulesResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeOrganizationConfigRulesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Returns a list of all pending aggregation requests.
      * </p>
      * 
@@ -2195,6 +2588,77 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
 
     /**
      * <p>
+     * Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set
+     * of resources that includes an explanation of an exception and the time when the exception will be deleted. When
+     * you specify the limit and the next token, you receive a paginated response.
+     * </p>
+     * <note>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response.
+     * </p>
+     * <p>
+     * Limit and next token are not applicable if you request resources in batch. It is only applicable, when you
+     * request all resources.
+     * </p>
+     * </note>
+     * 
+     * @param describeRemediationExceptionsRequest
+     * @return Result of the DescribeRemediationExceptions operation returned by the service.
+     * @throws InvalidNextTokenException
+     *         The specified next token is invalid. Specify the <code>nextToken</code> string that was returned in the
+     *         previous response to get the next page of results.
+     * @throws InvalidParameterValueException
+     *         One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.
+     * @sample AmazonConfig.DescribeRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeRemediationExceptionsResult describeRemediationExceptions(DescribeRemediationExceptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeRemediationExceptions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeRemediationExceptionsResult executeDescribeRemediationExceptions(DescribeRemediationExceptionsRequest describeRemediationExceptionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeRemediationExceptionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeRemediationExceptionsRequest> request = null;
+        Response<DescribeRemediationExceptionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeRemediationExceptionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeRemediationExceptionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Config Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeRemediationExceptions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeRemediationExceptionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeRemediationExceptionsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when
      * steps for the remediation execution occur, and any error messages for steps that have failed. When you specify
      * the limit and the next token, you receive a paginated response.
@@ -2204,6 +2668,9 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      * @return Result of the DescribeRemediationExecutionStatus operation returned by the service.
      * @throws NoSuchRemediationConfigurationException
      *         You specified an AWS Config rule without a remediation configuration.
+     * @throws InvalidNextTokenException
+     *         The specified next token is invalid. Specify the <code>nextToken</code> string that was returned in the
+     *         previous response to get the next page of results.
      * @sample AmazonConfig.DescribeRemediationExecutionStatus
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExecutionStatus"
      *      target="_top">AWS API Documentation</a>
@@ -2330,8 +2797,8 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      * </p>
      * <note>
      * <p>
-     * The results can return an empty result page. But if you have a nextToken, the results are displayed on the next
-     * page.
+     * The results can return an empty result page. But if you have a <code>nextToken</code>, the results are displayed
+     * on the next page.
      * </p>
      * </note>
      * 
@@ -2980,6 +3447,79 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
 
     /**
      * <p>
+     * Returns detailed status for each member account within an organization for a given organization config rule.
+     * </p>
+     * <note>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param getOrganizationConfigRuleDetailedStatusRequest
+     * @return Result of the GetOrganizationConfigRuleDetailedStatus operation returned by the service.
+     * @throws NoSuchOrganizationConfigRuleException
+     *         You specified one or more organization config rules that do not exist.
+     * @throws InvalidLimitException
+     *         The specified limit is outside the allowable range.
+     * @throws InvalidNextTokenException
+     *         The specified next token is invalid. Specify the <code>nextToken</code> string that was returned in the
+     *         previous response to get the next page of results.
+     * @throws OrganizationAccessDeniedException
+     *         For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.</p>
+     *         <p>
+     *         For all OrganizationConfigRule APIs, AWS Config throws an exception if APIs are called from member
+     *         accounts. All APIs must be called from organization master account.
+     * @sample AmazonConfig.GetOrganizationConfigRuleDetailedStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetOrganizationConfigRuleDetailedStatus"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public GetOrganizationConfigRuleDetailedStatusResult getOrganizationConfigRuleDetailedStatus(GetOrganizationConfigRuleDetailedStatusRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetOrganizationConfigRuleDetailedStatus(request);
+    }
+
+    @SdkInternalApi
+    final GetOrganizationConfigRuleDetailedStatusResult executeGetOrganizationConfigRuleDetailedStatus(
+            GetOrganizationConfigRuleDetailedStatusRequest getOrganizationConfigRuleDetailedStatusRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getOrganizationConfigRuleDetailedStatusRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetOrganizationConfigRuleDetailedStatusRequest> request = null;
+        Response<GetOrganizationConfigRuleDetailedStatusResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetOrganizationConfigRuleDetailedStatusRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(getOrganizationConfigRuleDetailedStatusRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Config Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetOrganizationConfigRuleDetailedStatus");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetOrganizationConfigRuleDetailedStatusResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new GetOrganizationConfigRuleDetailedStatusResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Returns a list of configuration items for the specified resource. The list contains details about each state of
      * the resource during the specified time interval. If you specified a retention period to retain your
      * <code>ConfigurationItems</code> between a minimum of 30 days and a maximum of 7 years (2557 days), AWS Config
@@ -3389,20 +3929,56 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      *         Failed to add the AWS Config rule because the account already contains the maximum number of 150 rules.
      *         Consider deleting any deactivated rules before you add new rules.
      * @throws ResourceInUseException
-     *         The rule is currently being deleted or the rule is deleting your evaluation results. Try your request
+     *         You see this exception in the following cases: </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, AWS Config is deleting this rule. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, the rule is deleting your evaluation results. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, a remediation action is associated with the rule and AWS Config cannot delete
+     *         this rule. Delete the remediation action associated with the rule before deleting the rule and try your
+     *         request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For PutConfigOrganizationRule, organization config rule deletion is in progress. Try your request again
+     *         later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteOrganizationConfigRule, organization config rule creation is in progress. Try your request
      *         again later.
+     *         </p>
+     *         </li>
      * @throws InsufficientPermissionsException
      *         Indicates one of the following errors:</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         The rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the
-     *         config:Put* action.
+     *         For PutConfigRule, the rule cannot be created because the IAM role assigned to AWS Config lacks
+     *         permissions to perform the config:Put* action.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.
+     *         For PutConfigRule, the AWS Lambda function cannot be invoked. Check the function ARN, and check the
+     *         function's permissions.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For OrganizationConfigRule, organization config rule cannot be created because you do not have
+     *         permissions to call IAM <code>GetRole</code> action or create service linked role.
      *         </p>
      *         </li>
      * @throws NoAvailableConfigurationRecorderException
@@ -3483,11 +4059,15 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      * @throws InvalidRoleException
      *         You have provided a null or empty role ARN.
      * @throws OrganizationAccessDeniedException
-     *         No permission to call the EnableAWSServiceAccess API.
+     *         For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.
+     *         </p>
+     *         <p>
+     *         For all OrganizationConfigRule APIs, AWS Config throws an exception if APIs are called from member
+     *         accounts. All APIs must be called from organization master account.
      * @throws NoAvailableOrganizationException
-     *         Organization does is no longer available.
+     *         Organization is no longer available.
      * @throws OrganizationAllFeaturesNotEnabledException
-     *         The configuration aggregator cannot be created because organization does not have all features enabled.
+     *         AWS Config resource cannot be created because your organization does not have all features enabled.
      * @sample AmazonConfig.PutConfigurationAggregator
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutConfigurationAggregator"
      *      target="_top">AWS API Documentation</a>
@@ -3761,6 +4341,152 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
 
     /**
      * <p>
+     * Adds or updates organization config rule for your entire organization evaluating whether your AWS resources
+     * comply with your desired configurations. Only a master account can create or update an organization config rule.
+     * </p>
+     * <p>
+     * This API enables organization service access through the <code>EnableAWSServiceAccess</code> action and creates a
+     * service linked role <code>AWSServiceRoleForConfigMultiAccountSetup</code> in the master account of your
+     * organization. The service linked role is created only when the role does not exist in the master account. AWS
+     * Config verifies the existence of role with <code>GetRole</code> action.
+     * </p>
+     * <p>
+     * You can use this action to create both custom AWS Config rules and AWS managed Config rules. If you are adding a
+     * new custom AWS Config rule, you must first create AWS Lambda function in the master account that the rule invokes
+     * to evaluate your resources. When you use the <code>PutOrganizationConfigRule</code> action to add the rule to AWS
+     * Config, you must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to the function. If you are
+     * adding an AWS managed Config rule, specify the rule's identifier for the <code>RuleIdentifier</code> key.
+     * </p>
+     * <p>
+     * The maximum number of organization config rules that AWS Config supports is 150.
+     * </p>
+     * <note>
+     * <p>
+     * Specify either <code>OrganizationCustomRuleMetadata</code> or <code>OrganizationManagedRuleMetadata</code>.
+     * </p>
+     * </note>
+     * 
+     * @param putOrganizationConfigRuleRequest
+     * @return Result of the PutOrganizationConfigRule operation returned by the service.
+     * @throws MaxNumberOfOrganizationConfigRulesExceededException
+     *         You have reached the limit of the number of organization config rules you can create.
+     * @throws ResourceInUseException
+     *         You see this exception in the following cases: </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, AWS Config is deleting this rule. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, the rule is deleting your evaluation results. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, a remediation action is associated with the rule and AWS Config cannot delete
+     *         this rule. Delete the remediation action associated with the rule before deleting the rule and try your
+     *         request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For PutConfigOrganizationRule, organization config rule deletion is in progress. Try your request again
+     *         later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteOrganizationConfigRule, organization config rule creation is in progress. Try your request
+     *         again later.
+     *         </p>
+     *         </li>
+     * @throws InvalidParameterValueException
+     *         One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.
+     * @throws ValidationException
+     *         The requested action is not valid.
+     * @throws OrganizationAccessDeniedException
+     *         For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.</p>
+     *         <p>
+     *         For all OrganizationConfigRule APIs, AWS Config throws an exception if APIs are called from member
+     *         accounts. All APIs must be called from organization master account.
+     * @throws NoAvailableOrganizationException
+     *         Organization is no longer available.
+     * @throws OrganizationAllFeaturesNotEnabledException
+     *         AWS Config resource cannot be created because your organization does not have all features enabled.
+     * @throws InsufficientPermissionsException
+     *         Indicates one of the following errors:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For PutConfigRule, the rule cannot be created because the IAM role assigned to AWS Config lacks
+     *         permissions to perform the config:Put* action.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For PutConfigRule, the AWS Lambda function cannot be invoked. Check the function ARN, and check the
+     *         function's permissions.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For OrganizationConfigRule, organization config rule cannot be created because you do not have
+     *         permissions to call IAM <code>GetRole</code> action or create service linked role.
+     *         </p>
+     *         </li>
+     * @sample AmazonConfig.PutOrganizationConfigRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutOrganizationConfigRule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public PutOrganizationConfigRuleResult putOrganizationConfigRule(PutOrganizationConfigRuleRequest request) {
+        request = beforeClientExecution(request);
+        return executePutOrganizationConfigRule(request);
+    }
+
+    @SdkInternalApi
+    final PutOrganizationConfigRuleResult executePutOrganizationConfigRule(PutOrganizationConfigRuleRequest putOrganizationConfigRuleRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putOrganizationConfigRuleRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutOrganizationConfigRuleRequest> request = null;
+        Response<PutOrganizationConfigRuleResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutOrganizationConfigRuleRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(putOrganizationConfigRuleRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Config Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutOrganizationConfigRule");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<PutOrganizationConfigRuleResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new PutOrganizationConfigRuleResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Adds or updates the remediation configuration with a specific AWS Config rule with the selected target or action.
      * The API creates the <code>RemediationConfiguration</code> object for the AWS Config rule. The AWS Config rule
      * must already exist for you to add a remediation configuration. The target (SSM document) must exist and have
@@ -3774,13 +4500,20 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      *         <ul>
      *         <li>
      *         <p>
-     *         The rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the
-     *         config:Put* action.
+     *         For PutConfigRule, the rule cannot be created because the IAM role assigned to AWS Config lacks
+     *         permissions to perform the config:Put* action.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.
+     *         For PutConfigRule, the AWS Lambda function cannot be invoked. Check the function ARN, and check the
+     *         function's permissions.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For OrganizationConfigRule, organization config rule cannot be created because you do not have
+     *         permissions to call IAM <code>GetRole</code> action or create service linked role.
      *         </p>
      *         </li>
      * @throws InvalidParameterValueException
@@ -3823,6 +4556,64 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
             HttpResponseHandler<AmazonWebServiceResponse<PutRemediationConfigurationsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new PutRemediationConfigurationsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * A remediation exception is when a specific resource is no longer considered for auto-remediation. This API adds a
+     * new exception or updates an exisiting exception for a specific resource with a specific AWS Config rule.
+     * </p>
+     * 
+     * @param putRemediationExceptionsRequest
+     * @return Result of the PutRemediationExceptions operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.
+     * @sample AmazonConfig.PutRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public PutRemediationExceptionsResult putRemediationExceptions(PutRemediationExceptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executePutRemediationExceptions(request);
+    }
+
+    @SdkInternalApi
+    final PutRemediationExceptionsResult executePutRemediationExceptions(PutRemediationExceptionsRequest putRemediationExceptionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putRemediationExceptionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutRemediationExceptionsRequest> request = null;
+        Response<PutRemediationExceptionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutRemediationExceptionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(putRemediationExceptionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Config Service");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutRemediationExceptions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<PutRemediationExceptionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new PutRemediationExceptionsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -4032,8 +4823,38 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      *         For <code>PutConfigurationAggregator</code> API, this exception is thrown if the number of accounts and
      *         aggregators exceeds the limit.
      * @throws ResourceInUseException
-     *         The rule is currently being deleted or the rule is deleting your evaluation results. Try your request
+     *         You see this exception in the following cases:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, AWS Config is deleting this rule. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, the rule is deleting your evaluation results. Try your request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteConfigRule API, a remediation action is associated with the rule and AWS Config cannot delete
+     *         this rule. Delete the remediation action associated with the rule before deleting the rule and try your
+     *         request again later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For PutConfigOrganizationRule, organization config rule deletion is in progress. Try your request again
+     *         later.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For DeleteOrganizationConfigRule, organization config rule creation is in progress. Try your request
      *         again later.
+     *         </p>
+     *         </li>
      * @throws InvalidParameterValueException
      *         One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.
      * @sample AmazonConfig.StartConfigRulesEvaluation
@@ -4160,18 +4981,27 @@ public class AmazonConfigClient extends AmazonWebServiceClient implements Amazon
      * 
      * @param startRemediationExecutionRequest
      * @return Result of the StartRemediationExecution operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.
      * @throws InsufficientPermissionsException
      *         Indicates one of the following errors:</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         The rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the
-     *         config:Put* action.
+     *         For PutConfigRule, the rule cannot be created because the IAM role assigned to AWS Config lacks
+     *         permissions to perform the config:Put* action.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.
+     *         For PutConfigRule, the AWS Lambda function cannot be invoked. Check the function ARN, and check the
+     *         function's permissions.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For OrganizationConfigRule, organization config rule cannot be created because you do not have
+     *         permissions to call IAM <code>GetRole</code> action or create service linked role.
      *         </p>
      *         </li>
      * @throws NoSuchRemediationConfigurationException

@@ -60,6 +60,10 @@ public class ContainerJsonUnmarshaller implements Unmarshaller<Container, JsonUn
                     context.nextToken();
                     container.setName(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("runtimeId", targetDepth)) {
+                    context.nextToken();
+                    container.setRuntimeId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("lastStatus", targetDepth)) {
                     context.nextToken();
                     container.setLastStatus(context.getUnmarshaller(String.class).unmarshall(context));
@@ -99,6 +103,10 @@ public class ContainerJsonUnmarshaller implements Unmarshaller<Container, JsonUn
                 if (context.testExpression("gpuIds", targetDepth)) {
                     context.nextToken();
                     container.setGpuIds(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("firelensConfiguration", targetDepth)) {
+                    context.nextToken();
+                    container.setFirelensConfiguration(FirelensConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

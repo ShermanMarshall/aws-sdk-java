@@ -13,7 +13,7 @@
 package com.amazonaws.services.appstream.model.transform;
 
 import java.util.Map;
-
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -43,6 +43,8 @@ public class CreateImageBuilderRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DisplayName").build();
     private static final MarshallingInfo<StructuredPojo> VPCCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VpcConfig").build();
+    private static final MarshallingInfo<String> IAMROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IamRoleArn").build();
     private static final MarshallingInfo<Boolean> ENABLEDEFAULTINTERNETACCESS_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EnableDefaultInternetAccess").build();
     private static final MarshallingInfo<StructuredPojo> DOMAINJOININFO_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -51,6 +53,8 @@ public class CreateImageBuilderRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AppstreamAgentVersion").build();
     private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Tags").build();
+    private static final MarshallingInfo<List> ACCESSENDPOINTS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AccessEndpoints").build();
 
     private static final CreateImageBuilderRequestMarshaller instance = new CreateImageBuilderRequestMarshaller();
 
@@ -75,10 +79,12 @@ public class CreateImageBuilderRequestMarshaller {
             protocolMarshaller.marshall(createImageBuilderRequest.getDescription(), DESCRIPTION_BINDING);
             protocolMarshaller.marshall(createImageBuilderRequest.getDisplayName(), DISPLAYNAME_BINDING);
             protocolMarshaller.marshall(createImageBuilderRequest.getVpcConfig(), VPCCONFIG_BINDING);
+            protocolMarshaller.marshall(createImageBuilderRequest.getIamRoleArn(), IAMROLEARN_BINDING);
             protocolMarshaller.marshall(createImageBuilderRequest.getEnableDefaultInternetAccess(), ENABLEDEFAULTINTERNETACCESS_BINDING);
             protocolMarshaller.marshall(createImageBuilderRequest.getDomainJoinInfo(), DOMAINJOININFO_BINDING);
             protocolMarshaller.marshall(createImageBuilderRequest.getAppstreamAgentVersion(), APPSTREAMAGENTVERSION_BINDING);
             protocolMarshaller.marshall(createImageBuilderRequest.getTags(), TAGS_BINDING);
+            protocolMarshaller.marshall(createImageBuilderRequest.getAccessEndpoints(), ACCESSENDPOINTS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

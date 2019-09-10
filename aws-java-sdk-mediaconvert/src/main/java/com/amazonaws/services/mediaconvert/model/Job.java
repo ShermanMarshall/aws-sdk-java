@@ -53,14 +53,16 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
      * when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS Elemental
      * MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response to GetJob and
      * ListJobs requests. The jobPercentComplete estimate is reliable for the following input containers: Quicktime,
-     * Transport Stream, MP4, and MXF. For some jobs, including audio-only jobs and jobs that use input clipping, the
-     * service can't provide information about job progress. In those cases, jobPercentComplete returns a null value.
+     * Transport Stream, MP4, and MXF. For some jobs, the service can't provide information about job progress. In those
+     * cases, jobPercentComplete returns a null value.
      */
     private Integer jobPercentComplete;
     /** The job template that the job is created from, if it is created from a job template. */
     private String jobTemplate;
     /** List of output group details */
     private java.util.List<OutputGroupDetail> outputGroupDetails;
+    /** Relative priority on the job. */
+    private Integer priority;
     /**
      * Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to
      * the default queue. For more about queues, see the User Guide topic at
@@ -76,6 +78,12 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
     private String role;
     /** JobSettings contains all the transcode settings for a job. */
     private JobSettings settings;
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     */
+    private String simulateReservedQueue;
     /** A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR. */
     private String status;
     /**
@@ -427,17 +435,16 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
      * when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS Elemental
      * MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response to GetJob and
      * ListJobs requests. The jobPercentComplete estimate is reliable for the following input containers: Quicktime,
-     * Transport Stream, MP4, and MXF. For some jobs, including audio-only jobs and jobs that use input clipping, the
-     * service can't provide information about job progress. In those cases, jobPercentComplete returns a null value.
+     * Transport Stream, MP4, and MXF. For some jobs, the service can't provide information about job progress. In those
+     * cases, jobPercentComplete returns a null value.
      * 
      * @param jobPercentComplete
      *        An estimate of how far your job has progressed. This estimate is shown as a percentage of the total time
      *        from when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS
      *        Elemental MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response
      *        to GetJob and ListJobs requests. The jobPercentComplete estimate is reliable for the following input
-     *        containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, including audio-only jobs and jobs
-     *        that use input clipping, the service can't provide information about job progress. In those cases,
-     *        jobPercentComplete returns a null value.
+     *        containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, the service can't provide
+     *        information about job progress. In those cases, jobPercentComplete returns a null value.
      */
 
     public void setJobPercentComplete(Integer jobPercentComplete) {
@@ -449,16 +456,15 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
      * when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS Elemental
      * MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response to GetJob and
      * ListJobs requests. The jobPercentComplete estimate is reliable for the following input containers: Quicktime,
-     * Transport Stream, MP4, and MXF. For some jobs, including audio-only jobs and jobs that use input clipping, the
-     * service can't provide information about job progress. In those cases, jobPercentComplete returns a null value.
+     * Transport Stream, MP4, and MXF. For some jobs, the service can't provide information about job progress. In those
+     * cases, jobPercentComplete returns a null value.
      * 
      * @return An estimate of how far your job has progressed. This estimate is shown as a percentage of the total time
      *         from when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS
      *         Elemental MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response
      *         to GetJob and ListJobs requests. The jobPercentComplete estimate is reliable for the following input
-     *         containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, including audio-only jobs and jobs
-     *         that use input clipping, the service can't provide information about job progress. In those cases,
-     *         jobPercentComplete returns a null value.
+     *         containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, the service can't provide
+     *         information about job progress. In those cases, jobPercentComplete returns a null value.
      */
 
     public Integer getJobPercentComplete() {
@@ -470,17 +476,16 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
      * when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS Elemental
      * MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response to GetJob and
      * ListJobs requests. The jobPercentComplete estimate is reliable for the following input containers: Quicktime,
-     * Transport Stream, MP4, and MXF. For some jobs, including audio-only jobs and jobs that use input clipping, the
-     * service can't provide information about job progress. In those cases, jobPercentComplete returns a null value.
+     * Transport Stream, MP4, and MXF. For some jobs, the service can't provide information about job progress. In those
+     * cases, jobPercentComplete returns a null value.
      * 
      * @param jobPercentComplete
      *        An estimate of how far your job has progressed. This estimate is shown as a percentage of the total time
      *        from when your job leaves its queue to when your output files appear in your output Amazon S3 bucket. AWS
      *        Elemental MediaConvert provides jobPercentComplete in CloudWatch STATUS_UPDATE events and in the response
      *        to GetJob and ListJobs requests. The jobPercentComplete estimate is reliable for the following input
-     *        containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, including audio-only jobs and jobs
-     *        that use input clipping, the service can't provide information about job progress. In those cases,
-     *        jobPercentComplete returns a null value.
+     *        containers: Quicktime, Transport Stream, MP4, and MXF. For some jobs, the service can't provide
+     *        information about job progress. In those cases, jobPercentComplete returns a null value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -582,6 +587,40 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     public Job withOutputGroupDetails(java.util.Collection<OutputGroupDetail> outputGroupDetails) {
         setOutputGroupDetails(outputGroupDetails);
+        return this;
+    }
+
+    /**
+     * Relative priority on the job.
+     * 
+     * @param priority
+     *        Relative priority on the job.
+     */
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    /**
+     * Relative priority on the job.
+     * 
+     * @return Relative priority on the job.
+     */
+
+    public Integer getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Relative priority on the job.
+     * 
+     * @param priority
+     *        Relative priority on the job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Job withPriority(Integer priority) {
+        setPriority(priority);
         return this;
     }
 
@@ -739,6 +778,73 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     public Job withSettings(JobSettings settings) {
         setSettings(settings);
+        return this;
+    }
+
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     * 
+     * @param simulateReservedQueue
+     *        Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you
+     *        need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to
+     *        what you will see with one RTS in a reserved queue. This setting is disabled by default.
+     * @see SimulateReservedQueue
+     */
+
+    public void setSimulateReservedQueue(String simulateReservedQueue) {
+        this.simulateReservedQueue = simulateReservedQueue;
+    }
+
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     * 
+     * @return Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you
+     *         need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance
+     *         to what you will see with one RTS in a reserved queue. This setting is disabled by default.
+     * @see SimulateReservedQueue
+     */
+
+    public String getSimulateReservedQueue() {
+        return this.simulateReservedQueue;
+    }
+
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     * 
+     * @param simulateReservedQueue
+     *        Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you
+     *        need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to
+     *        what you will see with one RTS in a reserved queue. This setting is disabled by default.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SimulateReservedQueue
+     */
+
+    public Job withSimulateReservedQueue(String simulateReservedQueue) {
+        setSimulateReservedQueue(simulateReservedQueue);
+        return this;
+    }
+
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     * 
+     * @param simulateReservedQueue
+     *        Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you
+     *        need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to
+     *        what you will see with one RTS in a reserved queue. This setting is disabled by default.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SimulateReservedQueue
+     */
+
+    public Job withSimulateReservedQueue(SimulateReservedQueue simulateReservedQueue) {
+        this.simulateReservedQueue = simulateReservedQueue.toString();
         return this;
     }
 
@@ -992,6 +1098,8 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
             sb.append("JobTemplate: ").append(getJobTemplate()).append(",");
         if (getOutputGroupDetails() != null)
             sb.append("OutputGroupDetails: ").append(getOutputGroupDetails()).append(",");
+        if (getPriority() != null)
+            sb.append("Priority: ").append(getPriority()).append(",");
         if (getQueue() != null)
             sb.append("Queue: ").append(getQueue()).append(",");
         if (getRetryCount() != null)
@@ -1000,6 +1108,8 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
             sb.append("Role: ").append(getRole()).append(",");
         if (getSettings() != null)
             sb.append("Settings: ").append(getSettings()).append(",");
+        if (getSimulateReservedQueue() != null)
+            sb.append("SimulateReservedQueue: ").append(getSimulateReservedQueue()).append(",");
         if (getStatus() != null)
             sb.append("Status: ").append(getStatus()).append(",");
         if (getStatusUpdateInterval() != null)
@@ -1066,6 +1176,10 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getOutputGroupDetails() != null && other.getOutputGroupDetails().equals(this.getOutputGroupDetails()) == false)
             return false;
+        if (other.getPriority() == null ^ this.getPriority() == null)
+            return false;
+        if (other.getPriority() != null && other.getPriority().equals(this.getPriority()) == false)
+            return false;
         if (other.getQueue() == null ^ this.getQueue() == null)
             return false;
         if (other.getQueue() != null && other.getQueue().equals(this.getQueue()) == false)
@@ -1081,6 +1195,10 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
         if (other.getSettings() == null ^ this.getSettings() == null)
             return false;
         if (other.getSettings() != null && other.getSettings().equals(this.getSettings()) == false)
+            return false;
+        if (other.getSimulateReservedQueue() == null ^ this.getSimulateReservedQueue() == null)
+            return false;
+        if (other.getSimulateReservedQueue() != null && other.getSimulateReservedQueue().equals(this.getSimulateReservedQueue()) == false)
             return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
@@ -1117,10 +1235,12 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getJobPercentComplete() == null) ? 0 : getJobPercentComplete().hashCode());
         hashCode = prime * hashCode + ((getJobTemplate() == null) ? 0 : getJobTemplate().hashCode());
         hashCode = prime * hashCode + ((getOutputGroupDetails() == null) ? 0 : getOutputGroupDetails().hashCode());
+        hashCode = prime * hashCode + ((getPriority() == null) ? 0 : getPriority().hashCode());
         hashCode = prime * hashCode + ((getQueue() == null) ? 0 : getQueue().hashCode());
         hashCode = prime * hashCode + ((getRetryCount() == null) ? 0 : getRetryCount().hashCode());
         hashCode = prime * hashCode + ((getRole() == null) ? 0 : getRole().hashCode());
         hashCode = prime * hashCode + ((getSettings() == null) ? 0 : getSettings().hashCode());
+        hashCode = prime * hashCode + ((getSimulateReservedQueue() == null) ? 0 : getSimulateReservedQueue().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getStatusUpdateInterval() == null) ? 0 : getStatusUpdateInterval().hashCode());
         hashCode = prime * hashCode + ((getTiming() == null) ? 0 : getTiming().hashCode());

@@ -86,14 +86,14 @@ public class AWSCloudHSMClient extends AmazonWebServiceClient implements AWSClou
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CloudHsmInternalException").withModeledClass(
-                                    com.amazonaws.services.cloudhsm.model.CloudHsmInternalException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CloudHsmInternalException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cloudhsm.model.transform.CloudHsmInternalExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.cloudhsm.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cloudhsm.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CloudHsmServiceException").withModeledClass(
-                                    com.amazonaws.services.cloudhsm.model.CloudHsmServiceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CloudHsmServiceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cloudhsm.model.transform.CloudHsmServiceExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.cloudhsm.model.AWSCloudHSMException.class));
 
     /**

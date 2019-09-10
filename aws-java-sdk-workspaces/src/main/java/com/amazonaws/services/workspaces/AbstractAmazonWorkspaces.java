@@ -48,6 +48,11 @@ public class AbstractAmazonWorkspaces implements AmazonWorkspaces {
     }
 
     @Override
+    public CopyWorkspaceImageResult copyWorkspaceImage(CopyWorkspaceImageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateIpGroupResult createIpGroup(CreateIpGroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }

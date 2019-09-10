@@ -28,8 +28,20 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request. The
-     * default is <code>lowestPrice</code>.
+     * Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by the Spot
+     * Fleet request.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot Instance
+     * pools that you specify.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot Instance
+     * pools with optimal capacity for the number of instances that are launching.
      * </p>
      */
     private String allocationStrategy;
@@ -124,6 +136,28 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
     private Integer onDemandTargetCapacity;
     /**
      * <p>
+     * The maximum amount per hour for On-Demand Instances that you're willing to pay. You can use the
+     * <code>onDemandMaxTotalPrice</code> parameter, the <code>spotMaxTotalPrice</code> parameter, or both parameters to
+     * ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the On-Demand
+     * Instances and Spot Instances in your request, Spot Fleet will launch instances until it reaches the maximum
+     * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
+     * instances even if it hasn’t met the target capacity.
+     * </p>
+     */
+    private String onDemandMaxTotalPrice;
+    /**
+     * <p>
+     * The maximum amount per hour for Spot Instances that you're willing to pay. You can use the
+     * <code>spotdMaxTotalPrice</code> parameter, the <code>onDemandMaxTotalPrice</code> parameter, or both parameters
+     * to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the On-Demand
+     * Instances and Spot Instances in your request, Spot Fleet will launch instances until it reaches the maximum
+     * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
+     * instances even if it hasn’t met the target capacity.
+     * </p>
+     */
+    private String spotMaxTotalPrice;
+    /**
+     * <p>
      * Indicates whether running Spot Instances are terminated when the Spot Fleet request expires.
      * </p>
      */
@@ -191,13 +225,36 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request. The
-     * default is <code>lowestPrice</code>.
+     * Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by the Spot
+     * Fleet request.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot Instance
+     * pools that you specify.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot Instance
+     * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
      * @param allocationStrategy
-     *        Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request.
-     *        The default is <code>lowestPrice</code>.
+     *        Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
+     *        the Spot Fleet request.</p>
+     *        <p>
+     *        If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot
+     *        Instance pools with the lowest price. This is the default allocation strategy.
+     *        </p>
+     *        <p>
+     *        If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot
+     *        Instance pools that you specify.
+     *        </p>
+     *        <p>
+     *        If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot
+     *        Instance pools with optimal capacity for the number of instances that are launching.
      * @see AllocationStrategy
      */
 
@@ -207,12 +264,35 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request. The
-     * default is <code>lowestPrice</code>.
+     * Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by the Spot
+     * Fleet request.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot Instance
+     * pools that you specify.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot Instance
+     * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
-     * @return Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request.
-     *         The default is <code>lowestPrice</code>.
+     * @return Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
+     *         the Spot Fleet request.</p>
+     *         <p>
+     *         If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot
+     *         Instance pools with the lowest price. This is the default allocation strategy.
+     *         </p>
+     *         <p>
+     *         If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot
+     *         Instance pools that you specify.
+     *         </p>
+     *         <p>
+     *         If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot
+     *         Instance pools with optimal capacity for the number of instances that are launching.
      * @see AllocationStrategy
      */
 
@@ -222,13 +302,36 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request. The
-     * default is <code>lowestPrice</code>.
+     * Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by the Spot
+     * Fleet request.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot Instance
+     * pools that you specify.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot Instance
+     * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
      * @param allocationStrategy
-     *        Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request.
-     *        The default is <code>lowestPrice</code>.
+     *        Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
+     *        the Spot Fleet request.</p>
+     *        <p>
+     *        If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot
+     *        Instance pools with the lowest price. This is the default allocation strategy.
+     *        </p>
+     *        <p>
+     *        If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot
+     *        Instance pools that you specify.
+     *        </p>
+     *        <p>
+     *        If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot
+     *        Instance pools with optimal capacity for the number of instances that are launching.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AllocationStrategy
      */
@@ -240,13 +343,36 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request. The
-     * default is <code>lowestPrice</code>.
+     * Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by the Spot
+     * Fleet request.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot Instance
+     * pools that you specify.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot Instance
+     * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
      * @param allocationStrategy
-     *        Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request.
-     *        The default is <code>lowestPrice</code>.
+     *        Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
+     *        the Spot Fleet request.</p>
+     *        <p>
+     *        If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot
+     *        Instance pools with the lowest price. This is the default allocation strategy.
+     *        </p>
+     *        <p>
+     *        If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot
+     *        Instance pools that you specify.
+     *        </p>
+     *        <p>
+     *        If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot
+     *        Instance pools with optimal capacity for the number of instances that are launching.
      * @see AllocationStrategy
      */
 
@@ -256,13 +382,36 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request. The
-     * default is <code>lowestPrice</code>.
+     * Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by the Spot
+     * Fleet request.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot Instance
+     * pools that you specify.
+     * </p>
+     * <p>
+     * If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot Instance
+     * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
      * @param allocationStrategy
-     *        Indicates how to allocate the target capacity across the Spot pools specified by the Spot Fleet request.
-     *        The default is <code>lowestPrice</code>.
+     *        Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
+     *        the Spot Fleet request.</p>
+     *        <p>
+     *        If the allocation strategy is <code>lowestPrice</code>, Spot Fleet launches instances from the Spot
+     *        Instance pools with the lowest price. This is the default allocation strategy.
+     *        </p>
+     *        <p>
+     *        If the allocation strategy is <code>diversified</code>, Spot Fleet launches instances from all the Spot
+     *        Instance pools that you specify.
+     *        </p>
+     *        <p>
+     *        If the allocation strategy is <code>capacityOptimized</code>, Spot Fleet launches instances from Spot
+     *        Instance pools with optimal capacity for the number of instances that are launching.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AllocationStrategy
      */
@@ -1024,6 +1173,146 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The maximum amount per hour for On-Demand Instances that you're willing to pay. You can use the
+     * <code>onDemandMaxTotalPrice</code> parameter, the <code>spotMaxTotalPrice</code> parameter, or both parameters to
+     * ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the On-Demand
+     * Instances and Spot Instances in your request, Spot Fleet will launch instances until it reaches the maximum
+     * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
+     * instances even if it hasn’t met the target capacity.
+     * </p>
+     * 
+     * @param onDemandMaxTotalPrice
+     *        The maximum amount per hour for On-Demand Instances that you're willing to pay. You can use the
+     *        <code>onDemandMaxTotalPrice</code> parameter, the <code>spotMaxTotalPrice</code> parameter, or both
+     *        parameters to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour
+     *        for the On-Demand Instances and Spot Instances in your request, Spot Fleet will launch instances until it
+     *        reaches the maximum amount you're willing to pay. When the maximum amount you're willing to pay is
+     *        reached, the fleet stops launching instances even if it hasn’t met the target capacity.
+     */
+
+    public void setOnDemandMaxTotalPrice(String onDemandMaxTotalPrice) {
+        this.onDemandMaxTotalPrice = onDemandMaxTotalPrice;
+    }
+
+    /**
+     * <p>
+     * The maximum amount per hour for On-Demand Instances that you're willing to pay. You can use the
+     * <code>onDemandMaxTotalPrice</code> parameter, the <code>spotMaxTotalPrice</code> parameter, or both parameters to
+     * ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the On-Demand
+     * Instances and Spot Instances in your request, Spot Fleet will launch instances until it reaches the maximum
+     * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
+     * instances even if it hasn’t met the target capacity.
+     * </p>
+     * 
+     * @return The maximum amount per hour for On-Demand Instances that you're willing to pay. You can use the
+     *         <code>onDemandMaxTotalPrice</code> parameter, the <code>spotMaxTotalPrice</code> parameter, or both
+     *         parameters to ensure that your fleet cost does not exceed your budget. If you set a maximum price per
+     *         hour for the On-Demand Instances and Spot Instances in your request, Spot Fleet will launch instances
+     *         until it reaches the maximum amount you're willing to pay. When the maximum amount you're willing to pay
+     *         is reached, the fleet stops launching instances even if it hasn’t met the target capacity.
+     */
+
+    public String getOnDemandMaxTotalPrice() {
+        return this.onDemandMaxTotalPrice;
+    }
+
+    /**
+     * <p>
+     * The maximum amount per hour for On-Demand Instances that you're willing to pay. You can use the
+     * <code>onDemandMaxTotalPrice</code> parameter, the <code>spotMaxTotalPrice</code> parameter, or both parameters to
+     * ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the On-Demand
+     * Instances and Spot Instances in your request, Spot Fleet will launch instances until it reaches the maximum
+     * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
+     * instances even if it hasn’t met the target capacity.
+     * </p>
+     * 
+     * @param onDemandMaxTotalPrice
+     *        The maximum amount per hour for On-Demand Instances that you're willing to pay. You can use the
+     *        <code>onDemandMaxTotalPrice</code> parameter, the <code>spotMaxTotalPrice</code> parameter, or both
+     *        parameters to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour
+     *        for the On-Demand Instances and Spot Instances in your request, Spot Fleet will launch instances until it
+     *        reaches the maximum amount you're willing to pay. When the maximum amount you're willing to pay is
+     *        reached, the fleet stops launching instances even if it hasn’t met the target capacity.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SpotFleetRequestConfigData withOnDemandMaxTotalPrice(String onDemandMaxTotalPrice) {
+        setOnDemandMaxTotalPrice(onDemandMaxTotalPrice);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The maximum amount per hour for Spot Instances that you're willing to pay. You can use the
+     * <code>spotdMaxTotalPrice</code> parameter, the <code>onDemandMaxTotalPrice</code> parameter, or both parameters
+     * to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the On-Demand
+     * Instances and Spot Instances in your request, Spot Fleet will launch instances until it reaches the maximum
+     * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
+     * instances even if it hasn’t met the target capacity.
+     * </p>
+     * 
+     * @param spotMaxTotalPrice
+     *        The maximum amount per hour for Spot Instances that you're willing to pay. You can use the
+     *        <code>spotdMaxTotalPrice</code> parameter, the <code>onDemandMaxTotalPrice</code> parameter, or both
+     *        parameters to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour
+     *        for the On-Demand Instances and Spot Instances in your request, Spot Fleet will launch instances until it
+     *        reaches the maximum amount you're willing to pay. When the maximum amount you're willing to pay is
+     *        reached, the fleet stops launching instances even if it hasn’t met the target capacity.
+     */
+
+    public void setSpotMaxTotalPrice(String spotMaxTotalPrice) {
+        this.spotMaxTotalPrice = spotMaxTotalPrice;
+    }
+
+    /**
+     * <p>
+     * The maximum amount per hour for Spot Instances that you're willing to pay. You can use the
+     * <code>spotdMaxTotalPrice</code> parameter, the <code>onDemandMaxTotalPrice</code> parameter, or both parameters
+     * to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the On-Demand
+     * Instances and Spot Instances in your request, Spot Fleet will launch instances until it reaches the maximum
+     * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
+     * instances even if it hasn’t met the target capacity.
+     * </p>
+     * 
+     * @return The maximum amount per hour for Spot Instances that you're willing to pay. You can use the
+     *         <code>spotdMaxTotalPrice</code> parameter, the <code>onDemandMaxTotalPrice</code> parameter, or both
+     *         parameters to ensure that your fleet cost does not exceed your budget. If you set a maximum price per
+     *         hour for the On-Demand Instances and Spot Instances in your request, Spot Fleet will launch instances
+     *         until it reaches the maximum amount you're willing to pay. When the maximum amount you're willing to pay
+     *         is reached, the fleet stops launching instances even if it hasn’t met the target capacity.
+     */
+
+    public String getSpotMaxTotalPrice() {
+        return this.spotMaxTotalPrice;
+    }
+
+    /**
+     * <p>
+     * The maximum amount per hour for Spot Instances that you're willing to pay. You can use the
+     * <code>spotdMaxTotalPrice</code> parameter, the <code>onDemandMaxTotalPrice</code> parameter, or both parameters
+     * to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the On-Demand
+     * Instances and Spot Instances in your request, Spot Fleet will launch instances until it reaches the maximum
+     * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
+     * instances even if it hasn’t met the target capacity.
+     * </p>
+     * 
+     * @param spotMaxTotalPrice
+     *        The maximum amount per hour for Spot Instances that you're willing to pay. You can use the
+     *        <code>spotdMaxTotalPrice</code> parameter, the <code>onDemandMaxTotalPrice</code> parameter, or both
+     *        parameters to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour
+     *        for the On-Demand Instances and Spot Instances in your request, Spot Fleet will launch instances until it
+     *        reaches the maximum amount you're willing to pay. When the maximum amount you're willing to pay is
+     *        reached, the fleet stops launching instances even if it hasn’t met the target capacity.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SpotFleetRequestConfigData withSpotMaxTotalPrice(String spotMaxTotalPrice) {
+        setSpotMaxTotalPrice(spotMaxTotalPrice);
+        return this;
+    }
+
+    /**
+     * <p>
      * Indicates whether running Spot Instances are terminated when the Spot Fleet request expires.
      * </p>
      * 
@@ -1597,6 +1886,10 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
             sb.append("TargetCapacity: ").append(getTargetCapacity()).append(",");
         if (getOnDemandTargetCapacity() != null)
             sb.append("OnDemandTargetCapacity: ").append(getOnDemandTargetCapacity()).append(",");
+        if (getOnDemandMaxTotalPrice() != null)
+            sb.append("OnDemandMaxTotalPrice: ").append(getOnDemandMaxTotalPrice()).append(",");
+        if (getSpotMaxTotalPrice() != null)
+            sb.append("SpotMaxTotalPrice: ").append(getSpotMaxTotalPrice()).append(",");
         if (getTerminateInstancesWithExpiration() != null)
             sb.append("TerminateInstancesWithExpiration: ").append(getTerminateInstancesWithExpiration()).append(",");
         if (getType() != null)
@@ -1676,6 +1969,14 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
             return false;
         if (other.getOnDemandTargetCapacity() != null && other.getOnDemandTargetCapacity().equals(this.getOnDemandTargetCapacity()) == false)
             return false;
+        if (other.getOnDemandMaxTotalPrice() == null ^ this.getOnDemandMaxTotalPrice() == null)
+            return false;
+        if (other.getOnDemandMaxTotalPrice() != null && other.getOnDemandMaxTotalPrice().equals(this.getOnDemandMaxTotalPrice()) == false)
+            return false;
+        if (other.getSpotMaxTotalPrice() == null ^ this.getSpotMaxTotalPrice() == null)
+            return false;
+        if (other.getSpotMaxTotalPrice() != null && other.getSpotMaxTotalPrice().equals(this.getSpotMaxTotalPrice()) == false)
+            return false;
         if (other.getTerminateInstancesWithExpiration() == null ^ this.getTerminateInstancesWithExpiration() == null)
             return false;
         if (other.getTerminateInstancesWithExpiration() != null
@@ -1729,6 +2030,8 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getSpotPrice() == null) ? 0 : getSpotPrice().hashCode());
         hashCode = prime * hashCode + ((getTargetCapacity() == null) ? 0 : getTargetCapacity().hashCode());
         hashCode = prime * hashCode + ((getOnDemandTargetCapacity() == null) ? 0 : getOnDemandTargetCapacity().hashCode());
+        hashCode = prime * hashCode + ((getOnDemandMaxTotalPrice() == null) ? 0 : getOnDemandMaxTotalPrice().hashCode());
+        hashCode = prime * hashCode + ((getSpotMaxTotalPrice() == null) ? 0 : getSpotMaxTotalPrice().hashCode());
         hashCode = prime * hashCode + ((getTerminateInstancesWithExpiration() == null) ? 0 : getTerminateInstancesWithExpiration().hashCode());
         hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         hashCode = prime * hashCode + ((getValidFrom() == null) ? 0 : getValidFrom().hashCode());

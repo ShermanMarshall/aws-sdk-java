@@ -191,20 +191,20 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccountLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.AccountLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccountLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.AccountLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OAuthProviderException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.OAuthProviderException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OAuthProviderException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.OAuthProviderExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.codebuild.model.AWSCodeBuildException.class));
 
     /**
@@ -891,6 +891,9 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
      *         The input value that was provided is not valid.
      * @throws AccountLimitExceededException
      *         An AWS service limit was exceeded for the calling AWS account.
+     * @throws ResourceAlreadyExistsException
+     *         The specified AWS resource cannot be created, because an AWS resource with the same settings already
+     *         exists.
      * @sample AWSCodeBuild.ImportSourceCredentials
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ImportSourceCredentials"
      *      target="_top">AWS API Documentation</a>

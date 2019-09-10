@@ -143,6 +143,39 @@ public class Cluster implements Serializable, Cloneable {
     private String clusterStatus;
     /**
      * <p>
+     * The availability status of the cluster for queries. Possible values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Available - The cluster is available for queries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Unavailable - The cluster is not available for queries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maintenance - The cluster is intermittently available for queries due to maintenance activities.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Failed - The cluster failed and is not available for queries.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String clusterAvailabilityStatus;
+    /**
+     * <p>
      * The status of a modify operation, if any, initiated for the cluster.
      * </p>
      */
@@ -400,6 +433,32 @@ public class Cluster implements Serializable, Cloneable {
      * </p>
      */
     private String snapshotScheduleState;
+    /**
+     * <p>
+     * The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot schedule and
+     * backups enabled.
+     * </p>
+     */
+    private java.util.Date expectedNextSnapshotScheduleTime;
+    /**
+     * <p>
+     * The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled. Possible
+     * values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * OnTrack - The next snapshot is expected to be taken on time.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Pending - The next snapshot is pending to be taken.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String expectedNextSnapshotScheduleTimeStatus;
     /**
      * <p>
      * Returns the following:
@@ -1115,6 +1174,205 @@ public class Cluster implements Serializable, Cloneable {
 
     public Cluster withClusterStatus(String clusterStatus) {
         setClusterStatus(clusterStatus);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The availability status of the cluster for queries. Possible values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Available - The cluster is available for queries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Unavailable - The cluster is not available for queries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maintenance - The cluster is intermittently available for queries due to maintenance activities.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Failed - The cluster failed and is not available for queries.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param clusterAvailabilityStatus
+     *        The availability status of the cluster for queries. Possible values are the following:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Available - The cluster is available for queries.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Unavailable - The cluster is not available for queries.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maintenance - The cluster is intermittently available for queries due to maintenance activities.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Failed - The cluster failed and is not available for queries.
+     *        </p>
+     *        </li>
+     */
+
+    public void setClusterAvailabilityStatus(String clusterAvailabilityStatus) {
+        this.clusterAvailabilityStatus = clusterAvailabilityStatus;
+    }
+
+    /**
+     * <p>
+     * The availability status of the cluster for queries. Possible values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Available - The cluster is available for queries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Unavailable - The cluster is not available for queries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maintenance - The cluster is intermittently available for queries due to maintenance activities.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Failed - The cluster failed and is not available for queries.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The availability status of the cluster for queries. Possible values are the following:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Available - The cluster is available for queries.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Unavailable - The cluster is not available for queries.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maintenance - The cluster is intermittently available for queries due to maintenance activities.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Failed - The cluster failed and is not available for queries.
+     *         </p>
+     *         </li>
+     */
+
+    public String getClusterAvailabilityStatus() {
+        return this.clusterAvailabilityStatus;
+    }
+
+    /**
+     * <p>
+     * The availability status of the cluster for queries. Possible values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Available - The cluster is available for queries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Unavailable - The cluster is not available for queries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maintenance - The cluster is intermittently available for queries due to maintenance activities.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Failed - The cluster failed and is not available for queries.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param clusterAvailabilityStatus
+     *        The availability status of the cluster for queries. Possible values are the following:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Available - The cluster is available for queries.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Unavailable - The cluster is not available for queries.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maintenance - The cluster is intermittently available for queries due to maintenance activities.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Modifying - The cluster is intermittently available for queries due to changes that modify the cluster.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Failed - The cluster failed and is not available for queries.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster withClusterAvailabilityStatus(String clusterAvailabilityStatus) {
+        setClusterAvailabilityStatus(clusterAvailabilityStatus);
         return this;
     }
 
@@ -3204,6 +3462,167 @@ public class Cluster implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot schedule and
+     * backups enabled.
+     * </p>
+     * 
+     * @param expectedNextSnapshotScheduleTime
+     *        The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot
+     *        schedule and backups enabled.
+     */
+
+    public void setExpectedNextSnapshotScheduleTime(java.util.Date expectedNextSnapshotScheduleTime) {
+        this.expectedNextSnapshotScheduleTime = expectedNextSnapshotScheduleTime;
+    }
+
+    /**
+     * <p>
+     * The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot schedule and
+     * backups enabled.
+     * </p>
+     * 
+     * @return The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot
+     *         schedule and backups enabled.
+     */
+
+    public java.util.Date getExpectedNextSnapshotScheduleTime() {
+        return this.expectedNextSnapshotScheduleTime;
+    }
+
+    /**
+     * <p>
+     * The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot schedule and
+     * backups enabled.
+     * </p>
+     * 
+     * @param expectedNextSnapshotScheduleTime
+     *        The date and time when the next snapshot is expected to be taken for clusters with a valid snapshot
+     *        schedule and backups enabled.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster withExpectedNextSnapshotScheduleTime(java.util.Date expectedNextSnapshotScheduleTime) {
+        setExpectedNextSnapshotScheduleTime(expectedNextSnapshotScheduleTime);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled. Possible
+     * values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * OnTrack - The next snapshot is expected to be taken on time.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Pending - The next snapshot is pending to be taken.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param expectedNextSnapshotScheduleTimeStatus
+     *        The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled.
+     *        Possible values are the following:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        OnTrack - The next snapshot is expected to be taken on time.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Pending - The next snapshot is pending to be taken.
+     *        </p>
+     *        </li>
+     */
+
+    public void setExpectedNextSnapshotScheduleTimeStatus(String expectedNextSnapshotScheduleTimeStatus) {
+        this.expectedNextSnapshotScheduleTimeStatus = expectedNextSnapshotScheduleTimeStatus;
+    }
+
+    /**
+     * <p>
+     * The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled. Possible
+     * values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * OnTrack - The next snapshot is expected to be taken on time.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Pending - The next snapshot is pending to be taken.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled.
+     *         Possible values are the following:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         OnTrack - The next snapshot is expected to be taken on time.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Pending - The next snapshot is pending to be taken.
+     *         </p>
+     *         </li>
+     */
+
+    public String getExpectedNextSnapshotScheduleTimeStatus() {
+        return this.expectedNextSnapshotScheduleTimeStatus;
+    }
+
+    /**
+     * <p>
+     * The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled. Possible
+     * values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * OnTrack - The next snapshot is expected to be taken on time.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Pending - The next snapshot is pending to be taken.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param expectedNextSnapshotScheduleTimeStatus
+     *        The status of next expected snapshot for clusters having a valid snapshot schedule and backups enabled.
+     *        Possible values are the following:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        OnTrack - The next snapshot is expected to be taken on time.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Pending - The next snapshot is pending to be taken.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster withExpectedNextSnapshotScheduleTimeStatus(String expectedNextSnapshotScheduleTimeStatus) {
+        setExpectedNextSnapshotScheduleTimeStatus(expectedNextSnapshotScheduleTimeStatus);
+        return this;
+    }
+
+    /**
+     * <p>
      * Returns the following:
      * </p>
      * <ul>
@@ -3329,6 +3748,8 @@ public class Cluster implements Serializable, Cloneable {
             sb.append("NodeType: ").append(getNodeType()).append(",");
         if (getClusterStatus() != null)
             sb.append("ClusterStatus: ").append(getClusterStatus()).append(",");
+        if (getClusterAvailabilityStatus() != null)
+            sb.append("ClusterAvailabilityStatus: ").append(getClusterAvailabilityStatus()).append(",");
         if (getModifyStatus() != null)
             sb.append("ModifyStatus: ").append(getModifyStatus()).append(",");
         if (getMasterUsername() != null)
@@ -3405,6 +3826,10 @@ public class Cluster implements Serializable, Cloneable {
             sb.append("SnapshotScheduleIdentifier: ").append(getSnapshotScheduleIdentifier()).append(",");
         if (getSnapshotScheduleState() != null)
             sb.append("SnapshotScheduleState: ").append(getSnapshotScheduleState()).append(",");
+        if (getExpectedNextSnapshotScheduleTime() != null)
+            sb.append("ExpectedNextSnapshotScheduleTime: ").append(getExpectedNextSnapshotScheduleTime()).append(",");
+        if (getExpectedNextSnapshotScheduleTimeStatus() != null)
+            sb.append("ExpectedNextSnapshotScheduleTimeStatus: ").append(getExpectedNextSnapshotScheduleTimeStatus()).append(",");
         if (getResizeInfo() != null)
             sb.append("ResizeInfo: ").append(getResizeInfo());
         sb.append("}");
@@ -3432,6 +3857,10 @@ public class Cluster implements Serializable, Cloneable {
         if (other.getClusterStatus() == null ^ this.getClusterStatus() == null)
             return false;
         if (other.getClusterStatus() != null && other.getClusterStatus().equals(this.getClusterStatus()) == false)
+            return false;
+        if (other.getClusterAvailabilityStatus() == null ^ this.getClusterAvailabilityStatus() == null)
+            return false;
+        if (other.getClusterAvailabilityStatus() != null && other.getClusterAvailabilityStatus().equals(this.getClusterAvailabilityStatus()) == false)
             return false;
         if (other.getModifyStatus() == null ^ this.getModifyStatus() == null)
             return false;
@@ -3588,6 +4017,16 @@ public class Cluster implements Serializable, Cloneable {
             return false;
         if (other.getSnapshotScheduleState() != null && other.getSnapshotScheduleState().equals(this.getSnapshotScheduleState()) == false)
             return false;
+        if (other.getExpectedNextSnapshotScheduleTime() == null ^ this.getExpectedNextSnapshotScheduleTime() == null)
+            return false;
+        if (other.getExpectedNextSnapshotScheduleTime() != null
+                && other.getExpectedNextSnapshotScheduleTime().equals(this.getExpectedNextSnapshotScheduleTime()) == false)
+            return false;
+        if (other.getExpectedNextSnapshotScheduleTimeStatus() == null ^ this.getExpectedNextSnapshotScheduleTimeStatus() == null)
+            return false;
+        if (other.getExpectedNextSnapshotScheduleTimeStatus() != null
+                && other.getExpectedNextSnapshotScheduleTimeStatus().equals(this.getExpectedNextSnapshotScheduleTimeStatus()) == false)
+            return false;
         if (other.getResizeInfo() == null ^ this.getResizeInfo() == null)
             return false;
         if (other.getResizeInfo() != null && other.getResizeInfo().equals(this.getResizeInfo()) == false)
@@ -3603,6 +4042,7 @@ public class Cluster implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getClusterIdentifier() == null) ? 0 : getClusterIdentifier().hashCode());
         hashCode = prime * hashCode + ((getNodeType() == null) ? 0 : getNodeType().hashCode());
         hashCode = prime * hashCode + ((getClusterStatus() == null) ? 0 : getClusterStatus().hashCode());
+        hashCode = prime * hashCode + ((getClusterAvailabilityStatus() == null) ? 0 : getClusterAvailabilityStatus().hashCode());
         hashCode = prime * hashCode + ((getModifyStatus() == null) ? 0 : getModifyStatus().hashCode());
         hashCode = prime * hashCode + ((getMasterUsername() == null) ? 0 : getMasterUsername().hashCode());
         hashCode = prime * hashCode + ((getDBName() == null) ? 0 : getDBName().hashCode());
@@ -3641,6 +4081,8 @@ public class Cluster implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getDeferredMaintenanceWindows() == null) ? 0 : getDeferredMaintenanceWindows().hashCode());
         hashCode = prime * hashCode + ((getSnapshotScheduleIdentifier() == null) ? 0 : getSnapshotScheduleIdentifier().hashCode());
         hashCode = prime * hashCode + ((getSnapshotScheduleState() == null) ? 0 : getSnapshotScheduleState().hashCode());
+        hashCode = prime * hashCode + ((getExpectedNextSnapshotScheduleTime() == null) ? 0 : getExpectedNextSnapshotScheduleTime().hashCode());
+        hashCode = prime * hashCode + ((getExpectedNextSnapshotScheduleTimeStatus() == null) ? 0 : getExpectedNextSnapshotScheduleTimeStatus().hashCode());
         hashCode = prime * hashCode + ((getResizeInfo() == null) ? 0 : getResizeInfo().hashCode());
         return hashCode;
     }

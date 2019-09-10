@@ -171,7 +171,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -189,13 +189,19 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      */
     private Boolean atRestEncryptionEnabled;
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the disk in the cluster.
+     * </p>
+     */
+    private String kmsKeyId;
 
     /**
      * <p>
@@ -1270,7 +1276,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1285,7 +1291,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        </p>
      *        <p>
      *        <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     *        <code>3.2.6</code> or <code>4.x</code>.
+     *        <code>3.2.6</code>, <code>4.x</code> or later.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -1306,7 +1312,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1320,7 +1326,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         </p>
      *         <p>
      *         <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     *         <code>3.2.6</code> or <code>4.x</code>.
+     *         <code>3.2.6</code>, <code>4.x</code> or later.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -1341,7 +1347,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1356,7 +1362,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        </p>
      *        <p>
      *        <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     *        <code>3.2.6</code> or <code>4.x</code>.
+     *        <code>3.2.6</code>, <code>4.x</code> or later.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -1379,7 +1385,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1393,7 +1399,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         </p>
      *         <p>
      *         <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     *         <code>3.2.6</code> or <code>4.x</code>.
+     *         <code>3.2.6</code>, <code>4.x</code> or later.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -1414,7 +1420,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1429,7 +1435,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        </p>
      *        <p>
      *        <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     *        <code>3.2.6</code> or <code>4.x</code>.
+     *        <code>3.2.6</code>, <code>4.x</code> or later.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -1450,7 +1456,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1464,7 +1470,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         </p>
      *         <p>
      *         <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     *         <code>3.2.6</code> or <code>4.x</code>.
+     *         <code>3.2.6</code>, <code>4.x</code> or later.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -1485,7 +1491,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1500,7 +1506,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *        </p>
      *        <p>
      *        <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     *        <code>3.2.6</code> or <code>4.x</code>.
+     *        <code>3.2.6</code>, <code>4.x</code> or later.
      *        </p>
      *        <p>
      *        Default: <code>false</code>
@@ -1523,7 +1529,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      * </p>
      * <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code> or <code>4.x</code>.
+     * <code>3.2.6</code>, <code>4.x</code> or later.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -1537,7 +1543,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
      *         </p>
      *         <p>
      *         <b>Required:</b> Only available when creating a replication group in an Amazon VPC using redis version
-     *         <code>3.2.6</code> or <code>4.x</code>.
+     *         <code>3.2.6</code>, <code>4.x</code> or later.
      *         </p>
      *         <p>
      *         Default: <code>false</code>
@@ -1545,6 +1551,46 @@ public class ReplicationGroup implements Serializable, Cloneable {
 
     public Boolean isAtRestEncryptionEnabled() {
         return this.atRestEncryptionEnabled;
+    }
+
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the disk in the cluster.
+     * </p>
+     * 
+     * @param kmsKeyId
+     *        The ID of the KMS key used to encrypt the disk in the cluster.
+     */
+
+    public void setKmsKeyId(String kmsKeyId) {
+        this.kmsKeyId = kmsKeyId;
+    }
+
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the disk in the cluster.
+     * </p>
+     * 
+     * @return The ID of the KMS key used to encrypt the disk in the cluster.
+     */
+
+    public String getKmsKeyId() {
+        return this.kmsKeyId;
+    }
+
+    /**
+     * <p>
+     * The ID of the KMS key used to encrypt the disk in the cluster.
+     * </p>
+     * 
+     * @param kmsKeyId
+     *        The ID of the KMS key used to encrypt the disk in the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ReplicationGroup withKmsKeyId(String kmsKeyId) {
+        setKmsKeyId(kmsKeyId);
+        return this;
     }
 
     /**
@@ -1590,7 +1636,9 @@ public class ReplicationGroup implements Serializable, Cloneable {
         if (getTransitEncryptionEnabled() != null)
             sb.append("TransitEncryptionEnabled: ").append(getTransitEncryptionEnabled()).append(",");
         if (getAtRestEncryptionEnabled() != null)
-            sb.append("AtRestEncryptionEnabled: ").append(getAtRestEncryptionEnabled());
+            sb.append("AtRestEncryptionEnabled: ").append(getAtRestEncryptionEnabled()).append(",");
+        if (getKmsKeyId() != null)
+            sb.append("KmsKeyId: ").append(getKmsKeyId());
         sb.append("}");
         return sb.toString();
     }
@@ -1669,6 +1717,10 @@ public class ReplicationGroup implements Serializable, Cloneable {
             return false;
         if (other.getAtRestEncryptionEnabled() != null && other.getAtRestEncryptionEnabled().equals(this.getAtRestEncryptionEnabled()) == false)
             return false;
+        if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
+            return false;
+        if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+            return false;
         return true;
     }
 
@@ -1693,6 +1745,7 @@ public class ReplicationGroup implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getAuthTokenEnabled() == null) ? 0 : getAuthTokenEnabled().hashCode());
         hashCode = prime * hashCode + ((getTransitEncryptionEnabled() == null) ? 0 : getTransitEncryptionEnabled().hashCode());
         hashCode = prime * hashCode + ((getAtRestEncryptionEnabled() == null) ? 0 : getAtRestEncryptionEnabled().hashCode());
+        hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
         return hashCode;
     }
 

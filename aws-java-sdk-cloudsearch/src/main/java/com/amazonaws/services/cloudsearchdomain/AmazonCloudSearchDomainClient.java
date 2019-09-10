@@ -88,11 +88,11 @@ public class AmazonCloudSearchDomainClient extends AmazonWebServiceClient implem
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SearchException").withModeledClass(
-                                    com.amazonaws.services.cloudsearchdomain.model.SearchException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SearchException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cloudsearchdomain.model.transform.SearchExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DocumentServiceException").withModeledClass(
-                                    com.amazonaws.services.cloudsearchdomain.model.DocumentServiceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DocumentServiceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cloudsearchdomain.model.transform.DocumentServiceExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.cloudsearchdomain.model.AmazonCloudSearchDomainException.class));
 
     /**

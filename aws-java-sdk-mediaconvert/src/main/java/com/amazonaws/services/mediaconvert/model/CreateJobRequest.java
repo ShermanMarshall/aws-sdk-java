@@ -43,6 +43,12 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /** When you create a job, you can either specify a job template or specify the transcoding settings individually */
     private String jobTemplate;
     /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+    private Integer priority;
+    /**
      * Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to
      * the default queue. For more about queues, see the User Guide topic at
      * http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
@@ -55,6 +61,12 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private String role;
     /** JobSettings contains all the transcode settings for a job. */
     private JobSettings settings;
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     */
+    private String simulateReservedQueue;
     /**
      * Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in
      * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
@@ -260,6 +272,52 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     }
 
     /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @param priority
+     *        Specify the relative priority for this job. In any given queue, the service begins processing the job with
+     *        the highest value first. When more than one job has the same priority, the service begins processing the
+     *        job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @return Specify the relative priority for this job. In any given queue, the service begins processing the job
+     *         with the highest value first. When more than one job has the same priority, the service begins processing
+     *         the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+
+    public Integer getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @param priority
+     *        Specify the relative priority for this job. In any given queue, the service begins processing the job with
+     *        the highest value first. When more than one job has the same priority, the service begins processing the
+     *        job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withPriority(Integer priority) {
+        setPriority(priority);
+        return this;
+    }
+
+    /**
      * Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to
      * the default queue. For more about queues, see the User Guide topic at
      * http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
@@ -376,6 +434,73 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     public CreateJobRequest withSettings(JobSettings settings) {
         setSettings(settings);
+        return this;
+    }
+
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     * 
+     * @param simulateReservedQueue
+     *        Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you
+     *        need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to
+     *        what you will see with one RTS in a reserved queue. This setting is disabled by default.
+     * @see SimulateReservedQueue
+     */
+
+    public void setSimulateReservedQueue(String simulateReservedQueue) {
+        this.simulateReservedQueue = simulateReservedQueue;
+    }
+
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     * 
+     * @return Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you
+     *         need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance
+     *         to what you will see with one RTS in a reserved queue. This setting is disabled by default.
+     * @see SimulateReservedQueue
+     */
+
+    public String getSimulateReservedQueue() {
+        return this.simulateReservedQueue;
+    }
+
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     * 
+     * @param simulateReservedQueue
+     *        Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you
+     *        need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to
+     *        what you will see with one RTS in a reserved queue. This setting is disabled by default.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SimulateReservedQueue
+     */
+
+    public CreateJobRequest withSimulateReservedQueue(String simulateReservedQueue) {
+        setSimulateReservedQueue(simulateReservedQueue);
+        return this;
+    }
+
+    /**
+     * Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When
+     * this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see
+     * with one RTS in a reserved queue. This setting is disabled by default.
+     * 
+     * @param simulateReservedQueue
+     *        Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you
+     *        need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to
+     *        what you will see with one RTS in a reserved queue. This setting is disabled by default.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SimulateReservedQueue
+     */
+
+    public CreateJobRequest withSimulateReservedQueue(SimulateReservedQueue simulateReservedQueue) {
+        this.simulateReservedQueue = simulateReservedQueue.toString();
         return this;
     }
 
@@ -527,12 +652,16 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
             sb.append("ClientRequestToken: ").append(getClientRequestToken()).append(",");
         if (getJobTemplate() != null)
             sb.append("JobTemplate: ").append(getJobTemplate()).append(",");
+        if (getPriority() != null)
+            sb.append("Priority: ").append(getPriority()).append(",");
         if (getQueue() != null)
             sb.append("Queue: ").append(getQueue()).append(",");
         if (getRole() != null)
             sb.append("Role: ").append(getRole()).append(",");
         if (getSettings() != null)
             sb.append("Settings: ").append(getSettings()).append(",");
+        if (getSimulateReservedQueue() != null)
+            sb.append("SimulateReservedQueue: ").append(getSimulateReservedQueue()).append(",");
         if (getStatusUpdateInterval() != null)
             sb.append("StatusUpdateInterval: ").append(getStatusUpdateInterval()).append(",");
         if (getUserMetadata() != null)
@@ -567,6 +696,10 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
             return false;
         if (other.getJobTemplate() != null && other.getJobTemplate().equals(this.getJobTemplate()) == false)
             return false;
+        if (other.getPriority() == null ^ this.getPriority() == null)
+            return false;
+        if (other.getPriority() != null && other.getPriority().equals(this.getPriority()) == false)
+            return false;
         if (other.getQueue() == null ^ this.getQueue() == null)
             return false;
         if (other.getQueue() != null && other.getQueue().equals(this.getQueue()) == false)
@@ -578,6 +711,10 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         if (other.getSettings() == null ^ this.getSettings() == null)
             return false;
         if (other.getSettings() != null && other.getSettings().equals(this.getSettings()) == false)
+            return false;
+        if (other.getSimulateReservedQueue() == null ^ this.getSimulateReservedQueue() == null)
+            return false;
+        if (other.getSimulateReservedQueue() != null && other.getSimulateReservedQueue().equals(this.getSimulateReservedQueue()) == false)
             return false;
         if (other.getStatusUpdateInterval() == null ^ this.getStatusUpdateInterval() == null)
             return false;
@@ -599,9 +736,11 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getBillingTagsSource() == null) ? 0 : getBillingTagsSource().hashCode());
         hashCode = prime * hashCode + ((getClientRequestToken() == null) ? 0 : getClientRequestToken().hashCode());
         hashCode = prime * hashCode + ((getJobTemplate() == null) ? 0 : getJobTemplate().hashCode());
+        hashCode = prime * hashCode + ((getPriority() == null) ? 0 : getPriority().hashCode());
         hashCode = prime * hashCode + ((getQueue() == null) ? 0 : getQueue().hashCode());
         hashCode = prime * hashCode + ((getRole() == null) ? 0 : getRole().hashCode());
         hashCode = prime * hashCode + ((getSettings() == null) ? 0 : getSettings().hashCode());
+        hashCode = prime * hashCode + ((getSimulateReservedQueue() == null) ? 0 : getSimulateReservedQueue().hashCode());
         hashCode = prime * hashCode + ((getStatusUpdateInterval() == null) ? 0 : getStatusUpdateInterval().hashCode());
         hashCode = prime * hashCode + ((getUserMetadata() == null) ? 0 : getUserMetadata().hashCode());
         return hashCode;

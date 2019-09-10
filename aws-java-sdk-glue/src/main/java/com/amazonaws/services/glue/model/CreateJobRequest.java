@@ -144,10 +144,47 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private Double maxCapacity;
     /**
      * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this job.
+     * </p>
+     */
+    private String securityConfiguration;
+    /**
+     * <p>
+     * The tags to use with this job. You may use tags to limit access to the job. For more information about tags in
+     * AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a> in
+     * the developer guide.
+     * </p>
+     */
+    private java.util.Map<String, String> tags;
+    /**
+     * <p>
      * Specifies configuration properties of a job notification.
      * </p>
      */
     private NotificationProperty notificationProperty;
+    /**
+     * <p>
+     * Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     * indicates the version supported for jobs of type Spark.
+     * </p>
+     * <p>
+     * For more information about the available AWS Glue versions and corresponding Spark and Python versions, see <a
+     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer guide.
+     * </p>
+     * <p>
+     * Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * </p>
+     */
+    private String glueVersion;
+    /**
+     * <p>
+     * The number of workers of a defined <code>workerType</code> that are allocated when a job runs.
+     * </p>
+     * <p>
+     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * </p>
+     */
+    private Integer numberOfWorkers;
     /**
      * <p>
      * The type of predefined worker that is allocated when a job runs. Accepts a value of Standard, G.1X, or G.2X.
@@ -174,29 +211,6 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </ul>
      */
     private String workerType;
-    /**
-     * <p>
-     * The number of workers of a defined <code>workerType</code> that are allocated when a job runs.
-     * </p>
-     * <p>
-     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
-     * </p>
-     */
-    private Integer numberOfWorkers;
-    /**
-     * <p>
-     * The name of the <code>SecurityConfiguration</code> structure to be used with this job.
-     * </p>
-     */
-    private String securityConfiguration;
-    /**
-     * <p>
-     * The tags to use with this job. You may use tags to limit access to the job. For more information about tags in
-     * AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a> in
-     * the developer guide.
-     * </p>
-     */
-    private java.util.Map<String, String> tags;
 
     /**
      * <p>
@@ -957,6 +971,119 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this job.
+     * </p>
+     * 
+     * @param securityConfiguration
+     *        The name of the <code>SecurityConfiguration</code> structure to be used with this job.
+     */
+
+    public void setSecurityConfiguration(String securityConfiguration) {
+        this.securityConfiguration = securityConfiguration;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this job.
+     * </p>
+     * 
+     * @return The name of the <code>SecurityConfiguration</code> structure to be used with this job.
+     */
+
+    public String getSecurityConfiguration() {
+        return this.securityConfiguration;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this job.
+     * </p>
+     * 
+     * @param securityConfiguration
+     *        The name of the <code>SecurityConfiguration</code> structure to be used with this job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withSecurityConfiguration(String securityConfiguration) {
+        setSecurityConfiguration(securityConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to use with this job. You may use tags to limit access to the job. For more information about tags in
+     * AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a> in
+     * the developer guide.
+     * </p>
+     * 
+     * @return The tags to use with this job. You may use tags to limit access to the job. For more information about
+     *         tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in
+     *         AWS Glue</a> in the developer guide.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags to use with this job. You may use tags to limit access to the job. For more information about tags in
+     * AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a> in
+     * the developer guide.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to use with this job. You may use tags to limit access to the job. For more information about
+     *        tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in
+     *        AWS Glue</a> in the developer guide.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * <p>
+     * The tags to use with this job. You may use tags to limit access to the job. For more information about tags in
+     * AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a> in
+     * the developer guide.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to use with this job. You may use tags to limit access to the job. For more information about
+     *        tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in
+     *        AWS Glue</a> in the developer guide.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    public CreateJobRequest addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest clearTagsEntries() {
+        this.tags = null;
+        return this;
+    }
+
+    /**
+     * <p>
      * Specifies configuration properties of a job notification.
      * </p>
      * 
@@ -992,6 +1119,149 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     public CreateJobRequest withNotificationProperty(NotificationProperty notificationProperty) {
         setNotificationProperty(notificationProperty);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     * indicates the version supported for jobs of type Spark.
+     * </p>
+     * <p>
+     * For more information about the available AWS Glue versions and corresponding Spark and Python versions, see <a
+     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer guide.
+     * </p>
+     * <p>
+     * Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * </p>
+     * 
+     * @param glueVersion
+     *        Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     *        indicates the version supported for jobs of type Spark. </p>
+     *        <p>
+     *        For more information about the available AWS Glue versions and corresponding Spark and Python versions,
+     *        see <a href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer
+     *        guide.
+     *        </p>
+     *        <p>
+     *        Jobs that are created without specifying a Glue version default to Glue 0.9.
+     */
+
+    public void setGlueVersion(String glueVersion) {
+        this.glueVersion = glueVersion;
+    }
+
+    /**
+     * <p>
+     * Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     * indicates the version supported for jobs of type Spark.
+     * </p>
+     * <p>
+     * For more information about the available AWS Glue versions and corresponding Spark and Python versions, see <a
+     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer guide.
+     * </p>
+     * <p>
+     * Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * </p>
+     * 
+     * @return Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python
+     *         version indicates the version supported for jobs of type Spark. </p>
+     *         <p>
+     *         For more information about the available AWS Glue versions and corresponding Spark and Python versions,
+     *         see <a href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer
+     *         guide.
+     *         </p>
+     *         <p>
+     *         Jobs that are created without specifying a Glue version default to Glue 0.9.
+     */
+
+    public String getGlueVersion() {
+        return this.glueVersion;
+    }
+
+    /**
+     * <p>
+     * Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     * indicates the version supported for jobs of type Spark.
+     * </p>
+     * <p>
+     * For more information about the available AWS Glue versions and corresponding Spark and Python versions, see <a
+     * href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer guide.
+     * </p>
+     * <p>
+     * Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * </p>
+     * 
+     * @param glueVersion
+     *        Glue version determines the versions of Apache Spark and Python that AWS Glue supports. The Python version
+     *        indicates the version supported for jobs of type Spark. </p>
+     *        <p>
+     *        For more information about the available AWS Glue versions and corresponding Spark and Python versions,
+     *        see <a href="https://docs.aws.amazon.com/glue/latest/dg/add-job.html">Glue version</a> in the developer
+     *        guide.
+     *        </p>
+     *        <p>
+     *        Jobs that are created without specifying a Glue version default to Glue 0.9.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withGlueVersion(String glueVersion) {
+        setGlueVersion(glueVersion);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of workers of a defined <code>workerType</code> that are allocated when a job runs.
+     * </p>
+     * <p>
+     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * </p>
+     * 
+     * @param numberOfWorkers
+     *        The number of workers of a defined <code>workerType</code> that are allocated when a job runs.</p>
+     *        <p>
+     *        The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     */
+
+    public void setNumberOfWorkers(Integer numberOfWorkers) {
+        this.numberOfWorkers = numberOfWorkers;
+    }
+
+    /**
+     * <p>
+     * The number of workers of a defined <code>workerType</code> that are allocated when a job runs.
+     * </p>
+     * <p>
+     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * </p>
+     * 
+     * @return The number of workers of a defined <code>workerType</code> that are allocated when a job runs.</p>
+     *         <p>
+     *         The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     */
+
+    public Integer getNumberOfWorkers() {
+        return this.numberOfWorkers;
+    }
+
+    /**
+     * <p>
+     * The number of workers of a defined <code>workerType</code> that are allocated when a job runs.
+     * </p>
+     * <p>
+     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * </p>
+     * 
+     * @param numberOfWorkers
+     *        The number of workers of a defined <code>workerType</code> that are allocated when a job runs.</p>
+     *        <p>
+     *        The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateJobRequest withNumberOfWorkers(Integer numberOfWorkers) {
+        setNumberOfWorkers(numberOfWorkers);
         return this;
     }
 
@@ -1215,174 +1485,6 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     }
 
     /**
-     * <p>
-     * The number of workers of a defined <code>workerType</code> that are allocated when a job runs.
-     * </p>
-     * <p>
-     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
-     * </p>
-     * 
-     * @param numberOfWorkers
-     *        The number of workers of a defined <code>workerType</code> that are allocated when a job runs.</p>
-     *        <p>
-     *        The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
-     */
-
-    public void setNumberOfWorkers(Integer numberOfWorkers) {
-        this.numberOfWorkers = numberOfWorkers;
-    }
-
-    /**
-     * <p>
-     * The number of workers of a defined <code>workerType</code> that are allocated when a job runs.
-     * </p>
-     * <p>
-     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
-     * </p>
-     * 
-     * @return The number of workers of a defined <code>workerType</code> that are allocated when a job runs.</p>
-     *         <p>
-     *         The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
-     */
-
-    public Integer getNumberOfWorkers() {
-        return this.numberOfWorkers;
-    }
-
-    /**
-     * <p>
-     * The number of workers of a defined <code>workerType</code> that are allocated when a job runs.
-     * </p>
-     * <p>
-     * The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
-     * </p>
-     * 
-     * @param numberOfWorkers
-     *        The number of workers of a defined <code>workerType</code> that are allocated when a job runs.</p>
-     *        <p>
-     *        The maximum number of workers you can define are 299 for <code>G.1X</code>, and 149 for <code>G.2X</code>.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public CreateJobRequest withNumberOfWorkers(Integer numberOfWorkers) {
-        setNumberOfWorkers(numberOfWorkers);
-        return this;
-    }
-
-    /**
-     * <p>
-     * The name of the <code>SecurityConfiguration</code> structure to be used with this job.
-     * </p>
-     * 
-     * @param securityConfiguration
-     *        The name of the <code>SecurityConfiguration</code> structure to be used with this job.
-     */
-
-    public void setSecurityConfiguration(String securityConfiguration) {
-        this.securityConfiguration = securityConfiguration;
-    }
-
-    /**
-     * <p>
-     * The name of the <code>SecurityConfiguration</code> structure to be used with this job.
-     * </p>
-     * 
-     * @return The name of the <code>SecurityConfiguration</code> structure to be used with this job.
-     */
-
-    public String getSecurityConfiguration() {
-        return this.securityConfiguration;
-    }
-
-    /**
-     * <p>
-     * The name of the <code>SecurityConfiguration</code> structure to be used with this job.
-     * </p>
-     * 
-     * @param securityConfiguration
-     *        The name of the <code>SecurityConfiguration</code> structure to be used with this job.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public CreateJobRequest withSecurityConfiguration(String securityConfiguration) {
-        setSecurityConfiguration(securityConfiguration);
-        return this;
-    }
-
-    /**
-     * <p>
-     * The tags to use with this job. You may use tags to limit access to the job. For more information about tags in
-     * AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a> in
-     * the developer guide.
-     * </p>
-     * 
-     * @return The tags to use with this job. You may use tags to limit access to the job. For more information about
-     *         tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in
-     *         AWS Glue</a> in the developer guide.
-     */
-
-    public java.util.Map<String, String> getTags() {
-        return tags;
-    }
-
-    /**
-     * <p>
-     * The tags to use with this job. You may use tags to limit access to the job. For more information about tags in
-     * AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a> in
-     * the developer guide.
-     * </p>
-     * 
-     * @param tags
-     *        The tags to use with this job. You may use tags to limit access to the job. For more information about
-     *        tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in
-     *        AWS Glue</a> in the developer guide.
-     */
-
-    public void setTags(java.util.Map<String, String> tags) {
-        this.tags = tags;
-    }
-
-    /**
-     * <p>
-     * The tags to use with this job. You may use tags to limit access to the job. For more information about tags in
-     * AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in AWS Glue</a> in
-     * the developer guide.
-     * </p>
-     * 
-     * @param tags
-     *        The tags to use with this job. You may use tags to limit access to the job. For more information about
-     *        tags in AWS Glue, see <a href="https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html">AWS Tags in
-     *        AWS Glue</a> in the developer guide.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public CreateJobRequest withTags(java.util.Map<String, String> tags) {
-        setTags(tags);
-        return this;
-    }
-
-    public CreateJobRequest addTagsEntry(String key, String value) {
-        if (null == this.tags) {
-            this.tags = new java.util.HashMap<String, String>();
-        }
-        if (this.tags.containsKey(key))
-            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
-        this.tags.put(key, value);
-        return this;
-    }
-
-    /**
-     * Removes all the entries added into Tags.
-     *
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public CreateJobRequest clearTagsEntries() {
-        this.tags = null;
-        return this;
-    }
-
-    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1418,16 +1520,18 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
             sb.append("Timeout: ").append(getTimeout()).append(",");
         if (getMaxCapacity() != null)
             sb.append("MaxCapacity: ").append(getMaxCapacity()).append(",");
-        if (getNotificationProperty() != null)
-            sb.append("NotificationProperty: ").append(getNotificationProperty()).append(",");
-        if (getWorkerType() != null)
-            sb.append("WorkerType: ").append(getWorkerType()).append(",");
-        if (getNumberOfWorkers() != null)
-            sb.append("NumberOfWorkers: ").append(getNumberOfWorkers()).append(",");
         if (getSecurityConfiguration() != null)
             sb.append("SecurityConfiguration: ").append(getSecurityConfiguration()).append(",");
         if (getTags() != null)
-            sb.append("Tags: ").append(getTags());
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getNotificationProperty() != null)
+            sb.append("NotificationProperty: ").append(getNotificationProperty()).append(",");
+        if (getGlueVersion() != null)
+            sb.append("GlueVersion: ").append(getGlueVersion()).append(",");
+        if (getNumberOfWorkers() != null)
+            sb.append("NumberOfWorkers: ").append(getNumberOfWorkers()).append(",");
+        if (getWorkerType() != null)
+            sb.append("WorkerType: ").append(getWorkerType());
         sb.append("}");
         return sb.toString();
     }
@@ -1490,18 +1594,6 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
             return false;
         if (other.getMaxCapacity() != null && other.getMaxCapacity().equals(this.getMaxCapacity()) == false)
             return false;
-        if (other.getNotificationProperty() == null ^ this.getNotificationProperty() == null)
-            return false;
-        if (other.getNotificationProperty() != null && other.getNotificationProperty().equals(this.getNotificationProperty()) == false)
-            return false;
-        if (other.getWorkerType() == null ^ this.getWorkerType() == null)
-            return false;
-        if (other.getWorkerType() != null && other.getWorkerType().equals(this.getWorkerType()) == false)
-            return false;
-        if (other.getNumberOfWorkers() == null ^ this.getNumberOfWorkers() == null)
-            return false;
-        if (other.getNumberOfWorkers() != null && other.getNumberOfWorkers().equals(this.getNumberOfWorkers()) == false)
-            return false;
         if (other.getSecurityConfiguration() == null ^ this.getSecurityConfiguration() == null)
             return false;
         if (other.getSecurityConfiguration() != null && other.getSecurityConfiguration().equals(this.getSecurityConfiguration()) == false)
@@ -1509,6 +1601,22 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getNotificationProperty() == null ^ this.getNotificationProperty() == null)
+            return false;
+        if (other.getNotificationProperty() != null && other.getNotificationProperty().equals(this.getNotificationProperty()) == false)
+            return false;
+        if (other.getGlueVersion() == null ^ this.getGlueVersion() == null)
+            return false;
+        if (other.getGlueVersion() != null && other.getGlueVersion().equals(this.getGlueVersion()) == false)
+            return false;
+        if (other.getNumberOfWorkers() == null ^ this.getNumberOfWorkers() == null)
+            return false;
+        if (other.getNumberOfWorkers() != null && other.getNumberOfWorkers().equals(this.getNumberOfWorkers()) == false)
+            return false;
+        if (other.getWorkerType() == null ^ this.getWorkerType() == null)
+            return false;
+        if (other.getWorkerType() != null && other.getWorkerType().equals(this.getWorkerType()) == false)
             return false;
         return true;
     }
@@ -1530,11 +1638,12 @@ public class CreateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getAllocatedCapacity() == null) ? 0 : getAllocatedCapacity().hashCode());
         hashCode = prime * hashCode + ((getTimeout() == null) ? 0 : getTimeout().hashCode());
         hashCode = prime * hashCode + ((getMaxCapacity() == null) ? 0 : getMaxCapacity().hashCode());
-        hashCode = prime * hashCode + ((getNotificationProperty() == null) ? 0 : getNotificationProperty().hashCode());
-        hashCode = prime * hashCode + ((getWorkerType() == null) ? 0 : getWorkerType().hashCode());
-        hashCode = prime * hashCode + ((getNumberOfWorkers() == null) ? 0 : getNumberOfWorkers().hashCode());
         hashCode = prime * hashCode + ((getSecurityConfiguration() == null) ? 0 : getSecurityConfiguration().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getNotificationProperty() == null) ? 0 : getNotificationProperty().hashCode());
+        hashCode = prime * hashCode + ((getGlueVersion() == null) ? 0 : getGlueVersion().hashCode());
+        hashCode = prime * hashCode + ((getNumberOfWorkers() == null) ? 0 : getNumberOfWorkers().hashCode());
+        hashCode = prime * hashCode + ((getWorkerType() == null) ? 0 : getWorkerType().hashCode());
         return hashCode;
     }
 

@@ -366,7 +366,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -490,30 +490,30 @@ public interface AWSOrganizations {
      * <ul>
      * <li>
      * <p>
-     * If you attach an SCP to a root, it affects all accounts in the organization
+     * If you attach an SCP to a root, it affects all accounts in the organization.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If you attach an SCP to an OU, it affects all accounts in that OU and in any child OUs
+     * If you attach an SCP to an OU, it affects all accounts in that OU and in any child OUs.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If you attach the policy directly to an account, it affects only that account
+     * If you attach the policy directly to an account, it affects only that account.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * SCPs are JSON policies that specify the maximum permissions for an organization or organizational unit (OU). When
-     * you attach one SCP to a higher level root or OU, and you also attach a different SCP to a child OU or to an
-     * account, the child policy can further restrict only the permissions that pass through the parent filter and are
-     * available to the child. An SCP that is attached to a child can't grant a permission that the paren't hasn't
-     * already granted. For example, imagine that the parent SCP allows permissions A, B, C, D, and E. The child SCP
-     * allows C, D, E, F, and G. The result is that the accounts affected by the child SCP are allowed to use only C, D,
-     * and E. They can't use A or B because the child OU filtered them out. They also can't use F and G because the
-     * parent OU filtered them out. They can't be granted back by the child SCP; child SCPs can only filter the
-     * permissions they receive from the parent SCP.
+     * SCPs are JSON policies that specify the maximum permissions for an organization or organizational unit (OU). You
+     * can attach one SCP to a higher level root or OU, and a different SCP to a child OU or to an account. The child
+     * policy can further restrict only the permissions that pass through the parent filter and are available to the
+     * child. An SCP that is attached to a child can't grant a permission that the parent hasn't already granted. For
+     * example, imagine that the parent SCP allows permissions A, B, C, D, and E. The child SCP allows C, D, E, F, and
+     * G. The result is that the accounts affected by the child SCP are allowed to use only C, D, and E. They can't use
+     * A or B because the child OU filtered them out. They also can't use F and G because the parent OU filtered them
+     * out. They can't be granted back by the child SCP; child SCPs can only filter the permissions they receive from
+     * the parent SCP.
      * </p>
      * <p>
      * AWS Organizations attaches a default SCP named <code>"FullAWSAccess</code> to every root, OU, and account. This
@@ -713,7 +713,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -879,7 +879,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -1010,7 +1010,7 @@ public interface AWSOrganizations {
      * <p/>
      * <p>
      * The user who calls the API to create an account must have the <code>organizations:CreateAccount</code>
-     * permission. If you enabled all features in the organization, AWS Organizations will create the required
+     * permission. If you enabled all features in the organization, AWS Organizations creates the required
      * service-linked role named <code>AWSServiceRoleForOrganizations</code>. For more information, see <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs"
      * >AWS Organizations and Service-Linked Roles</a> in the <i>AWS Organizations User Guide</i>.
@@ -1254,7 +1254,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -1692,7 +1692,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -2000,7 +2000,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -2305,7 +2305,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -2606,7 +2606,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -2774,7 +2774,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -2917,7 +2917,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3066,7 +3066,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3217,7 +3217,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3368,7 +3368,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3513,7 +3513,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3664,7 +3664,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3848,7 +3848,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -3993,7 +3993,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -4115,7 +4115,7 @@ public interface AWSOrganizations {
      * <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP), you're using
      * the authorization strategy of <a href=
      * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist"
-     * >blacklisting</a>.
+     * >blacklisting</a> .
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -4300,7 +4300,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -4623,7 +4623,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -4735,15 +4735,18 @@ public interface AWSOrganizations {
      * undo this by using the <a>EnablePolicyType</a> operation.
      * </p>
      * <p>
+     * This is an asynchronous request that AWS performs in the background. If you disable a policy for a root, it still
+     * appears enabled for the organization if <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">all
+     * features</a> are enabled for the organization. AWS recommends that you first use <a>ListRoots</a> to see the
+     * status of policy types for a specified root, and then use this operation.
+     * </p>
+     * <p>
      * This operation can be called only from the organization's master account.
      * </p>
-     * <note>
      * <p>
-     * If you disable a policy type for a root, it still shows as enabled for the organization if all features are
-     * enabled in that organization. Use <a>ListRoots</a> to see the status of policy types for a specified root. Use
-     * <a>DescribeOrganization</a> to see the status of policy types in the organization.
+     * To view the status of available policy types in the organization, use <a>DescribeOrganization</a>.
      * </p>
-     * </note>
      * 
      * @param disablePolicyTypeRequest
      * @return Result of the DisablePolicyType operation returned by the service.
@@ -4924,7 +4927,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -5244,7 +5247,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -5480,7 +5483,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -5591,14 +5594,15 @@ public interface AWSOrganizations {
      * <a>DisablePolicyType</a> operation.
      * </p>
      * <p>
+     * This is an asynchronous request that AWS performs in the background. AWS recommends that you first use
+     * <a>ListRoots</a> to see the status of policy types for a specified root, and then use this operation.
+     * </p>
+     * <p>
      * This operation can be called only from the organization's master account.
      * </p>
      * <p>
-     * You can enable a policy type in a root only if that policy type is available in the organization. Use
-     * <a>DescribeOrganization</a> to view the status of available policy types in the organization.
-     * </p>
-     * <p>
-     * To view the status of policy type in a root, use <a>ListRoots</a>.
+     * You can enable a policy type in a root only if that policy type is available in the organization. To view the
+     * status of available policy types in the organization, use <a>DescribeOrganization</a>.
      * </p>
      * 
      * @param enablePolicyTypeRequest
@@ -5780,7 +5784,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -6031,7 +6035,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -6365,7 +6369,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -6665,7 +6669,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -6819,7 +6823,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -6973,7 +6977,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -7127,7 +7131,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -7281,7 +7285,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -7437,7 +7441,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -7596,7 +7600,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -7747,7 +7751,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -7910,7 +7914,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8061,7 +8065,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8213,7 +8217,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8374,7 +8378,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8519,7 +8523,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8670,7 +8674,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -8813,7 +8817,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9142,7 +9146,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9438,7 +9442,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9731,7 +9735,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -9879,7 +9883,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>
@@ -10175,7 +10179,7 @@ public interface AWSOrganizations {
      *         </li>
      *         <li>
      *         <p>
-     *         INVALID_ENUM: You specified a value that isn't valid for that parameter.
+     *         INVALID_ENUM: You specified an invalid value.
      *         </p>
      *         </li>
      *         <li>

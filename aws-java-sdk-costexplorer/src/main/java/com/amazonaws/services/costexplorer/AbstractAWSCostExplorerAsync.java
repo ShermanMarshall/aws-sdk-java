@@ -108,6 +108,19 @@ public class AbstractAWSCostExplorerAsync extends AbstractAWSCostExplorer implem
     }
 
     @Override
+    public java.util.concurrent.Future<GetRightsizingRecommendationResult> getRightsizingRecommendationAsync(GetRightsizingRecommendationRequest request) {
+
+        return getRightsizingRecommendationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetRightsizingRecommendationResult> getRightsizingRecommendationAsync(GetRightsizingRecommendationRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetRightsizingRecommendationRequest, GetRightsizingRecommendationResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<GetTagsResult> getTagsAsync(GetTagsRequest request) {
 
         return getTagsAsync(request, null);
@@ -116,6 +129,19 @@ public class AbstractAWSCostExplorerAsync extends AbstractAWSCostExplorer implem
     @Override
     public java.util.concurrent.Future<GetTagsResult> getTagsAsync(GetTagsRequest request,
             com.amazonaws.handlers.AsyncHandler<GetTagsRequest, GetTagsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetUsageForecastResult> getUsageForecastAsync(GetUsageForecastRequest request) {
+
+        return getUsageForecastAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetUsageForecastResult> getUsageForecastAsync(GetUsageForecastRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetUsageForecastRequest, GetUsageForecastResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

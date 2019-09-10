@@ -79,14 +79,14 @@ public class AWSXRayClient extends AmazonWebServiceClient implements AWSXRay {
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.xray.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.xray.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ThrottledException").withModeledClass(
-                                    com.amazonaws.services.xray.model.ThrottledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ThrottledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.xray.model.transform.ThrottledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RuleLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.xray.model.RuleLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RuleLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.xray.model.transform.RuleLimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.xray.model.AWSXRayException.class));
 
     /**

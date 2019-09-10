@@ -47,6 +47,8 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     private String creatorRequestId;
     /** Required. The deployment mode of the broker. */
     private String deploymentMode;
+    /** Encryption options for the broker. */
+    private EncryptionOptions encryptionOptions;
     /** Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ. */
     private String engineType;
     /**
@@ -62,7 +64,7 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     private WeeklyStartTime maintenanceWindowStartTime;
     /** Required. Enables connections from applications outside of the VPC that hosts the broker's subnets. */
     private Boolean publiclyAccessible;
-    /** The list of rules (1 minimum, 125 maximum) that authorize connections to brokers. */
+    /** The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers. */
     private java.util.List<String> securityGroups;
     /**
      * The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different
@@ -309,6 +311,40 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * Encryption options for the broker.
+     * 
+     * @param encryptionOptions
+     *        Encryption options for the broker.
+     */
+
+    public void setEncryptionOptions(EncryptionOptions encryptionOptions) {
+        this.encryptionOptions = encryptionOptions;
+    }
+
+    /**
+     * Encryption options for the broker.
+     * 
+     * @return Encryption options for the broker.
+     */
+
+    public EncryptionOptions getEncryptionOptions() {
+        return this.encryptionOptions;
+    }
+
+    /**
+     * Encryption options for the broker.
+     * 
+     * @param encryptionOptions
+     *        Encryption options for the broker.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateBrokerRequest withEncryptionOptions(EncryptionOptions encryptionOptions) {
+        setEncryptionOptions(encryptionOptions);
+        return this;
+    }
+
+    /**
      * Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.
      * 
      * @param engineType
@@ -546,9 +582,9 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
      * 
-     * @return The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+     * @return The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
      */
 
     public java.util.List<String> getSecurityGroups() {
@@ -556,10 +592,10 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
      * 
      * @param securityGroups
-     *        The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
      */
 
     public void setSecurityGroups(java.util.Collection<String> securityGroups) {
@@ -572,7 +608,7 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setSecurityGroups(java.util.Collection)} or {@link #withSecurityGroups(java.util.Collection)} if you want
@@ -580,7 +616,7 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * 
      * @param securityGroups
-     *        The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -595,10 +631,10 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
      * 
      * @param securityGroups
-     *        The list of rules (1 minimum, 125 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -840,6 +876,8 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
             sb.append("CreatorRequestId: ").append(getCreatorRequestId()).append(",");
         if (getDeploymentMode() != null)
             sb.append("DeploymentMode: ").append(getDeploymentMode()).append(",");
+        if (getEncryptionOptions() != null)
+            sb.append("EncryptionOptions: ").append(getEncryptionOptions()).append(",");
         if (getEngineType() != null)
             sb.append("EngineType: ").append(getEngineType()).append(",");
         if (getEngineVersion() != null)
@@ -894,6 +932,10 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
             return false;
         if (other.getDeploymentMode() != null && other.getDeploymentMode().equals(this.getDeploymentMode()) == false)
             return false;
+        if (other.getEncryptionOptions() == null ^ this.getEncryptionOptions() == null)
+            return false;
+        if (other.getEncryptionOptions() != null && other.getEncryptionOptions().equals(this.getEncryptionOptions()) == false)
+            return false;
         if (other.getEngineType() == null ^ this.getEngineType() == null)
             return false;
         if (other.getEngineType() != null && other.getEngineType().equals(this.getEngineType()) == false)
@@ -947,6 +989,7 @@ public class CreateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
         hashCode = prime * hashCode + ((getConfiguration() == null) ? 0 : getConfiguration().hashCode());
         hashCode = prime * hashCode + ((getCreatorRequestId() == null) ? 0 : getCreatorRequestId().hashCode());
         hashCode = prime * hashCode + ((getDeploymentMode() == null) ? 0 : getDeploymentMode().hashCode());
+        hashCode = prime * hashCode + ((getEncryptionOptions() == null) ? 0 : getEncryptionOptions().hashCode());
         hashCode = prime * hashCode + ((getEngineType() == null) ? 0 : getEngineType().hashCode());
         hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
         hashCode = prime * hashCode + ((getHostInstanceType() == null) ? 0 : getHostInstanceType().hashCode());

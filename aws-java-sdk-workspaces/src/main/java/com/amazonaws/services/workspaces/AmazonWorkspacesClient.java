@@ -79,41 +79,41 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedWorkspaceConfigurationException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.UnsupportedWorkspaceConfigurationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedWorkspaceConfigurationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.UnsupportedWorkspaceConfigurationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OperationNotSupportedException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.OperationNotSupportedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OperationNotSupportedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.OperationNotSupportedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAssociatedException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.ResourceAssociatedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAssociatedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.ResourceAssociatedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.InvalidResourceStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.InvalidResourceStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValuesException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.InvalidParameterValuesException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValuesException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.InvalidParameterValuesExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OperationInProgressException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.OperationInProgressException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OperationInProgressException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.OperationInProgressExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.ResourceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.ResourceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceCreationFailedException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.ResourceCreationFailedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceCreationFailedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.ResourceCreationFailedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.workspaces.model.ResourceLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.ResourceLimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.workspaces.model.AmazonWorkspacesException.class));
 
     /**
@@ -450,6 +450,73 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
+     * Copies the specified image from the specified Region to the current Region.
+     * </p>
+     * 
+     * @param copyWorkspaceImageRequest
+     * @return Result of the CopyWorkspaceImage operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         Your resource limits have been exceeded.
+     * @throws ResourceAlreadyExistsException
+     *         The specified resource already exists.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws ResourceUnavailableException
+     *         The specified resource is not available.
+     * @throws OperationNotSupportedException
+     *         This operation is not supported.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @sample AmazonWorkspaces.CopyWorkspaceImage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/CopyWorkspaceImage" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public CopyWorkspaceImageResult copyWorkspaceImage(CopyWorkspaceImageRequest request) {
+        request = beforeClientExecution(request);
+        return executeCopyWorkspaceImage(request);
+    }
+
+    @SdkInternalApi
+    final CopyWorkspaceImageResult executeCopyWorkspaceImage(CopyWorkspaceImageRequest copyWorkspaceImageRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(copyWorkspaceImageRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CopyWorkspaceImageRequest> request = null;
+        Response<CopyWorkspaceImageResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CopyWorkspaceImageRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(copyWorkspaceImageRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CopyWorkspaceImage");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CopyWorkspaceImageResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CopyWorkspaceImageResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Creates an IP access control group.
      * </p>
      * <p>
@@ -766,7 +833,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
     /**
      * <p>
      * Deletes the specified image from your account. To delete an image, you must first delete any bundles that are
-     * associated with the image.
+     * associated with the image and un-share the image if it is shared with other accounts.
      * </p>
      * 
      * @param deleteWorkspaceImageRequest
@@ -1811,8 +1878,9 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * </p>
      * <p>
      * To maintain a WorkSpace without being interrupted, set the WorkSpace state to <code>ADMIN_MAINTENANCE</code>.
-     * WorkSpaces in this state do not respond to requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace in
-     * this state is not stopped. Users can log into a WorkSpace in the <code>ADMIN_MAINTENANCE</code> state.
+     * WorkSpaces in this state do not respond to requests to reboot, stop, start, rebuild, or restore. An AutoStop
+     * WorkSpace in this state is not stopped. Users cannot log into a WorkSpace in the <code>ADMIN_MAINTENANCE</code>
+     * state.
      * </p>
      * 
      * @param modifyWorkspaceStateRequest

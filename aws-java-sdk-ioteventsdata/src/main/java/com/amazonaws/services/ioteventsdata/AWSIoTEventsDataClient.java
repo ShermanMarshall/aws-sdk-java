@@ -52,7 +52,8 @@ import com.amazonaws.services.ioteventsdata.model.transform.*;
  * <p>
  * <p>
  * AWS IoT Events monitors your equipment or device fleets for failures or changes in operation, and triggers actions
- * when such events occur.
+ * when such events occur. AWS IoT Events Data API commands enable you to send inputs to detectors, list detectors, and
+ * view or update a detector's status.
  * </p>
  */
 @ThreadSafe
@@ -79,20 +80,20 @@ public class AWSIoTEventsDataClient extends AmazonWebServiceClient implements AW
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.ioteventsdata.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ioteventsdata.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withModeledClass(
-                                    com.amazonaws.services.ioteventsdata.model.InternalFailureException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ioteventsdata.model.transform.InternalFailureExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.ioteventsdata.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ioteventsdata.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ioteventsdata.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ioteventsdata.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withModeledClass(
-                                    com.amazonaws.services.ioteventsdata.model.ThrottlingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ioteventsdata.model.transform.ThrottlingExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.ioteventsdata.model.AWSIoTEventsDataException.class));
 
     public static AWSIoTEventsDataClientBuilder builder() {
@@ -143,10 +144,10 @@ public class AWSIoTEventsDataClient extends AmazonWebServiceClient implements AW
 
     /**
      * <p>
-     * Sends a set of messages to the AWS IoT Events system. Each message payload will be transformed into the input you
-     * specify (<code>inputName</code>) and ingested into any detectors that monitor that input. If multiple messages
-     * are sent, the order in which the messages are processed is not guaranteed--you must send messages one at a time
-     * and wait for a successful response to guarantee ordering.
+     * Sends a set of messages to the AWS IoT Events system. Each message payload is transformed into the input you
+     * specify (<code>"inputName"</code>) and ingested into any detectors that monitor that input. If multiple messages
+     * are sent, the order in which the messages are processed isn't guaranteed. To guarantee ordering, you must send
+     * messages one at a time and wait for a successful response.
      * </p>
      * 
      * @param batchPutMessageRequest

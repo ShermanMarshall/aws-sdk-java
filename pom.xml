@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-pom</artifactId>
-  <version>1.11.574-SNAPSHOT</version>
+  <version>1.11.630-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>AWS SDK for Java</name>
   <description>The Amazon Web Services SDK for Java provides Java APIs
@@ -33,6 +33,15 @@
   </developers>
   <!-- The module section in pom.xml is auto generated. No manual changes are allowed -->
   <modules>
+    <module>aws-java-sdk-qldbsession</module>
+    <module>aws-java-sdk-qldb</module>
+    <module>aws-java-sdk-forecastquery</module>
+    <module>aws-java-sdk-forecast</module>
+    <module>aws-java-sdk-lakeformation</module>
+    <module>aws-java-sdk-eventbridge</module>
+    <module>aws-java-sdk-ec2instanceconnect</module>
+    <module>aws-java-sdk-applicationinsights</module>
+    <module>aws-java-sdk-servicequotas</module>
     <module>aws-java-sdk-personalizeevents</module>
     <module>aws-java-sdk-personalize</module>
     <module>aws-java-sdk-personalizeruntime</module>
@@ -250,7 +259,7 @@
         the aggregate ZIP artifact -->
       <javax.mail.version>1.4.6</javax.mail.version>
       <jre.version>1.6</jre.version>
-      <httpcomponents.httpclient.version>4.5.5</httpcomponents.httpclient.version>
+      <httpcomponents.httpclient.version>4.5.9</httpcomponents.httpclient.version>
       <!-- These properties are used by cucumber tests related code -->
       <cucumber.info.cukes.version>1.2.4</cucumber.info.cukes.version>
       <cucumber.guice.version>4.0</cucumber.guice.version>

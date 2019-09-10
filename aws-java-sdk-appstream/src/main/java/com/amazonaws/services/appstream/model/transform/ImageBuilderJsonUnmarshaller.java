@@ -80,6 +80,10 @@ public class ImageBuilderJsonUnmarshaller implements Unmarshaller<ImageBuilder, 
                     context.nextToken();
                     imageBuilder.setPlatform(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("IamRoleArn", targetDepth)) {
+                    context.nextToken();
+                    imageBuilder.setIamRoleArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("State", targetDepth)) {
                     context.nextToken();
                     imageBuilder.setState(context.getUnmarshaller(String.class).unmarshall(context));
@@ -100,6 +104,10 @@ public class ImageBuilderJsonUnmarshaller implements Unmarshaller<ImageBuilder, 
                     context.nextToken();
                     imageBuilder.setDomainJoinInfo(DomainJoinInfoJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("NetworkAccessConfiguration", targetDepth)) {
+                    context.nextToken();
+                    imageBuilder.setNetworkAccessConfiguration(NetworkAccessConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("ImageBuilderErrors", targetDepth)) {
                     context.nextToken();
                     imageBuilder.setImageBuilderErrors(new ListUnmarshaller<ResourceError>(ResourceErrorJsonUnmarshaller.getInstance()).unmarshall(context));
@@ -107,6 +115,10 @@ public class ImageBuilderJsonUnmarshaller implements Unmarshaller<ImageBuilder, 
                 if (context.testExpression("AppstreamAgentVersion", targetDepth)) {
                     context.nextToken();
                     imageBuilder.setAppstreamAgentVersion(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("AccessEndpoints", targetDepth)) {
+                    context.nextToken();
+                    imageBuilder.setAccessEndpoints(new ListUnmarshaller<AccessEndpoint>(AccessEndpointJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

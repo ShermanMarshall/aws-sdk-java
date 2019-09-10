@@ -76,8 +76,8 @@ public class AmazonPersonalizeEventsClient extends AmazonWebServiceClient implem
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
-                                    com.amazonaws.services.personalizeevents.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.personalizeevents.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.personalizeevents.model.AmazonPersonalizeEventsException.class));
 
     public static AmazonPersonalizeEventsClientBuilder builder() {

@@ -80,14 +80,14 @@ public class AWSGroundStationClient extends AmazonWebServiceClient implements AW
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.groundstation.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.groundstation.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.groundstation.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.groundstation.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DependencyException").withModeledClass(
-                                    com.amazonaws.services.groundstation.model.DependencyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DependencyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.groundstation.model.transform.DependencyExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.groundstation.model.AWSGroundStationException.class));
 
     public static AWSGroundStationClientBuilder builder() {

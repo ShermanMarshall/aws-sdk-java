@@ -45,7 +45,7 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
      * execution-parameters to determine the optimal settings for your chosen algorithm. If the execution-parameters
      * endpoint is not enabled, the default value is <code>1</code>. For more information on execution-parameters, see
      * <a href=
-     * "http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
+     * "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
      * >How Containers Serve Requests</a>. For built-in algorithms, you don't need to set a value for
      * <code>MaxConcurrentTransforms</code>.
      * </p>
@@ -111,9 +111,13 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
     private TransformResources transformResources;
     /**
      * <p>
-     * The data structure used for combining the input data and inference in the output file. For more information, see
-     * <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html">Batch Transform I/O
-     * Join</a>.
+     * The data structure used to specify the data to be used for inference in a batch transform job and to associate
+     * the data that is relevant to the prediction results in the output. The input filter provided allows you to
+     * exclude input data that is not needed for inference in a batch transform job. The output filter provided allows
+     * you to include input data relevant to interpreting the predictions in the output from the job. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html">Associate Prediction
+     * Results with their Corresponding Input Records</a>.
      * </p>
      */
     private DataProcessing dataProcessing;
@@ -219,7 +223,7 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
      * execution-parameters to determine the optimal settings for your chosen algorithm. If the execution-parameters
      * endpoint is not enabled, the default value is <code>1</code>. For more information on execution-parameters, see
      * <a href=
-     * "http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
+     * "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
      * >How Containers Serve Requests</a>. For built-in algorithms, you don't need to set a value for
      * <code>MaxConcurrentTransforms</code>.
      * </p>
@@ -230,7 +234,7 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
      *        optional execution-parameters to determine the optimal settings for your chosen algorithm. If the
      *        execution-parameters endpoint is not enabled, the default value is <code>1</code>. For more information on
      *        execution-parameters, see <a href=
-     *        "http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
+     *        "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
      *        >How Containers Serve Requests</a>. For built-in algorithms, you don't need to set a value for
      *        <code>MaxConcurrentTransforms</code>.
      */
@@ -246,7 +250,7 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
      * execution-parameters to determine the optimal settings for your chosen algorithm. If the execution-parameters
      * endpoint is not enabled, the default value is <code>1</code>. For more information on execution-parameters, see
      * <a href=
-     * "http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
+     * "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
      * >How Containers Serve Requests</a>. For built-in algorithms, you don't need to set a value for
      * <code>MaxConcurrentTransforms</code>.
      * </p>
@@ -256,7 +260,7 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
      *         optional execution-parameters to determine the optimal settings for your chosen algorithm. If the
      *         execution-parameters endpoint is not enabled, the default value is <code>1</code>. For more information
      *         on execution-parameters, see <a href=
-     *         "http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
+     *         "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
      *         >How Containers Serve Requests</a>. For built-in algorithms, you don't need to set a value for
      *         <code>MaxConcurrentTransforms</code>.
      */
@@ -272,7 +276,7 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
      * execution-parameters to determine the optimal settings for your chosen algorithm. If the execution-parameters
      * endpoint is not enabled, the default value is <code>1</code>. For more information on execution-parameters, see
      * <a href=
-     * "http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
+     * "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
      * >How Containers Serve Requests</a>. For built-in algorithms, you don't need to set a value for
      * <code>MaxConcurrentTransforms</code>.
      * </p>
@@ -283,7 +287,7 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
      *        optional execution-parameters to determine the optimal settings for your chosen algorithm. If the
      *        execution-parameters endpoint is not enabled, the default value is <code>1</code>. For more information on
      *        execution-parameters, see <a href=
-     *        "http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
+     *        "https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-batch-code.html#your-algorithms-batch-code-how-containe-serves-requests"
      *        >How Containers Serve Requests</a>. For built-in algorithms, you don't need to set a value for
      *        <code>MaxConcurrentTransforms</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -734,16 +738,23 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The data structure used for combining the input data and inference in the output file. For more information, see
-     * <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html">Batch Transform I/O
-     * Join</a>.
+     * The data structure used to specify the data to be used for inference in a batch transform job and to associate
+     * the data that is relevant to the prediction results in the output. The input filter provided allows you to
+     * exclude input data that is not needed for inference in a batch transform job. The output filter provided allows
+     * you to include input data relevant to interpreting the predictions in the output from the job. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html">Associate Prediction
+     * Results with their Corresponding Input Records</a>.
      * </p>
      * 
      * @param dataProcessing
-     *        The data structure used for combining the input data and inference in the output file. For more
-     *        information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html">Batch Transform I/O
-     *        Join</a>.
+     *        The data structure used to specify the data to be used for inference in a batch transform job and to
+     *        associate the data that is relevant to the prediction results in the output. The input filter provided
+     *        allows you to exclude input data that is not needed for inference in a batch transform job. The output
+     *        filter provided allows you to include input data relevant to interpreting the predictions in the output
+     *        from the job. For more information, see <a
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html">Associate
+     *        Prediction Results with their Corresponding Input Records</a>.
      */
 
     public void setDataProcessing(DataProcessing dataProcessing) {
@@ -752,15 +763,22 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The data structure used for combining the input data and inference in the output file. For more information, see
-     * <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html">Batch Transform I/O
-     * Join</a>.
+     * The data structure used to specify the data to be used for inference in a batch transform job and to associate
+     * the data that is relevant to the prediction results in the output. The input filter provided allows you to
+     * exclude input data that is not needed for inference in a batch transform job. The output filter provided allows
+     * you to include input data relevant to interpreting the predictions in the output from the job. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html">Associate Prediction
+     * Results with their Corresponding Input Records</a>.
      * </p>
      * 
-     * @return The data structure used for combining the input data and inference in the output file. For more
-     *         information, see <a
-     *         href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html">Batch Transform I/O
-     *         Join</a>.
+     * @return The data structure used to specify the data to be used for inference in a batch transform job and to
+     *         associate the data that is relevant to the prediction results in the output. The input filter provided
+     *         allows you to exclude input data that is not needed for inference in a batch transform job. The output
+     *         filter provided allows you to include input data relevant to interpreting the predictions in the output
+     *         from the job. For more information, see <a
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html">Associate
+     *         Prediction Results with their Corresponding Input Records</a>.
      */
 
     public DataProcessing getDataProcessing() {
@@ -769,16 +787,23 @@ public class CreateTransformJobRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * The data structure used for combining the input data and inference in the output file. For more information, see
-     * <a href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html">Batch Transform I/O
-     * Join</a>.
+     * The data structure used to specify the data to be used for inference in a batch transform job and to associate
+     * the data that is relevant to the prediction results in the output. The input filter provided allows you to
+     * exclude input data that is not needed for inference in a batch transform job. The output filter provided allows
+     * you to include input data relevant to interpreting the predictions in the output from the job. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html">Associate Prediction
+     * Results with their Corresponding Input Records</a>.
      * </p>
      * 
      * @param dataProcessing
-     *        The data structure used for combining the input data and inference in the output file. For more
-     *        information, see <a
-     *        href="http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-io-join.html">Batch Transform I/O
-     *        Join</a>.
+     *        The data structure used to specify the data to be used for inference in a batch transform job and to
+     *        associate the data that is relevant to the prediction results in the output. The input filter provided
+     *        allows you to exclude input data that is not needed for inference in a batch transform job. The output
+     *        filter provided allows you to include input data relevant to interpreting the predictions in the output
+     *        from the job. For more information, see <a
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform-data-processing.html">Associate
+     *        Prediction Results with their Corresponding Input Records</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

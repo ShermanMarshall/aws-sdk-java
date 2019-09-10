@@ -92,68 +92,68 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ActivityDoesNotExist").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.ActivityDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ActivityDoesNotExist").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.ActivityDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidDefinition").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.InvalidDefinitionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDefinition").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.InvalidDefinitionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidName").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.InvalidNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidName").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.InvalidNameExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("StateMachineAlreadyExists").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.StateMachineAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("StateMachineAlreadyExists").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.StateMachineAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ExecutionLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.ExecutionLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ExecutionLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.ExecutionLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArn").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.InvalidArnException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArn").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.InvalidArnExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("StateMachineDeleting").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.StateMachineDeletingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("StateMachineDeleting").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.StateMachineDeletingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ActivityWorkerLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.ActivityWorkerLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ActivityWorkerLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.ActivityWorkerLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TaskTimedOut").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.TaskTimedOutException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TaskTimedOut").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.TaskTimedOutExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ExecutionAlreadyExists").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.ExecutionAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ExecutionAlreadyExists").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.ExecutionAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MissingRequiredParameter").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.MissingRequiredParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MissingRequiredParameter").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.MissingRequiredParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ExecutionDoesNotExist").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.ExecutionDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ExecutionDoesNotExist").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.ExecutionDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("StateMachineLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.StateMachineLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("StateMachineLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.StateMachineLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidToken").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.InvalidTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidToken").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.InvalidTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyTags").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.TooManyTagsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTags").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidOutput").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.InvalidOutputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidOutput").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.InvalidOutputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFound").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ActivityLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.ActivityLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ActivityLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.ActivityLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidExecutionInput").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.InvalidExecutionInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidExecutionInput").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.InvalidExecutionInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TaskDoesNotExist").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.TaskDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TaskDoesNotExist").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.TaskDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("StateMachineDoesNotExist").withModeledClass(
-                                    com.amazonaws.services.stepfunctions.model.StateMachineDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("StateMachineDoesNotExist").withExceptionUnmarshaller(
+                                    com.amazonaws.services.stepfunctions.model.transform.StateMachineDoesNotExistExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.stepfunctions.model.AWSStepFunctionsException.class));
 
     /**
@@ -368,6 +368,14 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
      * This operation is eventually consistent. The results are best effort and may not reflect very recent updates and
      * changes.
      * </p>
+     * </note> <note>
+     * <p>
+     * <code>CreateActivity</code> is an idempotent API. Subsequent requests won’t create a duplicate resource if it was
+     * already created. <code>CreateActivity</code>'s idempotency check is based on the activity <code>name</code>. If a
+     * following request has different <code>tags</code> values, Step Functions will ignore these differences and treat
+     * it as an idempotent request of the previous. In this case, <code>tags</code> will not be updated, even if they
+     * are different.
+     * </p>
      * </note>
      * 
      * @param createActivityRequest
@@ -438,6 +446,15 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
      * <p>
      * This operation is eventually consistent. The results are best effort and may not reflect very recent updates and
      * changes.
+     * </p>
+     * </note> <note>
+     * <p>
+     * <code>CreateStateMachine</code> is an idempotent API. Subsequent requests won’t create a duplicate resource if it
+     * was already created. <code>CreateStateMachine</code>'s idempotency check is based on the state machine
+     * <code>name</code> and <code>definition</code>. If a following request has a different <code>roleArn</code> or
+     * <code>tags</code>, Step Functions will ignore these differences and treat it as an idempotent request of the
+     * previous. In this case, <code>roleArn</code> and <code>tags</code> will not be updated, even if they are
+     * different.
      * </p>
      * </note>
      * 
@@ -1229,13 +1246,16 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
      * <p>
      * List tags for a given resource.
      * </p>
+     * <p>
+     * Tags may only contain Unicode letters, digits, white space, or these symbols: <code>_ . : / = + - @</code>.
+     * </p>
      * 
      * @param listTagsForResourceRequest
      * @return Result of the ListTagsForResource operation returned by the service.
      * @throws InvalidArnException
      *         The provided Amazon Resource Name (ARN) is invalid.
      * @throws ResourceNotFoundException
-     *         Could not fine the referenced resource. Only state machine and activity ARNs are supported.
+     *         Could not find the referenced resource. Only state machine and activity ARNs are supported.
      * @sample AWSStepFunctions.ListTagsForResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/states-2016-11-23/ListTagsForResource" target="_top">AWS API
      *      Documentation</a>
@@ -1284,7 +1304,9 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
 
     /**
      * <p>
-     * Used by workers to report that the task identified by the <code>taskToken</code> failed.
+     * Used by activity workers and task states using the <a
+     * href="https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token"
+     * >callback</a> pattern to report that the task identified by the <code>taskToken</code> failed.
      * </p>
      * 
      * @param sendTaskFailureRequest
@@ -1341,20 +1363,23 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
 
     /**
      * <p>
-     * Used by workers to report to the service that the task represented by the specified <code>taskToken</code> is
-     * still making progress. This action resets the <code>Heartbeat</code> clock. The <code>Heartbeat</code> threshold
-     * is specified in the state machine's Amazon States Language definition. This action does not in itself create an
-     * event in the execution history. However, if the task times out, the execution history contains an
-     * <code>ActivityTimedOut</code> event.
+     * Used by activity workers and task states using the <a
+     * href="https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token"
+     * >callback</a> pattern to report to Step Functions that the task represented by the specified
+     * <code>taskToken</code> is still making progress. This action resets the <code>Heartbeat</code> clock. The
+     * <code>Heartbeat</code> threshold is specified in the state machine's Amazon States Language definition (
+     * <code>HeartbeatSeconds</code>). This action does not in itself create an event in the execution history. However,
+     * if the task times out, the execution history contains an <code>ActivityTimedOut</code> entry for activities, or a
+     * <code>TaskTimedOut</code> entry for for tasks using the <a
+     * href="https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-sync">job run</a> or
+     * <a href="https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token">
+     * callback</a> pattern.
      * </p>
      * <note>
      * <p>
      * The <code>Timeout</code> of a task, defined in the state machine's Amazon States Language definition, is its
-     * maximum allowed duration, regardless of the number of <a>SendTaskHeartbeat</a> requests received.
-     * </p>
-     * </note> <note>
-     * <p>
-     * This operation is only useful for long-lived tasks to report the liveliness of the task.
+     * maximum allowed duration, regardless of the number of <a>SendTaskHeartbeat</a> requests received. Use
+     * <code>HeartbeatSeconds</code> to configure the timeout interval for heartbeats.
      * </p>
      * </note>
      * 
@@ -1412,7 +1437,9 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
 
     /**
      * <p>
-     * Used by workers to report that the task identified by the <code>taskToken</code> completed successfully.
+     * Used by activity workers and task states using the <a
+     * href="https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token"
+     * >callback</a> pattern to report that the task identified by the <code>taskToken</code> completed successfully.
      * </p>
      * 
      * @param sendTaskSuccessRequest
@@ -1610,13 +1637,23 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
      * <p>
      * Add a tag to a Step Functions resource.
      * </p>
+     * <p>
+     * An array of key-value pairs. For more information, see <a
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation
+     * Tags</a> in the <i>AWS Billing and Cost Management User Guide</i>, and <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
+     * Tags</a>.
+     * </p>
+     * <p>
+     * Tags may only contain Unicode letters, digits, white space, or these symbols: <code>_ . : / = + - @</code>.
+     * </p>
      * 
      * @param tagResourceRequest
      * @return Result of the TagResource operation returned by the service.
      * @throws InvalidArnException
      *         The provided Amazon Resource Name (ARN) is invalid.
      * @throws ResourceNotFoundException
-     *         Could not fine the referenced resource. Only state machine and activity ARNs are supported.
+     *         Could not find the referenced resource. Only state machine and activity ARNs are supported.
      * @throws TooManyTagsException
      *         You've exceeded the number of tags allowed for a resource. See the <a
      *         href="https://docs.aws.amazon.com/step-functions/latest/dg/limits.html"> Limits Topic</a> in the AWS Step
@@ -1677,7 +1714,7 @@ public class AWSStepFunctionsClient extends AmazonWebServiceClient implements AW
      * @throws InvalidArnException
      *         The provided Amazon Resource Name (ARN) is invalid.
      * @throws ResourceNotFoundException
-     *         Could not fine the referenced resource. Only state machine and activity ARNs are supported.
+     *         Could not find the referenced resource. Only state machine and activity ARNs are supported.
      * @sample AWSStepFunctions.UntagResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/states-2016-11-23/UntagResource" target="_top">AWS API
      *      Documentation</a>

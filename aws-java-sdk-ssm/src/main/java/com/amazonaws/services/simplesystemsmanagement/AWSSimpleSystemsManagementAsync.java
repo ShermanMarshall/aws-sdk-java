@@ -396,14 +396,14 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
      * <p>
      * Creates a new OpsItem. You must have permission in AWS Identity and Access Management (IAM) to create a new
      * OpsItem. For more information, see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html">Getting Started
-     * with OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
-     * Operations engineers and IT professionals use the Systems Manager OpsItems capability to view, investigate, and
-     * remediate operational issues impacting the performance and health of their AWS resources. For more information,
-     * see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html">AWS Systems Manager
-     * OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param createOpsItemRequest
@@ -418,14 +418,14 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
      * <p>
      * Creates a new OpsItem. You must have permission in AWS Identity and Access Management (IAM) to create a new
      * OpsItem. For more information, see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html">Getting Started
-     * with OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
-     * Operations engineers and IT professionals use the Systems Manager OpsItems capability to view, investigate, and
-     * remediate operational issues impacting the performance and health of their AWS resources. For more information,
-     * see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html">AWS Systems Manager
-     * OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param createOpsItemRequest
@@ -747,7 +747,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Delete a list of parameters. This API is used to delete parameters by using the Amazon EC2 console.
+     * Delete a list of parameters.
      * </p>
      * 
      * @param deleteParametersRequest
@@ -760,7 +760,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Delete a list of parameters. This API is used to delete parameters by using the Amazon EC2 console.
+     * Delete a list of parameters.
      * </p>
      * 
      * @param deleteParametersRequest
@@ -984,8 +984,9 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Details about the activation, including: the date and time the activation was created, the expiration date, the
-     * IAM role assigned to the instances in the activation, and the number of instances activated by this registration.
+     * Describes details about the activation, such as the date and time the activation was created, its expiration
+     * date, the IAM role assigned to the instances in the activation, and the number of instances registered by using
+     * this activation.
      * </p>
      * 
      * @param describeActivationsRequest
@@ -998,8 +999,9 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Details about the activation, including: the date and time the activation was created, the expiration date, the
-     * IAM role assigned to the instances in the activation, and the number of instances activated by this registration.
+     * Describes details about the activation, such as the date and time the activation was created, its expiration
+     * date, the IAM role assigned to the instances in the activation, and the number of instances registered by using
+     * this activation.
      * </p>
      * 
      * @param describeActivationsRequest
@@ -1194,7 +1196,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Lists all patches that could possibly be included in a patch baseline.
+     * Lists all patches eligible to be included in a patch baseline.
      * </p>
      * 
      * @param describeAvailablePatchesRequest
@@ -1207,7 +1209,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Lists all patches that could possibly be included in a patch baseline.
+     * Lists all patches eligible to be included in a patch baseline.
      * </p>
      * 
      * @param describeAvailablePatchesRequest
@@ -1873,14 +1875,14 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
      * <p>
      * Query a set of OpsItems. You must have permission in AWS Identity and Access Management (IAM) to query a list of
      * OpsItems. For more information, see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html">Getting Started
-     * with OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
-     * Operations engineers and IT professionals use the Systems Manager OpsItems capability to view, investigate, and
-     * remediate operational issues impacting the performance and health of their AWS resources. For more information,
-     * see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html">AWS Systems Manager
-     * OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param describeOpsItemsRequest
@@ -1895,14 +1897,14 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
      * <p>
      * Query a set of OpsItems. You must have permission in AWS Identity and Access Management (IAM) to query a list of
      * OpsItems. For more information, see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html">Getting Started
-     * with OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
-     * Operations engineers and IT professionals use the Systems Manager OpsItems capability to view, investigate, and
-     * remediate operational issues impacting the performance and health of their AWS resources. For more information,
-     * see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html">AWS Systems Manager
-     * OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param describeOpsItemsRequest
@@ -2519,7 +2521,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Retrieves details about a specific task run as part of a maintenance window execution.
+     * Retrieves details about a specific a maintenance window execution.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionRequest
@@ -2534,7 +2536,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Retrieves details about a specific task run as part of a maintenance window execution.
+     * Retrieves details about a specific a maintenance window execution.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionRequest
@@ -2589,8 +2591,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Retrieves a task invocation. A task invocation is a specific task running on a specific target. maintenance
-     * windows report status for all invocations.
+     * Retrieves information about a specific task running on a specific target.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionTaskInvocationRequest
@@ -2605,8 +2606,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Retrieves a task invocation. A task invocation is a specific task running on a specific target. maintenance
-     * windows report status for all invocations.
+     * Retrieves information about a specific task running on a specific target.
      * </p>
      * 
      * @param getMaintenanceWindowExecutionTaskInvocationRequest
@@ -2659,14 +2659,14 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
      * <p>
      * Get information about an OpsItem by using the ID. You must have permission in AWS Identity and Access Management
      * (IAM) to view information about an OpsItem. For more information, see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html">Getting Started
-     * with OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
-     * Operations engineers and IT professionals use the Systems Manager OpsItems capability to view, investigate, and
-     * remediate operational issues impacting the performance and health of their AWS resources. For more information,
-     * see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html">AWS Systems Manager
-     * OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param getOpsItemRequest
@@ -2681,14 +2681,14 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
      * <p>
      * Get information about an OpsItem by using the ID. You must have permission in AWS Identity and Access Management
      * (IAM) to view information about an OpsItem. For more information, see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html">Getting Started
-     * with OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
-     * Operations engineers and IT professionals use the Systems Manager OpsItems capability to view, investigate, and
-     * remediate operational issues impacting the performance and health of their AWS resources. For more information,
-     * see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html">AWS Systems Manager
-     * OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param getOpsItemRequest
@@ -3874,7 +3874,13 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Defines the default patch baseline.
+     * Defines the default patch baseline for the relevant operating system.
+     * </p>
+     * <p>
+     * To reset the AWS predefined patch baseline as the default, specify the full patch baseline ARN as the baseline ID
+     * value. For example, for CentOS, specify
+     * <code>arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed</code> instead of
+     * <code>pb-0574b43a65ea646ed</code>.
      * </p>
      * 
      * @param registerDefaultPatchBaselineRequest
@@ -3889,7 +3895,13 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Defines the default patch baseline.
+     * Defines the default patch baseline for the relevant operating system.
+     * </p>
+     * <p>
+     * To reset the AWS predefined patch baseline as the default, specify the full patch baseline ARN as the baseline ID
+     * value. For example, for CentOS, specify
+     * <code>arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed</code> instead of
+     * <code>pb-0574b43a65ea646ed</code>.
      * </p>
      * 
      * @param registerDefaultPatchBaselineRequest
@@ -4014,7 +4026,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Removes all tags from the specified resource.
+     * Removes tag keys from the specified resource.
      * </p>
      * 
      * @param removeTagsFromResourceRequest
@@ -4027,7 +4039,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Removes all tags from the specified resource.
+     * Removes tag keys from the specified resource.
      * </p>
      * 
      * @param removeTagsFromResourceRequest
@@ -4464,7 +4476,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * The document you want to update.
+     * Updates one or more values for an SSM document.
      * </p>
      * 
      * @param updateDocumentRequest
@@ -4477,7 +4489,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * The document you want to update.
+     * Updates one or more values for an SSM document.
      * </p>
      * 
      * @param updateDocumentRequest
@@ -4561,30 +4573,46 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Modifies the target of an existing maintenance window. You can't change the target type, but you can change the
-     * following:
+     * Modifies the target of an existing maintenance window. You can change the following:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * The target from being an ID target to a Tag target, or a Tag target to an ID target.
+     * Name
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * IDs for an ID target.
+     * Description
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Tags for a Tag target.
+     * Owner
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Owner.
+     * IDs for an ID target
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Name.
+     * Tags for a Tag target
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Description.
+     * From any supported tag type to another. The three supported tag types are ID target, Tag target, and resource
+     * group. For more information, see <a>Target</a>.
      * </p>
+     * </li>
+     * </ul>
+     * <note>
      * <p>
      * If a parameter is null, then the corresponding field is not modified.
      * </p>
+     * </note>
      * 
      * @param updateMaintenanceWindowTargetRequest
      * @return A Java Future containing the result of the UpdateMaintenanceWindowTarget operation returned by the
@@ -4598,30 +4626,46 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Modifies the target of an existing maintenance window. You can't change the target type, but you can change the
-     * following:
+     * Modifies the target of an existing maintenance window. You can change the following:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * The target from being an ID target to a Tag target, or a Tag target to an ID target.
+     * Name
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * IDs for an ID target.
+     * Description
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Tags for a Tag target.
+     * Owner
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Owner.
+     * IDs for an ID target
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Name.
+     * Tags for a Tag target
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * Description.
+     * From any supported tag type to another. The three supported tag types are ID target, Tag target, and resource
+     * group. For more information, see <a>Target</a>.
      * </p>
+     * </li>
+     * </ul>
+     * <note>
      * <p>
      * If a parameter is null, then the corresponding field is not modified.
      * </p>
+     * </note>
      * 
      * @param updateMaintenanceWindowTargetRequest
      * @param asyncHandler
@@ -4749,7 +4793,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance.
+     * Assigns or changes an Amazon Identity and Access Management (IAM) role for the managed instance.
      * </p>
      * 
      * @param updateManagedInstanceRoleRequest
@@ -4763,7 +4807,7 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
 
     /**
      * <p>
-     * Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance.
+     * Assigns or changes an Amazon Identity and Access Management (IAM) role for the managed instance.
      * </p>
      * 
      * @param updateManagedInstanceRoleRequest
@@ -4784,14 +4828,14 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
      * <p>
      * Edit or change an OpsItem. You must have permission in AWS Identity and Access Management (IAM) to update an
      * OpsItem. For more information, see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html">Getting Started
-     * with OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
-     * Operations engineers and IT professionals use the Systems Manager OpsItems capability to view, investigate, and
-     * remediate operational issues impacting the performance and health of their AWS resources. For more information,
-     * see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html">AWS Systems Manager
-     * OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param updateOpsItemRequest
@@ -4806,14 +4850,14 @@ public interface AWSSimpleSystemsManagementAsync extends AWSSimpleSystemsManagem
      * <p>
      * Edit or change an OpsItem. You must have permission in AWS Identity and Access Management (IAM) to update an
      * OpsItem. For more information, see <a
-     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems-getting-started.html">Getting Started
-     * with OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html">Getting Started
+     * with OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * <p>
-     * Operations engineers and IT professionals use the Systems Manager OpsItems capability to view, investigate, and
-     * remediate operational issues impacting the performance and health of their AWS resources. For more information,
-     * see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsItems.html">AWS Systems Manager
-     * OpsItems</a> in the <i>AWS Systems Manager User Guide</i>.
+     * Operations engineers and IT professionals use OpsCenter to view, investigate, and remediate operational issues
+     * impacting the performance and health of their AWS resources. For more information, see <a
+     * href="http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html">AWS Systems Manager
+     * OpsCenter</a> in the <i>AWS Systems Manager User Guide</i>.
      * </p>
      * 
      * @param updateOpsItemRequest

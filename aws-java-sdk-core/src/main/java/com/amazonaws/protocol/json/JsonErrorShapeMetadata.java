@@ -16,6 +16,7 @@ package com.amazonaws.protocol.json;
 
 import com.amazonaws.annotation.NotThreadSafe;
 import com.amazonaws.annotation.SdkProtectedApi;
+import com.amazonaws.transform.JsonErrorUnmarshaller;
 
 /**
  * Wrapper object to provide additional metadata about a client's error shapes to {@link
@@ -30,6 +31,8 @@ public class JsonErrorShapeMetadata {
     private Integer httpStatusCode;
 
     private Class<? extends RuntimeException> modeledClass;
+
+    private JsonErrorUnmarshaller exceptionUnmarshaller;
 
 
     public String getErrorCode() {
@@ -57,5 +60,14 @@ public class JsonErrorShapeMetadata {
     public JsonErrorShapeMetadata withModeledClass(Class<? extends RuntimeException> modeledClass) {
         this.modeledClass = modeledClass;
         return this;
+    }
+
+    public JsonErrorShapeMetadata withExceptionUnmarshaller(JsonErrorUnmarshaller exceptionUnmarshaller) {
+        this.exceptionUnmarshaller = exceptionUnmarshaller;
+        return this;
+    }
+
+    public JsonErrorUnmarshaller getExceptionUnmarshaller() {
+        return exceptionUnmarshaller;
     }
 }

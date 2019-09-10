@@ -44,6 +44,8 @@ public class ImageBuilderMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("InstanceType").build();
     private static final MarshallingInfo<String> PLATFORM_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Platform").build();
+    private static final MarshallingInfo<String> IAMROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IamRoleArn").build();
     private static final MarshallingInfo<String> STATE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("State").build();
     private static final MarshallingInfo<StructuredPojo> STATECHANGEREASON_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -54,10 +56,14 @@ public class ImageBuilderMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EnableDefaultInternetAccess").build();
     private static final MarshallingInfo<StructuredPojo> DOMAINJOININFO_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DomainJoinInfo").build();
+    private static final MarshallingInfo<StructuredPojo> NETWORKACCESSCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("NetworkAccessConfiguration").build();
     private static final MarshallingInfo<List> IMAGEBUILDERERRORS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ImageBuilderErrors").build();
     private static final MarshallingInfo<String> APPSTREAMAGENTVERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AppstreamAgentVersion").build();
+    private static final MarshallingInfo<List> ACCESSENDPOINTS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AccessEndpoints").build();
 
     private static final ImageBuilderMarshaller instance = new ImageBuilderMarshaller();
 
@@ -83,13 +89,16 @@ public class ImageBuilderMarshaller {
             protocolMarshaller.marshall(imageBuilder.getVpcConfig(), VPCCONFIG_BINDING);
             protocolMarshaller.marshall(imageBuilder.getInstanceType(), INSTANCETYPE_BINDING);
             protocolMarshaller.marshall(imageBuilder.getPlatform(), PLATFORM_BINDING);
+            protocolMarshaller.marshall(imageBuilder.getIamRoleArn(), IAMROLEARN_BINDING);
             protocolMarshaller.marshall(imageBuilder.getState(), STATE_BINDING);
             protocolMarshaller.marshall(imageBuilder.getStateChangeReason(), STATECHANGEREASON_BINDING);
             protocolMarshaller.marshall(imageBuilder.getCreatedTime(), CREATEDTIME_BINDING);
             protocolMarshaller.marshall(imageBuilder.getEnableDefaultInternetAccess(), ENABLEDEFAULTINTERNETACCESS_BINDING);
             protocolMarshaller.marshall(imageBuilder.getDomainJoinInfo(), DOMAINJOININFO_BINDING);
+            protocolMarshaller.marshall(imageBuilder.getNetworkAccessConfiguration(), NETWORKACCESSCONFIGURATION_BINDING);
             protocolMarshaller.marshall(imageBuilder.getImageBuilderErrors(), IMAGEBUILDERERRORS_BINDING);
             protocolMarshaller.marshall(imageBuilder.getAppstreamAgentVersion(), APPSTREAMAGENTVERSION_BINDING);
+            protocolMarshaller.marshall(imageBuilder.getAccessEndpoints(), ACCESSENDPOINTS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

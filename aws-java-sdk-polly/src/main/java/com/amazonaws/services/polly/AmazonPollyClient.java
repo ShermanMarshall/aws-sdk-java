@@ -83,65 +83,68 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3BucketException").withModeledClass(
-                                    com.amazonaws.services.polly.model.InvalidS3BucketException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3BucketException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.InvalidS3BucketExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSampleRateException").withModeledClass(
-                                    com.amazonaws.services.polly.model.InvalidSampleRateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSampleRateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.InvalidSampleRateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SynthesisTaskNotFoundException").withModeledClass(
-                                    com.amazonaws.services.polly.model.SynthesisTaskNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SynthesisTaskNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.SynthesisTaskNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaxLexiconsNumberExceededException").withModeledClass(
-                                    com.amazonaws.services.polly.model.MaxLexiconsNumberExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaxLexiconsNumberExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.MaxLexiconsNumberExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MaxLexemeLengthExceededException").withModeledClass(
-                                    com.amazonaws.services.polly.model.MaxLexemeLengthExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MaxLexemeLengthExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.MaxLexemeLengthExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedPlsAlphabetException").withModeledClass(
-                                    com.amazonaws.services.polly.model.UnsupportedPlsAlphabetException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedPlsAlphabetException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.UnsupportedPlsAlphabetExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LanguageNotSupportedException").withModeledClass(
-                                    com.amazonaws.services.polly.model.LanguageNotSupportedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LanguageNotSupportedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.LanguageNotSupportedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TextLengthExceededException").withModeledClass(
-                                    com.amazonaws.services.polly.model.TextLengthExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TextLengthExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.TextLengthExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidLexiconException").withModeledClass(
-                                    com.amazonaws.services.polly.model.InvalidLexiconException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidLexiconException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.InvalidLexiconExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SsmlMarksNotSupportedForTextTypeException").withModeledClass(
-                                    com.amazonaws.services.polly.model.SsmlMarksNotSupportedForTextTypeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SsmlMarksNotSupportedForTextTypeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.SsmlMarksNotSupportedForTextTypeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3KeyException").withModeledClass(
-                                    com.amazonaws.services.polly.model.InvalidS3KeyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3KeyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.InvalidS3KeyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSnsTopicArnException").withModeledClass(
-                                    com.amazonaws.services.polly.model.InvalidSnsTopicArnException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSnsTopicArnException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.InvalidSnsTopicArnExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MarksNotSupportedForFormatException").withModeledClass(
-                                    com.amazonaws.services.polly.model.MarksNotSupportedForFormatException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MarksNotSupportedForFormatException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.MarksNotSupportedForFormatExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTaskIdException").withModeledClass(
-                                    com.amazonaws.services.polly.model.InvalidTaskIdException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTaskIdException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.InvalidTaskIdExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedPlsLanguageException").withModeledClass(
-                                    com.amazonaws.services.polly.model.UnsupportedPlsLanguageException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedPlsLanguageException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.UnsupportedPlsLanguageExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LexiconNotFoundException").withModeledClass(
-                                    com.amazonaws.services.polly.model.LexiconNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LexiconNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.LexiconNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LexiconSizeExceededException").withModeledClass(
-                                    com.amazonaws.services.polly.model.LexiconSizeExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LexiconSizeExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.LexiconSizeExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSsmlException").withModeledClass(
-                                    com.amazonaws.services.polly.model.InvalidSsmlException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSsmlException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.InvalidSsmlExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.polly.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceFailureException").withModeledClass(
-                                    com.amazonaws.services.polly.model.ServiceFailureException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EngineNotSupportedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.EngineNotSupportedExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceFailureException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.polly.model.transform.ServiceFailureExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.polly.model.AmazonPollyException.class));
 
     /**
@@ -350,7 +353,7 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
      * <code>ListLexicon</code> APIs.
      * </p>
      * <p>
-     * For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
+     * For more information, see <a href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
      * Lexicons</a>.
      * </p>
      * 
@@ -488,7 +491,7 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
     /**
      * <p>
      * Returns the content of the specified pronunciation lexicon stored in an AWS Region. For more information, see <a
-     * href="http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing Lexicons</a>.
+     * href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing Lexicons</a>.
      * </p>
      * 
      * @param getLexiconRequest
@@ -612,7 +615,7 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
     /**
      * <p>
      * Returns a list of pronunciation lexicons stored in an AWS Region. For more information, see <a
-     * href="http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing Lexicons</a>.
+     * href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing Lexicons</a>.
      * </p>
      * 
      * @param listLexiconsRequest
@@ -734,7 +737,7 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
      * time before the lexicon is available to the SynthesizeSpeech operation.
      * </p>
      * <p>
-     * For more information, see <a href="http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
+     * For more information, see <a href="https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html">Managing
      * Lexicons</a>.
      * </p>
      * 
@@ -748,7 +751,7 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
      *         and <code>ipa</code>.
      * @throws UnsupportedPlsLanguageException
      *         The language specified in the lexicon is unsupported. For a list of supported languages, see <a
-     *         href="http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html">Lexicon Attributes</a>.
+     *         href="https://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html">Lexicon Attributes</a>.
      * @throws LexiconSizeExceededException
      *         The maximum size of the specified lexicon would be exceeded by this operation.
      * @throws MaxLexemeLengthExceededException
@@ -832,6 +835,9 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
      * @throws InvalidSsmlException
      *         The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try
      *         again.
+     * @throws EngineNotSupportedException
+     *         This engine is not compatible with the voice that you have designated. Choose a new voice that is
+     *         compatible with the engine or change the engine and restart the operation.
      * @throws LexiconNotFoundException
      *         Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its
      *         name is misspelled or specifying a lexicon that is in a different region.</p>
@@ -900,7 +906,7 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
      * Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be valid, well-formed SSML.
      * Some alphabets might not be available with all the voices (for example, Cyrillic might not be read at all by
      * English voices) unless phoneme mapping is used. For more information, see <a
-     * href="http://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html">How it Works</a>.
+     * href="https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html">How it Works</a>.
      * </p>
      * 
      * @param synthesizeSpeechRequest
@@ -931,6 +937,9 @@ public class AmazonPollyClient extends AmazonWebServiceClient implements AmazonP
      *         SSML speech marks are not supported for plain text-type input.
      * @throws LanguageNotSupportedException
      *         The language specified is not currently supported by Amazon Polly in this capacity.
+     * @throws EngineNotSupportedException
+     *         This engine is not compatible with the voice that you have designated. Choose a new voice that is
+     *         compatible with the engine or change the engine and restart the operation.
      * @sample AmazonPolly.SynthesizeSpeech
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/polly-2016-06-10/SynthesizeSpeech" target="_top">AWS API
      *      Documentation</a>

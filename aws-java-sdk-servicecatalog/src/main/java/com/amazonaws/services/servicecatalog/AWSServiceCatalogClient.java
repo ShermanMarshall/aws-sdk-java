@@ -82,29 +82,29 @@ public class AWSServiceCatalogClient extends AmazonWebServiceClient implements A
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParametersException").withModeledClass(
-                                    com.amazonaws.services.servicecatalog.model.InvalidParametersException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParametersException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicecatalog.model.transform.InvalidParametersExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OperationNotSupportedException").withModeledClass(
-                                    com.amazonaws.services.servicecatalog.model.OperationNotSupportedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OperationNotSupportedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicecatalog.model.transform.OperationNotSupportedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidStateException").withModeledClass(
-                                    com.amazonaws.services.servicecatalog.model.InvalidStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicecatalog.model.transform.InvalidStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateResourceException").withModeledClass(
-                                    com.amazonaws.services.servicecatalog.model.DuplicateResourceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateResourceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicecatalog.model.transform.DuplicateResourceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.servicecatalog.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicecatalog.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.servicecatalog.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicecatalog.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TagOptionNotMigratedException").withModeledClass(
-                                    com.amazonaws.services.servicecatalog.model.TagOptionNotMigratedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TagOptionNotMigratedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicecatalog.model.transform.TagOptionNotMigratedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.servicecatalog.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicecatalog.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.servicecatalog.model.AWSServiceCatalogException.class));
 
     /**
@@ -1019,6 +1019,9 @@ public class AWSServiceCatalogClient extends AmazonWebServiceClient implements A
      *         One or more parameters provided to the operation are not valid.
      * @throws OperationNotSupportedException
      *         The operation is not supported.
+     * @throws InvalidStateException
+     *         An attempt was made to modify a resource that is in a state that is not valid. Check your resources to
+     *         ensure that they are in valid states before retrying the operation.
      * @sample AWSServiceCatalog.CreatePortfolioShare
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/CreatePortfolioShare"
      *      target="_top">AWS API Documentation</a>
@@ -1521,6 +1524,9 @@ public class AWSServiceCatalogClient extends AmazonWebServiceClient implements A
      *         One or more parameters provided to the operation are not valid.
      * @throws OperationNotSupportedException
      *         The operation is not supported.
+     * @throws InvalidStateException
+     *         An attempt was made to modify a resource that is in a state that is not valid. Check your resources to
+     *         ensure that they are in valid states before retrying the operation.
      * @sample AWSServiceCatalog.DeletePortfolioShare
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DeletePortfolioShare"
      *      target="_top">AWS API Documentation</a>
@@ -2630,6 +2636,63 @@ public class AWSServiceCatalogClient extends AmazonWebServiceClient implements A
             HttpResponseHandler<AmazonWebServiceResponse<DescribeServiceActionResult>> responseHandler = protocolFactory
                     .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new DescribeServiceActionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * @param describeServiceActionExecutionParametersRequest
+     * @return Result of the DescribeServiceActionExecutionParameters operation returned by the service.
+     * @throws InvalidParametersException
+     *         One or more parameters provided to the operation are not valid.
+     * @throws ResourceNotFoundException
+     *         The specified resource was not found.
+     * @sample AWSServiceCatalog.DescribeServiceActionExecutionParameters
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/DescribeServiceActionExecutionParameters"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeServiceActionExecutionParametersResult describeServiceActionExecutionParameters(DescribeServiceActionExecutionParametersRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeServiceActionExecutionParameters(request);
+    }
+
+    @SdkInternalApi
+    final DescribeServiceActionExecutionParametersResult executeDescribeServiceActionExecutionParameters(
+            DescribeServiceActionExecutionParametersRequest describeServiceActionExecutionParametersRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeServiceActionExecutionParametersRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeServiceActionExecutionParametersRequest> request = null;
+        Response<DescribeServiceActionExecutionParametersResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeServiceActionExecutionParametersRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeServiceActionExecutionParametersRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Service Catalog");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeServiceActionExecutionParameters");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeServiceActionExecutionParametersResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new DescribeServiceActionExecutionParametersResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

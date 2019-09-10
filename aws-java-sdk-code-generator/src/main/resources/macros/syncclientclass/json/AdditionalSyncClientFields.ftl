@@ -13,7 +13,7 @@
             <#if shapeModel.type == "Exception">
                 .addErrorMetadata(new JsonErrorShapeMetadata()
                     .withErrorCode("${shapeModel.errorCode}")
-                    .withModeledClass(${serviceModelRoot.metadata.packageName}.model.${shapeModel.shapeName}.class))
+                    .withExceptionUnmarshaller(${serviceModelRoot.transformPackage}.${shapeModel.shapeName}Unmarshaller.getInstance()))
             </#if>
         </#list>
         .withBaseServiceExceptionClass(${serviceModelRoot.sdkModeledExceptionBaseFqcn}.class)

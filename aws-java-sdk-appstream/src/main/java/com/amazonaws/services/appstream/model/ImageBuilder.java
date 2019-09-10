@@ -78,6 +78,14 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
     private String platform;
     /**
      * <p>
+     * The ARN of the IAM role that is applied to the image builder. To assume a role, the image builder calls the AWS
+     * Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use. The
+     * operation creates a new session with temporary credentials.
+     * </p>
+     */
+    private String iamRoleArn;
+    /**
+     * <p>
      * The state of the image builder.
      * </p>
      */
@@ -107,6 +115,8 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private DomainJoinInfo domainJoinInfo;
+
+    private NetworkAccessConfiguration networkAccessConfiguration;
     /**
      * <p>
      * The image builder errors.
@@ -119,6 +129,13 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String appstreamAgentVersion;
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     */
+    private java.util.List<AccessEndpoint> accessEndpoints;
 
     /**
      * <p>
@@ -461,6 +478,58 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * The ARN of the IAM role that is applied to the image builder. To assume a role, the image builder calls the AWS
+     * Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use. The
+     * operation creates a new session with temporary credentials.
+     * </p>
+     * 
+     * @param iamRoleArn
+     *        The ARN of the IAM role that is applied to the image builder. To assume a role, the image builder calls
+     *        the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role
+     *        to use. The operation creates a new session with temporary credentials.
+     */
+
+    public void setIamRoleArn(String iamRoleArn) {
+        this.iamRoleArn = iamRoleArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM role that is applied to the image builder. To assume a role, the image builder calls the AWS
+     * Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use. The
+     * operation creates a new session with temporary credentials.
+     * </p>
+     * 
+     * @return The ARN of the IAM role that is applied to the image builder. To assume a role, the image builder calls
+     *         the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role
+     *         to use. The operation creates a new session with temporary credentials.
+     */
+
+    public String getIamRoleArn() {
+        return this.iamRoleArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the IAM role that is applied to the image builder. To assume a role, the image builder calls the AWS
+     * Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role to use. The
+     * operation creates a new session with temporary credentials.
+     * </p>
+     * 
+     * @param iamRoleArn
+     *        The ARN of the IAM role that is applied to the image builder. To assume a role, the image builder calls
+     *        the AWS Security Token Service (STS) <code>AssumeRole</code> API operation and passes the ARN of the role
+     *        to use. The operation creates a new session with temporary credentials.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImageBuilder withIamRoleArn(String iamRoleArn) {
+        setIamRoleArn(iamRoleArn);
+        return this;
+    }
+
+    /**
+     * <p>
      * The state of the image builder.
      * </p>
      * 
@@ -697,6 +766,32 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * @param networkAccessConfiguration
+     */
+
+    public void setNetworkAccessConfiguration(NetworkAccessConfiguration networkAccessConfiguration) {
+        this.networkAccessConfiguration = networkAccessConfiguration;
+    }
+
+    /**
+     * @return
+     */
+
+    public NetworkAccessConfiguration getNetworkAccessConfiguration() {
+        return this.networkAccessConfiguration;
+    }
+
+    /**
+     * @param networkAccessConfiguration
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImageBuilder withNetworkAccessConfiguration(NetworkAccessConfiguration networkAccessConfiguration) {
+        setNetworkAccessConfiguration(networkAccessConfiguration);
+        return this;
+    }
+
+    /**
      * <p>
      * The image builder errors.
      * </p>
@@ -807,6 +902,84 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     * 
+     * @return The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
+     *         image builder only through the specified endpoints.
+     */
+
+    public java.util.List<AccessEndpoint> getAccessEndpoints() {
+        return accessEndpoints;
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
+     *        image builder only through the specified endpoints.
+     */
+
+    public void setAccessEndpoints(java.util.Collection<AccessEndpoint> accessEndpoints) {
+        if (accessEndpoints == null) {
+            this.accessEndpoints = null;
+            return;
+        }
+
+        this.accessEndpoints = new java.util.ArrayList<AccessEndpoint>(accessEndpoints);
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAccessEndpoints(java.util.Collection)} or {@link #withAccessEndpoints(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
+     *        image builder only through the specified endpoints.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImageBuilder withAccessEndpoints(AccessEndpoint... accessEndpoints) {
+        if (this.accessEndpoints == null) {
+            setAccessEndpoints(new java.util.ArrayList<AccessEndpoint>(accessEndpoints.length));
+        }
+        for (AccessEndpoint ele : accessEndpoints) {
+            this.accessEndpoints.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the image
+     * builder only through the specified endpoints.
+     * </p>
+     * 
+     * @param accessEndpoints
+     *        The list of virtual private cloud (VPC) interface endpoint objects. Administrators can connect to the
+     *        image builder only through the specified endpoints.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImageBuilder withAccessEndpoints(java.util.Collection<AccessEndpoint> accessEndpoints) {
+        setAccessEndpoints(accessEndpoints);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -834,6 +1007,8 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
             sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getPlatform() != null)
             sb.append("Platform: ").append(getPlatform()).append(",");
+        if (getIamRoleArn() != null)
+            sb.append("IamRoleArn: ").append(getIamRoleArn()).append(",");
         if (getState() != null)
             sb.append("State: ").append(getState()).append(",");
         if (getStateChangeReason() != null)
@@ -844,10 +1019,14 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
             sb.append("EnableDefaultInternetAccess: ").append(getEnableDefaultInternetAccess()).append(",");
         if (getDomainJoinInfo() != null)
             sb.append("DomainJoinInfo: ").append(getDomainJoinInfo()).append(",");
+        if (getNetworkAccessConfiguration() != null)
+            sb.append("NetworkAccessConfiguration: ").append(getNetworkAccessConfiguration()).append(",");
         if (getImageBuilderErrors() != null)
             sb.append("ImageBuilderErrors: ").append(getImageBuilderErrors()).append(",");
         if (getAppstreamAgentVersion() != null)
-            sb.append("AppstreamAgentVersion: ").append(getAppstreamAgentVersion());
+            sb.append("AppstreamAgentVersion: ").append(getAppstreamAgentVersion()).append(",");
+        if (getAccessEndpoints() != null)
+            sb.append("AccessEndpoints: ").append(getAccessEndpoints());
         sb.append("}");
         return sb.toString();
     }
@@ -894,6 +1073,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getPlatform() != null && other.getPlatform().equals(this.getPlatform()) == false)
             return false;
+        if (other.getIamRoleArn() == null ^ this.getIamRoleArn() == null)
+            return false;
+        if (other.getIamRoleArn() != null && other.getIamRoleArn().equals(this.getIamRoleArn()) == false)
+            return false;
         if (other.getState() == null ^ this.getState() == null)
             return false;
         if (other.getState() != null && other.getState().equals(this.getState()) == false)
@@ -914,6 +1097,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDomainJoinInfo() != null && other.getDomainJoinInfo().equals(this.getDomainJoinInfo()) == false)
             return false;
+        if (other.getNetworkAccessConfiguration() == null ^ this.getNetworkAccessConfiguration() == null)
+            return false;
+        if (other.getNetworkAccessConfiguration() != null && other.getNetworkAccessConfiguration().equals(this.getNetworkAccessConfiguration()) == false)
+            return false;
         if (other.getImageBuilderErrors() == null ^ this.getImageBuilderErrors() == null)
             return false;
         if (other.getImageBuilderErrors() != null && other.getImageBuilderErrors().equals(this.getImageBuilderErrors()) == false)
@@ -921,6 +1108,10 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
         if (other.getAppstreamAgentVersion() == null ^ this.getAppstreamAgentVersion() == null)
             return false;
         if (other.getAppstreamAgentVersion() != null && other.getAppstreamAgentVersion().equals(this.getAppstreamAgentVersion()) == false)
+            return false;
+        if (other.getAccessEndpoints() == null ^ this.getAccessEndpoints() == null)
+            return false;
+        if (other.getAccessEndpoints() != null && other.getAccessEndpoints().equals(this.getAccessEndpoints()) == false)
             return false;
         return true;
     }
@@ -938,13 +1129,16 @@ public class ImageBuilder implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
         hashCode = prime * hashCode + ((getInstanceType() == null) ? 0 : getInstanceType().hashCode());
         hashCode = prime * hashCode + ((getPlatform() == null) ? 0 : getPlatform().hashCode());
+        hashCode = prime * hashCode + ((getIamRoleArn() == null) ? 0 : getIamRoleArn().hashCode());
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
         hashCode = prime * hashCode + ((getStateChangeReason() == null) ? 0 : getStateChangeReason().hashCode());
         hashCode = prime * hashCode + ((getCreatedTime() == null) ? 0 : getCreatedTime().hashCode());
         hashCode = prime * hashCode + ((getEnableDefaultInternetAccess() == null) ? 0 : getEnableDefaultInternetAccess().hashCode());
         hashCode = prime * hashCode + ((getDomainJoinInfo() == null) ? 0 : getDomainJoinInfo().hashCode());
+        hashCode = prime * hashCode + ((getNetworkAccessConfiguration() == null) ? 0 : getNetworkAccessConfiguration().hashCode());
         hashCode = prime * hashCode + ((getImageBuilderErrors() == null) ? 0 : getImageBuilderErrors().hashCode());
         hashCode = prime * hashCode + ((getAppstreamAgentVersion() == null) ? 0 : getAppstreamAgentVersion().hashCode());
+        hashCode = prime * hashCode + ((getAccessEndpoints() == null) ? 0 : getAccessEndpoints().hashCode());
         return hashCode;
     }
 

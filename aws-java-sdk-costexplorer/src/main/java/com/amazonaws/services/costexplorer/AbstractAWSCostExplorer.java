@@ -58,7 +58,17 @@ public class AbstractAWSCostExplorer implements AWSCostExplorer {
     }
 
     @Override
+    public GetRightsizingRecommendationResult getRightsizingRecommendation(GetRightsizingRecommendationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetTagsResult getTags(GetTagsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetUsageForecastResult getUsageForecast(GetUsageForecastRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

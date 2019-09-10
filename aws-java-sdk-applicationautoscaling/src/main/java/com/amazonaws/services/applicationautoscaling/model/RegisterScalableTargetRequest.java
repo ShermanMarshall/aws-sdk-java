@@ -29,15 +29,15 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      * provided by your own application or service. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      */
     private String serviceNamespace;
     /**
      * <p>
-     * The identifier of the resource associated with the scalable target. This string consists of the resource type and
-     * unique identifier.
+     * The identifier of the resource that is associated with the scalable target. This string consists of the resource
+     * type and unique identifier.
      * </p>
      * <ul>
      * <li>
@@ -48,8 +48,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
-     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * Spot Fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * Fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
      * </p>
      * </li>
      * <li>
@@ -112,7 +112,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      * </p>
      * </li>
      * <li>
@@ -170,15 +170,15 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
     private String scalableDimension;
     /**
      * <p>
-     * The minimum value to scale to in response to a scale-in event. This parameter is required to register a scalable
-     * target.
+     * The minimum value to scale to in response to a scale-in event. <code>MinCapacity</code> is required to register a
+     * scalable target.
      * </p>
      */
     private Integer minCapacity;
     /**
      * <p>
-     * The maximum value to scale to in response to a scale-out event. This parameter is required to register a scalable
-     * target.
+     * The maximum value to scale to in response to a scale-out event. <code>MaxCapacity</code> is required to register
+     * a scalable target.
      * </p>
      */
     private Integer maxCapacity;
@@ -190,24 +190,60 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * >Service-Linked Roles for Application Auto Scaling</a>.
      * </p>
      * <p>
-     * For resources that are not supported using a service-linked role, this parameter is required and must specify the
-     * ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
+     * For resources that are not supported using a service-linked role, this parameter is required, and it must specify
+     * the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      * </p>
      */
     private String roleARN;
+    /**
+     * <p>
+     * An embedded object that contains attributes and attribute values that are used to suspend and resume automatic
+     * scaling. Setting the value of an attribute to <code>true</code> suspends the specified scaling activities.
+     * Setting it to <code>false</code> (default) resumes the specified scaling activities.
+     * </p>
+     * <p>
+     * <b>Suspension Outcomes</b>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For <code>DynamicScalingInSuspended</code>, while a suspension is in effect, all scale-in activities that are
+     * triggered by a scaling policy are suspended.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>DynamicScalingOutSuspended</code>, while a suspension is in effect, all scale-out activities that are
+     * triggered by a scaling policy are suspended.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>ScheduledScalingSuspended</code>, while a suspension is in effect, all scaling activities that involve
+     * scheduled actions are suspended.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html"
+     * >Suspend and Resume Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
+     * </p>
+     */
+    private SuspendedState suspendedState;
 
     /**
      * <p>
      * The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      * provided by your own application or service. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
      *        The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      *        provided by your own application or service. For more information, see <a href=
-     *        "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
@@ -220,13 +256,13 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      * provided by your own application or service. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @return The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a
      *         resource provided by your own application or service. For more information, see <a href=
-     *         "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *         "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      *         >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
@@ -239,14 +275,14 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      * provided by your own application or service. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
      *        The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      *        provided by your own application or service. For more information, see <a href=
-     *        "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ServiceNamespace
@@ -261,14 +297,14 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      * provided by your own application or service. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
      *        The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      *        provided by your own application or service. For more information, see <a href=
-     *        "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @see ServiceNamespace
      */
@@ -281,14 +317,14 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      * provided by your own application or service. For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * </p>
      * 
      * @param serviceNamespace
      *        The namespace of the AWS service that provides the resource or <code>custom-resource</code> for a resource
      *        provided by your own application or service. For more information, see <a href=
-     *        "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *        "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      *        >AWS Service Namespaces</a> in the <i>Amazon Web Services General Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ServiceNamespace
@@ -301,8 +337,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The identifier of the resource associated with the scalable target. This string consists of the resource type and
-     * unique identifier.
+     * The identifier of the resource that is associated with the scalable target. This string consists of the resource
+     * type and unique identifier.
      * </p>
      * <ul>
      * <li>
@@ -313,8 +349,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
-     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * Spot Fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * Fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
      * </p>
      * </li>
      * <li>
@@ -364,8 +400,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </ul>
      * 
      * @param resourceId
-     *        The identifier of the resource associated with the scalable target. This string consists of the resource
-     *        type and unique identifier.</p>
+     *        The identifier of the resource that is associated with the scalable target. This string consists of the
+     *        resource type and unique identifier.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -375,8 +411,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the
-     *        Spot fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *        Spot Fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the
+     *        Spot Fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -431,8 +467,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The identifier of the resource associated with the scalable target. This string consists of the resource type and
-     * unique identifier.
+     * The identifier of the resource that is associated with the scalable target. This string consists of the resource
+     * type and unique identifier.
      * </p>
      * <ul>
      * <li>
@@ -443,8 +479,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
-     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * Spot Fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * Fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
      * </p>
      * </li>
      * <li>
@@ -493,8 +529,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * </ul>
      * 
-     * @return The identifier of the resource associated with the scalable target. This string consists of the resource
-     *         type and unique identifier.</p>
+     * @return The identifier of the resource that is associated with the scalable target. This string consists of the
+     *         resource type and unique identifier.</p>
      *         <ul>
      *         <li>
      *         <p>
@@ -504,8 +540,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *         </li>
      *         <li>
      *         <p>
-     *         Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is
-     *         the Spot fleet request ID. Example:
+     *         Spot Fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is
+     *         the Spot Fleet request ID. Example:
      *         <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
      *         </p>
      *         </li>
@@ -561,8 +597,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The identifier of the resource associated with the scalable target. This string consists of the resource type and
-     * unique identifier.
+     * The identifier of the resource that is associated with the scalable target. This string consists of the resource
+     * type and unique identifier.
      * </p>
      * <ul>
      * <li>
@@ -573,8 +609,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
-     * fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     * Spot Fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the Spot
+     * Fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
      * </p>
      * </li>
      * <li>
@@ -624,8 +660,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </ul>
      * 
      * @param resourceId
-     *        The identifier of the resource associated with the scalable target. This string consists of the resource
-     *        type and unique identifier.</p>
+     *        The identifier of the resource that is associated with the scalable target. This string consists of the
+     *        resource type and unique identifier.</p>
      *        <ul>
      *        <li>
      *        <p>
@@ -635,8 +671,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        Spot fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the
-     *        Spot fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
+     *        Spot Fleet request - The resource type is <code>spot-fleet-request</code> and the unique identifier is the
+     *        Spot Fleet request ID. Example: <code>spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -704,7 +740,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      * </p>
      * </li>
      * <li>
@@ -770,7 +806,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      *        </p>
      *        </li>
      *        <li>
@@ -843,7 +879,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      * </p>
      * </li>
      * <li>
@@ -908,7 +944,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *         </li>
      *         <li>
      *         <p>
-     *         <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *         <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      *         </p>
      *         </li>
      *         <li>
@@ -981,7 +1017,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      * </p>
      * </li>
      * <li>
@@ -1047,7 +1083,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      *        </p>
      *        </li>
      *        <li>
@@ -1122,7 +1158,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      * </p>
      * </li>
      * <li>
@@ -1188,7 +1224,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      *        </p>
      *        </li>
      *        <li>
@@ -1261,7 +1297,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * </li>
      * <li>
      * <p>
-     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     * <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      * </p>
      * </li>
      * <li>
@@ -1327,7 +1363,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *        </li>
      *        <li>
      *        <p>
-     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot fleet request.
+     *        <code>ec2:spot-fleet-request:TargetCapacity</code> - The target capacity of a Spot Fleet request.
      *        </p>
      *        </li>
      *        <li>
@@ -1391,13 +1427,13 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The minimum value to scale to in response to a scale-in event. This parameter is required to register a scalable
-     * target.
+     * The minimum value to scale to in response to a scale-in event. <code>MinCapacity</code> is required to register a
+     * scalable target.
      * </p>
      * 
      * @param minCapacity
-     *        The minimum value to scale to in response to a scale-in event. This parameter is required to register a
-     *        scalable target.
+     *        The minimum value to scale to in response to a scale-in event. <code>MinCapacity</code> is required to
+     *        register a scalable target.
      */
 
     public void setMinCapacity(Integer minCapacity) {
@@ -1406,12 +1442,12 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The minimum value to scale to in response to a scale-in event. This parameter is required to register a scalable
-     * target.
+     * The minimum value to scale to in response to a scale-in event. <code>MinCapacity</code> is required to register a
+     * scalable target.
      * </p>
      * 
-     * @return The minimum value to scale to in response to a scale-in event. This parameter is required to register a
-     *         scalable target.
+     * @return The minimum value to scale to in response to a scale-in event. <code>MinCapacity</code> is required to
+     *         register a scalable target.
      */
 
     public Integer getMinCapacity() {
@@ -1420,13 +1456,13 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The minimum value to scale to in response to a scale-in event. This parameter is required to register a scalable
-     * target.
+     * The minimum value to scale to in response to a scale-in event. <code>MinCapacity</code> is required to register a
+     * scalable target.
      * </p>
      * 
      * @param minCapacity
-     *        The minimum value to scale to in response to a scale-in event. This parameter is required to register a
-     *        scalable target.
+     *        The minimum value to scale to in response to a scale-in event. <code>MinCapacity</code> is required to
+     *        register a scalable target.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1437,13 +1473,13 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The maximum value to scale to in response to a scale-out event. This parameter is required to register a scalable
-     * target.
+     * The maximum value to scale to in response to a scale-out event. <code>MaxCapacity</code> is required to register
+     * a scalable target.
      * </p>
      * 
      * @param maxCapacity
-     *        The maximum value to scale to in response to a scale-out event. This parameter is required to register a
-     *        scalable target.
+     *        The maximum value to scale to in response to a scale-out event. <code>MaxCapacity</code> is required to
+     *        register a scalable target.
      */
 
     public void setMaxCapacity(Integer maxCapacity) {
@@ -1452,12 +1488,12 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The maximum value to scale to in response to a scale-out event. This parameter is required to register a scalable
-     * target.
+     * The maximum value to scale to in response to a scale-out event. <code>MaxCapacity</code> is required to register
+     * a scalable target.
      * </p>
      * 
-     * @return The maximum value to scale to in response to a scale-out event. This parameter is required to register a
-     *         scalable target.
+     * @return The maximum value to scale to in response to a scale-out event. <code>MaxCapacity</code> is required to
+     *         register a scalable target.
      */
 
     public Integer getMaxCapacity() {
@@ -1466,13 +1502,13 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The maximum value to scale to in response to a scale-out event. This parameter is required to register a scalable
-     * target.
+     * The maximum value to scale to in response to a scale-out event. <code>MaxCapacity</code> is required to register
+     * a scalable target.
      * </p>
      * 
      * @param maxCapacity
-     *        The maximum value to scale to in response to a scale-out event. This parameter is required to register a
-     *        scalable target.
+     *        The maximum value to scale to in response to a scale-out event. <code>MaxCapacity</code> is required to
+     *        register a scalable target.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1489,8 +1525,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * >Service-Linked Roles for Application Auto Scaling</a>.
      * </p>
      * <p>
-     * For resources that are not supported using a service-linked role, this parameter is required and must specify the
-     * ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
+     * For resources that are not supported using a service-linked role, this parameter is required, and it must specify
+     * the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      * </p>
      * 
      * @param roleARN
@@ -1499,7 +1535,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *        "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html"
      *        >Service-Linked Roles for Application Auto Scaling</a>.</p>
      *        <p>
-     *        For resources that are not supported using a service-linked role, this parameter is required and must
+     *        For resources that are not supported using a service-linked role, this parameter is required, and it must
      *        specify the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your
      *        behalf.
      */
@@ -1516,8 +1552,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * >Service-Linked Roles for Application Auto Scaling</a>.
      * </p>
      * <p>
-     * For resources that are not supported using a service-linked role, this parameter is required and must specify the
-     * ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
+     * For resources that are not supported using a service-linked role, this parameter is required, and it must specify
+     * the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      * </p>
      * 
      * @return Application Auto Scaling creates a service-linked role that grants it permissions to modify the scalable
@@ -1525,7 +1561,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *         "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html"
      *         >Service-Linked Roles for Application Auto Scaling</a>.</p>
      *         <p>
-     *         For resources that are not supported using a service-linked role, this parameter is required and must
+     *         For resources that are not supported using a service-linked role, this parameter is required, and it must
      *         specify the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your
      *         behalf.
      */
@@ -1542,8 +1578,8 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      * >Service-Linked Roles for Application Auto Scaling</a>.
      * </p>
      * <p>
-     * For resources that are not supported using a service-linked role, this parameter is required and must specify the
-     * ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
+     * For resources that are not supported using a service-linked role, this parameter is required, and it must specify
+     * the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your behalf.
      * </p>
      * 
      * @param roleARN
@@ -1552,7 +1588,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
      *        "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html"
      *        >Service-Linked Roles for Application Auto Scaling</a>.</p>
      *        <p>
-     *        For resources that are not supported using a service-linked role, this parameter is required and must
+     *        For resources that are not supported using a service-linked role, this parameter is required, and it must
      *        specify the ARN of an IAM role that allows Application Auto Scaling to modify the scalable target on your
      *        behalf.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1560,6 +1596,223 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
 
     public RegisterScalableTargetRequest withRoleARN(String roleARN) {
         setRoleARN(roleARN);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An embedded object that contains attributes and attribute values that are used to suspend and resume automatic
+     * scaling. Setting the value of an attribute to <code>true</code> suspends the specified scaling activities.
+     * Setting it to <code>false</code> (default) resumes the specified scaling activities.
+     * </p>
+     * <p>
+     * <b>Suspension Outcomes</b>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For <code>DynamicScalingInSuspended</code>, while a suspension is in effect, all scale-in activities that are
+     * triggered by a scaling policy are suspended.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>DynamicScalingOutSuspended</code>, while a suspension is in effect, all scale-out activities that are
+     * triggered by a scaling policy are suspended.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>ScheduledScalingSuspended</code>, while a suspension is in effect, all scaling activities that involve
+     * scheduled actions are suspended.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html"
+     * >Suspend and Resume Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
+     * </p>
+     * 
+     * @param suspendedState
+     *        An embedded object that contains attributes and attribute values that are used to suspend and resume
+     *        automatic scaling. Setting the value of an attribute to <code>true</code> suspends the specified scaling
+     *        activities. Setting it to <code>false</code> (default) resumes the specified scaling activities. </p>
+     *        <p>
+     *        <b>Suspension Outcomes</b>
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For <code>DynamicScalingInSuspended</code>, while a suspension is in effect, all scale-in activities that
+     *        are triggered by a scaling policy are suspended.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For <code>DynamicScalingOutSuspended</code>, while a suspension is in effect, all scale-out activities
+     *        that are triggered by a scaling policy are suspended.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For <code>ScheduledScalingSuspended</code>, while a suspension is in effect, all scaling activities that
+     *        involve scheduled actions are suspended.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        For more information, see <a href=
+     *        "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html"
+     *        >Suspend and Resume Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
+     */
+
+    public void setSuspendedState(SuspendedState suspendedState) {
+        this.suspendedState = suspendedState;
+    }
+
+    /**
+     * <p>
+     * An embedded object that contains attributes and attribute values that are used to suspend and resume automatic
+     * scaling. Setting the value of an attribute to <code>true</code> suspends the specified scaling activities.
+     * Setting it to <code>false</code> (default) resumes the specified scaling activities.
+     * </p>
+     * <p>
+     * <b>Suspension Outcomes</b>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For <code>DynamicScalingInSuspended</code>, while a suspension is in effect, all scale-in activities that are
+     * triggered by a scaling policy are suspended.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>DynamicScalingOutSuspended</code>, while a suspension is in effect, all scale-out activities that are
+     * triggered by a scaling policy are suspended.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>ScheduledScalingSuspended</code>, while a suspension is in effect, all scaling activities that involve
+     * scheduled actions are suspended.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html"
+     * >Suspend and Resume Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
+     * </p>
+     * 
+     * @return An embedded object that contains attributes and attribute values that are used to suspend and resume
+     *         automatic scaling. Setting the value of an attribute to <code>true</code> suspends the specified scaling
+     *         activities. Setting it to <code>false</code> (default) resumes the specified scaling activities. </p>
+     *         <p>
+     *         <b>Suspension Outcomes</b>
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For <code>DynamicScalingInSuspended</code>, while a suspension is in effect, all scale-in activities that
+     *         are triggered by a scaling policy are suspended.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For <code>DynamicScalingOutSuspended</code>, while a suspension is in effect, all scale-out activities
+     *         that are triggered by a scaling policy are suspended.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For <code>ScheduledScalingSuspended</code>, while a suspension is in effect, all scaling activities that
+     *         involve scheduled actions are suspended.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         For more information, see <a href=
+     *         "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html"
+     *         >Suspend and Resume Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
+     */
+
+    public SuspendedState getSuspendedState() {
+        return this.suspendedState;
+    }
+
+    /**
+     * <p>
+     * An embedded object that contains attributes and attribute values that are used to suspend and resume automatic
+     * scaling. Setting the value of an attribute to <code>true</code> suspends the specified scaling activities.
+     * Setting it to <code>false</code> (default) resumes the specified scaling activities.
+     * </p>
+     * <p>
+     * <b>Suspension Outcomes</b>
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For <code>DynamicScalingInSuspended</code>, while a suspension is in effect, all scale-in activities that are
+     * triggered by a scaling policy are suspended.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>DynamicScalingOutSuspended</code>, while a suspension is in effect, all scale-out activities that are
+     * triggered by a scaling policy are suspended.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>ScheduledScalingSuspended</code>, while a suspension is in effect, all scaling activities that involve
+     * scheduled actions are suspended.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html"
+     * >Suspend and Resume Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
+     * </p>
+     * 
+     * @param suspendedState
+     *        An embedded object that contains attributes and attribute values that are used to suspend and resume
+     *        automatic scaling. Setting the value of an attribute to <code>true</code> suspends the specified scaling
+     *        activities. Setting it to <code>false</code> (default) resumes the specified scaling activities. </p>
+     *        <p>
+     *        <b>Suspension Outcomes</b>
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For <code>DynamicScalingInSuspended</code>, while a suspension is in effect, all scale-in activities that
+     *        are triggered by a scaling policy are suspended.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For <code>DynamicScalingOutSuspended</code>, while a suspension is in effect, all scale-out activities
+     *        that are triggered by a scaling policy are suspended.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For <code>ScheduledScalingSuspended</code>, while a suspension is in effect, all scaling activities that
+     *        involve scheduled actions are suspended.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        For more information, see <a href=
+     *        "https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html"
+     *        >Suspend and Resume Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RegisterScalableTargetRequest withSuspendedState(SuspendedState suspendedState) {
+        setSuspendedState(suspendedState);
         return this;
     }
 
@@ -1586,7 +1839,9 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
         if (getMaxCapacity() != null)
             sb.append("MaxCapacity: ").append(getMaxCapacity()).append(",");
         if (getRoleARN() != null)
-            sb.append("RoleARN: ").append(getRoleARN());
+            sb.append("RoleARN: ").append(getRoleARN()).append(",");
+        if (getSuspendedState() != null)
+            sb.append("SuspendedState: ").append(getSuspendedState());
         sb.append("}");
         return sb.toString();
     }
@@ -1625,6 +1880,10 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
             return false;
         if (other.getRoleARN() != null && other.getRoleARN().equals(this.getRoleARN()) == false)
             return false;
+        if (other.getSuspendedState() == null ^ this.getSuspendedState() == null)
+            return false;
+        if (other.getSuspendedState() != null && other.getSuspendedState().equals(this.getSuspendedState()) == false)
+            return false;
         return true;
     }
 
@@ -1639,6 +1898,7 @@ public class RegisterScalableTargetRequest extends com.amazonaws.AmazonWebServic
         hashCode = prime * hashCode + ((getMinCapacity() == null) ? 0 : getMinCapacity().hashCode());
         hashCode = prime * hashCode + ((getMaxCapacity() == null) ? 0 : getMaxCapacity().hashCode());
         hashCode = prime * hashCode + ((getRoleARN() == null) ? 0 : getRoleARN().hashCode());
+        hashCode = prime * hashCode + ((getSuspendedState() == null) ? 0 : getSuspendedState().hashCode());
         return hashCode;
     }
 

@@ -121,6 +121,11 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </li>
  * <li>
  * <p>
+ * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * <a>GetFile</a>, which returns the base-64 encoded content of a specified file.
  * </p>
  * </li>
@@ -131,22 +136,22 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </li>
  * <li>
  * <p>
- * <a>PutFile</a>, which adds or modifies a file in a specified repository and branch.
+ * <a>PutFile</a>, which adds or modifies a single file in a specified repository and branch.
  * </p>
  * </li>
  * </ul>
  * <p>
- * Information about committed code in a repository, by calling the following:
+ * Commits, by calling the following:
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>CreateCommit</a>, which creates a commit for changes to a repository.
+ * <a>BatchGetCommits</a>, which returns information about one or more commits in a repository
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository.
+ * <a>CreateCommit</a>, which creates a commit for changes to a repository.
  * </p>
  * </li>
  * <li>
@@ -286,7 +291,7 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </li>
  * </ul>
  * <p>
- * Information about comments in a repository, by calling the following:
+ * Comments in a repository, by calling the following:
  * </p>
  * <ul>
  * <li>
@@ -597,6 +602,39 @@ public class AWSCodeCommitAsyncClient extends AWSCodeCommitClient implements AWS
 
                 try {
                     result = executeBatchDescribeMergeConflicts(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<BatchGetCommitsResult> batchGetCommitsAsync(BatchGetCommitsRequest request) {
+
+        return batchGetCommitsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<BatchGetCommitsResult> batchGetCommitsAsync(final BatchGetCommitsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<BatchGetCommitsRequest, BatchGetCommitsResult> asyncHandler) {
+        final BatchGetCommitsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<BatchGetCommitsResult>() {
+            @Override
+            public BatchGetCommitsResult call() throws Exception {
+                BatchGetCommitsResult result = null;
+
+                try {
+                    result = executeBatchGetCommits(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

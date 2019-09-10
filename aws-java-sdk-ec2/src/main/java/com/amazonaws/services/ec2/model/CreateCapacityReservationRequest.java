@@ -60,6 +60,12 @@ public class CreateCapacityReservationRequest extends AmazonWebServiceRequest im
     private String availabilityZone;
     /**
      * <p>
+     * The ID of the Availability Zone in which to create the Capacity Reservation.
+     * </p>
+     */
+    private String availabilityZoneId;
+    /**
+     * <p>
      * Indicates the tenancy of the Capacity Reservation. A Capacity Reservation can have one of the following tenancy
      * settings:
      * </p>
@@ -390,6 +396,46 @@ public class CreateCapacityReservationRequest extends AmazonWebServiceRequest im
 
     public CreateCapacityReservationRequest withAvailabilityZone(String availabilityZone) {
         setAvailabilityZone(availabilityZone);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ID of the Availability Zone in which to create the Capacity Reservation.
+     * </p>
+     * 
+     * @param availabilityZoneId
+     *        The ID of the Availability Zone in which to create the Capacity Reservation.
+     */
+
+    public void setAvailabilityZoneId(String availabilityZoneId) {
+        this.availabilityZoneId = availabilityZoneId;
+    }
+
+    /**
+     * <p>
+     * The ID of the Availability Zone in which to create the Capacity Reservation.
+     * </p>
+     * 
+     * @return The ID of the Availability Zone in which to create the Capacity Reservation.
+     */
+
+    public String getAvailabilityZoneId() {
+        return this.availabilityZoneId;
+    }
+
+    /**
+     * <p>
+     * The ID of the Availability Zone in which to create the Capacity Reservation.
+     * </p>
+     * 
+     * @param availabilityZoneId
+     *        The ID of the Availability Zone in which to create the Capacity Reservation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateCapacityReservationRequest withAvailabilityZoneId(String availabilityZoneId) {
+        setAvailabilityZoneId(availabilityZoneId);
         return this;
     }
 
@@ -1321,6 +1367,8 @@ public class CreateCapacityReservationRequest extends AmazonWebServiceRequest im
             sb.append("InstancePlatform: ").append(getInstancePlatform()).append(",");
         if (getAvailabilityZone() != null)
             sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
+        if (getAvailabilityZoneId() != null)
+            sb.append("AvailabilityZoneId: ").append(getAvailabilityZoneId()).append(",");
         if (getTenancy() != null)
             sb.append("Tenancy: ").append(getTenancy()).append(",");
         if (getInstanceCount() != null)
@@ -1367,6 +1415,10 @@ public class CreateCapacityReservationRequest extends AmazonWebServiceRequest im
             return false;
         if (other.getAvailabilityZone() != null && other.getAvailabilityZone().equals(this.getAvailabilityZone()) == false)
             return false;
+        if (other.getAvailabilityZoneId() == null ^ this.getAvailabilityZoneId() == null)
+            return false;
+        if (other.getAvailabilityZoneId() != null && other.getAvailabilityZoneId().equals(this.getAvailabilityZoneId()) == false)
+            return false;
         if (other.getTenancy() == null ^ this.getTenancy() == null)
             return false;
         if (other.getTenancy() != null && other.getTenancy().equals(this.getTenancy()) == false)
@@ -1411,6 +1463,7 @@ public class CreateCapacityReservationRequest extends AmazonWebServiceRequest im
         hashCode = prime * hashCode + ((getInstanceType() == null) ? 0 : getInstanceType().hashCode());
         hashCode = prime * hashCode + ((getInstancePlatform() == null) ? 0 : getInstancePlatform().hashCode());
         hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getAvailabilityZoneId() == null) ? 0 : getAvailabilityZoneId().hashCode());
         hashCode = prime * hashCode + ((getTenancy() == null) ? 0 : getTenancy().hashCode());
         hashCode = prime * hashCode + ((getInstanceCount() == null) ? 0 : getInstanceCount().hashCode());
         hashCode = prime * hashCode + ((getEbsOptimized() == null) ? 0 : getEbsOptimized().hashCode());

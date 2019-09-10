@@ -60,6 +60,11 @@ public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmars
                     continue;
                 }
 
+                if (context.testExpression("ClusterAvailabilityStatus", targetDepth)) {
+                    cluster.setClusterAvailabilityStatus(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
                 if (context.testExpression("ModifyStatus", targetDepth)) {
                     cluster.setModifyStatus(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -287,6 +292,16 @@ public class ClusterStaxUnmarshaller implements Unmarshaller<Cluster, StaxUnmars
 
                 if (context.testExpression("SnapshotScheduleState", targetDepth)) {
                     cluster.setSnapshotScheduleState(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ExpectedNextSnapshotScheduleTime", targetDepth)) {
+                    cluster.setExpectedNextSnapshotScheduleTime(DateStaxUnmarshallerFactory.getInstance("iso8601").unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ExpectedNextSnapshotScheduleTimeStatus", targetDepth)) {
+                    cluster.setExpectedNextSnapshotScheduleTimeStatus(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 

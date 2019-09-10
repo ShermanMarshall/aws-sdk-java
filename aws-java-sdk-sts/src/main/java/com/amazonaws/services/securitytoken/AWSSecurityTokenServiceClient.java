@@ -158,6 +158,31 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
      */
     protected final List<Unmarshaller<AmazonServiceException, Node>> exceptionUnmarshallers = new ArrayList<Unmarshaller<AmazonServiceException, Node>>();
 
+    // STS regions that originally mapped to the global endpoint but now have region-specific endpoints
+    private static final Set<String> LEGACY_ENABLED_REGIONS;
+    static {
+        Set<String> legacyEnabledRegions = new HashSet<String>();
+        legacyEnabledRegions.add("ap-northeast-1");
+        legacyEnabledRegions.add("ap-south-1");
+        legacyEnabledRegions.add("ap-southeast-1");
+        legacyEnabledRegions.add("ap-southeast-2");
+        legacyEnabledRegions.add("aws-global");
+        legacyEnabledRegions.add("ca-central-1");
+        legacyEnabledRegions.add("eu-central-1");
+        legacyEnabledRegions.add("eu-north-1");
+        legacyEnabledRegions.add("eu-west-1");
+        legacyEnabledRegions.add("eu-west-2");
+        legacyEnabledRegions.add("eu-west-3");
+        legacyEnabledRegions.add("sa-east-1");
+        legacyEnabledRegions.add("us-east-1");
+        legacyEnabledRegions.add("us-east-2");
+        legacyEnabledRegions.add("us-west-1");
+        legacyEnabledRegions.add("us-west-2");
+        LEGACY_ENABLED_REGIONS = Collections.unmodifiableSet(legacyEnabledRegions);
+    }
+
+    private static RegionalEndpointsOptionResolver REGIONAL_ENDPOINTS_OPTION_RESOLVER = new RegionalEndpointsOptionResolver();
+
     /**
      * Constructs a new client to invoke service methods on AWS STS. A credentials provider chain will be used that
      * searches for credentials in this order:
@@ -1013,8 +1038,94 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
 
     /**
      * <p>
-     * Returns details about the IAM identity whose credentials are used to call the API.
+     * Returns the account identifier for the specified access key ID.
      * </p>
+     * <p>
+     * Access keys consist of two parts: an access key ID (for example, <code>AKIAIOSFODNN7EXAMPLE</code>) and a secret
+     * access key (for example, <code>wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY</code>). For more information about
+     * access keys, see <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Managing Access Keys for
+     * IAM Users</a> in the <i>IAM User Guide</i>.
+     * </p>
+     * <p>
+     * When you pass an access key ID to this operation, it returns the ID of the AWS account to which the keys belong.
+     * Access key IDs beginning with <code>AKIA</code> are long-term credentials for an IAM user or the AWS account root
+     * user. Access key IDs beginning with <code>ASIA</code> are temporary credentials that are created using STS
+     * operations. If the account in the response belongs to you, you can sign in as the root user and review your root
+     * user access keys. Then, you can pull a <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html">credentials report</a>
+     * to learn which IAM user owns the keys. To learn who requested the temporary credentials for an <code>ASIA</code>
+     * access key, view the STS events in your <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html">CloudTrail logs</a>.
+     * </p>
+     * <p>
+     * This operation does not indicate the state of the access key. The key might be active, inactive, or deleted.
+     * Active keys might not have permissions to perform an operation. Providing a deleted access key might return an
+     * error that the key doesn't exist.
+     * </p>
+     * 
+     * @param getAccessKeyInfoRequest
+     * @return Result of the GetAccessKeyInfo operation returned by the service.
+     * @sample AWSSecurityTokenService.GetAccessKeyInfo
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sts-2011-06-15/GetAccessKeyInfo" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetAccessKeyInfoResult getAccessKeyInfo(GetAccessKeyInfoRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAccessKeyInfo(request);
+    }
+
+    @SdkInternalApi
+    final GetAccessKeyInfoResult executeGetAccessKeyInfo(GetAccessKeyInfoRequest getAccessKeyInfoRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getAccessKeyInfoRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetAccessKeyInfoRequest> request = null;
+        Response<GetAccessKeyInfoResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetAccessKeyInfoRequestMarshaller().marshall(super.beforeMarshalling(getAccessKeyInfoRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "STS");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAccessKeyInfo");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<GetAccessKeyInfoResult> responseHandler = new StaxResponseHandler<GetAccessKeyInfoResult>(
+                    new GetAccessKeyInfoResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns details about the IAM user or role whose credentials are used to call the operation.
+     * </p>
+     * <note>
+     * <p>
+     * No permissions are required to perform this operation. If an administrator adds a policy to your IAM user or role
+     * that explicitly denies access to the <code>sts:GetCallerIdentity</code> action, you can still perform this
+     * operation. Permissions are not required because the same information is returned when an IAM user or role is
+     * denied access. To view an example response, see <a href=
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_access-denied-delete-mfa"
+     * >I Am Not Authorized to Perform: iam:DeleteVirtualMFADevice</a>.
+     * </p>
+     * </note>
      * 
      * @param getCallerIdentityRequest
      * @return Result of the GetCallerIdentity operation returned by the service.
@@ -1316,6 +1427,29 @@ public class AWSSecurityTokenServiceClient extends AmazonWebServiceClient implem
     @Override
     public GetSessionTokenResult getSessionToken() {
         return getSessionToken(new GetSessionTokenRequest());
+    }
+
+    @Override
+    @Deprecated
+    public void setRegion(Region region) {
+        Region mappedRegion = mapToLegacyRegionIfNecessary(region);
+        super.setRegion(mappedRegion);
+    }
+
+    private Region mapToLegacyRegionIfNecessary(Region region) {
+        if (legacyRegionModeEnabled() && LEGACY_ENABLED_REGIONS.contains(region.getName())) {
+            return RegionUtils.getRegion("aws-global");
+        }
+        return region;
+    }
+
+    private boolean legacyRegionModeEnabled() {
+        return REGIONAL_ENDPOINTS_OPTION_RESOLVER.useLegacyMode();
+    }
+
+    @com.amazonaws.annotation.SdkTestInternalApi
+    static void setRegionalEndpointsOptionResolver(RegionalEndpointsOptionResolver resolver) {
+        REGIONAL_ENDPOINTS_OPTION_RESOLVER = resolver;
     }
 
     /**

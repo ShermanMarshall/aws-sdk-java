@@ -213,8 +213,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * The name of the DB parameter group to apply to the DB instance. Changing this setting doesn't result in an
      * outage. The parameter group name itself is changed immediately, but the actual parameter changes are not applied
-     * until you reboot the instance without failover. The DB instance will NOT be rebooted automatically and the
-     * parameter changes will NOT be applied during the next maintenance window.
+     * until you reboot the instance without failover. In this case, the DB instance isn't rebooted automatically and
+     * the parameter changes isn't applied during the next maintenance window.
      * </p>
      * <p>
      * Default: Uses existing setting
@@ -675,33 +675,14 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
-     * accounts. By default, mapping is disabled.
+     * accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     * <a>CreateDBInstance</a>.
      * </p>
      * <p>
-     * You can enable IAM database authentication for the following database engines
+     * For more information about IAM database authentication, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
-     * <p>
-     * <b>Amazon Aurora</b>
-     * </p>
-     * <p>
-     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
-     * see <code>ModifyDBCluster</code>.
-     * </p>
-     * <p>
-     * <b>MySQL</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * For MySQL 5.6, minor version 5.6.34 or higher
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * For MySQL 5.7, minor version 5.7.16 or higher
-     * </p>
-     * </li>
-     * </ul>
      */
     private Boolean enableIAMDatabaseAuthentication;
     /**
@@ -765,6 +746,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      */
     private Boolean deletionProtection;
+    /**
+     * <p>
+     * The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * </p>
+     */
+    private Integer maxAllocatedStorage;
 
     /**
      * Default constructor for ModifyDBInstanceRequest object. Callers should use the setter or fluent setter (with...)
@@ -2061,8 +2048,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * The name of the DB parameter group to apply to the DB instance. Changing this setting doesn't result in an
      * outage. The parameter group name itself is changed immediately, but the actual parameter changes are not applied
-     * until you reboot the instance without failover. The DB instance will NOT be rebooted automatically and the
-     * parameter changes will NOT be applied during the next maintenance window.
+     * until you reboot the instance without failover. In this case, the DB instance isn't rebooted automatically and
+     * the parameter changes isn't applied during the next maintenance window.
      * </p>
      * <p>
      * Default: Uses existing setting
@@ -2074,8 +2061,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * @param dBParameterGroupName
      *        The name of the DB parameter group to apply to the DB instance. Changing this setting doesn't result in an
      *        outage. The parameter group name itself is changed immediately, but the actual parameter changes are not
-     *        applied until you reboot the instance without failover. The DB instance will NOT be rebooted automatically
-     *        and the parameter changes will NOT be applied during the next maintenance window.</p>
+     *        applied until you reboot the instance without failover. In this case, the DB instance isn't rebooted
+     *        automatically and the parameter changes isn't applied during the next maintenance window.</p>
      *        <p>
      *        Default: Uses existing setting
      *        </p>
@@ -2091,8 +2078,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * The name of the DB parameter group to apply to the DB instance. Changing this setting doesn't result in an
      * outage. The parameter group name itself is changed immediately, but the actual parameter changes are not applied
-     * until you reboot the instance without failover. The DB instance will NOT be rebooted automatically and the
-     * parameter changes will NOT be applied during the next maintenance window.
+     * until you reboot the instance without failover. In this case, the DB instance isn't rebooted automatically and
+     * the parameter changes isn't applied during the next maintenance window.
      * </p>
      * <p>
      * Default: Uses existing setting
@@ -2103,8 +2090,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @return The name of the DB parameter group to apply to the DB instance. Changing this setting doesn't result in
      *         an outage. The parameter group name itself is changed immediately, but the actual parameter changes are
-     *         not applied until you reboot the instance without failover. The DB instance will NOT be rebooted
-     *         automatically and the parameter changes will NOT be applied during the next maintenance window.</p>
+     *         not applied until you reboot the instance without failover. In this case, the DB instance isn't rebooted
+     *         automatically and the parameter changes isn't applied during the next maintenance window.</p>
      *         <p>
      *         Default: Uses existing setting
      *         </p>
@@ -2120,8 +2107,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * The name of the DB parameter group to apply to the DB instance. Changing this setting doesn't result in an
      * outage. The parameter group name itself is changed immediately, but the actual parameter changes are not applied
-     * until you reboot the instance without failover. The DB instance will NOT be rebooted automatically and the
-     * parameter changes will NOT be applied during the next maintenance window.
+     * until you reboot the instance without failover. In this case, the DB instance isn't rebooted automatically and
+     * the parameter changes isn't applied during the next maintenance window.
      * </p>
      * <p>
      * Default: Uses existing setting
@@ -2133,8 +2120,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * @param dBParameterGroupName
      *        The name of the DB parameter group to apply to the DB instance. Changing this setting doesn't result in an
      *        outage. The parameter group name itself is changed immediately, but the actual parameter changes are not
-     *        applied until you reboot the instance without failover. The DB instance will NOT be rebooted automatically
-     *        and the parameter changes will NOT be applied during the next maintenance window.</p>
+     *        applied until you reboot the instance without failover. In this case, the DB instance isn't rebooted
+     *        automatically and the parameter changes isn't applied during the next maintenance window.</p>
      *        <p>
      *        Default: Uses existing setting
      *        </p>
@@ -5014,61 +5001,23 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
-     * accounts. By default, mapping is disabled.
+     * accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     * <a>CreateDBInstance</a>.
      * </p>
      * <p>
-     * You can enable IAM database authentication for the following database engines
+     * For more information about IAM database authentication, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
-     * <p>
-     * <b>Amazon Aurora</b>
-     * </p>
-     * <p>
-     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
-     * see <code>ModifyDBCluster</code>.
-     * </p>
-     * <p>
-     * <b>MySQL</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * For MySQL 5.6, minor version 5.6.34 or higher
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * For MySQL 5.7, minor version 5.7.16 or higher
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param enableIAMDatabaseAuthentication
      *        A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
-     *        database accounts. By default, mapping is disabled.</p>
+     *        database accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     *        <a>CreateDBInstance</a>.</p>
      *        <p>
-     *        You can enable IAM database authentication for the following database engines
-     *        </p>
-     *        <p>
-     *        <b>Amazon Aurora</b>
-     *        </p>
-     *        <p>
-     *        Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more
-     *        information, see <code>ModifyDBCluster</code>.
-     *        </p>
-     *        <p>
-     *        <b>MySQL</b>
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        For MySQL 5.6, minor version 5.6.34 or higher
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        For MySQL 5.7, minor version 5.7.16 or higher
-     *        </p>
-     *        </li>
+     *        For more information about IAM database authentication, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     *        Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      */
 
     public void setEnableIAMDatabaseAuthentication(Boolean enableIAMDatabaseAuthentication) {
@@ -5078,60 +5027,22 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
-     * accounts. By default, mapping is disabled.
+     * accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     * <a>CreateDBInstance</a>.
      * </p>
      * <p>
-     * You can enable IAM database authentication for the following database engines
+     * For more information about IAM database authentication, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
-     * <p>
-     * <b>Amazon Aurora</b>
-     * </p>
-     * <p>
-     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
-     * see <code>ModifyDBCluster</code>.
-     * </p>
-     * <p>
-     * <b>MySQL</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * For MySQL 5.6, minor version 5.6.34 or higher
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * For MySQL 5.7, minor version 5.7.16 or higher
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @return A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
-     *         database accounts. By default, mapping is disabled.</p>
+     *         database accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     *         <a>CreateDBInstance</a>.</p>
      *         <p>
-     *         You can enable IAM database authentication for the following database engines
-     *         </p>
-     *         <p>
-     *         <b>Amazon Aurora</b>
-     *         </p>
-     *         <p>
-     *         Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more
-     *         information, see <code>ModifyDBCluster</code>.
-     *         </p>
-     *         <p>
-     *         <b>MySQL</b>
-     *         </p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         For MySQL 5.6, minor version 5.6.34 or higher
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         For MySQL 5.7, minor version 5.7.16 or higher
-     *         </p>
-     *         </li>
+     *         For more information about IAM database authentication, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     *         Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      */
 
     public Boolean getEnableIAMDatabaseAuthentication() {
@@ -5141,61 +5052,23 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
-     * accounts. By default, mapping is disabled.
+     * accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     * <a>CreateDBInstance</a>.
      * </p>
      * <p>
-     * You can enable IAM database authentication for the following database engines
+     * For more information about IAM database authentication, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
-     * <p>
-     * <b>Amazon Aurora</b>
-     * </p>
-     * <p>
-     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
-     * see <code>ModifyDBCluster</code>.
-     * </p>
-     * <p>
-     * <b>MySQL</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * For MySQL 5.6, minor version 5.6.34 or higher
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * For MySQL 5.7, minor version 5.7.16 or higher
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param enableIAMDatabaseAuthentication
      *        A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
-     *        database accounts. By default, mapping is disabled.</p>
+     *        database accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     *        <a>CreateDBInstance</a>.</p>
      *        <p>
-     *        You can enable IAM database authentication for the following database engines
-     *        </p>
-     *        <p>
-     *        <b>Amazon Aurora</b>
-     *        </p>
-     *        <p>
-     *        Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more
-     *        information, see <code>ModifyDBCluster</code>.
-     *        </p>
-     *        <p>
-     *        <b>MySQL</b>
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        For MySQL 5.6, minor version 5.6.34 or higher
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        For MySQL 5.7, minor version 5.7.16 or higher
-     *        </p>
-     *        </li>
+     *        For more information about IAM database authentication, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     *        Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -5207,60 +5080,22 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
-     * accounts. By default, mapping is disabled.
+     * accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     * <a>CreateDBInstance</a>.
      * </p>
      * <p>
-     * You can enable IAM database authentication for the following database engines
+     * For more information about IAM database authentication, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
-     * <p>
-     * <b>Amazon Aurora</b>
-     * </p>
-     * <p>
-     * Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more information,
-     * see <code>ModifyDBCluster</code>.
-     * </p>
-     * <p>
-     * <b>MySQL</b>
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * For MySQL 5.6, minor version 5.6.34 or higher
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * For MySQL 5.7, minor version 5.7.16 or higher
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @return A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
-     *         database accounts. By default, mapping is disabled.</p>
+     *         database accounts. By default, mapping is disabled. For information about the supported DB engines, see
+     *         <a>CreateDBInstance</a>.</p>
      *         <p>
-     *         You can enable IAM database authentication for the following database engines
-     *         </p>
-     *         <p>
-     *         <b>Amazon Aurora</b>
-     *         </p>
-     *         <p>
-     *         Not applicable. Mapping AWS IAM accounts to database accounts is managed by the DB cluster. For more
-     *         information, see <code>ModifyDBCluster</code>.
-     *         </p>
-     *         <p>
-     *         <b>MySQL</b>
-     *         </p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         For MySQL 5.6, minor version 5.6.34 or higher
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         For MySQL 5.7, minor version 5.7.16 or higher
-     *         </p>
-     *         </li>
+     *         For more information about IAM database authentication, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     *         Authentication for MySQL and PostgreSQL</a> in the <i>Amazon RDS User Guide.</i>
      */
 
     public Boolean isEnableIAMDatabaseAuthentication() {
@@ -5745,6 +5580,46 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
+     * <p>
+     * The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * </p>
+     * 
+     * @param maxAllocatedStorage
+     *        The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     */
+
+    public void setMaxAllocatedStorage(Integer maxAllocatedStorage) {
+        this.maxAllocatedStorage = maxAllocatedStorage;
+    }
+
+    /**
+     * <p>
+     * The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * </p>
+     * 
+     * @return The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     */
+
+    public Integer getMaxAllocatedStorage() {
+        return this.maxAllocatedStorage;
+    }
+
+    /**
+     * <p>
+     * The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * </p>
+     * 
+     * @param maxAllocatedStorage
+     *        The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBInstanceRequest withMaxAllocatedStorage(Integer maxAllocatedStorage) {
+        setMaxAllocatedStorage(maxAllocatedStorage);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -5835,7 +5710,9 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         if (getUseDefaultProcessorFeatures() != null)
             sb.append("UseDefaultProcessorFeatures: ").append(getUseDefaultProcessorFeatures()).append(",");
         if (getDeletionProtection() != null)
-            sb.append("DeletionProtection: ").append(getDeletionProtection());
+            sb.append("DeletionProtection: ").append(getDeletionProtection()).append(",");
+        if (getMaxAllocatedStorage() != null)
+            sb.append("MaxAllocatedStorage: ").append(getMaxAllocatedStorage());
         sb.append("}");
         return sb.toString();
     }
@@ -6013,6 +5890,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
             return false;
         if (other.getDeletionProtection() != null && other.getDeletionProtection().equals(this.getDeletionProtection()) == false)
             return false;
+        if (other.getMaxAllocatedStorage() == null ^ this.getMaxAllocatedStorage() == null)
+            return false;
+        if (other.getMaxAllocatedStorage() != null && other.getMaxAllocatedStorage().equals(this.getMaxAllocatedStorage()) == false)
+            return false;
         return true;
     }
 
@@ -6061,6 +5942,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         hashCode = prime * hashCode + ((getProcessorFeatures() == null) ? 0 : getProcessorFeatures().hashCode());
         hashCode = prime * hashCode + ((getUseDefaultProcessorFeatures() == null) ? 0 : getUseDefaultProcessorFeatures().hashCode());
         hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
+        hashCode = prime * hashCode + ((getMaxAllocatedStorage() == null) ? 0 : getMaxAllocatedStorage().hashCode());
         return hashCode;
     }
 

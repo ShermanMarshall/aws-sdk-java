@@ -96,20 +96,23 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RequestChangedException").withModeledClass(
-                                    com.amazonaws.services.costexplorer.model.RequestChangedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnresolvableUsageUnitException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costexplorer.model.transform.UnresolvableUsageUnitExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DataUnavailableException").withModeledClass(
-                                    com.amazonaws.services.costexplorer.model.DataUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RequestChangedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costexplorer.model.transform.RequestChangedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BillExpirationException").withModeledClass(
-                                    com.amazonaws.services.costexplorer.model.BillExpirationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DataUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costexplorer.model.transform.DataUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.costexplorer.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BillExpirationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costexplorer.model.transform.BillExpirationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.costexplorer.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costexplorer.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.costexplorer.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.costexplorer.model.AWSCostExplorerException.class));
 
     public static AWSCostExplorerClientBuilder builder() {
@@ -623,6 +626,71 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
 
     /**
      * <p>
+     * Creates recommendations that helps you save cost by identifying idle and underutilized Amazon EC2 instances.
+     * </p>
+     * <p>
+     * Recommendations are generated to either downsize or terminate instances, along with providing savings detail and
+     * metrics. For details on calculation and function, see <a
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-what-is.html">Optimizing Your Cost with
+     * Rightsizing Recommendations</a>.
+     * </p>
+     * 
+     * @param getRightsizingRecommendationRequest
+     * @return Result of the GetRightsizingRecommendation operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @sample AWSCostExplorer.GetRightsizingRecommendation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetRightsizingRecommendation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public GetRightsizingRecommendationResult getRightsizingRecommendation(GetRightsizingRecommendationRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetRightsizingRecommendation(request);
+    }
+
+    @SdkInternalApi
+    final GetRightsizingRecommendationResult executeGetRightsizingRecommendation(GetRightsizingRecommendationRequest getRightsizingRecommendationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getRightsizingRecommendationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetRightsizingRecommendationRequest> request = null;
+        Response<GetRightsizingRecommendationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetRightsizingRecommendationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(getRightsizingRecommendationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cost Explorer");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRightsizingRecommendation");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetRightsizingRecommendationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new GetRightsizingRecommendationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Queries for available tag keys and tag values for a specified period. You can search the tag values for an
      * arbitrary string.
      * </p>
@@ -676,6 +744,67 @@ public class AWSCostExplorerClient extends AmazonWebServiceClient implements AWS
 
             HttpResponseHandler<AmazonWebServiceResponse<GetTagsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetTagsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period
+     * that you select, based on your past usage.
+     * </p>
+     * 
+     * @param getUsageForecastRequest
+     * @return Result of the GetUsageForecast operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws UnresolvableUsageUnitException
+     *         Cost Explorer was unable to identify the usage unit. Provide <code>UsageType/UsageTypeGroup</code> filter
+     *         selections that contain matching units, for example: <code>hours</code>.
+     * @sample AWSCostExplorer.GetUsageForecast
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetUsageForecast" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetUsageForecastResult getUsageForecast(GetUsageForecastRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetUsageForecast(request);
+    }
+
+    @SdkInternalApi
+    final GetUsageForecastResult executeGetUsageForecast(GetUsageForecastRequest getUsageForecastRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getUsageForecastRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetUsageForecastRequest> request = null;
+        Response<GetUsageForecastResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetUsageForecastRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getUsageForecastRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cost Explorer");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUsageForecast");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetUsageForecastResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetUsageForecastResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

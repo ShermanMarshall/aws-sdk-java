@@ -83,11 +83,11 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.datasync.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datasync.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalException").withModeledClass(
-                                    com.amazonaws.services.datasync.model.InternalException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datasync.model.transform.InternalExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.datasync.model.AWSDataSyncException.class));
 
     public static AWSDataSyncClientBuilder builder() {
@@ -210,14 +210,13 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
      * Amazon EFS) reside. Your tasks are created in this AWS Region.
      * </p>
      * <p>
+     * You can activate the agent in a VPC (Virtual private Cloud) or provide the agent access to a VPC endpoint so you
+     * can run tasks without going over the public Internet.
+     * </p>
+     * <p>
      * You can use an agent for more than one location. If a task uses multiple agents, all of them need to have status
      * AVAILABLE for the task to run. If you use multiple agents for a source location, the status of all the agents
      * must be AVAILABLE for the task to run.
-     * </p>
-     * <p>
-     * For more information, see
-     * "https://docs.aws.amazon.com/datasync/latest/userguide/working-with-agents.html#activating-agent" (Activating an
-     * Agent) in the <i>AWS DataSync User Guide.</i>
      * </p>
      * <p>
      * Agents are automatically updated by AWS on a regular basis, using a mechanism that ensures minimal interruption
@@ -405,9 +404,7 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
      * examples section.
      * </p>
      * <p>
-     * For more information, see
-     * "https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location"
-     * (Configuring Amazon S3 Location Settings) in the <i>AWS DataSync User Guide</i>.
+     * For more information, see Configuring Amazon S3 Location Settings in the <i>AWS DataSync User Guide.</i>
      * </p>
      * 
      * @param createLocationS3Request
@@ -453,6 +450,64 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
 
             HttpResponseHandler<AmazonWebServiceResponse<CreateLocationS3Result>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateLocationS3ResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates an endpoint for a Server Message Block (SMB) file system.
+     * </p>
+     * 
+     * @param createLocationSmbRequest
+     *        CreateLocationSmbRequest
+     * @return Result of the CreateLocationSmb operation returned by the service.
+     * @throws InvalidRequestException
+     *         This exception is thrown when the client submits a malformed request.
+     * @throws InternalException
+     *         This exception is thrown when an error occurs in the AWS DataSync service.
+     * @sample AWSDataSync.CreateLocationSmb
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationSmb" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CreateLocationSmbResult createLocationSmb(CreateLocationSmbRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLocationSmb(request);
+    }
+
+    @SdkInternalApi
+    final CreateLocationSmbResult executeCreateLocationSmb(CreateLocationSmbRequest createLocationSmbRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createLocationSmbRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateLocationSmbRequest> request = null;
+        Response<CreateLocationSmbResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateLocationSmbRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createLocationSmbRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "DataSync");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateLocationSmb");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateLocationSmbResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateLocationSmbResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -946,6 +1001,64 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
 
     /**
      * <p>
+     * Returns metadata, such as the path and user information about a SMB location.
+     * </p>
+     * 
+     * @param describeLocationSmbRequest
+     *        DescribeLocationSmbRequest
+     * @return Result of the DescribeLocationSmb operation returned by the service.
+     * @throws InvalidRequestException
+     *         This exception is thrown when the client submits a malformed request.
+     * @throws InternalException
+     *         This exception is thrown when an error occurs in the AWS DataSync service.
+     * @sample AWSDataSync.DescribeLocationSmb
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationSmb" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DescribeLocationSmbResult describeLocationSmb(DescribeLocationSmbRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLocationSmb(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLocationSmbResult executeDescribeLocationSmb(DescribeLocationSmbRequest describeLocationSmbRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeLocationSmbRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeLocationSmbRequest> request = null;
+        Response<DescribeLocationSmbResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeLocationSmbRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(describeLocationSmbRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "DataSync");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeLocationSmb");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeLocationSmbResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeLocationSmbResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Returns metadata about a task.
      * </p>
      * 
@@ -1376,9 +1489,8 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
      * VERIFYING | SUCCESS/FAILURE.
      * </p>
      * <p>
-     * For detailed information, see <i>Task Execution</i> in
-     * "https://docs.aws.amazon.com/datasync/latest/userguide/how-datasync-works.html#terminology" (Components and
-     * Terminology) in the <i>AWS DataSync User Guide</i>.
+     * For detailed information, see the Task Execution section in the Components and Terminology topic in the <i>AWS
+     * DataSync User Guide</i>.
      * </p>
      * 
      * @param startTaskExecutionRequest

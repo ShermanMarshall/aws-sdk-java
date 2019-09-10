@@ -83,53 +83,62 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFLimitsExceededException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFLimitsExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFLimitsExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFLimitsExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFStaleDataException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFStaleDataException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFStaleDataException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFStaleDataExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidPermissionPolicyException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFInvalidPermissionPolicyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidPermissionPolicyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFInvalidPermissionPolicyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFInvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFBadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFBadRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFSubscriptionNotFoundException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFSubscriptionNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFInvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFNonEmptyEntityException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFNonEmptyEntityException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFTagOperationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFTagOperationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFReferencedItemException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFReferencedItemException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFTagOperationInternalErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFTagOperationInternalErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFNonexistentItemException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFNonexistentItemException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFSubscriptionNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFSubscriptionNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFServiceLinkedRoleErrorException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFServiceLinkedRoleErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFNonEmptyEntityException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFNonEmptyEntityExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFInternalErrorException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFInternalErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFReferencedItemException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFReferencedItemExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidAccountException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFInvalidAccountException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFNonexistentItemException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFNonexistentItemExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFDisallowedNameException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFDisallowedNameException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFServiceLinkedRoleErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFServiceLinkedRoleErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidOperationException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFInvalidOperationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFInternalErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFInternalErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidRegexPatternException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFInvalidRegexPatternException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidAccountException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFInvalidAccountExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFNonexistentContainerException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFNonexistentContainerException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFDisallowedNameException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFDisallowedNameExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("WAFUnavailableEntityException").withModeledClass(
-                                    com.amazonaws.services.waf.model.WAFUnavailableEntityException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidOperationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFInvalidOperationExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("WAFInvalidRegexPatternException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFInvalidRegexPatternExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("WAFNonexistentContainerException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFNonexistentContainerExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("WAFUnavailableEntityException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.waf.model.waf_regional.transform.WAFUnavailableEntityExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.waf.model.AWSWAFException.class));
 
     /**
@@ -1098,6 +1107,9 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      *         that you can create for an AWS account. For more information, see <a
      *         href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF
      *         Developer Guide</i>.
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
+     * @throws WAFBadRequestException
      * @sample AWSWAFRegional.CreateRateBasedRule
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRateBasedRule"
      *      target="_top">AWS API Documentation</a>
@@ -1483,6 +1495,9 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      *         that you can create for an AWS account. For more information, see <a
      *         href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF
      *         Developer Guide</i>.
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
+     * @throws WAFBadRequestException
      * @sample AWSWAFRegional.CreateRule
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRule" target="_top">AWS API
      *      Documentation</a>
@@ -1573,6 +1588,9 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      *         that you can create for an AWS account. For more information, see <a
      *         href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF
      *         Developer Guide</i>.
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
+     * @throws WAFBadRequestException
      * @sample AWSWAFRegional.CreateRuleGroup
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateRuleGroup" target="_top">AWS
      *      API Documentation</a>
@@ -2070,6 +2088,9 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      *         that you can create for an AWS account. For more information, see <a
      *         href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF
      *         Developer Guide</i>.
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
+     * @throws WAFBadRequestException
      * @sample AWSWAFRegional.CreateWebACL
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/CreateWebACL" target="_top">AWS API
      *      Documentation</a>
@@ -2860,6 +2881,8 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      *         You tried to delete an <code>IPSet</code> that references one or more IP addresses.
      *         </p>
      *         </li>
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
      * @sample AWSWAFRegional.DeleteRateBasedRule
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRateBasedRule"
      *      target="_top">AWS API Documentation</a>
@@ -3216,6 +3239,8 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      *         You tried to delete an <code>IPSet</code> that references one or more IP addresses.
      *         </p>
      *         </li>
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
      * @sample AWSWAFRegional.DeleteRule
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRule" target="_top">AWS API
      *      Documentation</a>
@@ -3372,6 +3397,8 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      *         <code>ByteMatchTuple</code> already exists in the specified <code>WebACL</code>.
      *         </p>
      *         </li>
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
      * @sample AWSWAFRegional.DeleteRuleGroup
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteRuleGroup" target="_top">AWS
      *      API Documentation</a>
@@ -3755,6 +3782,8 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
      *         You tried to delete an <code>IPSet</code> that references one or more IP addresses.
      *         </p>
      *         </li>
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
      * @sample AWSWAFRegional.DeleteWebACL
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/DeleteWebACL" target="_top">AWS API
      *      Documentation</a>
@@ -6317,6 +6346,117 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
     }
 
     /**
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws WAFInternalErrorException
+     *         The operation failed because of a system problem, even though the request was valid. Retry your request.
+     * @throws WAFInvalidParameterException
+     *         The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         You specified an invalid parameter name.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or
+     *         <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than
+     *         <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than
+     *         <code>IP</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than
+     *         <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other
+     *         than HEADER, METHOD, QUERY_STRING, URI, or BODY.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no
+     *         value for <code>Data</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL
+     *         cannot be associated.
+     *         </p>
+     *         </li>
+     * @throws WAFNonexistentItemException
+     *         The operation failed because the referenced object doesn't exist.
+     * @throws WAFBadRequestException
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
+     * @sample AWSWAFRegional.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTagsForResourceRequest> request = null;
+        Response<ListTagsForResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WAF Regional");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListTagsForResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListTagsForResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
      * <p>
      * Returns an array of <a>WebACLSummary</a> objects in the response.
      * </p>
@@ -6685,6 +6825,233 @@ public class AWSWAFRegionalClient extends AmazonWebServiceClient implements AWSW
 
             HttpResponseHandler<AmazonWebServiceResponse<PutPermissionPolicyResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new PutPermissionPolicyResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws WAFInternalErrorException
+     *         The operation failed because of a system problem, even though the request was valid. Retry your request.
+     * @throws WAFInvalidParameterException
+     *         The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         You specified an invalid parameter name.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or
+     *         <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than
+     *         <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than
+     *         <code>IP</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than
+     *         <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other
+     *         than HEADER, METHOD, QUERY_STRING, URI, or BODY.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no
+     *         value for <code>Data</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL
+     *         cannot be associated.
+     *         </p>
+     *         </li>
+     * @throws WAFLimitsExceededException
+     *         The operation exceeds a resource limit, for example, the maximum number of <code>WebACL</code> objects
+     *         that you can create for an AWS account. For more information, see <a
+     *         href="https://docs.aws.amazon.com/waf/latest/developerguide/limits.html">Limits</a> in the <i>AWS WAF
+     *         Developer Guide</i>.
+     * @throws WAFNonexistentItemException
+     *         The operation failed because the referenced object doesn't exist.
+     * @throws WAFBadRequestException
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
+     * @sample AWSWAFRegional.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagResource(request);
+    }
+
+    @SdkInternalApi
+    final TagResourceResult executeTagResource(TagResourceRequest tagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(tagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<TagResourceRequest> request = null;
+        Response<TagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WAF Regional");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<TagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new TagResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws WAFInternalErrorException
+     *         The operation failed because of a system problem, even though the request was valid. Retry your request.
+     * @throws WAFInvalidParameterException
+     *         The operation failed because AWS WAF didn't recognize a parameter in the request. For example:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         You specified an invalid parameter name.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update an object (<code>ByteMatchSet</code>, <code>IPSet</code>, <code>Rule</code>, or
+     *         <code>WebACL</code>) using an action other than <code>INSERT</code> or <code>DELETE</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to create a <code>WebACL</code> with a <code>DefaultAction</code> <code>Type</code> other than
+     *         <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to create a <code>RateBasedRule</code> with a <code>RateKey</code> value other than
+     *         <code>IP</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>WebACL</code> with a <code>WafAction</code> <code>Type</code> other than
+     *         <code>ALLOW</code>, <code>BLOCK</code>, or <code>COUNT</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>ByteMatchSet</code> with a <code>FieldToMatch</code> <code>Type</code> other
+     *         than HEADER, METHOD, QUERY_STRING, URI, or BODY.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You tried to update a <code>ByteMatchSet</code> with a <code>Field</code> of <code>HEADER</code> but no
+     *         value for <code>Data</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Your request references an ARN that is malformed, or corresponds to a resource with which a web ACL
+     *         cannot be associated.
+     *         </p>
+     *         </li>
+     * @throws WAFNonexistentItemException
+     *         The operation failed because the referenced object doesn't exist.
+     * @throws WAFBadRequestException
+     * @throws WAFTagOperationException
+     * @throws WAFTagOperationInternalErrorException
+     * @sample AWSWAFRegional.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-regional-2016-11-28/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagResource(request);
+    }
+
+    @SdkInternalApi
+    final UntagResourceResult executeUntagResource(UntagResourceRequest untagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(untagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UntagResourceRequest> request = null;
+        Response<UntagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WAF Regional");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UntagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UntagResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

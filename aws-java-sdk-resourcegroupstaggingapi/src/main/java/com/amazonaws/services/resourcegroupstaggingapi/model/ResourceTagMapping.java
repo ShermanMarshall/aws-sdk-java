@@ -30,7 +30,7 @@ public class ResourceTagMapping implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * An array of resource ARN(s).
+     * The ARN of the resource.
      * </p>
      */
     private String resourceARN;
@@ -43,11 +43,11 @@ public class ResourceTagMapping implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * An array of resource ARN(s).
+     * The ARN of the resource.
      * </p>
      * 
      * @param resourceARN
-     *        An array of resource ARN(s).
+     *        The ARN of the resource.
      */
 
     public void setResourceARN(String resourceARN) {
@@ -56,10 +56,10 @@ public class ResourceTagMapping implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * An array of resource ARN(s).
+     * The ARN of the resource.
      * </p>
      * 
-     * @return An array of resource ARN(s).
+     * @return The ARN of the resource.
      */
 
     public String getResourceARN() {
@@ -68,11 +68,11 @@ public class ResourceTagMapping implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * An array of resource ARN(s).
+     * The ARN of the resource.
      * </p>
      * 
      * @param resourceARN
-     *        An array of resource ARN(s).
+     *        The ARN of the resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

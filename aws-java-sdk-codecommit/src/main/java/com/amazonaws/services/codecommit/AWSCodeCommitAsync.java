@@ -116,6 +116,11 @@ import com.amazonaws.services.codecommit.model.*;
  * </li>
  * <li>
  * <p>
+ * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * <a>GetFile</a>, which returns the base-64 encoded content of a specified file.
  * </p>
  * </li>
@@ -126,22 +131,22 @@ import com.amazonaws.services.codecommit.model.*;
  * </li>
  * <li>
  * <p>
- * <a>PutFile</a>, which adds or modifies a file in a specified repository and branch.
+ * <a>PutFile</a>, which adds or modifies a single file in a specified repository and branch.
  * </p>
  * </li>
  * </ul>
  * <p>
- * Information about committed code in a repository, by calling the following:
+ * Commits, by calling the following:
  * </p>
  * <ul>
  * <li>
  * <p>
- * <a>CreateCommit</a>, which creates a commit for changes to a repository.
+ * <a>BatchGetCommits</a>, which returns information about one or more commits in a repository
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>GetBlob</a>, which returns the base-64 encoded content of an individual Git blob object within a repository.
+ * <a>CreateCommit</a>, which creates a commit for changes to a repository.
  * </p>
  * </li>
  * <li>
@@ -281,7 +286,7 @@ import com.amazonaws.services.codecommit.model.*;
  * </li>
  * </ul>
  * <p>
- * Information about comments in a repository, by calling the following:
+ * Comments in a repository, by calling the following:
  * </p>
  * <ul>
  * <li>
@@ -402,6 +407,37 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
     java.util.concurrent.Future<BatchDescribeMergeConflictsResult> batchDescribeMergeConflictsAsync(
             BatchDescribeMergeConflictsRequest batchDescribeMergeConflictsRequest,
             com.amazonaws.handlers.AsyncHandler<BatchDescribeMergeConflictsRequest, BatchDescribeMergeConflictsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about the contents of one or more commits in a repository.
+     * </p>
+     * 
+     * @param batchGetCommitsRequest
+     * @return A Java Future containing the result of the BatchGetCommits operation returned by the service.
+     * @sample AWSCodeCommitAsync.BatchGetCommits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetCommits" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<BatchGetCommitsResult> batchGetCommitsAsync(BatchGetCommitsRequest batchGetCommitsRequest);
+
+    /**
+     * <p>
+     * Returns information about the contents of one or more commits in a repository.
+     * </p>
+     * 
+     * @param batchGetCommitsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the BatchGetCommits operation returned by the service.
+     * @sample AWSCodeCommitAsyncHandler.BatchGetCommits
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/BatchGetCommits" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<BatchGetCommitsResult> batchGetCommitsAsync(BatchGetCommitsRequest batchGetCommitsRequest,
+            com.amazonaws.handlers.AsyncHandler<BatchGetCommitsRequest, BatchGetCommitsResult> asyncHandler);
 
     /**
      * <p>
@@ -594,8 +630,9 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
      * <p>
-     * Creates an unerferenced commit that represents the result of merging two branches using a specified merge
-     * strategy. This can help you determine the outcome of a potential merge.
+     * Creates an unreferenced commit that represents the result of merging two branches using a specified merge
+     * strategy. This can help you determine the outcome of a potential merge. This API cannot be used with the
+     * fast-forward merge strategy, as that strategy does not create a merge commit.
      * </p>
      * <note>
      * <p>
@@ -616,8 +653,9 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
      * <p>
-     * Creates an unerferenced commit that represents the result of merging two branches using a specified merge
-     * strategy. This can help you determine the outcome of a potential merge.
+     * Creates an unreferenced commit that represents the result of merging two branches using a specified merge
+     * strategy. This can help you determine the outcome of a potential merge. This API cannot be used with the
+     * fast-forward merge strategy, as that strategy does not create a merge commit.
      * </p>
      * <note>
      * <p>
@@ -1587,8 +1625,9 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
      * <p>
-     * Closes a pull request and attempts to merge the source commit of a pull request into the specified destination
-     * branch for that pull request at the specified commit using the fast-forward merge strategy.
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the fast-forward merge strategy. If the merge is successful, it closes the pull
+     * request.
      * </p>
      * 
      * @param mergePullRequestByFastForwardRequest
@@ -1603,8 +1642,9 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
      * <p>
-     * Closes a pull request and attempts to merge the source commit of a pull request into the specified destination
-     * branch for that pull request at the specified commit using the fast-forward merge strategy.
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the fast-forward merge strategy. If the merge is successful, it closes the pull
+     * request.
      * </p>
      * 
      * @param mergePullRequestByFastForwardRequest
@@ -1624,8 +1664,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
      * <p>
-     * Closes a pull request and attempts to merge the source commit of a pull request into the specified destination
-     * branch for that pull request at the specified commit using the squash merge strategy.
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the squash merge strategy. If the merge is successful, it closes the pull request.
      * </p>
      * 
      * @param mergePullRequestBySquashRequest
@@ -1638,8 +1678,8 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
      * <p>
-     * Closes a pull request and attempts to merge the source commit of a pull request into the specified destination
-     * branch for that pull request at the specified commit using the squash merge strategy.
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the squash merge strategy. If the merge is successful, it closes the pull request.
      * </p>
      * 
      * @param mergePullRequestBySquashRequest
@@ -1657,8 +1697,9 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
      * <p>
-     * Closes a pull request and attempts to merge the source commit of a pull request into the specified destination
-     * branch for that pull request at the specified commit using the three-way merge strategy.
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the three-way merge strategy. If the merge is successful, it closes the pull
+     * request.
      * </p>
      * 
      * @param mergePullRequestByThreeWayRequest
@@ -1672,8 +1713,9 @@ public interface AWSCodeCommitAsync extends AWSCodeCommit {
 
     /**
      * <p>
-     * Closes a pull request and attempts to merge the source commit of a pull request into the specified destination
-     * branch for that pull request at the specified commit using the three-way merge strategy.
+     * Attempts to merge the source commit of a pull request into the specified destination branch for that pull request
+     * at the specified commit using the three-way merge strategy. If the merge is successful, it closes the pull
+     * request.
      * </p>
      * 
      * @param mergePullRequestByThreeWayRequest

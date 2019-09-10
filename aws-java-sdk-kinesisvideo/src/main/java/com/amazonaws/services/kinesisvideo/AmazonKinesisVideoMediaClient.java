@@ -77,23 +77,23 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.NotAuthorizedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.NotAuthorizedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidEndpointException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.InvalidEndpointException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidEndpointException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.InvalidEndpointExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.InvalidArgumentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.InvalidArgumentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ClientLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.ClientLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ClientLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.ClientLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConnectionLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.ConnectionLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConnectionLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.ConnectionLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.kinesisvideo.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisvideo.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.kinesisvideo.model.AmazonKinesisVideoException.class));
 
     public static AmazonKinesisVideoMediaClientBuilder builder() {
@@ -157,8 +157,10 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
      * </note>
      * <p>
      * When you put media data (fragments) on a stream, Kinesis Video Streams stores each incoming fragment and related
-     * metadata in what is called a "chunk." For more information, see . The <code>GetMedia</code> API returns a stream
-     * of these chunks starting from the chunk that you specify in the request.
+     * metadata in what is called a "chunk." For more information, see <a
+     * href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_dataplane_PutMedia.html">PutMedia</a>. The
+     * <code>GetMedia</code> API returns a stream of these chunks starting from the chunk that you specify in the
+     * request.
      * </p>
      * <p>
      * The following limits apply when using the <code>GetMedia</code> API:
@@ -176,6 +178,35 @@ public class AmazonKinesisVideoMediaClient extends AmazonWebServiceClient implem
      * </p>
      * </li>
      * </ul>
+     * <note>
+     * <p>
+     * If an error is thrown after invoking a Kinesis Video Streams media API, in addition to the HTTP status code and
+     * the response body, it includes the following pieces of information:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>x-amz-ErrorType</code> HTTP header – contains a more specific error type in addition to what the HTTP
+     * status code provides.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>x-amz-RequestId</code> HTTP header – if you want to report an issue to AWS, the support team can better
+     * diagnose the problem if given the Request Id.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Both the HTTP status code and the ErrorType header can be utilized to make programmatic decisions about whether
+     * errors are retry-able and under what conditions, as well as provide information on what actions the client
+     * programmer might need to take in order to successfully try again.
+     * </p>
+     * <p>
+     * For more information, see the <b>Errors</b> section at the bottom of this topic, as well as <a
+     * href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common Errors</a>.
+     * </p>
+     * </note>
      * 
      * @param getMediaRequest
      * @return Result of the GetMedia operation returned by the service.

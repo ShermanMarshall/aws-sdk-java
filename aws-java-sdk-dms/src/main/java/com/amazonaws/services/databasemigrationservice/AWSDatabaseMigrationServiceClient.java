@@ -89,65 +89,71 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidCertificateFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.InvalidCertificateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCertificateFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.InvalidCertificateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSAccessDeniedFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.KMSAccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSAccessDeniedFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.KMSAccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSInvalidStateFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.KMSInvalidStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSInvalidStateFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.KMSInvalidStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSDisabledFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.KMSDisabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSDisabledFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.KMSDisabledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UpgradeDependencyFailureFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.UpgradeDependencyFailureException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UpgradeDependencyFailureFault")
+                                    .withExceptionUnmarshaller(
+                                            com.amazonaws.services.databasemigrationservice.model.transform.UpgradeDependencyFailureExceptionUnmarshaller
+                                                    .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SNSInvalidTopicFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.SNSInvalidTopicException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SNSInvalidTopicFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.SNSInvalidTopicExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InsufficientResourceCapacityFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.InsufficientResourceCapacityException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InsufficientResourceCapacityFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.InsufficientResourceCapacityExceptionUnmarshaller
+                                            .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceQuotaExceededFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.ResourceQuotaExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceQuotaExceededFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.ResourceQuotaExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.InvalidResourceStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.InvalidResourceStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSKeyNotAccessibleFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.KMSKeyNotAccessibleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSKeyNotAccessibleFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.KMSKeyNotAccessibleExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SubnetAlreadyInUse").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.SubnetAlreadyInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SubnetAlreadyInUse").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.SubnetAlreadyInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSNotFoundFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.KMSNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSNotFoundFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.KMSNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSubnet").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.InvalidSubnetException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSubnet").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.InvalidSubnetExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSThrottlingFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.KMSThrottlingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSThrottlingFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.KMSThrottlingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("StorageQuotaExceededFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.StorageQuotaExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("StorageQuotaExceededFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.StorageQuotaExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SNSNoAuthorizationFault").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.SNSNoAuthorizationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SNSNoAuthorizationFault").withExceptionUnmarshaller(
+                                    com.amazonaws.services.databasemigrationservice.model.transform.SNSNoAuthorizationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ReplicationSubnetGroupDoesNotCoverEnoughAZs").withModeledClass(
-                                    com.amazonaws.services.databasemigrationservice.model.ReplicationSubnetGroupDoesNotCoverEnoughAZsException.class))
+                            new JsonErrorShapeMetadata()
+                                    .withErrorCode("ReplicationSubnetGroupDoesNotCoverEnoughAZs")
+                                    .withExceptionUnmarshaller(
+                                            com.amazonaws.services.databasemigrationservice.model.transform.ReplicationSubnetGroupDoesNotCoverEnoughAZsExceptionUnmarshaller
+                                                    .getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.databasemigrationservice.model.AWSDatabaseMigrationServiceException.class));
 
     /**
@@ -361,6 +367,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * </p>
      * 
      * @param addTagsToResourceRequest
+     *        Associates a set of tags with an AWS DMS resource.
      * @return Result of the AddTagsToResource operation returned by the service.
      * @throws ResourceNotFoundException
      *         The resource could not be found.
@@ -475,7 +482,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @param createEndpointRequest
      * @return Result of the CreateEndpoint operation returned by the service.
      * @throws KMSKeyNotAccessibleException
-     *         AWS DMS cannot access the KMS key.
+     *         AWS DMS cannot access the AWS KMS key.
      * @throws ResourceAlreadyExistsException
      *         The resource you are attempting to create already exists.
      * @throws ResourceQuotaExceededException
@@ -566,15 +573,15 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws SNSNoAuthorizationException
      *         You are not authorized for the SNS subscription.
      * @throws KMSAccessDeniedException
-     *         The ciphertext references a key that doesn't exist or DMS account doesn't have an access to
+     *         The ciphertext references a key that doesn't exist or that the DMS account doesn't have access to.
      * @throws KMSDisabledException
      *         The specified master key (CMK) isn't enabled.
      * @throws KMSInvalidStateException
-     *         The state of the specified KMS resource isn't valid for this request.
+     *         The state of the specified AWS KMS resource isn't valid for this request.
      * @throws KMSNotFoundException
-     *         The specified KMS entity or resource can't be found.
+     *         The specified AWS KMS entity or resource can't be found.
      * @throws KMSThrottlingException
-     *         This request triggered KMS request throttling.
+     *         This request triggered AWS KMS request throttling.
      * @sample AWSDatabaseMigrationService.CreateEventSubscription
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateEventSubscription" target="_top">AWS
      *      API Documentation</a>
@@ -650,7 +657,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidSubnetException
      *         The subnet provided is invalid.
      * @throws KMSKeyNotAccessibleException
-     *         AWS DMS cannot access the KMS key.
+     *         AWS DMS cannot access the AWS KMS key.
      * @sample AWSDatabaseMigrationService.CreateReplicationInstance
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/CreateReplicationInstance" target="_top">AWS
      *      API Documentation</a>
@@ -783,7 +790,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @throws KMSKeyNotAccessibleException
-     *         AWS DMS cannot access the KMS key.
+     *         AWS DMS cannot access the AWS KMS key.
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.CreateReplicationTask
@@ -1196,9 +1203,11 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
 
     /**
      * <p>
-     * Lists all of the AWS DMS attributes for a customer account. The attributes include AWS DMS quotas for the
-     * account, such as the number of replication instances allowed. The description for a quota includes the quota
-     * name, current usage toward that quota, and the quota's maximum value.
+     * Lists all of the AWS DMS attributes for a customer account. These attributes include AWS DMS quotas for the
+     * account and a unique account identifier in a particular DMS region. DMS quotas include a list of resource quotas
+     * supported by the account, such as the number of replication instances allowed. The description for each resource
+     * quota, includes the quota name, current usage toward that quota, and the quota's maximum value. DMS uses the
+     * unique account identifier to name each artifact used by DMS in the given region.
      * </p>
      * <p>
      * This command does not take any parameters.
@@ -2363,7 +2372,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceAlreadyExistsException
      *         The resource you are attempting to create already exists.
      * @throws KMSKeyNotAccessibleException
-     *         AWS DMS cannot access the KMS key.
+     *         AWS DMS cannot access the AWS KMS key.
      * @throws AccessDeniedException
      *         AWS DMS was denied access to the endpoint. Check that the role is correctly configured.
      * @sample AWSDatabaseMigrationService.ModifyEndpoint
@@ -2428,15 +2437,15 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws SNSNoAuthorizationException
      *         You are not authorized for the SNS subscription.
      * @throws KMSAccessDeniedException
-     *         The ciphertext references a key that doesn't exist or DMS account doesn't have an access to
+     *         The ciphertext references a key that doesn't exist or that the DMS account doesn't have access to.
      * @throws KMSDisabledException
      *         The specified master key (CMK) isn't enabled.
      * @throws KMSInvalidStateException
-     *         The state of the specified KMS resource isn't valid for this request.
+     *         The state of the specified AWS KMS resource isn't valid for this request.
      * @throws KMSNotFoundException
-     *         The specified KMS entity or resource can't be found.
+     *         The specified AWS KMS entity or resource can't be found.
      * @throws KMSThrottlingException
-     *         This request triggered KMS request throttling.
+     *         This request triggered AWS KMS request throttling.
      * @sample AWSDatabaseMigrationService.ModifyEventSubscription
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyEventSubscription" target="_top">AWS
      *      API Documentation</a>
@@ -2649,7 +2658,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceAlreadyExistsException
      *         The resource you are attempting to create already exists.
      * @throws KMSKeyNotAccessibleException
-     *         AWS DMS cannot access the KMS key.
+     *         AWS DMS cannot access the AWS KMS key.
      * @sample AWSDatabaseMigrationService.ModifyReplicationTask
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ModifyReplicationTask" target="_top">AWS API
      *      Documentation</a>
@@ -2770,7 +2779,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @throws KMSKeyNotAccessibleException
-     *         AWS DMS cannot access the KMS key.
+     *         AWS DMS cannot access the AWS KMS key.
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.RefreshSchemas
@@ -2882,6 +2891,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * </p>
      * 
      * @param removeTagsFromResourceRequest
+     *        Removes one or more tags from an AWS DMS resource.
      * @return Result of the RemoveTagsFromResource operation returned by the service.
      * @throws ResourceNotFoundException
      *         The resource could not be found.
@@ -3125,7 +3135,7 @@ public class AWSDatabaseMigrationServiceClient extends AmazonWebServiceClient im
      * @throws InvalidResourceStateException
      *         The resource is in a state that prevents it from being used for database migration.
      * @throws KMSKeyNotAccessibleException
-     *         AWS DMS cannot access the KMS key.
+     *         AWS DMS cannot access the AWS KMS key.
      * @throws ResourceQuotaExceededException
      *         The quota for this resource quota has been exceeded.
      * @sample AWSDatabaseMigrationService.TestConnection

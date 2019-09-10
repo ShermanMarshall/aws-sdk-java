@@ -89,41 +89,42 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.ConcurrentModificationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnableToDetectSchemaException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.UnableToDetectSchemaException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnableToDetectSchemaException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.UnableToDetectSchemaExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceProvisionedThroughputExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.ResourceProvisionedThroughputExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceProvisionedThroughputExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.ResourceProvisionedThroughputExceededExceptionUnmarshaller
+                                            .getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidApplicationConfigurationException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.InvalidApplicationConfigurationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidApplicationConfigurationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.InvalidApplicationConfigurationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.TooManyTagsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CodeValidationException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.CodeValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CodeValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.CodeValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.InvalidArgumentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.InvalidArgumentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedOperationException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.UnsupportedOperationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedOperationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.UnsupportedOperationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.kinesisanalytics.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisanalytics.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.kinesisanalytics.model.AmazonKinesisAnalyticsException.class));
 
     /**
@@ -1370,8 +1371,8 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
      * @throws ResourceProvisionedThroughputExceededException
      *         Discovery failed to get a record from the streaming source because of the Amazon Kinesis Streams
      *         ProvisionedThroughputExceededException. For more information, see <a
-     *         href="kinesis/latest/APIReference/API_GetRecords.html">GetRecords</a> in the Amazon Kinesis Streams API
-     *         Reference.
+     *         href="https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html">GetRecords</a> in the
+     *         Amazon Kinesis Streams API Reference.
      * @throws ServiceUnavailableException
      *         The service is unavailable. Back off and retry the operation.
      * @sample AmazonKinesisAnalytics.DiscoverInputSchema
@@ -1494,7 +1495,8 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
 
     /**
      * <p>
-     * Retrieves the list of key-value tags assigned to the application.
+     * Retrieves the list of key-value tags assigned to the application. For more information, see <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html">Using Tagging</a>.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -1720,7 +1722,8 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
     /**
      * <p>
      * Adds one or more key-value tags to a Kinesis Analytics application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags is 50.
+     * tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see
+     * <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html">Using Tagging</a>.
      * </p>
      * 
      * @param tagResourceRequest
@@ -1786,7 +1789,8 @@ public class AmazonKinesisAnalyticsClient extends AmazonWebServiceClient impleme
 
     /**
      * <p>
-     * Removes one or more tags from a Kinesis Analytics application.
+     * Removes one or more tags from a Kinesis Analytics application. For more information, see <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html">Using Tagging</a>.
      * </p>
      * 
      * @param untagResourceRequest

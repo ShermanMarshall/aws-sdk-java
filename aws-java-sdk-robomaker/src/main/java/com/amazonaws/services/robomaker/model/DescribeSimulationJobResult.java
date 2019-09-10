@@ -172,6 +172,12 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
     private OutputLocation outputLocation;
     /**
      * <p>
+     * The logging configuration.
+     * </p>
+     */
+    private LoggingConfig loggingConfig;
+    /**
+     * <p>
      * The maximum job duration in seconds. The value must be 8 days (691,200 seconds) or less.
      * </p>
      */
@@ -203,6 +209,12 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
     private java.util.List<SimulationApplicationConfig> simulationApplications;
     /**
      * <p>
+     * The data sources for the simulation job.
+     * </p>
+     */
+    private java.util.List<DataSource> dataSources;
+    /**
+     * <p>
      * The list of all tags added to the specified simulation job.
      * </p>
      */
@@ -213,6 +225,12 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
      * </p>
      */
     private VPCConfigResponse vpcConfig;
+    /**
+     * <p>
+     * The network interface information for the simulation job.
+     * </p>
+     */
+    private NetworkInterface networkInterface;
 
     /**
      * <p>
@@ -1363,6 +1381,46 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
+     * The logging configuration.
+     * </p>
+     * 
+     * @param loggingConfig
+     *        The logging configuration.
+     */
+
+    public void setLoggingConfig(LoggingConfig loggingConfig) {
+        this.loggingConfig = loggingConfig;
+    }
+
+    /**
+     * <p>
+     * The logging configuration.
+     * </p>
+     * 
+     * @return The logging configuration.
+     */
+
+    public LoggingConfig getLoggingConfig() {
+        return this.loggingConfig;
+    }
+
+    /**
+     * <p>
+     * The logging configuration.
+     * </p>
+     * 
+     * @param loggingConfig
+     *        The logging configuration.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeSimulationJobResult withLoggingConfig(LoggingConfig loggingConfig) {
+        setLoggingConfig(loggingConfig);
+        return this;
+    }
+
+    /**
+     * <p>
      * The maximum job duration in seconds. The value must be 8 days (691,200 seconds) or less.
      * </p>
      * 
@@ -1629,6 +1687,76 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
+     * The data sources for the simulation job.
+     * </p>
+     * 
+     * @return The data sources for the simulation job.
+     */
+
+    public java.util.List<DataSource> getDataSources() {
+        return dataSources;
+    }
+
+    /**
+     * <p>
+     * The data sources for the simulation job.
+     * </p>
+     * 
+     * @param dataSources
+     *        The data sources for the simulation job.
+     */
+
+    public void setDataSources(java.util.Collection<DataSource> dataSources) {
+        if (dataSources == null) {
+            this.dataSources = null;
+            return;
+        }
+
+        this.dataSources = new java.util.ArrayList<DataSource>(dataSources);
+    }
+
+    /**
+     * <p>
+     * The data sources for the simulation job.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDataSources(java.util.Collection)} or {@link #withDataSources(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param dataSources
+     *        The data sources for the simulation job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeSimulationJobResult withDataSources(DataSource... dataSources) {
+        if (this.dataSources == null) {
+            setDataSources(new java.util.ArrayList<DataSource>(dataSources.length));
+        }
+        for (DataSource ele : dataSources) {
+            this.dataSources.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The data sources for the simulation job.
+     * </p>
+     * 
+     * @param dataSources
+     *        The data sources for the simulation job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeSimulationJobResult withDataSources(java.util.Collection<DataSource> dataSources) {
+        setDataSources(dataSources);
+        return this;
+    }
+
+    /**
+     * <p>
      * The list of all tags added to the specified simulation job.
      * </p>
      * 
@@ -1729,6 +1857,46 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
+     * <p>
+     * The network interface information for the simulation job.
+     * </p>
+     * 
+     * @param networkInterface
+     *        The network interface information for the simulation job.
+     */
+
+    public void setNetworkInterface(NetworkInterface networkInterface) {
+        this.networkInterface = networkInterface;
+    }
+
+    /**
+     * <p>
+     * The network interface information for the simulation job.
+     * </p>
+     * 
+     * @return The network interface information for the simulation job.
+     */
+
+    public NetworkInterface getNetworkInterface() {
+        return this.networkInterface;
+    }
+
+    /**
+     * <p>
+     * The network interface information for the simulation job.
+     * </p>
+     * 
+     * @param networkInterface
+     *        The network interface information for the simulation job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeSimulationJobResult withNetworkInterface(NetworkInterface networkInterface) {
+        setNetworkInterface(networkInterface);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1760,6 +1928,8 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
             sb.append("ClientRequestToken: ").append(getClientRequestToken()).append(",");
         if (getOutputLocation() != null)
             sb.append("OutputLocation: ").append(getOutputLocation()).append(",");
+        if (getLoggingConfig() != null)
+            sb.append("LoggingConfig: ").append(getLoggingConfig()).append(",");
         if (getMaxJobDurationInSeconds() != null)
             sb.append("MaxJobDurationInSeconds: ").append(getMaxJobDurationInSeconds()).append(",");
         if (getSimulationTimeMillis() != null)
@@ -1770,10 +1940,14 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
             sb.append("RobotApplications: ").append(getRobotApplications()).append(",");
         if (getSimulationApplications() != null)
             sb.append("SimulationApplications: ").append(getSimulationApplications()).append(",");
+        if (getDataSources() != null)
+            sb.append("DataSources: ").append(getDataSources()).append(",");
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getVpcConfig() != null)
-            sb.append("VpcConfig: ").append(getVpcConfig());
+            sb.append("VpcConfig: ").append(getVpcConfig()).append(",");
+        if (getNetworkInterface() != null)
+            sb.append("NetworkInterface: ").append(getNetworkInterface());
         sb.append("}");
         return sb.toString();
     }
@@ -1828,6 +2002,10 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
             return false;
         if (other.getOutputLocation() != null && other.getOutputLocation().equals(this.getOutputLocation()) == false)
             return false;
+        if (other.getLoggingConfig() == null ^ this.getLoggingConfig() == null)
+            return false;
+        if (other.getLoggingConfig() != null && other.getLoggingConfig().equals(this.getLoggingConfig()) == false)
+            return false;
         if (other.getMaxJobDurationInSeconds() == null ^ this.getMaxJobDurationInSeconds() == null)
             return false;
         if (other.getMaxJobDurationInSeconds() != null && other.getMaxJobDurationInSeconds().equals(this.getMaxJobDurationInSeconds()) == false)
@@ -1848,6 +2026,10 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
             return false;
         if (other.getSimulationApplications() != null && other.getSimulationApplications().equals(this.getSimulationApplications()) == false)
             return false;
+        if (other.getDataSources() == null ^ this.getDataSources() == null)
+            return false;
+        if (other.getDataSources() != null && other.getDataSources().equals(this.getDataSources()) == false)
+            return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
@@ -1855,6 +2037,10 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
         if (other.getVpcConfig() == null ^ this.getVpcConfig() == null)
             return false;
         if (other.getVpcConfig() != null && other.getVpcConfig().equals(this.getVpcConfig()) == false)
+            return false;
+        if (other.getNetworkInterface() == null ^ this.getNetworkInterface() == null)
+            return false;
+        if (other.getNetworkInterface() != null && other.getNetworkInterface().equals(this.getNetworkInterface()) == false)
             return false;
         return true;
     }
@@ -1874,13 +2060,16 @@ public class DescribeSimulationJobResult extends com.amazonaws.AmazonWebServiceR
         hashCode = prime * hashCode + ((getFailureReason() == null) ? 0 : getFailureReason().hashCode());
         hashCode = prime * hashCode + ((getClientRequestToken() == null) ? 0 : getClientRequestToken().hashCode());
         hashCode = prime * hashCode + ((getOutputLocation() == null) ? 0 : getOutputLocation().hashCode());
+        hashCode = prime * hashCode + ((getLoggingConfig() == null) ? 0 : getLoggingConfig().hashCode());
         hashCode = prime * hashCode + ((getMaxJobDurationInSeconds() == null) ? 0 : getMaxJobDurationInSeconds().hashCode());
         hashCode = prime * hashCode + ((getSimulationTimeMillis() == null) ? 0 : getSimulationTimeMillis().hashCode());
         hashCode = prime * hashCode + ((getIamRole() == null) ? 0 : getIamRole().hashCode());
         hashCode = prime * hashCode + ((getRobotApplications() == null) ? 0 : getRobotApplications().hashCode());
         hashCode = prime * hashCode + ((getSimulationApplications() == null) ? 0 : getSimulationApplications().hashCode());
+        hashCode = prime * hashCode + ((getDataSources() == null) ? 0 : getDataSources().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
+        hashCode = prime * hashCode + ((getNetworkInterface() == null) ? 0 : getNetworkInterface().hashCode());
         return hashCode;
     }
 

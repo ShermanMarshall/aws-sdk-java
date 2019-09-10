@@ -1580,7 +1580,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         try {
             return IOUtils.toString(object.getObjectContent());
         } catch (IOException e) {
-            throw new SdkClientException("Error streaming content from S3 during download");
+            throw new SdkClientException("Error streaming content from S3 during download", e);
         } finally {
             IOUtils.closeQuietly(object, log);
         }
@@ -4412,6 +4412,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
             addHeaderIfNotNull(request,
                     Headers.SERVER_SIDE_ENCRYPTION_AWS_KMS_KEYID,
                     sseParams.getAwsKmsKeyId());
+            addHeaderIfNotNull(request, Headers.SERVER_SIDE_ENCRYPTION_AWS_KMS_CONTEXT, sseParams.getAwsKmsEncryptionContext());
         }
     }
 

@@ -79,53 +79,53 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ConcurrentModificationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KmsKeyValidationException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.KmsKeyValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KmsKeyValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.KmsKeyValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidFilterException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.InvalidFilterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidFilterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.InvalidFilterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagKeysException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.TooManyTagKeysException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagKeysException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.TooManyTagKeysExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BatchSizeLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.BatchSizeLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BatchSizeLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.BatchSizeLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TextSizeLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.TextSizeLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TextSizeLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.TextSizeLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedLanguageException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.UnsupportedLanguageException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedLanguageException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.UnsupportedLanguageExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.InternalServerException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.InternalServerExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.TooManyTagsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ResourceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ResourceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("JobNotFoundException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.JobNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("JobNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.JobNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ResourceLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ResourceLimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.comprehend.model.AmazonComprehendException.class));
 
     public static AmazonComprehendClientBuilder builder() {
@@ -254,8 +254,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws BatchSizeLimitExceededException
      *         The number of documents in the request exceeds the limit of 25. Try your request again with fewer
      *         documents.
@@ -320,8 +321,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws BatchSizeLimitExceededException
      *         The number of documents in the request exceeds the limit of 25. Try your request again with fewer
      *         documents.
@@ -388,8 +390,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws BatchSizeLimitExceededException
      *         The number of documents in the request exceeds the limit of 25. Try your request again with fewer
      *         documents.
@@ -455,8 +458,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws BatchSizeLimitExceededException
      *         The number of documents in the request exceeds the limit of 25. Try your request again with fewer
      *         documents.
@@ -532,8 +536,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         and then try your request again.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws KmsKeyValidationException
      *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
@@ -608,8 +613,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         and then try your request again.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws KmsKeyValidationException
      *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
@@ -1401,8 +1407,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.DetectEntities
@@ -1464,8 +1471,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.DetectKeyPhrases
@@ -1528,8 +1536,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.DetectSentiment
@@ -1592,8 +1601,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.DetectSyntax
@@ -1654,8 +1664,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListDocumentClassificationJobs
@@ -1718,8 +1727,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListDocumentClassifiers
@@ -1782,8 +1790,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListDominantLanguageDetectionJobs
@@ -1847,8 +1854,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListEntitiesDetectionJobs
@@ -1916,8 +1922,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListEntityRecognizers
@@ -1979,8 +1984,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListKeyPhrasesDetectionJobs
@@ -2043,8 +2047,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListSentimentDetectionJobs
@@ -2166,8 +2169,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListTopicsDetectionJobs

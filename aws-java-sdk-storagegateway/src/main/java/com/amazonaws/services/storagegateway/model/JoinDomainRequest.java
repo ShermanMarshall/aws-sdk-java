@@ -31,7 +31,7 @@ public class JoinDomainRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the gateway. Use the <code>ListGateways</code> operation to return a list of
-     * gateways for your account and region.
+     * gateways for your account and AWS Region.
      * </p>
      */
     private String gatewayARN;
@@ -43,7 +43,7 @@ public class JoinDomainRequest extends com.amazonaws.AmazonWebServiceRequest imp
     private String domainName;
     /**
      * <p>
-     * The organizational unit (OU) is a container with an Active Directory that can hold users, groups, computers, and
+     * The organizational unit (OU) is a container in an Active Directory that can hold users, groups, computers, and
      * other OUs and this parameter specifies the OU that the gateway will join within the AD domain.
      * </p>
      */
@@ -71,12 +71,12 @@ public class JoinDomainRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the gateway. Use the <code>ListGateways</code> operation to return a list of
-     * gateways for your account and region.
+     * gateways for your account and AWS Region.
      * </p>
      * 
      * @param gatewayARN
      *        The Amazon Resource Name (ARN) of the gateway. Use the <code>ListGateways</code> operation to return a
-     *        list of gateways for your account and region.
+     *        list of gateways for your account and AWS Region.
      */
 
     public void setGatewayARN(String gatewayARN) {
@@ -86,11 +86,11 @@ public class JoinDomainRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the gateway. Use the <code>ListGateways</code> operation to return a list of
-     * gateways for your account and region.
+     * gateways for your account and AWS Region.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of the gateway. Use the <code>ListGateways</code> operation to return a
-     *         list of gateways for your account and region.
+     *         list of gateways for your account and AWS Region.
      */
 
     public String getGatewayARN() {
@@ -100,12 +100,12 @@ public class JoinDomainRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the gateway. Use the <code>ListGateways</code> operation to return a list of
-     * gateways for your account and region.
+     * gateways for your account and AWS Region.
      * </p>
      * 
      * @param gatewayARN
      *        The Amazon Resource Name (ARN) of the gateway. Use the <code>ListGateways</code> operation to return a
-     *        list of gateways for your account and region.
+     *        list of gateways for your account and AWS Region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -156,14 +156,13 @@ public class JoinDomainRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The organizational unit (OU) is a container with an Active Directory that can hold users, groups, computers, and
+     * The organizational unit (OU) is a container in an Active Directory that can hold users, groups, computers, and
      * other OUs and this parameter specifies the OU that the gateway will join within the AD domain.
      * </p>
      * 
      * @param organizationalUnit
-     *        The organizational unit (OU) is a container with an Active Directory that can hold users, groups,
-     *        computers, and other OUs and this parameter specifies the OU that the gateway will join within the AD
-     *        domain.
+     *        The organizational unit (OU) is a container in an Active Directory that can hold users, groups, computers,
+     *        and other OUs and this parameter specifies the OU that the gateway will join within the AD domain.
      */
 
     public void setOrganizationalUnit(String organizationalUnit) {
@@ -172,11 +171,11 @@ public class JoinDomainRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The organizational unit (OU) is a container with an Active Directory that can hold users, groups, computers, and
+     * The organizational unit (OU) is a container in an Active Directory that can hold users, groups, computers, and
      * other OUs and this parameter specifies the OU that the gateway will join within the AD domain.
      * </p>
      * 
-     * @return The organizational unit (OU) is a container with an Active Directory that can hold users, groups,
+     * @return The organizational unit (OU) is a container in an Active Directory that can hold users, groups,
      *         computers, and other OUs and this parameter specifies the OU that the gateway will join within the AD
      *         domain.
      */
@@ -187,14 +186,13 @@ public class JoinDomainRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * The organizational unit (OU) is a container with an Active Directory that can hold users, groups, computers, and
+     * The organizational unit (OU) is a container in an Active Directory that can hold users, groups, computers, and
      * other OUs and this parameter specifies the OU that the gateway will join within the AD domain.
      * </p>
      * 
      * @param organizationalUnit
-     *        The organizational unit (OU) is a container with an Active Directory that can hold users, groups,
-     *        computers, and other OUs and this parameter specifies the OU that the gateway will join within the AD
-     *        domain.
+     *        The organizational unit (OU) is a container in an Active Directory that can hold users, groups, computers,
+     *        and other OUs and this parameter specifies the OU that the gateway will join within the AD domain.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

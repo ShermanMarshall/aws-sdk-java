@@ -206,6 +206,11 @@ public class SDKGlobalConfiguration {
         "com.amazonaws.sdk.enableRuntimeProfiling";
 
     /**
+     * The default host used by client side monitoring.
+     */
+    public static final String DEFAULT_AWS_CSM_HOST = "127.0.0.1";
+
+    /**
      * The default port used by client side monitoring.
      */
     public static final int DEFAULT_AWS_CSM_PORT = 31000;
@@ -219,6 +224,11 @@ public class SDKGlobalConfiguration {
      * System property to enable/disable client side monitoring.
      */
     public static final String AWS_CSM_ENABLED_SYSTEM_PROPERTY = "com.amazonaws.sdk.csm.enabled";
+
+    /**
+     * System property to set the host that will receive the client side monitoring events.
+     */
+    public static final String AWS_CSM_HOST_SYSTEM_PROPERTY = "com.amazonaws.sdk.csm.host";
 
     /**
      * System property to set the port of the out of process client side
@@ -247,6 +257,15 @@ public class SDKGlobalConfiguration {
 
     /** Environment variable name for the AWS session token */
     public static final String AWS_SESSION_TOKEN_ENV_VAR = "AWS_SESSION_TOKEN";
+
+    /** Environment variable name for the AWS Web Identity Token File Path */
+    public static final String AWS_WEB_IDENTITY_ENV_VAR = "AWS_WEB_IDENTITY_TOKEN_FILE";
+
+    /** Environment variable name for the AWS role arn */
+    public static final String AWS_ROLE_ARN_ENV_VAR = "AWS_ROLE_ARN";
+
+    /** Environment variable name for the AWS role arn */
+    public static final String AWS_ROLE_SESSION_NAME_ENV_VAR = "AWS_ROLE_SESSION_NAME";
 
     /**
      * Environment variable containing region used to configure clients.
@@ -293,10 +312,15 @@ public class SDKGlobalConfiguration {
      */
     public static final String AWS_EC2_METADATA_DISABLED_SYSTEM_PROPERTY = "com.amazonaws.sdk.disableEc2Metadata";
 
-    /*
+    /**
      * Environment variable to enable/disable client side monitoring.
      */
     public static final String AWS_CSM_ENABLED_ENV_VAR = "AWS_CSM_ENABLED";
+
+    /**
+     * Environment variable to set the host to send client side monitor events to.
+     */
+    public static final String AWS_CSM_HOST_ENV_VAR = "AWS_CSM_HOST";
 
     /**
      * Environment varaible to set the port of the out of process client side

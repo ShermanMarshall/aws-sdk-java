@@ -81,44 +81,44 @@ public class AWSShieldClient extends AmazonWebServiceClient implements AWSShield
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.shield.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OptimisticLockException").withModeledClass(
-                                    com.amazonaws.services.shield.model.OptimisticLockException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OptimisticLockException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.OptimisticLockExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LockedSubscriptionException").withModeledClass(
-                                    com.amazonaws.services.shield.model.LockedSubscriptionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LockedSubscriptionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.LockedSubscriptionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceException").withModeledClass(
-                                    com.amazonaws.services.shield.model.InvalidResourceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.InvalidResourceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.shield.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidOperationException").withModeledClass(
-                                    com.amazonaws.services.shield.model.InvalidOperationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidOperationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.InvalidOperationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.shield.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.shield.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalErrorException").withModeledClass(
-                                    com.amazonaws.services.shield.model.InternalErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.InternalErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPaginationTokenException").withModeledClass(
-                                    com.amazonaws.services.shield.model.InvalidPaginationTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPaginationTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.InvalidPaginationTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitsExceededException").withModeledClass(
-                                    com.amazonaws.services.shield.model.LimitsExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitsExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.LimitsExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NoAssociatedRoleException").withModeledClass(
-                                    com.amazonaws.services.shield.model.NoAssociatedRoleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NoAssociatedRoleException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.NoAssociatedRoleExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedForDependencyException").withModeledClass(
-                                    com.amazonaws.services.shield.model.AccessDeniedForDependencyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedForDependencyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.shield.model.transform.AccessDeniedForDependencyExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.shield.model.AWSShieldException.class));
 
     /**
@@ -321,8 +321,8 @@ public class AWSShieldClient extends AmazonWebServiceClient implements AWSShield
 
     /**
      * <p>
-     * Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your flow logs. You
-     * can associate up to 10 Amazon S3 buckets with your subscription.
+     * Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your AWS WAF logs.
+     * You can associate up to 10 Amazon S3 buckets with your subscription.
      * </p>
      * <p>
      * To use the services of the DRT and make an <code>AssociateDRTLogBucket</code> request, you must be subscribed to
@@ -605,6 +605,11 @@ public class AWSShieldClient extends AmazonWebServiceClient implements AWSShield
      * team (DRT) needed permissions to assist you during a suspected DDoS attack. For more information see <a
      * href="https://docs.aws.amazon.com/waf/latest/developerguide/authorize-DRT.html">Authorize the DDoS Response Team
      * to Create Rules and Web ACLs on Your Behalf</a>.
+     * </p>
+     * <p>
+     * To use the services of the DRT, you must be subscribed to the <a
+     * href="https://aws.amazon.com/premiumsupport/business-support/">Business Support plan</a> or the <a
+     * href="https://aws.amazon.com/premiumsupport/enterprise-support/">Enterprise Support plan</a>.
      * </p>
      * <p>
      * When you initally create a subscription, your subscription is set to be automatically renewed at the end of the
@@ -1088,7 +1093,7 @@ public class AWSShieldClient extends AmazonWebServiceClient implements AWSShield
 
     /**
      * <p>
-     * Removes the DDoS Response team's (DRT) access to the specified Amazon S3 bucket containing your flow logs.
+     * Removes the DDoS Response team's (DRT) access to the specified Amazon S3 bucket containing your AWS WAF logs.
      * </p>
      * <p>
      * To make a <code>DisassociateDRTLogBucket</code> request, you must be subscribed to the <a

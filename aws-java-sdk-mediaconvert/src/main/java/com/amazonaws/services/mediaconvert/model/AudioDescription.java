@@ -26,7 +26,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AudioDescription implements Serializable, Cloneable, StructuredPojo {
 
-    /** Advanced audio normalization settings. */
+    /** Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness standard. */
     private AudioNormalizationSettings audioNormalizationSettings;
     /**
      * Specifies which audio data to use from each input. In the simplest case, specify an
@@ -53,10 +53,10 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     private String audioTypeControl;
     /**
      * Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio
-     * encoding. The settings in this group vary depending on the value you choose for Audio codec (Codec). For each
-     * codec enum you choose, define the corresponding settings object. The following lists the codec enum, settings
-     * object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3, Ac3Settings *
-     * EAC3, Eac3Settings
+     * encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3,
+     * Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      */
     private AudioCodecSettings codecSettings;
     /**
@@ -80,16 +80,18 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     /** Advanced audio remixing settings. */
     private RemixSettings remixSettings;
     /**
-     * Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or Director
-     * Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      */
     private String streamName;
 
     /**
-     * Advanced audio normalization settings.
+     * Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness standard.
      * 
      * @param audioNormalizationSettings
-     *        Advanced audio normalization settings.
+     *        Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness
+     *        standard.
      */
 
     public void setAudioNormalizationSettings(AudioNormalizationSettings audioNormalizationSettings) {
@@ -97,9 +99,10 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Advanced audio normalization settings.
+     * Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness standard.
      * 
-     * @return Advanced audio normalization settings.
+     * @return Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness
+     *         standard.
      */
 
     public AudioNormalizationSettings getAudioNormalizationSettings() {
@@ -107,10 +110,11 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Advanced audio normalization settings.
+     * Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness standard.
      * 
      * @param audioNormalizationSettings
-     *        Advanced audio normalization settings.
+     *        Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness
+     *        standard.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -315,17 +319,17 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
 
     /**
      * Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio
-     * encoding. The settings in this group vary depending on the value you choose for Audio codec (Codec). For each
-     * codec enum you choose, define the corresponding settings object. The following lists the codec enum, settings
-     * object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3, Ac3Settings *
-     * EAC3, Eac3Settings
+     * encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3,
+     * Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      * 
      * @param codecSettings
      *        Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to
-     *        audio encoding. The settings in this group vary depending on the value you choose for Audio codec (Codec).
-     *        For each codec enum you choose, define the corresponding settings object. The following lists the codec
-     *        enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings
-     *        * AC3, Ac3Settings * EAC3, Eac3Settings
+     *        audio encoding. The settings in this group vary depending on the value that you choose for Audio codec
+     *        (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *        lists the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings *
+     *        AIFF, AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      */
 
     public void setCodecSettings(AudioCodecSettings codecSettings) {
@@ -334,16 +338,16 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
 
     /**
      * Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio
-     * encoding. The settings in this group vary depending on the value you choose for Audio codec (Codec). For each
-     * codec enum you choose, define the corresponding settings object. The following lists the codec enum, settings
-     * object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3, Ac3Settings *
-     * EAC3, Eac3Settings
+     * encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3,
+     * Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      * 
      * @return Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to
-     *         audio encoding. The settings in this group vary depending on the value you choose for Audio codec
-     *         (Codec). For each codec enum you choose, define the corresponding settings object. The following lists
-     *         the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF,
-     *         AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings
+     *         audio encoding. The settings in this group vary depending on the value that you choose for Audio codec
+     *         (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *         lists the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings *
+     *         AIFF, AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      */
 
     public AudioCodecSettings getCodecSettings() {
@@ -352,17 +356,17 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
 
     /**
      * Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio
-     * encoding. The settings in this group vary depending on the value you choose for Audio codec (Codec). For each
-     * codec enum you choose, define the corresponding settings object. The following lists the codec enum, settings
-     * object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3, Ac3Settings *
-     * EAC3, Eac3Settings
+     * encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3,
+     * Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      * 
      * @param codecSettings
      *        Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to
-     *        audio encoding. The settings in this group vary depending on the value you choose for Audio codec (Codec).
-     *        For each codec enum you choose, define the corresponding settings object. The following lists the codec
-     *        enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings
-     *        * AC3, Ac3Settings * EAC3, Eac3Settings
+     *        audio encoding. The settings in this group vary depending on the value that you choose for Audio codec
+     *        (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *        lists the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings *
+     *        AIFF, AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -586,12 +590,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or Director
-     * Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
      * @param streamName
-     *        Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or
-     *        Director Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     *        Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2".
+     *        For streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     *        end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      */
 
     public void setStreamName(String streamName) {
@@ -599,11 +605,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or Director
-     * Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
-     * @return Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or
-     *         Director Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * @return Specify a label for this output audio stream. For example, "English", "Director commentary", or
+     *         "track_2". For streaming outputs, MediaConvert passes this information into destination manifests for
+     *         display on the end-viewer's player device. For outputs in other output groups, the service ignores this
+     *         setting.
      */
 
     public String getStreamName() {
@@ -611,12 +620,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or Director
-     * Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
      * @param streamName
-     *        Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or
-     *        Director Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     *        Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2".
+     *        For streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     *        end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -83,50 +83,50 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.ConcurrentModificationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidServiceLinkedRoleStateException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.InvalidServiceLinkedRoleStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidServiceLinkedRoleStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.InvalidServiceLinkedRoleStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SkillNotLinkedException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.SkillNotLinkedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SkillNotLinkedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.SkillNotLinkedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAssociatedException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.ResourceAssociatedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAssociatedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.ResourceAssociatedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NameInUseException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.NameInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NameInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.NameInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.AlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.AlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSecretsManagerResourceException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.InvalidSecretsManagerResourceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSecretsManagerResourceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.InvalidSecretsManagerResourceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.UnauthorizedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.UnauthorizedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidUserStatusException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.InvalidUserStatusException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidUserStatusException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.InvalidUserStatusExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidCertificateAuthorityException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.InvalidCertificateAuthorityException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCertificateAuthorityException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.InvalidCertificateAuthorityExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidDeviceException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.InvalidDeviceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidDeviceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.InvalidDeviceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DeviceNotRegisteredException").withModeledClass(
-                                    com.amazonaws.services.alexaforbusiness.model.DeviceNotRegisteredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DeviceNotRegisteredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.alexaforbusiness.model.transform.DeviceNotRegisteredExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.alexaforbusiness.model.AmazonAlexaForBusinessException.class));
 
     public static AmazonAlexaForBusinessClientBuilder builder() {
@@ -1474,8 +1474,8 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
     /**
      * <p>
      * When this action is called for a specified shared device, it allows authorized users to delete the device's
-     * entire previous history of voice input data. This action can be called once every 24 hours for a specific shared
-     * device.
+     * entire previous history of voice input data and associated response data. This action can be called once every 24
+     * hours for a specific shared device.
      * </p>
      * 
      * @param deleteDeviceUsageDataRequest
@@ -4566,7 +4566,7 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
 
     /**
      * <p>
-     * Sends an enrollment invitation email with a URL to a user. The URL is valid for 72 hours or until you call this
+     * Sends an enrollment invitation email with a URL to a user. The URL is valid for 30 days or until you call this
      * operation again, whichever comes first.
      * </p>
      * 

@@ -53,11 +53,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String taskDefinition;
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -74,15 +77,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -110,6 +113,10 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The number of instantiations of the specified task definition to place and keep running on your cluster.
+     * </p>
+     * <p>
+     * This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     * <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
      * </p>
      */
     private Integer desiredCount;
@@ -248,10 +255,52 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
     /**
@@ -438,11 +487,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -459,15 +511,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -477,10 +529,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * associated with an elastic network interface, not an Amazon EC2 instance.
      * </p>
      * 
-     * @return A load balancer object representing the load balancer to use with your service.</p>
+     * @return A load balancer object representing the load balancers to use with your service. For more information,
+     *         see <a
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+     *         Load Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
      *         <p>
-     *         If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer
-     *         or target group.
+     *         If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     *         Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to
+     *         the service.
      *         </p>
      *         <p>
      *         If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to
@@ -499,16 +555,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *         updating the service.
      *         </p>
      *         <p>
-     *         For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
-     *         appears in a container definition), and the container port to access from the load balancer. When a task
-     *         from this service is placed on a container instance, the container instance is registered with the load
-     *         balancer specified here.
-     *         </p>
-     *         <p>
      *         For Application Load Balancers and Network Load Balancers, this object must contain the load balancer
      *         target group ARN, the container name (as it appears in a container definition), and the container port to
      *         access from the load balancer. When a task from this service is placed on a container instance, the
      *         container instance and port combination is registered as a target in the target group specified here.
+     *         </p>
+     *         <p>
+     *         For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
+     *         appears in a container definition), and the container port to access from the load balancer. When a task
+     *         from this service is placed on a container instance, the container instance is registered with the load
+     *         balancer specified here.
      *         </p>
      *         <p>
      *         Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
@@ -528,11 +584,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -549,15 +608,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -568,10 +627,13 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param loadBalancers
-     *        A load balancer object representing the load balancer to use with your service.</p>
+     *        A load balancer object representing the load balancers to use with your service. For more information, see
+     *        <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+     *        Load Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
      *        <p>
-     *        If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer
-     *        or target group.
+     *        If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     *        Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to
+     *        the service.
      *        </p>
      *        <p>
      *        If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use
@@ -590,16 +652,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        updating the service.
      *        </p>
      *        <p>
-     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
-     *        appears in a container definition), and the container port to access from the load balancer. When a task
-     *        from this service is placed on a container instance, the container instance is registered with the load
-     *        balancer specified here.
-     *        </p>
-     *        <p>
      *        For Application Load Balancers and Network Load Balancers, this object must contain the load balancer
      *        target group ARN, the container name (as it appears in a container definition), and the container port to
      *        access from the load balancer. When a task from this service is placed on a container instance, the
      *        container instance and port combination is registered as a target in the target group specified here.
+     *        </p>
+     *        <p>
+     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
+     *        appears in a container definition), and the container port to access from the load balancer. When a task
+     *        from this service is placed on a container instance, the container instance is registered with the load
+     *        balancer specified here.
      *        </p>
      *        <p>
      *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
@@ -621,11 +683,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -642,15 +707,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -666,10 +731,13 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param loadBalancers
-     *        A load balancer object representing the load balancer to use with your service.</p>
+     *        A load balancer object representing the load balancers to use with your service. For more information, see
+     *        <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+     *        Load Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
      *        <p>
-     *        If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer
-     *        or target group.
+     *        If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     *        Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to
+     *        the service.
      *        </p>
      *        <p>
      *        If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use
@@ -688,16 +756,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        updating the service.
      *        </p>
      *        <p>
-     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
-     *        appears in a container definition), and the container port to access from the load balancer. When a task
-     *        from this service is placed on a container instance, the container instance is registered with the load
-     *        balancer specified here.
-     *        </p>
-     *        <p>
      *        For Application Load Balancers and Network Load Balancers, this object must contain the load balancer
      *        target group ARN, the container name (as it appears in a container definition), and the container port to
      *        access from the load balancer. When a task from this service is placed on a container instance, the
      *        container instance and port combination is registered as a target in the target group specified here.
+     *        </p>
+     *        <p>
+     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
+     *        appears in a container definition), and the container port to access from the load balancer. When a task
+     *        from this service is placed on a container instance, the container instance is registered with the load
+     *        balancer specified here.
      *        </p>
      *        <p>
      *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
@@ -721,11 +789,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -742,15 +813,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -761,10 +832,13 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param loadBalancers
-     *        A load balancer object representing the load balancer to use with your service.</p>
+     *        A load balancer object representing the load balancers to use with your service. For more information, see
+     *        <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+     *        Load Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
      *        <p>
-     *        If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer
-     *        or target group.
+     *        If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     *        Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to
+     *        the service.
      *        </p>
      *        <p>
      *        If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use
@@ -783,16 +857,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        updating the service.
      *        </p>
      *        <p>
-     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
-     *        appears in a container definition), and the container port to access from the load balancer. When a task
-     *        from this service is placed on a container instance, the container instance is registered with the load
-     *        balancer specified here.
-     *        </p>
-     *        <p>
      *        For Application Load Balancers and Network Load Balancers, this object must contain the load balancer
      *        target group ARN, the container name (as it appears in a container definition), and the container port to
      *        access from the load balancer. When a task from this service is placed on a container instance, the
      *        container instance and port combination is registered as a target in the target group specified here.
+     *        </p>
+     *        <p>
+     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
+     *        appears in a container definition), and the container port to access from the load balancer. When a task
+     *        from this service is placed on a container instance, the container instance is registered with the load
+     *        balancer specified here.
      *        </p>
      *        <p>
      *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
@@ -950,9 +1024,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The number of instantiations of the specified task definition to place and keep running on your cluster.
      * </p>
+     * <p>
+     * This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     * <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
+     * </p>
      * 
      * @param desiredCount
-     *        The number of instantiations of the specified task definition to place and keep running on your cluster.
+     *        The number of instantiations of the specified task definition to place and keep running on your
+     *        cluster.</p>
+     *        <p>
+     *        This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     *        <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
      */
 
     public void setDesiredCount(Integer desiredCount) {
@@ -963,8 +1045,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The number of instantiations of the specified task definition to place and keep running on your cluster.
      * </p>
+     * <p>
+     * This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     * <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
+     * </p>
      * 
-     * @return The number of instantiations of the specified task definition to place and keep running on your cluster.
+     * @return The number of instantiations of the specified task definition to place and keep running on your
+     *         cluster.</p>
+     *         <p>
+     *         This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     *         <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
      */
 
     public Integer getDesiredCount() {
@@ -975,9 +1065,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The number of instantiations of the specified task definition to place and keep running on your cluster.
      * </p>
+     * <p>
+     * This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     * <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
+     * </p>
      * 
      * @param desiredCount
-     *        The number of instantiations of the specified task definition to place and keep running on your cluster.
+     *        The number of instantiations of the specified task definition to place and keep running on your
+     *        cluster.</p>
+     *        <p>
+     *        This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     *        <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1996,15 +2094,99 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
      *         a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
-     *         well. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum
-     *         length of 256 characters.
+     *         well.</p>
+     *         <p>
+     *         The following basic restrictions apply to tags:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Maximum number of tags per resource - 50
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For each resource, each tag key must be unique, and each tag key can have only one value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum key length - 128 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum value length - 256 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If your tagging schema is used across multiple services and resources, remember that other services may
+     *         have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *         representable in UTF-8, and the following characters: + - = . _ : / @.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Tag keys and values are case-sensitive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a
+     *         prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or
+     *         values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Tag> getTags() {
@@ -2017,16 +2199,100 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
      *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
-     *        well. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum
-     *        length of 256 characters.
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -2041,10 +2307,52 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
@@ -2054,8 +2362,50 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
      *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
-     *        well. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum
-     *        length of 256 characters.
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2072,16 +2422,100 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
      *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
-     *        well. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum
-     *        length of 256 characters.
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

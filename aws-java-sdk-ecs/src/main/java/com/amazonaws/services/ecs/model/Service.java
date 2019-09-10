@@ -54,13 +54,6 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container name (as
      * it appears in a container definition), and the container port to access from the load balancer.
      * </p>
-     * <p>
-     * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
-     * type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers are not
-     * supported. Also, when you create any target groups for these services, you must choose <code>ip</code> as the
-     * target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code> network mode are associated with
-     * an elastic network interface, not an Amazon EC2 instance.
-     * </p>
      */
     private com.amazonaws.internal.SdkInternalList<LoadBalancer> loadBalancers;
     /**
@@ -221,16 +214,60 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     private String schedulingStrategy;
     /**
      * <p>
-     * The deployment controller type the service is using.
+     * The deployment controller type the service is using. When using the DescribeServices API, this field is omitted
+     * if the service is using the <code>ECS</code> deployment controller type.
      * </p>
      */
     private DeploymentController deploymentController;
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters,
-     * and tag values can have a maximum length of 256 characters.
+     * and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
     /**
@@ -404,23 +441,9 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container name (as
      * it appears in a container definition), and the container port to access from the load balancer.
      * </p>
-     * <p>
-     * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
-     * type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers are not
-     * supported. Also, when you create any target groups for these services, you must choose <code>ip</code> as the
-     * target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code> network mode are associated with
-     * an elastic network interface, not an Amazon EC2 instance.
-     * </p>
      * 
      * @return A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container
-     *         name (as it appears in a container definition), and the container port to access from the load
-     *         balancer.</p>
-     *         <p>
-     *         Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
-     *         launch type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers
-     *         are not supported. Also, when you create any target groups for these services, you must choose
-     *         <code>ip</code> as the target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code>
-     *         network mode are associated with an elastic network interface, not an Amazon EC2 instance.
+     *         name (as it appears in a container definition), and the container port to access from the load balancer.
      */
 
     public java.util.List<LoadBalancer> getLoadBalancers() {
@@ -435,24 +458,10 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container name (as
      * it appears in a container definition), and the container port to access from the load balancer.
      * </p>
-     * <p>
-     * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
-     * type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers are not
-     * supported. Also, when you create any target groups for these services, you must choose <code>ip</code> as the
-     * target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code> network mode are associated with
-     * an elastic network interface, not an Amazon EC2 instance.
-     * </p>
      * 
      * @param loadBalancers
      *        A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container
-     *        name (as it appears in a container definition), and the container port to access from the load
-     *        balancer.</p>
-     *        <p>
-     *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
-     *        launch type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers
-     *        are not supported. Also, when you create any target groups for these services, you must choose
-     *        <code>ip</code> as the target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code>
-     *        network mode are associated with an elastic network interface, not an Amazon EC2 instance.
+     *        name (as it appears in a container definition), and the container port to access from the load balancer.
      */
 
     public void setLoadBalancers(java.util.Collection<LoadBalancer> loadBalancers) {
@@ -470,13 +479,6 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * it appears in a container definition), and the container port to access from the load balancer.
      * </p>
      * <p>
-     * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
-     * type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers are not
-     * supported. Also, when you create any target groups for these services, you must choose <code>ip</code> as the
-     * target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code> network mode are associated with
-     * an elastic network interface, not an Amazon EC2 instance.
-     * </p>
-     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setLoadBalancers(java.util.Collection)} or {@link #withLoadBalancers(java.util.Collection)} if you want
      * to override the existing values.
@@ -484,14 +486,7 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param loadBalancers
      *        A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container
-     *        name (as it appears in a container definition), and the container port to access from the load
-     *        balancer.</p>
-     *        <p>
-     *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
-     *        launch type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers
-     *        are not supported. Also, when you create any target groups for these services, you must choose
-     *        <code>ip</code> as the target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code>
-     *        network mode are associated with an elastic network interface, not an Amazon EC2 instance.
+     *        name (as it appears in a container definition), and the container port to access from the load balancer.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -510,24 +505,10 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container name (as
      * it appears in a container definition), and the container port to access from the load balancer.
      * </p>
-     * <p>
-     * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
-     * type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers are not
-     * supported. Also, when you create any target groups for these services, you must choose <code>ip</code> as the
-     * target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code> network mode are associated with
-     * an elastic network interface, not an Amazon EC2 instance.
-     * </p>
      * 
      * @param loadBalancers
      *        A list of Elastic Load Balancing load balancer objects, containing the load balancer name, the container
-     *        name (as it appears in a container definition), and the container port to access from the load
-     *        balancer.</p>
-     *        <p>
-     *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
-     *        launch type) only support Application Load Balancers and Network Load Balancers. Classic Load Balancers
-     *        are not supported. Also, when you create any target groups for these services, you must choose
-     *        <code>ip</code> as the target type, not <code>instance</code>. Tasks that use the <code>awsvpc</code>
-     *        network mode are associated with an elastic network interface, not an Amazon EC2 instance.
+     *        name (as it appears in a container definition), and the container port to access from the load balancer.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1846,11 +1827,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The deployment controller type the service is using.
+     * The deployment controller type the service is using. When using the DescribeServices API, this field is omitted
+     * if the service is using the <code>ECS</code> deployment controller type.
      * </p>
      * 
      * @param deploymentController
-     *        The deployment controller type the service is using.
+     *        The deployment controller type the service is using. When using the DescribeServices API, this field is
+     *        omitted if the service is using the <code>ECS</code> deployment controller type.
      */
 
     public void setDeploymentController(DeploymentController deploymentController) {
@@ -1859,10 +1842,12 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The deployment controller type the service is using.
+     * The deployment controller type the service is using. When using the DescribeServices API, this field is omitted
+     * if the service is using the <code>ECS</code> deployment controller type.
      * </p>
      * 
-     * @return The deployment controller type the service is using.
+     * @return The deployment controller type the service is using. When using the DescribeServices API, this field is
+     *         omitted if the service is using the <code>ECS</code> deployment controller type.
      */
 
     public DeploymentController getDeploymentController() {
@@ -1871,11 +1856,13 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The deployment controller type the service is using.
+     * The deployment controller type the service is using. When using the DescribeServices API, this field is omitted
+     * if the service is using the <code>ECS</code> deployment controller type.
      * </p>
      * 
      * @param deploymentController
-     *        The deployment controller type the service is using.
+     *        The deployment controller type the service is using. When using the DescribeServices API, this field is
+     *        omitted if the service is using the <code>ECS</code> deployment controller type.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1887,13 +1874,98 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters,
-     * and tag values can have a maximum length of 256 characters.
+     * and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
-     *         a key and an optional value, both of which you define. Tag keys can have a maximum character length of
-     *         128 characters, and tag values can have a maximum length of 256 characters.
+     *         a key and an optional value, both of which you define.</p>
+     *         <p>
+     *         The following basic restrictions apply to tags:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Maximum number of tags per resource - 50
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For each resource, each tag key must be unique, and each tag key can have only one value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum key length - 128 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum value length - 256 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If your tagging schema is used across multiple services and resources, remember that other services may
+     *         have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *         representable in UTF-8, and the following characters: + - = . _ : / @.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Tag keys and values are case-sensitive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a
+     *         prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or
+     *         values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Tag> getTags() {
@@ -1906,14 +1978,99 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters,
-     * and tag values can have a maximum length of 256 characters.
+     * and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
-     *        a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     *        characters, and tag values can have a maximum length of 256 characters.
+     *        a key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -1928,9 +2085,52 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters,
-     * and tag values can have a maximum length of 256 characters.
+     * and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
@@ -1939,8 +2139,50 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
-     *        a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     *        characters, and tag values can have a maximum length of 256 characters.
+     *        a key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1957,14 +2199,99 @@ public class Service implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters,
-     * and tag values can have a maximum length of 256 characters.
+     * and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
-     *        a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     *        characters, and tag values can have a maximum length of 256 characters.
+     *        a key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

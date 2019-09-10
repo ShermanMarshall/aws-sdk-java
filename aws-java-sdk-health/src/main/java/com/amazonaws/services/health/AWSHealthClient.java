@@ -101,10 +101,11 @@ import com.amazonaws.services.health.model.transform.*;
  * </p>
  * <p>
  * For authentication of requests, AWS Health uses the <a
- * href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing Process</a>.
+ * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
+ * Process</a>.
  * </p>
  * <p>
- * See the <a href="http://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html">AWS Health User Guide</a> for
+ * See the <a href="https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html">AWS Health User Guide</a> for
  * information about how to use the API.
  * </p>
  * <p>
@@ -144,11 +145,11 @@ public class AWSHealthClient extends AmazonWebServiceClient implements AWSHealth
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedLocale").withModeledClass(
-                                    com.amazonaws.services.health.model.UnsupportedLocaleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedLocale").withExceptionUnmarshaller(
+                                    com.amazonaws.services.health.model.transform.UnsupportedLocaleExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPaginationToken").withModeledClass(
-                                    com.amazonaws.services.health.model.InvalidPaginationTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPaginationToken").withExceptionUnmarshaller(
+                                    com.amazonaws.services.health.model.transform.InvalidPaginationTokenExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.health.model.AWSHealthException.class));
 
     /**

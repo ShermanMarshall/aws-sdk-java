@@ -75,8 +75,9 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MarketplaceCommerceAnalyticsException").withModeledClass(
-                                    com.amazonaws.services.marketplacecommerceanalytics.model.MarketplaceCommerceAnalyticsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MarketplaceCommerceAnalyticsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacecommerceanalytics.model.transform.MarketplaceCommerceAnalyticsExceptionUnmarshaller
+                                            .getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.marketplacecommerceanalytics.model.AWSMarketplaceCommerceAnalyticsException.class));
 
     /**
