@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,6 +52,9 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      * href="http://www.iana.org/assignments/media-types/media-types.xhtml">Media Types</a>. If you choose to specify
      * the <code>MediaType</code>, see <a href="https://tools.ietf.org/html/rfc6838#section-4.2">Naming Requirements</a>
      * for guidelines.
+     * </p>
+     * <p>
+     * Example valid values include "video/h264" and "video/h264,audio/aac".
      * </p>
      * <p>
      * This parameter is optional; the default value is <code>null</code> (or empty in JSON).
@@ -223,6 +226,9 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      * for guidelines.
      * </p>
      * <p>
+     * Example valid values include "video/h264" and "video/h264,audio/aac".
+     * </p>
+     * <p>
      * This parameter is optional; the default value is <code>null</code> (or empty in JSON).
      * </p>
      * 
@@ -232,6 +238,9 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        href="http://www.iana.org/assignments/media-types/media-types.xhtml">Media Types</a>. If you choose to
      *        specify the <code>MediaType</code>, see <a href="https://tools.ietf.org/html/rfc6838#section-4.2">Naming
      *        Requirements</a> for guidelines.</p>
+     *        <p>
+     *        Example valid values include "video/h264" and "video/h264,audio/aac".
+     *        </p>
      *        <p>
      *        This parameter is optional; the default value is <code>null</code> (or empty in JSON).
      */
@@ -249,6 +258,9 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      * for guidelines.
      * </p>
      * <p>
+     * Example valid values include "video/h264" and "video/h264,audio/aac".
+     * </p>
+     * <p>
      * This parameter is optional; the default value is <code>null</code> (or empty in JSON).
      * </p>
      * 
@@ -257,6 +269,9 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         href="http://www.iana.org/assignments/media-types/media-types.xhtml">Media Types</a>. If you choose to
      *         specify the <code>MediaType</code>, see <a href="https://tools.ietf.org/html/rfc6838#section-4.2">Naming
      *         Requirements</a> for guidelines.</p>
+     *         <p>
+     *         Example valid values include "video/h264" and "video/h264,audio/aac".
+     *         </p>
      *         <p>
      *         This parameter is optional; the default value is <code>null</code> (or empty in JSON).
      */
@@ -274,6 +289,9 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      * for guidelines.
      * </p>
      * <p>
+     * Example valid values include "video/h264" and "video/h264,audio/aac".
+     * </p>
+     * <p>
      * This parameter is optional; the default value is <code>null</code> (or empty in JSON).
      * </p>
      * 
@@ -283,6 +301,9 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        href="http://www.iana.org/assignments/media-types/media-types.xhtml">Media Types</a>. If you choose to
      *        specify the <code>MediaType</code>, see <a href="https://tools.ietf.org/html/rfc6838#section-4.2">Naming
      *        Requirements</a> for guidelines.</p>
+     *        <p>
+     *        Example valid values include "video/h264" and "video/h264,audio/aac".
+     *        </p>
      *        <p>
      *        This parameter is optional; the default value is <code>null</code> (or empty in JSON).
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -518,6 +539,13 @@ public class CreateStreamRequest extends com.amazonaws.AmazonWebServiceRequest i
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see CreateStreamRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreateStreamRequest addTagsEntry(String key, String value) {
         if (null == this.tags) {

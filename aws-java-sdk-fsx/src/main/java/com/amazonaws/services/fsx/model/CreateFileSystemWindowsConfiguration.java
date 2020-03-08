@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,6 +40,40 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
     private SelfManagedActiveDirectoryConfiguration selfManagedActiveDirectoryConfiguration;
     /**
      * <p>
+     * Specifies the file system deployment type, valid values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to tolerate
+     * temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in AWS Regions that
+     * have a minimum of three Availability Zones.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To learn more about high availability Multi-AZ file systems, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High Availability for
+     * Amazon FSx for Windows File Server</a>.
+     * </p>
+     */
+    private String deploymentType;
+    /**
+     * <p>
+     * Required when <code>DeploymentType</code> is set to <code>MULTI_AZ_1</code>. This specifies the subnet in which
+     * you want the preferred file server to be located. For in-AWS applications, we recommend that you launch your
+     * clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ data transfer costs
+     * and minimize latency.
+     * </p>
+     */
+    private String preferredSubnetId;
+    /**
+     * <p>
      * The throughput of an Amazon FSx file system, measured in megabytes per second, in 2 to the <i>n</i>th increments,
      * between 2^3 (8) and 2^11 (2048).
      * </p>
@@ -69,7 +103,8 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
      * A boolean flag indicating whether tags for the file system should be copied to backups. This value defaults to
      * false. If it's set to true, all tags for the file system are copied to all automatic and user-initiated backups
      * where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the specified
-     * tags are copied to backups.
+     * tags are copied to backups. If you specify one or more tags when creating a user-initiated backup, no tags are
+     * copied from the file system, regardless of this value.
      * </p>
      */
     private Boolean copyTagsToBackups;
@@ -144,6 +179,271 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
     public CreateFileSystemWindowsConfiguration withSelfManagedActiveDirectoryConfiguration(
             SelfManagedActiveDirectoryConfiguration selfManagedActiveDirectoryConfiguration) {
         setSelfManagedActiveDirectoryConfiguration(selfManagedActiveDirectoryConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies the file system deployment type, valid values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to tolerate
+     * temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in AWS Regions that
+     * have a minimum of three Availability Zones.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To learn more about high availability Multi-AZ file systems, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High Availability for
+     * Amazon FSx for Windows File Server</a>.
+     * </p>
+     * 
+     * @param deploymentType
+     *        Specifies the file system deployment type, valid values are the following:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to
+     *        tolerate temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in
+     *        AWS Regions that have a minimum of three Availability Zones.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        To learn more about high availability Multi-AZ file systems, see <a
+     *        href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High
+     *        Availability for Amazon FSx for Windows File Server</a>.
+     * @see WindowsDeploymentType
+     */
+
+    public void setDeploymentType(String deploymentType) {
+        this.deploymentType = deploymentType;
+    }
+
+    /**
+     * <p>
+     * Specifies the file system deployment type, valid values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to tolerate
+     * temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in AWS Regions that
+     * have a minimum of three Availability Zones.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To learn more about high availability Multi-AZ file systems, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High Availability for
+     * Amazon FSx for Windows File Server</a>.
+     * </p>
+     * 
+     * @return Specifies the file system deployment type, valid values are the following:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to
+     *         tolerate temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in
+     *         AWS Regions that have a minimum of three Availability Zones.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         To learn more about high availability Multi-AZ file systems, see <a
+     *         href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High
+     *         Availability for Amazon FSx for Windows File Server</a>.
+     * @see WindowsDeploymentType
+     */
+
+    public String getDeploymentType() {
+        return this.deploymentType;
+    }
+
+    /**
+     * <p>
+     * Specifies the file system deployment type, valid values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to tolerate
+     * temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in AWS Regions that
+     * have a minimum of three Availability Zones.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To learn more about high availability Multi-AZ file systems, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High Availability for
+     * Amazon FSx for Windows File Server</a>.
+     * </p>
+     * 
+     * @param deploymentType
+     *        Specifies the file system deployment type, valid values are the following:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to
+     *        tolerate temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in
+     *        AWS Regions that have a minimum of three Availability Zones.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        To learn more about high availability Multi-AZ file systems, see <a
+     *        href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High
+     *        Availability for Amazon FSx for Windows File Server</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see WindowsDeploymentType
+     */
+
+    public CreateFileSystemWindowsConfiguration withDeploymentType(String deploymentType) {
+        setDeploymentType(deploymentType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies the file system deployment type, valid values are the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to tolerate
+     * temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in AWS Regions that
+     * have a minimum of three Availability Zones.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To learn more about high availability Multi-AZ file systems, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High Availability for
+     * Amazon FSx for Windows File Server</a>.
+     * </p>
+     * 
+     * @param deploymentType
+     *        Specifies the file system deployment type, valid values are the following:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        MULTI_AZ_1 - Deploys a high availability file system that is configured for Multi-AZ redundancy to
+     *        tolerate temporary Availability Zone (AZ) unavailability. You can only deploy a Multi-AZ file system in
+     *        AWS Regions that have a minimum of three Availability Zones.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SINGLE_AZ_1 - (Default) Choose to deploy a file system that is configured for single AZ redundancy.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        To learn more about high availability Multi-AZ file systems, see <a
+     *        href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html"> High
+     *        Availability for Amazon FSx for Windows File Server</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see WindowsDeploymentType
+     */
+
+    public CreateFileSystemWindowsConfiguration withDeploymentType(WindowsDeploymentType deploymentType) {
+        this.deploymentType = deploymentType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * Required when <code>DeploymentType</code> is set to <code>MULTI_AZ_1</code>. This specifies the subnet in which
+     * you want the preferred file server to be located. For in-AWS applications, we recommend that you launch your
+     * clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ data transfer costs
+     * and minimize latency.
+     * </p>
+     * 
+     * @param preferredSubnetId
+     *        Required when <code>DeploymentType</code> is set to <code>MULTI_AZ_1</code>. This specifies the subnet in
+     *        which you want the preferred file server to be located. For in-AWS applications, we recommend that you
+     *        launch your clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ
+     *        data transfer costs and minimize latency.
+     */
+
+    public void setPreferredSubnetId(String preferredSubnetId) {
+        this.preferredSubnetId = preferredSubnetId;
+    }
+
+    /**
+     * <p>
+     * Required when <code>DeploymentType</code> is set to <code>MULTI_AZ_1</code>. This specifies the subnet in which
+     * you want the preferred file server to be located. For in-AWS applications, we recommend that you launch your
+     * clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ data transfer costs
+     * and minimize latency.
+     * </p>
+     * 
+     * @return Required when <code>DeploymentType</code> is set to <code>MULTI_AZ_1</code>. This specifies the subnet in
+     *         which you want the preferred file server to be located. For in-AWS applications, we recommend that you
+     *         launch your clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ
+     *         data transfer costs and minimize latency.
+     */
+
+    public String getPreferredSubnetId() {
+        return this.preferredSubnetId;
+    }
+
+    /**
+     * <p>
+     * Required when <code>DeploymentType</code> is set to <code>MULTI_AZ_1</code>. This specifies the subnet in which
+     * you want the preferred file server to be located. For in-AWS applications, we recommend that you launch your
+     * clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ data transfer costs
+     * and minimize latency.
+     * </p>
+     * 
+     * @param preferredSubnetId
+     *        Required when <code>DeploymentType</code> is set to <code>MULTI_AZ_1</code>. This specifies the subnet in
+     *        which you want the preferred file server to be located. For in-AWS applications, we recommend that you
+     *        launch your clients in the same Availability Zone (AZ) as your preferred file server to reduce cross-AZ
+     *        data transfer costs and minimize latency.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFileSystemWindowsConfiguration withPreferredSubnetId(String preferredSubnetId) {
+        setPreferredSubnetId(preferredSubnetId);
         return this;
     }
 
@@ -327,14 +627,16 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
      * A boolean flag indicating whether tags for the file system should be copied to backups. This value defaults to
      * false. If it's set to true, all tags for the file system are copied to all automatic and user-initiated backups
      * where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the specified
-     * tags are copied to backups.
+     * tags are copied to backups. If you specify one or more tags when creating a user-initiated backup, no tags are
+     * copied from the file system, regardless of this value.
      * </p>
      * 
      * @param copyTagsToBackups
      *        A boolean flag indicating whether tags for the file system should be copied to backups. This value
      *        defaults to false. If it's set to true, all tags for the file system are copied to all automatic and
      *        user-initiated backups where the user doesn't specify tags. If this value is true, and you specify one or
-     *        more tags, only the specified tags are copied to backups.
+     *        more tags, only the specified tags are copied to backups. If you specify one or more tags when creating a
+     *        user-initiated backup, no tags are copied from the file system, regardless of this value.
      */
 
     public void setCopyTagsToBackups(Boolean copyTagsToBackups) {
@@ -346,13 +648,15 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
      * A boolean flag indicating whether tags for the file system should be copied to backups. This value defaults to
      * false. If it's set to true, all tags for the file system are copied to all automatic and user-initiated backups
      * where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the specified
-     * tags are copied to backups.
+     * tags are copied to backups. If you specify one or more tags when creating a user-initiated backup, no tags are
+     * copied from the file system, regardless of this value.
      * </p>
      * 
      * @return A boolean flag indicating whether tags for the file system should be copied to backups. This value
      *         defaults to false. If it's set to true, all tags for the file system are copied to all automatic and
      *         user-initiated backups where the user doesn't specify tags. If this value is true, and you specify one or
-     *         more tags, only the specified tags are copied to backups.
+     *         more tags, only the specified tags are copied to backups. If you specify one or more tags when creating a
+     *         user-initiated backup, no tags are copied from the file system, regardless of this value.
      */
 
     public Boolean getCopyTagsToBackups() {
@@ -364,14 +668,16 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
      * A boolean flag indicating whether tags for the file system should be copied to backups. This value defaults to
      * false. If it's set to true, all tags for the file system are copied to all automatic and user-initiated backups
      * where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the specified
-     * tags are copied to backups.
+     * tags are copied to backups. If you specify one or more tags when creating a user-initiated backup, no tags are
+     * copied from the file system, regardless of this value.
      * </p>
      * 
      * @param copyTagsToBackups
      *        A boolean flag indicating whether tags for the file system should be copied to backups. This value
      *        defaults to false. If it's set to true, all tags for the file system are copied to all automatic and
      *        user-initiated backups where the user doesn't specify tags. If this value is true, and you specify one or
-     *        more tags, only the specified tags are copied to backups.
+     *        more tags, only the specified tags are copied to backups. If you specify one or more tags when creating a
+     *        user-initiated backup, no tags are copied from the file system, regardless of this value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -385,13 +691,15 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
      * A boolean flag indicating whether tags for the file system should be copied to backups. This value defaults to
      * false. If it's set to true, all tags for the file system are copied to all automatic and user-initiated backups
      * where the user doesn't specify tags. If this value is true, and you specify one or more tags, only the specified
-     * tags are copied to backups.
+     * tags are copied to backups. If you specify one or more tags when creating a user-initiated backup, no tags are
+     * copied from the file system, regardless of this value.
      * </p>
      * 
      * @return A boolean flag indicating whether tags for the file system should be copied to backups. This value
      *         defaults to false. If it's set to true, all tags for the file system are copied to all automatic and
      *         user-initiated backups where the user doesn't specify tags. If this value is true, and you specify one or
-     *         more tags, only the specified tags are copied to backups.
+     *         more tags, only the specified tags are copied to backups. If you specify one or more tags when creating a
+     *         user-initiated backup, no tags are copied from the file system, regardless of this value.
      */
 
     public Boolean isCopyTagsToBackups() {
@@ -414,6 +722,10 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
             sb.append("ActiveDirectoryId: ").append(getActiveDirectoryId()).append(",");
         if (getSelfManagedActiveDirectoryConfiguration() != null)
             sb.append("SelfManagedActiveDirectoryConfiguration: ").append(getSelfManagedActiveDirectoryConfiguration()).append(",");
+        if (getDeploymentType() != null)
+            sb.append("DeploymentType: ").append(getDeploymentType()).append(",");
+        if (getPreferredSubnetId() != null)
+            sb.append("PreferredSubnetId: ").append(getPreferredSubnetId()).append(",");
         if (getThroughputCapacity() != null)
             sb.append("ThroughputCapacity: ").append(getThroughputCapacity()).append(",");
         if (getWeeklyMaintenanceStartTime() != null)
@@ -447,6 +759,14 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
         if (other.getSelfManagedActiveDirectoryConfiguration() != null
                 && other.getSelfManagedActiveDirectoryConfiguration().equals(this.getSelfManagedActiveDirectoryConfiguration()) == false)
             return false;
+        if (other.getDeploymentType() == null ^ this.getDeploymentType() == null)
+            return false;
+        if (other.getDeploymentType() != null && other.getDeploymentType().equals(this.getDeploymentType()) == false)
+            return false;
+        if (other.getPreferredSubnetId() == null ^ this.getPreferredSubnetId() == null)
+            return false;
+        if (other.getPreferredSubnetId() != null && other.getPreferredSubnetId().equals(this.getPreferredSubnetId()) == false)
+            return false;
         if (other.getThroughputCapacity() == null ^ this.getThroughputCapacity() == null)
             return false;
         if (other.getThroughputCapacity() != null && other.getThroughputCapacity().equals(this.getThroughputCapacity()) == false)
@@ -478,6 +798,8 @@ public class CreateFileSystemWindowsConfiguration implements Serializable, Clone
 
         hashCode = prime * hashCode + ((getActiveDirectoryId() == null) ? 0 : getActiveDirectoryId().hashCode());
         hashCode = prime * hashCode + ((getSelfManagedActiveDirectoryConfiguration() == null) ? 0 : getSelfManagedActiveDirectoryConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getDeploymentType() == null) ? 0 : getDeploymentType().hashCode());
+        hashCode = prime * hashCode + ((getPreferredSubnetId() == null) ? 0 : getPreferredSubnetId().hashCode());
         hashCode = prime * hashCode + ((getThroughputCapacity() == null) ? 0 : getThroughputCapacity().hashCode());
         hashCode = prime * hashCode + ((getWeeklyMaintenanceStartTime() == null) ? 0 : getWeeklyMaintenanceStartTime().hashCode());
         hashCode = prime * hashCode + ((getDailyAutomaticBackupStartTime() == null) ? 0 : getDailyAutomaticBackupStartTime().hashCode());

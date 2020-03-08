@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -76,14 +76,15 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This
      * ARN was created using the <a
-     * href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS KMS.
+     * href="https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS
+     * KMS.
      * </p>
      */
     private String kmsKeyARN;
     /**
      * <p>
      * The role ARN associated with this job. This ARN was created using the <a
-     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS
+     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS
      * Identity and Access Management (IAM).
      * </p>
      */
@@ -144,6 +145,12 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String forwardingAddressId;
+    /**
+     * <p>
+     * The metadata associated with the tax documents required in your AWS Region.
+     * </p>
+     */
+    private TaxDocuments taxDocuments;
 
     /**
      * <p>
@@ -537,13 +544,14 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This
      * ARN was created using the <a
-     * href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS KMS.
+     * href="https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS
+     * KMS.
      * </p>
      * 
      * @param kmsKeyARN
      *        The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job.
      *        This ARN was created using the <a
-     *        href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in
+     *        href="https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in
      *        AWS KMS.
      */
 
@@ -555,12 +563,13 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This
      * ARN was created using the <a
-     * href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS KMS.
+     * href="https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS
+     * KMS.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job.
      *         This ARN was created using the <a
-     *         href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in
+     *         href="https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in
      *         AWS KMS.
      */
 
@@ -572,13 +581,14 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This
      * ARN was created using the <a
-     * href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS KMS.
+     * href="https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in AWS
+     * KMS.
      * </p>
      * 
      * @param kmsKeyARN
      *        The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job.
      *        This ARN was created using the <a
-     *        href="http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in
+     *        href="https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html">CreateKey</a> API action in
      *        AWS KMS.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -591,14 +601,14 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The role ARN associated with this job. This ARN was created using the <a
-     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS
+     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS
      * Identity and Access Management (IAM).
      * </p>
      * 
      * @param roleARN
      *        The role ARN associated with this job. This ARN was created using the <a
-     *        href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in
-     *        AWS Identity and Access Management (IAM).
+     *        href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action
+     *        in AWS Identity and Access Management (IAM).
      */
 
     public void setRoleARN(String roleARN) {
@@ -608,12 +618,12 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The role ARN associated with this job. This ARN was created using the <a
-     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS
+     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS
      * Identity and Access Management (IAM).
      * </p>
      * 
      * @return The role ARN associated with this job. This ARN was created using the <a
-     *         href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action
+     *         href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action
      *         in AWS Identity and Access Management (IAM).
      */
 
@@ -624,14 +634,14 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The role ARN associated with this job. This ARN was created using the <a
-     * href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS
+     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in AWS
      * Identity and Access Management (IAM).
      * </p>
      * 
      * @param roleARN
      *        The role ARN associated with this job. This ARN was created using the <a
-     *        href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action in
-     *        AWS Identity and Access Management (IAM).
+     *        href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a> API action
+     *        in AWS Identity and Access Management (IAM).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1046,6 +1056,46 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The metadata associated with the tax documents required in your AWS Region.
+     * </p>
+     * 
+     * @param taxDocuments
+     *        The metadata associated with the tax documents required in your AWS Region.
+     */
+
+    public void setTaxDocuments(TaxDocuments taxDocuments) {
+        this.taxDocuments = taxDocuments;
+    }
+
+    /**
+     * <p>
+     * The metadata associated with the tax documents required in your AWS Region.
+     * </p>
+     * 
+     * @return The metadata associated with the tax documents required in your AWS Region.
+     */
+
+    public TaxDocuments getTaxDocuments() {
+        return this.taxDocuments;
+    }
+
+    /**
+     * <p>
+     * The metadata associated with the tax documents required in your AWS Region.
+     * </p>
+     * 
+     * @param taxDocuments
+     *        The metadata associated with the tax documents required in your AWS Region.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobMetadata withTaxDocuments(TaxDocuments taxDocuments) {
+        setTaxDocuments(taxDocuments);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1090,7 +1140,9 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
         if (getClusterId() != null)
             sb.append("ClusterId: ").append(getClusterId()).append(",");
         if (getForwardingAddressId() != null)
-            sb.append("ForwardingAddressId: ").append(getForwardingAddressId());
+            sb.append("ForwardingAddressId: ").append(getForwardingAddressId()).append(",");
+        if (getTaxDocuments() != null)
+            sb.append("TaxDocuments: ").append(getTaxDocuments());
         sb.append("}");
         return sb.toString();
     }
@@ -1173,6 +1225,10 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getForwardingAddressId() != null && other.getForwardingAddressId().equals(this.getForwardingAddressId()) == false)
             return false;
+        if (other.getTaxDocuments() == null ^ this.getTaxDocuments() == null)
+            return false;
+        if (other.getTaxDocuments() != null && other.getTaxDocuments().equals(this.getTaxDocuments()) == false)
+            return false;
         return true;
     }
 
@@ -1198,6 +1254,7 @@ public class JobMetadata implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getJobLogInfo() == null) ? 0 : getJobLogInfo().hashCode());
         hashCode = prime * hashCode + ((getClusterId() == null) ? 0 : getClusterId().hashCode());
         hashCode = prime * hashCode + ((getForwardingAddressId() == null) ? 0 : getForwardingAddressId().hashCode());
+        hashCode = prime * hashCode + ((getTaxDocuments() == null) ? 0 : getTaxDocuments().hashCode());
         return hashCode;
     }
 

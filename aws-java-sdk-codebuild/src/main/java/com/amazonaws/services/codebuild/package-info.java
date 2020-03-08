@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,8 @@
  * scale your own build servers. It provides prepackaged build environments for the most popular programming languages
  * and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in AWS
  * CodeBuild to use your own build tools. AWS CodeBuild scales automatically to meet peak build requests. You pay only
- * for the build time you consume. For more information about AWS CodeBuild, see the <i>AWS CodeBuild User Guide</i>.
+ * for the build time you consume. For more information about AWS CodeBuild, see the <i> <a
+ * href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">AWS CodeBuild User Guide</a>.</i>
  * </p>
  * <p>
  * AWS CodeBuild supports these operations:
@@ -28,6 +29,11 @@
  * <li>
  * <p>
  * <code>BatchDeleteBuilds</code>: Deletes one or more builds.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>BatchGetBuilds</code>: Gets information about one or more builds.
  * </p>
  * </li>
  * <li>
@@ -41,7 +47,22 @@
  * </li>
  * <li>
  * <p>
+ * <code>BatchGetReportGroups</code>: Returns an array of report groups.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>BatchGetReports</code>: Returns an array of reports.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * <code>CreateProject</code>: Creates a build project.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>CreateReportGroup</code>: Creates a report group. A report group contains a collection of reports.
  * </p>
  * </li>
  * <li>
@@ -53,12 +74,27 @@
  * </li>
  * <li>
  * <p>
- * <code>UpdateWebhook</code>: Changes the settings of an existing webhook.
+ * <code>DeleteProject</code>: Deletes a build project.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>DeleteProject</code>: Deletes a build project.
+ * <code>DeleteReport</code>: Deletes a report.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>DeleteReportGroup</code>: Deletes a report group.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>DeleteResourcePolicy</code>: Deletes a resource policy that is identified by its resource ARN.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>DeleteSourceCredentials</code>: Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
  * </p>
  * </li>
  * <li>
@@ -70,18 +106,23 @@
  * </li>
  * <li>
  * <p>
- * <code>ListProjects</code>: Gets a list of build project names, with each build project name representing a single
- * build project.
+ * <code>DescribeTestCases</code>: Returns a list of details about test cases for a report.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>UpdateProject</code>: Changes the settings of an existing build project.
+ * <code>GetResourcePolicy</code>: Gets a resource policy that is identified by its resource ARN.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>BatchGetBuilds</code>: Gets information about one or more builds.
+ * <code>ImportSourceCredentials</code>: Imports the source repository credentials for an AWS CodeBuild project that has
+ * its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>InvalidateProjectCache</code>: Resets the cache for a project.
  * </p>
  * </li>
  * <li>
@@ -97,6 +138,58 @@
  * </li>
  * <li>
  * <p>
+ * <code>ListCuratedEnvironmentImages</code>: Gets information about Docker images that are managed by AWS CodeBuild.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListProjects</code>: Gets a list of build project names, with each build project name representing a single
+ * build project.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListReportGroups</code>: Gets a list ARNs for the report groups in the current AWS account.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListReports</code>: Gets a list ARNs for the reports in the current AWS account.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListReportsForReportGroup</code>: Returns a list of ARNs for the reports that belong to a
+ * <code>ReportGroup</code>.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListSharedProjects</code>: Gets a list of ARNs associated with projects shared with the current AWS account or
+ * user.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListSharedReportGroups</code>: Gets a list of ARNs associated with report groups shared with the current AWS
+ * account or user
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListSourceCredentials</code>: Returns a list of <code>SourceCredentialsInfo</code> objects. Each
+ * <code>SourceCredentialsInfo</code> object includes the authentication type, token ARN, and type of source provider
+ * for one set of credentials.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>PutResourcePolicy</code>: Stores a resource policy for the ARN of a <code>Project</code> or
+ * <code>ReportGroup</code> object.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * <code>StartBuild</code>: Starts running a build.
  * </p>
  * </li>
@@ -107,25 +200,17 @@
  * </li>
  * <li>
  * <p>
- * <code>ListCuratedEnvironmentImages</code>: Gets information about Docker images that are managed by AWS CodeBuild.
+ * <code>UpdateProject</code>: Changes the settings of an existing build project.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>DeleteSourceCredentials</code>: Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
+ * <code>UpdateReportGroup</code>: Changes a report group.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>ImportSourceCredentials</code>: Imports the source repository credentials for an AWS CodeBuild project that has
- * its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>ListSourceCredentials</code>: Returns a list of <code>SourceCredentialsInfo</code> objects. Each
- * <code>SourceCredentialsInfo</code> object includes the authentication type, token ARN, and type of source provider
- * for one set of credentials.
+ * <code>UpdateWebhook</code>: Changes the settings of an existing webhook.
  * </p>
  * </li>
  * </ul>

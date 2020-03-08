@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -3069,7 +3069,9 @@ public class AmazonAlexaForBusinessClient extends AmazonWebServiceClient impleme
 
     /**
      * <p>
-     * Lists the details of the schedules that a user configured.
+     * Lists the details of the schedules that a user configured. A download URL of the report associated with each
+     * schedule is returned every time this action is called. A new download URL is returned each time, and is valid for
+     * 24 hours.
      * </p>
      * 
      * @param listBusinessReportSchedulesRequest

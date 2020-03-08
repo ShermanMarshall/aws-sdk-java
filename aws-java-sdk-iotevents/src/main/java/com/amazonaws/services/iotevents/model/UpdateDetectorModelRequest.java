@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,6 +49,12 @@ public class UpdateDetectorModelRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      */
     private String roleArn;
+    /**
+     * <p>
+     * Information about the order in which events are evaluated and how actions are executed.
+     * </p>
+     */
+    private String evaluationMethod;
 
     /**
      * <p>
@@ -211,6 +217,65 @@ public class UpdateDetectorModelRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
+     * Information about the order in which events are evaluated and how actions are executed.
+     * </p>
+     * 
+     * @param evaluationMethod
+     *        Information about the order in which events are evaluated and how actions are executed.
+     * @see EvaluationMethod
+     */
+
+    public void setEvaluationMethod(String evaluationMethod) {
+        this.evaluationMethod = evaluationMethod;
+    }
+
+    /**
+     * <p>
+     * Information about the order in which events are evaluated and how actions are executed.
+     * </p>
+     * 
+     * @return Information about the order in which events are evaluated and how actions are executed.
+     * @see EvaluationMethod
+     */
+
+    public String getEvaluationMethod() {
+        return this.evaluationMethod;
+    }
+
+    /**
+     * <p>
+     * Information about the order in which events are evaluated and how actions are executed.
+     * </p>
+     * 
+     * @param evaluationMethod
+     *        Information about the order in which events are evaluated and how actions are executed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EvaluationMethod
+     */
+
+    public UpdateDetectorModelRequest withEvaluationMethod(String evaluationMethod) {
+        setEvaluationMethod(evaluationMethod);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Information about the order in which events are evaluated and how actions are executed.
+     * </p>
+     * 
+     * @param evaluationMethod
+     *        Information about the order in which events are evaluated and how actions are executed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EvaluationMethod
+     */
+
+    public UpdateDetectorModelRequest withEvaluationMethod(EvaluationMethod evaluationMethod) {
+        this.evaluationMethod = evaluationMethod.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -229,7 +294,9 @@ public class UpdateDetectorModelRequest extends com.amazonaws.AmazonWebServiceRe
         if (getDetectorModelDescription() != null)
             sb.append("DetectorModelDescription: ").append(getDetectorModelDescription()).append(",");
         if (getRoleArn() != null)
-            sb.append("RoleArn: ").append(getRoleArn());
+            sb.append("RoleArn: ").append(getRoleArn()).append(",");
+        if (getEvaluationMethod() != null)
+            sb.append("EvaluationMethod: ").append(getEvaluationMethod());
         sb.append("}");
         return sb.toString();
     }
@@ -260,6 +327,10 @@ public class UpdateDetectorModelRequest extends com.amazonaws.AmazonWebServiceRe
             return false;
         if (other.getRoleArn() != null && other.getRoleArn().equals(this.getRoleArn()) == false)
             return false;
+        if (other.getEvaluationMethod() == null ^ this.getEvaluationMethod() == null)
+            return false;
+        if (other.getEvaluationMethod() != null && other.getEvaluationMethod().equals(this.getEvaluationMethod()) == false)
+            return false;
         return true;
     }
 
@@ -272,6 +343,7 @@ public class UpdateDetectorModelRequest extends com.amazonaws.AmazonWebServiceRe
         hashCode = prime * hashCode + ((getDetectorModelDefinition() == null) ? 0 : getDetectorModelDefinition().hashCode());
         hashCode = prime * hashCode + ((getDetectorModelDescription() == null) ? 0 : getDetectorModelDescription().hashCode());
         hashCode = prime * hashCode + ((getRoleArn() == null) ? 0 : getRoleArn().hashCode());
+        hashCode = prime * hashCode + ((getEvaluationMethod() == null) ? 0 : getEvaluationMethod().hashCode());
         return hashCode;
     }
 

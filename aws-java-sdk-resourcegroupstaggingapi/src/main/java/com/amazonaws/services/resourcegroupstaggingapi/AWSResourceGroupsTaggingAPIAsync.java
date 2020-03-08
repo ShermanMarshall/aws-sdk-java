@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,26 +44,25 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * <ul>
  * <li>
  * <p>
- * Tag and untag supported resources located in the specified region for the AWS account
+ * Tag and untag supported resources located in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * Use tag-based filters to search for resources located in the specified region for the AWS account
+ * Use tag-based filters to search for resources located in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * List all existing tag keys in the specified region for the AWS account
+ * List all existing tag keys in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * List all existing values for the specified key in the specified region for the AWS account
+ * List all existing values for the specified key in the specified Region for the AWS account.
  * </p>
  * </li>
  * </ul>
- * <p/>
  * <p>
  * To use resource groups tagging API operations, you must add the following permissions to your IAM policy:
  * </p>
@@ -119,7 +118,7 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * </li>
  * <li>
  * <p>
- * AWS AppStream
+ * Amazon AppStream
  * </p>
  * </li>
  * <li>
@@ -239,6 +238,11 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * </li>
  * <li>
  * <p>
+ * AWS Data Exchange
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS Data Pipeline
  * </p>
  * </li>
@@ -249,7 +253,12 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * </li>
  * <li>
  * <p>
- * AWS Datasync
+ * AWS DataSync
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Device Farm
  * </p>
  * </li>
  * <li>
@@ -285,6 +294,11 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * <li>
  * <p>
  * Amazon ECS
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon EKS
  * </p>
  * </li>
  * <li>
@@ -339,12 +353,17 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * </li>
  * <li>
  * <p>
- * Amazon Glacier
+ * Amazon S3 Glacier
  * </p>
  * </li>
  * <li>
  * <p>
  * AWS Glue
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon GuardDuty
  * </p>
  * </li>
  * <li>
@@ -374,7 +393,17 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * </li>
  * <li>
  * <p>
+ * AWS IoT Events
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS IoT Greengrass
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS IoT 1-Click
  * </p>
  * </li>
  * <li>
@@ -434,6 +463,16 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * </li>
  * <li>
  * <p>
+ * AWS Organizations
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon Quantum Ledger Database (QLDB)
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * Amazon RDS
  * </p>
  * </li>
@@ -484,6 +523,11 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * </li>
  * <li>
  * <p>
+ * AWS Security Hub
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS Service Catalog
  * </p>
  * </li>
@@ -499,7 +543,7 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * </li>
  * <li>
  * <p>
- * AWS Simple System Manager (SSM)
+ * Amazon Simple Workflow Service
  * </p>
  * </li>
  * <li>
@@ -510,6 +554,11 @@ import com.amazonaws.services.resourcegroupstaggingapi.model.*;
  * <li>
  * <p>
  * AWS Storage Gateway
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Systems Manager
  * </p>
  * </li>
  * <li>
@@ -534,13 +583,114 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
 
     /**
      * <p>
-     * Returns all the tagged or previously tagged resources that are located in the specified region for the AWS
-     * account. You can optionally specify <i>filters</i> (tags and resource types) in your request, depending on what
-     * information you want returned. The response includes all tags that are associated with the requested resources.
+     * Describes the status of the <code>StartReportCreation</code> operation.
      * </p>
+     * <p>
+     * You can call this operation only from the organization's master account and from the us-east-1 Region.
+     * </p>
+     * 
+     * @param describeReportCreationRequest
+     * @return A Java Future containing the result of the DescribeReportCreation operation returned by the service.
+     * @sample AWSResourceGroupsTaggingAPIAsync.DescribeReportCreation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/DescribeReportCreation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeReportCreationResult> describeReportCreationAsync(DescribeReportCreationRequest describeReportCreationRequest);
+
+    /**
+     * <p>
+     * Describes the status of the <code>StartReportCreation</code> operation.
+     * </p>
+     * <p>
+     * You can call this operation only from the organization's master account and from the us-east-1 Region.
+     * </p>
+     * 
+     * @param describeReportCreationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeReportCreation operation returned by the service.
+     * @sample AWSResourceGroupsTaggingAPIAsyncHandler.DescribeReportCreation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/DescribeReportCreation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeReportCreationResult> describeReportCreationAsync(DescribeReportCreationRequest describeReportCreationRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeReportCreationRequest, DescribeReportCreationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns a table that shows counts of resources that are noncompliant with their tag policies.
+     * </p>
+     * <p>
+     * For more information on tag policies, see <a
+     * href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">Tag
+     * Policies</a> in the <i>AWS Organizations User Guide.</i>
+     * </p>
+     * <p>
+     * You can call this operation only from the organization's master account and from the us-east-1 Region.
+     * </p>
+     * 
+     * @param getComplianceSummaryRequest
+     * @return A Java Future containing the result of the GetComplianceSummary operation returned by the service.
+     * @sample AWSResourceGroupsTaggingAPIAsync.GetComplianceSummary
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/GetComplianceSummary"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetComplianceSummaryResult> getComplianceSummaryAsync(GetComplianceSummaryRequest getComplianceSummaryRequest);
+
+    /**
+     * <p>
+     * Returns a table that shows counts of resources that are noncompliant with their tag policies.
+     * </p>
+     * <p>
+     * For more information on tag policies, see <a
+     * href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">Tag
+     * Policies</a> in the <i>AWS Organizations User Guide.</i>
+     * </p>
+     * <p>
+     * You can call this operation only from the organization's master account and from the us-east-1 Region.
+     * </p>
+     * 
+     * @param getComplianceSummaryRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetComplianceSummary operation returned by the service.
+     * @sample AWSResourceGroupsTaggingAPIAsyncHandler.GetComplianceSummary
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/GetComplianceSummary"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetComplianceSummaryResult> getComplianceSummaryAsync(GetComplianceSummaryRequest getComplianceSummaryRequest,
+            com.amazonaws.handlers.AsyncHandler<GetComplianceSummaryRequest, GetComplianceSummaryResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns all the tagged or previously tagged resources that are located in the specified Region for the AWS
+     * account.
+     * </p>
+     * <p>
+     * Depending on what information you want returned, you can also specify the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <i>Filters</i> that specify what tags and resource types you want returned. The response includes all tags that
+     * are associated with the requested resources.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Information about compliance with the account's effective tag policy. For more information on tag policies, see
+     * <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">Tag
+     * Policies</a> in the <i>AWS Organizations User Guide.</i>
+     * </p>
+     * </li>
+     * </ul>
      * <note>
      * <p>
-     * You can check the <code>PaginationToken</code> response parameter to determine if a query completed. Queries can
+     * You can check the <code>PaginationToken</code> response parameter to determine if a query is complete. Queries
      * occasionally return fewer results on a page than allowed. The <code>PaginationToken</code> response parameter
      * value is <code>null</code> <i>only</i> when there are no more results to display.
      * </p>
@@ -556,13 +706,30 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
 
     /**
      * <p>
-     * Returns all the tagged or previously tagged resources that are located in the specified region for the AWS
-     * account. You can optionally specify <i>filters</i> (tags and resource types) in your request, depending on what
-     * information you want returned. The response includes all tags that are associated with the requested resources.
+     * Returns all the tagged or previously tagged resources that are located in the specified Region for the AWS
+     * account.
      * </p>
+     * <p>
+     * Depending on what information you want returned, you can also specify the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <i>Filters</i> that specify what tags and resource types you want returned. The response includes all tags that
+     * are associated with the requested resources.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Information about compliance with the account's effective tag policy. For more information on tag policies, see
+     * <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html">Tag
+     * Policies</a> in the <i>AWS Organizations User Guide.</i>
+     * </p>
+     * </li>
+     * </ul>
      * <note>
      * <p>
-     * You can check the <code>PaginationToken</code> response parameter to determine if a query completed. Queries can
+     * You can check the <code>PaginationToken</code> response parameter to determine if a query is complete. Queries
      * occasionally return fewer results on a page than allowed. The <code>PaginationToken</code> response parameter
      * value is <code>null</code> <i>only</i> when there are no more results to display.
      * </p>
@@ -583,7 +750,7 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
 
     /**
      * <p>
-     * Returns all tag keys in the specified region for the AWS account.
+     * Returns all tag keys in the specified Region for the AWS account.
      * </p>
      * 
      * @param getTagKeysRequest
@@ -596,7 +763,7 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
 
     /**
      * <p>
-     * Returns all tag keys in the specified region for the AWS account.
+     * Returns all tag keys in the specified Region for the AWS account.
      * </p>
      * 
      * @param getTagKeysRequest
@@ -614,7 +781,7 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
 
     /**
      * <p>
-     * Returns all tag values for the specified key in the specified region for the AWS account.
+     * Returns all tag values for the specified key in the specified Region for the AWS account.
      * </p>
      * 
      * @param getTagValuesRequest
@@ -627,7 +794,7 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
 
     /**
      * <p>
-     * Returns all tag values for the specified key in the specified region for the AWS account.
+     * Returns all tag values for the specified key in the specified Region for the AWS account.
      * </p>
      * 
      * @param getTagValuesRequest
@@ -645,34 +812,83 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
 
     /**
      * <p>
+     * Generates a report that lists all tagged resources in accounts across your organization and tells whether each
+     * resource is compliant with the effective tag policy. Compliance data is refreshed daily.
+     * </p>
+     * <p>
+     * The generated report is saved to the following location:
+     * </p>
+     * <p>
+     * <code>s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv</code>
+     * </p>
+     * <p>
+     * You can call this operation only from the organization's master account and from the us-east-1 Region.
+     * </p>
+     * 
+     * @param startReportCreationRequest
+     * @return A Java Future containing the result of the StartReportCreation operation returned by the service.
+     * @sample AWSResourceGroupsTaggingAPIAsync.StartReportCreation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/StartReportCreation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<StartReportCreationResult> startReportCreationAsync(StartReportCreationRequest startReportCreationRequest);
+
+    /**
+     * <p>
+     * Generates a report that lists all tagged resources in accounts across your organization and tells whether each
+     * resource is compliant with the effective tag policy. Compliance data is refreshed daily.
+     * </p>
+     * <p>
+     * The generated report is saved to the following location:
+     * </p>
+     * <p>
+     * <code>s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv</code>
+     * </p>
+     * <p>
+     * You can call this operation only from the organization's master account and from the us-east-1 Region.
+     * </p>
+     * 
+     * @param startReportCreationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the StartReportCreation operation returned by the service.
+     * @sample AWSResourceGroupsTaggingAPIAsyncHandler.StartReportCreation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/resourcegroupstaggingapi-2017-01-26/StartReportCreation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<StartReportCreationResult> startReportCreationAsync(StartReportCreationRequest startReportCreationRequest,
+            com.amazonaws.handlers.AsyncHandler<StartReportCreationRequest, StartReportCreationResult> asyncHandler);
+
+    /**
+     * <p>
      * Applies one or more tags to the specified resources. Note the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Not all resources can have tags. For a list of resources that support tagging, see <a
-     * href="http://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html">Supported Resources</a> in the
-     * <i>AWS Resource Groups User Guide</i>.
+     * Not all resources can have tags. For a list of services that support tagging, see <a
+     * href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this list</a>.
      * </p>
      * </li>
      * <li>
      * <p>
      * Each resource can have up to 50 tags. For other limits, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions">Tag Restrictions</a>
-     * in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions">Tag Naming and Usage
+     * Conventions</a> in the <i>AWS General Reference.</i>
      * </p>
      * </li>
      * <li>
      * <p>
-     * You can only tag resources that are located in the specified region for the AWS account.
+     * You can only tag resources that are located in the specified Region for the AWS account.
      * </p>
      * </li>
      * <li>
      * <p>
      * To add tags to a resource, you need the necessary permissions for the service that the resource belongs to as
      * well as permissions for adding tags. For more information, see <a
-     * href="http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html">Obtaining
-     * Permissions for Tagging</a> in the <i>AWS Resource Groups User Guide</i>.
+     * href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this list</a>.
      * </p>
      * </li>
      * </ul>
@@ -692,29 +908,27 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
      * <ul>
      * <li>
      * <p>
-     * Not all resources can have tags. For a list of resources that support tagging, see <a
-     * href="http://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html">Supported Resources</a> in the
-     * <i>AWS Resource Groups User Guide</i>.
+     * Not all resources can have tags. For a list of services that support tagging, see <a
+     * href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this list</a>.
      * </p>
      * </li>
      * <li>
      * <p>
      * Each resource can have up to 50 tags. For other limits, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions">Tag Restrictions</a>
-     * in the <i>Amazon EC2 User Guide for Linux Instances</i>.
+     * href="http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions">Tag Naming and Usage
+     * Conventions</a> in the <i>AWS General Reference.</i>
      * </p>
      * </li>
      * <li>
      * <p>
-     * You can only tag resources that are located in the specified region for the AWS account.
+     * You can only tag resources that are located in the specified Region for the AWS account.
      * </p>
      * </li>
      * <li>
      * <p>
      * To add tags to a resource, you need the necessary permissions for the service that the resource belongs to as
      * well as permissions for adding tags. For more information, see <a
-     * href="http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html">Obtaining
-     * Permissions for Tagging</a> in the <i>AWS Resource Groups User Guide</i>.
+     * href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this list</a>.
      * </p>
      * </li>
      * </ul>
@@ -743,13 +957,12 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
      * <p>
      * To remove tags from a resource, you need the necessary permissions for the service that the resource belongs to
      * as well as permissions for removing tags. For more information, see <a
-     * href="http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html">Obtaining
-     * Permissions for Tagging</a> in the <i>AWS Resource Groups User Guide</i>.
+     * href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this list</a>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * You can only tag resources that are located in the specified region for the AWS account.
+     * You can only tag resources that are located in the specified Region for the AWS account.
      * </p>
      * </li>
      * </ul>
@@ -773,13 +986,12 @@ public interface AWSResourceGroupsTaggingAPIAsync extends AWSResourceGroupsTaggi
      * <p>
      * To remove tags from a resource, you need the necessary permissions for the service that the resource belongs to
      * as well as permissions for removing tags. For more information, see <a
-     * href="http://docs.aws.amazon.com/ARG/latest/userguide/obtaining-permissions-for-tagging.html">Obtaining
-     * Permissions for Tagging</a> in the <i>AWS Resource Groups User Guide</i>.
+     * href="http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html">this list</a>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * You can only tag resources that are located in the specified region for the AWS account.
+     * You can only tag resources that are located in the specified Region for the AWS account.
      * </p>
      * </li>
      * </ul>

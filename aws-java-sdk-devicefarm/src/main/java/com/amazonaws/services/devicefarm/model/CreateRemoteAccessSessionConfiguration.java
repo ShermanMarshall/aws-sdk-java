@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,7 @@ public class CreateRemoteAccessSessionConfiguration implements Serializable, Clo
     private String billingMethod;
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     * An array of ARNs included in the VPC endpoint configuration.
      * </p>
      */
     private java.util.List<String> vpceConfigurationArns;
@@ -116,10 +116,10 @@ public class CreateRemoteAccessSessionConfiguration implements Serializable, Clo
 
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     * An array of ARNs included in the VPC endpoint configuration.
      * </p>
      * 
-     * @return An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     * @return An array of ARNs included in the VPC endpoint configuration.
      */
 
     public java.util.List<String> getVpceConfigurationArns() {
@@ -128,11 +128,11 @@ public class CreateRemoteAccessSessionConfiguration implements Serializable, Clo
 
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     * An array of ARNs included in the VPC endpoint configuration.
      * </p>
      * 
      * @param vpceConfigurationArns
-     *        An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     *        An array of ARNs included in the VPC endpoint configuration.
      */
 
     public void setVpceConfigurationArns(java.util.Collection<String> vpceConfigurationArns) {
@@ -146,7 +146,7 @@ public class CreateRemoteAccessSessionConfiguration implements Serializable, Clo
 
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     * An array of ARNs included in the VPC endpoint configuration.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -155,7 +155,7 @@ public class CreateRemoteAccessSessionConfiguration implements Serializable, Clo
      * </p>
      * 
      * @param vpceConfigurationArns
-     *        An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     *        An array of ARNs included in the VPC endpoint configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -171,11 +171,11 @@ public class CreateRemoteAccessSessionConfiguration implements Serializable, Clo
 
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     * An array of ARNs included in the VPC endpoint configuration.
      * </p>
      * 
      * @param vpceConfigurationArns
-     *        An array of Amazon Resource Names (ARNs) included in the VPC endpoint configuration.
+     *        An array of ARNs included in the VPC endpoint configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

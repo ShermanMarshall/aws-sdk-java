@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,8 +16,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The endpoint being called is in a Region different from your EC2 instance. The Region of the Metering Service
- * endpoint and the Region of the EC2 instance must match.
+ * The endpoint being called is in a AWS Region different from your EC2 instance, ECS task, or EKS pod. The Region of
+ * the Metering Service endpoint and the AWS Region of the resource must match.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,8 @@ public class ListRoutesRequestMarshaller {
             .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("limit").build();
     private static final MarshallingInfo<String> MESHNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
             .marshallLocationName("meshName").build();
+    private static final MarshallingInfo<String> MESHOWNER_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("meshOwner").build();
     private static final MarshallingInfo<String> NEXTTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("nextToken").build();
     private static final MarshallingInfo<String> VIRTUALROUTERNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -54,6 +56,7 @@ public class ListRoutesRequestMarshaller {
         try {
             protocolMarshaller.marshall(listRoutesRequest.getLimit(), LIMIT_BINDING);
             protocolMarshaller.marshall(listRoutesRequest.getMeshName(), MESHNAME_BINDING);
+            protocolMarshaller.marshall(listRoutesRequest.getMeshOwner(), MESHOWNER_BINDING);
             protocolMarshaller.marshall(listRoutesRequest.getNextToken(), NEXTTOKEN_BINDING);
             protocolMarshaller.marshall(listRoutesRequest.getVirtualRouterName(), VIRTUALROUTERNAME_BINDING);
         } catch (Exception e) {

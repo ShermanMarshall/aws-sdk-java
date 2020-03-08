@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The DB instance identifier. This value is stored as a lowercase string.
+     * The instance identifier. This value is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -46,11 +46,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String dBInstanceIdentifier;
     /**
      * <p>
-     * The new compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>. Not all DB
-     * instance classes are available in all AWS Regions.
+     * The new compute and memory capacity of the instance; for example, <code>db.r5.large</code>. Not all instance
+     * classes are available in all AWS Regions.
      * </p>
      * <p>
-     * If you modify the DB instance class, an outage occurs during the change. The change is applied during the next
+     * If you modify the instance class, an outage occurs during the change. The change is applied during the next
      * maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
      * </p>
      * <p>
@@ -61,11 +61,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * Specifies whether the modifications in this request and any pending modifications are asynchronously applied as
-     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB instance.
+     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the instance.
      * </p>
      * <p>
-     * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
+     * If this parameter is set to <code>false</code>, changes to the instance are applied during the next maintenance
+     * window. Some parameter changes can cause an outage and are applied on the next reboot.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -77,7 +77,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage.
      * Changing this parameter doesn't result in an outage except in the following situation, and the change is
      * asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the maintenance
-     * window is changed to include the current time, changing this parameter causes a reboot of the DB instance. If you
+     * window is changed to include the current time, changing this parameter causes a reboot of the instance. If you
      * are moving this window to the current time, there must be at least 30 minutes between the current time and end of
      * the window to ensure that pending changes are applied.
      * </p>
@@ -97,7 +97,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String preferredMaintenanceWindow;
     /**
      * <p>
-     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Indicates that minor version upgrades are applied automatically to the instance during the maintenance window.
      * Changing this parameter doesn't result in an outage except in the following case, and the change is
      * asynchronously applied as soon as possible. An outage results if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and Amazon DocumentDB has enabled
@@ -107,10 +107,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private Boolean autoMinorVersionUpgrade;
     /**
      * <p>
-     * The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB instance
-     * identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to <code>true</code>.
-     * It occurs during the next maintenance window if you set <code>Apply Immediately</code> to <code>false</code>.
-     * This value is stored as a lowercase string.
+     * The new instance identifier for the instance when renaming an instance. When you change the instance identifier,
+     * an instance reboot occurs immediately if you set <code>Apply Immediately</code> to <code>true</code>. It occurs
+     * during the next maintenance window if you set <code>Apply Immediately</code> to <code>false</code>. This value is
+     * stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -139,6 +139,12 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String newDBInstanceIdentifier;
     /**
      * <p>
+     * Indicates the certificate that needs to be associated with the instance.
+     * </p>
+     */
+    private String cACertificateIdentifier;
+    /**
+     * <p>
      * A value that specifies the order in which an Amazon DocumentDB replica is promoted to the primary instance after
      * a failure of the existing primary instance.
      * </p>
@@ -153,7 +159,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The DB instance identifier. This value is stored as a lowercase string.
+     * The instance identifier. This value is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -167,7 +173,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </ul>
      * 
      * @param dBInstanceIdentifier
-     *        The DB instance identifier. This value is stored as a lowercase string.</p>
+     *        The instance identifier. This value is stored as a lowercase string.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -185,7 +191,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The DB instance identifier. This value is stored as a lowercase string.
+     * The instance identifier. This value is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -198,7 +204,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * </ul>
      * 
-     * @return The DB instance identifier. This value is stored as a lowercase string.</p>
+     * @return The instance identifier. This value is stored as a lowercase string.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -216,7 +222,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The DB instance identifier. This value is stored as a lowercase string.
+     * The instance identifier. This value is stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -230,7 +236,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </ul>
      * 
      * @param dBInstanceIdentifier
-     *        The DB instance identifier. This value is stored as a lowercase string.</p>
+     *        The instance identifier. This value is stored as a lowercase string.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -250,11 +256,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>. Not all DB
-     * instance classes are available in all AWS Regions.
+     * The new compute and memory capacity of the instance; for example, <code>db.r5.large</code>. Not all instance
+     * classes are available in all AWS Regions.
      * </p>
      * <p>
-     * If you modify the DB instance class, an outage occurs during the change. The change is applied during the next
+     * If you modify the instance class, an outage occurs during the change. The change is applied during the next
      * maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
      * </p>
      * <p>
@@ -262,10 +268,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param dBInstanceClass
-     *        The new compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>. Not all DB
+     *        The new compute and memory capacity of the instance; for example, <code>db.r5.large</code>. Not all
      *        instance classes are available in all AWS Regions. </p>
      *        <p>
-     *        If you modify the DB instance class, an outage occurs during the change. The change is applied during the
+     *        If you modify the instance class, an outage occurs during the change. The change is applied during the
      *        next maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
      *        request.
      *        </p>
@@ -279,21 +285,21 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>. Not all DB
-     * instance classes are available in all AWS Regions.
+     * The new compute and memory capacity of the instance; for example, <code>db.r5.large</code>. Not all instance
+     * classes are available in all AWS Regions.
      * </p>
      * <p>
-     * If you modify the DB instance class, an outage occurs during the change. The change is applied during the next
+     * If you modify the instance class, an outage occurs during the change. The change is applied during the next
      * maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
      * </p>
      * <p>
      * Default: Uses existing setting.
      * </p>
      * 
-     * @return The new compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>. Not all DB
+     * @return The new compute and memory capacity of the instance; for example, <code>db.r5.large</code>. Not all
      *         instance classes are available in all AWS Regions. </p>
      *         <p>
-     *         If you modify the DB instance class, an outage occurs during the change. The change is applied during the
+     *         If you modify the instance class, an outage occurs during the change. The change is applied during the
      *         next maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
      *         request.
      *         </p>
@@ -307,11 +313,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>. Not all DB
-     * instance classes are available in all AWS Regions.
+     * The new compute and memory capacity of the instance; for example, <code>db.r5.large</code>. Not all instance
+     * classes are available in all AWS Regions.
      * </p>
      * <p>
-     * If you modify the DB instance class, an outage occurs during the change. The change is applied during the next
+     * If you modify the instance class, an outage occurs during the change. The change is applied during the next
      * maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this request.
      * </p>
      * <p>
@@ -319,10 +325,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param dBInstanceClass
-     *        The new compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>. Not all DB
+     *        The new compute and memory capacity of the instance; for example, <code>db.r5.large</code>. Not all
      *        instance classes are available in all AWS Regions. </p>
      *        <p>
-     *        If you modify the DB instance class, an outage occurs during the change. The change is applied during the
+     *        If you modify the instance class, an outage occurs during the change. The change is applied during the
      *        next maintenance window, unless <code>ApplyImmediately</code> is specified as <code>true</code> for this
      *        request.
      *        </p>
@@ -339,11 +345,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * Specifies whether the modifications in this request and any pending modifications are asynchronously applied as
-     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB instance.
+     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the instance.
      * </p>
      * <p>
-     * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
+     * If this parameter is set to <code>false</code>, changes to the instance are applied during the next maintenance
+     * window. Some parameter changes can cause an outage and are applied on the next reboot.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -351,10 +357,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @param applyImmediately
      *        Specifies whether the modifications in this request and any pending modifications are asynchronously
-     *        applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
+     *        applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the
      *        instance. </p>
      *        <p>
-     *        If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
+     *        If this parameter is set to <code>false</code>, changes to the instance are applied during the next
      *        maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
      *        </p>
      *        <p>
@@ -368,21 +374,21 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * Specifies whether the modifications in this request and any pending modifications are asynchronously applied as
-     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB instance.
+     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the instance.
      * </p>
      * <p>
-     * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
+     * If this parameter is set to <code>false</code>, changes to the instance are applied during the next maintenance
+     * window. Some parameter changes can cause an outage and are applied on the next reboot.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      * 
      * @return Specifies whether the modifications in this request and any pending modifications are asynchronously
-     *         applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
+     *         applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the
      *         instance. </p>
      *         <p>
-     *         If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
+     *         If this parameter is set to <code>false</code>, changes to the instance are applied during the next
      *         maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
      *         </p>
      *         <p>
@@ -396,11 +402,11 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * Specifies whether the modifications in this request and any pending modifications are asynchronously applied as
-     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB instance.
+     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the instance.
      * </p>
      * <p>
-     * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
+     * If this parameter is set to <code>false</code>, changes to the instance are applied during the next maintenance
+     * window. Some parameter changes can cause an outage and are applied on the next reboot.
      * </p>
      * <p>
      * Default: <code>false</code>
@@ -408,10 +414,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @param applyImmediately
      *        Specifies whether the modifications in this request and any pending modifications are asynchronously
-     *        applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
+     *        applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the
      *        instance. </p>
      *        <p>
-     *        If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
+     *        If this parameter is set to <code>false</code>, changes to the instance are applied during the next
      *        maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
      *        </p>
      *        <p>
@@ -427,21 +433,21 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * Specifies whether the modifications in this request and any pending modifications are asynchronously applied as
-     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB instance.
+     * soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the instance.
      * </p>
      * <p>
-     * If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
-     * maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
+     * If this parameter is set to <code>false</code>, changes to the instance are applied during the next maintenance
+     * window. Some parameter changes can cause an outage and are applied on the next reboot.
      * </p>
      * <p>
      * Default: <code>false</code>
      * </p>
      * 
      * @return Specifies whether the modifications in this request and any pending modifications are asynchronously
-     *         applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the DB
+     *         applied as soon as possible, regardless of the <code>PreferredMaintenanceWindow</code> setting for the
      *         instance. </p>
      *         <p>
-     *         If this parameter is set to <code>false</code>, changes to the DB instance are applied during the next
+     *         If this parameter is set to <code>false</code>, changes to the instance are applied during the next
      *         maintenance window. Some parameter changes can cause an outage and are applied on the next reboot.
      *         </p>
      *         <p>
@@ -457,7 +463,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage.
      * Changing this parameter doesn't result in an outage except in the following situation, and the change is
      * asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the maintenance
-     * window is changed to include the current time, changing this parameter causes a reboot of the DB instance. If you
+     * window is changed to include the current time, changing this parameter causes a reboot of the instance. If you
      * are moving this window to the current time, there must be at least 30 minutes between the current time and end of
      * the window to ensure that pending changes are applied.
      * </p>
@@ -479,8 +485,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Changing this parameter doesn't result in an outage except in the following situation, and the change is
      *        asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the
      *        maintenance window is changed to include the current time, changing this parameter causes a reboot of the
-     *        DB instance. If you are moving this window to the current time, there must be at least 30 minutes between
-     *        the current time and end of the window to ensure that pending changes are applied.</p>
+     *        instance. If you are moving this window to the current time, there must be at least 30 minutes between the
+     *        current time and end of the window to ensure that pending changes are applied.</p>
      *        <p>
      *        Default: Uses existing setting.
      *        </p>
@@ -503,7 +509,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage.
      * Changing this parameter doesn't result in an outage except in the following situation, and the change is
      * asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the maintenance
-     * window is changed to include the current time, changing this parameter causes a reboot of the DB instance. If you
+     * window is changed to include the current time, changing this parameter causes a reboot of the instance. If you
      * are moving this window to the current time, there must be at least 30 minutes between the current time and end of
      * the window to ensure that pending changes are applied.
      * </p>
@@ -524,7 +530,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         outage. Changing this parameter doesn't result in an outage except in the following situation, and the
      *         change is asynchronously applied as soon as possible. If there are pending actions that cause a reboot,
      *         and the maintenance window is changed to include the current time, changing this parameter causes a
-     *         reboot of the DB instance. If you are moving this window to the current time, there must be at least 30
+     *         reboot of the instance. If you are moving this window to the current time, there must be at least 30
      *         minutes between the current time and end of the window to ensure that pending changes are applied.</p>
      *         <p>
      *         Default: Uses existing setting.
@@ -548,7 +554,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * The weekly time range (in UTC) during which system maintenance can occur, which might result in an outage.
      * Changing this parameter doesn't result in an outage except in the following situation, and the change is
      * asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the maintenance
-     * window is changed to include the current time, changing this parameter causes a reboot of the DB instance. If you
+     * window is changed to include the current time, changing this parameter causes a reboot of the instance. If you
      * are moving this window to the current time, there must be at least 30 minutes between the current time and end of
      * the window to ensure that pending changes are applied.
      * </p>
@@ -570,8 +576,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Changing this parameter doesn't result in an outage except in the following situation, and the change is
      *        asynchronously applied as soon as possible. If there are pending actions that cause a reboot, and the
      *        maintenance window is changed to include the current time, changing this parameter causes a reboot of the
-     *        DB instance. If you are moving this window to the current time, there must be at least 30 minutes between
-     *        the current time and end of the window to ensure that pending changes are applied.</p>
+     *        instance. If you are moving this window to the current time, there must be at least 30 minutes between the
+     *        current time and end of the window to ensure that pending changes are applied.</p>
      *        <p>
      *        Default: Uses existing setting.
      *        </p>
@@ -593,7 +599,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Indicates that minor version upgrades are applied automatically to the instance during the maintenance window.
      * Changing this parameter doesn't result in an outage except in the following case, and the change is
      * asynchronously applied as soon as possible. An outage results if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and Amazon DocumentDB has enabled
@@ -601,7 +607,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param autoMinorVersionUpgrade
-     *        Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance
+     *        Indicates that minor version upgrades are applied automatically to the instance during the maintenance
      *        window. Changing this parameter doesn't result in an outage except in the following case, and the change
      *        is asynchronously applied as soon as possible. An outage results if this parameter is set to
      *        <code>true</code> during the maintenance window, and a newer minor version is available, and Amazon
@@ -614,14 +620,14 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Indicates that minor version upgrades are applied automatically to the instance during the maintenance window.
      * Changing this parameter doesn't result in an outage except in the following case, and the change is
      * asynchronously applied as soon as possible. An outage results if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and Amazon DocumentDB has enabled
      * automatic patching for that engine version.
      * </p>
      * 
-     * @return Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance
+     * @return Indicates that minor version upgrades are applied automatically to the instance during the maintenance
      *         window. Changing this parameter doesn't result in an outage except in the following case, and the change
      *         is asynchronously applied as soon as possible. An outage results if this parameter is set to
      *         <code>true</code> during the maintenance window, and a newer minor version is available, and Amazon
@@ -634,7 +640,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Indicates that minor version upgrades are applied automatically to the instance during the maintenance window.
      * Changing this parameter doesn't result in an outage except in the following case, and the change is
      * asynchronously applied as soon as possible. An outage results if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and Amazon DocumentDB has enabled
@@ -642,7 +648,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param autoMinorVersionUpgrade
-     *        Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance
+     *        Indicates that minor version upgrades are applied automatically to the instance during the maintenance
      *        window. Changing this parameter doesn't result in an outage except in the following case, and the change
      *        is asynchronously applied as soon as possible. An outage results if this parameter is set to
      *        <code>true</code> during the maintenance window, and a newer minor version is available, and Amazon
@@ -657,14 +663,14 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance window.
+     * Indicates that minor version upgrades are applied automatically to the instance during the maintenance window.
      * Changing this parameter doesn't result in an outage except in the following case, and the change is
      * asynchronously applied as soon as possible. An outage results if this parameter is set to <code>true</code>
      * during the maintenance window, and a newer minor version is available, and Amazon DocumentDB has enabled
      * automatic patching for that engine version.
      * </p>
      * 
-     * @return Indicates that minor version upgrades are applied automatically to the DB instance during the maintenance
+     * @return Indicates that minor version upgrades are applied automatically to the instance during the maintenance
      *         window. Changing this parameter doesn't result in an outage except in the following case, and the change
      *         is asynchronously applied as soon as possible. An outage results if this parameter is set to
      *         <code>true</code> during the maintenance window, and a newer minor version is available, and Amazon
@@ -677,10 +683,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB instance
-     * identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to <code>true</code>.
-     * It occurs during the next maintenance window if you set <code>Apply Immediately</code> to <code>false</code>.
-     * This value is stored as a lowercase string.
+     * The new instance identifier for the instance when renaming an instance. When you change the instance identifier,
+     * an instance reboot occurs immediately if you set <code>Apply Immediately</code> to <code>true</code>. It occurs
+     * during the next maintenance window if you set <code>Apply Immediately</code> to <code>false</code>. This value is
+     * stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -707,8 +713,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param newDBInstanceIdentifier
-     *        The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB
-     *        instance identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to
+     *        The new instance identifier for the instance when renaming an instance. When you change the instance
+     *        identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to
      *        <code>true</code>. It occurs during the next maintenance window if you set <code>Apply Immediately</code>
      *        to <code>false</code>. This value is stored as a lowercase string. </p>
      *        <p>
@@ -741,10 +747,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB instance
-     * identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to <code>true</code>.
-     * It occurs during the next maintenance window if you set <code>Apply Immediately</code> to <code>false</code>.
-     * This value is stored as a lowercase string.
+     * The new instance identifier for the instance when renaming an instance. When you change the instance identifier,
+     * an instance reboot occurs immediately if you set <code>Apply Immediately</code> to <code>true</code>. It occurs
+     * during the next maintenance window if you set <code>Apply Immediately</code> to <code>false</code>. This value is
+     * stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -770,8 +776,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Example: <code>mydbinstance</code>
      * </p>
      * 
-     * @return The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB
-     *         instance identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to
+     * @return The new instance identifier for the instance when renaming an instance. When you change the instance
+     *         identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to
      *         <code>true</code>. It occurs during the next maintenance window if you set <code>Apply Immediately</code>
      *         to <code>false</code>. This value is stored as a lowercase string. </p>
      *         <p>
@@ -804,10 +810,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB instance
-     * identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to <code>true</code>.
-     * It occurs during the next maintenance window if you set <code>Apply Immediately</code> to <code>false</code>.
-     * This value is stored as a lowercase string.
+     * The new instance identifier for the instance when renaming an instance. When you change the instance identifier,
+     * an instance reboot occurs immediately if you set <code>Apply Immediately</code> to <code>true</code>. It occurs
+     * during the next maintenance window if you set <code>Apply Immediately</code> to <code>false</code>. This value is
+     * stored as a lowercase string.
      * </p>
      * <p>
      * Constraints:
@@ -834,8 +840,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param newDBInstanceIdentifier
-     *        The new DB instance identifier for the DB instance when renaming a DB instance. When you change the DB
-     *        instance identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to
+     *        The new instance identifier for the instance when renaming an instance. When you change the instance
+     *        identifier, an instance reboot occurs immediately if you set <code>Apply Immediately</code> to
      *        <code>true</code>. It occurs during the next maintenance window if you set <code>Apply Immediately</code>
      *        to <code>false</code>. This value is stored as a lowercase string. </p>
      *        <p>
@@ -865,6 +871,46 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     public ModifyDBInstanceRequest withNewDBInstanceIdentifier(String newDBInstanceIdentifier) {
         setNewDBInstanceIdentifier(newDBInstanceIdentifier);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates the certificate that needs to be associated with the instance.
+     * </p>
+     * 
+     * @param cACertificateIdentifier
+     *        Indicates the certificate that needs to be associated with the instance.
+     */
+
+    public void setCACertificateIdentifier(String cACertificateIdentifier) {
+        this.cACertificateIdentifier = cACertificateIdentifier;
+    }
+
+    /**
+     * <p>
+     * Indicates the certificate that needs to be associated with the instance.
+     * </p>
+     * 
+     * @return Indicates the certificate that needs to be associated with the instance.
+     */
+
+    public String getCACertificateIdentifier() {
+        return this.cACertificateIdentifier;
+    }
+
+    /**
+     * <p>
+     * Indicates the certificate that needs to be associated with the instance.
+     * </p>
+     * 
+     * @param cACertificateIdentifier
+     *        Indicates the certificate that needs to be associated with the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBInstanceRequest withCACertificateIdentifier(String cACertificateIdentifier) {
+        setCACertificateIdentifier(cACertificateIdentifier);
         return this;
     }
 
@@ -971,6 +1017,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
             sb.append("AutoMinorVersionUpgrade: ").append(getAutoMinorVersionUpgrade()).append(",");
         if (getNewDBInstanceIdentifier() != null)
             sb.append("NewDBInstanceIdentifier: ").append(getNewDBInstanceIdentifier()).append(",");
+        if (getCACertificateIdentifier() != null)
+            sb.append("CACertificateIdentifier: ").append(getCACertificateIdentifier()).append(",");
         if (getPromotionTier() != null)
             sb.append("PromotionTier: ").append(getPromotionTier());
         sb.append("}");
@@ -1011,6 +1059,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
             return false;
         if (other.getNewDBInstanceIdentifier() != null && other.getNewDBInstanceIdentifier().equals(this.getNewDBInstanceIdentifier()) == false)
             return false;
+        if (other.getCACertificateIdentifier() == null ^ this.getCACertificateIdentifier() == null)
+            return false;
+        if (other.getCACertificateIdentifier() != null && other.getCACertificateIdentifier().equals(this.getCACertificateIdentifier()) == false)
+            return false;
         if (other.getPromotionTier() == null ^ this.getPromotionTier() == null)
             return false;
         if (other.getPromotionTier() != null && other.getPromotionTier().equals(this.getPromotionTier()) == false)
@@ -1029,6 +1081,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         hashCode = prime * hashCode + ((getPreferredMaintenanceWindow() == null) ? 0 : getPreferredMaintenanceWindow().hashCode());
         hashCode = prime * hashCode + ((getAutoMinorVersionUpgrade() == null) ? 0 : getAutoMinorVersionUpgrade().hashCode());
         hashCode = prime * hashCode + ((getNewDBInstanceIdentifier() == null) ? 0 : getNewDBInstanceIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getCACertificateIdentifier() == null) ? 0 : getCACertificateIdentifier().hashCode());
         hashCode = prime * hashCode + ((getPromotionTier() == null) ? 0 : getPromotionTier().hashCode());
         return hashCode;
     }

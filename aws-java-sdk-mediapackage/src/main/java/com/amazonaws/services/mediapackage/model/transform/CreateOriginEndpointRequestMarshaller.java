@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class CreateOriginEndpointRequestMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> AUTHORIZATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("authorization").build();
     private static final MarshallingInfo<String> CHANNELID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("channelId").build();
     private static final MarshallingInfo<StructuredPojo> CMAFPACKAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -45,6 +47,8 @@ public class CreateOriginEndpointRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("manifestName").build();
     private static final MarshallingInfo<StructuredPojo> MSSPACKAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("mssPackage").build();
+    private static final MarshallingInfo<String> ORIGINATION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("origination").build();
     private static final MarshallingInfo<Integer> STARTOVERWINDOWSECONDS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("startoverWindowSeconds").build();
     private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
@@ -70,6 +74,7 @@ public class CreateOriginEndpointRequestMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(createOriginEndpointRequest.getAuthorization(), AUTHORIZATION_BINDING);
             protocolMarshaller.marshall(createOriginEndpointRequest.getChannelId(), CHANNELID_BINDING);
             protocolMarshaller.marshall(createOriginEndpointRequest.getCmafPackage(), CMAFPACKAGE_BINDING);
             protocolMarshaller.marshall(createOriginEndpointRequest.getDashPackage(), DASHPACKAGE_BINDING);
@@ -78,6 +83,7 @@ public class CreateOriginEndpointRequestMarshaller {
             protocolMarshaller.marshall(createOriginEndpointRequest.getId(), ID_BINDING);
             protocolMarshaller.marshall(createOriginEndpointRequest.getManifestName(), MANIFESTNAME_BINDING);
             protocolMarshaller.marshall(createOriginEndpointRequest.getMssPackage(), MSSPACKAGE_BINDING);
+            protocolMarshaller.marshall(createOriginEndpointRequest.getOrigination(), ORIGINATION_BINDING);
             protocolMarshaller.marshall(createOriginEndpointRequest.getStartoverWindowSeconds(), STARTOVERWINDOWSECONDS_BINDING);
             protocolMarshaller.marshall(createOriginEndpointRequest.getTags(), TAGS_BINDING);
             protocolMarshaller.marshall(createOriginEndpointRequest.getTimeDelaySeconds(), TIMEDELAYSECONDS_BINDING);

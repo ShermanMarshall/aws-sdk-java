@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,10 @@ public class BrokerInstanceOptionMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("engineType").build();
     private static final MarshallingInfo<String> HOSTINSTANCETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("hostInstanceType").build();
+    private static final MarshallingInfo<String> STORAGETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("storageType").build();
+    private static final MarshallingInfo<List> SUPPORTEDDEPLOYMENTMODES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("supportedDeploymentModes").build();
     private static final MarshallingInfo<List> SUPPORTEDENGINEVERSIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("supportedEngineVersions").build();
 
@@ -56,6 +60,8 @@ public class BrokerInstanceOptionMarshaller {
             protocolMarshaller.marshall(brokerInstanceOption.getAvailabilityZones(), AVAILABILITYZONES_BINDING);
             protocolMarshaller.marshall(brokerInstanceOption.getEngineType(), ENGINETYPE_BINDING);
             protocolMarshaller.marshall(brokerInstanceOption.getHostInstanceType(), HOSTINSTANCETYPE_BINDING);
+            protocolMarshaller.marshall(brokerInstanceOption.getStorageType(), STORAGETYPE_BINDING);
+            protocolMarshaller.marshall(brokerInstanceOption.getSupportedDeploymentModes(), SUPPORTEDDEPLOYMENTMODES_BINDING);
             protocolMarshaller.marshall(brokerInstanceOption.getSupportedEngineVersions(), SUPPORTEDENGINEVERSIONS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

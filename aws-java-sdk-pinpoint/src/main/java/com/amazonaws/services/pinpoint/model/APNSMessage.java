@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,56 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * <p>
+     * The type of push notification to send. Valid values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * alert - For a standard notification that's displayed on recipients' devices and prompts a recipient to interact
+     * with the notification.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * background - For a silent notification that delivers content in the background and isn't displayed on recipients'
+     * devices.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * complication - For a notification that contains update information for an app’s complication timeline.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * fileprovider - For a notification that signals changes to a File Provider extension.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * mdm - For a notification that tells managed devices to contact the MDM server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * voip - For a notification that provides information about an incoming VoIP call.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Amazon Pinpoint specifies this value in the apns-push-type request header when it sends the notification message
+     * to APNs. If you don't specify a value for this property, Amazon Pinpoint sets the value to alert or background
+     * automatically, based on the value that you specify for the SilentPush or RawContent property of the message.
+     * </p>
+     * <p>
+     * For more information about the apns-push-type request header, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns"
+     * >Sending Notification Requests to APNs</a> on the Apple Developer website.
+     * </p>
+     */
+    private String aPNSPushType;
     /**
      * <p>
      * The action to occur if the recipient taps the push notification. Valid values are:
@@ -102,8 +152,8 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
     private String mediaUrl;
     /**
      * <p>
-     * The authentication method that you want Amazon Pinpoint to use when authenticating with Apple Push Notification
-     * service (APNs), CERTIFICATE or TOKEN.
+     * The authentication method that you want Amazon Pinpoint to use when authenticating with APNs, CERTIFICATE or
+     * TOKEN.
      * </p>
      */
     private String preferredAuthenticationMethod;
@@ -130,22 +180,57 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
     private String priority;
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value
+     * overrides all other content for the message.
      * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. The value of the content-available key has to be an integer, and can only be 0 or 1. If
+     * you're sending a standard notification, set the value of content-available to 0. If you're sending a silent
+     * (background) notification, set the value of content-available to 1. Additionally, silent notification payloads
+     * can't include the alert, badge, or sound keys. For more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * </note>
      */
     private String rawContent;
     /**
      * <p>
-     * Specifies whether the notification is a silent push notification, which is a push notification that doesn't
-     * display on a recipient's device. Silent push notifications can be used for cases such as updating an app's
-     * configuration, displaying messages in an in-app message center, or supporting phone home functionality.
+     * Specifies whether the notification is a silent push notification. A silent (or background) push notification
+     * isn't displayed on recipients' devices. You can use silent push notifications to make small updates to your app,
+     * or to display messages in an in-app message center.
      * </p>
+     * <p>
+     * Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header when it
+     * sends the notification message to APNs. If you specify a value of true for this property, Amazon Pinpoint sets
+     * the value for the apns-push-type header field to background.
+     * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. For silent (background) notifications, set the value of content-available to 1.
+     * Additionally, the message payload for a silent notification can't include the alert, badge, or sound keys. For
+     * more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * <p>
+     * Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     * volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3 silent push
+     * notifications to each recipient per hour.
+     * </p>
+     * </note>
      */
     private Boolean silentPush;
     /**
      * <p>
-     * The key for the sound to play when the recipient receives the push notification. The value of this key is the
+     * The key for the sound to play when the recipient receives the push notification. The value for this key is the
      * name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data container. If the
      * sound file can't be found or you specify default for the value, the system plays the default alert sound.
      * </p>
@@ -190,6 +275,310 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String url;
+
+    /**
+     * <p>
+     * The type of push notification to send. Valid values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * alert - For a standard notification that's displayed on recipients' devices and prompts a recipient to interact
+     * with the notification.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * background - For a silent notification that delivers content in the background and isn't displayed on recipients'
+     * devices.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * complication - For a notification that contains update information for an app’s complication timeline.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * fileprovider - For a notification that signals changes to a File Provider extension.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * mdm - For a notification that tells managed devices to contact the MDM server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * voip - For a notification that provides information about an incoming VoIP call.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Amazon Pinpoint specifies this value in the apns-push-type request header when it sends the notification message
+     * to APNs. If you don't specify a value for this property, Amazon Pinpoint sets the value to alert or background
+     * automatically, based on the value that you specify for the SilentPush or RawContent property of the message.
+     * </p>
+     * <p>
+     * For more information about the apns-push-type request header, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns"
+     * >Sending Notification Requests to APNs</a> on the Apple Developer website.
+     * </p>
+     * 
+     * @param aPNSPushType
+     *        The type of push notification to send. Valid values are:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        alert - For a standard notification that's displayed on recipients' devices and prompts a recipient to
+     *        interact with the notification.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        background - For a silent notification that delivers content in the background and isn't displayed on
+     *        recipients' devices.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        complication - For a notification that contains update information for an app’s complication timeline.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        fileprovider - For a notification that signals changes to a File Provider extension.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        mdm - For a notification that tells managed devices to contact the MDM server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        voip - For a notification that provides information about an incoming VoIP call.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        Amazon Pinpoint specifies this value in the apns-push-type request header when it sends the notification
+     *        message to APNs. If you don't specify a value for this property, Amazon Pinpoint sets the value to alert
+     *        or background automatically, based on the value that you specify for the SilentPush or RawContent property
+     *        of the message.
+     *        </p>
+     *        <p>
+     *        For more information about the apns-push-type request header, see <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns"
+     *        >Sending Notification Requests to APNs</a> on the Apple Developer website.
+     */
+
+    public void setAPNSPushType(String aPNSPushType) {
+        this.aPNSPushType = aPNSPushType;
+    }
+
+    /**
+     * <p>
+     * The type of push notification to send. Valid values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * alert - For a standard notification that's displayed on recipients' devices and prompts a recipient to interact
+     * with the notification.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * background - For a silent notification that delivers content in the background and isn't displayed on recipients'
+     * devices.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * complication - For a notification that contains update information for an app’s complication timeline.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * fileprovider - For a notification that signals changes to a File Provider extension.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * mdm - For a notification that tells managed devices to contact the MDM server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * voip - For a notification that provides information about an incoming VoIP call.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Amazon Pinpoint specifies this value in the apns-push-type request header when it sends the notification message
+     * to APNs. If you don't specify a value for this property, Amazon Pinpoint sets the value to alert or background
+     * automatically, based on the value that you specify for the SilentPush or RawContent property of the message.
+     * </p>
+     * <p>
+     * For more information about the apns-push-type request header, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns"
+     * >Sending Notification Requests to APNs</a> on the Apple Developer website.
+     * </p>
+     * 
+     * @return The type of push notification to send. Valid values are:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         alert - For a standard notification that's displayed on recipients' devices and prompts a recipient to
+     *         interact with the notification.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         background - For a silent notification that delivers content in the background and isn't displayed on
+     *         recipients' devices.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         complication - For a notification that contains update information for an app’s complication timeline.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         fileprovider - For a notification that signals changes to a File Provider extension.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         mdm - For a notification that tells managed devices to contact the MDM server.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         voip - For a notification that provides information about an incoming VoIP call.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         Amazon Pinpoint specifies this value in the apns-push-type request header when it sends the notification
+     *         message to APNs. If you don't specify a value for this property, Amazon Pinpoint sets the value to alert
+     *         or background automatically, based on the value that you specify for the SilentPush or RawContent
+     *         property of the message.
+     *         </p>
+     *         <p>
+     *         For more information about the apns-push-type request header, see <a href=
+     *         "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns"
+     *         >Sending Notification Requests to APNs</a> on the Apple Developer website.
+     */
+
+    public String getAPNSPushType() {
+        return this.aPNSPushType;
+    }
+
+    /**
+     * <p>
+     * The type of push notification to send. Valid values are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * alert - For a standard notification that's displayed on recipients' devices and prompts a recipient to interact
+     * with the notification.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * background - For a silent notification that delivers content in the background and isn't displayed on recipients'
+     * devices.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * complication - For a notification that contains update information for an app’s complication timeline.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * fileprovider - For a notification that signals changes to a File Provider extension.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * mdm - For a notification that tells managed devices to contact the MDM server.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * voip - For a notification that provides information about an incoming VoIP call.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Amazon Pinpoint specifies this value in the apns-push-type request header when it sends the notification message
+     * to APNs. If you don't specify a value for this property, Amazon Pinpoint sets the value to alert or background
+     * automatically, based on the value that you specify for the SilentPush or RawContent property of the message.
+     * </p>
+     * <p>
+     * For more information about the apns-push-type request header, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns"
+     * >Sending Notification Requests to APNs</a> on the Apple Developer website.
+     * </p>
+     * 
+     * @param aPNSPushType
+     *        The type of push notification to send. Valid values are:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        alert - For a standard notification that's displayed on recipients' devices and prompts a recipient to
+     *        interact with the notification.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        background - For a silent notification that delivers content in the background and isn't displayed on
+     *        recipients' devices.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        complication - For a notification that contains update information for an app’s complication timeline.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        fileprovider - For a notification that signals changes to a File Provider extension.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        mdm - For a notification that tells managed devices to contact the MDM server.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        voip - For a notification that provides information about an incoming VoIP call.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        Amazon Pinpoint specifies this value in the apns-push-type request header when it sends the notification
+     *        message to APNs. If you don't specify a value for this property, Amazon Pinpoint sets the value to alert
+     *        or background automatically, based on the value that you specify for the SilentPush or RawContent property
+     *        of the message.
+     *        </p>
+     *        <p>
+     *        For more information about the apns-push-type request header, see <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns"
+     *        >Sending Notification Requests to APNs</a> on the Apple Developer website.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public APNSMessage withAPNSPushType(String aPNSPushType) {
+        setAPNSPushType(aPNSPushType);
+        return this;
+    }
 
     /**
      * <p>
@@ -713,6 +1102,13 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single Data entry
+     *
+     * @see APNSMessage#withData
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public APNSMessage addDataEntry(String key, String value) {
         if (null == this.data) {
             this.data = new java.util.HashMap<String, String>();
@@ -776,13 +1172,13 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method that you want Amazon Pinpoint to use when authenticating with Apple Push Notification
-     * service (APNs), CERTIFICATE or TOKEN.
+     * The authentication method that you want Amazon Pinpoint to use when authenticating with APNs, CERTIFICATE or
+     * TOKEN.
      * </p>
      * 
      * @param preferredAuthenticationMethod
-     *        The authentication method that you want Amazon Pinpoint to use when authenticating with Apple Push
-     *        Notification service (APNs), CERTIFICATE or TOKEN.
+     *        The authentication method that you want Amazon Pinpoint to use when authenticating with APNs, CERTIFICATE
+     *        or TOKEN.
      */
 
     public void setPreferredAuthenticationMethod(String preferredAuthenticationMethod) {
@@ -791,12 +1187,12 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method that you want Amazon Pinpoint to use when authenticating with Apple Push Notification
-     * service (APNs), CERTIFICATE or TOKEN.
+     * The authentication method that you want Amazon Pinpoint to use when authenticating with APNs, CERTIFICATE or
+     * TOKEN.
      * </p>
      * 
-     * @return The authentication method that you want Amazon Pinpoint to use when authenticating with Apple Push
-     *         Notification service (APNs), CERTIFICATE or TOKEN.
+     * @return The authentication method that you want Amazon Pinpoint to use when authenticating with APNs, CERTIFICATE
+     *         or TOKEN.
      */
 
     public String getPreferredAuthenticationMethod() {
@@ -805,13 +1201,13 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method that you want Amazon Pinpoint to use when authenticating with Apple Push Notification
-     * service (APNs), CERTIFICATE or TOKEN.
+     * The authentication method that you want Amazon Pinpoint to use when authenticating with APNs, CERTIFICATE or
+     * TOKEN.
      * </p>
      * 
      * @param preferredAuthenticationMethod
-     *        The authentication method that you want Amazon Pinpoint to use when authenticating with Apple Push
-     *        Notification service (APNs), CERTIFICATE or TOKEN.
+     *        The authentication method that you want Amazon Pinpoint to use when authenticating with APNs, CERTIFICATE
+     *        or TOKEN.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -949,13 +1345,37 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value
+     * overrides all other content for the message.
      * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. The value of the content-available key has to be an integer, and can only be 0 or 1. If
+     * you're sending a standard notification, set the value of content-available to 0. If you're sending a silent
+     * (background) notification, set the value of content-available to 1. Additionally, silent notification payloads
+     * can't include the alert, badge, or sound keys. For more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * </note>
      * 
      * @param rawContent
-     *        The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *        the message.
+     *        The raw, JSON-formatted string to use as the payload for the notification message. If specified, this
+     *        value overrides all other content for the message.</p> <note>
+     *        <p>
+     *        If you specify the raw content of an APNs push notification, the message payload has to include the
+     *        content-available key. The value of the content-available key has to be an integer, and can only be 0 or
+     *        1. If you're sending a standard notification, set the value of content-available to 0. If you're sending a
+     *        silent (background) notification, set the value of content-available to 1. Additionally, silent
+     *        notification payloads can't include the alert, badge, or sound keys. For more information, see <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     *        >Generating a Remote Notification</a> and <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     *        >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     *        </p>
      */
 
     public void setRawContent(String rawContent) {
@@ -964,12 +1384,36 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value
+     * overrides all other content for the message.
      * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. The value of the content-available key has to be an integer, and can only be 0 or 1. If
+     * you're sending a standard notification, set the value of content-available to 0. If you're sending a silent
+     * (background) notification, set the value of content-available to 1. Additionally, silent notification payloads
+     * can't include the alert, badge, or sound keys. For more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * </note>
      * 
-     * @return The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *         the message.
+     * @return The raw, JSON-formatted string to use as the payload for the notification message. If specified, this
+     *         value overrides all other content for the message.</p> <note>
+     *         <p>
+     *         If you specify the raw content of an APNs push notification, the message payload has to include the
+     *         content-available key. The value of the content-available key has to be an integer, and can only be 0 or
+     *         1. If you're sending a standard notification, set the value of content-available to 0. If you're sending
+     *         a silent (background) notification, set the value of content-available to 1. Additionally, silent
+     *         notification payloads can't include the alert, badge, or sound keys. For more information, see <a href=
+     *         "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     *         >Generating a Remote Notification</a> and <a href=
+     *         "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     *         >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     *         </p>
      */
 
     public String getRawContent() {
@@ -978,13 +1422,37 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value
+     * overrides all other content for the message.
      * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. The value of the content-available key has to be an integer, and can only be 0 or 1. If
+     * you're sending a standard notification, set the value of content-available to 0. If you're sending a silent
+     * (background) notification, set the value of content-available to 1. Additionally, silent notification payloads
+     * can't include the alert, badge, or sound keys. For more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * </note>
      * 
      * @param rawContent
-     *        The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *        the message.
+     *        The raw, JSON-formatted string to use as the payload for the notification message. If specified, this
+     *        value overrides all other content for the message.</p> <note>
+     *        <p>
+     *        If you specify the raw content of an APNs push notification, the message payload has to include the
+     *        content-available key. The value of the content-available key has to be an integer, and can only be 0 or
+     *        1. If you're sending a standard notification, set the value of content-available to 0. If you're sending a
+     *        silent (background) notification, set the value of content-available to 1. Additionally, silent
+     *        notification payloads can't include the alert, badge, or sound keys. For more information, see <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     *        >Generating a Remote Notification</a> and <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     *        >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -995,16 +1463,58 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the notification is a silent push notification, which is a push notification that doesn't
-     * display on a recipient's device. Silent push notifications can be used for cases such as updating an app's
-     * configuration, displaying messages in an in-app message center, or supporting phone home functionality.
+     * Specifies whether the notification is a silent push notification. A silent (or background) push notification
+     * isn't displayed on recipients' devices. You can use silent push notifications to make small updates to your app,
+     * or to display messages in an in-app message center.
      * </p>
+     * <p>
+     * Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header when it
+     * sends the notification message to APNs. If you specify a value of true for this property, Amazon Pinpoint sets
+     * the value for the apns-push-type header field to background.
+     * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. For silent (background) notifications, set the value of content-available to 1.
+     * Additionally, the message payload for a silent notification can't include the alert, badge, or sound keys. For
+     * more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * <p>
+     * Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     * volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3 silent push
+     * notifications to each recipient per hour.
+     * </p>
+     * </note>
      * 
      * @param silentPush
-     *        Specifies whether the notification is a silent push notification, which is a push notification that
-     *        doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating
-     *        an app's configuration, displaying messages in an in-app message center, or supporting phone home
-     *        functionality.
+     *        Specifies whether the notification is a silent push notification. A silent (or background) push
+     *        notification isn't displayed on recipients' devices. You can use silent push notifications to make small
+     *        updates to your app, or to display messages in an in-app message center.</p>
+     *        <p>
+     *        Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header
+     *        when it sends the notification message to APNs. If you specify a value of true for this property, Amazon
+     *        Pinpoint sets the value for the apns-push-type header field to background.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you specify the raw content of an APNs push notification, the message payload has to include the
+     *        content-available key. For silent (background) notifications, set the value of content-available to 1.
+     *        Additionally, the message payload for a silent notification can't include the alert, badge, or sound keys.
+     *        For more information, see <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     *        >Generating a Remote Notification</a> and <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     *        >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     *        </p>
+     *        <p>
+     *        Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     *        volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3
+     *        silent push notifications to each recipient per hour.
+     *        </p>
      */
 
     public void setSilentPush(Boolean silentPush) {
@@ -1013,15 +1523,57 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the notification is a silent push notification, which is a push notification that doesn't
-     * display on a recipient's device. Silent push notifications can be used for cases such as updating an app's
-     * configuration, displaying messages in an in-app message center, or supporting phone home functionality.
+     * Specifies whether the notification is a silent push notification. A silent (or background) push notification
+     * isn't displayed on recipients' devices. You can use silent push notifications to make small updates to your app,
+     * or to display messages in an in-app message center.
      * </p>
+     * <p>
+     * Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header when it
+     * sends the notification message to APNs. If you specify a value of true for this property, Amazon Pinpoint sets
+     * the value for the apns-push-type header field to background.
+     * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. For silent (background) notifications, set the value of content-available to 1.
+     * Additionally, the message payload for a silent notification can't include the alert, badge, or sound keys. For
+     * more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * <p>
+     * Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     * volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3 silent push
+     * notifications to each recipient per hour.
+     * </p>
+     * </note>
      * 
-     * @return Specifies whether the notification is a silent push notification, which is a push notification that
-     *         doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating
-     *         an app's configuration, displaying messages in an in-app message center, or supporting phone home
-     *         functionality.
+     * @return Specifies whether the notification is a silent push notification. A silent (or background) push
+     *         notification isn't displayed on recipients' devices. You can use silent push notifications to make small
+     *         updates to your app, or to display messages in an in-app message center.</p>
+     *         <p>
+     *         Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header
+     *         when it sends the notification message to APNs. If you specify a value of true for this property, Amazon
+     *         Pinpoint sets the value for the apns-push-type header field to background.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         If you specify the raw content of an APNs push notification, the message payload has to include the
+     *         content-available key. For silent (background) notifications, set the value of content-available to 1.
+     *         Additionally, the message payload for a silent notification can't include the alert, badge, or sound
+     *         keys. For more information, see <a href=
+     *         "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     *         >Generating a Remote Notification</a> and <a href=
+     *         "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     *         >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     *         </p>
+     *         <p>
+     *         Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     *         volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3
+     *         silent push notifications to each recipient per hour.
+     *         </p>
      */
 
     public Boolean getSilentPush() {
@@ -1030,16 +1582,58 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the notification is a silent push notification, which is a push notification that doesn't
-     * display on a recipient's device. Silent push notifications can be used for cases such as updating an app's
-     * configuration, displaying messages in an in-app message center, or supporting phone home functionality.
+     * Specifies whether the notification is a silent push notification. A silent (or background) push notification
+     * isn't displayed on recipients' devices. You can use silent push notifications to make small updates to your app,
+     * or to display messages in an in-app message center.
      * </p>
+     * <p>
+     * Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header when it
+     * sends the notification message to APNs. If you specify a value of true for this property, Amazon Pinpoint sets
+     * the value for the apns-push-type header field to background.
+     * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. For silent (background) notifications, set the value of content-available to 1.
+     * Additionally, the message payload for a silent notification can't include the alert, badge, or sound keys. For
+     * more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * <p>
+     * Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     * volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3 silent push
+     * notifications to each recipient per hour.
+     * </p>
+     * </note>
      * 
      * @param silentPush
-     *        Specifies whether the notification is a silent push notification, which is a push notification that
-     *        doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating
-     *        an app's configuration, displaying messages in an in-app message center, or supporting phone home
-     *        functionality.
+     *        Specifies whether the notification is a silent push notification. A silent (or background) push
+     *        notification isn't displayed on recipients' devices. You can use silent push notifications to make small
+     *        updates to your app, or to display messages in an in-app message center.</p>
+     *        <p>
+     *        Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header
+     *        when it sends the notification message to APNs. If you specify a value of true for this property, Amazon
+     *        Pinpoint sets the value for the apns-push-type header field to background.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you specify the raw content of an APNs push notification, the message payload has to include the
+     *        content-available key. For silent (background) notifications, set the value of content-available to 1.
+     *        Additionally, the message payload for a silent notification can't include the alert, badge, or sound keys.
+     *        For more information, see <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     *        >Generating a Remote Notification</a> and <a href=
+     *        "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     *        >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     *        </p>
+     *        <p>
+     *        Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     *        volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3
+     *        silent push notifications to each recipient per hour.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1050,15 +1644,57 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the notification is a silent push notification, which is a push notification that doesn't
-     * display on a recipient's device. Silent push notifications can be used for cases such as updating an app's
-     * configuration, displaying messages in an in-app message center, or supporting phone home functionality.
+     * Specifies whether the notification is a silent push notification. A silent (or background) push notification
+     * isn't displayed on recipients' devices. You can use silent push notifications to make small updates to your app,
+     * or to display messages in an in-app message center.
      * </p>
+     * <p>
+     * Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header when it
+     * sends the notification message to APNs. If you specify a value of true for this property, Amazon Pinpoint sets
+     * the value for the apns-push-type header field to background.
+     * </p>
+     * <note>
+     * <p>
+     * If you specify the raw content of an APNs push notification, the message payload has to include the
+     * content-available key. For silent (background) notifications, set the value of content-available to 1.
+     * Additionally, the message payload for a silent notification can't include the alert, badge, or sound keys. For
+     * more information, see <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     * >Generating a Remote Notification</a> and <a href=
+     * "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     * >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     * </p>
+     * <p>
+     * Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     * volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3 silent push
+     * notifications to each recipient per hour.
+     * </p>
+     * </note>
      * 
-     * @return Specifies whether the notification is a silent push notification, which is a push notification that
-     *         doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating
-     *         an app's configuration, displaying messages in an in-app message center, or supporting phone home
-     *         functionality.
+     * @return Specifies whether the notification is a silent push notification. A silent (or background) push
+     *         notification isn't displayed on recipients' devices. You can use silent push notifications to make small
+     *         updates to your app, or to display messages in an in-app message center.</p>
+     *         <p>
+     *         Amazon Pinpoint uses this property to determine the correct value for the apns-push-type request header
+     *         when it sends the notification message to APNs. If you specify a value of true for this property, Amazon
+     *         Pinpoint sets the value for the apns-push-type header field to background.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         If you specify the raw content of an APNs push notification, the message payload has to include the
+     *         content-available key. For silent (background) notifications, set the value of content-available to 1.
+     *         Additionally, the message payload for a silent notification can't include the alert, badge, or sound
+     *         keys. For more information, see <a href=
+     *         "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification"
+     *         >Generating a Remote Notification</a> and <a href=
+     *         "https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app"
+     *         >Pushing Background Updates to Your App</a> on the Apple Developer website.
+     *         </p>
+     *         <p>
+     *         Apple has indicated that they will throttle "excessive" background notifications based on current traffic
+     *         volumes. To prevent your notifications being throttled, Apple recommends that you send no more than 3
+     *         silent push notifications to each recipient per hour.
+     *         </p>
      */
 
     public Boolean isSilentPush() {
@@ -1067,13 +1703,13 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The key for the sound to play when the recipient receives the push notification. The value of this key is the
+     * The key for the sound to play when the recipient receives the push notification. The value for this key is the
      * name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data container. If the
      * sound file can't be found or you specify default for the value, the system plays the default alert sound.
      * </p>
      * 
      * @param sound
-     *        The key for the sound to play when the recipient receives the push notification. The value of this key is
+     *        The key for the sound to play when the recipient receives the push notification. The value for this key is
      *        the name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data
      *        container. If the sound file can't be found or you specify default for the value, the system plays the
      *        default alert sound.
@@ -1085,13 +1721,13 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The key for the sound to play when the recipient receives the push notification. The value of this key is the
+     * The key for the sound to play when the recipient receives the push notification. The value for this key is the
      * name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data container. If the
      * sound file can't be found or you specify default for the value, the system plays the default alert sound.
      * </p>
      * 
-     * @return The key for the sound to play when the recipient receives the push notification. The value of this key is
-     *         the name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data
+     * @return The key for the sound to play when the recipient receives the push notification. The value for this key
+     *         is the name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data
      *         container. If the sound file can't be found or you specify default for the value, the system plays the
      *         default alert sound.
      */
@@ -1102,13 +1738,13 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The key for the sound to play when the recipient receives the push notification. The value of this key is the
+     * The key for the sound to play when the recipient receives the push notification. The value for this key is the
      * name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data container. If the
      * sound file can't be found or you specify default for the value, the system plays the default alert sound.
      * </p>
      * 
      * @param sound
-     *        The key for the sound to play when the recipient receives the push notification. The value of this key is
+     *        The key for the sound to play when the recipient receives the push notification. The value for this key is
      *        the name of a sound file in your app's main bundle or the Library/Sounds folder in your app's data
      *        container. If the sound file can't be found or you specify default for the value, the system plays the
      *        default alert sound.
@@ -1165,6 +1801,13 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
         setSubstitutions(substitutions);
         return this;
     }
+
+    /**
+     * Add a single Substitutions entry
+     *
+     * @see APNSMessage#withSubstitutions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public APNSMessage addSubstitutionsEntry(String key, java.util.List<String> value) {
         if (null == this.substitutions) {
@@ -1407,6 +2050,8 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getAPNSPushType() != null)
+            sb.append("APNSPushType: ").append(getAPNSPushType()).append(",");
         if (getAction() != null)
             sb.append("Action: ").append(getAction()).append(",");
         if (getBadge() != null)
@@ -1455,6 +2100,10 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
         if (obj instanceof APNSMessage == false)
             return false;
         APNSMessage other = (APNSMessage) obj;
+        if (other.getAPNSPushType() == null ^ this.getAPNSPushType() == null)
+            return false;
+        if (other.getAPNSPushType() != null && other.getAPNSPushType().equals(this.getAPNSPushType()) == false)
+            return false;
         if (other.getAction() == null ^ this.getAction() == null)
             return false;
         if (other.getAction() != null && other.getAction().equals(this.getAction()) == false)
@@ -1532,6 +2181,7 @@ public class APNSMessage implements Serializable, Cloneable, StructuredPojo {
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getAPNSPushType() == null) ? 0 : getAPNSPushType().hashCode());
         hashCode = prime * hashCode + ((getAction() == null) ? 0 : getAction().hashCode());
         hashCode = prime * hashCode + ((getBadge() == null) ? 0 : getBadge().hashCode());
         hashCode = prime * hashCode + ((getBody() == null) ? 0 : getBody().hashCode());

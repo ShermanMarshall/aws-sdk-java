@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -105,6 +105,16 @@ public class GetLicenseConfigurationResultJsonUnmarshaller implements Unmarshall
                 if (context.testExpression("Tags", targetDepth)) {
                     context.nextToken();
                     getLicenseConfigurationResult.setTags(new ListUnmarshaller<Tag>(TagJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
+                if (context.testExpression("ProductInformationList", targetDepth)) {
+                    context.nextToken();
+                    getLicenseConfigurationResult.setProductInformationList(new ListUnmarshaller<ProductInformation>(ProductInformationJsonUnmarshaller
+                            .getInstance()).unmarshall(context));
+                }
+                if (context.testExpression("AutomatedDiscoveryInformation", targetDepth)) {
+                    context.nextToken();
+                    getLicenseConfigurationResult.setAutomatedDiscoveryInformation(AutomatedDiscoveryInformationJsonUnmarshaller.getInstance().unmarshall(
+                            context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

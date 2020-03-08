@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,8 @@ public class IntentSummaryMarshaller {
 
     private static final MarshallingInfo<String> INTENTNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("intentName").build();
+    private static final MarshallingInfo<String> CHECKPOINTLABEL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("checkpointLabel").build();
     private static final MarshallingInfo<Map> SLOTS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("slots").build();
     private static final MarshallingInfo<String> CONFIRMATIONSTATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -59,6 +61,7 @@ public class IntentSummaryMarshaller {
 
         try {
             protocolMarshaller.marshall(intentSummary.getIntentName(), INTENTNAME_BINDING);
+            protocolMarshaller.marshall(intentSummary.getCheckpointLabel(), CHECKPOINTLABEL_BINDING);
             protocolMarshaller.marshall(intentSummary.getSlots(), SLOTS_BINDING);
             protocolMarshaller.marshall(intentSummary.getConfirmationStatus(), CONFIRMATIONSTATUS_BINDING);
             protocolMarshaller.marshall(intentSummary.getDialogActionType(), DIALOGACTIONTYPE_BINDING);

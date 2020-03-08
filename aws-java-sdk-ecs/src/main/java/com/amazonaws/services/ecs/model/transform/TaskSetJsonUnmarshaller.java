@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -104,6 +104,11 @@ public class TaskSetJsonUnmarshaller implements Unmarshaller<TaskSet, JsonUnmars
                     context.nextToken();
                     taskSet.setLaunchType(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("capacityProviderStrategy", targetDepth)) {
+                    context.nextToken();
+                    taskSet.setCapacityProviderStrategy(new ListUnmarshaller<CapacityProviderStrategyItem>(CapacityProviderStrategyItemJsonUnmarshaller
+                            .getInstance()).unmarshall(context));
+                }
                 if (context.testExpression("platformVersion", targetDepth)) {
                     context.nextToken();
                     taskSet.setPlatformVersion(context.getUnmarshaller(String.class).unmarshall(context));
@@ -131,6 +136,10 @@ public class TaskSetJsonUnmarshaller implements Unmarshaller<TaskSet, JsonUnmars
                 if (context.testExpression("stabilityStatusAt", targetDepth)) {
                     context.nextToken();
                     taskSet.setStabilityStatusAt(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
+                if (context.testExpression("tags", targetDepth)) {
+                    context.nextToken();
+                    taskSet.setTags(new ListUnmarshaller<Tag>(TagJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

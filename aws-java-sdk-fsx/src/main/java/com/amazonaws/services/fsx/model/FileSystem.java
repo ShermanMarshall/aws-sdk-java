@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,27 +55,28 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
     private String fileSystemType;
     /**
      * <p>
-     * The lifecycle status of the file system:
+     * The lifecycle status of the file system, following are the possible values and what they mean:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     * <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     * <code>CREATING</code> - Amazon FSx is creating the new file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     * <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     * <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a new file
+     * system, Amazon FSx was unable to create the file system.
      * </p>
      * </li>
      * <li>
@@ -133,8 +134,12 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
     private String dNSName;
     /**
      * <p>
-     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for an Amazon FSx
-     * for Windows File Server file system.
+     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for Amazon FSx for
+     * Windows File Server file systems and persistent Amazon FSx for Lustre file systems at rest. In either case, if
+     * not specified, the Amazon FSx managed key is used. The scratch Amazon FSx for Lustre file systems are always
+     * encrypted at rest using Amazon FSx managed keys. For more information, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a> in the <i>AWS Key
+     * Management Service API Reference</i>.
      * </p>
      */
     private String kmsKeyId;
@@ -351,27 +356,28 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The lifecycle status of the file system:
+     * The lifecycle status of the file system, following are the possible values and what they mean:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     * <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     * <code>CREATING</code> - Amazon FSx is creating the new file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     * <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     * <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a new file
+     * system, Amazon FSx was unable to create the file system.
      * </p>
      * </li>
      * <li>
@@ -387,26 +393,27 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
      * </ul>
      * 
      * @param lifecycle
-     *        The lifecycle status of the file system:</p>
+     *        The lifecycle status of the file system, following are the possible values and what they mean:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     *        <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     *        <code>CREATING</code> - Amazon FSx is creating the new file system.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     *        <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     *        <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a
+     *        new file system, Amazon FSx was unable to create the file system.
      *        </p>
      *        </li>
      *        <li>
@@ -428,27 +435,28 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The lifecycle status of the file system:
+     * The lifecycle status of the file system, following are the possible values and what they mean:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     * <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     * <code>CREATING</code> - Amazon FSx is creating the new file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     * <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     * <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a new file
+     * system, Amazon FSx was unable to create the file system.
      * </p>
      * </li>
      * <li>
@@ -463,26 +471,27 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * </ul>
      * 
-     * @return The lifecycle status of the file system:</p>
+     * @return The lifecycle status of the file system, following are the possible values and what they mean:</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     *         <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     *         <code>CREATING</code> - Amazon FSx is creating the new file system.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     *         <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     *         <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a
+     *         new file system, Amazon FSx was unable to create the file system.
      *         </p>
      *         </li>
      *         <li>
@@ -504,27 +513,28 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The lifecycle status of the file system:
+     * The lifecycle status of the file system, following are the possible values and what they mean:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     * <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     * <code>CREATING</code> - Amazon FSx is creating the new file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     * <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     * <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a new file
+     * system, Amazon FSx was unable to create the file system.
      * </p>
      * </li>
      * <li>
@@ -540,26 +550,27 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
      * </ul>
      * 
      * @param lifecycle
-     *        The lifecycle status of the file system:</p>
+     *        The lifecycle status of the file system, following are the possible values and what they mean:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     *        <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     *        <code>CREATING</code> - Amazon FSx is creating the new file system.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     *        <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     *        <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a
+     *        new file system, Amazon FSx was unable to create the file system.
      *        </p>
      *        </li>
      *        <li>
@@ -583,27 +594,28 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The lifecycle status of the file system:
+     * The lifecycle status of the file system, following are the possible values and what they mean:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     * <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     * <code>CREATING</code> - Amazon FSx is creating the new file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     * <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     * <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a new file
+     * system, Amazon FSx was unable to create the file system.
      * </p>
      * </li>
      * <li>
@@ -619,26 +631,27 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
      * </ul>
      * 
      * @param lifecycle
-     *        The lifecycle status of the file system:</p>
+     *        The lifecycle status of the file system, following are the possible values and what they mean:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>AVAILABLE</code> indicates that the file system is reachable and available for use.
+     *        <code>AVAILABLE</code> - The file system is in a healthy state, and is reachable and available for use.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>CREATING</code> indicates that Amazon FSx is in the process of creating the new file system.
+     *        <code>CREATING</code> - Amazon FSx is creating the new file system.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>DELETING</code> indicates that Amazon FSx is in the process of deleting the file system.
+     *        <code>DELETING</code> - Amazon FSx is deleting an existing file system.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>FAILED</code> indicates that Amazon FSx was not able to create the file system.
+     *        <code>FAILED</code> - An existing file system has experienced an unrecoverable failure. When creating a
+     *        new file system, Amazon FSx was unable to create the file system.
      *        </p>
      *        </li>
      *        <li>
@@ -1012,13 +1025,21 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for an Amazon FSx
-     * for Windows File Server file system.
+     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for Amazon FSx for
+     * Windows File Server file systems and persistent Amazon FSx for Lustre file systems at rest. In either case, if
+     * not specified, the Amazon FSx managed key is used. The scratch Amazon FSx for Lustre file systems are always
+     * encrypted at rest using Amazon FSx managed keys. For more information, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a> in the <i>AWS Key
+     * Management Service API Reference</i>.
      * </p>
      * 
      * @param kmsKeyId
-     *        The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for an
-     *        Amazon FSx for Windows File Server file system.
+     *        The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for Amazon
+     *        FSx for Windows File Server file systems and persistent Amazon FSx for Lustre file systems at rest. In
+     *        either case, if not specified, the Amazon FSx managed key is used. The scratch Amazon FSx for Lustre file
+     *        systems are always encrypted at rest using Amazon FSx managed keys. For more information, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a> in the <i>AWS Key
+     *        Management Service API Reference</i>.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -1027,12 +1048,20 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for an Amazon FSx
-     * for Windows File Server file system.
+     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for Amazon FSx for
+     * Windows File Server file systems and persistent Amazon FSx for Lustre file systems at rest. In either case, if
+     * not specified, the Amazon FSx managed key is used. The scratch Amazon FSx for Lustre file systems are always
+     * encrypted at rest using Amazon FSx managed keys. For more information, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a> in the <i>AWS Key
+     * Management Service API Reference</i>.
      * </p>
      * 
-     * @return The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for an
-     *         Amazon FSx for Windows File Server file system.
+     * @return The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for Amazon
+     *         FSx for Windows File Server file systems and persistent Amazon FSx for Lustre file systems at rest. In
+     *         either case, if not specified, the Amazon FSx managed key is used. The scratch Amazon FSx for Lustre file
+     *         systems are always encrypted at rest using Amazon FSx managed keys. For more information, see <a
+     *         href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a> in the <i>AWS Key
+     *         Management Service API Reference</i>.
      */
 
     public String getKmsKeyId() {
@@ -1041,13 +1070,21 @@ public class FileSystem implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for an Amazon FSx
-     * for Windows File Server file system.
+     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for Amazon FSx for
+     * Windows File Server file systems and persistent Amazon FSx for Lustre file systems at rest. In either case, if
+     * not specified, the Amazon FSx managed key is used. The scratch Amazon FSx for Lustre file systems are always
+     * encrypted at rest using Amazon FSx managed keys. For more information, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a> in the <i>AWS Key
+     * Management Service API Reference</i>.
      * </p>
      * 
      * @param kmsKeyId
-     *        The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for an
-     *        Amazon FSx for Windows File Server file system.
+     *        The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data for Amazon
+     *        FSx for Windows File Server file systems and persistent Amazon FSx for Lustre file systems at rest. In
+     *        either case, if not specified, the Amazon FSx managed key is used. The scratch Amazon FSx for Lustre file
+     *        systems are always encrypted at rest using Amazon FSx managed keys. For more information, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a> in the <i>AWS Key
+     *        Management Service API Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

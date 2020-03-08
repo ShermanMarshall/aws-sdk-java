@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class CreateRouteRequestMarshaller {
             .defaultValueSupplier(com.amazonaws.util.IdempotentUtils.getGenerator()).build();
     private static final MarshallingInfo<String> MESHNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
             .marshallLocationName("meshName").build();
+    private static final MarshallingInfo<String> MESHOWNER_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("meshOwner").build();
     private static final MarshallingInfo<String> ROUTENAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("routeName").build();
     private static final MarshallingInfo<StructuredPojo> SPEC_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -62,6 +64,7 @@ public class CreateRouteRequestMarshaller {
         try {
             protocolMarshaller.marshall(createRouteRequest.getClientToken(), CLIENTTOKEN_BINDING);
             protocolMarshaller.marshall(createRouteRequest.getMeshName(), MESHNAME_BINDING);
+            protocolMarshaller.marshall(createRouteRequest.getMeshOwner(), MESHOWNER_BINDING);
             protocolMarshaller.marshall(createRouteRequest.getRouteName(), ROUTENAME_BINDING);
             protocolMarshaller.marshall(createRouteRequest.getSpec(), SPEC_BINDING);
             protocolMarshaller.marshall(createRouteRequest.getTags(), TAGS_BINDING);

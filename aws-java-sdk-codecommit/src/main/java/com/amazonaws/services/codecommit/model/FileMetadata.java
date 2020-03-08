@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A file that will be added, updated, or deleted as part of a commit.
+ * A file to be added, updated, or deleted as part of a commit.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/FileMetadata" target="_top">AWS API
@@ -30,7 +30,7 @@ public class FileMetadata implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The full path to the file that will be added or updated, including the name of the file.
+     * The full path to the file to be added or updated, including the name of the file.
      * </p>
      */
     private String absolutePath;
@@ -49,11 +49,11 @@ public class FileMetadata implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The full path to the file that will be added or updated, including the name of the file.
+     * The full path to the file to be added or updated, including the name of the file.
      * </p>
      * 
      * @param absolutePath
-     *        The full path to the file that will be added or updated, including the name of the file.
+     *        The full path to the file to be added or updated, including the name of the file.
      */
 
     public void setAbsolutePath(String absolutePath) {
@@ -62,10 +62,10 @@ public class FileMetadata implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The full path to the file that will be added or updated, including the name of the file.
+     * The full path to the file to be added or updated, including the name of the file.
      * </p>
      * 
-     * @return The full path to the file that will be added or updated, including the name of the file.
+     * @return The full path to the file to be added or updated, including the name of the file.
      */
 
     public String getAbsolutePath() {
@@ -74,11 +74,11 @@ public class FileMetadata implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The full path to the file that will be added or updated, including the name of the file.
+     * The full path to the file to be added or updated, including the name of the file.
      * </p>
      * 
      * @param absolutePath
-     *        The full path to the file that will be added or updated, including the name of the file.
+     *        The full path to the file to be added or updated, including the name of the file.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

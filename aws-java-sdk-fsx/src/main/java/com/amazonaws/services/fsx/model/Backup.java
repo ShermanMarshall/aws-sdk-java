@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -62,7 +62,8 @@ public class Backup implements Serializable, Cloneable, StructuredPojo {
     private java.util.Date creationTime;
     /**
      * <p>
-     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup's data.
+     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup of the Amazon FSx for Windows
+     * file system's data at rest. Amazon FSx for Lustre does not support KMS encryption.
      * </p>
      */
     private String kmsKeyId;
@@ -359,11 +360,13 @@ public class Backup implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup's data.
+     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup of the Amazon FSx for Windows
+     * file system's data at rest. Amazon FSx for Lustre does not support KMS encryption.
      * </p>
      * 
      * @param kmsKeyId
-     *        The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup's data.
+     *        The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup of the Amazon FSx for
+     *        Windows file system's data at rest. Amazon FSx for Lustre does not support KMS encryption.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -372,10 +375,12 @@ public class Backup implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup's data.
+     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup of the Amazon FSx for Windows
+     * file system's data at rest. Amazon FSx for Lustre does not support KMS encryption.
      * </p>
      * 
-     * @return The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup's data.
+     * @return The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup of the Amazon FSx for
+     *         Windows file system's data at rest. Amazon FSx for Lustre does not support KMS encryption.
      */
 
     public String getKmsKeyId() {
@@ -384,11 +389,13 @@ public class Backup implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup's data.
+     * The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup of the Amazon FSx for Windows
+     * file system's data at rest. Amazon FSx for Lustre does not support KMS encryption.
      * </p>
      * 
      * @param kmsKeyId
-     *        The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup's data.
+     *        The ID of the AWS Key Management Service (AWS KMS) key used to encrypt this backup of the Amazon FSx for
+     *        Windows file system's data at rest. Amazon FSx for Lustre does not support KMS encryption.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

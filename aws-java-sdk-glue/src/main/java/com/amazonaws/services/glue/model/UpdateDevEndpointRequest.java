@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -71,6 +71,31 @@ public class UpdateDevEndpointRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.
+     * </p>
+     * <p>
+     * Valid arguments are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>"--enable-glue-datacatalog": ""</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>"GLUE_PYTHON_VERSION": "3"</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>"GLUE_PYTHON_VERSION": "2"</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can specify a version of Python support for development endpoints by using the <code>Arguments</code>
+     * parameter in the <code>CreateDevEndpoint</code> or <code>UpdateDevEndpoint</code> APIs. If no arguments are
+     * provided, the version defaults to Python 2.
      * </p>
      */
     private java.util.Map<String, String> addArguments;
@@ -473,8 +498,57 @@ public class UpdateDevEndpointRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.
      * </p>
+     * <p>
+     * Valid arguments are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>"--enable-glue-datacatalog": ""</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>"GLUE_PYTHON_VERSION": "3"</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>"GLUE_PYTHON_VERSION": "2"</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can specify a version of Python support for development endpoints by using the <code>Arguments</code>
+     * parameter in the <code>CreateDevEndpoint</code> or <code>UpdateDevEndpoint</code> APIs. If no arguments are
+     * provided, the version defaults to Python 2.
+     * </p>
      * 
-     * @return The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.
+     * @return The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.</p>
+     *         <p>
+     *         Valid arguments are:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>"--enable-glue-datacatalog": ""</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>"GLUE_PYTHON_VERSION": "3"</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>"GLUE_PYTHON_VERSION": "2"</code>
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         You can specify a version of Python support for development endpoints by using the <code>Arguments</code>
+     *         parameter in the <code>CreateDevEndpoint</code> or <code>UpdateDevEndpoint</code> APIs. If no arguments
+     *         are provided, the version defaults to Python 2.
      */
 
     public java.util.Map<String, String> getAddArguments() {
@@ -485,9 +559,58 @@ public class UpdateDevEndpointRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.
      * </p>
+     * <p>
+     * Valid arguments are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>"--enable-glue-datacatalog": ""</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>"GLUE_PYTHON_VERSION": "3"</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>"GLUE_PYTHON_VERSION": "2"</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can specify a version of Python support for development endpoints by using the <code>Arguments</code>
+     * parameter in the <code>CreateDevEndpoint</code> or <code>UpdateDevEndpoint</code> APIs. If no arguments are
+     * provided, the version defaults to Python 2.
+     * </p>
      * 
      * @param addArguments
-     *        The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.
+     *        The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.</p>
+     *        <p>
+     *        Valid arguments are:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>"--enable-glue-datacatalog": ""</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>"GLUE_PYTHON_VERSION": "3"</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>"GLUE_PYTHON_VERSION": "2"</code>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        You can specify a version of Python support for development endpoints by using the <code>Arguments</code>
+     *        parameter in the <code>CreateDevEndpoint</code> or <code>UpdateDevEndpoint</code> APIs. If no arguments
+     *        are provided, the version defaults to Python 2.
      */
 
     public void setAddArguments(java.util.Map<String, String> addArguments) {
@@ -498,9 +621,58 @@ public class UpdateDevEndpointRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.
      * </p>
+     * <p>
+     * Valid arguments are:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>"--enable-glue-datacatalog": ""</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>"GLUE_PYTHON_VERSION": "3"</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>"GLUE_PYTHON_VERSION": "2"</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can specify a version of Python support for development endpoints by using the <code>Arguments</code>
+     * parameter in the <code>CreateDevEndpoint</code> or <code>UpdateDevEndpoint</code> APIs. If no arguments are
+     * provided, the version defaults to Python 2.
+     * </p>
      * 
      * @param addArguments
-     *        The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.
+     *        The map of arguments to add the map of arguments used to configure the <code>DevEndpoint</code>.</p>
+     *        <p>
+     *        Valid arguments are:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>"--enable-glue-datacatalog": ""</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>"GLUE_PYTHON_VERSION": "3"</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>"GLUE_PYTHON_VERSION": "2"</code>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        You can specify a version of Python support for development endpoints by using the <code>Arguments</code>
+     *        parameter in the <code>CreateDevEndpoint</code> or <code>UpdateDevEndpoint</code> APIs. If no arguments
+     *        are provided, the version defaults to Python 2.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -508,6 +680,13 @@ public class UpdateDevEndpointRequest extends com.amazonaws.AmazonWebServiceRequ
         setAddArguments(addArguments);
         return this;
     }
+
+    /**
+     * Add a single AddArguments entry
+     *
+     * @see UpdateDevEndpointRequest#withAddArguments
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateDevEndpointRequest addAddArgumentsEntry(String key, String value) {
         if (null == this.addArguments) {

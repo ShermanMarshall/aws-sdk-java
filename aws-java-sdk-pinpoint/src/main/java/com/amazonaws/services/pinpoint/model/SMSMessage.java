@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,9 +50,9 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
     private String messageType;
     /**
      * <p>
-     * The number that the SMS message originates from. This should be one of the dedicated long codes or short codes
-     * that you requested from AWS Support and is assigned to your AWS account. If you don't specify a long or short
-     * code, Amazon Pinpoint assigns a random long code to the SMS message.
+     * The number to send the SMS message from. This value should be one of the dedicated long or short codes that's
+     * assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a random long
+     * code to the SMS message and sends the message from that code.
      * </p>
      */
     private String originationNumber;
@@ -246,15 +246,15 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number that the SMS message originates from. This should be one of the dedicated long codes or short codes
-     * that you requested from AWS Support and is assigned to your AWS account. If you don't specify a long or short
-     * code, Amazon Pinpoint assigns a random long code to the SMS message.
+     * The number to send the SMS message from. This value should be one of the dedicated long or short codes that's
+     * assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a random long
+     * code to the SMS message and sends the message from that code.
      * </p>
      * 
      * @param originationNumber
-     *        The number that the SMS message originates from. This should be one of the dedicated long codes or short
-     *        codes that you requested from AWS Support and is assigned to your AWS account. If you don't specify a long
-     *        or short code, Amazon Pinpoint assigns a random long code to the SMS message.
+     *        The number to send the SMS message from. This value should be one of the dedicated long or short codes
+     *        that's assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a
+     *        random long code to the SMS message and sends the message from that code.
      */
 
     public void setOriginationNumber(String originationNumber) {
@@ -263,14 +263,14 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number that the SMS message originates from. This should be one of the dedicated long codes or short codes
-     * that you requested from AWS Support and is assigned to your AWS account. If you don't specify a long or short
-     * code, Amazon Pinpoint assigns a random long code to the SMS message.
+     * The number to send the SMS message from. This value should be one of the dedicated long or short codes that's
+     * assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a random long
+     * code to the SMS message and sends the message from that code.
      * </p>
      * 
-     * @return The number that the SMS message originates from. This should be one of the dedicated long codes or short
-     *         codes that you requested from AWS Support and is assigned to your AWS account. If you don't specify a
-     *         long or short code, Amazon Pinpoint assigns a random long code to the SMS message.
+     * @return The number to send the SMS message from. This value should be one of the dedicated long or short codes
+     *         that's assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a
+     *         random long code to the SMS message and sends the message from that code.
      */
 
     public String getOriginationNumber() {
@@ -279,15 +279,15 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The number that the SMS message originates from. This should be one of the dedicated long codes or short codes
-     * that you requested from AWS Support and is assigned to your AWS account. If you don't specify a long or short
-     * code, Amazon Pinpoint assigns a random long code to the SMS message.
+     * The number to send the SMS message from. This value should be one of the dedicated long or short codes that's
+     * assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a random long
+     * code to the SMS message and sends the message from that code.
      * </p>
      * 
      * @param originationNumber
-     *        The number that the SMS message originates from. This should be one of the dedicated long codes or short
-     *        codes that you requested from AWS Support and is assigned to your AWS account. If you don't specify a long
-     *        or short code, Amazon Pinpoint assigns a random long code to the SMS message.
+     *        The number to send the SMS message from. This value should be one of the dedicated long or short codes
+     *        that's assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a
+     *        random long code to the SMS message and sends the message from that code.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -387,6 +387,13 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
         setSubstitutions(substitutions);
         return this;
     }
+
+    /**
+     * Add a single Substitutions entry
+     *
+     * @see SMSMessage#withSubstitutions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public SMSMessage addSubstitutionsEntry(String key, java.util.List<String> value) {
         if (null == this.substitutions) {

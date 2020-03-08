@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,6 +70,12 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
      * </p>
      */
     private Transcript transcript;
+    /**
+     * <p>
+     * A timestamp that shows with the job was started processing.
+     * </p>
+     */
+    private java.util.Date startTime;
     /**
      * <p>
      * A timestamp that shows when the job was created.
@@ -145,6 +151,18 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
      * </p>
      */
     private Settings settings;
+    /**
+     * <p>
+     * Provides information about how a transcription job is executed.
+     * </p>
+     */
+    private JobExecutionSettings jobExecutionSettings;
+    /**
+     * <p>
+     * An object that describes content redaction settings for the transcription job.
+     * </p>
+     */
+    private ContentRedaction contentRedaction;
 
     /**
      * <p>
@@ -480,6 +498,46 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
 
     public TranscriptionJob withTranscript(Transcript transcript) {
         setTranscript(transcript);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A timestamp that shows with the job was started processing.
+     * </p>
+     * 
+     * @param startTime
+     *        A timestamp that shows with the job was started processing.
+     */
+
+    public void setStartTime(java.util.Date startTime) {
+        this.startTime = startTime;
+    }
+
+    /**
+     * <p>
+     * A timestamp that shows with the job was started processing.
+     * </p>
+     * 
+     * @return A timestamp that shows with the job was started processing.
+     */
+
+    public java.util.Date getStartTime() {
+        return this.startTime;
+    }
+
+    /**
+     * <p>
+     * A timestamp that shows with the job was started processing.
+     * </p>
+     * 
+     * @param startTime
+     *        A timestamp that shows with the job was started processing.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TranscriptionJob withStartTime(java.util.Date startTime) {
+        setStartTime(startTime);
         return this;
     }
 
@@ -950,6 +1008,86 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
+     * Provides information about how a transcription job is executed.
+     * </p>
+     * 
+     * @param jobExecutionSettings
+     *        Provides information about how a transcription job is executed.
+     */
+
+    public void setJobExecutionSettings(JobExecutionSettings jobExecutionSettings) {
+        this.jobExecutionSettings = jobExecutionSettings;
+    }
+
+    /**
+     * <p>
+     * Provides information about how a transcription job is executed.
+     * </p>
+     * 
+     * @return Provides information about how a transcription job is executed.
+     */
+
+    public JobExecutionSettings getJobExecutionSettings() {
+        return this.jobExecutionSettings;
+    }
+
+    /**
+     * <p>
+     * Provides information about how a transcription job is executed.
+     * </p>
+     * 
+     * @param jobExecutionSettings
+     *        Provides information about how a transcription job is executed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TranscriptionJob withJobExecutionSettings(JobExecutionSettings jobExecutionSettings) {
+        setJobExecutionSettings(jobExecutionSettings);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An object that describes content redaction settings for the transcription job.
+     * </p>
+     * 
+     * @param contentRedaction
+     *        An object that describes content redaction settings for the transcription job.
+     */
+
+    public void setContentRedaction(ContentRedaction contentRedaction) {
+        this.contentRedaction = contentRedaction;
+    }
+
+    /**
+     * <p>
+     * An object that describes content redaction settings for the transcription job.
+     * </p>
+     * 
+     * @return An object that describes content redaction settings for the transcription job.
+     */
+
+    public ContentRedaction getContentRedaction() {
+        return this.contentRedaction;
+    }
+
+    /**
+     * <p>
+     * An object that describes content redaction settings for the transcription job.
+     * </p>
+     * 
+     * @param contentRedaction
+     *        An object that describes content redaction settings for the transcription job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TranscriptionJob withContentRedaction(ContentRedaction contentRedaction) {
+        setContentRedaction(contentRedaction);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -975,6 +1113,8 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
             sb.append("Media: ").append(getMedia()).append(",");
         if (getTranscript() != null)
             sb.append("Transcript: ").append(getTranscript()).append(",");
+        if (getStartTime() != null)
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getCreationTime() != null)
             sb.append("CreationTime: ").append(getCreationTime()).append(",");
         if (getCompletionTime() != null)
@@ -982,7 +1122,11 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
         if (getFailureReason() != null)
             sb.append("FailureReason: ").append(getFailureReason()).append(",");
         if (getSettings() != null)
-            sb.append("Settings: ").append(getSettings());
+            sb.append("Settings: ").append(getSettings()).append(",");
+        if (getJobExecutionSettings() != null)
+            sb.append("JobExecutionSettings: ").append(getJobExecutionSettings()).append(",");
+        if (getContentRedaction() != null)
+            sb.append("ContentRedaction: ").append(getContentRedaction());
         sb.append("}");
         return sb.toString();
     }
@@ -1025,6 +1169,10 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
             return false;
         if (other.getTranscript() != null && other.getTranscript().equals(this.getTranscript()) == false)
             return false;
+        if (other.getStartTime() == null ^ this.getStartTime() == null)
+            return false;
+        if (other.getStartTime() != null && other.getStartTime().equals(this.getStartTime()) == false)
+            return false;
         if (other.getCreationTime() == null ^ this.getCreationTime() == null)
             return false;
         if (other.getCreationTime() != null && other.getCreationTime().equals(this.getCreationTime()) == false)
@@ -1041,6 +1189,14 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
             return false;
         if (other.getSettings() != null && other.getSettings().equals(this.getSettings()) == false)
             return false;
+        if (other.getJobExecutionSettings() == null ^ this.getJobExecutionSettings() == null)
+            return false;
+        if (other.getJobExecutionSettings() != null && other.getJobExecutionSettings().equals(this.getJobExecutionSettings()) == false)
+            return false;
+        if (other.getContentRedaction() == null ^ this.getContentRedaction() == null)
+            return false;
+        if (other.getContentRedaction() != null && other.getContentRedaction().equals(this.getContentRedaction()) == false)
+            return false;
         return true;
     }
 
@@ -1056,10 +1212,13 @@ public class TranscriptionJob implements Serializable, Cloneable, StructuredPojo
         hashCode = prime * hashCode + ((getMediaFormat() == null) ? 0 : getMediaFormat().hashCode());
         hashCode = prime * hashCode + ((getMedia() == null) ? 0 : getMedia().hashCode());
         hashCode = prime * hashCode + ((getTranscript() == null) ? 0 : getTranscript().hashCode());
+        hashCode = prime * hashCode + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
         hashCode = prime * hashCode + ((getCompletionTime() == null) ? 0 : getCompletionTime().hashCode());
         hashCode = prime * hashCode + ((getFailureReason() == null) ? 0 : getFailureReason().hashCode());
         hashCode = prime * hashCode + ((getSettings() == null) ? 0 : getSettings().hashCode());
+        hashCode = prime * hashCode + ((getJobExecutionSettings() == null) ? 0 : getJobExecutionSettings().hashCode());
+        hashCode = prime * hashCode + ((getContentRedaction() == null) ? 0 : getContentRedaction().hashCode());
         return hashCode;
     }
 

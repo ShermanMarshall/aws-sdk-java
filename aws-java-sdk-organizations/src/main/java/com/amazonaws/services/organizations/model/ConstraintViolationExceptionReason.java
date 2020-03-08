@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,6 +25,7 @@ public enum ConstraintViolationExceptionReason {
     OU_NUMBER_LIMIT_EXCEEDED("OU_NUMBER_LIMIT_EXCEEDED"),
     OU_DEPTH_LIMIT_EXCEEDED("OU_DEPTH_LIMIT_EXCEEDED"),
     POLICY_NUMBER_LIMIT_EXCEEDED("POLICY_NUMBER_LIMIT_EXCEEDED"),
+    POLICY_CONTENT_LIMIT_EXCEEDED("POLICY_CONTENT_LIMIT_EXCEEDED"),
     MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED("MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED"),
     MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED("MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED"),
     ACCOUNT_CANNOT_LEAVE_ORGANIZATION("ACCOUNT_CANNOT_LEAVE_ORGANIZATION"),

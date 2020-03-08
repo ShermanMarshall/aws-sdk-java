@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,6 +44,16 @@ public class DescribeAlarmsResultStaxUnmarshaller implements Unmarshaller<Descri
                 return describeAlarmsResult;
 
             if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
+
+                if (context.testExpression("CompositeAlarms", targetDepth)) {
+                    describeAlarmsResult.withCompositeAlarms(new ArrayList<CompositeAlarm>());
+                    continue;
+                }
+
+                if (context.testExpression("CompositeAlarms/member", targetDepth)) {
+                    describeAlarmsResult.withCompositeAlarms(CompositeAlarmStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
 
                 if (context.testExpression("MetricAlarms", targetDepth)) {
                     describeAlarmsResult.withMetricAlarms(new ArrayList<MetricAlarm>());

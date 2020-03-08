@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,8 @@ public class InstanceSnapshotMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("fromBlueprintId").build();
     private static final MarshallingInfo<String> FROMBUNDLEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("fromBundleId").build();
+    private static final MarshallingInfo<Boolean> ISFROMAUTOSNAPSHOT_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("isFromAutoSnapshot").build();
     private static final MarshallingInfo<Integer> SIZEINGB_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("sizeInGb").build();
 
@@ -89,6 +91,7 @@ public class InstanceSnapshotMarshaller {
             protocolMarshaller.marshall(instanceSnapshot.getFromInstanceArn(), FROMINSTANCEARN_BINDING);
             protocolMarshaller.marshall(instanceSnapshot.getFromBlueprintId(), FROMBLUEPRINTID_BINDING);
             protocolMarshaller.marshall(instanceSnapshot.getFromBundleId(), FROMBUNDLEID_BINDING);
+            protocolMarshaller.marshall(instanceSnapshot.getIsFromAutoSnapshot(), ISFROMAUTOSNAPSHOT_BINDING);
             protocolMarshaller.marshall(instanceSnapshot.getSizeInGb(), SIZEINGB_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

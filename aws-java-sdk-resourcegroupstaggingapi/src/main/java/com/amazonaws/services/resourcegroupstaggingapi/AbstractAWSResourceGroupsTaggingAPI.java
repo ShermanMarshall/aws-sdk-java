@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,6 +28,16 @@ public class AbstractAWSResourceGroupsTaggingAPI implements AWSResourceGroupsTag
     }
 
     @Override
+    public DescribeReportCreationResult describeReportCreation(DescribeReportCreationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetComplianceSummaryResult getComplianceSummary(GetComplianceSummaryRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetResourcesResult getResources(GetResourcesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -39,6 +49,11 @@ public class AbstractAWSResourceGroupsTaggingAPI implements AWSResourceGroupsTag
 
     @Override
     public GetTagValuesResult getTagValues(GetTagValuesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public StartReportCreationResult startReportCreation(StartReportCreationRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -45,8 +45,8 @@ public class DefaultAWSCredentialsProviderChain extends AWSCredentialsProviderCh
     public DefaultAWSCredentialsProviderChain() {
         super(new EnvironmentVariableCredentialsProvider(),
               new SystemPropertiesCredentialsProvider(),
-              new ProfileCredentialsProvider(),
               WebIdentityTokenCredentialsProvider.create(),
+              new ProfileCredentialsProvider(),
               new EC2ContainerCredentialsProviderWrapper());
     }
 

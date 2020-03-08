@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,13 +20,13 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Contains information that must be exchanged to securely establish a relationship between two accounts (an
- * <i>originator</i> and a <i>recipient</i>). For example, when a master account (the originator) invites another
- * account (the recipient) to join its organization, the two accounts exchange information as a series of handshake
- * requests and responses.
+ * <i>originator</i> and a <i>recipient</i>). For example, assume that a master account (the originator) invites another
+ * account (the recipient) to join its organization. In that case, the two accounts exchange information as a series of
+ * handshake requests and responses.
  * </p>
  * <p>
  * <b>Note:</b> Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in lists for only 30 days after entering
- * that state After that they are deleted.
+ * that state. After that, they are deleted.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/Handshake" target="_top">AWS API

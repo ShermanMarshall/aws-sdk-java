@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,6 +28,11 @@ import java.util.concurrent.ExecutorService;
  * <p>
  * The AWS Migration Hub API methods help to obtain server and application migration status and integrate your
  * resource-specific migration tool by providing a programmatic interface to Migration Hub.
+ * </p>
+ * <p>
+ * Remember that you must set your AWS Migration Hub home region before you call any of these APIs, or a
+ * <code>HomeRegionNotSetException</code> error will be returned. Also, you must make the API calls while in your home
+ * region.
  * </p>
  */
 @ThreadSafe
@@ -346,6 +351,39 @@ public class AWSMigrationHubAsyncClient extends AWSMigrationHubClient implements
 
                 try {
                     result = executeImportMigrationTask(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListApplicationStatesResult> listApplicationStatesAsync(ListApplicationStatesRequest request) {
+
+        return listApplicationStatesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListApplicationStatesResult> listApplicationStatesAsync(final ListApplicationStatesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListApplicationStatesRequest, ListApplicationStatesResult> asyncHandler) {
+        final ListApplicationStatesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListApplicationStatesResult>() {
+            @Override
+            public ListApplicationStatesResult call() throws Exception {
+                ListApplicationStatesResult result = null;
+
+                try {
+                    result = executeListApplicationStates(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

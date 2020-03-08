@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import com.amazonaws.annotation.SdkProtectedApi;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.EndpointPrefixAwareSigner;
 import com.amazonaws.auth.RegionAwareSigner;
+import com.amazonaws.auth.RegionFromEndpointResolverAwareSigner;
 import com.amazonaws.auth.Signer;
 import com.amazonaws.auth.SignerFactory;
 import com.amazonaws.client.AwsSyncClientParams;
@@ -42,11 +43,12 @@ import com.amazonaws.monitoring.DefaultCsmConfigurationProviderChain;
 import com.amazonaws.monitoring.MonitoringListener;
 import com.amazonaws.monitoring.internal.AgentMonitoringListener;
 import com.amazonaws.monitoring.internal.ClientSideMonitoringRequestHandler;
+import com.amazonaws.regions.EndpointToRegion;
+import com.amazonaws.regions.MetadataSupportedRegionFromEndpointProvider;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.util.AWSRequestMetrics;
 import com.amazonaws.util.AWSRequestMetrics.Field;
-import com.amazonaws.util.AwsHostNameUtils;
 import com.amazonaws.util.Classes;
 import com.amazonaws.util.RuntimeHttpUtils;
 import com.amazonaws.util.StringUtils;
@@ -101,9 +103,17 @@ public abstract class AmazonWebServiceClient {
      * <p>
      * Subclass should only read but not assign to this field, at least not
      * without synchronization on the enclosing object for thread-safety
-     * reason.
+     * reason. If this value is changed to effectively override the endpoint, then the 'isEndpointOverridden' property
+     * should also be set to 'true' within the same synchronized block of code.
      */
     protected volatile URI endpoint;
+
+    /**
+     * A boolean flag that indicates whether the endpoint has been overridden either on construction or later mutated
+     * due to a call to setEndpoint(). If the endpoint property is updated directly then the method doing that update
+     * also has the responsibility to update this flag as part of an atomic threadsafe operation.
+     */
+    protected volatile boolean isEndpointOverridden = false;
 
     /**
      * Used to explicitly override the internal signer region computed by the
@@ -255,6 +265,15 @@ public abstract class AmazonWebServiceClient {
     }
 
     /**
+     * Returns a flag that indicates whether the endpoint for this client has been overridden or not.
+     * @return true if the configured endpoint is an override; false if not.
+     */
+    @SdkProtectedApi
+    protected boolean isEndpointOverridden() {
+        return this.isEndpointOverridden;
+    }
+
+    /**
      * @return Current SignerProvider instance.
      */
     @SdkProtectedApi
@@ -298,9 +317,10 @@ public abstract class AmazonWebServiceClient {
         URI uri = toURI(endpoint);
         Signer signer = computeSignerByURI(uri, signerRegionOverride, false);
         synchronized (this) {
+            this.isEndpointOverridden = true;
             this.endpoint = uri;
             this.signerProvider = createSignerProvider(signer);
-            this.signingRegion = AwsHostNameUtils.parseRegion(endpoint, getEndpointPrefix());
+            this.signingRegion = EndpointToRegion.guessRegionNameForEndpoint(endpoint, getEndpointPrefix());
         }
     }
 
@@ -360,6 +380,7 @@ public abstract class AmazonWebServiceClient {
         synchronized (this) {
             setServiceNameIntern(serviceName);
             this.signerProvider = createSignerProvider(signer);
+            this.isEndpointOverridden = true;
             this.endpoint = uri;
             this.signerRegionOverride = regionId;
             this.signingRegion = regionId;
@@ -401,8 +422,11 @@ public abstract class AmazonWebServiceClient {
             throw new IllegalArgumentException(
                     "Endpoint is not set. Use setEndpoint to set an endpoint before performing any request.");
         }
+        if (uri.getHost() == null) {
+            throw new IllegalArgumentException("Endpoint does not contain a valid host name: " + uri);
+        }
         String service = getServiceNameIntern();
-        String region = AwsHostNameUtils.parseRegionName(uri.getHost(), getEndpointPrefix());
+        String region = EndpointToRegion.guessRegionNameForEndpointWithDefault(uri.getHost(), getEndpointPrefix(), "us-east-1");
         return computeSignerByServiceRegion(
                 service, region, signerRegionOverride, isRegionIdAsSignerParam);
     }
@@ -456,6 +480,12 @@ public abstract class AmazonWebServiceClient {
              endpointPrefixAwareSigner.setEndpointPrefix(endpointPrefix);
          }
 
+         if (signer instanceof RegionFromEndpointResolverAwareSigner) {
+             // Allow the signer to assess the endpoints.json file for regions
+             RegionFromEndpointResolverAwareSigner awareSigner = (RegionFromEndpointResolverAwareSigner) signer;
+             awareSigner.setRegionFromEndpointResolver(new MetadataSupportedRegionFromEndpointProvider());
+         }
+
          return signer;
     }
 
@@ -495,9 +525,10 @@ public abstract class AmazonWebServiceClient {
                 .toString()).withRegion(region).getServiceEndpoint();
         Signer signer = computeSignerByServiceRegion(serviceNameForSigner, region.getName(), signerRegionOverride, false);
         synchronized (this) {
+            this.isEndpointOverridden = false;
             this.endpoint = uri;
             this.signerProvider = createSignerProvider(signer);
-            this.signingRegion = AwsHostNameUtils.parseRegion(endpoint.toString(), getEndpointPrefix());
+            this.signingRegion = EndpointToRegion.guessRegionNameForEndpoint(endpoint.toString(), getEndpointPrefix());
         }
     }
 

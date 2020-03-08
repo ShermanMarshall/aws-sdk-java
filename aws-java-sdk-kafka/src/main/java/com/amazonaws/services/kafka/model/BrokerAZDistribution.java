@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,9 +17,13 @@ import javax.annotation.Generated;
 /**
  * 
  <p>
- * The distribution of broker nodes across Availability Zones. By default, broker nodes are distributed among three
- * Availability Zones. Currently, the only supported value is DEFAULT. You can either specify this value explicitly or
- * leave it out.
+ * The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't specify it,
+ * Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value DEFAULT. No other
+ * values are currently allowed.
+ * </p>
+ * <p>
+ * Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the subnets you
+ * provide when you create the cluster.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

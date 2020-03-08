@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,6 +25,11 @@ import com.amazonaws.*;
 public class AbstractAWSAppSync implements AWSAppSync {
 
     protected AbstractAWSAppSync() {
+    }
+
+    @Override
+    public CreateApiCacheResult createApiCache(CreateApiCacheRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -58,6 +63,11 @@ public class AbstractAWSAppSync implements AWSAppSync {
     }
 
     @Override
+    public DeleteApiCacheResult deleteApiCache(DeleteApiCacheRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteApiKeyResult deleteApiKey(DeleteApiKeyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -84,6 +94,16 @@ public class AbstractAWSAppSync implements AWSAppSync {
 
     @Override
     public DeleteTypeResult deleteType(DeleteTypeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public FlushApiCacheResult flushApiCache(FlushApiCacheRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetApiCacheResult getApiCache(GetApiCacheRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -174,6 +194,11 @@ public class AbstractAWSAppSync implements AWSAppSync {
 
     @Override
     public UntagResourceResult untagResource(UntagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateApiCacheResult updateApiCache(UpdateApiCacheRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

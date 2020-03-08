@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,8 +25,7 @@ public class GetIPSetResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     /**
      * <p>
-     * The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by
-     * activity that involves IP addresses included in this IPSet.
+     * The user friendly name for the IPSet.
      * </p>
      */
     private String name;
@@ -58,13 +57,11 @@ public class GetIPSetResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     /**
      * <p>
-     * The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by
-     * activity that involves IP addresses included in this IPSet.
+     * The user friendly name for the IPSet.
      * </p>
      * 
      * @param name
-     *        The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by
-     *        activity that involves IP addresses included in this IPSet.
+     *        The user friendly name for the IPSet.
      */
 
     public void setName(String name) {
@@ -73,12 +70,10 @@ public class GetIPSetResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     /**
      * <p>
-     * The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by
-     * activity that involves IP addresses included in this IPSet.
+     * The user friendly name for the IPSet.
      * </p>
      * 
-     * @return The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered
-     *         by activity that involves IP addresses included in this IPSet.
+     * @return The user friendly name for the IPSet.
      */
 
     public String getName() {
@@ -87,13 +82,11 @@ public class GetIPSetResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     /**
      * <p>
-     * The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by
-     * activity that involves IP addresses included in this IPSet.
+     * The user friendly name for the IPSet.
      * </p>
      * 
      * @param name
-     *        The user friendly name to identify the IPSet. This name is displayed in all findings that are triggered by
-     *        activity that involves IP addresses included in this IPSet.
+     *        The user friendly name for the IPSet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -305,6 +298,13 @@ public class GetIPSetResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see GetIPSetResult#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public GetIPSetResult addTagsEntry(String key, String value) {
         if (null == this.tags) {

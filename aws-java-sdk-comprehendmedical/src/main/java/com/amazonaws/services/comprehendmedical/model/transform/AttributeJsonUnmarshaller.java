@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,6 +60,10 @@ public class AttributeJsonUnmarshaller implements Unmarshaller<Attribute, JsonUn
                     context.nextToken();
                     attribute.setRelationshipScore(context.getUnmarshaller(Float.class).unmarshall(context));
                 }
+                if (context.testExpression("RelationshipType", targetDepth)) {
+                    context.nextToken();
+                    attribute.setRelationshipType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("Id", targetDepth)) {
                     context.nextToken();
                     attribute.setId(context.getUnmarshaller(Integer.class).unmarshall(context));
@@ -75,6 +79,10 @@ public class AttributeJsonUnmarshaller implements Unmarshaller<Attribute, JsonUn
                 if (context.testExpression("Text", targetDepth)) {
                     context.nextToken();
                     attribute.setText(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("Category", targetDepth)) {
+                    context.nextToken();
+                    attribute.setCategory(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("Traits", targetDepth)) {
                     context.nextToken();

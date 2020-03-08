@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -98,8 +98,10 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
      * specified for <code>LogDestinationType</code>.
      * </p>
      * <p>
-     * If LogDestinationType is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource Name (ARN)
-     * of the CloudWatch Logs log group.
+     * If <code>LogDestinationType</code> is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource
+     * Name (ARN) of the CloudWatch Logs log group. For example, to publish to a log group called <code>my-logs</code>,
+     * specify <code>arn:aws:logs:us-east-1:123456789012:log-group:my-logs</code>. Alternatively, use
+     * <code>LogGroupName</code> instead.
      * </p>
      * <p>
      * If LogDestinationType is <code>s3</code>, specify the ARN of the Amazon S3 bucket. You can also specify a
@@ -126,6 +128,27 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
      * </p>
      */
     private String logFormat;
+    /**
+     * <p>
+     * The tags to apply to the flow logs.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<TagSpecification> tagSpecifications;
+    /**
+     * <p>
+     * The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.
+     * You can specify 60 seconds (1 minute) or 600 seconds (10 minutes).
+     * </p>
+     * <p>
+     * When a network interface is attached to a <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instance</a>, the aggregation interval is always 60 seconds or less, regardless of the value that you specify.
+     * </p>
+     * <p>
+     * Default: 600
+     * </p>
+     */
+    private Integer maxAggregationInterval;
 
     /**
      * <p>
@@ -724,8 +747,10 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
      * specified for <code>LogDestinationType</code>.
      * </p>
      * <p>
-     * If LogDestinationType is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource Name (ARN)
-     * of the CloudWatch Logs log group.
+     * If <code>LogDestinationType</code> is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource
+     * Name (ARN) of the CloudWatch Logs log group. For example, to publish to a log group called <code>my-logs</code>,
+     * specify <code>arn:aws:logs:us-east-1:123456789012:log-group:my-logs</code>. Alternatively, use
+     * <code>LogGroupName</code> instead.
      * </p>
      * <p>
      * If LogDestinationType is <code>s3</code>, specify the ARN of the Amazon S3 bucket. You can also specify a
@@ -740,8 +765,10 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
      *        a CloudWatch Logs log group or an Amazon S3 bucket. The value specified for this parameter depends on the
      *        value specified for <code>LogDestinationType</code>.</p>
      *        <p>
-     *        If LogDestinationType is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource Name
-     *        (ARN) of the CloudWatch Logs log group.
+     *        If <code>LogDestinationType</code> is not specified or <code>cloud-watch-logs</code>, specify the Amazon
+     *        Resource Name (ARN) of the CloudWatch Logs log group. For example, to publish to a log group called
+     *        <code>my-logs</code>, specify <code>arn:aws:logs:us-east-1:123456789012:log-group:my-logs</code>.
+     *        Alternatively, use <code>LogGroupName</code> instead.
      *        </p>
      *        <p>
      *        If LogDestinationType is <code>s3</code>, specify the ARN of the Amazon S3 bucket. You can also specify a
@@ -762,8 +789,10 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
      * specified for <code>LogDestinationType</code>.
      * </p>
      * <p>
-     * If LogDestinationType is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource Name (ARN)
-     * of the CloudWatch Logs log group.
+     * If <code>LogDestinationType</code> is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource
+     * Name (ARN) of the CloudWatch Logs log group. For example, to publish to a log group called <code>my-logs</code>,
+     * specify <code>arn:aws:logs:us-east-1:123456789012:log-group:my-logs</code>. Alternatively, use
+     * <code>LogGroupName</code> instead.
      * </p>
      * <p>
      * If LogDestinationType is <code>s3</code>, specify the ARN of the Amazon S3 bucket. You can also specify a
@@ -777,8 +806,10 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
      *         to a CloudWatch Logs log group or an Amazon S3 bucket. The value specified for this parameter depends on
      *         the value specified for <code>LogDestinationType</code>.</p>
      *         <p>
-     *         If LogDestinationType is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource Name
-     *         (ARN) of the CloudWatch Logs log group.
+     *         If <code>LogDestinationType</code> is not specified or <code>cloud-watch-logs</code>, specify the Amazon
+     *         Resource Name (ARN) of the CloudWatch Logs log group. For example, to publish to a log group called
+     *         <code>my-logs</code>, specify <code>arn:aws:logs:us-east-1:123456789012:log-group:my-logs</code>.
+     *         Alternatively, use <code>LogGroupName</code> instead.
      *         </p>
      *         <p>
      *         If LogDestinationType is <code>s3</code>, specify the ARN of the Amazon S3 bucket. You can also specify a
@@ -800,8 +831,10 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
      * specified for <code>LogDestinationType</code>.
      * </p>
      * <p>
-     * If LogDestinationType is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource Name (ARN)
-     * of the CloudWatch Logs log group.
+     * If <code>LogDestinationType</code> is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource
+     * Name (ARN) of the CloudWatch Logs log group. For example, to publish to a log group called <code>my-logs</code>,
+     * specify <code>arn:aws:logs:us-east-1:123456789012:log-group:my-logs</code>. Alternatively, use
+     * <code>LogGroupName</code> instead.
      * </p>
      * <p>
      * If LogDestinationType is <code>s3</code>, specify the ARN of the Amazon S3 bucket. You can also specify a
@@ -816,8 +849,10 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
      *        a CloudWatch Logs log group or an Amazon S3 bucket. The value specified for this parameter depends on the
      *        value specified for <code>LogDestinationType</code>.</p>
      *        <p>
-     *        If LogDestinationType is not specified or <code>cloud-watch-logs</code>, specify the Amazon Resource Name
-     *        (ARN) of the CloudWatch Logs log group.
+     *        If <code>LogDestinationType</code> is not specified or <code>cloud-watch-logs</code>, specify the Amazon
+     *        Resource Name (ARN) of the CloudWatch Logs log group. For example, to publish to a log group called
+     *        <code>my-logs</code>, specify <code>arn:aws:logs:us-east-1:123456789012:log-group:my-logs</code>.
+     *        Alternatively, use <code>LogGroupName</code> instead.
      *        </p>
      *        <p>
      *        If LogDestinationType is <code>s3</code>, specify the ARN of the Amazon S3 bucket. You can also specify a
@@ -934,6 +969,173 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
     }
 
     /**
+     * <p>
+     * The tags to apply to the flow logs.
+     * </p>
+     * 
+     * @return The tags to apply to the flow logs.
+     */
+
+    public java.util.List<TagSpecification> getTagSpecifications() {
+        if (tagSpecifications == null) {
+            tagSpecifications = new com.amazonaws.internal.SdkInternalList<TagSpecification>();
+        }
+        return tagSpecifications;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the flow logs.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the flow logs.
+     */
+
+    public void setTagSpecifications(java.util.Collection<TagSpecification> tagSpecifications) {
+        if (tagSpecifications == null) {
+            this.tagSpecifications = null;
+            return;
+        }
+
+        this.tagSpecifications = new com.amazonaws.internal.SdkInternalList<TagSpecification>(tagSpecifications);
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the flow logs.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagSpecifications(java.util.Collection)} or {@link #withTagSpecifications(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the flow logs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFlowLogsRequest withTagSpecifications(TagSpecification... tagSpecifications) {
+        if (this.tagSpecifications == null) {
+            setTagSpecifications(new com.amazonaws.internal.SdkInternalList<TagSpecification>(tagSpecifications.length));
+        }
+        for (TagSpecification ele : tagSpecifications) {
+            this.tagSpecifications.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the flow logs.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The tags to apply to the flow logs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFlowLogsRequest withTagSpecifications(java.util.Collection<TagSpecification> tagSpecifications) {
+        setTagSpecifications(tagSpecifications);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.
+     * You can specify 60 seconds (1 minute) or 600 seconds (10 minutes).
+     * </p>
+     * <p>
+     * When a network interface is attached to a <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instance</a>, the aggregation interval is always 60 seconds or less, regardless of the value that you specify.
+     * </p>
+     * <p>
+     * Default: 600
+     * </p>
+     * 
+     * @param maxAggregationInterval
+     *        The maximum interval of time during which a flow of packets is captured and aggregated into a flow log
+     *        record. You can specify 60 seconds (1 minute) or 600 seconds (10 minutes).</p>
+     *        <p>
+     *        When a network interface is attached to a <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
+     *        >Nitro-based instance</a>, the aggregation interval is always 60 seconds or less, regardless of the value
+     *        that you specify.
+     *        </p>
+     *        <p>
+     *        Default: 600
+     */
+
+    public void setMaxAggregationInterval(Integer maxAggregationInterval) {
+        this.maxAggregationInterval = maxAggregationInterval;
+    }
+
+    /**
+     * <p>
+     * The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.
+     * You can specify 60 seconds (1 minute) or 600 seconds (10 minutes).
+     * </p>
+     * <p>
+     * When a network interface is attached to a <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instance</a>, the aggregation interval is always 60 seconds or less, regardless of the value that you specify.
+     * </p>
+     * <p>
+     * Default: 600
+     * </p>
+     * 
+     * @return The maximum interval of time during which a flow of packets is captured and aggregated into a flow log
+     *         record. You can specify 60 seconds (1 minute) or 600 seconds (10 minutes).</p>
+     *         <p>
+     *         When a network interface is attached to a <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
+     *         >Nitro-based instance</a>, the aggregation interval is always 60 seconds or less, regardless of the value
+     *         that you specify.
+     *         </p>
+     *         <p>
+     *         Default: 600
+     */
+
+    public Integer getMaxAggregationInterval() {
+        return this.maxAggregationInterval;
+    }
+
+    /**
+     * <p>
+     * The maximum interval of time during which a flow of packets is captured and aggregated into a flow log record.
+     * You can specify 60 seconds (1 minute) or 600 seconds (10 minutes).
+     * </p>
+     * <p>
+     * When a network interface is attached to a <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instance</a>, the aggregation interval is always 60 seconds or less, regardless of the value that you specify.
+     * </p>
+     * <p>
+     * Default: 600
+     * </p>
+     * 
+     * @param maxAggregationInterval
+     *        The maximum interval of time during which a flow of packets is captured and aggregated into a flow log
+     *        record. You can specify 60 seconds (1 minute) or 600 seconds (10 minutes).</p>
+     *        <p>
+     *        When a network interface is attached to a <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
+     *        >Nitro-based instance</a>, the aggregation interval is always 60 seconds or less, regardless of the value
+     *        that you specify.
+     *        </p>
+     *        <p>
+     *        Default: 600
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateFlowLogsRequest withMaxAggregationInterval(Integer maxAggregationInterval) {
+        setMaxAggregationInterval(maxAggregationInterval);
+        return this;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -973,7 +1175,11 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
         if (getLogDestination() != null)
             sb.append("LogDestination: ").append(getLogDestination()).append(",");
         if (getLogFormat() != null)
-            sb.append("LogFormat: ").append(getLogFormat());
+            sb.append("LogFormat: ").append(getLogFormat()).append(",");
+        if (getTagSpecifications() != null)
+            sb.append("TagSpecifications: ").append(getTagSpecifications()).append(",");
+        if (getMaxAggregationInterval() != null)
+            sb.append("MaxAggregationInterval: ").append(getMaxAggregationInterval());
         sb.append("}");
         return sb.toString();
     }
@@ -1024,6 +1230,14 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
             return false;
         if (other.getLogFormat() != null && other.getLogFormat().equals(this.getLogFormat()) == false)
             return false;
+        if (other.getTagSpecifications() == null ^ this.getTagSpecifications() == null)
+            return false;
+        if (other.getTagSpecifications() != null && other.getTagSpecifications().equals(this.getTagSpecifications()) == false)
+            return false;
+        if (other.getMaxAggregationInterval() == null ^ this.getMaxAggregationInterval() == null)
+            return false;
+        if (other.getMaxAggregationInterval() != null && other.getMaxAggregationInterval().equals(this.getMaxAggregationInterval()) == false)
+            return false;
         return true;
     }
 
@@ -1041,6 +1255,8 @@ public class CreateFlowLogsRequest extends AmazonWebServiceRequest implements Se
         hashCode = prime * hashCode + ((getLogDestinationType() == null) ? 0 : getLogDestinationType().hashCode());
         hashCode = prime * hashCode + ((getLogDestination() == null) ? 0 : getLogDestination().hashCode());
         hashCode = prime * hashCode + ((getLogFormat() == null) ? 0 : getLogFormat().hashCode());
+        hashCode = prime * hashCode + ((getTagSpecifications() == null) ? 0 : getTagSpecifications().hashCode());
+        hashCode = prime * hashCode + ((getMaxAggregationInterval() == null) ? 0 : getMaxAggregationInterval().hashCode());
         return hashCode;
     }
 

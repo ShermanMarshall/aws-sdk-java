@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,6 +25,12 @@ public enum TrainingInstanceType {
     MlM44xlarge("ml.m4.4xlarge"),
     MlM410xlarge("ml.m4.10xlarge"),
     MlM416xlarge("ml.m4.16xlarge"),
+    MlG4dnXlarge("ml.g4dn.xlarge"),
+    MlG4dn2xlarge("ml.g4dn.2xlarge"),
+    MlG4dn4xlarge("ml.g4dn.4xlarge"),
+    MlG4dn8xlarge("ml.g4dn.8xlarge"),
+    MlG4dn12xlarge("ml.g4dn.12xlarge"),
+    MlG4dn16xlarge("ml.g4dn.16xlarge"),
     MlM5Large("ml.m5.large"),
     MlM5Xlarge("ml.m5.xlarge"),
     MlM52xlarge("ml.m5.2xlarge"),
@@ -41,12 +47,12 @@ public enum TrainingInstanceType {
     MlP32xlarge("ml.p3.2xlarge"),
     MlP38xlarge("ml.p3.8xlarge"),
     MlP316xlarge("ml.p3.16xlarge"),
+    MlP3dn24xlarge("ml.p3dn.24xlarge"),
     MlC5Xlarge("ml.c5.xlarge"),
     MlC52xlarge("ml.c5.2xlarge"),
     MlC54xlarge("ml.c5.4xlarge"),
     MlC59xlarge("ml.c5.9xlarge"),
-    MlC518xlarge("ml.c5.18xlarge"),
-    MlP3dn24xlarge("ml.p3dn.24xlarge");
+    MlC518xlarge("ml.c5.18xlarge");
 
     private String value;
 

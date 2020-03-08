@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing a virtual service backend for a virtual node.
+ * An object that represents a virtual service backend for a virtual node.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/VirtualServiceBackend" target="_top">AWS API
@@ -30,10 +30,56 @@ public class VirtualServiceBackend implements Serializable, Cloneable, Structure
 
     /**
      * <p>
+     * A reference to an object that represents the client policy for a backend.
+     * </p>
+     */
+    private ClientPolicy clientPolicy;
+    /**
+     * <p>
      * The name of the virtual service that is acting as a virtual node backend.
      * </p>
      */
     private String virtualServiceName;
+
+    /**
+     * <p>
+     * A reference to an object that represents the client policy for a backend.
+     * </p>
+     * 
+     * @param clientPolicy
+     *        A reference to an object that represents the client policy for a backend.
+     */
+
+    public void setClientPolicy(ClientPolicy clientPolicy) {
+        this.clientPolicy = clientPolicy;
+    }
+
+    /**
+     * <p>
+     * A reference to an object that represents the client policy for a backend.
+     * </p>
+     * 
+     * @return A reference to an object that represents the client policy for a backend.
+     */
+
+    public ClientPolicy getClientPolicy() {
+        return this.clientPolicy;
+    }
+
+    /**
+     * <p>
+     * A reference to an object that represents the client policy for a backend.
+     * </p>
+     * 
+     * @param clientPolicy
+     *        A reference to an object that represents the client policy for a backend.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public VirtualServiceBackend withClientPolicy(ClientPolicy clientPolicy) {
+        setClientPolicy(clientPolicy);
+        return this;
+    }
 
     /**
      * <p>
@@ -87,6 +133,8 @@ public class VirtualServiceBackend implements Serializable, Cloneable, Structure
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getClientPolicy() != null)
+            sb.append("ClientPolicy: ").append(getClientPolicy()).append(",");
         if (getVirtualServiceName() != null)
             sb.append("VirtualServiceName: ").append(getVirtualServiceName());
         sb.append("}");
@@ -103,6 +151,10 @@ public class VirtualServiceBackend implements Serializable, Cloneable, Structure
         if (obj instanceof VirtualServiceBackend == false)
             return false;
         VirtualServiceBackend other = (VirtualServiceBackend) obj;
+        if (other.getClientPolicy() == null ^ this.getClientPolicy() == null)
+            return false;
+        if (other.getClientPolicy() != null && other.getClientPolicy().equals(this.getClientPolicy()) == false)
+            return false;
         if (other.getVirtualServiceName() == null ^ this.getVirtualServiceName() == null)
             return false;
         if (other.getVirtualServiceName() != null && other.getVirtualServiceName().equals(this.getVirtualServiceName()) == false)
@@ -115,6 +167,7 @@ public class VirtualServiceBackend implements Serializable, Cloneable, Structure
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getClientPolicy() == null) ? 0 : getClientPolicy().hashCode());
         hashCode = prime * hashCode + ((getVirtualServiceName() == null) ? 0 : getVirtualServiceName().hashCode());
         return hashCode;
     }

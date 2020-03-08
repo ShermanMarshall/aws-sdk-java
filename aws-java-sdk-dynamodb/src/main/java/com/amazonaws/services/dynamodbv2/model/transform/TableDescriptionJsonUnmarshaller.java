@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -115,6 +115,15 @@ public class TableDescriptionJsonUnmarshaller implements Unmarshaller<TableDescr
                     context.nextToken();
                     tableDescription.setLatestStreamArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("GlobalTableVersion", targetDepth)) {
+                    context.nextToken();
+                    tableDescription.setGlobalTableVersion(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("Replicas", targetDepth)) {
+                    context.nextToken();
+                    tableDescription
+                            .setReplicas(new ListUnmarshaller<ReplicaDescription>(ReplicaDescriptionJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
                 if (context.testExpression("RestoreSummary", targetDepth)) {
                     context.nextToken();
                     tableDescription.setRestoreSummary(RestoreSummaryJsonUnmarshaller.getInstance().unmarshall(context));
@@ -122,6 +131,10 @@ public class TableDescriptionJsonUnmarshaller implements Unmarshaller<TableDescr
                 if (context.testExpression("SSEDescription", targetDepth)) {
                     context.nextToken();
                     tableDescription.setSSEDescription(SSEDescriptionJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("ArchivalSummary", targetDepth)) {
+                    context.nextToken();
+                    tableDescription.setArchivalSummary(ArchivalSummaryJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

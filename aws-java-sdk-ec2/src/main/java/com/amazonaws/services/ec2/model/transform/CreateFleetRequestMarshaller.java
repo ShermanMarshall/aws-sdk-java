@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -81,6 +81,15 @@ public class CreateFleetRequestMarshaller implements Marshaller<Request<CreateFl
 
             if (onDemandOptions.getAllocationStrategy() != null) {
                 request.addParameter("OnDemandOptions.AllocationStrategy", StringUtils.fromString(onDemandOptions.getAllocationStrategy()));
+            }
+
+            CapacityReservationOptionsRequest capacityReservationOptions = onDemandOptions.getCapacityReservationOptions();
+            if (capacityReservationOptions != null) {
+
+                if (capacityReservationOptions.getUsageStrategy() != null) {
+                    request.addParameter("OnDemandOptions.CapacityReservationOptions.UsageStrategy",
+                            StringUtils.fromString(capacityReservationOptions.getUsageStrategy()));
+                }
             }
 
             if (onDemandOptions.getSingleInstanceType() != null) {
@@ -204,6 +213,11 @@ public class CreateFleetRequestMarshaller implements Marshaller<Request<CreateFl
                             if (placement.getSpreadDomain() != null) {
                                 request.addParameter("LaunchTemplateConfigs." + launchTemplateConfigsListIndex + ".Overrides." + overridesListIndex
                                         + ".Placement.SpreadDomain", StringUtils.fromString(placement.getSpreadDomain()));
+                            }
+
+                            if (placement.getHostResourceGroupArn() != null) {
+                                request.addParameter("LaunchTemplateConfigs." + launchTemplateConfigsListIndex + ".Overrides." + overridesListIndex
+                                        + ".Placement.HostResourceGroupArn", StringUtils.fromString(placement.getHostResourceGroupArn()));
                             }
                         }
                         overridesListIndex++;

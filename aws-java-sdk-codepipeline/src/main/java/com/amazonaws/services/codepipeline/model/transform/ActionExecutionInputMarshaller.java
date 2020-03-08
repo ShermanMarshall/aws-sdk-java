@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,12 +33,16 @@ public class ActionExecutionInputMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("actionTypeId").build();
     private static final MarshallingInfo<Map> CONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("configuration").build();
+    private static final MarshallingInfo<Map> RESOLVEDCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.MAP)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("resolvedConfiguration").build();
     private static final MarshallingInfo<String> ROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("roleArn").build();
     private static final MarshallingInfo<String> REGION_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("region").build();
     private static final MarshallingInfo<List> INPUTARTIFACTS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("inputArtifacts").build();
+    private static final MarshallingInfo<String> NAMESPACE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("namespace").build();
 
     private static final ActionExecutionInputMarshaller instance = new ActionExecutionInputMarshaller();
 
@@ -58,9 +62,11 @@ public class ActionExecutionInputMarshaller {
         try {
             protocolMarshaller.marshall(actionExecutionInput.getActionTypeId(), ACTIONTYPEID_BINDING);
             protocolMarshaller.marshall(actionExecutionInput.getConfiguration(), CONFIGURATION_BINDING);
+            protocolMarshaller.marshall(actionExecutionInput.getResolvedConfiguration(), RESOLVEDCONFIGURATION_BINDING);
             protocolMarshaller.marshall(actionExecutionInput.getRoleArn(), ROLEARN_BINDING);
             protocolMarshaller.marshall(actionExecutionInput.getRegion(), REGION_BINDING);
             protocolMarshaller.marshall(actionExecutionInput.getInputArtifacts(), INPUTARTIFACTS_BINDING);
+            protocolMarshaller.marshall(actionExecutionInput.getNamespace(), NAMESPACE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

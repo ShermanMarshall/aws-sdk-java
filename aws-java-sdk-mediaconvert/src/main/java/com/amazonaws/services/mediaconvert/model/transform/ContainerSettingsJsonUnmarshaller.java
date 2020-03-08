@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,6 +48,10 @@ public class ContainerSettingsJsonUnmarshaller implements Unmarshaller<Container
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("cmfcSettings", targetDepth)) {
+                    context.nextToken();
+                    containerSettings.setCmfcSettings(CmfcSettingsJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("container", targetDepth)) {
                     context.nextToken();
                     containerSettings.setContainer(context.getUnmarshaller(String.class).unmarshall(context));
@@ -71,6 +75,10 @@ public class ContainerSettingsJsonUnmarshaller implements Unmarshaller<Container
                 if (context.testExpression("mp4Settings", targetDepth)) {
                     context.nextToken();
                     containerSettings.setMp4Settings(Mp4SettingsJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("mpdSettings", targetDepth)) {
+                    context.nextToken();
+                    containerSettings.setMpdSettings(MpdSettingsJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

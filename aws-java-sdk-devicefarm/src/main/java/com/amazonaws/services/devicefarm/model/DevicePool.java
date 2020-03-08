@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -76,8 +76,8 @@ public class DevicePool implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available
-     * and that meet the criteria that you assign for the <code>rules</code> parameter. Depending on how many devices
-     * meet these constraints, your device pool might contain fewer devices than the value for this parameter.
+     * and meet the criteria that you assign for the <code>rules</code> parameter. Depending on how many devices meet
+     * these constraints, your device pool might contain fewer devices than the value for this parameter.
      * </p>
      * <p>
      * By specifying the maximum number of devices, you can control the costs that you incur by running tests.
@@ -496,8 +496,8 @@ public class DevicePool implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available
-     * and that meet the criteria that you assign for the <code>rules</code> parameter. Depending on how many devices
-     * meet these constraints, your device pool might contain fewer devices than the value for this parameter.
+     * and meet the criteria that you assign for the <code>rules</code> parameter. Depending on how many devices meet
+     * these constraints, your device pool might contain fewer devices than the value for this parameter.
      * </p>
      * <p>
      * By specifying the maximum number of devices, you can control the costs that you incur by running tests.
@@ -505,9 +505,9 @@ public class DevicePool implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param maxDevices
      *        The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are
-     *        available and that meet the criteria that you assign for the <code>rules</code> parameter. Depending on
-     *        how many devices meet these constraints, your device pool might contain fewer devices than the value for
-     *        this parameter.</p>
+     *        available and meet the criteria that you assign for the <code>rules</code> parameter. Depending on how
+     *        many devices meet these constraints, your device pool might contain fewer devices than the value for this
+     *        parameter.</p>
      *        <p>
      *        By specifying the maximum number of devices, you can control the costs that you incur by running tests.
      */
@@ -519,17 +519,17 @@ public class DevicePool implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available
-     * and that meet the criteria that you assign for the <code>rules</code> parameter. Depending on how many devices
-     * meet these constraints, your device pool might contain fewer devices than the value for this parameter.
+     * and meet the criteria that you assign for the <code>rules</code> parameter. Depending on how many devices meet
+     * these constraints, your device pool might contain fewer devices than the value for this parameter.
      * </p>
      * <p>
      * By specifying the maximum number of devices, you can control the costs that you incur by running tests.
      * </p>
      * 
      * @return The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are
-     *         available and that meet the criteria that you assign for the <code>rules</code> parameter. Depending on
-     *         how many devices meet these constraints, your device pool might contain fewer devices than the value for
-     *         this parameter.</p>
+     *         available and meet the criteria that you assign for the <code>rules</code> parameter. Depending on how
+     *         many devices meet these constraints, your device pool might contain fewer devices than the value for this
+     *         parameter.</p>
      *         <p>
      *         By specifying the maximum number of devices, you can control the costs that you incur by running tests.
      */
@@ -541,8 +541,8 @@ public class DevicePool implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are available
-     * and that meet the criteria that you assign for the <code>rules</code> parameter. Depending on how many devices
-     * meet these constraints, your device pool might contain fewer devices than the value for this parameter.
+     * and meet the criteria that you assign for the <code>rules</code> parameter. Depending on how many devices meet
+     * these constraints, your device pool might contain fewer devices than the value for this parameter.
      * </p>
      * <p>
      * By specifying the maximum number of devices, you can control the costs that you incur by running tests.
@@ -550,9 +550,9 @@ public class DevicePool implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param maxDevices
      *        The number of devices that Device Farm can add to your device pool. Device Farm adds devices that are
-     *        available and that meet the criteria that you assign for the <code>rules</code> parameter. Depending on
-     *        how many devices meet these constraints, your device pool might contain fewer devices than the value for
-     *        this parameter.</p>
+     *        available and meet the criteria that you assign for the <code>rules</code> parameter. Depending on how
+     *        many devices meet these constraints, your device pool might contain fewer devices than the value for this
+     *        parameter.</p>
      *        <p>
      *        By specifying the maximum number of devices, you can control the costs that you incur by running tests.
      * @return Returns a reference to this object so that method calls can be chained together.

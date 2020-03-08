@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,8 @@ public class GetUtterancesViewResult extends com.amazonaws.AmazonWebServiceResul
      * <p>
      * An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects describing the
      * utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code>
-     * objects for each version.
+     * objects for each version. Amazon Lex returns the most frequent utterances received by the bot in the last 15
+     * days.
      * </p>
      */
     private java.util.List<UtteranceList> utterances;
@@ -82,12 +83,14 @@ public class GetUtterancesViewResult extends com.amazonaws.AmazonWebServiceResul
      * <p>
      * An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects describing the
      * utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code>
-     * objects for each version.
+     * objects for each version. Amazon Lex returns the most frequent utterances received by the bot in the last 15
+     * days.
      * </p>
      * 
      * @return An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects
      *         describing the utterances that were processed by your bot. The response contains a maximum of 100
-     *         <code>UtteranceData</code> objects for each version.
+     *         <code>UtteranceData</code> objects for each version. Amazon Lex returns the most frequent utterances
+     *         received by the bot in the last 15 days.
      */
 
     public java.util.List<UtteranceList> getUtterances() {
@@ -98,13 +101,15 @@ public class GetUtterancesViewResult extends com.amazonaws.AmazonWebServiceResul
      * <p>
      * An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects describing the
      * utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code>
-     * objects for each version.
+     * objects for each version. Amazon Lex returns the most frequent utterances received by the bot in the last 15
+     * days.
      * </p>
      * 
      * @param utterances
      *        An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects
      *        describing the utterances that were processed by your bot. The response contains a maximum of 100
-     *        <code>UtteranceData</code> objects for each version.
+     *        <code>UtteranceData</code> objects for each version. Amazon Lex returns the most frequent utterances
+     *        received by the bot in the last 15 days.
      */
 
     public void setUtterances(java.util.Collection<UtteranceList> utterances) {
@@ -120,7 +125,8 @@ public class GetUtterancesViewResult extends com.amazonaws.AmazonWebServiceResul
      * <p>
      * An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects describing the
      * utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code>
-     * objects for each version.
+     * objects for each version. Amazon Lex returns the most frequent utterances received by the bot in the last 15
+     * days.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -131,7 +137,8 @@ public class GetUtterancesViewResult extends com.amazonaws.AmazonWebServiceResul
      * @param utterances
      *        An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects
      *        describing the utterances that were processed by your bot. The response contains a maximum of 100
-     *        <code>UtteranceData</code> objects for each version.
+     *        <code>UtteranceData</code> objects for each version. Amazon Lex returns the most frequent utterances
+     *        received by the bot in the last 15 days.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -149,13 +156,15 @@ public class GetUtterancesViewResult extends com.amazonaws.AmazonWebServiceResul
      * <p>
      * An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects describing the
      * utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code>
-     * objects for each version.
+     * objects for each version. Amazon Lex returns the most frequent utterances received by the bot in the last 15
+     * days.
      * </p>
      * 
      * @param utterances
      *        An array of <a>UtteranceList</a> objects, each containing a list of <a>UtteranceData</a> objects
      *        describing the utterances that were processed by your bot. The response contains a maximum of 100
-     *        <code>UtteranceData</code> objects for each version.
+     *        <code>UtteranceData</code> objects for each version. Amazon Lex returns the most frequent utterances
+     *        received by the bot in the last 15 days.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

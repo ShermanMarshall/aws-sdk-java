@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,8 @@ public class AttachThingPrincipalRequest extends com.amazonaws.AmazonWebServiceR
     private String thingName;
     /**
      * <p>
-     * The principal, such as a certificate or other credential.
+     * The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon
+     * Cognito ID.
      * </p>
      */
     private String principal;
@@ -80,11 +81,13 @@ public class AttachThingPrincipalRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The principal, such as a certificate or other credential.
+     * The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon
+     * Cognito ID.
      * </p>
      * 
      * @param principal
-     *        The principal, such as a certificate or other credential.
+     *        The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an
+     *        Amazon Cognito ID.
      */
 
     public void setPrincipal(String principal) {
@@ -93,10 +96,12 @@ public class AttachThingPrincipalRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The principal, such as a certificate or other credential.
+     * The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon
+     * Cognito ID.
      * </p>
      * 
-     * @return The principal, such as a certificate or other credential.
+     * @return The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an
+     *         Amazon Cognito ID.
      */
 
     public String getPrincipal() {
@@ -105,11 +110,13 @@ public class AttachThingPrincipalRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The principal, such as a certificate or other credential.
+     * The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon
+     * Cognito ID.
      * </p>
      * 
      * @param principal
-     *        The principal, such as a certificate or other credential.
+     *        The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an
+     *        Amazon Cognito ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

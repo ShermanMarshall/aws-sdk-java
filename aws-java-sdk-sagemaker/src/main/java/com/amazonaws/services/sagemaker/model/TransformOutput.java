@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -69,34 +69,22 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      * <ul>
      * <li>
      * <p>
-     * // KMS Key ID
-     * </p>
-     * <p>
-     * <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // Amazon Resource Name (ARN) of a KMS Key
-     * </p>
-     * <p>
-     * <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // KMS Key Alias
-     * </p>
-     * <p>
-     * <code>"alias/ExampleAlias"</code>
+     * Alias name: <code>alias/ExampleAlias</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // Amazon Resource Name (ARN) of a KMS Key Alias
-     * </p>
-     * <p>
-     * <code>"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"</code>
+     * Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -107,10 +95,9 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      * the <i>Amazon Simple Storage Service Developer Guide.</i>
      * </p>
      * <p>
-     * The KMS key policy must grant permission to the IAM role that you specify in your <code>CreateTramsformJob</code>
-     * request. For more information, see <a
-     * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS KMS</a>
-     * in the <i>AWS Key Management Service Developer Guide</i>.
+     * The KMS key policy must grant permission to the IAM role that you specify in your <a>CreateModel</a> request. For
+     * more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key
+     * Policies in AWS KMS</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      */
     private String kmsKeyId;
@@ -356,34 +343,22 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      * <ul>
      * <li>
      * <p>
-     * // KMS Key ID
-     * </p>
-     * <p>
-     * <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // Amazon Resource Name (ARN) of a KMS Key
-     * </p>
-     * <p>
-     * <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // KMS Key Alias
-     * </p>
-     * <p>
-     * <code>"alias/ExampleAlias"</code>
+     * Alias name: <code>alias/ExampleAlias</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // Amazon Resource Name (ARN) of a KMS Key Alias
-     * </p>
-     * <p>
-     * <code>"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"</code>
+     * Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -394,10 +369,9 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      * the <i>Amazon Simple Storage Service Developer Guide.</i>
      * </p>
      * <p>
-     * The KMS key policy must grant permission to the IAM role that you specify in your <code>CreateTramsformJob</code>
-     * request. For more information, see <a
-     * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS KMS</a>
-     * in the <i>AWS Key Management Service Developer Guide</i>.
+     * The KMS key policy must grant permission to the IAM role that you specify in your <a>CreateModel</a> request. For
+     * more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key
+     * Policies in AWS KMS</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * 
      * @param kmsKeyId
@@ -407,34 +381,22 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      *        <ul>
      *        <li>
      *        <p>
-     *        // KMS Key ID
-     *        </p>
-     *        <p>
-     *        <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *        Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        // Amazon Resource Name (ARN) of a KMS Key
-     *        </p>
-     *        <p>
-     *        <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *        Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        // KMS Key Alias
-     *        </p>
-     *        <p>
-     *        <code>"alias/ExampleAlias"</code>
+     *        Alias name: <code>alias/ExampleAlias</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        // Amazon Resource Name (ARN) of a KMS Key Alias
-     *        </p>
-     *        <p>
-     *        <code>"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"</code>
+     *        Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -445,8 +407,8 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      *        Keys</a> in the <i>Amazon Simple Storage Service Developer Guide.</i>
      *        </p>
      *        <p>
-     *        The KMS key policy must grant permission to the IAM role that you specify in your
-     *        <code>CreateTramsformJob</code> request. For more information, see <a
+     *        The KMS key policy must grant permission to the IAM role that you specify in your <a>CreateModel</a>
+     *        request. For more information, see <a
      *        href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS
      *        KMS</a> in the <i>AWS Key Management Service Developer Guide</i>.
      */
@@ -463,34 +425,22 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      * <ul>
      * <li>
      * <p>
-     * // KMS Key ID
-     * </p>
-     * <p>
-     * <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // Amazon Resource Name (ARN) of a KMS Key
-     * </p>
-     * <p>
-     * <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // KMS Key Alias
-     * </p>
-     * <p>
-     * <code>"alias/ExampleAlias"</code>
+     * Alias name: <code>alias/ExampleAlias</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // Amazon Resource Name (ARN) of a KMS Key Alias
-     * </p>
-     * <p>
-     * <code>"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"</code>
+     * Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -501,10 +451,9 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      * the <i>Amazon Simple Storage Service Developer Guide.</i>
      * </p>
      * <p>
-     * The KMS key policy must grant permission to the IAM role that you specify in your <code>CreateTramsformJob</code>
-     * request. For more information, see <a
-     * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS KMS</a>
-     * in the <i>AWS Key Management Service Developer Guide</i>.
+     * The KMS key policy must grant permission to the IAM role that you specify in your <a>CreateModel</a> request. For
+     * more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key
+     * Policies in AWS KMS</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * 
      * @return The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the model artifacts at
@@ -513,34 +462,22 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      *         <ul>
      *         <li>
      *         <p>
-     *         // KMS Key ID
-     *         </p>
-     *         <p>
-     *         <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *         Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         // Amazon Resource Name (ARN) of a KMS Key
-     *         </p>
-     *         <p>
-     *         <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *         Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         // KMS Key Alias
-     *         </p>
-     *         <p>
-     *         <code>"alias/ExampleAlias"</code>
+     *         Alias name: <code>alias/ExampleAlias</code>
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         // Amazon Resource Name (ARN) of a KMS Key Alias
-     *         </p>
-     *         <p>
-     *         <code>"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"</code>
+     *         Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
      *         </p>
      *         </li>
      *         </ul>
@@ -551,8 +488,8 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      *         Keys</a> in the <i>Amazon Simple Storage Service Developer Guide.</i>
      *         </p>
      *         <p>
-     *         The KMS key policy must grant permission to the IAM role that you specify in your
-     *         <code>CreateTramsformJob</code> request. For more information, see <a
+     *         The KMS key policy must grant permission to the IAM role that you specify in your <a>CreateModel</a>
+     *         request. For more information, see <a
      *         href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS
      *         KMS</a> in the <i>AWS Key Management Service Developer Guide</i>.
      */
@@ -569,34 +506,22 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      * <ul>
      * <li>
      * <p>
-     * // KMS Key ID
-     * </p>
-     * <p>
-     * <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // Amazon Resource Name (ARN) of a KMS Key
-     * </p>
-     * <p>
-     * <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     * Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // KMS Key Alias
-     * </p>
-     * <p>
-     * <code>"alias/ExampleAlias"</code>
+     * Alias name: <code>alias/ExampleAlias</code>
      * </p>
      * </li>
      * <li>
      * <p>
-     * // Amazon Resource Name (ARN) of a KMS Key Alias
-     * </p>
-     * <p>
-     * <code>"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"</code>
+     * Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
      * </p>
      * </li>
      * </ul>
@@ -607,10 +532,9 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      * the <i>Amazon Simple Storage Service Developer Guide.</i>
      * </p>
      * <p>
-     * The KMS key policy must grant permission to the IAM role that you specify in your <code>CreateTramsformJob</code>
-     * request. For more information, see <a
-     * href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS KMS</a>
-     * in the <i>AWS Key Management Service Developer Guide</i>.
+     * The KMS key policy must grant permission to the IAM role that you specify in your <a>CreateModel</a> request. For
+     * more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key
+     * Policies in AWS KMS</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * 
      * @param kmsKeyId
@@ -620,34 +544,22 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      *        <ul>
      *        <li>
      *        <p>
-     *        // KMS Key ID
-     *        </p>
-     *        <p>
-     *        <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *        Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        // Amazon Resource Name (ARN) of a KMS Key
-     *        </p>
-     *        <p>
-     *        <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+     *        Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        // KMS Key Alias
-     *        </p>
-     *        <p>
-     *        <code>"alias/ExampleAlias"</code>
+     *        Alias name: <code>alias/ExampleAlias</code>
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        // Amazon Resource Name (ARN) of a KMS Key Alias
-     *        </p>
-     *        <p>
-     *        <code>"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"</code>
+     *        Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
      *        </p>
      *        </li>
      *        </ul>
@@ -658,8 +570,8 @@ public class TransformOutput implements Serializable, Cloneable, StructuredPojo 
      *        Keys</a> in the <i>Amazon Simple Storage Service Developer Guide.</i>
      *        </p>
      *        <p>
-     *        The KMS key policy must grant permission to the IAM role that you specify in your
-     *        <code>CreateTramsformJob</code> request. For more information, see <a
+     *        The KMS key policy must grant permission to the IAM role that you specify in your <a>CreateModel</a>
+     *        request. For more information, see <a
      *        href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS
      *        KMS</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.

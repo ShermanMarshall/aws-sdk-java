@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -81,6 +81,12 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("UnsupportedWorkspaceConfigurationException").withExceptionUnmarshaller(
                                     com.amazonaws.services.workspaces.model.transform.UnsupportedWorkspaceConfigurationExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedNetworkConfigurationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.UnsupportedNetworkConfigurationExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("WorkspacesDefaultRoleNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.workspaces.model.transform.WorkspacesDefaultRoleNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("OperationNotSupportedException").withExceptionUnmarshaller(
                                     com.amazonaws.services.workspaces.model.transform.OperationNotSupportedExceptionUnmarshaller.getInstance()))
@@ -892,7 +898,74 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Retrieves a list that describes the configuration of bring your own license (BYOL) for the specified account.
+     * Deregisters the specified directory. This operation is asynchronous and returns before the WorkSpace directory is
+     * deregistered. If any WorkSpaces are registered to this directory, you must remove them before you can deregister
+     * the directory.
+     * </p>
+     * 
+     * @param deregisterWorkspaceDirectoryRequest
+     * @return Result of the DeregisterWorkspaceDirectory operation returned by the service.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws OperationNotSupportedException
+     *         This operation is not supported.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws InvalidResourceStateException
+     *         The state of the resource is not valid for this operation.
+     * @sample AmazonWorkspaces.DeregisterWorkspaceDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeregisterWorkspaceDirectory"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeregisterWorkspaceDirectoryResult deregisterWorkspaceDirectory(DeregisterWorkspaceDirectoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeregisterWorkspaceDirectory(request);
+    }
+
+    @SdkInternalApi
+    final DeregisterWorkspaceDirectoryResult executeDeregisterWorkspaceDirectory(DeregisterWorkspaceDirectoryRequest deregisterWorkspaceDirectoryRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deregisterWorkspaceDirectoryRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeregisterWorkspaceDirectoryRequest> request = null;
+        Response<DeregisterWorkspaceDirectoryResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeregisterWorkspaceDirectoryRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(deregisterWorkspaceDirectoryRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterWorkspaceDirectory");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeregisterWorkspaceDirectoryResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DeregisterWorkspaceDirectoryResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account.
      * </p>
      * 
      * @param describeAccountRequest
@@ -947,7 +1020,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Retrieves a list that describes modifications to the configuration of bring your own license (BYOL) for the
+     * Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the
      * specified account.
      * </p>
      * 
@@ -1243,7 +1316,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Describes the available AWS Directory Service directories that are registered with Amazon WorkSpaces.
+     * Describes the available directories that are registered with Amazon WorkSpaces.
      * </p>
      * 
      * @param describeWorkspaceDirectoriesRequest
@@ -1351,6 +1424,67 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
             HttpResponseHandler<AmazonWebServiceResponse<DescribeWorkspaceImagesResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new DescribeWorkspaceImagesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Describes the snapshots for the specified WorkSpace.
+     * </p>
+     * 
+     * @param describeWorkspaceSnapshotsRequest
+     * @return Result of the DescribeWorkspaceSnapshots operation returned by the service.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @sample AmazonWorkspaces.DescribeWorkspaceSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceSnapshots"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeWorkspaceSnapshotsResult describeWorkspaceSnapshots(DescribeWorkspaceSnapshotsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeWorkspaceSnapshots(request);
+    }
+
+    @SdkInternalApi
+    final DescribeWorkspaceSnapshotsResult executeDescribeWorkspaceSnapshots(DescribeWorkspaceSnapshotsRequest describeWorkspaceSnapshotsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeWorkspaceSnapshotsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeWorkspaceSnapshotsRequest> request = null;
+        Response<DescribeWorkspaceSnapshotsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeWorkspaceSnapshotsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeWorkspaceSnapshotsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeWorkspaceSnapshots");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeWorkspaceSnapshotsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeWorkspaceSnapshotsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -1548,7 +1682,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Imports the specified Windows 7 or Windows 10 bring your own license (BYOL) image into Amazon WorkSpaces. The
+     * Imports the specified Windows 7 or Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The
      * image must be an already licensed EC2 image that is in your AWS account, and you must own the image.
      * </p>
      * 
@@ -1615,7 +1749,7 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
     /**
      * <p>
      * Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management
-     * interface when you enable bring your own license (BYOL).
+     * interface when you enable Bring Your Own License (BYOL).
      * </p>
      * <p>
      * The management network interface is connected to a secure Amazon WorkSpaces management network. It is used for
@@ -1680,7 +1814,84 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Modifies the configuration of bring your own license (BYOL) for the specified account.
+     * Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user
+     * volume.
+     * </p>
+     * <p>
+     * The migration process recreates the WorkSpace by using a new root volume from the target bundle image and the
+     * user volume from the last available snapshot of the original WorkSpace. During migration, the original
+     * <code>D:\Users\%USERNAME%</code> user profile folder is renamed to
+     * <code>D:\Users\%USERNAME%MMddyyTHHmmss%.NotMigrated</code>. A new <code>D:\Users\%USERNAME%\</code> folder is
+     * generated by the new OS. Certain files in the old user profile are moved to the new user profile.
+     * </p>
+     * <p>
+     * For available migration scenarios, details about what happens during migration, and best practices, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html">Migrate a WorkSpace</a>.
+     * </p>
+     * 
+     * @param migrateWorkspaceRequest
+     * @return Result of the MigrateWorkspace operation returned by the service.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws OperationNotSupportedException
+     *         This operation is not supported.
+     * @throws OperationInProgressException
+     *         The properties of this WorkSpace are currently being modified. Try again in a moment.
+     * @throws ResourceUnavailableException
+     *         The specified resource is not available.
+     * @sample AmazonWorkspaces.MigrateWorkspace
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/MigrateWorkspace" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public MigrateWorkspaceResult migrateWorkspace(MigrateWorkspaceRequest request) {
+        request = beforeClientExecution(request);
+        return executeMigrateWorkspace(request);
+    }
+
+    @SdkInternalApi
+    final MigrateWorkspaceResult executeMigrateWorkspace(MigrateWorkspaceRequest migrateWorkspaceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(migrateWorkspaceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<MigrateWorkspaceRequest> request = null;
+        Response<MigrateWorkspaceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new MigrateWorkspaceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(migrateWorkspaceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MigrateWorkspace");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<MigrateWorkspaceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new MigrateWorkspaceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Modifies the configuration of Bring Your Own License (BYOL) for the specified account.
      * </p>
      * 
      * @param modifyAccountRequest
@@ -1803,6 +2014,194 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
+     * Modifies the self-service WorkSpace management capabilities for your users. For more information, see <a href=
+     * "https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html"
+     * >Enable Self-Service WorkSpace Management Capabilities for Your Users</a>.
+     * </p>
+     * 
+     * @param modifySelfservicePermissionsRequest
+     * @return Result of the ModifySelfservicePermissions operation returned by the service.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @sample AmazonWorkspaces.ModifySelfservicePermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifySelfservicePermissions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ModifySelfservicePermissionsResult modifySelfservicePermissions(ModifySelfservicePermissionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifySelfservicePermissions(request);
+    }
+
+    @SdkInternalApi
+    final ModifySelfservicePermissionsResult executeModifySelfservicePermissions(ModifySelfservicePermissionsRequest modifySelfservicePermissionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifySelfservicePermissionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifySelfservicePermissionsRequest> request = null;
+        Response<ModifySelfservicePermissionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifySelfservicePermissionsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(modifySelfservicePermissionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ModifySelfservicePermissions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ModifySelfservicePermissionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new ModifySelfservicePermissionsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Specifies which devices and operating systems users can use to access their WorkSpaces. For more information, see
+     * <a href=
+     * "https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access">
+     * Control Device Access</a>.
+     * </p>
+     * 
+     * @param modifyWorkspaceAccessPropertiesRequest
+     * @return Result of the ModifyWorkspaceAccessProperties operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @sample AmazonWorkspaces.ModifyWorkspaceAccessProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceAccessProperties"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ModifyWorkspaceAccessPropertiesResult modifyWorkspaceAccessProperties(ModifyWorkspaceAccessPropertiesRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyWorkspaceAccessProperties(request);
+    }
+
+    @SdkInternalApi
+    final ModifyWorkspaceAccessPropertiesResult executeModifyWorkspaceAccessProperties(
+            ModifyWorkspaceAccessPropertiesRequest modifyWorkspaceAccessPropertiesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifyWorkspaceAccessPropertiesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyWorkspaceAccessPropertiesRequest> request = null;
+        Response<ModifyWorkspaceAccessPropertiesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyWorkspaceAccessPropertiesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(modifyWorkspaceAccessPropertiesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ModifyWorkspaceAccessProperties");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ModifyWorkspaceAccessPropertiesResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new ModifyWorkspaceAccessPropertiesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Modify the default properties used to create WorkSpaces.
+     * </p>
+     * 
+     * @param modifyWorkspaceCreationPropertiesRequest
+     * @return Result of the ModifyWorkspaceCreationProperties operation returned by the service.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @sample AmazonWorkspaces.ModifyWorkspaceCreationProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceCreationProperties"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public ModifyWorkspaceCreationPropertiesResult modifyWorkspaceCreationProperties(ModifyWorkspaceCreationPropertiesRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyWorkspaceCreationProperties(request);
+    }
+
+    @SdkInternalApi
+    final ModifyWorkspaceCreationPropertiesResult executeModifyWorkspaceCreationProperties(
+            ModifyWorkspaceCreationPropertiesRequest modifyWorkspaceCreationPropertiesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifyWorkspaceCreationPropertiesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyWorkspaceCreationPropertiesRequest> request = null;
+        Response<ModifyWorkspaceCreationPropertiesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyWorkspaceCreationPropertiesRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(modifyWorkspaceCreationPropertiesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ModifyWorkspaceCreationProperties");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ModifyWorkspaceCreationPropertiesResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new ModifyWorkspaceCreationPropertiesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Modifies the specified WorkSpace properties.
      * </p>
      * 
@@ -1815,9 +2214,9 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * @throws OperationInProgressException
      *         The properties of this WorkSpace are currently being modified. Try again in a moment.
      * @throws UnsupportedWorkspaceConfigurationException
-     *         The configuration of this WorkSpace is not supported for this operation. For more information, see the <a
-     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/">Amazon WorkSpaces Administration
-     *         Guide</a>.
+     *         The configuration of this WorkSpace is not supported for this operation. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/required-service-components.html">Required
+     *         Configuration and Service Components for WorkSpaces </a>.
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @throws AccessDeniedException
@@ -2001,8 +2400,8 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
      * Rebuilds the specified WorkSpace.
      * </p>
      * <p>
-     * You cannot rebuild a WorkSpace unless its state is <code>AVAILABLE</code>, <code>ERROR</code>, or
-     * <code>UNHEALTHY</code>.
+     * You cannot rebuild a WorkSpace unless its state is <code>AVAILABLE</code>, <code>ERROR</code>,
+     * <code>UNHEALTHY</code>, or <code>STOPPED</code>.
      * </p>
      * <p>
      * Rebuilding a WorkSpace is a potentially destructive action that can result in the loss of data. For more
@@ -2051,6 +2450,159 @@ public class AmazonWorkspacesClient extends AmazonWebServiceClient implements Am
 
             HttpResponseHandler<AmazonWebServiceResponse<RebuildWorkspacesResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new RebuildWorkspacesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Registers the specified directory. This operation is asynchronous and returns before the WorkSpace directory is
+     * registered. If this is the first time you are registering a directory, you will need to create the
+     * workspaces_DefaultRole role before you can register a directory. For more information, see <a href=
+     * "https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role">
+     * Creating the workspaces_DefaultRole Role</a>.
+     * </p>
+     * 
+     * @param registerWorkspaceDirectoryRequest
+     * @return Result of the RegisterWorkspaceDirectory operation returned by the service.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws ResourceLimitExceededException
+     *         Your resource limits have been exceeded.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws WorkspacesDefaultRoleNotFoundException
+     *         The workspaces_DefaultRole role could not be found. If this is the first time you are registering a
+     *         directory, you will need to create the workspaces_DefaultRole role before you can register a directory.
+     *         For more information, see <a href=
+     *         "https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role"
+     *         >Creating the workspaces_DefaultRole Role</a>.
+     * @throws InvalidResourceStateException
+     *         The state of the resource is not valid for this operation.
+     * @throws UnsupportedNetworkConfigurationException
+     *         The configuration of this network is not supported for this operation, or your network configuration
+     *         conflicts with the Amazon WorkSpaces management network IP range. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html"> Configure a
+     *         VPC for Amazon WorkSpaces</a>.
+     * @throws OperationNotSupportedException
+     *         This operation is not supported.
+     * @sample AmazonWorkspaces.RegisterWorkspaceDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RegisterWorkspaceDirectory"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public RegisterWorkspaceDirectoryResult registerWorkspaceDirectory(RegisterWorkspaceDirectoryRequest request) {
+        request = beforeClientExecution(request);
+        return executeRegisterWorkspaceDirectory(request);
+    }
+
+    @SdkInternalApi
+    final RegisterWorkspaceDirectoryResult executeRegisterWorkspaceDirectory(RegisterWorkspaceDirectoryRequest registerWorkspaceDirectoryRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(registerWorkspaceDirectoryRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<RegisterWorkspaceDirectoryRequest> request = null;
+        Response<RegisterWorkspaceDirectoryResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new RegisterWorkspaceDirectoryRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(registerWorkspaceDirectoryRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterWorkspaceDirectory");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<RegisterWorkspaceDirectoryResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new RegisterWorkspaceDirectoryResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Restores the specified WorkSpace to its last known healthy state.
+     * </p>
+     * <p>
+     * You cannot restore a WorkSpace unless its state is <code> AVAILABLE</code>, <code>ERROR</code>,
+     * <code>UNHEALTHY</code>, or <code>STOPPED</code>.
+     * </p>
+     * <p>
+     * Restoring a WorkSpace is a potentially destructive action that can result in the loss of data. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html">Restore a WorkSpace</a>.
+     * </p>
+     * <p>
+     * This operation is asynchronous and returns before the WorkSpace is completely restored.
+     * </p>
+     * 
+     * @param restoreWorkspaceRequest
+     * @return Result of the RestoreWorkspace operation returned by the service.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @sample AmazonWorkspaces.RestoreWorkspace
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RestoreWorkspace" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public RestoreWorkspaceResult restoreWorkspace(RestoreWorkspaceRequest request) {
+        request = beforeClientExecution(request);
+        return executeRestoreWorkspace(request);
+    }
+
+    @SdkInternalApi
+    final RestoreWorkspaceResult executeRestoreWorkspace(RestoreWorkspaceRequest restoreWorkspaceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(restoreWorkspaceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<RestoreWorkspaceRequest> request = null;
+        Response<RestoreWorkspaceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new RestoreWorkspaceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(restoreWorkspaceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "WorkSpaces");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RestoreWorkspace");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<RestoreWorkspaceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new RestoreWorkspaceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

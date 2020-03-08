@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,8 +36,12 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * The minimum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.
      * </p>
      * <p>
-     * Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     * <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>,
+     * <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * </p>
+     * <p>
+     * For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
+     * <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      * </p>
      * <p>
      * The minimum capacity must be less than or equal to the maximum capacity.
@@ -49,8 +53,12 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * The maximum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.
      * </p>
      * <p>
-     * Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     * <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>,
+     * <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * </p>
+     * <p>
+     * For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
+     * <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      * </p>
      * <p>
      * The maximum capacity must be greater than or equal to the minimum capacity.
@@ -85,7 +93,7 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * <code>ForceApplyCapacityChange</code> sets the capacity to the specified value as soon as possible.
      * </p>
      * <p>
-     * <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point is not found in
+     * <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point isn't found in
      * the timeout period.
      * </p>
      * <important>
@@ -107,8 +115,12 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * The minimum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.
      * </p>
      * <p>
-     * Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     * <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>,
+     * <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * </p>
+     * <p>
+     * For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
+     * <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      * </p>
      * <p>
      * The minimum capacity must be less than or equal to the maximum capacity.
@@ -117,8 +129,11 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * @param minCapacity
      *        The minimum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.</p>
      *        <p>
-     *        Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     *        <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *        For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *        </p>
+     *        <p>
+     *        For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>,
+     *        <code>16</code>, <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      *        </p>
      *        <p>
      *        The minimum capacity must be less than or equal to the maximum capacity.
@@ -133,8 +148,12 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * The minimum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.
      * </p>
      * <p>
-     * Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     * <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>,
+     * <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * </p>
+     * <p>
+     * For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
+     * <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      * </p>
      * <p>
      * The minimum capacity must be less than or equal to the maximum capacity.
@@ -142,7 +161,13 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * 
      * @return The minimum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.</p>
      *         <p>
-     *         Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *         For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>,
+     *         <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>
+     *         .
+     *         </p>
+     *         <p>
+     *         For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>,
+     *         <code>16</code>, <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      *         </p>
      *         <p>
      *         The minimum capacity must be less than or equal to the maximum capacity.
@@ -157,8 +182,12 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * The minimum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.
      * </p>
      * <p>
-     * Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     * <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>,
+     * <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * </p>
+     * <p>
+     * For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
+     * <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      * </p>
      * <p>
      * The minimum capacity must be less than or equal to the maximum capacity.
@@ -167,8 +196,11 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * @param minCapacity
      *        The minimum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.</p>
      *        <p>
-     *        Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     *        <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *        For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *        </p>
+     *        <p>
+     *        For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>,
+     *        <code>16</code>, <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      *        </p>
      *        <p>
      *        The minimum capacity must be less than or equal to the maximum capacity.
@@ -185,8 +217,12 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * The maximum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.
      * </p>
      * <p>
-     * Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     * <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>,
+     * <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * </p>
+     * <p>
+     * For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
+     * <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      * </p>
      * <p>
      * The maximum capacity must be greater than or equal to the minimum capacity.
@@ -195,8 +231,11 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * @param maxCapacity
      *        The maximum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.</p>
      *        <p>
-     *        Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     *        <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *        For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *        </p>
+     *        <p>
+     *        For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>,
+     *        <code>16</code>, <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      *        </p>
      *        <p>
      *        The maximum capacity must be greater than or equal to the minimum capacity.
@@ -211,8 +250,12 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * The maximum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.
      * </p>
      * <p>
-     * Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     * <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>,
+     * <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * </p>
+     * <p>
+     * For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
+     * <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      * </p>
      * <p>
      * The maximum capacity must be greater than or equal to the minimum capacity.
@@ -220,7 +263,13 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * 
      * @return The maximum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.</p>
      *         <p>
-     *         Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *         For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>,
+     *         <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>
+     *         .
+     *         </p>
+     *         <p>
+     *         For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>,
+     *         <code>16</code>, <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      *         </p>
      *         <p>
      *         The maximum capacity must be greater than or equal to the minimum capacity.
@@ -235,8 +284,12 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * The maximum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.
      * </p>
      * <p>
-     * Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     * <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>,
+     * <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     * </p>
+     * <p>
+     * For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
+     * <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      * </p>
      * <p>
      * The maximum capacity must be greater than or equal to the minimum capacity.
@@ -245,8 +298,11 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * @param maxCapacity
      *        The maximum capacity for an Aurora DB cluster in <code>serverless</code> DB engine mode.</p>
      *        <p>
-     *        Valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>,
-     *        <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *        For Aurora MySQL, valid capacity values are <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code>, <code>16</code>, <code>32</code>, <code>64</code>, <code>128</code>, and <code>256</code>.
+     *        </p>
+     *        <p>
+     *        For Aurora PostgreSQL, valid capacity values are <code>2</code>, <code>4</code>, <code>8</code>,
+     *        <code>16</code>, <code>32</code>, <code>64</code>, <code>192</code>, and <code>384</code>.
      *        </p>
      *        <p>
      *        The maximum capacity must be greater than or equal to the minimum capacity.
@@ -411,7 +467,7 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * <code>ForceApplyCapacityChange</code> sets the capacity to the specified value as soon as possible.
      * </p>
      * <p>
-     * <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point is not found in
+     * <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point isn't found in
      * the timeout period.
      * </p>
      * <important>
@@ -433,7 +489,7 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      *        <code>ForceApplyCapacityChange</code> sets the capacity to the specified value as soon as possible.
      *        </p>
      *        <p>
-     *        <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point is not
+     *        <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point isn't
      *        found in the timeout period.
      *        </p>
      *        <important>
@@ -461,7 +517,7 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * <code>ForceApplyCapacityChange</code> sets the capacity to the specified value as soon as possible.
      * </p>
      * <p>
-     * <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point is not found in
+     * <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point isn't found in
      * the timeout period.
      * </p>
      * <important>
@@ -482,7 +538,7 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      *         <code>ForceApplyCapacityChange</code> sets the capacity to the specified value as soon as possible.
      *         </p>
      *         <p>
-     *         <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point is not
+     *         <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point isn't
      *         found in the timeout period.
      *         </p>
      *         <important>
@@ -510,7 +566,7 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      * <code>ForceApplyCapacityChange</code> sets the capacity to the specified value as soon as possible.
      * </p>
      * <p>
-     * <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point is not found in
+     * <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point isn't found in
      * the timeout period.
      * </p>
      * <important>
@@ -532,7 +588,7 @@ public class ScalingConfiguration implements Serializable, Cloneable {
      *        <code>ForceApplyCapacityChange</code> sets the capacity to the specified value as soon as possible.
      *        </p>
      *        <p>
-     *        <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point is not
+     *        <code>RollbackCapacityChange</code>, the default, ignores the capacity change if a scaling point isn't
      *        found in the timeout period.
      *        </p>
      *        <important>

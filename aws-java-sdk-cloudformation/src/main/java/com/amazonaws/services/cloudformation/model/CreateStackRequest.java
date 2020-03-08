@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -109,8 +109,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     private com.amazonaws.internal.SdkInternalList<String> notificationARNs;
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to create the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to create the stack.
      * </p>
      * <ul>
      * <li>
@@ -925,8 +925,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to create the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to create the stack.
      * </p>
      * <ul>
      * <li>
@@ -1053,7 +1053,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * 
-     * @return In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     * @return In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *         order for AWS CloudFormation to create the stack.</p>
      *         <ul>
      *         <li>
@@ -1194,8 +1194,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to create the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to create the stack.
      * </p>
      * <ul>
      * <li>
@@ -1323,7 +1323,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * 
      * @param capabilities
-     *        In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     *        In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *        order for AWS CloudFormation to create the stack.</p>
      *        <ul>
      *        <li>
@@ -1466,8 +1466,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to create the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to create the stack.
      * </p>
      * <ul>
      * <li>
@@ -1600,7 +1600,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param capabilities
-     *        In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     *        In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *        order for AWS CloudFormation to create the stack.</p>
      *        <ul>
      *        <li>
@@ -1745,8 +1745,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to create the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to create the stack.
      * </p>
      * <ul>
      * <li>
@@ -1874,7 +1874,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * 
      * @param capabilities
-     *        In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     *        In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *        order for AWS CloudFormation to create the stack.</p>
      *        <ul>
      *        <li>
@@ -2014,8 +2014,8 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to create the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to create the stack.
      * </p>
      * <ul>
      * <li>
@@ -2143,7 +2143,7 @@ public class CreateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * 
      * @param capabilities
-     *        In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     *        In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *        order for AWS CloudFormation to create the stack.</p>
      *        <ul>
      *        <li>

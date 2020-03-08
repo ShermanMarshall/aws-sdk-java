@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * The identifier of the customer master key (CMK) that encrypts the data key.
+     * The identifier of the symmetric customer master key (CMK) that encrypts the data key.
      * </p>
      * <p>
      * To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name,
@@ -67,7 +67,13 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
     private String keyId;
     /**
      * <p>
-     * A set of key-value pairs that represents additional authenticated data.
+     * Specifies the encryption context that will be used when encrypting the data key.
+     * </p>
+     * <p>
+     * An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional
+     * authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact
+     * case-sensitive match) encryption context to decrypt the data. An encryption context is optional when encrypting
+     * with a symmetric CMK, but it is highly recommended.
      * </p>
      * <p>
      * For more information, see <a
@@ -105,7 +111,7 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * The identifier of the customer master key (CMK) that encrypts the data key.
+     * The identifier of the symmetric customer master key (CMK) that encrypts the data key.
      * </p>
      * <p>
      * To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name,
@@ -143,7 +149,7 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
      * </p>
      * 
      * @param keyId
-     *        The identifier of the customer master key (CMK) that encrypts the data key.</p>
+     *        The identifier of the symmetric customer master key (CMK) that encrypts the data key.</p>
      *        <p>
      *        To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an
      *        alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must
@@ -185,7 +191,7 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * The identifier of the customer master key (CMK) that encrypts the data key.
+     * The identifier of the symmetric customer master key (CMK) that encrypts the data key.
      * </p>
      * <p>
      * To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name,
@@ -222,7 +228,7 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
      * alias ARN, use <a>ListAliases</a>.
      * </p>
      * 
-     * @return The identifier of the customer master key (CMK) that encrypts the data key.</p>
+     * @return The identifier of the symmetric customer master key (CMK) that encrypts the data key.</p>
      *         <p>
      *         To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an
      *         alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must
@@ -264,7 +270,7 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * The identifier of the customer master key (CMK) that encrypts the data key.
+     * The identifier of the symmetric customer master key (CMK) that encrypts the data key.
      * </p>
      * <p>
      * To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name,
@@ -302,7 +308,7 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
      * </p>
      * 
      * @param keyId
-     *        The identifier of the customer master key (CMK) that encrypts the data key.</p>
+     *        The identifier of the symmetric customer master key (CMK) that encrypts the data key.</p>
      *        <p>
      *        To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an
      *        alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must
@@ -346,7 +352,13 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * A set of key-value pairs that represents additional authenticated data.
+     * Specifies the encryption context that will be used when encrypting the data key.
+     * </p>
+     * <p>
+     * An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional
+     * authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact
+     * case-sensitive match) encryption context to decrypt the data. An encryption context is optional when encrypting
+     * with a symmetric CMK, but it is highly recommended.
      * </p>
      * <p>
      * For more information, see <a
@@ -354,7 +366,13 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
      * in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * 
-     * @return A set of key-value pairs that represents additional authenticated data.</p>
+     * @return Specifies the encryption context that will be used when encrypting the data key.</p>
+     *         <p>
+     *         An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional
+     *         authenticated data. When you use an encryption context to encrypt data, you must specify the same (an
+     *         exact case-sensitive match) encryption context to decrypt the data. An encryption context is optional
+     *         when encrypting with a symmetric CMK, but it is highly recommended.
+     *         </p>
      *         <p>
      *         For more information, see <a
      *         href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context">Encryption
@@ -370,7 +388,13 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * A set of key-value pairs that represents additional authenticated data.
+     * Specifies the encryption context that will be used when encrypting the data key.
+     * </p>
+     * <p>
+     * An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional
+     * authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact
+     * case-sensitive match) encryption context to decrypt the data. An encryption context is optional when encrypting
+     * with a symmetric CMK, but it is highly recommended.
      * </p>
      * <p>
      * For more information, see <a
@@ -379,7 +403,13 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
      * </p>
      * 
      * @param encryptionContext
-     *        A set of key-value pairs that represents additional authenticated data.</p>
+     *        Specifies the encryption context that will be used when encrypting the data key.</p>
+     *        <p>
+     *        An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional
+     *        authenticated data. When you use an encryption context to encrypt data, you must specify the same (an
+     *        exact case-sensitive match) encryption context to decrypt the data. An encryption context is optional when
+     *        encrypting with a symmetric CMK, but it is highly recommended.
+     *        </p>
      *        <p>
      *        For more information, see <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context">Encryption
@@ -392,7 +422,13 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * A set of key-value pairs that represents additional authenticated data.
+     * Specifies the encryption context that will be used when encrypting the data key.
+     * </p>
+     * <p>
+     * An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional
+     * authenticated data. When you use an encryption context to encrypt data, you must specify the same (an exact
+     * case-sensitive match) encryption context to decrypt the data. An encryption context is optional when encrypting
+     * with a symmetric CMK, but it is highly recommended.
      * </p>
      * <p>
      * For more information, see <a
@@ -401,7 +437,13 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
      * </p>
      * 
      * @param encryptionContext
-     *        A set of key-value pairs that represents additional authenticated data.</p>
+     *        Specifies the encryption context that will be used when encrypting the data key.</p>
+     *        <p>
+     *        An <i>encryption context</i> is a collection of non-secret key-value pairs that represents additional
+     *        authenticated data. When you use an encryption context to encrypt data, you must specify the same (an
+     *        exact case-sensitive match) encryption context to decrypt the data. An encryption context is optional when
+     *        encrypting with a symmetric CMK, but it is highly recommended.
+     *        </p>
      *        <p>
      *        For more information, see <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context">Encryption
@@ -413,6 +455,13 @@ public class GenerateDataKeyWithoutPlaintextRequest extends com.amazonaws.Amazon
         setEncryptionContext(encryptionContext);
         return this;
     }
+
+    /**
+     * Add a single EncryptionContext entry
+     *
+     * @see GenerateDataKeyWithoutPlaintextRequest#withEncryptionContext
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public GenerateDataKeyWithoutPlaintextRequest addEncryptionContextEntry(String key, String value) {
         if (null == this.encryptionContext) {

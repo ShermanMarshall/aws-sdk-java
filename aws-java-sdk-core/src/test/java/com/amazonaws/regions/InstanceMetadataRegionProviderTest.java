@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -23,12 +23,15 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.SDKGlobalConfiguration;
 import com.amazonaws.util.EC2MetadataUtilsServer;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 /**
  * Tests broken up by fixture.
@@ -48,7 +51,7 @@ public class InstanceMetadataRegionProviderTest {
 
         @BeforeClass
         public static void setupFixture() throws IOException {
-            server = new EC2MetadataUtilsServer("localhost", 0);
+            server = new EC2MetadataUtilsServer("localhost", 0, true);
             server.start();
 
             System.setProperty(SDKGlobalConfiguration.EC2_METADATA_SERVICE_OVERRIDE_SYSTEM_PROPERTY,

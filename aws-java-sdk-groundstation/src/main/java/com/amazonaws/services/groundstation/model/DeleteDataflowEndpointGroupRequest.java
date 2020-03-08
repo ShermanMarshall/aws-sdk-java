@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,18 +28,18 @@ public class DeleteDataflowEndpointGroupRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * ID of a dataflow endpoint group.
+     * UUID of a dataflow endpoint group.
      * </p>
      */
     private String dataflowEndpointGroupId;
 
     /**
      * <p>
-     * ID of a dataflow endpoint group.
+     * UUID of a dataflow endpoint group.
      * </p>
      * 
      * @param dataflowEndpointGroupId
-     *        ID of a dataflow endpoint group.
+     *        UUID of a dataflow endpoint group.
      */
 
     public void setDataflowEndpointGroupId(String dataflowEndpointGroupId) {
@@ -48,10 +48,10 @@ public class DeleteDataflowEndpointGroupRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * ID of a dataflow endpoint group.
+     * UUID of a dataflow endpoint group.
      * </p>
      * 
-     * @return ID of a dataflow endpoint group.
+     * @return UUID of a dataflow endpoint group.
      */
 
     public String getDataflowEndpointGroupId() {
@@ -60,11 +60,11 @@ public class DeleteDataflowEndpointGroupRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * ID of a dataflow endpoint group.
+     * UUID of a dataflow endpoint group.
      * </p>
      * 
      * @param dataflowEndpointGroupId
-     *        ID of a dataflow endpoint group.
+     *        UUID of a dataflow endpoint group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

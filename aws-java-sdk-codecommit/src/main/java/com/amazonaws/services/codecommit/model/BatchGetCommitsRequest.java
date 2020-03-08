@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class BatchGetCommitsRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <note>
      * <p>
-     * You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     * You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      * </p>
      * </note>
      */
@@ -49,13 +49,13 @@ public class BatchGetCommitsRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <note>
      * <p>
-     * You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     * You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      * </p>
      * </note>
      * 
      * @return The full commit IDs of the commits to get information about.</p> <note>
      *         <p>
-     *         You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     *         You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      *         </p>
      */
 
@@ -69,14 +69,14 @@ public class BatchGetCommitsRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <note>
      * <p>
-     * You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     * You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      * </p>
      * </note>
      * 
      * @param commitIds
      *        The full commit IDs of the commits to get information about.</p> <note>
      *        <p>
-     *        You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     *        You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      *        </p>
      */
 
@@ -95,7 +95,7 @@ public class BatchGetCommitsRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <note>
      * <p>
-     * You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     * You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      * </p>
      * </note>
      * <p>
@@ -107,7 +107,7 @@ public class BatchGetCommitsRequest extends com.amazonaws.AmazonWebServiceReques
      * @param commitIds
      *        The full commit IDs of the commits to get information about.</p> <note>
      *        <p>
-     *        You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     *        You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -128,14 +128,14 @@ public class BatchGetCommitsRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <note>
      * <p>
-     * You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     * You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      * </p>
      * </note>
      * 
      * @param commitIds
      *        The full commit IDs of the commits to get information about.</p> <note>
      *        <p>
-     *        You must supply the full SHAs of each commit. You cannot use shortened SHAs.
+     *        You must supply the full SHA IDs of each commit. You cannot use shortened SHA IDs.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */

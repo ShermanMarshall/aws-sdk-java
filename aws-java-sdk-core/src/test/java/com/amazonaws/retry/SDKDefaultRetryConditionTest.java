@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights
+ * Copyright 2011-2020 Amazon.com, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -69,8 +69,27 @@ public class SDKDefaultRetryConditionTest {
     }
 
     @Test
-    public void shouldNotRetryBad4xxErrorCodeAse() {
-        Assert.assertFalse(shouldRetry(getAse(400 + random.nextInt(100), "BogusException")));
+    public void shouldNotRetryBad4xxErrorCodeAseExcept429() {
+        // Try all 4xx status codes except 429 which should be retryable
+        for (int i = 400; i < 500; ++i) {
+            if (i != 429) {
+                Assert.assertFalse("Status code " + i + " should not be retryable",
+                                   shouldRetry(getAse(i, "BogusException")));
+            }
+        }
+    }
+
+    @Test
+    public void shouldRetryBad429ErrorCodeAse() {
+        Assert.assertTrue("Status code 429 should be retryable", shouldRetry(getAse(429, "BogusException")));
+    }
+
+    @Test
+    public void shouldRetry_EC2ThrottledException() {
+        AmazonServiceException ase = new AmazonServiceException("msg");
+        ase.setErrorCode("EC2ThrottledException");
+
+        Assert.assertTrue(shouldRetry(ase));
     }
 
     private boolean shouldRetry(AmazonClientException ace) {

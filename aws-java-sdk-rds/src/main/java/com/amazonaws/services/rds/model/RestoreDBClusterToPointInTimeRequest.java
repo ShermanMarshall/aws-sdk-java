@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -112,7 +112,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </li>
      * <li>
      * <p>
-     * Must be specified if <code>UseLatestRestorableTime</code> parameter is not provided
+     * Must be specified if <code>UseLatestRestorableTime</code> parameter isn't provided
      * </p>
      * </li>
      * <li>
@@ -134,7 +134,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
     /**
      * <p>
      * A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default, the DB
-     * cluster is not restored to the latest restorable backup time.
+     * cluster isn't restored to the latest restorable backup time.
      * </p>
      * <p>
      * Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
@@ -205,12 +205,12 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </li>
      * <li>
      * <p>
-     * If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.
+     * If the DB cluster isn't encrypted, then the restored DB cluster isn't encrypted.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If <code>DBClusterIdentifier</code> refers to a DB cluster that is not encrypted, then the restore request is
+     * If <code>DBClusterIdentifier</code> refers to a DB cluster that isn't encrypted, then the restore request is
      * rejected.
      * </p>
      */
@@ -301,6 +301,25 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </p>
      */
     private Boolean copyTagsToSnapshot;
+    /**
+     * <p>
+     * Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this
+     * operation.
+     * </p>
+     * <p>
+     * For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     * the DB cluster. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html">Using Kerberos
+     * Authentication for Aurora MySQL</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     */
+    private String domain;
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     */
+    private String domainIAMRoleName;
 
     /**
      * <p>
@@ -731,7 +750,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </li>
      * <li>
      * <p>
-     * Must be specified if <code>UseLatestRestorableTime</code> parameter is not provided
+     * Must be specified if <code>UseLatestRestorableTime</code> parameter isn't provided
      * </p>
      * </li>
      * <li>
@@ -765,7 +784,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      *        </li>
      *        <li>
      *        <p>
-     *        Must be specified if <code>UseLatestRestorableTime</code> parameter is not provided
+     *        Must be specified if <code>UseLatestRestorableTime</code> parameter isn't provided
      *        </p>
      *        </li>
      *        <li>
@@ -805,7 +824,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </li>
      * <li>
      * <p>
-     * Must be specified if <code>UseLatestRestorableTime</code> parameter is not provided
+     * Must be specified if <code>UseLatestRestorableTime</code> parameter isn't provided
      * </p>
      * </li>
      * <li>
@@ -838,7 +857,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      *         </li>
      *         <li>
      *         <p>
-     *         Must be specified if <code>UseLatestRestorableTime</code> parameter is not provided
+     *         Must be specified if <code>UseLatestRestorableTime</code> parameter isn't provided
      *         </p>
      *         </li>
      *         <li>
@@ -878,7 +897,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </li>
      * <li>
      * <p>
-     * Must be specified if <code>UseLatestRestorableTime</code> parameter is not provided
+     * Must be specified if <code>UseLatestRestorableTime</code> parameter isn't provided
      * </p>
      * </li>
      * <li>
@@ -912,7 +931,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      *        </li>
      *        <li>
      *        <p>
-     *        Must be specified if <code>UseLatestRestorableTime</code> parameter is not provided
+     *        Must be specified if <code>UseLatestRestorableTime</code> parameter isn't provided
      *        </p>
      *        </li>
      *        <li>
@@ -939,7 +958,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
     /**
      * <p>
      * A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default, the DB
-     * cluster is not restored to the latest restorable backup time.
+     * cluster isn't restored to the latest restorable backup time.
      * </p>
      * <p>
      * Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
@@ -947,7 +966,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * 
      * @param useLatestRestorableTime
      *        A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default,
-     *        the DB cluster is not restored to the latest restorable backup time. </p>
+     *        the DB cluster isn't restored to the latest restorable backup time. </p>
      *        <p>
      *        Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
      */
@@ -959,14 +978,14 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
     /**
      * <p>
      * A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default, the DB
-     * cluster is not restored to the latest restorable backup time.
+     * cluster isn't restored to the latest restorable backup time.
      * </p>
      * <p>
      * Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
      * </p>
      * 
      * @return A value that indicates whether to restore the DB cluster to the latest restorable backup time. By
-     *         default, the DB cluster is not restored to the latest restorable backup time. </p>
+     *         default, the DB cluster isn't restored to the latest restorable backup time. </p>
      *         <p>
      *         Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
      */
@@ -978,7 +997,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
     /**
      * <p>
      * A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default, the DB
-     * cluster is not restored to the latest restorable backup time.
+     * cluster isn't restored to the latest restorable backup time.
      * </p>
      * <p>
      * Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
@@ -986,7 +1005,7 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * 
      * @param useLatestRestorableTime
      *        A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default,
-     *        the DB cluster is not restored to the latest restorable backup time. </p>
+     *        the DB cluster isn't restored to the latest restorable backup time. </p>
      *        <p>
      *        Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1000,14 +1019,14 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
     /**
      * <p>
      * A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default, the DB
-     * cluster is not restored to the latest restorable backup time.
+     * cluster isn't restored to the latest restorable backup time.
      * </p>
      * <p>
      * Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
      * </p>
      * 
      * @return A value that indicates whether to restore the DB cluster to the latest restorable backup time. By
-     *         default, the DB cluster is not restored to the latest restorable backup time. </p>
+     *         default, the DB cluster isn't restored to the latest restorable backup time. </p>
      *         <p>
      *         Constraints: Can't be specified if <code>RestoreToTime</code> parameter is provided.
      */
@@ -1356,12 +1375,12 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </li>
      * <li>
      * <p>
-     * If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.
+     * If the DB cluster isn't encrypted, then the restored DB cluster isn't encrypted.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If <code>DBClusterIdentifier</code> refers to a DB cluster that is not encrypted, then the restore request is
+     * If <code>DBClusterIdentifier</code> refers to a DB cluster that isn't encrypted, then the restore request is
      * rejected.
      * </p>
      * 
@@ -1389,12 +1408,12 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      *        </li>
      *        <li>
      *        <p>
-     *        If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.
+     *        If the DB cluster isn't encrypted, then the restored DB cluster isn't encrypted.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        If <code>DBClusterIdentifier</code> refers to a DB cluster that is not encrypted, then the restore request
+     *        If <code>DBClusterIdentifier</code> refers to a DB cluster that isn't encrypted, then the restore request
      *        is rejected.
      */
 
@@ -1428,12 +1447,12 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </li>
      * <li>
      * <p>
-     * If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.
+     * If the DB cluster isn't encrypted, then the restored DB cluster isn't encrypted.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If <code>DBClusterIdentifier</code> refers to a DB cluster that is not encrypted, then the restore request is
+     * If <code>DBClusterIdentifier</code> refers to a DB cluster that isn't encrypted, then the restore request is
      * rejected.
      * </p>
      * 
@@ -1461,13 +1480,13 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      *         </li>
      *         <li>
      *         <p>
-     *         If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.
+     *         If the DB cluster isn't encrypted, then the restored DB cluster isn't encrypted.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         If <code>DBClusterIdentifier</code> refers to a DB cluster that is not encrypted, then the restore
-     *         request is rejected.
+     *         If <code>DBClusterIdentifier</code> refers to a DB cluster that isn't encrypted, then the restore request
+     *         is rejected.
      */
 
     public String getKmsKeyId() {
@@ -1500,12 +1519,12 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      * </li>
      * <li>
      * <p>
-     * If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.
+     * If the DB cluster isn't encrypted, then the restored DB cluster isn't encrypted.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * If <code>DBClusterIdentifier</code> refers to a DB cluster that is not encrypted, then the restore request is
+     * If <code>DBClusterIdentifier</code> refers to a DB cluster that isn't encrypted, then the restore request is
      * rejected.
      * </p>
      * 
@@ -1533,12 +1552,12 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
      *        </li>
      *        <li>
      *        <p>
-     *        If the DB cluster is not encrypted, then the restored DB cluster is not encrypted.
+     *        If the DB cluster isn't encrypted, then the restored DB cluster isn't encrypted.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        If <code>DBClusterIdentifier</code> refers to a DB cluster that is not encrypted, then the restore request
+     *        If <code>DBClusterIdentifier</code> refers to a DB cluster that isn't encrypted, then the restore request
      *        is rejected.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2170,6 +2189,125 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
     }
 
     /**
+     * <p>
+     * Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this
+     * operation.
+     * </p>
+     * <p>
+     * For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     * the DB cluster. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html">Using Kerberos
+     * Authentication for Aurora MySQL</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @param domain
+     *        Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior
+     *        to this operation. </p>
+     *        <p>
+     *        For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication to authenticate users that
+     *        connect to the DB cluster. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html">Using Kerberos
+     *        Authentication for Aurora MySQL</a> in the <i>Amazon Aurora User Guide</i>.
+     */
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    /**
+     * <p>
+     * Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this
+     * operation.
+     * </p>
+     * <p>
+     * For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     * the DB cluster. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html">Using Kerberos
+     * Authentication for Aurora MySQL</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @return Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior
+     *         to this operation. </p>
+     *         <p>
+     *         For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication to authenticate users that
+     *         connect to the DB cluster. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html">Using Kerberos
+     *         Authentication for Aurora MySQL</a> in the <i>Amazon Aurora User Guide</i>.
+     */
+
+    public String getDomain() {
+        return this.domain;
+    }
+
+    /**
+     * <p>
+     * Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this
+     * operation.
+     * </p>
+     * <p>
+     * For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     * the DB cluster. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html">Using Kerberos
+     * Authentication for Aurora MySQL</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @param domain
+     *        Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior
+     *        to this operation. </p>
+     *        <p>
+     *        For Amazon Aurora DB clusters, Amazon RDS can use Kerberos Authentication to authenticate users that
+     *        connect to the DB cluster. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurmysql-kerberos.html">Using Kerberos
+     *        Authentication for Aurora MySQL</a> in the <i>Amazon Aurora User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreDBClusterToPointInTimeRequest withDomain(String domain) {
+        setDomain(domain);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @param domainIAMRoleName
+     *        Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     */
+
+    public void setDomainIAMRoleName(String domainIAMRoleName) {
+        this.domainIAMRoleName = domainIAMRoleName;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @return Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     */
+
+    public String getDomainIAMRoleName() {
+        return this.domainIAMRoleName;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @param domainIAMRoleName
+     *        Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreDBClusterToPointInTimeRequest withDomainIAMRoleName(String domainIAMRoleName) {
+        setDomainIAMRoleName(domainIAMRoleName);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -2214,7 +2352,11 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
         if (getDeletionProtection() != null)
             sb.append("DeletionProtection: ").append(getDeletionProtection()).append(",");
         if (getCopyTagsToSnapshot() != null)
-            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot());
+            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot()).append(",");
+        if (getDomain() != null)
+            sb.append("Domain: ").append(getDomain()).append(",");
+        if (getDomainIAMRoleName() != null)
+            sb.append("DomainIAMRoleName: ").append(getDomainIAMRoleName());
         sb.append("}");
         return sb.toString();
     }
@@ -2298,6 +2440,14 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
             return false;
         if (other.getCopyTagsToSnapshot() != null && other.getCopyTagsToSnapshot().equals(this.getCopyTagsToSnapshot()) == false)
             return false;
+        if (other.getDomain() == null ^ this.getDomain() == null)
+            return false;
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false)
+            return false;
+        if (other.getDomainIAMRoleName() == null ^ this.getDomainIAMRoleName() == null)
+            return false;
+        if (other.getDomainIAMRoleName() != null && other.getDomainIAMRoleName().equals(this.getDomainIAMRoleName()) == false)
+            return false;
         return true;
     }
 
@@ -2323,6 +2473,8 @@ public class RestoreDBClusterToPointInTimeRequest extends com.amazonaws.AmazonWe
         hashCode = prime * hashCode + ((getDBClusterParameterGroupName() == null) ? 0 : getDBClusterParameterGroupName().hashCode());
         hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
         hashCode = prime * hashCode + ((getCopyTagsToSnapshot() == null) ? 0 : getCopyTagsToSnapshot().hashCode());
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
+        hashCode = prime * hashCode + ((getDomainIAMRoleName() == null) ? 0 : getDomainIAMRoleName().hashCode());
         return hashCode;
     }
 

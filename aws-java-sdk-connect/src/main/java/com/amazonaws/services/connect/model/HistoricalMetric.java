@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A <code>HistoricalMetric</code> object that contains the Name, Unit, Statistic, and Threshold for the metric.
+ * Contains information about a historical metric.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08/HistoricalMetric" target="_top">AWS API
@@ -30,7 +30,7 @@ public class HistoricalMetric implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The name of the historical metric.
+     * The name of the metric.
      * </p>
      */
     private String name;
@@ -55,11 +55,11 @@ public class HistoricalMetric implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The name of the historical metric.
+     * The name of the metric.
      * </p>
      * 
      * @param name
-     *        The name of the historical metric.
+     *        The name of the metric.
      * @see HistoricalMetricName
      */
 
@@ -69,10 +69,10 @@ public class HistoricalMetric implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The name of the historical metric.
+     * The name of the metric.
      * </p>
      * 
-     * @return The name of the historical metric.
+     * @return The name of the metric.
      * @see HistoricalMetricName
      */
 
@@ -82,11 +82,11 @@ public class HistoricalMetric implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The name of the historical metric.
+     * The name of the metric.
      * </p>
      * 
      * @param name
-     *        The name of the historical metric.
+     *        The name of the metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HistoricalMetricName
      */
@@ -98,11 +98,11 @@ public class HistoricalMetric implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The name of the historical metric.
+     * The name of the metric.
      * </p>
      * 
      * @param name
-     *        The name of the historical metric.
+     *        The name of the metric.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see HistoricalMetricName
      */

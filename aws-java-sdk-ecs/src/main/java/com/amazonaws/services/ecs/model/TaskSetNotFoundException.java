@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,8 +16,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The specified task set could not be found. You can view your available container instances with
- * <a>DescribeTaskSets</a>. Task sets are specific to each cluster, service and Region.
+ * The specified task set could not be found. You can view your available task sets with <a>DescribeTaskSets</a>. Task
+ * sets are specific to each cluster, service and Region.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

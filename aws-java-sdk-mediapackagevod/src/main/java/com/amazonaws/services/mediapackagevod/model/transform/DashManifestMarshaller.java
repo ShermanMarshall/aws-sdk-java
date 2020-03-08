@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class DashManifestMarshaller {
 
+    private static final MarshallingInfo<String> MANIFESTLAYOUT_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("manifestLayout").build();
     private static final MarshallingInfo<String> MANIFESTNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("manifestName").build();
     private static final MarshallingInfo<Integer> MINBUFFERTIMESECONDS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -52,6 +54,7 @@ public class DashManifestMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(dashManifest.getManifestLayout(), MANIFESTLAYOUT_BINDING);
             protocolMarshaller.marshall(dashManifest.getManifestName(), MANIFESTNAME_BINDING);
             protocolMarshaller.marshall(dashManifest.getMinBufferTimeSeconds(), MINBUFFERTIMESECONDS_BINDING);
             protocolMarshaller.marshall(dashManifest.getProfile(), PROFILE_BINDING);

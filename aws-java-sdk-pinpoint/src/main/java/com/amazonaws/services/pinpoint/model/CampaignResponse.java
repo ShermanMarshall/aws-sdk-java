@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,7 +49,7 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
     private String arn;
     /**
      * <p>
-     * The date, ISO 8601 format, when the campaign was created.
+     * The date, in ISO 8601 format, when the campaign was created.
      * </p>
      */
     private String creationDate;
@@ -146,6 +146,12 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
      * </p>
      */
     private java.util.Map<String, String> tags;
+    /**
+     * <p>
+     * The message template that’s used for the campaign.
+     * </p>
+     */
+    private TemplateConfiguration templateConfiguration;
     /**
      * <p>
      * The custom description of a variation of the campaign that's used for A/B testing.
@@ -325,11 +331,11 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The date, ISO 8601 format, when the campaign was created.
+     * The date, in ISO 8601 format, when the campaign was created.
      * </p>
      * 
      * @param creationDate
-     *        The date, ISO 8601 format, when the campaign was created.
+     *        The date, in ISO 8601 format, when the campaign was created.
      */
 
     public void setCreationDate(String creationDate) {
@@ -338,10 +344,10 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The date, ISO 8601 format, when the campaign was created.
+     * The date, in ISO 8601 format, when the campaign was created.
      * </p>
      * 
-     * @return The date, ISO 8601 format, when the campaign was created.
+     * @return The date, in ISO 8601 format, when the campaign was created.
      */
 
     public String getCreationDate() {
@@ -350,11 +356,11 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The date, ISO 8601 format, when the campaign was created.
+     * The date, in ISO 8601 format, when the campaign was created.
      * </p>
      * 
      * @param creationDate
-     *        The date, ISO 8601 format, when the campaign was created.
+     *        The date, in ISO 8601 format, when the campaign was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -995,6 +1001,13 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
         return this;
     }
 
+    /**
+     * Add a single Tags entry
+     *
+     * @see CampaignResponse#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public CampaignResponse addTagsEntry(String key, String value) {
         if (null == this.tags) {
             this.tags = new java.util.HashMap<String, String>();
@@ -1013,6 +1026,46 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
 
     public CampaignResponse clearTagsEntries() {
         this.tags = null;
+        return this;
+    }
+
+    /**
+     * <p>
+     * The message template that’s used for the campaign.
+     * </p>
+     * 
+     * @param templateConfiguration
+     *        The message template that’s used for the campaign.
+     */
+
+    public void setTemplateConfiguration(TemplateConfiguration templateConfiguration) {
+        this.templateConfiguration = templateConfiguration;
+    }
+
+    /**
+     * <p>
+     * The message template that’s used for the campaign.
+     * </p>
+     * 
+     * @return The message template that’s used for the campaign.
+     */
+
+    public TemplateConfiguration getTemplateConfiguration() {
+        return this.templateConfiguration;
+    }
+
+    /**
+     * <p>
+     * The message template that’s used for the campaign.
+     * </p>
+     * 
+     * @param templateConfiguration
+     *        The message template that’s used for the campaign.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CampaignResponse withTemplateConfiguration(TemplateConfiguration templateConfiguration) {
+        setTemplateConfiguration(templateConfiguration);
         return this;
     }
 
@@ -1186,6 +1239,8 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
             sb.append("State: ").append(getState()).append(",");
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
+        if (getTemplateConfiguration() != null)
+            sb.append("TemplateConfiguration: ").append(getTemplateConfiguration()).append(",");
         if (getTreatmentDescription() != null)
             sb.append("TreatmentDescription: ").append(getTreatmentDescription()).append(",");
         if (getTreatmentName() != null)
@@ -1282,6 +1337,10 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
+        if (other.getTemplateConfiguration() == null ^ this.getTemplateConfiguration() == null)
+            return false;
+        if (other.getTemplateConfiguration() != null && other.getTemplateConfiguration().equals(this.getTemplateConfiguration()) == false)
+            return false;
         if (other.getTreatmentDescription() == null ^ this.getTreatmentDescription() == null)
             return false;
         if (other.getTreatmentDescription() != null && other.getTreatmentDescription().equals(this.getTreatmentDescription()) == false)
@@ -1321,6 +1380,7 @@ public class CampaignResponse implements Serializable, Cloneable, StructuredPojo
         hashCode = prime * hashCode + ((getSegmentVersion() == null) ? 0 : getSegmentVersion().hashCode());
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getTemplateConfiguration() == null) ? 0 : getTemplateConfiguration().hashCode());
         hashCode = prime * hashCode + ((getTreatmentDescription() == null) ? 0 : getTreatmentDescription().hashCode());
         hashCode = prime * hashCode + ((getTreatmentName() == null) ? 0 : getTreatmentName().hashCode());
         hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());

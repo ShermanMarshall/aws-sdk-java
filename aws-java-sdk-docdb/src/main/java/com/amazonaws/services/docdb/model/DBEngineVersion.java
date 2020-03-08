@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Detailed information about a DB engine version.
+ * Detailed information about an engine version.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/docdb-2014-10-31/DBEngineVersion" target="_top">AWS API
@@ -40,7 +40,7 @@ public class DBEngineVersion implements Serializable, Cloneable {
     private String engineVersion;
     /**
      * <p>
-     * The name of the DB parameter group family for the database engine.
+     * The name of the parameter group family for the database engine.
      * </p>
      */
     private String dBParameterGroupFamily;
@@ -158,11 +158,11 @@ public class DBEngineVersion implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DB parameter group family for the database engine.
+     * The name of the parameter group family for the database engine.
      * </p>
      * 
      * @param dBParameterGroupFamily
-     *        The name of the DB parameter group family for the database engine.
+     *        The name of the parameter group family for the database engine.
      */
 
     public void setDBParameterGroupFamily(String dBParameterGroupFamily) {
@@ -171,10 +171,10 @@ public class DBEngineVersion implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DB parameter group family for the database engine.
+     * The name of the parameter group family for the database engine.
      * </p>
      * 
-     * @return The name of the DB parameter group family for the database engine.
+     * @return The name of the parameter group family for the database engine.
      */
 
     public String getDBParameterGroupFamily() {
@@ -183,11 +183,11 @@ public class DBEngineVersion implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DB parameter group family for the database engine.
+     * The name of the parameter group family for the database engine.
      * </p>
      * 
      * @param dBParameterGroupFamily
-     *        The name of the DB parameter group family for the database engine.
+     *        The name of the parameter group family for the database engine.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

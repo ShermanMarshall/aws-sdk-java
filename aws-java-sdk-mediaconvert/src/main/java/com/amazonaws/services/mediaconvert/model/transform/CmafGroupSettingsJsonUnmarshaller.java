@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,6 +48,11 @@ public class CmafGroupSettingsJsonUnmarshaller implements Unmarshaller<CmafGroup
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("additionalManifests", targetDepth)) {
+                    context.nextToken();
+                    cmafGroupSettings.setAdditionalManifests(new ListUnmarshaller<CmafAdditionalManifest>(CmafAdditionalManifestJsonUnmarshaller.getInstance())
+                            .unmarshall(context));
+                }
                 if (context.testExpression("baseUrl", targetDepth)) {
                     context.nextToken();
                     cmafGroupSettings.setBaseUrl(context.getUnmarshaller(String.class).unmarshall(context));
@@ -92,6 +97,10 @@ public class CmafGroupSettingsJsonUnmarshaller implements Unmarshaller<CmafGroup
                     context.nextToken();
                     cmafGroupSettings.setMinFinalSegmentLength(context.getUnmarshaller(Double.class).unmarshall(context));
                 }
+                if (context.testExpression("mpdProfile", targetDepth)) {
+                    context.nextToken();
+                    cmafGroupSettings.setMpdProfile(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("segmentControl", targetDepth)) {
                     context.nextToken();
                     cmafGroupSettings.setSegmentControl(context.getUnmarshaller(String.class).unmarshall(context));
@@ -111,6 +120,10 @@ public class CmafGroupSettingsJsonUnmarshaller implements Unmarshaller<CmafGroup
                 if (context.testExpression("writeHlsManifest", targetDepth)) {
                     context.nextToken();
                     cmafGroupSettings.setWriteHlsManifest(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("writeSegmentTimelineInRepresentation", targetDepth)) {
+                    context.nextToken();
+                    cmafGroupSettings.setWriteSegmentTimelineInRepresentation(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,7 +32,8 @@ import com.amazonaws.services.codebuild.model.*;
  * scale your own build servers. It provides prepackaged build environments for the most popular programming languages
  * and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in AWS
  * CodeBuild to use your own build tools. AWS CodeBuild scales automatically to meet peak build requests. You pay only
- * for the build time you consume. For more information about AWS CodeBuild, see the <i>AWS CodeBuild User Guide</i>.
+ * for the build time you consume. For more information about AWS CodeBuild, see the <i> <a
+ * href="https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html">AWS CodeBuild User Guide</a>.</i>
  * </p>
  * <p>
  * AWS CodeBuild supports these operations:
@@ -41,6 +42,11 @@ import com.amazonaws.services.codebuild.model.*;
  * <li>
  * <p>
  * <code>BatchDeleteBuilds</code>: Deletes one or more builds.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>BatchGetBuilds</code>: Gets information about one or more builds.
  * </p>
  * </li>
  * <li>
@@ -54,7 +60,22 @@ import com.amazonaws.services.codebuild.model.*;
  * </li>
  * <li>
  * <p>
+ * <code>BatchGetReportGroups</code>: Returns an array of report groups.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>BatchGetReports</code>: Returns an array of reports.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * <code>CreateProject</code>: Creates a build project.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>CreateReportGroup</code>: Creates a report group. A report group contains a collection of reports.
  * </p>
  * </li>
  * <li>
@@ -66,12 +87,27 @@ import com.amazonaws.services.codebuild.model.*;
  * </li>
  * <li>
  * <p>
- * <code>UpdateWebhook</code>: Changes the settings of an existing webhook.
+ * <code>DeleteProject</code>: Deletes a build project.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>DeleteProject</code>: Deletes a build project.
+ * <code>DeleteReport</code>: Deletes a report.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>DeleteReportGroup</code>: Deletes a report group.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>DeleteResourcePolicy</code>: Deletes a resource policy that is identified by its resource ARN.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>DeleteSourceCredentials</code>: Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
  * </p>
  * </li>
  * <li>
@@ -83,18 +119,23 @@ import com.amazonaws.services.codebuild.model.*;
  * </li>
  * <li>
  * <p>
- * <code>ListProjects</code>: Gets a list of build project names, with each build project name representing a single
- * build project.
+ * <code>DescribeTestCases</code>: Returns a list of details about test cases for a report.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>UpdateProject</code>: Changes the settings of an existing build project.
+ * <code>GetResourcePolicy</code>: Gets a resource policy that is identified by its resource ARN.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>BatchGetBuilds</code>: Gets information about one or more builds.
+ * <code>ImportSourceCredentials</code>: Imports the source repository credentials for an AWS CodeBuild project that has
+ * its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>InvalidateProjectCache</code>: Resets the cache for a project.
  * </p>
  * </li>
  * <li>
@@ -110,6 +151,58 @@ import com.amazonaws.services.codebuild.model.*;
  * </li>
  * <li>
  * <p>
+ * <code>ListCuratedEnvironmentImages</code>: Gets information about Docker images that are managed by AWS CodeBuild.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListProjects</code>: Gets a list of build project names, with each build project name representing a single
+ * build project.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListReportGroups</code>: Gets a list ARNs for the report groups in the current AWS account.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListReports</code>: Gets a list ARNs for the reports in the current AWS account.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListReportsForReportGroup</code>: Returns a list of ARNs for the reports that belong to a
+ * <code>ReportGroup</code>.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListSharedProjects</code>: Gets a list of ARNs associated with projects shared with the current AWS account or
+ * user.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListSharedReportGroups</code>: Gets a list of ARNs associated with report groups shared with the current AWS
+ * account or user
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>ListSourceCredentials</code>: Returns a list of <code>SourceCredentialsInfo</code> objects. Each
+ * <code>SourceCredentialsInfo</code> object includes the authentication type, token ARN, and type of source provider
+ * for one set of credentials.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>PutResourcePolicy</code>: Stores a resource policy for the ARN of a <code>Project</code> or
+ * <code>ReportGroup</code> object.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * <code>StartBuild</code>: Starts running a build.
  * </p>
  * </li>
@@ -120,25 +213,17 @@ import com.amazonaws.services.codebuild.model.*;
  * </li>
  * <li>
  * <p>
- * <code>ListCuratedEnvironmentImages</code>: Gets information about Docker images that are managed by AWS CodeBuild.
+ * <code>UpdateProject</code>: Changes the settings of an existing build project.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>DeleteSourceCredentials</code>: Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
+ * <code>UpdateReportGroup</code>: Changes a report group.
  * </p>
  * </li>
  * <li>
  * <p>
- * <code>ImportSourceCredentials</code>: Imports the source repository credentials for an AWS CodeBuild project that has
- * its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
- * </p>
- * </li>
- * <li>
- * <p>
- * <code>ListSourceCredentials</code>: Returns a list of <code>SourceCredentialsInfo</code> objects. Each
- * <code>SourceCredentialsInfo</code> object includes the authentication type, token ARN, and type of source provider
- * for one set of credentials.
+ * <code>UpdateWebhook</code>: Changes the settings of an existing webhook.
  * </p>
  * </li>
  * </ul>
@@ -179,7 +264,7 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
 
     /**
      * <p>
-     * Gets information about builds.
+     * Gets information about one or more builds.
      * </p>
      * 
      * @param batchGetBuildsRequest
@@ -192,7 +277,7 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
 
     /**
      * <p>
-     * Gets information about builds.
+     * Gets information about one or more builds.
      * </p>
      * 
      * @param batchGetBuildsRequest
@@ -210,7 +295,7 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
 
     /**
      * <p>
-     * Gets information about build projects.
+     * Gets information about one or more build projects.
      * </p>
      * 
      * @param batchGetProjectsRequest
@@ -223,7 +308,7 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
 
     /**
      * <p>
-     * Gets information about build projects.
+     * Gets information about one or more build projects.
      * </p>
      * 
      * @param batchGetProjectsRequest
@@ -238,6 +323,68 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      */
     java.util.concurrent.Future<BatchGetProjectsResult> batchGetProjectsAsync(BatchGetProjectsRequest batchGetProjectsRequest,
             com.amazonaws.handlers.AsyncHandler<BatchGetProjectsRequest, BatchGetProjectsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns an array of report groups.
+     * </p>
+     * 
+     * @param batchGetReportGroupsRequest
+     * @return A Java Future containing the result of the BatchGetReportGroups operation returned by the service.
+     * @sample AWSCodeBuildAsync.BatchGetReportGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetReportGroups" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<BatchGetReportGroupsResult> batchGetReportGroupsAsync(BatchGetReportGroupsRequest batchGetReportGroupsRequest);
+
+    /**
+     * <p>
+     * Returns an array of report groups.
+     * </p>
+     * 
+     * @param batchGetReportGroupsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the BatchGetReportGroups operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.BatchGetReportGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetReportGroups" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<BatchGetReportGroupsResult> batchGetReportGroupsAsync(BatchGetReportGroupsRequest batchGetReportGroupsRequest,
+            com.amazonaws.handlers.AsyncHandler<BatchGetReportGroupsRequest, BatchGetReportGroupsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns an array of reports.
+     * </p>
+     * 
+     * @param batchGetReportsRequest
+     * @return A Java Future containing the result of the BatchGetReports operation returned by the service.
+     * @sample AWSCodeBuildAsync.BatchGetReports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetReports" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<BatchGetReportsResult> batchGetReportsAsync(BatchGetReportsRequest batchGetReportsRequest);
+
+    /**
+     * <p>
+     * Returns an array of reports.
+     * </p>
+     * 
+     * @param batchGetReportsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the BatchGetReports operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.BatchGetReports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/BatchGetReports" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<BatchGetReportsResult> batchGetReportsAsync(BatchGetReportsRequest batchGetReportsRequest,
+            com.amazonaws.handlers.AsyncHandler<BatchGetReportsRequest, BatchGetReportsResult> asyncHandler);
 
     /**
      * <p>
@@ -269,6 +416,37 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      */
     java.util.concurrent.Future<CreateProjectResult> createProjectAsync(CreateProjectRequest createProjectRequest,
             com.amazonaws.handlers.AsyncHandler<CreateProjectRequest, CreateProjectResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a report group. A report group contains a collection of reports.
+     * </p>
+     * 
+     * @param createReportGroupRequest
+     * @return A Java Future containing the result of the CreateReportGroup operation returned by the service.
+     * @sample AWSCodeBuildAsync.CreateReportGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/CreateReportGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateReportGroupResult> createReportGroupAsync(CreateReportGroupRequest createReportGroupRequest);
+
+    /**
+     * <p>
+     * Creates a report group. A report group contains a collection of reports.
+     * </p>
+     * 
+     * @param createReportGroupRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateReportGroup operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.CreateReportGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/CreateReportGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateReportGroupResult> createReportGroupAsync(CreateReportGroupRequest createReportGroupRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateReportGroupRequest, CreateReportGroupResult> asyncHandler);
 
     /**
      * <p>
@@ -327,7 +505,7 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
 
     /**
      * <p>
-     * Deletes a build project.
+     * Deletes a build project. When you delete a project, its builds are not deleted.
      * </p>
      * 
      * @param deleteProjectRequest
@@ -340,7 +518,7 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
 
     /**
      * <p>
-     * Deletes a build project.
+     * Deletes a build project. When you delete a project, its builds are not deleted.
      * </p>
      * 
      * @param deleteProjectRequest
@@ -355,6 +533,111 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      */
     java.util.concurrent.Future<DeleteProjectResult> deleteProjectAsync(DeleteProjectRequest deleteProjectRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteProjectRequest, DeleteProjectResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes a report.
+     * </p>
+     * 
+     * @param deleteReportRequest
+     * @return A Java Future containing the result of the DeleteReport operation returned by the service.
+     * @sample AWSCodeBuildAsync.DeleteReport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteReport" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteReportResult> deleteReportAsync(DeleteReportRequest deleteReportRequest);
+
+    /**
+     * <p>
+     * Deletes a report.
+     * </p>
+     * 
+     * @param deleteReportRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteReport operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.DeleteReport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteReport" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteReportResult> deleteReportAsync(DeleteReportRequest deleteReportRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteReportRequest, DeleteReportResult> asyncHandler);
+
+    /**
+     * <p>
+     * <code>DeleteReportGroup</code>: Deletes a report group. Before you delete a report group, you must delete its
+     * reports. Use <a
+     * href="https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ListReportsForReportGroup.html"
+     * >ListReportsForReportGroup</a> to get the reports in a report group. Use <a
+     * href="https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DeleteReport.html">DeleteReport</a> to delete
+     * the reports. If you call <code>DeleteReportGroup</code> for a report group that contains one or more reports, an
+     * exception is thrown.
+     * </p>
+     * 
+     * @param deleteReportGroupRequest
+     * @return A Java Future containing the result of the DeleteReportGroup operation returned by the service.
+     * @sample AWSCodeBuildAsync.DeleteReportGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteReportGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteReportGroupResult> deleteReportGroupAsync(DeleteReportGroupRequest deleteReportGroupRequest);
+
+    /**
+     * <p>
+     * <code>DeleteReportGroup</code>: Deletes a report group. Before you delete a report group, you must delete its
+     * reports. Use <a
+     * href="https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ListReportsForReportGroup.html"
+     * >ListReportsForReportGroup</a> to get the reports in a report group. Use <a
+     * href="https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DeleteReport.html">DeleteReport</a> to delete
+     * the reports. If you call <code>DeleteReportGroup</code> for a report group that contains one or more reports, an
+     * exception is thrown.
+     * </p>
+     * 
+     * @param deleteReportGroupRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteReportGroup operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.DeleteReportGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteReportGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteReportGroupResult> deleteReportGroupAsync(DeleteReportGroupRequest deleteReportGroupRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteReportGroupRequest, DeleteReportGroupResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes a resource policy that is identified by its resource ARN.
+     * </p>
+     * 
+     * @param deleteResourcePolicyRequest
+     * @return A Java Future containing the result of the DeleteResourcePolicy operation returned by the service.
+     * @sample AWSCodeBuildAsync.DeleteResourcePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteResourcePolicy" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteResourcePolicyResult> deleteResourcePolicyAsync(DeleteResourcePolicyRequest deleteResourcePolicyRequest);
+
+    /**
+     * <p>
+     * Deletes a resource policy that is identified by its resource ARN.
+     * </p>
+     * 
+     * @param deleteResourcePolicyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteResourcePolicy operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.DeleteResourcePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DeleteResourcePolicy" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteResourcePolicyResult> deleteResourcePolicyAsync(DeleteResourcePolicyRequest deleteResourcePolicyRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteResourcePolicyRequest, DeleteResourcePolicyResult> asyncHandler);
 
     /**
      * <p>
@@ -419,6 +702,68 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      */
     java.util.concurrent.Future<DeleteWebhookResult> deleteWebhookAsync(DeleteWebhookRequest deleteWebhookRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteWebhookRequest, DeleteWebhookResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns a list of details about test cases for a report.
+     * </p>
+     * 
+     * @param describeTestCasesRequest
+     * @return A Java Future containing the result of the DescribeTestCases operation returned by the service.
+     * @sample AWSCodeBuildAsync.DescribeTestCases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DescribeTestCases" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeTestCasesResult> describeTestCasesAsync(DescribeTestCasesRequest describeTestCasesRequest);
+
+    /**
+     * <p>
+     * Returns a list of details about test cases for a report.
+     * </p>
+     * 
+     * @param describeTestCasesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeTestCases operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.DescribeTestCases
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/DescribeTestCases" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeTestCasesResult> describeTestCasesAsync(DescribeTestCasesRequest describeTestCasesRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeTestCasesRequest, DescribeTestCasesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Gets a resource policy that is identified by its resource ARN.
+     * </p>
+     * 
+     * @param getResourcePolicyRequest
+     * @return A Java Future containing the result of the GetResourcePolicy operation returned by the service.
+     * @sample AWSCodeBuildAsync.GetResourcePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/GetResourcePolicy" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetResourcePolicyResult> getResourcePolicyAsync(GetResourcePolicyRequest getResourcePolicyRequest);
+
+    /**
+     * <p>
+     * Gets a resource policy that is identified by its resource ARN.
+     * </p>
+     * 
+     * @param getResourcePolicyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetResourcePolicy operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.GetResourcePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/GetResourcePolicy" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetResourcePolicyResult> getResourcePolicyAsync(GetResourcePolicyRequest getResourcePolicyRequest,
+            com.amazonaws.handlers.AsyncHandler<GetResourcePolicyRequest, GetResourcePolicyResult> asyncHandler);
 
     /**
      * <p>
@@ -614,6 +959,163 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
 
     /**
      * <p>
+     * Gets a list ARNs for the report groups in the current AWS account.
+     * </p>
+     * 
+     * @param listReportGroupsRequest
+     * @return A Java Future containing the result of the ListReportGroups operation returned by the service.
+     * @sample AWSCodeBuildAsync.ListReportGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListReportGroups" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListReportGroupsResult> listReportGroupsAsync(ListReportGroupsRequest listReportGroupsRequest);
+
+    /**
+     * <p>
+     * Gets a list ARNs for the report groups in the current AWS account.
+     * </p>
+     * 
+     * @param listReportGroupsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListReportGroups operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.ListReportGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListReportGroups" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListReportGroupsResult> listReportGroupsAsync(ListReportGroupsRequest listReportGroupsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListReportGroupsRequest, ListReportGroupsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns a list of ARNs for the reports in the current AWS account.
+     * </p>
+     * 
+     * @param listReportsRequest
+     * @return A Java Future containing the result of the ListReports operation returned by the service.
+     * @sample AWSCodeBuildAsync.ListReports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListReports" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListReportsResult> listReportsAsync(ListReportsRequest listReportsRequest);
+
+    /**
+     * <p>
+     * Returns a list of ARNs for the reports in the current AWS account.
+     * </p>
+     * 
+     * @param listReportsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListReports operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.ListReports
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListReports" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListReportsResult> listReportsAsync(ListReportsRequest listReportsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListReportsRequest, ListReportsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns a list of ARNs for the reports that belong to a <code>ReportGroup</code>.
+     * </p>
+     * 
+     * @param listReportsForReportGroupRequest
+     * @return A Java Future containing the result of the ListReportsForReportGroup operation returned by the service.
+     * @sample AWSCodeBuildAsync.ListReportsForReportGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListReportsForReportGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListReportsForReportGroupResult> listReportsForReportGroupAsync(
+            ListReportsForReportGroupRequest listReportsForReportGroupRequest);
+
+    /**
+     * <p>
+     * Returns a list of ARNs for the reports that belong to a <code>ReportGroup</code>.
+     * </p>
+     * 
+     * @param listReportsForReportGroupRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListReportsForReportGroup operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.ListReportsForReportGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListReportsForReportGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListReportsForReportGroupResult> listReportsForReportGroupAsync(
+            ListReportsForReportGroupRequest listReportsForReportGroupRequest,
+            com.amazonaws.handlers.AsyncHandler<ListReportsForReportGroupRequest, ListReportsForReportGroupResult> asyncHandler);
+
+    /**
+     * <p>
+     * Gets a list of projects that are shared with other AWS accounts or users.
+     * </p>
+     * 
+     * @param listSharedProjectsRequest
+     * @return A Java Future containing the result of the ListSharedProjects operation returned by the service.
+     * @sample AWSCodeBuildAsync.ListSharedProjects
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSharedProjects" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListSharedProjectsResult> listSharedProjectsAsync(ListSharedProjectsRequest listSharedProjectsRequest);
+
+    /**
+     * <p>
+     * Gets a list of projects that are shared with other AWS accounts or users.
+     * </p>
+     * 
+     * @param listSharedProjectsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListSharedProjects operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.ListSharedProjects
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSharedProjects" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListSharedProjectsResult> listSharedProjectsAsync(ListSharedProjectsRequest listSharedProjectsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListSharedProjectsRequest, ListSharedProjectsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Gets a list of report groups that are shared with other AWS accounts or users.
+     * </p>
+     * 
+     * @param listSharedReportGroupsRequest
+     * @return A Java Future containing the result of the ListSharedReportGroups operation returned by the service.
+     * @sample AWSCodeBuildAsync.ListSharedReportGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSharedReportGroups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListSharedReportGroupsResult> listSharedReportGroupsAsync(ListSharedReportGroupsRequest listSharedReportGroupsRequest);
+
+    /**
+     * <p>
+     * Gets a list of report groups that are shared with other AWS accounts or users.
+     * </p>
+     * 
+     * @param listSharedReportGroupsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListSharedReportGroups operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.ListSharedReportGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ListSharedReportGroups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListSharedReportGroupsResult> listSharedReportGroupsAsync(ListSharedReportGroupsRequest listSharedReportGroupsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListSharedReportGroupsRequest, ListSharedReportGroupsResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a list of <code>SourceCredentialsInfo</code> objects.
      * </p>
      * 
@@ -642,6 +1144,37 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      */
     java.util.concurrent.Future<ListSourceCredentialsResult> listSourceCredentialsAsync(ListSourceCredentialsRequest listSourceCredentialsRequest,
             com.amazonaws.handlers.AsyncHandler<ListSourceCredentialsRequest, ListSourceCredentialsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Stores a resource policy for the ARN of a <code>Project</code> or <code>ReportGroup</code> object.
+     * </p>
+     * 
+     * @param putResourcePolicyRequest
+     * @return A Java Future containing the result of the PutResourcePolicy operation returned by the service.
+     * @sample AWSCodeBuildAsync.PutResourcePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/PutResourcePolicy" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<PutResourcePolicyResult> putResourcePolicyAsync(PutResourcePolicyRequest putResourcePolicyRequest);
+
+    /**
+     * <p>
+     * Stores a resource policy for the ARN of a <code>Project</code> or <code>ReportGroup</code> object.
+     * </p>
+     * 
+     * @param putResourcePolicyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutResourcePolicy operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.PutResourcePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/PutResourcePolicy" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<PutResourcePolicyResult> putResourcePolicyAsync(PutResourcePolicyRequest putResourcePolicyRequest,
+            com.amazonaws.handlers.AsyncHandler<PutResourcePolicyRequest, PutResourcePolicyResult> asyncHandler);
 
     /**
      * <p>
@@ -735,6 +1268,37 @@ public interface AWSCodeBuildAsync extends AWSCodeBuild {
      */
     java.util.concurrent.Future<UpdateProjectResult> updateProjectAsync(UpdateProjectRequest updateProjectRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateProjectRequest, UpdateProjectResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates a report group.
+     * </p>
+     * 
+     * @param updateReportGroupRequest
+     * @return A Java Future containing the result of the UpdateReportGroup operation returned by the service.
+     * @sample AWSCodeBuildAsync.UpdateReportGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/UpdateReportGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateReportGroupResult> updateReportGroupAsync(UpdateReportGroupRequest updateReportGroupRequest);
+
+    /**
+     * <p>
+     * Updates a report group.
+     * </p>
+     * 
+     * @param updateReportGroupRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateReportGroup operation returned by the service.
+     * @sample AWSCodeBuildAsyncHandler.UpdateReportGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/UpdateReportGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateReportGroupResult> updateReportGroupAsync(UpdateReportGroupRequest updateReportGroupRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateReportGroupRequest, UpdateReportGroupResult> asyncHandler);
 
     /**
      * <p>

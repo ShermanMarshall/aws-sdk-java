@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,22 @@ public class AbstractAWSS3Control implements AWSS3Control {
     }
 
     @Override
+    public CreateAccessPointResult createAccessPoint(CreateAccessPointRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateJobResult createJob(CreateJobRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteAccessPointResult deleteAccessPoint(DeleteAccessPointRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteAccessPointPolicyResult deleteAccessPointPolicy(DeleteAccessPointPolicyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -43,12 +58,37 @@ public class AbstractAWSS3Control implements AWSS3Control {
     }
 
     @Override
+    public GetAccessPointResult getAccessPoint(GetAccessPointRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetAccessPointPolicyResult getAccessPointPolicy(GetAccessPointPolicyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetAccessPointPolicyStatusResult getAccessPointPolicyStatus(GetAccessPointPolicyStatusRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetPublicAccessBlockResult getPublicAccessBlock(GetPublicAccessBlockRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
+    public ListAccessPointsResult listAccessPoints(ListAccessPointsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListJobsResult listJobs(ListJobsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public PutAccessPointPolicyResult putAccessPointPolicy(PutAccessPointPolicyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

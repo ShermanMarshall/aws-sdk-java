@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Portions copyright 2006-2009 James Murty. Please see LICENSE.txt
  * for applicable license terms and NOTICE.txt for applicable notices.
@@ -2185,10 +2185,13 @@ public class XmlResponsesSaxParser {
         private List<ReplicationFilterPredicate> andOperandsList;
         private String currentTagKey;
         private String currentTagValue;
+        private ExistingObjectReplication existingObjectReplication;
         private DeleteMarkerReplication deleteMarkerReplication;
         private ReplicationDestinationConfig destinationConfig;
         private AccessControlTranslation accessControlTranslation;
         private EncryptionConfiguration encryptionConfiguration;
+        private ReplicationTime replicationTime;
+        private Metrics metrics;
         private SourceSelectionCriteria sourceSelectionCriteria;
         private SseKmsEncryptedObjects sseKmsEncryptedObjects;
         private static final String REPLICATION_CONFIG = "ReplicationConfiguration";
@@ -2202,6 +2205,7 @@ public class XmlResponsesSaxParser {
         private static final String TAG = "Tag";
         private static final String TAG_KEY = "Key";
         private static final String TAG_VALUE = "Value";
+        private static final String EXISTING_OBJECT_REPLICATION = "ExistingObjectReplication";
         private static final String DELETE_MARKER_REPLICATION = "DeleteMarkerReplication";
         private static final String PRIORITY = "Priority";
         private static final String STATUS = "Status";
@@ -2211,6 +2215,11 @@ public class XmlResponsesSaxParser {
         private static final String ACCESS_CONTROL_TRANSLATION = "AccessControlTranslation";
         private static final String OWNER = "Owner";
         private static final String ENCRYPTION_CONFIGURATION = "EncryptionConfiguration";
+        private static final String REPLICATION_TIME = "ReplicationTime";
+        private static final String TIME = "Time";
+        private static final String MINUTES = "Minutes";
+        private static final String METRICS = "Metrics";
+        private static final String EVENT_THRESHOLD = "EventThreshold";
         private static final String REPLICA_KMS_KEY_ID = "ReplicaKmsKeyID";
         private static final String SOURCE_SELECTION_CRITERIA = "SourceSelectionCriteria";
         private static final String SSE_KMS_ENCRYPTED_OBJECTS = "SseKmsEncryptedObjects";
@@ -2232,6 +2241,8 @@ public class XmlResponsesSaxParser {
                     destinationConfig = new ReplicationDestinationConfig();
                 } else if (name.equals(SOURCE_SELECTION_CRITERIA)) {
                     sourceSelectionCriteria = new SourceSelectionCriteria();
+                } else if (name.equals(EXISTING_OBJECT_REPLICATION)) {
+                    existingObjectReplication = new ExistingObjectReplication();
                 } else if (name.equals(DELETE_MARKER_REPLICATION)) {
                     deleteMarkerReplication = new DeleteMarkerReplication();
                 } else if (name.equals(FILTER)) {
@@ -2242,6 +2253,18 @@ public class XmlResponsesSaxParser {
                     accessControlTranslation = new AccessControlTranslation();
                 } else if (name.equals(ENCRYPTION_CONFIGURATION)) {
                     encryptionConfiguration = new EncryptionConfiguration();
+                } else if (name.equals(REPLICATION_TIME)) {
+                    replicationTime = new ReplicationTime();
+                } else if (name.equals(METRICS)) {
+                    metrics = new Metrics();
+                }
+            } else if (in(REPLICATION_CONFIG, RULE, DESTINATION, REPLICATION_TIME)) {
+                if (name.equals(TIME)) {
+                    replicationTime.setTime(new ReplicationTimeValue());
+                }
+            } else if (in(REPLICATION_CONFIG, RULE, DESTINATION, METRICS)) {
+                if (name.equals(EVENT_THRESHOLD)) {
+                    metrics.setEventThreshold(new ReplicationTimeValue());
                 }
             } else if (in(REPLICATION_CONFIG, RULE, SOURCE_SELECTION_CRITERIA)) {
                 if (name.equals(SSE_KMS_ENCRYPTED_OBJECTS)) {
@@ -2262,6 +2285,7 @@ public class XmlResponsesSaxParser {
                             currentRule);
                     currentRule = null;
                     currentRuleId = null;
+                    existingObjectReplication = null;
                     deleteMarkerReplication = null;
                     destinationConfig = null;
                     sseKmsEncryptedObjects = null;
@@ -2277,6 +2301,8 @@ public class XmlResponsesSaxParser {
                     currentRule.setPrefix(getText());
                 } else if (name.equals(PRIORITY)) {
                     currentRule.setPriority(Integer.valueOf(getText()));
+                } else if (name.equals(EXISTING_OBJECT_REPLICATION)){
+                    currentRule.setExistingObjectReplication(existingObjectReplication);
                 } else if (name.equals(DELETE_MARKER_REPLICATION)) {
                     currentRule.setDeleteMarkerReplication(deleteMarkerReplication);
                 } else if (name.equals(SOURCE_SELECTION_CRITERIA)) {
@@ -2331,6 +2357,10 @@ public class XmlResponsesSaxParser {
                 if (name.equals(STATUS)) {
                     sseKmsEncryptedObjects.setStatus(getText());
                 }
+            } else if (in(REPLICATION_CONFIG, RULE, EXISTING_OBJECT_REPLICATION)) {
+                if (name.equals(STATUS)) {
+                    existingObjectReplication.setStatus(getText());
+                }
             } else if (in(REPLICATION_CONFIG, RULE, DELETE_MARKER_REPLICATION)) {
                 if (name.equals(STATUS)) {
                     deleteMarkerReplication.setStatus(getText());
@@ -2346,6 +2376,10 @@ public class XmlResponsesSaxParser {
                     destinationConfig.setAccessControlTranslation(accessControlTranslation);
                 } else if (name.equals(ENCRYPTION_CONFIGURATION)) {
                     destinationConfig.setEncryptionConfiguration(encryptionConfiguration);
+                } else if (name.equals(REPLICATION_TIME)) {
+                    destinationConfig.setReplicationTime(replicationTime);
+                } else if (name.equals(METRICS)) {
+                    destinationConfig.setMetrics(metrics);
                 }
             } else if (in(REPLICATION_CONFIG, RULE, DESTINATION, ACCESS_CONTROL_TRANSLATION)) {
                 if (name.equals(OWNER)) {
@@ -2354,6 +2388,22 @@ public class XmlResponsesSaxParser {
             } else if (in(REPLICATION_CONFIG, RULE, DESTINATION, ENCRYPTION_CONFIGURATION)) {
                 if (name.equals(REPLICA_KMS_KEY_ID)) {
                     encryptionConfiguration.setReplicaKmsKeyID(getText());
+                }
+            } else if (in(REPLICATION_CONFIG, RULE, DESTINATION, REPLICATION_TIME)) {
+                if (name.equals(STATUS)) {
+                    replicationTime.setStatus(getText());
+                }
+            } else if (in(REPLICATION_CONFIG, RULE, DESTINATION, REPLICATION_TIME, TIME)) {
+                if (name.equals(MINUTES)) {
+                    replicationTime.getTime().setMinutes(Integer.parseInt(getText()));
+                }
+            } else if (in(REPLICATION_CONFIG, RULE, DESTINATION, METRICS)) {
+              if (name.equals(STATUS)) {
+                  metrics.setStatus(getText());
+              }
+            } else if (in(REPLICATION_CONFIG, RULE, DESTINATION, METRICS, EVENT_THRESHOLD)) {
+                if (name.equals(MINUTES)) {
+                    metrics.getEventThreshold().setMinutes(Integer.parseInt(getText()));
                 }
             }
         }

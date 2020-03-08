@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,14 @@ public class RetainRuleJsonUnmarshaller implements Unmarshaller<RetainRule, Json
                 if (context.testExpression("Count", targetDepth)) {
                     context.nextToken();
                     retainRule.setCount(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("Interval", targetDepth)) {
+                    context.nextToken();
+                    retainRule.setInterval(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("IntervalUnit", targetDepth)) {
+                    context.nextToken();
+                    retainRule.setIntervalUnit(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

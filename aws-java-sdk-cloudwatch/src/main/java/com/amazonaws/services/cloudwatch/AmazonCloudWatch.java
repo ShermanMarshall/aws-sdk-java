@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -109,9 +109,29 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
-     * Deletes the specified alarms. You can delete up to 50 alarms in one operation. In the event of an error, no
-     * alarms are deleted.
+     * Deletes the specified alarms. You can delete up to 100 alarms in one operation. However, this total can include
+     * no more than one composite alarm. For example, you could delete 99 metric alarms and one composite alarms with
+     * one operation, but you can't delete two composite alarms with one operation.
      * </p>
+     * <p>
+     * In the event of an error, no alarms are deleted.
+     * </p>
+     * <note>
+     * <p>
+     * It is possible to create a loop or cycle of composite alarms, where composite alarm A depends on composite alarm
+     * B, and composite alarm B also depends on composite alarm A. In this scenario, you can't delete any composite
+     * alarm that is part of the cycle because there is always still a composite alarm that depends on that alarm that
+     * you want to delete.
+     * </p>
+     * <p>
+     * To get out of such a situation, you must break the cycle by changing the rule of one of the composite alarms in
+     * the cycle to remove a dependency that creates the cycle. The simplest change to make to break a cycle is to
+     * change the <code>AlarmRule</code> of one of the alarms to <code>False</code>.
+     * </p>
+     * <p>
+     * Additionally, the evaluation of composite alarms stops if CloudWatch detects a cycle in the evaluation path.
+     * </p>
+     * </note>
      * 
      * @param deleteAlarmsRequest
      * @return Result of the DeleteAlarms operation returned by the service.
@@ -166,8 +186,29 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
+     * Permanently deletes the specified Contributor Insights rules.
+     * </p>
+     * <p>
+     * If you create a rule, delete it, and then re-create it with the same name, historical data from the first time
+     * the rule was created may or may not be available.
+     * </p>
+     * 
+     * @param deleteInsightRulesRequest
+     * @return Result of the DeleteInsightRules operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws MissingRequiredParameterException
+     *         An input parameter that is required is missing.
+     * @sample AmazonCloudWatch.DeleteInsightRules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DeleteInsightRules" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteInsightRulesResult deleteInsightRules(DeleteInsightRulesRequest deleteInsightRulesRequest);
+
+    /**
+     * <p>
      * Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm
-     * name is not specified, the histories for all alarms are returned.
+     * name is not specified, the histories for either all metric alarms or all composite alarms are returned.
      * </p>
      * <p>
      * CloudWatch retains the history of an alarm even if you delete the alarm.
@@ -192,8 +233,8 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
-     * Retrieves the specified alarms. If no alarms are specified, all alarms are returned. Alarms can be retrieved by
-     * using only a prefix for the alarm name, the alarm state, or a prefix for any action.
+     * Retrieves the specified alarms. You can filter the results by specifying a a prefix for the alarm name, the alarm
+     * state, or a prefix for any action.
      * </p>
      * 
      * @param describeAlarmsRequest
@@ -249,6 +290,27 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
+     * Returns a list of all the Contributor Insights rules in your account. All rules in your account are returned with
+     * a single operation.
+     * </p>
+     * <p>
+     * For more information about Contributor Insights, see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html">Using Contributor
+     * Insights to Analyze High-Cardinality Data</a>.
+     * </p>
+     * 
+     * @param describeInsightRulesRequest
+     * @return Result of the DescribeInsightRules operation returned by the service.
+     * @throws InvalidNextTokenException
+     *         The next token specified is invalid.
+     * @sample AmazonCloudWatch.DescribeInsightRules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeInsightRules"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeInsightRulesResult describeInsightRules(DescribeInsightRulesRequest describeInsightRulesRequest);
+
+    /**
+     * <p>
      * Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not
      * execute when the alarm state changes.
      * </p>
@@ -263,6 +325,24 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
+     * Disables the specified Contributor Insights rules. When rules are disabled, they do not analyze log groups and do
+     * not incur costs.
+     * </p>
+     * 
+     * @param disableInsightRulesRequest
+     * @return Result of the DisableInsightRules operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws MissingRequiredParameterException
+     *         An input parameter that is required is missing.
+     * @sample AmazonCloudWatch.DisableInsightRules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DisableInsightRules" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DisableInsightRulesResult disableInsightRules(DisableInsightRulesRequest disableInsightRulesRequest);
+
+    /**
+     * <p>
      * Enables the actions for the specified alarms.
      * </p>
      * 
@@ -273,6 +353,26 @@ public interface AmazonCloudWatch {
      *      API Documentation</a>
      */
     EnableAlarmActionsResult enableAlarmActions(EnableAlarmActionsRequest enableAlarmActionsRequest);
+
+    /**
+     * <p>
+     * Enables the specified Contributor Insights rules. When rules are enabled, they immediately begin analyzing log
+     * data.
+     * </p>
+     * 
+     * @param enableInsightRulesRequest
+     * @return Result of the EnableInsightRules operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws MissingRequiredParameterException
+     *         An input parameter that is required is missing.
+     * @throws LimitExceededException
+     *         The operation exceeded one or more limits.
+     * @sample AmazonCloudWatch.EnableInsightRules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/EnableInsightRules" target="_top">AWS
+     *      API Documentation</a>
+     */
+    EnableInsightRulesResult enableInsightRules(EnableInsightRulesRequest enableInsightRulesRequest);
 
     /**
      * <p>
@@ -300,8 +400,79 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
-     * You can use the <code>GetMetricData</code> API to retrieve as many as 100 different metrics in a single request,
-     * with a total of as many as 100,800 datapoints. You can also optionally perform math expressions on the values of
+     * This operation returns the time series data collected by a Contributor Insights rule. The data includes the
+     * identity and number of contributors to the log group.
+     * </p>
+     * <p>
+     * You can also optionally return one or more statistics about each data point in the time series. These statistics
+     * can include the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>UniqueContributors</code> -- the number of unique contributors for each data point.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaxContributorValue</code> -- the value of the top contributor for each data point. The identity of the
+     * contributor may change for each data point in the graph.
+     * </p>
+     * <p>
+     * If this rule aggregates by COUNT, the top contributor for each data point is the contributor with the most
+     * occurrences in that period. If the rule aggregates by SUM, the top contributor is the contributor with the
+     * highest sum in the log field specified by the rule's <code>Value</code>, during that period.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SampleCount</code> -- the number of data points matched by the rule.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Sum</code> -- the sum of the values from all contributors during the time period represented by that data
+     * point.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Minimum</code> -- the minimum value from a single observation during the time period represented by that
+     * data point.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Maximum</code> -- the maximum value from a single observation during the time period represented by that
+     * data point.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Average</code> -- the average value from all contributors during the time period represented by that data
+     * point.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param getInsightRuleReportRequest
+     * @return Result of the GetInsightRuleReport operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws MissingRequiredParameterException
+     *         An input parameter that is required is missing.
+     * @throws ResourceNotFoundException
+     *         The named resource does not exist.
+     * @sample AmazonCloudWatch.GetInsightRuleReport
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/GetInsightRuleReport"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetInsightRuleReportResult getInsightRuleReport(GetInsightRuleReportRequest getInsightRuleReportRequest);
+
+    /**
+     * <p>
+     * You can use the <code>GetMetricData</code> API to retrieve as many as 500 different metrics in a single request,
+     * with a total of as many as 100,800 data points. You can also optionally perform math expressions on the values of
      * the returned statistics, to create new time series that represent new insights into your data. For example, using
      * Lambda metrics, you could divide the Errors metric by the Invocations metric to get an error rate time series.
      * For more information about metric math expressions, see <a
@@ -517,8 +688,10 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
-     * List the specified metrics. You can use the returned metrics with <a>GetMetricData</a> or
-     * <a>GetMetricStatistics</a> to obtain statistical data.
+     * List the specified metrics. You can use the returned metrics with <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html">GetMetricData</a>
+     * or <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html">
+     * GetMetricStatistics</a> to obtain statistical data.
      * </p>
      * <p>
      * Up to 500 results are returned for any one call. To retrieve additional results, use the returned token with
@@ -526,7 +699,10 @@ public interface AmazonCloudWatch {
      * </p>
      * <p>
      * After you create a metric, allow up to fifteen minutes before the metric appears. Statistics about the metric,
-     * however, are available sooner using <a>GetMetricData</a> or <a>GetMetricStatistics</a>.
+     * however, are available sooner using <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html">GetMetricData</a>
+     * or <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html">
+     * GetMetricStatistics</a>.
      * </p>
      * 
      * @param listMetricsRequest
@@ -596,6 +772,60 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
+     * Creates or updates a <i>composite alarm</i>. When you create a composite alarm, you specify a rule expression for
+     * the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm
+     * goes into ALARM state only if all conditions of the rule are met.
+     * </p>
+     * <p>
+     * The alarms specified in a composite alarm's rule expression can include metric alarms and other composite alarms.
+     * </p>
+     * <p>
+     * Using composite alarms can reduce alarm noise. You can create multiple metric alarms, and also create a composite
+     * alarm and set up alerts only for the composite alarm. For example, you could create a composite alarm that goes
+     * into ALARM state only when more than one of the underlying metric alarms are in ALARM state.
+     * </p>
+     * <p>
+     * Currently, the only alarm actions that can be taken by composite alarms are notifying SNS topics.
+     * </p>
+     * <note>
+     * <p>
+     * It is possible to create a loop or cycle of composite alarms, where composite alarm A depends on composite alarm
+     * B, and composite alarm B also depends on composite alarm A. In this scenario, you can't delete any composite
+     * alarm that is part of the cycle because there is always still a composite alarm that depends on that alarm that
+     * you want to delete.
+     * </p>
+     * <p>
+     * To get out of such a situation, you must break the cycle by changing the rule of one of the composite alarms in
+     * the cycle to remove a dependency that creates the cycle. The simplest change to make to break a cycle is to
+     * change the <code>AlarmRule</code> of one of the alarms to <code>False</code>.
+     * </p>
+     * <p>
+     * Additionally, the evaluation of composite alarms stops if CloudWatch detects a cycle in the evaluation path.
+     * </p>
+     * </note>
+     * <p>
+     * When this operation creates an alarm, the alarm state is immediately set to <code>INSUFFICIENT_DATA</code>. The
+     * alarm is then evaluated and its state is set appropriately. Any actions associated with the new state are then
+     * executed. For a composite alarm, this initial time after creation is the only time that the alarm can be in
+     * <code>INSUFFICIENT_DATA</code> state.
+     * </p>
+     * <p>
+     * When you update an existing alarm, its state is left unchanged, but the update completely overwrites the previous
+     * configuration of the alarm.
+     * </p>
+     * 
+     * @param putCompositeAlarmRequest
+     * @return Result of the PutCompositeAlarm operation returned by the service.
+     * @throws LimitExceededException
+     *         The quota for alarms for this customer has already been reached.
+     * @sample AmazonCloudWatch.PutCompositeAlarm
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/PutCompositeAlarm" target="_top">AWS
+     *      API Documentation</a>
+     */
+    PutCompositeAlarmResult putCompositeAlarm(PutCompositeAlarmRequest putCompositeAlarmRequest);
+
+    /**
+     * <p>
      * Creates a dashboard if it does not already exist, or updates an existing dashboard. If you update a dashboard,
      * the entire contents are replaced with what you specify here.
      * </p>
@@ -627,6 +857,32 @@ public interface AmazonCloudWatch {
      *      Documentation</a>
      */
     PutDashboardResult putDashboard(PutDashboardRequest putDashboardRequest);
+
+    /**
+     * <p>
+     * Creates a Contributor Insights rule. Rules evaluate log events in a CloudWatch Logs log group, enabling you to
+     * find contributor data for the log events in that log group. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html">Using Contributor
+     * Insights to Analyze High-Cardinality Data</a>.
+     * </p>
+     * <p>
+     * If you create a rule, delete it, and then re-create it with the same name, historical data from the first time
+     * the rule was created may or may not be available.
+     * </p>
+     * 
+     * @param putInsightRuleRequest
+     * @return Result of the PutInsightRule operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws MissingRequiredParameterException
+     *         An input parameter that is required is missing.
+     * @throws LimitExceededException
+     *         The operation exceeded one or more limits.
+     * @sample AmazonCloudWatch.PutInsightRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/PutInsightRule" target="_top">AWS API
+     *      Documentation</a>
+     */
+    PutInsightRuleResult putInsightRule(PutInsightRuleRequest putInsightRuleRequest);
 
     /**
      * <p>
@@ -712,7 +968,8 @@ public interface AmazonCloudWatch {
      * <p>
      * Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified
      * metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric,
-     * it can take up to fifteen minutes for the metric to appear in calls to <a>ListMetrics</a>.
+     * it can take up to fifteen minutes for the metric to appear in calls to <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html">ListMetrics</a>.
      * </p>
      * <p>
      * You can publish either individual data points in the <code>Value</code> field, or arrays of values and the number
@@ -727,9 +984,8 @@ public interface AmazonCloudWatch {
      * </p>
      * <p>
      * Although the <code>Value</code> parameter accepts numbers of type <code>Double</code>, CloudWatch rejects values
-     * that are either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108 (Base 10)
-     * or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN, +Infinity, -Infinity) are not
-     * supported.
+     * that are either too small or too large. Values must be in the range of -2^360 to 2^360. In addition, special
+     * values (for example, NaN, +Infinity, -Infinity) are not supported.
      * </p>
      * <p>
      * You can use up to 10 dimensions per metric to further clarify what data the metric collects. Each dimension
@@ -738,8 +994,14 @@ public interface AmazonCloudWatch {
      * Metrics</a> in the <i>Amazon CloudWatch User Guide</i>.
      * </p>
      * <p>
-     * Data points with time stamps from 24 hours ago or longer can take at least 48 hours to become available for
-     * <a>GetMetricData</a> or <a>GetMetricStatistics</a> from the time they are submitted.
+     * Data points with time stamps from 24 hours ago or longer can take at least 48 hours to become available for <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html">GetMetricData</a>
+     * or <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html">
+     * GetMetricStatistics</a> from the time they are submitted. Data points with time stamps between 3 and 24 hours ago
+     * can take as much as 2 hours to become available for for <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html">GetMetricData</a>
+     * or <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html">
+     * GetMetricStatistics</a>.
      * </p>
      * <p>
      * CloudWatch needs raw data points to calculate percentile statistics. If you publish data using a statistic set
@@ -781,9 +1043,23 @@ public interface AmazonCloudWatch {
      * Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous
      * value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to
      * send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to <code>ALARM</code>
-     * sends an SNS message. The alarm returns to its actual state (often within seconds). Because the alarm state
-     * change happens quickly, it is typically only visible in the alarm's <b>History</b> tab in the Amazon CloudWatch
-     * console or through <a>DescribeAlarmHistory</a>.
+     * sends an SNS message.
+     * </p>
+     * <p>
+     * Metric alarms returns to their actual state quickly, often within seconds. Because the metric alarm state change
+     * happens quickly, it is typically only visible in the alarm's <b>History</b> tab in the Amazon CloudWatch console
+     * or through <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarmHistory.html"
+     * >DescribeAlarmHistory</a>.
+     * </p>
+     * <p>
+     * If you use <code>SetAlarmState</code> on a composite alarm, the composite alarm is not guaranteed to return to
+     * its actual state. It will return to its actual state only once any of its children alarms change state. It is
+     * also re-evaluated if you update its configuration.
+     * </p>
+     * <p>
+     * If an alarm triggers EC2 Auto Scaling policies or application Auto Scaling policies, you must include information
+     * in the <code>StateReasonData</code> parameter to enable the policy to take the correct action.
      * </p>
      * 
      * @param setAlarmStateRequest
@@ -800,18 +1076,21 @@ public interface AmazonCloudWatch {
 
     /**
      * <p>
-     * Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Tags can help you organize and
-     * categorize your resources. You can also use them to scope user permissions, by granting a user permission to
-     * access or change only resources with certain tag values. In CloudWatch, alarms can be tagged.
+     * Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch
+     * resources that can be tagged are alarms.
+     * </p>
+     * <p>
+     * Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by
+     * granting a user permission to access or change only resources with certain tag values.
      * </p>
      * <p>
      * Tags don't have any semantic meaning to AWS and are interpreted strictly as strings of characters.
      * </p>
      * <p>
-     * You can use the <code>TagResource</code> action with a resource that already has tags. If you specify a new tag
-     * key for the resource, this tag is appended to the list of tags associated with the resource. If you specify a tag
-     * key that is already associated with the resource, the new tag value that you specify replaces the previous value
-     * for that tag.
+     * You can use the <code>TagResource</code> action with an alarm that already has tags. If you specify a new tag key
+     * for the alarm, this tag is appended to the list of tags associated with the alarm. If you specify a tag key that
+     * is already associated with the alarm, the new tag value that you specify replaces the previous value for that
+     * tag.
      * </p>
      * <p>
      * You can associate as many as 50 tags with a resource.

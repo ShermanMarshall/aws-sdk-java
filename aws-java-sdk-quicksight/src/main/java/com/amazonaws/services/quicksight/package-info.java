@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -14,8 +14,8 @@
 /**
  * <fullname>Amazon QuickSight API Reference</fullname>
  * <p>
- * Amazon QuickSight is a fully managed, serverless, cloud business intelligence service that makes it easy to extend
- * data and insights to every user in your organization. This API interface reference contains documentation for a
+ * Amazon QuickSight is a fully managed, serverless business intelligence service for the AWS Cloud that makes it easy
+ * to extend data and insights to every user in your organization. This API reference contains documentation for a
  * programming interface that you can use to manage Amazon QuickSight.
  * </p>
  */

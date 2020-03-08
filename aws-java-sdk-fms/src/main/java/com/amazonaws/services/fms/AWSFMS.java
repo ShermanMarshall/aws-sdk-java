@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,7 +48,7 @@ public interface AWSFMS {
     /**
      * <p>
      * Sets the AWS Firewall Manager administrator account. AWS Firewall Manager must be associated with the master
-     * account your AWS organization or associated with a member account that has the appropriate permissions. If the
+     * account of your AWS organization or associated with a member account that has the appropriate permissions. If the
      * account ID that you submit is not an AWS Organizations master account, AWS Firewall Manager will set the
      * appropriate permissions for the given member account.
      * </p>
@@ -121,7 +121,7 @@ public interface AWSFMS {
     /**
      * <p>
      * Disassociates the account that has been set as the AWS Firewall Manager administrator account. To set a different
-     * account as the administrator account, you must submit an <code>AssociateAdminAccount</code> request .
+     * account as the administrator account, you must submit an <code>AssociateAdminAccount</code> request.
      * </p>
      * 
      * @param disassociateAdminAccountRequest
@@ -165,8 +165,10 @@ public interface AWSFMS {
     /**
      * <p>
      * Returns detailed compliance information about the specified member account. Details include resources that are in
-     * and out of compliance with the specified policy. Resources are considered non-compliant if the specified policy
-     * has not been applied to them.
+     * and out of compliance with the specified policy. Resources are considered noncompliant for AWS WAF and Shield
+     * Advanced policies if the specified policy has not been applied to them. Resources are considered noncompliant for
+     * security group policies if they are in scope of the policy, they violate one or more of the policy rules, and
+     * remediation is disabled or not possible.
      * </p>
      * 
      * @param getComplianceDetailRequest
@@ -183,8 +185,8 @@ public interface AWSFMS {
 
     /**
      * <p>
-     * Returns information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall
-     * Manager SNS logs.
+     * Information about the Amazon Simple Notification Service (SNS) topic that is used to record AWS Firewall Manager
+     * SNS logs.
      * </p>
      * 
      * @param getNotificationChannelRequest
@@ -229,7 +231,7 @@ public interface AWSFMS {
     /**
      * <p>
      * If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a
-     * potential DDoS attack.
+     * potential DDoS attack. Other policy types are currently unsupported.
      * </p>
      * 
      * @param getProtectionStatusRequest
@@ -315,6 +317,29 @@ public interface AWSFMS {
 
     /**
      * <p>
+     * Retrieves the list of tags for the specified AWS resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource was not found.
+     * @throws InvalidOperationException
+     *         The operation failed because there was nothing to do. For example, you might have submitted an
+     *         <code>AssociateAdminAccount</code> request, but the account ID that you submitted was already set as the
+     *         AWS Firewall Manager administrator.
+     * @throws InternalErrorException
+     *         The operation failed because of a system problem, even though the request was valid. Retry your request.
+     * @throws InvalidInputException
+     *         The parameters of the request were invalid.
+     * @sample AWSFMS.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/fms-2018-01-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
      * Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall Manager uses to
      * record SNS logs.
      * </p>
@@ -340,15 +365,32 @@ public interface AWSFMS {
      * Creates an AWS Firewall Manager policy.
      * </p>
      * <p>
-     * Firewall Manager provides two types of policies: A Shield Advanced policy, which applies Shield Advanced
-     * protection to specified accounts and resources, or a WAF policy, which contains a rule group and defines which
-     * resources are to be protected by that rule group. A policy is specific to either WAF or Shield Advanced. If you
-     * want to enforce both WAF rules and Shield Advanced protection across accounts, you can create multiple policies.
-     * You can create one or more policies for WAF rules, and one or more policies for Shield Advanced.
+     * Firewall Manager provides the following types of policies:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * A Shield Advanced policy, which applies Shield Advanced protection to specified accounts and resources
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * An AWS WAF policy, which contains a rule group and defines which resources are to be protected by that rule group
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * A security group policy, which manages VPC security groups across your AWS organization.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Each policy is specific to one of the three types. If you want to enforce more than one policy type across
+     * accounts, you can create multiple policies. You can create multiple policies for each type.
      * </p>
      * <p>
-     * You must be subscribed to Shield Advanced to create a Shield Advanced policy. For more information on subscribing
-     * to Shield Advanced, see <a
+     * You must be subscribed to Shield Advanced to create a Shield Advanced policy. For more information about
+     * subscribing to Shield Advanced, see <a
      * href="https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html"
      * >CreateSubscription</a>.
      * </p>
@@ -377,6 +419,57 @@ public interface AWSFMS {
      *      Documentation</a>
      */
     PutPolicyResult putPolicy(PutPolicyRequest putPolicyRequest);
+
+    /**
+     * <p>
+     * Adds one or more tags to an AWS resource.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource was not found.
+     * @throws InvalidOperationException
+     *         The operation failed because there was nothing to do. For example, you might have submitted an
+     *         <code>AssociateAdminAccount</code> request, but the account ID that you submitted was already set as the
+     *         AWS Firewall Manager administrator.
+     * @throws InternalErrorException
+     *         The operation failed because of a system problem, even though the request was valid. Retry your request.
+     * @throws InvalidInputException
+     *         The parameters of the request were invalid.
+     * @throws LimitExceededException
+     *         The operation exceeds a resource limit, for example, the maximum number of <code>policy</code> objects
+     *         that you can create for an AWS account. For more information, see <a
+     *         href="https://docs.aws.amazon.com/waf/latest/developerguide/fms-limits.html">Firewall Manager Limits</a>
+     *         in the <i>AWS WAF Developer Guide</i>.
+     * @sample AWSFMS.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/fms-2018-01-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Removes one or more tags from an AWS resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource was not found.
+     * @throws InvalidOperationException
+     *         The operation failed because there was nothing to do. For example, you might have submitted an
+     *         <code>AssociateAdminAccount</code> request, but the account ID that you submitted was already set as the
+     *         AWS Firewall Manager administrator.
+     * @throws InternalErrorException
+     *         The operation failed because of a system problem, even though the request was valid. Retry your request.
+     * @throws InvalidInputException
+     *         The parameters of the request were invalid.
+     * @sample AWSFMS.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/fms-2018-01-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

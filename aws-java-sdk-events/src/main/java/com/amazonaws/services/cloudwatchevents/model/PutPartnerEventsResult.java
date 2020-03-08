@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,7 +25,7 @@ public class PutPartnerEventsResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The number of events from this operation that couldn't be written to the partner event bus.
+     * The number of events from this operation that could not be written to the partner event bus.
      * </p>
      */
     private Integer failedEntryCount;
@@ -38,11 +38,11 @@ public class PutPartnerEventsResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The number of events from this operation that couldn't be written to the partner event bus.
+     * The number of events from this operation that could not be written to the partner event bus.
      * </p>
      * 
      * @param failedEntryCount
-     *        The number of events from this operation that couldn't be written to the partner event bus.
+     *        The number of events from this operation that could not be written to the partner event bus.
      */
 
     public void setFailedEntryCount(Integer failedEntryCount) {
@@ -51,10 +51,10 @@ public class PutPartnerEventsResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The number of events from this operation that couldn't be written to the partner event bus.
+     * The number of events from this operation that could not be written to the partner event bus.
      * </p>
      * 
-     * @return The number of events from this operation that couldn't be written to the partner event bus.
+     * @return The number of events from this operation that could not be written to the partner event bus.
      */
 
     public Integer getFailedEntryCount() {
@@ -63,11 +63,11 @@ public class PutPartnerEventsResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * The number of events from this operation that couldn't be written to the partner event bus.
+     * The number of events from this operation that could not be written to the partner event bus.
      * </p>
      * 
      * @param failedEntryCount
-     *        The number of events from this operation that couldn't be written to the partner event bus.
+     *        The number of events from this operation that could not be written to the partner event bus.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

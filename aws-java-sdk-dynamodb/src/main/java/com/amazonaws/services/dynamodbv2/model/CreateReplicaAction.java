@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,18 +30,18 @@ public class CreateReplicaAction implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The region of the replica to be added.
+     * The Region of the replica to be added.
      * </p>
      */
     private String regionName;
 
     /**
      * <p>
-     * The region of the replica to be added.
+     * The Region of the replica to be added.
      * </p>
      * 
      * @param regionName
-     *        The region of the replica to be added.
+     *        The Region of the replica to be added.
      */
 
     public void setRegionName(String regionName) {
@@ -50,10 +50,10 @@ public class CreateReplicaAction implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The region of the replica to be added.
+     * The Region of the replica to be added.
      * </p>
      * 
-     * @return The region of the replica to be added.
+     * @return The Region of the replica to be added.
      */
 
     public String getRegionName() {
@@ -62,11 +62,11 @@ public class CreateReplicaAction implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The region of the replica to be added.
+     * The Region of the replica to be added.
      * </p>
      * 
      * @param regionName
-     *        The region of the replica to be added.
+     *        The Region of the replica to be added.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

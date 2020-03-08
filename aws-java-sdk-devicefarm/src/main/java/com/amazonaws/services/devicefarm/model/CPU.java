@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,10 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents the amount of CPU that an app is using on a physical device.
- * </p>
- * <p>
- * Note that this does not represent system-wide CPU usage.
+ * Represents the amount of CPU that an app is using on a physical device. Does not represent system-wide CPU usage.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/CPU" target="_top">AWS API
@@ -39,7 +36,7 @@ public class CPU implements Serializable, Cloneable, StructuredPojo {
     private String frequency;
     /**
      * <p>
-     * The CPU's architecture, for example x86 or ARM.
+     * The CPU's architecture (for example, x86 or ARM).
      * </p>
      */
     private String architecture;
@@ -93,11 +90,11 @@ public class CPU implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The CPU's architecture, for example x86 or ARM.
+     * The CPU's architecture (for example, x86 or ARM).
      * </p>
      * 
      * @param architecture
-     *        The CPU's architecture, for example x86 or ARM.
+     *        The CPU's architecture (for example, x86 or ARM).
      */
 
     public void setArchitecture(String architecture) {
@@ -106,10 +103,10 @@ public class CPU implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The CPU's architecture, for example x86 or ARM.
+     * The CPU's architecture (for example, x86 or ARM).
      * </p>
      * 
-     * @return The CPU's architecture, for example x86 or ARM.
+     * @return The CPU's architecture (for example, x86 or ARM).
      */
 
     public String getArchitecture() {
@@ -118,11 +115,11 @@ public class CPU implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The CPU's architecture, for example x86 or ARM.
+     * The CPU's architecture (for example, x86 or ARM).
      * </p>
      * 
      * @param architecture
-     *        The CPU's architecture, for example x86 or ARM.
+     *        The CPU's architecture (for example, x86 or ARM).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -84,13 +84,13 @@ public class RunInstancesRequestMarshaller implements Marshaller<Request<RunInst
                                 StringUtils.fromString(ebs.getVolumeType()));
                     }
 
+                    if (ebs.getKmsKeyId() != null) {
+                        request.addParameter("BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.KmsKeyId", StringUtils.fromString(ebs.getKmsKeyId()));
+                    }
+
                     if (ebs.getEncrypted() != null) {
                         request.addParameter("BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.Encrypted",
                                 StringUtils.fromBoolean(ebs.getEncrypted()));
-                    }
-
-                    if (ebs.getKmsKeyId() != null) {
-                        request.addParameter("BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.KmsKeyId", StringUtils.fromString(ebs.getKmsKeyId()));
                     }
                 }
 
@@ -178,6 +178,10 @@ public class RunInstancesRequestMarshaller implements Marshaller<Request<RunInst
 
             if (placement.getSpreadDomain() != null) {
                 request.addParameter("Placement.SpreadDomain", StringUtils.fromString(placement.getSpreadDomain()));
+            }
+
+            if (placement.getHostResourceGroupArn() != null) {
+                request.addParameter("Placement.HostResourceGroupArn", StringUtils.fromString(placement.getHostResourceGroupArn()));
             }
         }
 
@@ -394,6 +398,11 @@ public class RunInstancesRequestMarshaller implements Marshaller<Request<RunInst
                     request.addParameter("ElasticInferenceAccelerator." + elasticInferenceAcceleratorsListIndex + ".Type",
                             StringUtils.fromString(runInstancesRequestElasticInferenceAcceleratorsListValue.getType()));
                 }
+
+                if (runInstancesRequestElasticInferenceAcceleratorsListValue.getCount() != null) {
+                    request.addParameter("ElasticInferenceAccelerator." + elasticInferenceAcceleratorsListIndex + ".Count",
+                            StringUtils.fromInteger(runInstancesRequestElasticInferenceAcceleratorsListValue.getCount()));
+                }
                 elasticInferenceAcceleratorsListIndex++;
             }
         }
@@ -541,6 +550,22 @@ public class RunInstancesRequestMarshaller implements Marshaller<Request<RunInst
                             StringUtils.fromString(runInstancesRequestLicenseSpecificationsListValue.getLicenseConfigurationArn()));
                 }
                 licenseSpecificationsListIndex++;
+            }
+        }
+
+        InstanceMetadataOptionsRequest metadataOptions = runInstancesRequest.getMetadataOptions();
+        if (metadataOptions != null) {
+
+            if (metadataOptions.getHttpTokens() != null) {
+                request.addParameter("MetadataOptions.HttpTokens", StringUtils.fromString(metadataOptions.getHttpTokens()));
+            }
+
+            if (metadataOptions.getHttpPutResponseHopLimit() != null) {
+                request.addParameter("MetadataOptions.HttpPutResponseHopLimit", StringUtils.fromInteger(metadataOptions.getHttpPutResponseHopLimit()));
+            }
+
+            if (metadataOptions.getHttpEndpoint() != null) {
+                request.addParameter("MetadataOptions.HttpEndpoint", StringUtils.fromString(metadataOptions.getHttpEndpoint()));
             }
         }
 

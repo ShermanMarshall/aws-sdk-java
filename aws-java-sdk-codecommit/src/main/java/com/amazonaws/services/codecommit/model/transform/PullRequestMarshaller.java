@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -46,6 +46,10 @@ public class PullRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("pullRequestTargets").build();
     private static final MarshallingInfo<String> CLIENTREQUESTTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("clientRequestToken").build();
+    private static final MarshallingInfo<String> REVISIONID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("revisionId").build();
+    private static final MarshallingInfo<List> APPROVALRULES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("approvalRules").build();
 
     private static final PullRequestMarshaller instance = new PullRequestMarshaller();
 
@@ -72,6 +76,8 @@ public class PullRequestMarshaller {
             protocolMarshaller.marshall(pullRequest.getAuthorArn(), AUTHORARN_BINDING);
             protocolMarshaller.marshall(pullRequest.getPullRequestTargets(), PULLREQUESTTARGETS_BINDING);
             protocolMarshaller.marshall(pullRequest.getClientRequestToken(), CLIENTREQUESTTOKEN_BINDING);
+            protocolMarshaller.marshall(pullRequest.getRevisionId(), REVISIONID_BINDING);
+            protocolMarshaller.marshall(pullRequest.getApprovalRules(), APPROVALRULES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

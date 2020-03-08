@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -57,7 +57,7 @@ public class AuthorizeDBSecurityGroupIngressRequest extends com.amazonaws.Amazon
     /**
      * <p>
      * AWS account number of the owner of the EC2 security group specified in the <code>EC2SecurityGroupName</code>
-     * parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups,
+     * parameter. The AWS access key ID isn't an acceptable value. For VPC DB security groups,
      * <code>EC2SecurityGroupId</code> must be provided. Otherwise, <code>EC2SecurityGroupOwnerId</code> and either
      * <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided.
      * </p>
@@ -269,14 +269,14 @@ public class AuthorizeDBSecurityGroupIngressRequest extends com.amazonaws.Amazon
     /**
      * <p>
      * AWS account number of the owner of the EC2 security group specified in the <code>EC2SecurityGroupName</code>
-     * parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups,
+     * parameter. The AWS access key ID isn't an acceptable value. For VPC DB security groups,
      * <code>EC2SecurityGroupId</code> must be provided. Otherwise, <code>EC2SecurityGroupOwnerId</code> and either
      * <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided.
      * </p>
      * 
      * @param eC2SecurityGroupOwnerId
      *        AWS account number of the owner of the EC2 security group specified in the
-     *        <code>EC2SecurityGroupName</code> parameter. The AWS Access Key ID is not an acceptable value. For VPC DB
+     *        <code>EC2SecurityGroupName</code> parameter. The AWS access key ID isn't an acceptable value. For VPC DB
      *        security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise,
      *        <code>EC2SecurityGroupOwnerId</code> and either <code>EC2SecurityGroupName</code> or
      *        <code>EC2SecurityGroupId</code> must be provided.
@@ -289,13 +289,13 @@ public class AuthorizeDBSecurityGroupIngressRequest extends com.amazonaws.Amazon
     /**
      * <p>
      * AWS account number of the owner of the EC2 security group specified in the <code>EC2SecurityGroupName</code>
-     * parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups,
+     * parameter. The AWS access key ID isn't an acceptable value. For VPC DB security groups,
      * <code>EC2SecurityGroupId</code> must be provided. Otherwise, <code>EC2SecurityGroupOwnerId</code> and either
      * <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided.
      * </p>
      * 
      * @return AWS account number of the owner of the EC2 security group specified in the
-     *         <code>EC2SecurityGroupName</code> parameter. The AWS Access Key ID is not an acceptable value. For VPC DB
+     *         <code>EC2SecurityGroupName</code> parameter. The AWS access key ID isn't an acceptable value. For VPC DB
      *         security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise,
      *         <code>EC2SecurityGroupOwnerId</code> and either <code>EC2SecurityGroupName</code> or
      *         <code>EC2SecurityGroupId</code> must be provided.
@@ -308,14 +308,14 @@ public class AuthorizeDBSecurityGroupIngressRequest extends com.amazonaws.Amazon
     /**
      * <p>
      * AWS account number of the owner of the EC2 security group specified in the <code>EC2SecurityGroupName</code>
-     * parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups,
+     * parameter. The AWS access key ID isn't an acceptable value. For VPC DB security groups,
      * <code>EC2SecurityGroupId</code> must be provided. Otherwise, <code>EC2SecurityGroupOwnerId</code> and either
      * <code>EC2SecurityGroupName</code> or <code>EC2SecurityGroupId</code> must be provided.
      * </p>
      * 
      * @param eC2SecurityGroupOwnerId
      *        AWS account number of the owner of the EC2 security group specified in the
-     *        <code>EC2SecurityGroupName</code> parameter. The AWS Access Key ID is not an acceptable value. For VPC DB
+     *        <code>EC2SecurityGroupName</code> parameter. The AWS access key ID isn't an acceptable value. For VPC DB
      *        security groups, <code>EC2SecurityGroupId</code> must be provided. Otherwise,
      *        <code>EC2SecurityGroupOwnerId</code> and either <code>EC2SecurityGroupName</code> or
      *        <code>EC2SecurityGroupId</code> must be provided.

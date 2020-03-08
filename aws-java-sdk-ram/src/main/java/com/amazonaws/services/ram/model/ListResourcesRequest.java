@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,6 +40,12 @@ public class ListResourcesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The resource type.
+     * </p>
+     * <p>
+     * Valid values: <code>ec2:CapacityReservation</code> | <code>ec2:Subnet</code> |
+     * <code>ec2:TrafficMirrorTarget</code> | <code>ec2:TransitGateway</code> |
+     * <code>license-manager:LicenseConfiguration</code> | <code>rds:Cluster</code> |
+     * <code>route53resolver:ResolverRule</code> | <code>resource-groups:Group</code>
      * </p>
      */
     private String resourceType;
@@ -172,9 +178,20 @@ public class ListResourcesRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The resource type.
      * </p>
+     * <p>
+     * Valid values: <code>ec2:CapacityReservation</code> | <code>ec2:Subnet</code> |
+     * <code>ec2:TrafficMirrorTarget</code> | <code>ec2:TransitGateway</code> |
+     * <code>license-manager:LicenseConfiguration</code> | <code>rds:Cluster</code> |
+     * <code>route53resolver:ResolverRule</code> | <code>resource-groups:Group</code>
+     * </p>
      * 
      * @param resourceType
-     *        The resource type.
+     *        The resource type.</p>
+     *        <p>
+     *        Valid values: <code>ec2:CapacityReservation</code> | <code>ec2:Subnet</code> |
+     *        <code>ec2:TrafficMirrorTarget</code> | <code>ec2:TransitGateway</code> |
+     *        <code>license-manager:LicenseConfiguration</code> | <code>rds:Cluster</code> |
+     *        <code>route53resolver:ResolverRule</code> | <code>resource-groups:Group</code>
      */
 
     public void setResourceType(String resourceType) {
@@ -185,8 +202,19 @@ public class ListResourcesRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The resource type.
      * </p>
+     * <p>
+     * Valid values: <code>ec2:CapacityReservation</code> | <code>ec2:Subnet</code> |
+     * <code>ec2:TrafficMirrorTarget</code> | <code>ec2:TransitGateway</code> |
+     * <code>license-manager:LicenseConfiguration</code> | <code>rds:Cluster</code> |
+     * <code>route53resolver:ResolverRule</code> | <code>resource-groups:Group</code>
+     * </p>
      * 
-     * @return The resource type.
+     * @return The resource type.</p>
+     *         <p>
+     *         Valid values: <code>ec2:CapacityReservation</code> | <code>ec2:Subnet</code> |
+     *         <code>ec2:TrafficMirrorTarget</code> | <code>ec2:TransitGateway</code> |
+     *         <code>license-manager:LicenseConfiguration</code> | <code>rds:Cluster</code> |
+     *         <code>route53resolver:ResolverRule</code> | <code>resource-groups:Group</code>
      */
 
     public String getResourceType() {
@@ -197,9 +225,20 @@ public class ListResourcesRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The resource type.
      * </p>
+     * <p>
+     * Valid values: <code>ec2:CapacityReservation</code> | <code>ec2:Subnet</code> |
+     * <code>ec2:TrafficMirrorTarget</code> | <code>ec2:TransitGateway</code> |
+     * <code>license-manager:LicenseConfiguration</code> | <code>rds:Cluster</code> |
+     * <code>route53resolver:ResolverRule</code> | <code>resource-groups:Group</code>
+     * </p>
      * 
      * @param resourceType
-     *        The resource type.
+     *        The resource type.</p>
+     *        <p>
+     *        Valid values: <code>ec2:CapacityReservation</code> | <code>ec2:Subnet</code> |
+     *        <code>ec2:TrafficMirrorTarget</code> | <code>ec2:TransitGateway</code> |
+     *        <code>license-manager:LicenseConfiguration</code> | <code>rds:Cluster</code> |
+     *        <code>route53resolver:ResolverRule</code> | <code>resource-groups:Group</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

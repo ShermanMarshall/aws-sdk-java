@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,7 +38,17 @@ public class AbstractAWSHealth implements AWSHealth {
     }
 
     @Override
+    public DescribeAffectedAccountsForOrganizationResult describeAffectedAccountsForOrganization(DescribeAffectedAccountsForOrganizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeAffectedEntitiesResult describeAffectedEntities(DescribeAffectedEntitiesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeAffectedEntitiesForOrganizationResult describeAffectedEntitiesForOrganization(DescribeAffectedEntitiesForOrganizationRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -58,12 +68,37 @@ public class AbstractAWSHealth implements AWSHealth {
     }
 
     @Override
+    public DescribeEventDetailsForOrganizationResult describeEventDetailsForOrganization(DescribeEventDetailsForOrganizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeEventTypesResult describeEventTypes(DescribeEventTypesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public DescribeEventsResult describeEvents(DescribeEventsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeEventsForOrganizationResult describeEventsForOrganization(DescribeEventsForOrganizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeHealthServiceStatusForOrganizationResult describeHealthServiceStatusForOrganization(DescribeHealthServiceStatusForOrganizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DisableHealthServiceAccessForOrganizationResult disableHealthServiceAccessForOrganization(DisableHealthServiceAccessForOrganizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public EnableHealthServiceAccessForOrganizationResult enableHealthServiceAccessForOrganization(EnableHealthServiceAccessForOrganizationRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

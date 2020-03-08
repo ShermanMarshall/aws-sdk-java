@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -58,6 +58,8 @@ public class TaskDefinitionMarshaller {
             .marshallLocationName("cpu").build();
     private static final MarshallingInfo<String> MEMORY_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("memory").build();
+    private static final MarshallingInfo<List> INFERENCEACCELERATORS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("inferenceAccelerators").build();
     private static final MarshallingInfo<String> PIDMODE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("pidMode").build();
     private static final MarshallingInfo<String> IPCMODE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -96,6 +98,7 @@ public class TaskDefinitionMarshaller {
             protocolMarshaller.marshall(taskDefinition.getRequiresCompatibilities(), REQUIRESCOMPATIBILITIES_BINDING);
             protocolMarshaller.marshall(taskDefinition.getCpu(), CPU_BINDING);
             protocolMarshaller.marshall(taskDefinition.getMemory(), MEMORY_BINDING);
+            protocolMarshaller.marshall(taskDefinition.getInferenceAccelerators(), INFERENCEACCELERATORS_BINDING);
             protocolMarshaller.marshall(taskDefinition.getPidMode(), PIDMODE_BINDING);
             protocolMarshaller.marshall(taskDefinition.getIpcMode(), IPCMODE_BINDING);
             protocolMarshaller.marshall(taskDefinition.getProxyConfiguration(), PROXYCONFIGURATION_BINDING);

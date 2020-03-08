@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class ListInstanceProfilesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * An integer specifying the maximum number of items you want to return in the API response.
+     * An integer that specifies the maximum number of items you want to return in the API response.
      * </p>
      */
     private Integer maxResults;
@@ -41,11 +41,11 @@ public class ListInstanceProfilesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * An integer specifying the maximum number of items you want to return in the API response.
+     * An integer that specifies the maximum number of items you want to return in the API response.
      * </p>
      * 
      * @param maxResults
-     *        An integer specifying the maximum number of items you want to return in the API response.
+     *        An integer that specifies the maximum number of items you want to return in the API response.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -54,10 +54,10 @@ public class ListInstanceProfilesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * An integer specifying the maximum number of items you want to return in the API response.
+     * An integer that specifies the maximum number of items you want to return in the API response.
      * </p>
      * 
-     * @return An integer specifying the maximum number of items you want to return in the API response.
+     * @return An integer that specifies the maximum number of items you want to return in the API response.
      */
 
     public Integer getMaxResults() {
@@ -66,11 +66,11 @@ public class ListInstanceProfilesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * An integer specifying the maximum number of items you want to return in the API response.
+     * An integer that specifies the maximum number of items you want to return in the API response.
      * </p>
      * 
      * @param maxResults
-     *        An integer specifying the maximum number of items you want to return in the API response.
+     *        An integer that specifies the maximum number of items you want to return in the API response.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

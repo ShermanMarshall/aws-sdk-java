@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,18 +25,18 @@ public class UpdateVPCEConfigurationResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * An object containing information about your VPC endpoint configuration.
+     * An object that contains information about your VPC endpoint configuration.
      * </p>
      */
     private VPCEConfiguration vpceConfiguration;
 
     /**
      * <p>
-     * An object containing information about your VPC endpoint configuration.
+     * An object that contains information about your VPC endpoint configuration.
      * </p>
      * 
      * @param vpceConfiguration
-     *        An object containing information about your VPC endpoint configuration.
+     *        An object that contains information about your VPC endpoint configuration.
      */
 
     public void setVpceConfiguration(VPCEConfiguration vpceConfiguration) {
@@ -45,10 +45,10 @@ public class UpdateVPCEConfigurationResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * An object containing information about your VPC endpoint configuration.
+     * An object that contains information about your VPC endpoint configuration.
      * </p>
      * 
-     * @return An object containing information about your VPC endpoint configuration.
+     * @return An object that contains information about your VPC endpoint configuration.
      */
 
     public VPCEConfiguration getVpceConfiguration() {
@@ -57,11 +57,11 @@ public class UpdateVPCEConfigurationResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * An object containing information about your VPC endpoint configuration.
+     * An object that contains information about your VPC endpoint configuration.
      * </p>
      * 
      * @param vpceConfiguration
-     *        An object containing information about your VPC endpoint configuration.
+     *        An object that contains information about your VPC endpoint configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

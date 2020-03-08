@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,14 +33,9 @@ public class Forecast implements Serializable, Cloneable, StructuredPojo {
      * The forecast.
      * </p>
      * <p>
-     * The <i>string</i> of the string to array map is one of the following values:
+     * The <i>string</i> of the string-to-array map is one of the following values:
      * </p>
      * <ul>
-     * <li>
-     * <p>
-     * mean
-     * </p>
-     * </li>
      * <li>
      * <p>
      * p10
@@ -65,14 +60,9 @@ public class Forecast implements Serializable, Cloneable, StructuredPojo {
      * The forecast.
      * </p>
      * <p>
-     * The <i>string</i> of the string to array map is one of the following values:
+     * The <i>string</i> of the string-to-array map is one of the following values:
      * </p>
      * <ul>
-     * <li>
-     * <p>
-     * mean
-     * </p>
-     * </li>
      * <li>
      * <p>
      * p10
@@ -92,14 +82,9 @@ public class Forecast implements Serializable, Cloneable, StructuredPojo {
      * 
      * @return The forecast.</p>
      *         <p>
-     *         The <i>string</i> of the string to array map is one of the following values:
+     *         The <i>string</i> of the string-to-array map is one of the following values:
      *         </p>
      *         <ul>
-     *         <li>
-     *         <p>
-     *         mean
-     *         </p>
-     *         </li>
      *         <li>
      *         <p>
      *         p10
@@ -126,14 +111,9 @@ public class Forecast implements Serializable, Cloneable, StructuredPojo {
      * The forecast.
      * </p>
      * <p>
-     * The <i>string</i> of the string to array map is one of the following values:
+     * The <i>string</i> of the string-to-array map is one of the following values:
      * </p>
      * <ul>
-     * <li>
-     * <p>
-     * mean
-     * </p>
-     * </li>
      * <li>
      * <p>
      * p10
@@ -154,14 +134,9 @@ public class Forecast implements Serializable, Cloneable, StructuredPojo {
      * @param predictions
      *        The forecast.</p>
      *        <p>
-     *        The <i>string</i> of the string to array map is one of the following values:
+     *        The <i>string</i> of the string-to-array map is one of the following values:
      *        </p>
      *        <ul>
-     *        <li>
-     *        <p>
-     *        mean
-     *        </p>
-     *        </li>
      *        <li>
      *        <p>
      *        p10
@@ -188,14 +163,9 @@ public class Forecast implements Serializable, Cloneable, StructuredPojo {
      * The forecast.
      * </p>
      * <p>
-     * The <i>string</i> of the string to array map is one of the following values:
+     * The <i>string</i> of the string-to-array map is one of the following values:
      * </p>
      * <ul>
-     * <li>
-     * <p>
-     * mean
-     * </p>
-     * </li>
      * <li>
      * <p>
      * p10
@@ -216,14 +186,9 @@ public class Forecast implements Serializable, Cloneable, StructuredPojo {
      * @param predictions
      *        The forecast.</p>
      *        <p>
-     *        The <i>string</i> of the string to array map is one of the following values:
+     *        The <i>string</i> of the string-to-array map is one of the following values:
      *        </p>
      *        <ul>
-     *        <li>
-     *        <p>
-     *        mean
-     *        </p>
-     *        </li>
      *        <li>
      *        <p>
      *        p10
@@ -246,6 +211,13 @@ public class Forecast implements Serializable, Cloneable, StructuredPojo {
         setPredictions(predictions);
         return this;
     }
+
+    /**
+     * Add a single Predictions entry
+     *
+     * @see Forecast#withPredictions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public Forecast addPredictionsEntry(String key, java.util.List<DataPoint> value) {
         if (null == this.predictions) {

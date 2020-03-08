@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,26 +31,25 @@
  * <ul>
  * <li>
  * <p>
- * Tag and untag supported resources located in the specified region for the AWS account
+ * Tag and untag supported resources located in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * Use tag-based filters to search for resources located in the specified region for the AWS account
+ * Use tag-based filters to search for resources located in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * List all existing tag keys in the specified region for the AWS account
+ * List all existing tag keys in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * List all existing values for the specified key in the specified region for the AWS account
+ * List all existing values for the specified key in the specified Region for the AWS account.
  * </p>
  * </li>
  * </ul>
- * <p/>
  * <p>
  * To use resource groups tagging API operations, you must add the following permissions to your IAM policy:
  * </p>
@@ -106,7 +105,7 @@
  * </li>
  * <li>
  * <p>
- * AWS AppStream
+ * Amazon AppStream
  * </p>
  * </li>
  * <li>
@@ -226,6 +225,11 @@
  * </li>
  * <li>
  * <p>
+ * AWS Data Exchange
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS Data Pipeline
  * </p>
  * </li>
@@ -236,7 +240,12 @@
  * </li>
  * <li>
  * <p>
- * AWS Datasync
+ * AWS DataSync
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Device Farm
  * </p>
  * </li>
  * <li>
@@ -272,6 +281,11 @@
  * <li>
  * <p>
  * Amazon ECS
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon EKS
  * </p>
  * </li>
  * <li>
@@ -326,12 +340,17 @@
  * </li>
  * <li>
  * <p>
- * Amazon Glacier
+ * Amazon S3 Glacier
  * </p>
  * </li>
  * <li>
  * <p>
  * AWS Glue
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon GuardDuty
  * </p>
  * </li>
  * <li>
@@ -361,7 +380,17 @@
  * </li>
  * <li>
  * <p>
+ * AWS IoT Events
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS IoT Greengrass
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS IoT 1-Click
  * </p>
  * </li>
  * <li>
@@ -421,6 +450,16 @@
  * </li>
  * <li>
  * <p>
+ * AWS Organizations
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon Quantum Ledger Database (QLDB)
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * Amazon RDS
  * </p>
  * </li>
@@ -471,6 +510,11 @@
  * </li>
  * <li>
  * <p>
+ * AWS Security Hub
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS Service Catalog
  * </p>
  * </li>
@@ -486,7 +530,7 @@
  * </li>
  * <li>
  * <p>
- * AWS Simple System Manager (SSM)
+ * Amazon Simple Workflow Service
  * </p>
  * </li>
  * <li>
@@ -497,6 +541,11 @@
  * <li>
  * <p>
  * AWS Storage Gateway
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Systems Manager
  * </p>
  * </li>
  * <li>

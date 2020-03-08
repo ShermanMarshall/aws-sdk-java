@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -141,6 +141,13 @@ public class MessageResponse implements Serializable, Cloneable, StructuredPojo 
         return this;
     }
 
+    /**
+     * Add a single EndpointResult entry
+     *
+     * @see MessageResponse#withEndpointResult
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public MessageResponse addEndpointResultEntry(String key, EndpointMessageResult value) {
         if (null == this.endpointResult) {
             this.endpointResult = new java.util.HashMap<String, EndpointMessageResult>();
@@ -250,6 +257,13 @@ public class MessageResponse implements Serializable, Cloneable, StructuredPojo 
         setResult(result);
         return this;
     }
+
+    /**
+     * Add a single Result entry
+     *
+     * @see MessageResponse#withResult
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public MessageResponse addResultEntry(String key, MessageResult value) {
         if (null == this.result) {

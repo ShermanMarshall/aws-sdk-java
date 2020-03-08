@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -1396,6 +1396,11 @@ public interface AWSServiceCatalogAsync extends AWSServiceCatalog {
             com.amazonaws.handlers.AsyncHandler<DescribeServiceActionRequest, DescribeServiceActionResult> asyncHandler);
 
     /**
+     * <p>
+     * Finds the default parameters for a specific self-service action on a specific provisioned product and returns a
+     * map of the results to the user.
+     * </p>
+     * 
      * @param describeServiceActionExecutionParametersRequest
      * @return A Java Future containing the result of the DescribeServiceActionExecutionParameters operation returned by
      *         the service.
@@ -1408,6 +1413,11 @@ public interface AWSServiceCatalogAsync extends AWSServiceCatalog {
             DescribeServiceActionExecutionParametersRequest describeServiceActionExecutionParametersRequest);
 
     /**
+     * <p>
+     * Finds the default parameters for a specific self-service action on a specific provisioned product and returns a
+     * map of the results to the user.
+     * </p>
+     * 
      * @param describeServiceActionExecutionParametersRequest
      * @param asyncHandler
      *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an

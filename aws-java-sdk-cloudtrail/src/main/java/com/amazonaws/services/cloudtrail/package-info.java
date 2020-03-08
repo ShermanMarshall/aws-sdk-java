@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,8 +32,9 @@
  * </p>
  * </note>
  * <p>
- * See the <a href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">AWS CloudTrail
- * User Guide</a> for information about the data that is included with each AWS API call listed in the log files.
+ * See the <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html">AWS
+ * CloudTrail User Guide</a> for information about the data that is included with each AWS API call listed in the log
+ * files.
  * </p>
  */
 package com.amazonaws.services.cloudtrail;

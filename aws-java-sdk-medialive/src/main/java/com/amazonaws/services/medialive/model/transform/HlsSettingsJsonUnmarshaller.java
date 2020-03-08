@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,10 @@ public class HlsSettingsJsonUnmarshaller implements Unmarshaller<HlsSettings, Js
                 if (context.testExpression("audioOnlyHlsSettings", targetDepth)) {
                     context.nextToken();
                     hlsSettings.setAudioOnlyHlsSettings(AudioOnlyHlsSettingsJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("fmp4HlsSettings", targetDepth)) {
+                    context.nextToken();
+                    hlsSettings.setFmp4HlsSettings(Fmp4HlsSettingsJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("standardHlsSettings", targetDepth)) {
                     context.nextToken();

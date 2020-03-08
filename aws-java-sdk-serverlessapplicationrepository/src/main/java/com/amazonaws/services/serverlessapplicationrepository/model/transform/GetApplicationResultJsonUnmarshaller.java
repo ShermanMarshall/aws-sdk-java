@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -68,6 +68,10 @@ public class GetApplicationResultJsonUnmarshaller implements Unmarshaller<GetApp
                     context.nextToken();
                     getApplicationResult.setHomePageUrl(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("isVerifiedAuthor", targetDepth)) {
+                    context.nextToken();
+                    getApplicationResult.setIsVerifiedAuthor(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
                 if (context.testExpression("labels", targetDepth)) {
                     context.nextToken();
                     getApplicationResult.setLabels(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
@@ -87,6 +91,10 @@ public class GetApplicationResultJsonUnmarshaller implements Unmarshaller<GetApp
                 if (context.testExpression("spdxLicenseId", targetDepth)) {
                     context.nextToken();
                     getApplicationResult.setSpdxLicenseId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("verifiedAuthorUrl", targetDepth)) {
+                    context.nextToken();
+                    getApplicationResult.setVerifiedAuthorUrl(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("version", targetDepth)) {
                     context.nextToken();

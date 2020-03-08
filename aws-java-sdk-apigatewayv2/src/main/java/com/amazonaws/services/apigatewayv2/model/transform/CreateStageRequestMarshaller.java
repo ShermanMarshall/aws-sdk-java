@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public class CreateStageRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("accessLogSettings").build();
     private static final MarshallingInfo<String> APIID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
             .marshallLocationName("apiId").build();
+    private static final MarshallingInfo<Boolean> AUTODEPLOY_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("autoDeploy").build();
     private static final MarshallingInfo<String> CLIENTCERTIFICATEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("clientCertificateId").build();
     private static final MarshallingInfo<StructuredPojo> DEFAULTROUTESETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -68,6 +70,7 @@ public class CreateStageRequestMarshaller {
         try {
             protocolMarshaller.marshall(createStageRequest.getAccessLogSettings(), ACCESSLOGSETTINGS_BINDING);
             protocolMarshaller.marshall(createStageRequest.getApiId(), APIID_BINDING);
+            protocolMarshaller.marshall(createStageRequest.getAutoDeploy(), AUTODEPLOY_BINDING);
             protocolMarshaller.marshall(createStageRequest.getClientCertificateId(), CLIENTCERTIFICATEID_BINDING);
             protocolMarshaller.marshall(createStageRequest.getDefaultRouteSettings(), DEFAULTROUTESETTINGS_BINDING);
             protocolMarshaller.marshall(createStageRequest.getDeploymentId(), DEPLOYMENTID_BINDING);

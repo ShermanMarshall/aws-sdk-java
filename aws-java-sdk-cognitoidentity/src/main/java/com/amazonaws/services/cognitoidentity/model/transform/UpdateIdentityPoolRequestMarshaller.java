@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class UpdateIdentityPoolRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IdentityPoolName").build();
     private static final MarshallingInfo<Boolean> ALLOWUNAUTHENTICATEDIDENTITIES_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AllowUnauthenticatedIdentities").build();
+    private static final MarshallingInfo<Boolean> ALLOWCLASSICFLOW_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AllowClassicFlow").build();
     private static final MarshallingInfo<Map> SUPPORTEDLOGINPROVIDERS_BINDING = MarshallingInfo.builder(MarshallingType.MAP)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SupportedLoginProviders").build();
     private static final MarshallingInfo<String> DEVELOPERPROVIDERNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -67,6 +69,7 @@ public class UpdateIdentityPoolRequestMarshaller {
             protocolMarshaller.marshall(updateIdentityPoolRequest.getIdentityPoolId(), IDENTITYPOOLID_BINDING);
             protocolMarshaller.marshall(updateIdentityPoolRequest.getIdentityPoolName(), IDENTITYPOOLNAME_BINDING);
             protocolMarshaller.marshall(updateIdentityPoolRequest.getAllowUnauthenticatedIdentities(), ALLOWUNAUTHENTICATEDIDENTITIES_BINDING);
+            protocolMarshaller.marshall(updateIdentityPoolRequest.getAllowClassicFlow(), ALLOWCLASSICFLOW_BINDING);
             protocolMarshaller.marshall(updateIdentityPoolRequest.getSupportedLoginProviders(), SUPPORTEDLOGINPROVIDERS_BINDING);
             protocolMarshaller.marshall(updateIdentityPoolRequest.getDeveloperProviderName(), DEVELOPERPROVIDERNAME_BINDING);
             protocolMarshaller.marshall(updateIdentityPoolRequest.getOpenIdConnectProviderARNs(), OPENIDCONNECTPROVIDERARNS_BINDING);

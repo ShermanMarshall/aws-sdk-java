@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Detailed information about a DB subnet group.
+ * Detailed information about a subnet group.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/docdb-2014-10-31/DBSubnetGroup" target="_top">AWS API
@@ -28,48 +28,48 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DB subnet group.
+     * The name of the subnet group.
      * </p>
      */
     private String dBSubnetGroupName;
     /**
      * <p>
-     * Provides the description of the DB subnet group.
+     * Provides the description of the subnet group.
      * </p>
      */
     private String dBSubnetGroupDescription;
     /**
      * <p>
-     * Provides the virtual private cloud (VPC) ID of the DB subnet group.
+     * Provides the virtual private cloud (VPC) ID of the subnet group.
      * </p>
      */
     private String vpcId;
     /**
      * <p>
-     * Provides the status of the DB subnet group.
+     * Provides the status of the subnet group.
      * </p>
      */
     private String subnetGroupStatus;
     /**
      * <p>
-     * Detailed information about one or more subnets within a DB subnet group.
+     * Detailed information about one or more subnets within a subnet group.
      * </p>
      */
     private java.util.List<Subnet> subnets;
     /**
      * <p>
-     * The Amazon Resource Identifier (ARN) for the DB subnet group.
+     * The Amazon Resource Name (ARN) for the DB subnet group.
      * </p>
      */
     private String dBSubnetGroupArn;
 
     /**
      * <p>
-     * The name of the DB subnet group.
+     * The name of the subnet group.
      * </p>
      * 
      * @param dBSubnetGroupName
-     *        The name of the DB subnet group.
+     *        The name of the subnet group.
      */
 
     public void setDBSubnetGroupName(String dBSubnetGroupName) {
@@ -78,10 +78,10 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DB subnet group.
+     * The name of the subnet group.
      * </p>
      * 
-     * @return The name of the DB subnet group.
+     * @return The name of the subnet group.
      */
 
     public String getDBSubnetGroupName() {
@@ -90,11 +90,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DB subnet group.
+     * The name of the subnet group.
      * </p>
      * 
      * @param dBSubnetGroupName
-     *        The name of the DB subnet group.
+     *        The name of the subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -105,11 +105,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the description of the DB subnet group.
+     * Provides the description of the subnet group.
      * </p>
      * 
      * @param dBSubnetGroupDescription
-     *        Provides the description of the DB subnet group.
+     *        Provides the description of the subnet group.
      */
 
     public void setDBSubnetGroupDescription(String dBSubnetGroupDescription) {
@@ -118,10 +118,10 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the description of the DB subnet group.
+     * Provides the description of the subnet group.
      * </p>
      * 
-     * @return Provides the description of the DB subnet group.
+     * @return Provides the description of the subnet group.
      */
 
     public String getDBSubnetGroupDescription() {
@@ -130,11 +130,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the description of the DB subnet group.
+     * Provides the description of the subnet group.
      * </p>
      * 
      * @param dBSubnetGroupDescription
-     *        Provides the description of the DB subnet group.
+     *        Provides the description of the subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -145,11 +145,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the virtual private cloud (VPC) ID of the DB subnet group.
+     * Provides the virtual private cloud (VPC) ID of the subnet group.
      * </p>
      * 
      * @param vpcId
-     *        Provides the virtual private cloud (VPC) ID of the DB subnet group.
+     *        Provides the virtual private cloud (VPC) ID of the subnet group.
      */
 
     public void setVpcId(String vpcId) {
@@ -158,10 +158,10 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the virtual private cloud (VPC) ID of the DB subnet group.
+     * Provides the virtual private cloud (VPC) ID of the subnet group.
      * </p>
      * 
-     * @return Provides the virtual private cloud (VPC) ID of the DB subnet group.
+     * @return Provides the virtual private cloud (VPC) ID of the subnet group.
      */
 
     public String getVpcId() {
@@ -170,11 +170,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the virtual private cloud (VPC) ID of the DB subnet group.
+     * Provides the virtual private cloud (VPC) ID of the subnet group.
      * </p>
      * 
      * @param vpcId
-     *        Provides the virtual private cloud (VPC) ID of the DB subnet group.
+     *        Provides the virtual private cloud (VPC) ID of the subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -185,11 +185,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the status of the DB subnet group.
+     * Provides the status of the subnet group.
      * </p>
      * 
      * @param subnetGroupStatus
-     *        Provides the status of the DB subnet group.
+     *        Provides the status of the subnet group.
      */
 
     public void setSubnetGroupStatus(String subnetGroupStatus) {
@@ -198,10 +198,10 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the status of the DB subnet group.
+     * Provides the status of the subnet group.
      * </p>
      * 
-     * @return Provides the status of the DB subnet group.
+     * @return Provides the status of the subnet group.
      */
 
     public String getSubnetGroupStatus() {
@@ -210,11 +210,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides the status of the DB subnet group.
+     * Provides the status of the subnet group.
      * </p>
      * 
      * @param subnetGroupStatus
-     *        Provides the status of the DB subnet group.
+     *        Provides the status of the subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -225,10 +225,10 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Detailed information about one or more subnets within a DB subnet group.
+     * Detailed information about one or more subnets within a subnet group.
      * </p>
      * 
-     * @return Detailed information about one or more subnets within a DB subnet group.
+     * @return Detailed information about one or more subnets within a subnet group.
      */
 
     public java.util.List<Subnet> getSubnets() {
@@ -237,11 +237,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Detailed information about one or more subnets within a DB subnet group.
+     * Detailed information about one or more subnets within a subnet group.
      * </p>
      * 
      * @param subnets
-     *        Detailed information about one or more subnets within a DB subnet group.
+     *        Detailed information about one or more subnets within a subnet group.
      */
 
     public void setSubnets(java.util.Collection<Subnet> subnets) {
@@ -255,7 +255,7 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Detailed information about one or more subnets within a DB subnet group.
+     * Detailed information about one or more subnets within a subnet group.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -264,7 +264,7 @@ public class DBSubnetGroup implements Serializable, Cloneable {
      * </p>
      * 
      * @param subnets
-     *        Detailed information about one or more subnets within a DB subnet group.
+     *        Detailed information about one or more subnets within a subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -280,11 +280,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Detailed information about one or more subnets within a DB subnet group.
+     * Detailed information about one or more subnets within a subnet group.
      * </p>
      * 
      * @param subnets
-     *        Detailed information about one or more subnets within a DB subnet group.
+     *        Detailed information about one or more subnets within a subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -295,11 +295,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Identifier (ARN) for the DB subnet group.
+     * The Amazon Resource Name (ARN) for the DB subnet group.
      * </p>
      * 
      * @param dBSubnetGroupArn
-     *        The Amazon Resource Identifier (ARN) for the DB subnet group.
+     *        The Amazon Resource Name (ARN) for the DB subnet group.
      */
 
     public void setDBSubnetGroupArn(String dBSubnetGroupArn) {
@@ -308,10 +308,10 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Identifier (ARN) for the DB subnet group.
+     * The Amazon Resource Name (ARN) for the DB subnet group.
      * </p>
      * 
-     * @return The Amazon Resource Identifier (ARN) for the DB subnet group.
+     * @return The Amazon Resource Name (ARN) for the DB subnet group.
      */
 
     public String getDBSubnetGroupArn() {
@@ -320,11 +320,11 @@ public class DBSubnetGroup implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Identifier (ARN) for the DB subnet group.
+     * The Amazon Resource Name (ARN) for the DB subnet group.
      * </p>
      * 
      * @param dBSubnetGroupArn
-     *        The Amazon Resource Identifier (ARN) for the DB subnet group.
+     *        The Amazon Resource Name (ARN) for the DB subnet group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

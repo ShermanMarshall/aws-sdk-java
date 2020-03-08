@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -118,7 +118,12 @@ public class PutIntentResult extends com.amazonaws.AmazonWebServiceResult<com.am
      * </p>
      */
     private String checksum;
-
+    /**
+     * <p>
+     * <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was not
+     * specified in the request, the <code>createVersion</code> field is set to false in the response.
+     * </p>
+     */
     private Boolean createVersion;
 
     /**
@@ -812,7 +817,14 @@ public class PutIntentResult extends com.amazonaws.AmazonWebServiceResult<com.am
     }
 
     /**
+     * <p>
+     * <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was not
+     * specified in the request, the <code>createVersion</code> field is set to false in the response.
+     * </p>
+     * 
      * @param createVersion
+     *        <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was
+     *        not specified in the request, the <code>createVersion</code> field is set to false in the response.
      */
 
     public void setCreateVersion(Boolean createVersion) {
@@ -820,7 +832,13 @@ public class PutIntentResult extends com.amazonaws.AmazonWebServiceResult<com.am
     }
 
     /**
-     * @return
+     * <p>
+     * <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was not
+     * specified in the request, the <code>createVersion</code> field is set to false in the response.
+     * </p>
+     * 
+     * @return <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was
+     *         not specified in the request, the <code>createVersion</code> field is set to false in the response.
      */
 
     public Boolean getCreateVersion() {
@@ -828,7 +846,14 @@ public class PutIntentResult extends com.amazonaws.AmazonWebServiceResult<com.am
     }
 
     /**
+     * <p>
+     * <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was not
+     * specified in the request, the <code>createVersion</code> field is set to false in the response.
+     * </p>
+     * 
      * @param createVersion
+     *        <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was
+     *        not specified in the request, the <code>createVersion</code> field is set to false in the response.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -838,7 +863,13 @@ public class PutIntentResult extends com.amazonaws.AmazonWebServiceResult<com.am
     }
 
     /**
-     * @return
+     * <p>
+     * <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was not
+     * specified in the request, the <code>createVersion</code> field is set to false in the response.
+     * </p>
+     * 
+     * @return <code>True</code> if a new version of the intent was created. If the <code>createVersion</code> field was
+     *         not specified in the request, the <code>createVersion</code> field is set to false in the response.
      */
 
     public Boolean isCreateVersion() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,7 +43,7 @@ public class DeleteFileResult extends com.amazonaws.AmazonWebServiceResult<com.a
     private String treeId;
     /**
      * <p>
-     * The fully-qualified path to the file that will be deleted, including the full name and extension of that file.
+     * The fully qualified path to the file to be deleted, including the full name and extension of that file.
      * </p>
      */
     private String filePath;
@@ -170,12 +170,11 @@ public class DeleteFileResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * The fully-qualified path to the file that will be deleted, including the full name and extension of that file.
+     * The fully qualified path to the file to be deleted, including the full name and extension of that file.
      * </p>
      * 
      * @param filePath
-     *        The fully-qualified path to the file that will be deleted, including the full name and extension of that
-     *        file.
+     *        The fully qualified path to the file to be deleted, including the full name and extension of that file.
      */
 
     public void setFilePath(String filePath) {
@@ -184,11 +183,10 @@ public class DeleteFileResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * The fully-qualified path to the file that will be deleted, including the full name and extension of that file.
+     * The fully qualified path to the file to be deleted, including the full name and extension of that file.
      * </p>
      * 
-     * @return The fully-qualified path to the file that will be deleted, including the full name and extension of that
-     *         file.
+     * @return The fully qualified path to the file to be deleted, including the full name and extension of that file.
      */
 
     public String getFilePath() {
@@ -197,12 +195,11 @@ public class DeleteFileResult extends com.amazonaws.AmazonWebServiceResult<com.a
 
     /**
      * <p>
-     * The fully-qualified path to the file that will be deleted, including the full name and extension of that file.
+     * The fully qualified path to the file to be deleted, including the full name and extension of that file.
      * </p>
      * 
      * @param filePath
-     *        The fully-qualified path to the file that will be deleted, including the full name and extension of that
-     *        file.
+     *        The fully qualified path to the file to be deleted, including the full name and extension of that file.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

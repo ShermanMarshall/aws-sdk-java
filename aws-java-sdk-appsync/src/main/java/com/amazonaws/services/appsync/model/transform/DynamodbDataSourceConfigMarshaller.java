@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,10 @@ public class DynamodbDataSourceConfigMarshaller {
             .marshallLocationName("awsRegion").build();
     private static final MarshallingInfo<Boolean> USECALLERCREDENTIALS_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("useCallerCredentials").build();
+    private static final MarshallingInfo<StructuredPojo> DELTASYNCCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("deltaSyncConfig").build();
+    private static final MarshallingInfo<Boolean> VERSIONED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("versioned").build();
 
     private static final DynamodbDataSourceConfigMarshaller instance = new DynamodbDataSourceConfigMarshaller();
 
@@ -53,6 +57,8 @@ public class DynamodbDataSourceConfigMarshaller {
             protocolMarshaller.marshall(dynamodbDataSourceConfig.getTableName(), TABLENAME_BINDING);
             protocolMarshaller.marshall(dynamodbDataSourceConfig.getAwsRegion(), AWSREGION_BINDING);
             protocolMarshaller.marshall(dynamodbDataSourceConfig.getUseCallerCredentials(), USECALLERCREDENTIALS_BINDING);
+            protocolMarshaller.marshall(dynamodbDataSourceConfig.getDeltaSyncConfig(), DELTASYNCCONFIG_BINDING);
+            protocolMarshaller.marshall(dynamodbDataSourceConfig.getVersioned(), VERSIONED_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

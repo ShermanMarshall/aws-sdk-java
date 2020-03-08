@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,6 +40,7 @@ import com.amazonaws.client.AwsSyncClientParams;
 import com.amazonaws.client.builder.AdvancedConfig;
 
 import com.amazonaws.services.ecr.AmazonECRClientBuilder;
+import com.amazonaws.services.ecr.waiters.AmazonECRWaiters;
 
 import com.amazonaws.AmazonServiceException;
 
@@ -69,6 +70,8 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /** Default signing name for the service. */
     private static final String DEFAULT_SIGNING_NAME = "ecr";
+
+    private volatile AmazonECRWaiters waiters;
 
     /** Client configuration factory providing ClientConfigurations tailored to this client */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
@@ -128,6 +131,9 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ServerException").withExceptionUnmarshaller(
                                     com.amazonaws.services.ecr.model.transform.ServerExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ScanNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.ScanNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("LifecyclePolicyNotFoundException").withExceptionUnmarshaller(
                                     com.amazonaws.services.ecr.model.transform.LifecyclePolicyNotFoundExceptionUnmarshaller.getInstance()))
@@ -351,7 +357,15 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Check the availability of multiple image layers in a specified registry and repository.
+     * Checks the availability of one or more image layers in a repository.
+     * </p>
+     * <p>
+     * When an image is pushed to a repository, each image layer is checked to verify if it has been uploaded before. If
+     * it is, then the image layer is skipped.
+     * </p>
+     * <p>
+     * When an image is pulled from a repository, each image layer is checked once to verify it is available to be
+     * pulled.
      * </p>
      * <note>
      * <p>
@@ -419,8 +433,8 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Deletes a list of specified images within a specified repository. Images are specified with either
-     * <code>imageTag</code> or <code>imageDigest</code>.
+     * Deletes a list of specified images within a repository. Images are specified with either an <code>imageTag</code>
+     * or <code>imageDigest</code>.
      * </p>
      * <p>
      * You can remove a tag from an image by specifying the image's tag in your request. When you remove the last tag
@@ -489,8 +503,11 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Gets detailed information for specified images within a specified repository. Images are specified with either
-     * <code>imageTag</code> or <code>imageDigest</code>.
+     * Gets detailed information for an image. Images are specified with either an <code>imageTag</code> or
+     * <code>imageDigest</code>.
+     * </p>
+     * <p>
+     * When an image is pulled, the BatchGetImage API is called once to retrieve the image manifest.
      * </p>
      * 
      * @param batchGetImageRequest
@@ -553,6 +570,10 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
      * Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and
      * upload ID. You can optionally provide a <code>sha256</code> digest of the image layer for data validation
      * purposes.
+     * </p>
+     * <p>
+     * When an image is pushed, the CompleteLayerUpload API is called once per each new image layer to verify that the
+     * upload has completed.
      * </p>
      * <note>
      * <p>
@@ -629,7 +650,9 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Creates an image repository.
+     * Creates a repository. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html">Amazon ECR Repositories</a> in
+     * the <i>Amazon Elastic Container Registry User Guide</i>.
      * </p>
      * 
      * @param createRepositoryRequest
@@ -699,7 +722,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Deletes the specified lifecycle policy.
+     * Deletes the lifecycle policy associated with the specified repository.
      * </p>
      * 
      * @param deleteLifecyclePolicyRequest
@@ -762,8 +785,8 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Deletes an existing image repository. If a repository contains images, you must use the <code>force</code> option
-     * to delete it.
+     * Deletes a repository. If the repository contains images, you must either delete all images in the repository or
+     * use the <code>force</code> option to delete the repository.
      * </p>
      * 
      * @param deleteRepositoryRequest
@@ -826,7 +849,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Deletes the repository policy from a specified repository.
+     * Deletes the repository policy associated with the specified repository.
      * </p>
      * 
      * @param deleteRepositoryPolicyRequest
@@ -889,7 +912,74 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Returns metadata about the images in a repository, including image size, image tags, and creation date.
+     * Returns the scan findings for the specified image.
+     * </p>
+     * 
+     * @param describeImageScanFindingsRequest
+     * @return Result of the DescribeImageScanFindings operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws RepositoryNotFoundException
+     *         The specified repository could not be found. Check the spelling of the specified repository and ensure
+     *         that you are performing operations on the correct registry.
+     * @throws ImageNotFoundException
+     *         The image requested does not exist in the specified repository.
+     * @throws ScanNotFoundException
+     *         The specified image scan could not be found. Ensure that image scanning is enabled on the repository and
+     *         try again.
+     * @sample AmazonECR.DescribeImageScanFindings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/DescribeImageScanFindings" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DescribeImageScanFindingsResult describeImageScanFindings(DescribeImageScanFindingsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeImageScanFindings(request);
+    }
+
+    @SdkInternalApi
+    final DescribeImageScanFindingsResult executeDescribeImageScanFindings(DescribeImageScanFindingsRequest describeImageScanFindingsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeImageScanFindingsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeImageScanFindingsRequest> request = null;
+        Response<DescribeImageScanFindingsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeImageScanFindingsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeImageScanFindingsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeImageScanFindings");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeImageScanFindingsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeImageScanFindingsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns metadata about the images in a repository.
      * </p>
      * <note>
      * <p>
@@ -1018,14 +1108,16 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Retrieves a token that is valid for a specified registry for 12 hours. This command allows you to use the
-     * <code>docker</code> CLI to push and pull images with Amazon ECR. If you do not specify a registry, the default
-     * registry is assumed.
+     * Retrieves an authorization token. An authorization token represents your IAM authentication credentials and can
+     * be used to access any Amazon ECR registry that your IAM principal has access to. The authorization token is valid
+     * for 12 hours.
      * </p>
      * <p>
-     * The <code>authorizationToken</code> returned for each registry specified is a base64 encoded string that can be
-     * decoded and used in a <code>docker login</code> command to authenticate to a registry. The AWS CLI offers an
-     * <code>aws ecr get-login</code> command that simplifies the login process.
+     * The <code>authorizationToken</code> returned is a base64 encoded string that can be decoded and used in a
+     * <code>docker login</code> command to authenticate to a registry. The AWS CLI offers an
+     * <code>get-login-password</code> command that simplifies the login process. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html#registry_auth">Registry
+     * Authentication</a> in the <i>Amazon Elastic Container Registry User Guide</i>.
      * </p>
      * 
      * @param getAuthorizationTokenRequest
@@ -1085,6 +1177,9 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
      * <p>
      * Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer. You can only get URLs for image
      * layers that are referenced in an image.
+     * </p>
+     * <p>
+     * When an image is pulled, the GetDownloadUrlForLayer API is called once per image layer.
      * </p>
      * <note>
      * <p>
@@ -1156,7 +1251,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Retrieves the specified lifecycle policy.
+     * Retrieves the lifecycle policy for the specified repository.
      * </p>
      * 
      * @param getLifecyclePolicyRequest
@@ -1218,7 +1313,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Retrieves the results of the specified lifecycle policy preview request.
+     * Retrieves the results of the lifecycle policy preview request for the specified repository.
      * </p>
      * 
      * @param getLifecyclePolicyPreviewRequest
@@ -1282,7 +1377,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Retrieves the repository policy for a specified repository.
+     * Retrieves the repository policy for the specified repository.
      * </p>
      * 
      * @param getRepositoryPolicyRequest
@@ -1344,7 +1439,12 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Notify Amazon ECR that you intend to upload an image layer.
+     * Notifies Amazon ECR that you intend to upload an image layer.
+     * </p>
+     * <p>
+     * When an image is pushed, the InitiateLayerUpload API is called once per image layer that has not already been
+     * uploaded. Whether an image layer has been uploaded before is determined by the <a>BatchCheckLayerAvailability</a>
+     * API action.
      * </p>
      * <note>
      * <p>
@@ -1410,13 +1510,14 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Lists all the image IDs for a given repository.
+     * Lists all the image IDs for the specified repository.
      * </p>
      * <p>
-     * You can filter images based on whether or not they are tagged by setting the <code>tagStatus</code> parameter to
-     * <code>TAGGED</code> or <code>UNTAGGED</code>. For example, you can filter your results to return only
-     * <code>UNTAGGED</code> images and then pipe that result to a <a>BatchDeleteImage</a> operation to delete them. Or,
-     * you can filter your results to return only <code>TAGGED</code> images to list all of the tags in your repository.
+     * You can filter images based on whether or not they are tagged by using the <code>tagStatus</code> filter and
+     * specifying either <code>TAGGED</code>, <code>UNTAGGED</code> or <code>ANY</code>. For example, you can filter
+     * your results to return only <code>UNTAGGED</code> images and then pipe that result to a <a>BatchDeleteImage</a>
+     * operation to delete them. Or, you can filter your results to return only <code>TAGGED</code> images to list all
+     * of the tags in your repository.
      * </p>
      * 
      * @param listImagesRequest
@@ -1538,6 +1639,10 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
      * <p>
      * Creates or updates the image manifest and tags associated with an image.
      * </p>
+     * <p>
+     * When an image is pushed and all new image layers have been uploaded, the PutImage API is called once to create or
+     * update the image manifest and tags associated with the image.
+     * </p>
      * <note>
      * <p>
      * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling
@@ -1615,7 +1720,71 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Updates the image tag mutability settings for a repository.
+     * Updates the image scanning configuration for the specified repository.
+     * </p>
+     * 
+     * @param putImageScanningConfigurationRequest
+     * @return Result of the PutImageScanningConfiguration operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws RepositoryNotFoundException
+     *         The specified repository could not be found. Check the spelling of the specified repository and ensure
+     *         that you are performing operations on the correct registry.
+     * @sample AmazonECR.PutImageScanningConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/PutImageScanningConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public PutImageScanningConfigurationResult putImageScanningConfiguration(PutImageScanningConfigurationRequest request) {
+        request = beforeClientExecution(request);
+        return executePutImageScanningConfiguration(request);
+    }
+
+    @SdkInternalApi
+    final PutImageScanningConfigurationResult executePutImageScanningConfiguration(PutImageScanningConfigurationRequest putImageScanningConfigurationRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putImageScanningConfigurationRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutImageScanningConfigurationRequest> request = null;
+        Response<PutImageScanningConfigurationResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutImageScanningConfigurationRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(putImageScanningConfigurationRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutImageScanningConfiguration");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<PutImageScanningConfigurationResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new PutImageScanningConfigurationResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Updates the image tag mutability settings for the specified repository. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html">Image Tag Mutability</a>
+     * in the <i>Amazon Elastic Container Registry User Guide</i>.
      * </p>
      * 
      * @param putImageTagMutabilityRequest
@@ -1676,7 +1845,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Creates or updates a lifecycle policy. For information about lifecycle policy syntax, see <a
+     * Creates or updates the lifecycle policy for the specified repository. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html">Lifecycle Policy
      * Template</a>.
      * </p>
@@ -1738,8 +1907,8 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Applies a repository policy on a specified repository to control access permissions. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html">Amazon ECR Repository
+     * Applies a repository policy to the specified repository to control access permissions. For more information, see
+     * <a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html">Amazon ECR Repository
      * Policies</a> in the <i>Amazon Elastic Container Registry User Guide</i>.
      * </p>
      * 
@@ -1800,8 +1969,73 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Starts a preview of the specified lifecycle policy. This allows you to see the results before creating the
-     * lifecycle policy.
+     * Starts an image vulnerability scan. An image scan can only be started once per day on an individual image. This
+     * limit includes if an image was scanned on initial push. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html">Image Scanning</a> in the
+     * <i>Amazon Elastic Container Registry User Guide</i>.
+     * </p>
+     * 
+     * @param startImageScanRequest
+     * @return Result of the StartImageScan operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws RepositoryNotFoundException
+     *         The specified repository could not be found. Check the spelling of the specified repository and ensure
+     *         that you are performing operations on the correct registry.
+     * @throws ImageNotFoundException
+     *         The image requested does not exist in the specified repository.
+     * @sample AmazonECR.StartImageScan
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/StartImageScan" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public StartImageScanResult startImageScan(StartImageScanRequest request) {
+        request = beforeClientExecution(request);
+        return executeStartImageScan(request);
+    }
+
+    @SdkInternalApi
+    final StartImageScanResult executeStartImageScan(StartImageScanRequest startImageScanRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(startImageScanRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<StartImageScanRequest> request = null;
+        Response<StartImageScanResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new StartImageScanRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(startImageScanRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartImageScan");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<StartImageScanResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new StartImageScanResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Starts a preview of a lifecycle policy for the specified repository. This allows you to see the results before
+     * associating the lifecycle policy with the repository.
      * </p>
      * 
      * @param startLifecyclePolicyPreviewRequest
@@ -2002,6 +2236,10 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
      * <p>
      * Uploads an image layer part to Amazon ECR.
      * </p>
+     * <p>
+     * When an image is pushed, each new image layer is uploaded in parts. The maximum size of each image layer part can
+     * be 20971520 bytes (or about 20MB). The UploadLayerPart API is called once per each new image layer part.
+     * </p>
      * <note>
      * <p>
      * This operation is used by the Amazon ECR proxy, and it is not intended for general use by customers for pulling
@@ -2148,6 +2386,26 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
     @com.amazonaws.annotation.SdkInternalApi
     static com.amazonaws.protocol.json.SdkJsonProtocolFactory getProtocolFactory() {
         return protocolFactory;
+    }
+
+    @Override
+    public AmazonECRWaiters waiters() {
+        if (waiters == null) {
+            synchronized (this) {
+                if (waiters == null) {
+                    waiters = new AmazonECRWaiters(this);
+                }
+            }
+        }
+        return waiters;
+    }
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+        if (waiters != null) {
+            waiters.shutdown();
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,7 +25,10 @@ public enum ConnectionErrorCodeType {
     NETWORK_ERRORS("NETWORK_ERRORS"),
     INTERNAL_ERROR("INTERNAL_ERROR"),
     INSUFFICIENT_CLOUDHSM_HSMS("INSUFFICIENT_CLOUDHSM_HSMS"),
-    USER_LOCKED_OUT("USER_LOCKED_OUT");
+    USER_LOCKED_OUT("USER_LOCKED_OUT"),
+    USER_NOT_FOUND("USER_NOT_FOUND"),
+    USER_LOGGED_IN("USER_LOGGED_IN"),
+    SUBNET_NOT_FOUND("SUBNET_NOT_FOUND");
 
     private String value;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,12 +35,16 @@ public class WorkspaceBundleMarshaller {
             .marshallLocationName("Owner").build();
     private static final MarshallingInfo<String> DESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Description").build();
+    private static final MarshallingInfo<String> IMAGEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("ImageId").build();
     private static final MarshallingInfo<StructuredPojo> ROOTSTORAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RootStorage").build();
     private static final MarshallingInfo<StructuredPojo> USERSTORAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("UserStorage").build();
     private static final MarshallingInfo<StructuredPojo> COMPUTETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ComputeType").build();
+    private static final MarshallingInfo<java.util.Date> LASTUPDATEDTIME_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LastUpdatedTime").timestampFormat("unixTimestamp").build();
 
     private static final WorkspaceBundleMarshaller instance = new WorkspaceBundleMarshaller();
 
@@ -62,9 +66,11 @@ public class WorkspaceBundleMarshaller {
             protocolMarshaller.marshall(workspaceBundle.getName(), NAME_BINDING);
             protocolMarshaller.marshall(workspaceBundle.getOwner(), OWNER_BINDING);
             protocolMarshaller.marshall(workspaceBundle.getDescription(), DESCRIPTION_BINDING);
+            protocolMarshaller.marshall(workspaceBundle.getImageId(), IMAGEID_BINDING);
             protocolMarshaller.marshall(workspaceBundle.getRootStorage(), ROOTSTORAGE_BINDING);
             protocolMarshaller.marshall(workspaceBundle.getUserStorage(), USERSTORAGE_BINDING);
             protocolMarshaller.marshall(workspaceBundle.getComputeType(), COMPUTETYPE_BINDING);
+            protocolMarshaller.marshall(workspaceBundle.getLastUpdatedTime(), LASTUPDATEDTIME_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

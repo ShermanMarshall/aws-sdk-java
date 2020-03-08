@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class RouteResponse implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Represents the model selection expression of a route response.
+     * Represents the model selection expression of a route response. Supported only for WebSocket APIs.
      * </p>
      */
     private String modelSelectionExpression;
@@ -58,11 +58,11 @@ public class RouteResponse implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Represents the model selection expression of a route response.
+     * Represents the model selection expression of a route response. Supported only for WebSocket APIs.
      * </p>
      * 
      * @param modelSelectionExpression
-     *        Represents the model selection expression of a route response.
+     *        Represents the model selection expression of a route response. Supported only for WebSocket APIs.
      */
 
     public void setModelSelectionExpression(String modelSelectionExpression) {
@@ -71,10 +71,10 @@ public class RouteResponse implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Represents the model selection expression of a route response.
+     * Represents the model selection expression of a route response. Supported only for WebSocket APIs.
      * </p>
      * 
-     * @return Represents the model selection expression of a route response.
+     * @return Represents the model selection expression of a route response. Supported only for WebSocket APIs.
      */
 
     public String getModelSelectionExpression() {
@@ -83,11 +83,11 @@ public class RouteResponse implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Represents the model selection expression of a route response.
+     * Represents the model selection expression of a route response. Supported only for WebSocket APIs.
      * </p>
      * 
      * @param modelSelectionExpression
-     *        Represents the model selection expression of a route response.
+     *        Represents the model selection expression of a route response. Supported only for WebSocket APIs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,6 +135,13 @@ public class RouteResponse implements Serializable, Cloneable, StructuredPojo {
         setResponseModels(responseModels);
         return this;
     }
+
+    /**
+     * Add a single ResponseModels entry
+     *
+     * @see RouteResponse#withResponseModels
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public RouteResponse addResponseModelsEntry(String key, String value) {
         if (null == this.responseModels) {
@@ -196,6 +203,13 @@ public class RouteResponse implements Serializable, Cloneable, StructuredPojo {
         setResponseParameters(responseParameters);
         return this;
     }
+
+    /**
+     * Add a single ResponseParameters entry
+     *
+     * @see RouteResponse#withResponseParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public RouteResponse addResponseParametersEntry(String key, ParameterConstraints value) {
         if (null == this.responseParameters) {

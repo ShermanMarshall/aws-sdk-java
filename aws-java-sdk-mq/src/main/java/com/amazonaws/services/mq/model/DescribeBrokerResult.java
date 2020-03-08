@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -68,12 +68,19 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
      * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
      */
     private String pendingEngineVersion;
+    /**
+     * The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     */
+    private String pendingHostInstanceType;
     /** The list of pending security groups to authorize connections to brokers. */
     private java.util.List<String> pendingSecurityGroups;
     /** Required. Enables connections from applications outside of the VPC that hosts the broker's subnets. */
     private Boolean publiclyAccessible;
-    /** The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers. */
+    /** The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers. */
     private java.util.List<String> securityGroups;
+    /** The broker's storage type. */
+    private String storageType;
     /**
      * The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different
      * Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An
@@ -751,6 +758,46 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
+     * The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     * 
+     * @param pendingHostInstanceType
+     *        The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     *        https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     */
+
+    public void setPendingHostInstanceType(String pendingHostInstanceType) {
+        this.pendingHostInstanceType = pendingHostInstanceType;
+    }
+
+    /**
+     * The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     * 
+     * @return The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     *         https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     */
+
+    public String getPendingHostInstanceType() {
+        return this.pendingHostInstanceType;
+    }
+
+    /**
+     * The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     * 
+     * @param pendingHostInstanceType
+     *        The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     *        https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeBrokerResult withPendingHostInstanceType(String pendingHostInstanceType) {
+        setPendingHostInstanceType(pendingHostInstanceType);
+        return this;
+    }
+
+    /**
      * The list of pending security groups to authorize connections to brokers.
      * 
      * @return The list of pending security groups to authorize connections to brokers.
@@ -857,9 +904,9 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
-     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * 
-     * @return The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * @return The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      */
 
     public java.util.List<String> getSecurityGroups() {
@@ -867,10 +914,10 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
-     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * 
      * @param securityGroups
-     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      */
 
     public void setSecurityGroups(java.util.Collection<String> securityGroups) {
@@ -883,7 +930,7 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
-     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setSecurityGroups(java.util.Collection)} or {@link #withSecurityGroups(java.util.Collection)} if you want
@@ -891,7 +938,7 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
      * </p>
      * 
      * @param securityGroups
-     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -906,15 +953,66 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
     }
 
     /**
-     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * 
      * @param securityGroups
-     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeBrokerResult withSecurityGroups(java.util.Collection<String> securityGroups) {
         setSecurityGroups(securityGroups);
+        return this;
+    }
+
+    /**
+     * The broker's storage type.
+     * 
+     * @param storageType
+     *        The broker's storage type.
+     * @see BrokerStorageType
+     */
+
+    public void setStorageType(String storageType) {
+        this.storageType = storageType;
+    }
+
+    /**
+     * The broker's storage type.
+     * 
+     * @return The broker's storage type.
+     * @see BrokerStorageType
+     */
+
+    public String getStorageType() {
+        return this.storageType;
+    }
+
+    /**
+     * The broker's storage type.
+     * 
+     * @param storageType
+     *        The broker's storage type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see BrokerStorageType
+     */
+
+    public DescribeBrokerResult withStorageType(String storageType) {
+        setStorageType(storageType);
+        return this;
+    }
+
+    /**
+     * The broker's storage type.
+     * 
+     * @param storageType
+     *        The broker's storage type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see BrokerStorageType
+     */
+
+    public DescribeBrokerResult withStorageType(BrokerStorageType storageType) {
+        this.storageType = storageType.toString();
         return this;
     }
 
@@ -1029,6 +1127,13 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see DescribeBrokerResult#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public DescribeBrokerResult addTagsEntry(String key, String value) {
         if (null == this.tags) {
@@ -1157,12 +1262,16 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
             sb.append("MaintenanceWindowStartTime: ").append(getMaintenanceWindowStartTime()).append(",");
         if (getPendingEngineVersion() != null)
             sb.append("PendingEngineVersion: ").append(getPendingEngineVersion()).append(",");
+        if (getPendingHostInstanceType() != null)
+            sb.append("PendingHostInstanceType: ").append(getPendingHostInstanceType()).append(",");
         if (getPendingSecurityGroups() != null)
             sb.append("PendingSecurityGroups: ").append(getPendingSecurityGroups()).append(",");
         if (getPubliclyAccessible() != null)
             sb.append("PubliclyAccessible: ").append(getPubliclyAccessible()).append(",");
         if (getSecurityGroups() != null)
             sb.append("SecurityGroups: ").append(getSecurityGroups()).append(",");
+        if (getStorageType() != null)
+            sb.append("StorageType: ").append(getStorageType()).append(",");
         if (getSubnetIds() != null)
             sb.append("SubnetIds: ").append(getSubnetIds()).append(",");
         if (getTags() != null)
@@ -1247,6 +1356,10 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
             return false;
         if (other.getPendingEngineVersion() != null && other.getPendingEngineVersion().equals(this.getPendingEngineVersion()) == false)
             return false;
+        if (other.getPendingHostInstanceType() == null ^ this.getPendingHostInstanceType() == null)
+            return false;
+        if (other.getPendingHostInstanceType() != null && other.getPendingHostInstanceType().equals(this.getPendingHostInstanceType()) == false)
+            return false;
         if (other.getPendingSecurityGroups() == null ^ this.getPendingSecurityGroups() == null)
             return false;
         if (other.getPendingSecurityGroups() != null && other.getPendingSecurityGroups().equals(this.getPendingSecurityGroups()) == false)
@@ -1258,6 +1371,10 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
         if (other.getSecurityGroups() == null ^ this.getSecurityGroups() == null)
             return false;
         if (other.getSecurityGroups() != null && other.getSecurityGroups().equals(this.getSecurityGroups()) == false)
+            return false;
+        if (other.getStorageType() == null ^ this.getStorageType() == null)
+            return false;
+        if (other.getStorageType() != null && other.getStorageType().equals(this.getStorageType()) == false)
             return false;
         if (other.getSubnetIds() == null ^ this.getSubnetIds() == null)
             return false;
@@ -1295,9 +1412,11 @@ public class DescribeBrokerResult extends com.amazonaws.AmazonWebServiceResult<c
         hashCode = prime * hashCode + ((getLogs() == null) ? 0 : getLogs().hashCode());
         hashCode = prime * hashCode + ((getMaintenanceWindowStartTime() == null) ? 0 : getMaintenanceWindowStartTime().hashCode());
         hashCode = prime * hashCode + ((getPendingEngineVersion() == null) ? 0 : getPendingEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getPendingHostInstanceType() == null) ? 0 : getPendingHostInstanceType().hashCode());
         hashCode = prime * hashCode + ((getPendingSecurityGroups() == null) ? 0 : getPendingSecurityGroups().hashCode());
         hashCode = prime * hashCode + ((getPubliclyAccessible() == null) ? 0 : getPubliclyAccessible().hashCode());
         hashCode = prime * hashCode + ((getSecurityGroups() == null) ? 0 : getSecurityGroups().hashCode());
+        hashCode = prime * hashCode + ((getStorageType() == null) ? 0 : getStorageType().hashCode());
         hashCode = prime * hashCode + ((getSubnetIds() == null) ? 0 : getSubnetIds().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getUsers() == null) ? 0 : getUsers().hashCode());

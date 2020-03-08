@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -22,7 +22,10 @@ public enum ProductionVariantAcceleratorType {
 
     MlEia1Medium("ml.eia1.medium"),
     MlEia1Large("ml.eia1.large"),
-    MlEia1Xlarge("ml.eia1.xlarge");
+    MlEia1Xlarge("ml.eia1.xlarge"),
+    MlEia2Medium("ml.eia2.medium"),
+    MlEia2Large("ml.eia2.large"),
+    MlEia2Xlarge("ml.eia2.xlarge");
 
     private String value;
 

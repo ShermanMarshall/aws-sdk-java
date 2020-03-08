@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,6 +42,8 @@ public class InstanceDetailsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("instanceState").build();
     private static final MarshallingInfo<String> INSTANCETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("instanceType").build();
+    private static final MarshallingInfo<String> OUTPOSTARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("outpostArn").build();
     private static final MarshallingInfo<String> LAUNCHTIME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("launchTime").build();
     private static final MarshallingInfo<List> NETWORKINTERFACES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
@@ -76,6 +78,7 @@ public class InstanceDetailsMarshaller {
             protocolMarshaller.marshall(instanceDetails.getInstanceId(), INSTANCEID_BINDING);
             protocolMarshaller.marshall(instanceDetails.getInstanceState(), INSTANCESTATE_BINDING);
             protocolMarshaller.marshall(instanceDetails.getInstanceType(), INSTANCETYPE_BINDING);
+            protocolMarshaller.marshall(instanceDetails.getOutpostArn(), OUTPOSTARN_BINDING);
             protocolMarshaller.marshall(instanceDetails.getLaunchTime(), LAUNCHTIME_BINDING);
             protocolMarshaller.marshall(instanceDetails.getNetworkInterfaces(), NETWORKINTERFACES_BINDING);
             protocolMarshaller.marshall(instanceDetails.getPlatform(), PLATFORM_BINDING);

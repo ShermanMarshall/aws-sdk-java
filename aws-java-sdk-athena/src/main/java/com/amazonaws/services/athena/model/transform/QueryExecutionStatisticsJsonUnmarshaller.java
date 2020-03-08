@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,26 @@ public class QueryExecutionStatisticsJsonUnmarshaller implements Unmarshaller<Qu
                 if (context.testExpression("DataScannedInBytes", targetDepth)) {
                     context.nextToken();
                     queryExecutionStatistics.setDataScannedInBytes(context.getUnmarshaller(Long.class).unmarshall(context));
+                }
+                if (context.testExpression("DataManifestLocation", targetDepth)) {
+                    context.nextToken();
+                    queryExecutionStatistics.setDataManifestLocation(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("TotalExecutionTimeInMillis", targetDepth)) {
+                    context.nextToken();
+                    queryExecutionStatistics.setTotalExecutionTimeInMillis(context.getUnmarshaller(Long.class).unmarshall(context));
+                }
+                if (context.testExpression("QueryQueueTimeInMillis", targetDepth)) {
+                    context.nextToken();
+                    queryExecutionStatistics.setQueryQueueTimeInMillis(context.getUnmarshaller(Long.class).unmarshall(context));
+                }
+                if (context.testExpression("QueryPlanningTimeInMillis", targetDepth)) {
+                    context.nextToken();
+                    queryExecutionStatistics.setQueryPlanningTimeInMillis(context.getUnmarshaller(Long.class).unmarshall(context));
+                }
+                if (context.testExpression("ServiceProcessingTimeInMillis", targetDepth)) {
+                    context.nextToken();
+                    queryExecutionStatistics.setServiceProcessingTimeInMillis(context.getUnmarshaller(Long.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -413,6 +413,37 @@ public interface AWSKafkaAsync extends AWSKafka {
 
     /**
      * <p>
+     * Returns a list of Kafka versions.
+     * </p>
+     * 
+     * @param listKafkaVersionsRequest
+     * @return A Java Future containing the result of the ListKafkaVersions operation returned by the service.
+     * @sample AWSKafkaAsync.ListKafkaVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/ListKafkaVersions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListKafkaVersionsResult> listKafkaVersionsAsync(ListKafkaVersionsRequest listKafkaVersionsRequest);
+
+    /**
+     * <p>
+     * Returns a list of Kafka versions.
+     * </p>
+     * 
+     * @param listKafkaVersionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListKafkaVersions operation returned by the service.
+     * @sample AWSKafkaAsyncHandler.ListKafkaVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/ListKafkaVersions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListKafkaVersionsResult> listKafkaVersionsAsync(ListKafkaVersionsRequest listKafkaVersionsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListKafkaVersionsRequest, ListKafkaVersionsResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a list of the broker nodes in the cluster.
      * </p>
      * 
@@ -537,6 +568,37 @@ public interface AWSKafkaAsync extends AWSKafka {
 
     /**
      * <p>
+     * Updates the number of broker nodes in the cluster.
+     * </p>
+     * 
+     * @param updateBrokerCountRequest
+     * @return A Java Future containing the result of the UpdateBrokerCount operation returned by the service.
+     * @sample AWSKafkaAsync.UpdateBrokerCount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/UpdateBrokerCount" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateBrokerCountResult> updateBrokerCountAsync(UpdateBrokerCountRequest updateBrokerCountRequest);
+
+    /**
+     * <p>
+     * Updates the number of broker nodes in the cluster.
+     * </p>
+     * 
+     * @param updateBrokerCountRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateBrokerCount operation returned by the service.
+     * @sample AWSKafkaAsyncHandler.UpdateBrokerCount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/UpdateBrokerCount" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateBrokerCountResult> updateBrokerCountAsync(UpdateBrokerCountRequest updateBrokerCountRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateBrokerCountRequest, UpdateBrokerCountResult> asyncHandler);
+
+    /**
+     * <p>
      * Updates the EBS storage associated with MSK brokers.
      * </p>
      * 
@@ -598,5 +660,42 @@ public interface AWSKafkaAsync extends AWSKafka {
     java.util.concurrent.Future<UpdateClusterConfigurationResult> updateClusterConfigurationAsync(
             UpdateClusterConfigurationRequest updateClusterConfigurationRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateClusterConfigurationRequest, UpdateClusterConfigurationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics
+     * you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with
+     * Prometheus.
+     * </p>
+     * 
+     * @param updateMonitoringRequest
+     *        Request body for UpdateMonitoring.
+     * @return A Java Future containing the result of the UpdateMonitoring operation returned by the service.
+     * @sample AWSKafkaAsync.UpdateMonitoring
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/UpdateMonitoring" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateMonitoringResult> updateMonitoringAsync(UpdateMonitoringRequest updateMonitoringRequest);
+
+    /**
+     * <p>
+     * Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics
+     * you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with
+     * Prometheus.
+     * </p>
+     * 
+     * @param updateMonitoringRequest
+     *        Request body for UpdateMonitoring.
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateMonitoring operation returned by the service.
+     * @sample AWSKafkaAsyncHandler.UpdateMonitoring
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kafka-2018-11-14/UpdateMonitoring" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateMonitoringResult> updateMonitoringAsync(UpdateMonitoringRequest updateMonitoringRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateMonitoringRequest, UpdateMonitoringResult> asyncHandler);
 
 }

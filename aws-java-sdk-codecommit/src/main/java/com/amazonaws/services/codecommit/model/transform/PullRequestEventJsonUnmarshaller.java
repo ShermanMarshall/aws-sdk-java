@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -82,6 +82,19 @@ public class PullRequestEventJsonUnmarshaller implements Unmarshaller<PullReques
                     context.nextToken();
                     pullRequestEvent.setPullRequestMergedStateChangedEventMetadata(PullRequestMergedStateChangedEventMetadataJsonUnmarshaller.getInstance()
                             .unmarshall(context));
+                }
+                if (context.testExpression("approvalRuleEventMetadata", targetDepth)) {
+                    context.nextToken();
+                    pullRequestEvent.setApprovalRuleEventMetadata(ApprovalRuleEventMetadataJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("approvalStateChangedEventMetadata", targetDepth)) {
+                    context.nextToken();
+                    pullRequestEvent.setApprovalStateChangedEventMetadata(ApprovalStateChangedEventMetadataJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("approvalRuleOverriddenEventMetadata", targetDepth)) {
+                    context.nextToken();
+                    pullRequestEvent.setApprovalRuleOverriddenEventMetadata(ApprovalRuleOverriddenEventMetadataJsonUnmarshaller.getInstance().unmarshall(
+                            context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,8 +44,8 @@ public class GCMChannelResponse implements Serializable, Cloneable, StructuredPo
     private String creationDate;
     /**
      * <p>
-     * The API key, also referred to as a <i>server key</i>, that you received from Google to communicate with Google
-     * services.
+     * The Web API Key, also referred to as an <i>API_KEY</i> or <i>server key</i>, that you received from Google to
+     * communicate with Google services.
      * </p>
      */
     private String credential;
@@ -180,13 +180,13 @@ public class GCMChannelResponse implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The API key, also referred to as a <i>server key</i>, that you received from Google to communicate with Google
-     * services.
+     * The Web API Key, also referred to as an <i>API_KEY</i> or <i>server key</i>, that you received from Google to
+     * communicate with Google services.
      * </p>
      * 
      * @param credential
-     *        The API key, also referred to as a <i>server key</i>, that you received from Google to communicate with
-     *        Google services.
+     *        The Web API Key, also referred to as an <i>API_KEY</i> or <i>server key</i>, that you received from Google
+     *        to communicate with Google services.
      */
 
     public void setCredential(String credential) {
@@ -195,12 +195,12 @@ public class GCMChannelResponse implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The API key, also referred to as a <i>server key</i>, that you received from Google to communicate with Google
-     * services.
+     * The Web API Key, also referred to as an <i>API_KEY</i> or <i>server key</i>, that you received from Google to
+     * communicate with Google services.
      * </p>
      * 
-     * @return The API key, also referred to as a <i>server key</i>, that you received from Google to communicate with
-     *         Google services.
+     * @return The Web API Key, also referred to as an <i>API_KEY</i> or <i>server key</i>, that you received from
+     *         Google to communicate with Google services.
      */
 
     public String getCredential() {
@@ -209,13 +209,13 @@ public class GCMChannelResponse implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The API key, also referred to as a <i>server key</i>, that you received from Google to communicate with Google
-     * services.
+     * The Web API Key, also referred to as an <i>API_KEY</i> or <i>server key</i>, that you received from Google to
+     * communicate with Google services.
      * </p>
      * 
      * @param credential
-     *        The API key, also referred to as a <i>server key</i>, that you received from Google to communicate with
-     *        Google services.
+     *        The Web API Key, also referred to as an <i>API_KEY</i> or <i>server key</i>, that you received from Google
+     *        to communicate with Google services.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

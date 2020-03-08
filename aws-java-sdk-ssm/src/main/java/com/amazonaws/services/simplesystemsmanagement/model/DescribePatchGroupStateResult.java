@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,6 +41,13 @@ public class DescribePatchGroupStateResult extends com.amazonaws.AmazonWebServic
      * </p>
      */
     private Integer instancesWithInstalledOtherPatches;
+    /**
+     * <p>
+     * The number of instances with patches installed by Patch Manager that have not been rebooted after the patch
+     * installation. The status of these instances is NON_COMPLIANT.
+     * </p>
+     */
+    private Integer instancesWithInstalledPendingRebootPatches;
     /**
      * <p>
      * The number of instances with patches installed that are specified in a RejectedPatches list. Patches with a
@@ -197,6 +204,52 @@ public class DescribePatchGroupStateResult extends com.amazonaws.AmazonWebServic
 
     public DescribePatchGroupStateResult withInstancesWithInstalledOtherPatches(Integer instancesWithInstalledOtherPatches) {
         setInstancesWithInstalledOtherPatches(instancesWithInstalledOtherPatches);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of instances with patches installed by Patch Manager that have not been rebooted after the patch
+     * installation. The status of these instances is NON_COMPLIANT.
+     * </p>
+     * 
+     * @param instancesWithInstalledPendingRebootPatches
+     *        The number of instances with patches installed by Patch Manager that have not been rebooted after the
+     *        patch installation. The status of these instances is NON_COMPLIANT.
+     */
+
+    public void setInstancesWithInstalledPendingRebootPatches(Integer instancesWithInstalledPendingRebootPatches) {
+        this.instancesWithInstalledPendingRebootPatches = instancesWithInstalledPendingRebootPatches;
+    }
+
+    /**
+     * <p>
+     * The number of instances with patches installed by Patch Manager that have not been rebooted after the patch
+     * installation. The status of these instances is NON_COMPLIANT.
+     * </p>
+     * 
+     * @return The number of instances with patches installed by Patch Manager that have not been rebooted after the
+     *         patch installation. The status of these instances is NON_COMPLIANT.
+     */
+
+    public Integer getInstancesWithInstalledPendingRebootPatches() {
+        return this.instancesWithInstalledPendingRebootPatches;
+    }
+
+    /**
+     * <p>
+     * The number of instances with patches installed by Patch Manager that have not been rebooted after the patch
+     * installation. The status of these instances is NON_COMPLIANT.
+     * </p>
+     * 
+     * @param instancesWithInstalledPendingRebootPatches
+     *        The number of instances with patches installed by Patch Manager that have not been rebooted after the
+     *        patch installation. The status of these instances is NON_COMPLIANT.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribePatchGroupStateResult withInstancesWithInstalledPendingRebootPatches(Integer instancesWithInstalledPendingRebootPatches) {
+        setInstancesWithInstalledPendingRebootPatches(instancesWithInstalledPendingRebootPatches);
         return this;
     }
 
@@ -463,6 +516,8 @@ public class DescribePatchGroupStateResult extends com.amazonaws.AmazonWebServic
             sb.append("InstancesWithInstalledPatches: ").append(getInstancesWithInstalledPatches()).append(",");
         if (getInstancesWithInstalledOtherPatches() != null)
             sb.append("InstancesWithInstalledOtherPatches: ").append(getInstancesWithInstalledOtherPatches()).append(",");
+        if (getInstancesWithInstalledPendingRebootPatches() != null)
+            sb.append("InstancesWithInstalledPendingRebootPatches: ").append(getInstancesWithInstalledPendingRebootPatches()).append(",");
         if (getInstancesWithInstalledRejectedPatches() != null)
             sb.append("InstancesWithInstalledRejectedPatches: ").append(getInstancesWithInstalledRejectedPatches()).append(",");
         if (getInstancesWithMissingPatches() != null)
@@ -501,6 +556,11 @@ public class DescribePatchGroupStateResult extends com.amazonaws.AmazonWebServic
         if (other.getInstancesWithInstalledOtherPatches() != null
                 && other.getInstancesWithInstalledOtherPatches().equals(this.getInstancesWithInstalledOtherPatches()) == false)
             return false;
+        if (other.getInstancesWithInstalledPendingRebootPatches() == null ^ this.getInstancesWithInstalledPendingRebootPatches() == null)
+            return false;
+        if (other.getInstancesWithInstalledPendingRebootPatches() != null
+                && other.getInstancesWithInstalledPendingRebootPatches().equals(this.getInstancesWithInstalledPendingRebootPatches()) == false)
+            return false;
         if (other.getInstancesWithInstalledRejectedPatches() == null ^ this.getInstancesWithInstalledRejectedPatches() == null)
             return false;
         if (other.getInstancesWithInstalledRejectedPatches() != null
@@ -535,6 +595,8 @@ public class DescribePatchGroupStateResult extends com.amazonaws.AmazonWebServic
         hashCode = prime * hashCode + ((getInstances() == null) ? 0 : getInstances().hashCode());
         hashCode = prime * hashCode + ((getInstancesWithInstalledPatches() == null) ? 0 : getInstancesWithInstalledPatches().hashCode());
         hashCode = prime * hashCode + ((getInstancesWithInstalledOtherPatches() == null) ? 0 : getInstancesWithInstalledOtherPatches().hashCode());
+        hashCode = prime * hashCode
+                + ((getInstancesWithInstalledPendingRebootPatches() == null) ? 0 : getInstancesWithInstalledPendingRebootPatches().hashCode());
         hashCode = prime * hashCode + ((getInstancesWithInstalledRejectedPatches() == null) ? 0 : getInstancesWithInstalledRejectedPatches().hashCode());
         hashCode = prime * hashCode + ((getInstancesWithMissingPatches() == null) ? 0 : getInstancesWithMissingPatches().hashCode());
         hashCode = prime * hashCode + ((getInstancesWithFailedPatches() == null) ? 0 : getInstancesWithFailedPatches().hashCode());

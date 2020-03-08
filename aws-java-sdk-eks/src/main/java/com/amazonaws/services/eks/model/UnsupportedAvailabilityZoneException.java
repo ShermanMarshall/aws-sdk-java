@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,12 @@ public class UnsupportedAvailabilityZoneException extends com.amazonaws.services
      * </p>
      */
     private String clusterName;
+    /**
+     * <p>
+     * The Amazon EKS managed node group associated with the exception.
+     * </p>
+     */
+    private String nodegroupName;
     /**
      * <p>
      * The supported Availability Zones for your account. Choose subnets in these Availability Zones for your cluster.
@@ -87,6 +93,48 @@ public class UnsupportedAvailabilityZoneException extends com.amazonaws.services
 
     public UnsupportedAvailabilityZoneException withClusterName(String clusterName) {
         setClusterName(clusterName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon EKS managed node group associated with the exception.
+     * </p>
+     * 
+     * @param nodegroupName
+     *        The Amazon EKS managed node group associated with the exception.
+     */
+
+    @com.fasterxml.jackson.annotation.JsonProperty("nodegroupName")
+    public void setNodegroupName(String nodegroupName) {
+        this.nodegroupName = nodegroupName;
+    }
+
+    /**
+     * <p>
+     * The Amazon EKS managed node group associated with the exception.
+     * </p>
+     * 
+     * @return The Amazon EKS managed node group associated with the exception.
+     */
+
+    @com.fasterxml.jackson.annotation.JsonProperty("nodegroupName")
+    public String getNodegroupName() {
+        return this.nodegroupName;
+    }
+
+    /**
+     * <p>
+     * The Amazon EKS managed node group associated with the exception.
+     * </p>
+     * 
+     * @param nodegroupName
+     *        The Amazon EKS managed node group associated with the exception.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UnsupportedAvailabilityZoneException withNodegroupName(String nodegroupName) {
+        setNodegroupName(nodegroupName);
         return this;
     }
 

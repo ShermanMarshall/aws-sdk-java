@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class VpcPeeringConnectionMarshaller {
 
     private static final MarshallingInfo<String> FLEETID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("FleetId").build();
+    private static final MarshallingInfo<String> FLEETARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("FleetArn").build();
     private static final MarshallingInfo<String> IPV4CIDRBLOCK_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IpV4CidrBlock").build();
     private static final MarshallingInfo<String> VPCPEERINGCONNECTIONID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -57,6 +59,7 @@ public class VpcPeeringConnectionMarshaller {
 
         try {
             protocolMarshaller.marshall(vpcPeeringConnection.getFleetId(), FLEETID_BINDING);
+            protocolMarshaller.marshall(vpcPeeringConnection.getFleetArn(), FLEETARN_BINDING);
             protocolMarshaller.marshall(vpcPeeringConnection.getIpV4CidrBlock(), IPV4CIDRBLOCK_BINDING);
             protocolMarshaller.marshall(vpcPeeringConnection.getVpcPeeringConnectionId(), VPCPEERINGCONNECTIONID_BINDING);
             protocolMarshaller.marshall(vpcPeeringConnection.getStatus(), STATUS_BINDING);

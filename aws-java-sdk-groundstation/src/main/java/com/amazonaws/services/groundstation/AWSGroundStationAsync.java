@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -159,7 +159,7 @@ public interface AWSGroundStationAsync extends AWSGroundStation {
      * </p>
      * <p>
      * <code>dataflowEdges</code> is a list of lists of strings. Each lower level list of strings has two elements: a
-     * <i>from ARN</i> and a <i>to ARN</i>.
+     * <i>from</i> ARN and a <i>to</i> ARN.
      * </p>
      * 
      * @param createMissionProfileRequest
@@ -176,7 +176,7 @@ public interface AWSGroundStationAsync extends AWSGroundStation {
      * </p>
      * <p>
      * <code>dataflowEdges</code> is a list of lists of strings. Each lower level list of strings has two elements: a
-     * <i>from ARN</i> and a <i>to ARN</i>.
+     * <i>from</i> ARN and a <i>to</i> ARN.
      * </p>
      * 
      * @param createMissionProfileRequest
@@ -515,7 +515,7 @@ public interface AWSGroundStationAsync extends AWSGroundStation {
      * Returns a list of contacts.
      * </p>
      * <p>
-     * If <code>statusList</code> contains AVAILABLE, the request must include <code>groundstation</code>,
+     * If <code>statusList</code> contains AVAILABLE, the request must include <code>groundStation</code>,
      * <code>missionprofileArn</code>, and <code>satelliteArn</code>.
      * </p>
      * 
@@ -532,7 +532,7 @@ public interface AWSGroundStationAsync extends AWSGroundStation {
      * Returns a list of contacts.
      * </p>
      * <p>
-     * If <code>statusList</code> contains AVAILABLE, the request must include <code>groundstation</code>,
+     * If <code>statusList</code> contains AVAILABLE, the request must include <code>groundStation</code>,
      * <code>missionprofileArn</code>, and <code>satelliteArn</code>.
      * </p>
      * 
@@ -677,7 +677,7 @@ public interface AWSGroundStationAsync extends AWSGroundStation {
 
     /**
      * <p>
-     * Returns a list of tags or a specified resource.
+     * Returns a list of tags for a specified resource.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -690,7 +690,7 @@ public interface AWSGroundStationAsync extends AWSGroundStation {
 
     /**
      * <p>
-     * Returns a list of tags or a specified resource.
+     * Returns a list of tags for a specified resource.
      * </p>
      * 
      * @param listTagsForResourceRequest

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -653,6 +653,13 @@ public class UpdateItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         return this;
     }
 
+    /**
+     * Add a single Key entry
+     *
+     * @see UpdateItemRequest#withKey
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public UpdateItemRequest addKeyEntry(String key, AttributeValue value) {
         if (null == this.key) {
             this.key = new java.util.HashMap<String, AttributeValue>();
@@ -725,6 +732,13 @@ public class UpdateItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         setAttributeUpdates(attributeUpdates);
         return this;
     }
+
+    /**
+     * Add a single AttributeUpdates entry
+     *
+     * @see UpdateItemRequest#withAttributeUpdates
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateItemRequest addAttributeUpdatesEntry(String key, AttributeValueUpdate value) {
         if (null == this.attributeUpdates) {
@@ -801,6 +815,13 @@ public class UpdateItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         setExpected(expected);
         return this;
     }
+
+    /**
+     * Add a single Expected entry
+     *
+     * @see UpdateItemRequest#withExpected
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateItemRequest addExpectedEntry(String key, ExpectedAttributeValue value) {
         if (null == this.expected) {
@@ -2842,6 +2863,13 @@ public class UpdateItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         return this;
     }
 
+    /**
+     * Add a single ExpressionAttributeNames entry
+     *
+     * @see UpdateItemRequest#withExpressionAttributeNames
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public UpdateItemRequest addExpressionAttributeNamesEntry(String key, String value) {
         if (null == this.expressionAttributeNames) {
             this.expressionAttributeNames = new java.util.HashMap<String, String>();
@@ -3046,6 +3074,13 @@ public class UpdateItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         setExpressionAttributeValues(expressionAttributeValues);
         return this;
     }
+
+    /**
+     * Add a single ExpressionAttributeValues entry
+     *
+     * @see UpdateItemRequest#withExpressionAttributeValues
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateItemRequest addExpressionAttributeValuesEntry(String key, AttributeValue value) {
         if (null == this.expressionAttributeValues) {

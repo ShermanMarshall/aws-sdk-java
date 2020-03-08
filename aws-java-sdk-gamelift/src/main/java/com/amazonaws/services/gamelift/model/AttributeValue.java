@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Values for use in <a>Player</a> attribute key:value pairs. This object lets you specify an attribute value using any
+ * Values for use in <a>Player</a> attribute key-value pairs. This object lets you specify an attribute value using any
  * of the valid data types: string, number, string array, or data map. Each <code>AttributeValue</code> object can use
  * only one of the available properties.
  * </p>
@@ -253,6 +253,13 @@ public class AttributeValue implements Serializable, Cloneable, StructuredPojo {
         setSDM(sDM);
         return this;
     }
+
+    /**
+     * Add a single SDM entry
+     *
+     * @see AttributeValue#withSDM
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public AttributeValue addSDMEntry(String key, Double value) {
         if (null == this.sDM) {

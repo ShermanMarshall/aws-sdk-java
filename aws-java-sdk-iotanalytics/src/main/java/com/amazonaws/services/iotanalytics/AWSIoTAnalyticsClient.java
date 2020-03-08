@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -556,9 +556,9 @@ public class AWSIoTAnalyticsClient extends AmazonWebServiceClient implements AWS
 
     /**
      * <p>
-     * Creates a pipeline. A pipeline consumes messages from one or more channels and allows you to process the messages
-     * before storing them in a data store. You must specify both a <code>channel</code> and a <code>datastore</code>
-     * activity and, optionally, as many as 23 additional activities in the <code>pipelineActivities</code> array.
+     * Creates a pipeline. A pipeline consumes messages from a channel and allows you to process the messages before
+     * storing them in a data store. You must specify both a <code>channel</code> and a <code>datastore</code> activity
+     * and, optionally, as many as 23 additional activities in the <code>pipelineActivities</code> array.
      * </p>
      * 
      * @param createPipelineRequest

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,63 +63,15 @@ import com.amazonaws.services.elasticloadbalancingv2.model.transform.*;
  * </p>
  * <p>
  * Elastic Load Balancing supports the following types of load balancers: Application Load Balancers, Network Load
- * Balancers, and Classic Load Balancers.
+ * Balancers, and Classic Load Balancers. This reference covers Application Load Balancers and Network Load Balancers.
  * </p>
  * <p>
  * An Application Load Balancer makes routing and load balancing decisions at the application layer (HTTP/HTTPS). A
  * Network Load Balancer makes routing and load balancing decisions at the transport layer (TCP/TLS). Both Application
  * Load Balancers and Network Load Balancers can route requests to one or more ports on each EC2 instance or container
- * instance in your virtual private cloud (VPC).
- * </p>
- * <p>
- * A Classic Load Balancer makes routing and load balancing decisions either at the transport layer (TCP/SSL) or the
- * application layer (HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more information, see the <a
+ * instance in your virtual private cloud (VPC). For more information, see the <a
  * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/">Elastic Load Balancing User Guide</a>.
  * </p>
- * <p>
- * This reference covers the 2015-12-01 API, which supports Application Load Balancers and Network Load Balancers. The
- * 2012-06-01 API supports Classic Load Balancers.
- * </p>
- * <p>
- * To get started, complete the following tasks:
- * </p>
- * <ol>
- * <li>
- * <p>
- * Create a load balancer using <a>CreateLoadBalancer</a>.
- * </p>
- * </li>
- * <li>
- * <p>
- * Create a target group using <a>CreateTargetGroup</a>.
- * </p>
- * </li>
- * <li>
- * <p>
- * Register targets for the target group using <a>RegisterTargets</a>.
- * </p>
- * </li>
- * <li>
- * <p>
- * Create one or more listeners for your load balancer using <a>CreateListener</a>.
- * </p>
- * </li>
- * </ol>
- * <p>
- * To delete a load balancer and its related resources, complete the following tasks:
- * </p>
- * <ol>
- * <li>
- * <p>
- * Delete the load balancer using <a>DeleteLoadBalancer</a>.
- * </p>
- * </li>
- * <li>
- * <p>
- * Delete the target group using <a>DeleteTargetGroup</a>.
- * </p>
- * </li>
- * </ol>
  * <p>
  * All Elastic Load Balancing operations are idempotent, which means that they complete at most one time. If you repeat
  * an operation, it succeeds.
@@ -341,6 +293,7 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     private void init() {
         exceptionUnmarshallers.add(new UnsupportedProtocolExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new TooManyUniqueTargetGroupsPerLoadBalancerExceptionUnmarshaller());
         exceptionUnmarshallers.add(new AllocationIdNotFoundExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ResourceInUseExceptionUnmarshaller());
         exceptionUnmarshallers.add(new DuplicateTargetGroupNameExceptionUnmarshaller());
@@ -390,7 +343,7 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Adds the specified SSL server certificate to the certificate list for the specified HTTPS listener.
+     * Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener.
      * </p>
      * <p>
      * If the certificate in already in the certificate list, the call is successful but the certificate is not added
@@ -583,6 +536,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *         You've reached the limit on the number of actions per rule.
      * @throws InvalidLoadBalancerActionException
      *         The requested action is not valid.
+     * @throws TooManyUniqueTargetGroupsPerLoadBalancerException
+     *         You've reached the limit on the number of unique target groups per load balancer across all listeners. If
+     *         a target group is used by multiple actions for a load balancer, it is counted as only one use.
      * @sample AmazonElasticLoadBalancing.CreateListener
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateListener"
      *      target="_top">AWS API Documentation</a>
@@ -780,6 +736,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *         You've reached the limit on the number of actions per rule.
      * @throws InvalidLoadBalancerActionException
      *         The requested action is not valid.
+     * @throws TooManyUniqueTargetGroupsPerLoadBalancerException
+     *         You've reached the limit on the number of unique target groups per load balancer across all listeners. If
+     *         a target group is used by multiple actions for a load balancer, it is counted as only one use.
      * @sample AmazonElasticLoadBalancing.CreateRule
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/CreateRule"
      *      target="_top">AWS API Documentation</a>
@@ -1270,7 +1229,7 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Describes the default certificate and the certificate list for the specified HTTPS listener.
+     * Describes the default certificate and the certificate list for the specified HTTPS or TLS listener.
      * </p>
      * <p>
      * If the default certificate is also in the certificate list, it appears twice in the results (once with
@@ -1887,13 +1846,17 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Modifies the specified properties of the specified listener.
+     * Replaces the specified properties of the specified listener. Any properties that you do not specify remain
+     * unchanged.
      * </p>
      * <p>
-     * Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to
-     * HTTP, or from TLS to TCP, removes the security policy and default certificate properties. If you change the
-     * protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy and default certificate
-     * properties.
+     * Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security policy and default certificate
+     * properties. If you change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy
+     * and default certificate properties.
+     * </p>
+     * <p>
+     * To add an item to a list, remove an item from a list, or update an item in a list, you must provide the entire
+     * list. For example, to add an action, specify a list with the current actions plus the new action.
      * </p>
      * 
      * @param modifyListenerRequest
@@ -1928,6 +1891,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *         You've reached the limit on the number of actions per rule.
      * @throws InvalidLoadBalancerActionException
      *         The requested action is not valid.
+     * @throws TooManyUniqueTargetGroupsPerLoadBalancerException
+     *         You've reached the limit on the number of unique target groups per load balancer across all listeners. If
+     *         a target group is used by multiple actions for a load balancer, it is counted as only one use.
      * @sample AmazonElasticLoadBalancing.ModifyListener
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyListener"
      *      target="_top">AWS API Documentation</a>
@@ -2038,10 +2004,11 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Modifies the specified rule.
+     * Replaces the specified properties of the specified rule. Any properties that you do not specify are unchanged.
      * </p>
      * <p>
-     * Any existing properties that you do not modify retain their current values.
+     * To add an item to a list, remove an item from a list, or update an item in a list, you must provide the entire
+     * list. For example, to add an action, specify a list with the current actions plus the new action.
      * </p>
      * <p>
      * To modify the actions for the default rule, use <a>ModifyListener</a>.
@@ -2069,6 +2036,9 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
      *         You've reached the limit on the number of actions per rule.
      * @throws InvalidLoadBalancerActionException
      *         The requested action is not valid.
+     * @throws TooManyUniqueTargetGroupsPerLoadBalancerException
+     *         You've reached the limit on the number of unique target groups per load balancer across all listeners. If
+     *         a target group is used by multiple actions for a load balancer, it is counted as only one use.
      * @sample AmazonElasticLoadBalancing.ModifyRule
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/ModifyRule"
      *      target="_top">AWS API Documentation</a>
@@ -2312,7 +2282,7 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Removes the specified certificate from the certificate list for the specified HTTPS listener.
+     * Removes the specified certificate from the certificate list for the specified HTTPS or TLS listener.
      * </p>
      * <p>
      * You can't remove the default certificate for a listener. To replace the default certificate, call
@@ -2628,11 +2598,12 @@ public class AmazonElasticLoadBalancingClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer. The
-     * specified subnets replace the previously enabled subnets.
+     * Enables the Availability Zones for the specified public subnets for the specified load balancer. The specified
+     * subnets replace the previously enabled subnets.
      * </p>
      * <p>
-     * You can't change the subnets for a Network Load Balancer.
+     * When you specify subnets for a Network Load Balancer, you must include all subnets that were enabled previously,
+     * with their existing configurations, plus any additional subnets.
      * </p>
      * 
      * @param setSubnetsRequest

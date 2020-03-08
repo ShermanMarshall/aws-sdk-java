@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,10 @@ public class LogsLocationMarshaller {
             .marshallLocationName("deepLink").build();
     private static final MarshallingInfo<String> S3DEEPLINK_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("s3DeepLink").build();
+    private static final MarshallingInfo<String> CLOUDWATCHLOGSARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("cloudWatchLogsArn").build();
+    private static final MarshallingInfo<String> S3LOGSARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("s3LogsArn").build();
     private static final MarshallingInfo<StructuredPojo> CLOUDWATCHLOGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("cloudWatchLogs").build();
     private static final MarshallingInfo<StructuredPojo> S3LOGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -60,6 +64,8 @@ public class LogsLocationMarshaller {
             protocolMarshaller.marshall(logsLocation.getStreamName(), STREAMNAME_BINDING);
             protocolMarshaller.marshall(logsLocation.getDeepLink(), DEEPLINK_BINDING);
             protocolMarshaller.marshall(logsLocation.getS3DeepLink(), S3DEEPLINK_BINDING);
+            protocolMarshaller.marshall(logsLocation.getCloudWatchLogsArn(), CLOUDWATCHLOGSARN_BINDING);
+            protocolMarshaller.marshall(logsLocation.getS3LogsArn(), S3LOGSARN_BINDING);
             protocolMarshaller.marshall(logsLocation.getCloudWatchLogs(), CLOUDWATCHLOGS_BINDING);
             protocolMarshaller.marshall(logsLocation.getS3Logs(), S3LOGS_BINDING);
         } catch (Exception e) {

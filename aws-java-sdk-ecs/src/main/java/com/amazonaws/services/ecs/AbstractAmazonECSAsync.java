@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -24,6 +24,19 @@ import com.amazonaws.services.ecs.model.*;
 public class AbstractAmazonECSAsync extends AbstractAmazonECS implements AmazonECSAsync {
 
     protected AbstractAmazonECSAsync() {
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateCapacityProviderResult> createCapacityProviderAsync(CreateCapacityProviderRequest request) {
+
+        return createCapacityProviderAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateCapacityProviderResult> createCapacityProviderAsync(CreateCapacityProviderRequest request,
+            com.amazonaws.handlers.AsyncHandler<CreateCapacityProviderRequest, CreateCapacityProviderResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
@@ -175,6 +188,19 @@ public class AbstractAmazonECSAsync extends AbstractAmazonECS implements AmazonE
     @Override
     public java.util.concurrent.Future<DeregisterTaskDefinitionResult> deregisterTaskDefinitionAsync(DeregisterTaskDefinitionRequest request,
             com.amazonaws.handlers.AsyncHandler<DeregisterTaskDefinitionRequest, DeregisterTaskDefinitionResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCapacityProvidersResult> describeCapacityProvidersAsync(DescribeCapacityProvidersRequest request) {
+
+        return describeCapacityProvidersAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCapacityProvidersResult> describeCapacityProvidersAsync(DescribeCapacityProvidersRequest request,
+            com.amazonaws.handlers.AsyncHandler<DescribeCapacityProvidersRequest, DescribeCapacityProvidersResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -605,6 +631,19 @@ public class AbstractAmazonECSAsync extends AbstractAmazonECS implements AmazonE
     @Override
     public java.util.concurrent.Future<PutAttributesResult> putAttributesAsync(PutAttributesRequest request,
             com.amazonaws.handlers.AsyncHandler<PutAttributesRequest, PutAttributesResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutClusterCapacityProvidersResult> putClusterCapacityProvidersAsync(PutClusterCapacityProvidersRequest request) {
+
+        return putClusterCapacityProvidersAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutClusterCapacityProvidersResult> putClusterCapacityProvidersAsync(PutClusterCapacityProvidersRequest request,
+            com.amazonaws.handlers.AsyncHandler<PutClusterCapacityProvidersRequest, PutClusterCapacityProvidersResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

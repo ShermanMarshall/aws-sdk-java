@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -178,5 +178,16 @@ public class StringUtilsTest {
         Assert.assertTrue(StringUtils.hasValue("something"));
         Assert.assertFalse(StringUtils.hasValue(null));
         Assert.assertFalse(StringUtils.hasValue(""));
+    }
+
+    @Test
+    public void findFirstOccurrence() {
+        Assert.assertEquals((Character) ':', StringUtils.findFirstOccurrence("abc:def/ghi:jkl/mno", ':', '/'));
+        Assert.assertEquals((Character) ':', StringUtils.findFirstOccurrence("abc:def/ghi:jkl/mno", '/', ':'));
+    }
+
+    @Test
+    public void findFirstOccurrence_NoMatch() {
+        Assert.assertNull(StringUtils.findFirstOccurrence("abc", ':'));
     }
 }

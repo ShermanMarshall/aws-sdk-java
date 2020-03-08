@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -138,6 +138,16 @@ public class AbstractAWSKMS implements AWSKMS {
     }
 
     @Override
+    public GenerateDataKeyPairResult generateDataKeyPair(GenerateDataKeyPairRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GenerateDataKeyPairWithoutPlaintextResult generateDataKeyPairWithoutPlaintext(GenerateDataKeyPairWithoutPlaintextRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GenerateDataKeyWithoutPlaintextResult generateDataKeyWithoutPlaintext(GenerateDataKeyWithoutPlaintextRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -164,6 +174,11 @@ public class AbstractAWSKMS implements AWSKMS {
 
     @Override
     public GetParametersForImportResult getParametersForImport(GetParametersForImportRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetPublicKeyResult getPublicKey(GetPublicKeyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -243,6 +258,11 @@ public class AbstractAWSKMS implements AWSKMS {
     }
 
     @Override
+    public SignResult sign(SignRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public TagResourceResult tagResource(TagResourceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -264,6 +284,11 @@ public class AbstractAWSKMS implements AWSKMS {
 
     @Override
     public UpdateKeyDescriptionResult updateKeyDescription(UpdateKeyDescriptionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public VerifyResult verify(VerifyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

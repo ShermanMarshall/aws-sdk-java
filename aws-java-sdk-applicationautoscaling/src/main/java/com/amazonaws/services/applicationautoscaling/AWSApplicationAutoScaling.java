@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,6 +70,16 @@ import com.amazonaws.services.applicationautoscaling.model.*;
  * Custom resources provided by your own applications or services
  * </p>
  * </li>
+ * <li>
+ * <p>
+ * Amazon Comprehend document classification endpoints
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Lambda function provisioned concurrency
+ * </p>
+ * </li>
  * </ul>
  * <p>
  * <b>API Summary</b>
@@ -116,15 +126,16 @@ public interface AWSApplicationAutoScaling {
      *
      * @see RegionUtils#getRegionsForService(String)
      */
-    String ENDPOINT_PREFIX = "autoscaling";
+    String ENDPOINT_PREFIX = "application-autoscaling";
 
     /**
-     * Overrides the default endpoint for this client ("https://autoscaling.us-east-1.amazonaws.com"). Callers can use
-     * this method to control which AWS region they want to work with.
+     * Overrides the default endpoint for this client ("https://application-autoscaling.us-east-1.amazonaws.com").
+     * Callers can use this method to control which AWS region they want to work with.
      * <p>
-     * Callers can pass in just the endpoint (ex: "autoscaling.us-east-1.amazonaws.com") or a full URL, including the
-     * protocol (ex: "https://autoscaling.us-east-1.amazonaws.com"). If the protocol is not specified here, the default
-     * protocol from this client's {@link ClientConfiguration} will be used, which by default is HTTPS.
+     * Callers can pass in just the endpoint (ex: "application-autoscaling.us-east-1.amazonaws.com") or a full URL,
+     * including the protocol (ex: "https://application-autoscaling.us-east-1.amazonaws.com"). If the protocol is not
+     * specified here, the default protocol from this client's {@link ClientConfiguration} will be used, which by
+     * default is HTTPS.
      * <p>
      * For more information on using AWS regions with the AWS SDK for Java, and a complete list of all available
      * endpoints for all AWS services, see: <a href=
@@ -137,9 +148,9 @@ public interface AWSApplicationAutoScaling {
      * transit or retrying.</b>
      *
      * @param endpoint
-     *        The endpoint (ex: "autoscaling.us-east-1.amazonaws.com") or a full URL, including the protocol (ex:
-     *        "https://autoscaling.us-east-1.amazonaws.com") of the region specific AWS endpoint this client will
-     *        communicate with.
+     *        The endpoint (ex: "application-autoscaling.us-east-1.amazonaws.com") or a full URL, including the protocol
+     *        (ex: "https://application-autoscaling.us-east-1.amazonaws.com") of the region specific AWS endpoint this
+     *        client will communicate with.
      * @deprecated use {@link AwsClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)} for
      *             example:
      *             {@code builder.setEndpointConfiguration(new EndpointConfiguration(endpoint, signingRegion));}
@@ -418,8 +429,8 @@ public interface AWSApplicationAutoScaling {
      * Multiple scaling policies can be in force at the same time for the same scalable target. You can have one or more
      * target tracking scaling policies, one or more step scaling policies, or both. However, there is a chance that
      * multiple policies could conflict, instructing the scalable target to scale out or in at the same time.
-     * Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale in and
-     * scale out. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent,
+     * Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale out and
+     * scale in. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent,
      * and the current capacity is 10, Application Auto Scaling uses the policy with the highest calculated capacity
      * (200% of 10 = 20) and scales out to 30.
      * </p>

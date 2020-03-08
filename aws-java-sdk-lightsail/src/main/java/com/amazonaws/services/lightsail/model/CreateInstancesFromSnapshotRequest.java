@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,17 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
      * The name of the instance snapshot on which you are basing your new instances. Use the get instance snapshots
      * operation to return information about your existing snapshots.
      * </p>
+     * <p>
+     * Constraint:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>source instance name</code> parameter. The
+     * <code>instance snapshot name</code> and <code>source instance name</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String instanceSnapshotName;
     /**
@@ -91,6 +102,94 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
      * </p>
      */
     private java.util.List<Tag> tags;
+    /**
+     * <p>
+     * An array of objects representing the add-ons to enable for the new instance.
+     * </p>
+     */
+    private java.util.List<AddOnRequest> addOns;
+    /**
+     * <p>
+     * The name of the source instance from which the source automatic snapshot was created.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>instance snapshot name</code> parameter. The
+     * <code>source instance name</code> and <code>instance snapshot name</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String sourceInstanceName;
+    /**
+     * <p>
+     * The date of the automatic snapshot to use for the new instance. Use the <code>get auto snapshots</code> operation
+     * to identify the dates of the available automatic snapshots.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Must be specified in <code>YYYY-MM-DD</code> format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>use latest restorable auto snapshot</code> parameter.
+     * The <code>restore date</code> and <code>use latest restorable auto snapshot</code> parameters are mutually
+     * exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String restoreDate;
+    /**
+     * <p>
+     * A Boolean value to indicate whether to use the latest available automatic snapshot.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     * <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private Boolean useLatestRestorableAutoSnapshot;
 
     /**
      * <p>
@@ -202,6 +301,13 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
         return this;
     }
 
+    /**
+     * Add a single AttachedDiskMapping entry
+     *
+     * @see CreateInstancesFromSnapshotRequest#withAttachedDiskMapping
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public CreateInstancesFromSnapshotRequest addAttachedDiskMappingEntry(String key, java.util.List<DiskMap> value) {
         if (null == this.attachedDiskMapping) {
             this.attachedDiskMapping = new java.util.HashMap<String, java.util.List<DiskMap>>();
@@ -286,10 +392,32 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
      * The name of the instance snapshot on which you are basing your new instances. Use the get instance snapshots
      * operation to return information about your existing snapshots.
      * </p>
+     * <p>
+     * Constraint:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>source instance name</code> parameter. The
+     * <code>instance snapshot name</code> and <code>source instance name</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param instanceSnapshotName
      *        The name of the instance snapshot on which you are basing your new instances. Use the get instance
-     *        snapshots operation to return information about your existing snapshots.
+     *        snapshots operation to return information about your existing snapshots.</p>
+     *        <p>
+     *        Constraint:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        This parameter cannot be defined together with the <code>source instance name</code> parameter. The
+     *        <code>instance snapshot name</code> and <code>source instance name</code> parameters are mutually
+     *        exclusive.
+     *        </p>
+     *        </li>
      */
 
     public void setInstanceSnapshotName(String instanceSnapshotName) {
@@ -301,9 +429,31 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
      * The name of the instance snapshot on which you are basing your new instances. Use the get instance snapshots
      * operation to return information about your existing snapshots.
      * </p>
+     * <p>
+     * Constraint:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>source instance name</code> parameter. The
+     * <code>instance snapshot name</code> and <code>source instance name</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return The name of the instance snapshot on which you are basing your new instances. Use the get instance
-     *         snapshots operation to return information about your existing snapshots.
+     *         snapshots operation to return information about your existing snapshots.</p>
+     *         <p>
+     *         Constraint:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         This parameter cannot be defined together with the <code>source instance name</code> parameter. The
+     *         <code>instance snapshot name</code> and <code>source instance name</code> parameters are mutually
+     *         exclusive.
+     *         </p>
+     *         </li>
      */
 
     public String getInstanceSnapshotName() {
@@ -315,10 +465,32 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
      * The name of the instance snapshot on which you are basing your new instances. Use the get instance snapshots
      * operation to return information about your existing snapshots.
      * </p>
+     * <p>
+     * Constraint:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>source instance name</code> parameter. The
+     * <code>instance snapshot name</code> and <code>source instance name</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param instanceSnapshotName
      *        The name of the instance snapshot on which you are basing your new instances. Use the get instance
-     *        snapshots operation to return information about your existing snapshots.
+     *        snapshots operation to return information about your existing snapshots.</p>
+     *        <p>
+     *        Constraint:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        This parameter cannot be defined together with the <code>source instance name</code> parameter. The
+     *        <code>instance snapshot name</code> and <code>source instance name</code> parameters are mutually
+     *        exclusive.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -598,6 +770,627 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
     }
 
     /**
+     * <p>
+     * An array of objects representing the add-ons to enable for the new instance.
+     * </p>
+     * 
+     * @return An array of objects representing the add-ons to enable for the new instance.
+     */
+
+    public java.util.List<AddOnRequest> getAddOns() {
+        return addOns;
+    }
+
+    /**
+     * <p>
+     * An array of objects representing the add-ons to enable for the new instance.
+     * </p>
+     * 
+     * @param addOns
+     *        An array of objects representing the add-ons to enable for the new instance.
+     */
+
+    public void setAddOns(java.util.Collection<AddOnRequest> addOns) {
+        if (addOns == null) {
+            this.addOns = null;
+            return;
+        }
+
+        this.addOns = new java.util.ArrayList<AddOnRequest>(addOns);
+    }
+
+    /**
+     * <p>
+     * An array of objects representing the add-ons to enable for the new instance.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAddOns(java.util.Collection)} or {@link #withAddOns(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param addOns
+     *        An array of objects representing the add-ons to enable for the new instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateInstancesFromSnapshotRequest withAddOns(AddOnRequest... addOns) {
+        if (this.addOns == null) {
+            setAddOns(new java.util.ArrayList<AddOnRequest>(addOns.length));
+        }
+        for (AddOnRequest ele : addOns) {
+            this.addOns.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of objects representing the add-ons to enable for the new instance.
+     * </p>
+     * 
+     * @param addOns
+     *        An array of objects representing the add-ons to enable for the new instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateInstancesFromSnapshotRequest withAddOns(java.util.Collection<AddOnRequest> addOns) {
+        setAddOns(addOns);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the source instance from which the source automatic snapshot was created.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>instance snapshot name</code> parameter. The
+     * <code>source instance name</code> and <code>instance snapshot name</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param sourceInstanceName
+     *        The name of the source instance from which the source automatic snapshot was created.</p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        This parameter cannot be defined together with the <code>instance snapshot name</code> parameter. The
+     *        <code>source instance name</code> and <code>instance snapshot name</code> parameters are mutually
+     *        exclusive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *        see the <a href=
+     *        "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *        >Lightsail Dev Guide</a>.
+     *        </p>
+     *        </li>
+     */
+
+    public void setSourceInstanceName(String sourceInstanceName) {
+        this.sourceInstanceName = sourceInstanceName;
+    }
+
+    /**
+     * <p>
+     * The name of the source instance from which the source automatic snapshot was created.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>instance snapshot name</code> parameter. The
+     * <code>source instance name</code> and <code>instance snapshot name</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The name of the source instance from which the source automatic snapshot was created.</p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         This parameter cannot be defined together with the <code>instance snapshot name</code> parameter. The
+     *         <code>source instance name</code> and <code>instance snapshot name</code> parameters are mutually
+     *         exclusive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *         see the <a href=
+     *         "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *         >Lightsail Dev Guide</a>.
+     *         </p>
+     *         </li>
+     */
+
+    public String getSourceInstanceName() {
+        return this.sourceInstanceName;
+    }
+
+    /**
+     * <p>
+     * The name of the source instance from which the source automatic snapshot was created.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>instance snapshot name</code> parameter. The
+     * <code>source instance name</code> and <code>instance snapshot name</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param sourceInstanceName
+     *        The name of the source instance from which the source automatic snapshot was created.</p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        This parameter cannot be defined together with the <code>instance snapshot name</code> parameter. The
+     *        <code>source instance name</code> and <code>instance snapshot name</code> parameters are mutually
+     *        exclusive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *        see the <a href=
+     *        "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *        >Lightsail Dev Guide</a>.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateInstancesFromSnapshotRequest withSourceInstanceName(String sourceInstanceName) {
+        setSourceInstanceName(sourceInstanceName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The date of the automatic snapshot to use for the new instance. Use the <code>get auto snapshots</code> operation
+     * to identify the dates of the available automatic snapshots.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Must be specified in <code>YYYY-MM-DD</code> format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>use latest restorable auto snapshot</code> parameter.
+     * The <code>restore date</code> and <code>use latest restorable auto snapshot</code> parameters are mutually
+     * exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param restoreDate
+     *        The date of the automatic snapshot to use for the new instance. Use the <code>get auto snapshots</code>
+     *        operation to identify the dates of the available automatic snapshots.</p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Must be specified in <code>YYYY-MM-DD</code> format.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        This parameter cannot be defined together with the <code>use latest restorable auto snapshot</code>
+     *        parameter. The <code>restore date</code> and <code>use latest restorable auto snapshot</code> parameters
+     *        are mutually exclusive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *        see the <a href=
+     *        "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *        >Lightsail Dev Guide</a>.
+     *        </p>
+     *        </li>
+     */
+
+    public void setRestoreDate(String restoreDate) {
+        this.restoreDate = restoreDate;
+    }
+
+    /**
+     * <p>
+     * The date of the automatic snapshot to use for the new instance. Use the <code>get auto snapshots</code> operation
+     * to identify the dates of the available automatic snapshots.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Must be specified in <code>YYYY-MM-DD</code> format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>use latest restorable auto snapshot</code> parameter.
+     * The <code>restore date</code> and <code>use latest restorable auto snapshot</code> parameters are mutually
+     * exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The date of the automatic snapshot to use for the new instance. Use the <code>get auto snapshots</code>
+     *         operation to identify the dates of the available automatic snapshots.</p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Must be specified in <code>YYYY-MM-DD</code> format.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         This parameter cannot be defined together with the <code>use latest restorable auto snapshot</code>
+     *         parameter. The <code>restore date</code> and <code>use latest restorable auto snapshot</code> parameters
+     *         are mutually exclusive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *         see the <a href=
+     *         "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *         >Lightsail Dev Guide</a>.
+     *         </p>
+     *         </li>
+     */
+
+    public String getRestoreDate() {
+        return this.restoreDate;
+    }
+
+    /**
+     * <p>
+     * The date of the automatic snapshot to use for the new instance. Use the <code>get auto snapshots</code> operation
+     * to identify the dates of the available automatic snapshots.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Must be specified in <code>YYYY-MM-DD</code> format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>use latest restorable auto snapshot</code> parameter.
+     * The <code>restore date</code> and <code>use latest restorable auto snapshot</code> parameters are mutually
+     * exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param restoreDate
+     *        The date of the automatic snapshot to use for the new instance. Use the <code>get auto snapshots</code>
+     *        operation to identify the dates of the available automatic snapshots.</p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Must be specified in <code>YYYY-MM-DD</code> format.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        This parameter cannot be defined together with the <code>use latest restorable auto snapshot</code>
+     *        parameter. The <code>restore date</code> and <code>use latest restorable auto snapshot</code> parameters
+     *        are mutually exclusive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *        see the <a href=
+     *        "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *        >Lightsail Dev Guide</a>.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateInstancesFromSnapshotRequest withRestoreDate(String restoreDate) {
+        setRestoreDate(restoreDate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A Boolean value to indicate whether to use the latest available automatic snapshot.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     * <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param useLatestRestorableAutoSnapshot
+     *        A Boolean value to indicate whether to use the latest available automatic snapshot.</p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     *        <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually
+     *        exclusive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *        see the <a href=
+     *        "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *        >Lightsail Dev Guide</a>.
+     *        </p>
+     *        </li>
+     */
+
+    public void setUseLatestRestorableAutoSnapshot(Boolean useLatestRestorableAutoSnapshot) {
+        this.useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot;
+    }
+
+    /**
+     * <p>
+     * A Boolean value to indicate whether to use the latest available automatic snapshot.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     * <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return A Boolean value to indicate whether to use the latest available automatic snapshot.</p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     *         <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually
+     *         exclusive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *         see the <a href=
+     *         "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *         >Lightsail Dev Guide</a>.
+     *         </p>
+     *         </li>
+     */
+
+    public Boolean getUseLatestRestorableAutoSnapshot() {
+        return this.useLatestRestorableAutoSnapshot;
+    }
+
+    /**
+     * <p>
+     * A Boolean value to indicate whether to use the latest available automatic snapshot.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     * <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param useLatestRestorableAutoSnapshot
+     *        A Boolean value to indicate whether to use the latest available automatic snapshot.</p>
+     *        <p>
+     *        Constraints:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     *        <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually
+     *        exclusive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *        see the <a href=
+     *        "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *        >Lightsail Dev Guide</a>.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateInstancesFromSnapshotRequest withUseLatestRestorableAutoSnapshot(Boolean useLatestRestorableAutoSnapshot) {
+        setUseLatestRestorableAutoSnapshot(useLatestRestorableAutoSnapshot);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A Boolean value to indicate whether to use the latest available automatic snapshot.
+     * </p>
+     * <p>
+     * Constraints:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     * <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually exclusive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Define this parameter only when creating a new instance from an automatic snapshot. For more information, see the
+     * <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return A Boolean value to indicate whether to use the latest available automatic snapshot.</p>
+     *         <p>
+     *         Constraints:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         This parameter cannot be defined together with the <code>restore date</code> parameter. The
+     *         <code>use latest restorable auto snapshot</code> and <code>restore date</code> parameters are mutually
+     *         exclusive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Define this parameter only when creating a new instance from an automatic snapshot. For more information,
+     *         see the <a href=
+     *         "https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     *         >Lightsail Dev Guide</a>.
+     *         </p>
+     *         </li>
+     */
+
+    public Boolean isUseLatestRestorableAutoSnapshot() {
+        return this.useLatestRestorableAutoSnapshot;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -624,7 +1417,15 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
         if (getKeyPairName() != null)
             sb.append("KeyPairName: ").append(getKeyPairName()).append(",");
         if (getTags() != null)
-            sb.append("Tags: ").append(getTags());
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getAddOns() != null)
+            sb.append("AddOns: ").append(getAddOns()).append(",");
+        if (getSourceInstanceName() != null)
+            sb.append("SourceInstanceName: ").append(getSourceInstanceName()).append(",");
+        if (getRestoreDate() != null)
+            sb.append("RestoreDate: ").append(getRestoreDate()).append(",");
+        if (getUseLatestRestorableAutoSnapshot() != null)
+            sb.append("UseLatestRestorableAutoSnapshot: ").append(getUseLatestRestorableAutoSnapshot());
         sb.append("}");
         return sb.toString();
     }
@@ -671,6 +1472,23 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
+        if (other.getAddOns() == null ^ this.getAddOns() == null)
+            return false;
+        if (other.getAddOns() != null && other.getAddOns().equals(this.getAddOns()) == false)
+            return false;
+        if (other.getSourceInstanceName() == null ^ this.getSourceInstanceName() == null)
+            return false;
+        if (other.getSourceInstanceName() != null && other.getSourceInstanceName().equals(this.getSourceInstanceName()) == false)
+            return false;
+        if (other.getRestoreDate() == null ^ this.getRestoreDate() == null)
+            return false;
+        if (other.getRestoreDate() != null && other.getRestoreDate().equals(this.getRestoreDate()) == false)
+            return false;
+        if (other.getUseLatestRestorableAutoSnapshot() == null ^ this.getUseLatestRestorableAutoSnapshot() == null)
+            return false;
+        if (other.getUseLatestRestorableAutoSnapshot() != null
+                && other.getUseLatestRestorableAutoSnapshot().equals(this.getUseLatestRestorableAutoSnapshot()) == false)
+            return false;
         return true;
     }
 
@@ -687,6 +1505,10 @@ public class CreateInstancesFromSnapshotRequest extends com.amazonaws.AmazonWebS
         hashCode = prime * hashCode + ((getUserData() == null) ? 0 : getUserData().hashCode());
         hashCode = prime * hashCode + ((getKeyPairName() == null) ? 0 : getKeyPairName().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getAddOns() == null) ? 0 : getAddOns().hashCode());
+        hashCode = prime * hashCode + ((getSourceInstanceName() == null) ? 0 : getSourceInstanceName().hashCode());
+        hashCode = prime * hashCode + ((getRestoreDate() == null) ? 0 : getRestoreDate().hashCode());
+        hashCode = prime * hashCode + ((getUseLatestRestorableAutoSnapshot() == null) ? 0 : getUseLatestRestorableAutoSnapshot().hashCode());
         return hashCode;
     }
 

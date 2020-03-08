@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,18 +30,18 @@ public class StopGameSessionPlacementRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Unique identifier for a game session placement to cancel.
+     * A unique identifier for a game session placement to cancel.
      * </p>
      */
     private String placementId;
 
     /**
      * <p>
-     * Unique identifier for a game session placement to cancel.
+     * A unique identifier for a game session placement to cancel.
      * </p>
      * 
      * @param placementId
-     *        Unique identifier for a game session placement to cancel.
+     *        A unique identifier for a game session placement to cancel.
      */
 
     public void setPlacementId(String placementId) {
@@ -50,10 +50,10 @@ public class StopGameSessionPlacementRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Unique identifier for a game session placement to cancel.
+     * A unique identifier for a game session placement to cancel.
      * </p>
      * 
-     * @return Unique identifier for a game session placement to cancel.
+     * @return A unique identifier for a game session placement to cancel.
      */
 
     public String getPlacementId() {
@@ -62,11 +62,11 @@ public class StopGameSessionPlacementRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * Unique identifier for a game session placement to cancel.
+     * A unique identifier for a game session placement to cancel.
      * </p>
      * 
      * @param placementId
-     *        Unique identifier for a game session placement to cancel.
+     *        A unique identifier for a game session placement to cancel.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

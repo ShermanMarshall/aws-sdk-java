@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -154,32 +154,32 @@ public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
      * The settings in JSON format for the DMS transfer type of source endpoint.
      * </p>
      * <p>
-     * Possible attributes include the following:
+     * Possible settings include the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     * <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>bucketName</code> - The name of the S3 bucket to use.
+     * <code>BucketName</code> - The name of the S3 bucket to use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
+     * <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
      * this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this value.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Shorthand syntax for these attributes is as follows:
+     * Shorthand syntax for these settings is as follows:
      * <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      * </p>
      * <p>
-     * JSON syntax for these attributes is as follows:
+     * JSON syntax for these settings is as follows:
      * <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * </p>
      */
@@ -1126,65 +1126,65 @@ public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
      * The settings in JSON format for the DMS transfer type of source endpoint.
      * </p>
      * <p>
-     * Possible attributes include the following:
+     * Possible settings include the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     * <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>bucketName</code> - The name of the S3 bucket to use.
+     * <code>BucketName</code> - The name of the S3 bucket to use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
+     * <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
      * this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this value.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Shorthand syntax for these attributes is as follows:
+     * Shorthand syntax for these settings is as follows:
      * <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      * </p>
      * <p>
-     * JSON syntax for these attributes is as follows:
+     * JSON syntax for these settings is as follows:
      * <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * </p>
      * 
      * @param dmsTransferSettings
      *        The settings in JSON format for the DMS transfer type of source endpoint. </p>
      *        <p>
-     *        Possible attributes include the following:
+     *        Possible settings include the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     *        <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>bucketName</code> - The name of the S3 bucket to use.
+     *        <code>BucketName</code> - The name of the S3 bucket to use.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use
+     *        <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use
      *        GZIP, set this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this
      *        value.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        Shorthand syntax for these attributes is as follows:
+     *        Shorthand syntax for these settings is as follows:
      *        <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      *        </p>
      *        <p>
-     *        JSON syntax for these attributes is as follows:
+     *        JSON syntax for these settings is as follows:
      *        <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      */
 
@@ -1197,64 +1197,64 @@ public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
      * The settings in JSON format for the DMS transfer type of source endpoint.
      * </p>
      * <p>
-     * Possible attributes include the following:
+     * Possible settings include the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     * <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>bucketName</code> - The name of the S3 bucket to use.
+     * <code>BucketName</code> - The name of the S3 bucket to use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
+     * <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
      * this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this value.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Shorthand syntax for these attributes is as follows:
+     * Shorthand syntax for these settings is as follows:
      * <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      * </p>
      * <p>
-     * JSON syntax for these attributes is as follows:
+     * JSON syntax for these settings is as follows:
      * <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * </p>
      * 
      * @return The settings in JSON format for the DMS transfer type of source endpoint. </p>
      *         <p>
-     *         Possible attributes include the following:
+     *         Possible settings include the following:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     *         <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>bucketName</code> - The name of the S3 bucket to use.
+     *         <code>BucketName</code> - The name of the S3 bucket to use.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use
+     *         <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use
      *         GZIP, set this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this
      *         value.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         Shorthand syntax for these attributes is as follows:
+     *         Shorthand syntax for these settings is as follows:
      *         <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      *         </p>
      *         <p>
-     *         JSON syntax for these attributes is as follows:
+     *         JSON syntax for these settings is as follows:
      *         <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      */
 
@@ -1267,65 +1267,65 @@ public class CreateEndpointRequest extends com.amazonaws.AmazonWebServiceRequest
      * The settings in JSON format for the DMS transfer type of source endpoint.
      * </p>
      * <p>
-     * Possible attributes include the following:
+     * Possible settings include the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     * <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>bucketName</code> - The name of the S3 bucket to use.
+     * <code>BucketName</code> - The name of the S3 bucket to use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
+     * <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
      * this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this value.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Shorthand syntax for these attributes is as follows:
+     * Shorthand syntax for these settings is as follows:
      * <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      * </p>
      * <p>
-     * JSON syntax for these attributes is as follows:
+     * JSON syntax for these settings is as follows:
      * <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * </p>
      * 
      * @param dmsTransferSettings
      *        The settings in JSON format for the DMS transfer type of source endpoint. </p>
      *        <p>
-     *        Possible attributes include the following:
+     *        Possible settings include the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     *        <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>bucketName</code> - The name of the S3 bucket to use.
+     *        <code>BucketName</code> - The name of the S3 bucket to use.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use
+     *        <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use
      *        GZIP, set this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this
      *        value.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        Shorthand syntax for these attributes is as follows:
+     *        Shorthand syntax for these settings is as follows:
      *        <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      *        </p>
      *        <p>
-     *        JSON syntax for these attributes is as follows:
+     *        JSON syntax for these settings is as follows:
      *        <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */

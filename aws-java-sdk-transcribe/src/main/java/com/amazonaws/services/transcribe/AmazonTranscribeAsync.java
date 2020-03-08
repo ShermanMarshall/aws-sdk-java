@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -67,6 +67,39 @@ public interface AmazonTranscribeAsync extends AmazonTranscribe {
 
     /**
      * <p>
+     * Creates a new vocabulary filter that you can use to filter words, such as profane words, from the output of a
+     * transcription job.
+     * </p>
+     * 
+     * @param createVocabularyFilterRequest
+     * @return A Java Future containing the result of the CreateVocabularyFilter operation returned by the service.
+     * @sample AmazonTranscribeAsync.CreateVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/CreateVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateVocabularyFilterResult> createVocabularyFilterAsync(CreateVocabularyFilterRequest createVocabularyFilterRequest);
+
+    /**
+     * <p>
+     * Creates a new vocabulary filter that you can use to filter words, such as profane words, from the output of a
+     * transcription job.
+     * </p>
+     * 
+     * @param createVocabularyFilterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateVocabularyFilter operation returned by the service.
+     * @sample AmazonTranscribeAsyncHandler.CreateVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/CreateVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateVocabularyFilterResult> createVocabularyFilterAsync(CreateVocabularyFilterRequest createVocabularyFilterRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateVocabularyFilterRequest, CreateVocabularyFilterResult> asyncHandler);
+
+    /**
+     * <p>
      * Deletes a previously submitted transcription job along with any other generated results such as the
      * transcription, models, and so on.
      * </p>
@@ -131,9 +164,41 @@ public interface AmazonTranscribeAsync extends AmazonTranscribe {
 
     /**
      * <p>
+     * Removes a vocabulary filter.
+     * </p>
+     * 
+     * @param deleteVocabularyFilterRequest
+     * @return A Java Future containing the result of the DeleteVocabularyFilter operation returned by the service.
+     * @sample AmazonTranscribeAsync.DeleteVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/DeleteVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteVocabularyFilterResult> deleteVocabularyFilterAsync(DeleteVocabularyFilterRequest deleteVocabularyFilterRequest);
+
+    /**
+     * <p>
+     * Removes a vocabulary filter.
+     * </p>
+     * 
+     * @param deleteVocabularyFilterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteVocabularyFilter operation returned by the service.
+     * @sample AmazonTranscribeAsyncHandler.DeleteVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/DeleteVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteVocabularyFilterResult> deleteVocabularyFilterAsync(DeleteVocabularyFilterRequest deleteVocabularyFilterRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteVocabularyFilterRequest, DeleteVocabularyFilterResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns information about a transcription job. To see the status of the job, check the
      * <code>TranscriptionJobStatus</code> field. If the status is <code>COMPLETED</code>, the job is finished and you
-     * can find the results at the location specified in the <code>TranscriptionFileUri</code> field.
+     * can find the results at the location specified in the <code>TranscriptFileUri</code> field. If you enable content
+     * redaction, the redacted transcript appears in <code>RedactedTranscriptFileUri</code>.
      * </p>
      * 
      * @param getTranscriptionJobRequest
@@ -148,7 +213,8 @@ public interface AmazonTranscribeAsync extends AmazonTranscribe {
      * <p>
      * Returns information about a transcription job. To see the status of the job, check the
      * <code>TranscriptionJobStatus</code> field. If the status is <code>COMPLETED</code>, the job is finished and you
-     * can find the results at the location specified in the <code>TranscriptionFileUri</code> field.
+     * can find the results at the location specified in the <code>TranscriptFileUri</code> field. If you enable content
+     * redaction, the redacted transcript appears in <code>RedactedTranscriptFileUri</code>.
      * </p>
      * 
      * @param getTranscriptionJobRequest
@@ -194,6 +260,37 @@ public interface AmazonTranscribeAsync extends AmazonTranscribe {
      */
     java.util.concurrent.Future<GetVocabularyResult> getVocabularyAsync(GetVocabularyRequest getVocabularyRequest,
             com.amazonaws.handlers.AsyncHandler<GetVocabularyRequest, GetVocabularyResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about a vocabulary filter.
+     * </p>
+     * 
+     * @param getVocabularyFilterRequest
+     * @return A Java Future containing the result of the GetVocabularyFilter operation returned by the service.
+     * @sample AmazonTranscribeAsync.GetVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/GetVocabularyFilter" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetVocabularyFilterResult> getVocabularyFilterAsync(GetVocabularyFilterRequest getVocabularyFilterRequest);
+
+    /**
+     * <p>
+     * Returns information about a vocabulary filter.
+     * </p>
+     * 
+     * @param getVocabularyFilterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetVocabularyFilter operation returned by the service.
+     * @sample AmazonTranscribeAsyncHandler.GetVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/GetVocabularyFilter" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetVocabularyFilterResult> getVocabularyFilterAsync(GetVocabularyFilterRequest getVocabularyFilterRequest,
+            com.amazonaws.handlers.AsyncHandler<GetVocabularyFilterRequest, GetVocabularyFilterResult> asyncHandler);
 
     /**
      * <p>
@@ -261,6 +358,37 @@ public interface AmazonTranscribeAsync extends AmazonTranscribe {
 
     /**
      * <p>
+     * Gets information about vocabulary filters.
+     * </p>
+     * 
+     * @param listVocabularyFiltersRequest
+     * @return A Java Future containing the result of the ListVocabularyFilters operation returned by the service.
+     * @sample AmazonTranscribeAsync.ListVocabularyFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListVocabularyFilters"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListVocabularyFiltersResult> listVocabularyFiltersAsync(ListVocabularyFiltersRequest listVocabularyFiltersRequest);
+
+    /**
+     * <p>
+     * Gets information about vocabulary filters.
+     * </p>
+     * 
+     * @param listVocabularyFiltersRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListVocabularyFilters operation returned by the service.
+     * @sample AmazonTranscribeAsyncHandler.ListVocabularyFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListVocabularyFilters"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListVocabularyFiltersResult> listVocabularyFiltersAsync(ListVocabularyFiltersRequest listVocabularyFiltersRequest,
+            com.amazonaws.handlers.AsyncHandler<ListVocabularyFiltersRequest, ListVocabularyFiltersResult> asyncHandler);
+
+    /**
+     * <p>
      * Starts an asynchronous job to transcribe speech to text.
      * </p>
      * 
@@ -322,5 +450,36 @@ public interface AmazonTranscribeAsync extends AmazonTranscribe {
      */
     java.util.concurrent.Future<UpdateVocabularyResult> updateVocabularyAsync(UpdateVocabularyRequest updateVocabularyRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateVocabularyRequest, UpdateVocabularyResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates a vocabulary filter with a new list of filtered words.
+     * </p>
+     * 
+     * @param updateVocabularyFilterRequest
+     * @return A Java Future containing the result of the UpdateVocabularyFilter operation returned by the service.
+     * @sample AmazonTranscribeAsync.UpdateVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/UpdateVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateVocabularyFilterResult> updateVocabularyFilterAsync(UpdateVocabularyFilterRequest updateVocabularyFilterRequest);
+
+    /**
+     * <p>
+     * Updates a vocabulary filter with a new list of filtered words.
+     * </p>
+     * 
+     * @param updateVocabularyFilterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateVocabularyFilter operation returned by the service.
+     * @sample AmazonTranscribeAsyncHandler.UpdateVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/UpdateVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateVocabularyFilterResult> updateVocabularyFilterAsync(UpdateVocabularyFilterRequest updateVocabularyFilterRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateVocabularyFilterRequest, UpdateVocabularyFilterResult> asyncHandler);
 
 }

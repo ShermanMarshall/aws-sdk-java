@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ public class DefaultWorkspaceCreationPropertiesMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CustomSecurityGroupId").build();
     private static final MarshallingInfo<Boolean> USERENABLEDASLOCALADMINISTRATOR_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("UserEnabledAsLocalAdministrator").build();
+    private static final MarshallingInfo<Boolean> ENABLEMAINTENANCEMODE_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EnableMaintenanceMode").build();
 
     private static final DefaultWorkspaceCreationPropertiesMarshaller instance = new DefaultWorkspaceCreationPropertiesMarshaller();
 
@@ -59,6 +61,7 @@ public class DefaultWorkspaceCreationPropertiesMarshaller {
             protocolMarshaller.marshall(defaultWorkspaceCreationProperties.getDefaultOu(), DEFAULTOU_BINDING);
             protocolMarshaller.marshall(defaultWorkspaceCreationProperties.getCustomSecurityGroupId(), CUSTOMSECURITYGROUPID_BINDING);
             protocolMarshaller.marshall(defaultWorkspaceCreationProperties.getUserEnabledAsLocalAdministrator(), USERENABLEDASLOCALADMINISTRATOR_BINDING);
+            protocolMarshaller.marshall(defaultWorkspaceCreationProperties.getEnableMaintenanceMode(), ENABLEMAINTENANCEMODE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

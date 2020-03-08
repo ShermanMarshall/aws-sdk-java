@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Unique identifier for the game session to add players to.
+     * A unique identifier for the game session to add players to.
      * </p>
      */
     private String gameSessionId;
@@ -51,11 +51,11 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Unique identifier for the game session to add players to.
+     * A unique identifier for the game session to add players to.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to add players to.
+     *        A unique identifier for the game session to add players to.
      */
 
     public void setGameSessionId(String gameSessionId) {
@@ -64,10 +64,10 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Unique identifier for the game session to add players to.
+     * A unique identifier for the game session to add players to.
      * </p>
      * 
-     * @return Unique identifier for the game session to add players to.
+     * @return A unique identifier for the game session to add players to.
      */
 
     public String getGameSessionId() {
@@ -76,11 +76,11 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Unique identifier for the game session to add players to.
+     * A unique identifier for the game session to add players to.
      * </p>
      * 
      * @param gameSessionId
-     *        Unique identifier for the game session to add players to.
+     *        A unique identifier for the game session to add players to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -210,6 +210,13 @@ public class CreatePlayerSessionsRequest extends com.amazonaws.AmazonWebServiceR
         setPlayerDataMap(playerDataMap);
         return this;
     }
+
+    /**
+     * Add a single PlayerDataMap entry
+     *
+     * @see CreatePlayerSessionsRequest#withPlayerDataMap
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreatePlayerSessionsRequest addPlayerDataMapEntry(String key, String value) {
         if (null == this.playerDataMap) {

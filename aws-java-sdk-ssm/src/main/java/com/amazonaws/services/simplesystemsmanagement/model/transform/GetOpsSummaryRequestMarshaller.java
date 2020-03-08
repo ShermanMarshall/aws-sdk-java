@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,10 +28,14 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class GetOpsSummaryRequestMarshaller {
 
+    private static final MarshallingInfo<String> SYNCNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("SyncName").build();
     private static final MarshallingInfo<List> FILTERS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Filters").build();
     private static final MarshallingInfo<List> AGGREGATORS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Aggregators").build();
+    private static final MarshallingInfo<List> RESULTATTRIBUTES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ResultAttributes").build();
     private static final MarshallingInfo<String> NEXTTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("NextToken").build();
     private static final MarshallingInfo<Integer> MAXRESULTS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -53,8 +57,10 @@ public class GetOpsSummaryRequestMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(getOpsSummaryRequest.getSyncName(), SYNCNAME_BINDING);
             protocolMarshaller.marshall(getOpsSummaryRequest.getFilters(), FILTERS_BINDING);
             protocolMarshaller.marshall(getOpsSummaryRequest.getAggregators(), AGGREGATORS_BINDING);
+            protocolMarshaller.marshall(getOpsSummaryRequest.getResultAttributes(), RESULTATTRIBUTES_BINDING);
             protocolMarshaller.marshall(getOpsSummaryRequest.getNextToken(), NEXTTOKEN_BINDING);
             protocolMarshaller.marshall(getOpsSummaryRequest.getMaxResults(), MAXRESULTS_BINDING);
         } catch (Exception e) {

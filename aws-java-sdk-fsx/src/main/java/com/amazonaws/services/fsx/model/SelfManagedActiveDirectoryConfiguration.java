@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -53,9 +53,10 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
     /**
      * <p>
      * (Optional) The name of the domain group whose members are granted administrative privileges for the file system.
-     * Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs)
-     * on files and folders. The group that you specify must already exist in your domain. If you don't provide one,
-     * your AD domain's Domain Admins group is used.
+     * Administrative privileges include taking ownership of files and folders, setting audit controls (audit ACLs) on
+     * files and folders, and administering the file system remotely by using the FSx Remote PowerShell. The group that
+     * you specify must already exist in your domain. If you don't provide one, your AD domain's Domain Admins group is
+     * used.
      * </p>
      */
     private String fileSystemAdministratorsGroup;
@@ -78,7 +79,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * <p>
      * A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP
      * addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file system is being
-     * created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     * created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      * href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:
      * </p>
      * <ul>
@@ -232,16 +233,18 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
     /**
      * <p>
      * (Optional) The name of the domain group whose members are granted administrative privileges for the file system.
-     * Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs)
-     * on files and folders. The group that you specify must already exist in your domain. If you don't provide one,
-     * your AD domain's Domain Admins group is used.
+     * Administrative privileges include taking ownership of files and folders, setting audit controls (audit ACLs) on
+     * files and folders, and administering the file system remotely by using the FSx Remote PowerShell. The group that
+     * you specify must already exist in your domain. If you don't provide one, your AD domain's Domain Admins group is
+     * used.
      * </p>
      * 
      * @param fileSystemAdministratorsGroup
      *        (Optional) The name of the domain group whose members are granted administrative privileges for the file
-     *        system. Administrative privileges include taking ownership of files and folders, and setting audit
-     *        controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain.
-     *        If you don't provide one, your AD domain's Domain Admins group is used.
+     *        system. Administrative privileges include taking ownership of files and folders, setting audit controls
+     *        (audit ACLs) on files and folders, and administering the file system remotely by using the FSx Remote
+     *        PowerShell. The group that you specify must already exist in your domain. If you don't provide one, your
+     *        AD domain's Domain Admins group is used.
      */
 
     public void setFileSystemAdministratorsGroup(String fileSystemAdministratorsGroup) {
@@ -251,15 +254,17 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
     /**
      * <p>
      * (Optional) The name of the domain group whose members are granted administrative privileges for the file system.
-     * Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs)
-     * on files and folders. The group that you specify must already exist in your domain. If you don't provide one,
-     * your AD domain's Domain Admins group is used.
+     * Administrative privileges include taking ownership of files and folders, setting audit controls (audit ACLs) on
+     * files and folders, and administering the file system remotely by using the FSx Remote PowerShell. The group that
+     * you specify must already exist in your domain. If you don't provide one, your AD domain's Domain Admins group is
+     * used.
      * </p>
      * 
      * @return (Optional) The name of the domain group whose members are granted administrative privileges for the file
-     *         system. Administrative privileges include taking ownership of files and folders, and setting audit
-     *         controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain.
-     *         If you don't provide one, your AD domain's Domain Admins group is used.
+     *         system. Administrative privileges include taking ownership of files and folders, setting audit controls
+     *         (audit ACLs) on files and folders, and administering the file system remotely by using the FSx Remote
+     *         PowerShell. The group that you specify must already exist in your domain. If you don't provide one, your
+     *         AD domain's Domain Admins group is used.
      */
 
     public String getFileSystemAdministratorsGroup() {
@@ -269,16 +274,18 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
     /**
      * <p>
      * (Optional) The name of the domain group whose members are granted administrative privileges for the file system.
-     * Administrative privileges include taking ownership of files and folders, and setting audit controls (audit ACLs)
-     * on files and folders. The group that you specify must already exist in your domain. If you don't provide one,
-     * your AD domain's Domain Admins group is used.
+     * Administrative privileges include taking ownership of files and folders, setting audit controls (audit ACLs) on
+     * files and folders, and administering the file system remotely by using the FSx Remote PowerShell. The group that
+     * you specify must already exist in your domain. If you don't provide one, your AD domain's Domain Admins group is
+     * used.
      * </p>
      * 
      * @param fileSystemAdministratorsGroup
      *        (Optional) The name of the domain group whose members are granted administrative privileges for the file
-     *        system. Administrative privileges include taking ownership of files and folders, and setting audit
-     *        controls (audit ACLs) on files and folders. The group that you specify must already exist in your domain.
-     *        If you don't provide one, your AD domain's Domain Admins group is used.
+     *        system. Administrative privileges include taking ownership of files and folders, setting audit controls
+     *        (audit ACLs) on files and folders, and administering the file system remotely by using the FSx Remote
+     *        PowerShell. The group that you specify must already exist in your domain. If you don't provide one, your
+     *        AD domain's Domain Admins group is used.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -392,7 +399,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * <p>
      * A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP
      * addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file system is being
-     * created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     * created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      * href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:
      * </p>
      * <ul>
@@ -415,7 +422,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * 
      * @return A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory.
      *         The IP addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file
-     *         system is being created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     *         system is being created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      *         href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:</p>
      *         <ul>
      *         <li>
@@ -443,7 +450,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * <p>
      * A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP
      * addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file system is being
-     * created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     * created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      * href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:
      * </p>
      * <ul>
@@ -467,7 +474,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * @param dnsIps
      *        A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory.
      *        The IP addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file
-     *        system is being created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     *        system is being created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      *        href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:</p>
      *        <ul>
      *        <li>
@@ -500,7 +507,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * <p>
      * A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP
      * addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file system is being
-     * created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     * created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      * href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:
      * </p>
      * <ul>
@@ -529,7 +536,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * @param dnsIps
      *        A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory.
      *        The IP addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file
-     *        system is being created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     *        system is being created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      *        href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:</p>
      *        <ul>
      *        <li>
@@ -564,7 +571,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * <p>
      * A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory. The IP
      * addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file system is being
-     * created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     * created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      * href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:
      * </p>
      * <ul>
@@ -588,7 +595,7 @@ public class SelfManagedActiveDirectoryConfiguration implements Serializable, Cl
      * @param dnsIps
      *        A list of up to two IP addresses of DNS servers or domain controllers in the self-managed AD directory.
      *        The IP addresses need to be either in the same VPC CIDR range as the one in which your Amazon FSx file
-     *        system is being created, or in the private IP version 4 (Iv4) address ranges, as specified in <a
+     *        system is being created, or in the private IP version 4 (IPv4) address ranges, as specified in <a
      *        href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:</p>
      *        <ul>
      *        <li>

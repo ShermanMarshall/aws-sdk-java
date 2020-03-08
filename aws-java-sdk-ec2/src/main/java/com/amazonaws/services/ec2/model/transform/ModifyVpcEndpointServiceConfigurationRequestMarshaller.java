@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,6 +45,14 @@ public class ModifyVpcEndpointServiceConfigurationRequestMarshaller implements
 
         if (modifyVpcEndpointServiceConfigurationRequest.getServiceId() != null) {
             request.addParameter("ServiceId", StringUtils.fromString(modifyVpcEndpointServiceConfigurationRequest.getServiceId()));
+        }
+
+        if (modifyVpcEndpointServiceConfigurationRequest.getPrivateDnsName() != null) {
+            request.addParameter("PrivateDnsName", StringUtils.fromString(modifyVpcEndpointServiceConfigurationRequest.getPrivateDnsName()));
+        }
+
+        if (modifyVpcEndpointServiceConfigurationRequest.getRemovePrivateDnsName() != null) {
+            request.addParameter("RemovePrivateDnsName", StringUtils.fromBoolean(modifyVpcEndpointServiceConfigurationRequest.getRemovePrivateDnsName()));
         }
 
         if (modifyVpcEndpointServiceConfigurationRequest.getAcceptanceRequired() != null) {

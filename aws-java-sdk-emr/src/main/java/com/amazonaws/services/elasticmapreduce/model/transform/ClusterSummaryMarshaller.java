@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,10 @@ public class ClusterSummaryMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Status").build();
     private static final MarshallingInfo<Integer> NORMALIZEDINSTANCEHOURS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("NormalizedInstanceHours").build();
+    private static final MarshallingInfo<String> CLUSTERARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ClusterArn").build();
+    private static final MarshallingInfo<String> OUTPOSTARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OutpostArn").build();
 
     private static final ClusterSummaryMarshaller instance = new ClusterSummaryMarshaller();
 
@@ -56,6 +60,8 @@ public class ClusterSummaryMarshaller {
             protocolMarshaller.marshall(clusterSummary.getName(), NAME_BINDING);
             protocolMarshaller.marshall(clusterSummary.getStatus(), STATUS_BINDING);
             protocolMarshaller.marshall(clusterSummary.getNormalizedInstanceHours(), NORMALIZEDINSTANCEHOURS_BINDING);
+            protocolMarshaller.marshall(clusterSummary.getClusterArn(), CLUSTERARN_BINDING);
+            protocolMarshaller.marshall(clusterSummary.getOutpostArn(), OUTPOSTARN_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

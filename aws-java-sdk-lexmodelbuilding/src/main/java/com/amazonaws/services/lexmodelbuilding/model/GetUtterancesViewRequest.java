@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,7 @@ public class GetUtterancesViewRequest extends com.amazonaws.AmazonWebServiceRequ
     private java.util.List<String> botVersions;
     /**
      * <p>
-     * To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that were
+     * To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances that were
      * not recognized, use <code>Missed</code>.
      * </p>
      */
@@ -161,13 +161,13 @@ public class GetUtterancesViewRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that were
+     * To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances that were
      * not recognized, use <code>Missed</code>.
      * </p>
      * 
      * @param statusType
-     *        To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that
-     *        were not recognized, use <code>Missed</code>.
+     *        To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances
+     *        that were not recognized, use <code>Missed</code>.
      * @see StatusType
      */
 
@@ -177,11 +177,11 @@ public class GetUtterancesViewRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that were
+     * To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances that were
      * not recognized, use <code>Missed</code>.
      * </p>
      * 
-     * @return To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances
+     * @return To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances
      *         that were not recognized, use <code>Missed</code>.
      * @see StatusType
      */
@@ -192,13 +192,13 @@ public class GetUtterancesViewRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that were
+     * To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances that were
      * not recognized, use <code>Missed</code>.
      * </p>
      * 
      * @param statusType
-     *        To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that
-     *        were not recognized, use <code>Missed</code>.
+     *        To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances
+     *        that were not recognized, use <code>Missed</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StatusType
      */
@@ -210,13 +210,13 @@ public class GetUtterancesViewRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that were
+     * To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances that were
      * not recognized, use <code>Missed</code>.
      * </p>
      * 
      * @param statusType
-     *        To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that
-     *        were not recognized, use <code>Missed</code>.
+     *        To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances
+     *        that were not recognized, use <code>Missed</code>.
      * @see StatusType
      */
 
@@ -226,13 +226,13 @@ public class GetUtterancesViewRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that were
+     * To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances that were
      * not recognized, use <code>Missed</code>.
      * </p>
      * 
      * @param statusType
-     *        To return utterances that were recognized and handled, use<code>Detected</code>. To return utterances that
-     *        were not recognized, use <code>Missed</code>.
+     *        To return utterances that were recognized and handled, use <code>Detected</code>. To return utterances
+     *        that were not recognized, use <code>Missed</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StatusType
      */

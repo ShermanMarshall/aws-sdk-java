@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ public class StateVisitorTest {
         assertNull(visitor.visit(failState().build()));
         assertNull(visitor.visit(choiceState().build()));
         assertNull(visitor.visit(parallelState().build()));
+        assertNull(visitor.visit(mapState().build()));
         assertNull(visitor.visit(succeedState().build()));
         assertNull(visitor.visit(taskState().build()));
         assertNull(visitor.visit(waitState().build()));

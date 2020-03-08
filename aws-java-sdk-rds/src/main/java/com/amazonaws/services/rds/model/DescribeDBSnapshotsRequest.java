@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,7 +29,7 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in conjunction
-     * with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive.
+     * with <code>DBSnapshotIdentifier</code>. This parameter isn't case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -158,8 +158,8 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The maximum number of records to include in the response. If more records exist than the specified
-     * <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the
-     * remaining results can be retrieved.
+     * <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that you can
+     * retrieve the remaining results.
      * </p>
      * <p>
      * Default: 100
@@ -208,7 +208,7 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in conjunction
-     * with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive.
+     * with <code>DBSnapshotIdentifier</code>. This parameter isn't case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -223,7 +223,7 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
      * 
      * @param dBInstanceIdentifier
      *        The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in
-     *        conjunction with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive. </p>
+     *        conjunction with <code>DBSnapshotIdentifier</code>. This parameter isn't case-sensitive. </p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -242,7 +242,7 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in conjunction
-     * with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive.
+     * with <code>DBSnapshotIdentifier</code>. This parameter isn't case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -256,7 +256,7 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
      * </ul>
      * 
      * @return The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in
-     *         conjunction with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive. </p>
+     *         conjunction with <code>DBSnapshotIdentifier</code>. This parameter isn't case-sensitive. </p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -275,7 +275,7 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in conjunction
-     * with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive.
+     * with <code>DBSnapshotIdentifier</code>. This parameter isn't case-sensitive.
      * </p>
      * <p>
      * Constraints:
@@ -290,7 +290,7 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
      * 
      * @param dBInstanceIdentifier
      *        The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in
-     *        conjunction with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive. </p>
+     *        conjunction with <code>DBSnapshotIdentifier</code>. This parameter isn't case-sensitive. </p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -1088,8 +1088,8 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The maximum number of records to include in the response. If more records exist than the specified
-     * <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the
-     * remaining results can be retrieved.
+     * <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that you can
+     * retrieve the remaining results.
      * </p>
      * <p>
      * Default: 100
@@ -1100,8 +1100,8 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
      * 
      * @param maxRecords
      *        The maximum number of records to include in the response. If more records exist than the specified
-     *        <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the
-     *        remaining results can be retrieved. </p>
+     *        <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that you
+     *        can retrieve the remaining results. </p>
      *        <p>
      *        Default: 100
      *        </p>
@@ -1116,8 +1116,8 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The maximum number of records to include in the response. If more records exist than the specified
-     * <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the
-     * remaining results can be retrieved.
+     * <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that you can
+     * retrieve the remaining results.
      * </p>
      * <p>
      * Default: 100
@@ -1127,8 +1127,8 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      * 
      * @return The maximum number of records to include in the response. If more records exist than the specified
-     *         <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the
-     *         remaining results can be retrieved. </p>
+     *         <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that you
+     *         can retrieve the remaining results. </p>
      *         <p>
      *         Default: 100
      *         </p>
@@ -1143,8 +1143,8 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The maximum number of records to include in the response. If more records exist than the specified
-     * <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the
-     * remaining results can be retrieved.
+     * <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that you can
+     * retrieve the remaining results.
      * </p>
      * <p>
      * Default: 100
@@ -1155,8 +1155,8 @@ public class DescribeDBSnapshotsRequest extends com.amazonaws.AmazonWebServiceRe
      * 
      * @param maxRecords
      *        The maximum number of records to include in the response. If more records exist than the specified
-     *        <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the
-     *        remaining results can be retrieved. </p>
+     *        <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that you
+     *        can retrieve the remaining results. </p>
      *        <p>
      *        Default: 100
      *        </p>

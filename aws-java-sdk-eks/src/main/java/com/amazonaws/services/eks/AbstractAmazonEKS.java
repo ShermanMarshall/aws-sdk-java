@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,12 +34,42 @@ public class AbstractAmazonEKS implements AmazonEKS {
     }
 
     @Override
+    public CreateFargateProfileResult createFargateProfile(CreateFargateProfileRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateNodegroupResult createNodegroup(CreateNodegroupRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteClusterResult deleteCluster(DeleteClusterRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
+    public DeleteFargateProfileResult deleteFargateProfile(DeleteFargateProfileRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteNodegroupResult deleteNodegroup(DeleteNodegroupRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeClusterResult describeCluster(DescribeClusterRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeFargateProfileResult describeFargateProfile(DescribeFargateProfileRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeNodegroupResult describeNodegroup(DescribeNodegroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -54,7 +84,32 @@ public class AbstractAmazonEKS implements AmazonEKS {
     }
 
     @Override
+    public ListFargateProfilesResult listFargateProfiles(ListFargateProfilesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListNodegroupsResult listNodegroups(ListNodegroupsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListUpdatesResult listUpdates(ListUpdatesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -65,6 +120,16 @@ public class AbstractAmazonEKS implements AmazonEKS {
 
     @Override
     public UpdateClusterVersionResult updateClusterVersion(UpdateClusterVersionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateNodegroupConfigResult updateNodegroupConfig(UpdateNodegroupConfigRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateNodegroupVersionResult updateNodegroupVersion(UpdateNodegroupVersionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

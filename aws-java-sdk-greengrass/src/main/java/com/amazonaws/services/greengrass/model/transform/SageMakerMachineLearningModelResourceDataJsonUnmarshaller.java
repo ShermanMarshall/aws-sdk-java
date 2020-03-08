@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,6 +52,10 @@ public class SageMakerMachineLearningModelResourceDataJsonUnmarshaller implement
                 if (context.testExpression("DestinationPath", targetDepth)) {
                     context.nextToken();
                     sageMakerMachineLearningModelResourceData.setDestinationPath(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("OwnerSetting", targetDepth)) {
+                    context.nextToken();
+                    sageMakerMachineLearningModelResourceData.setOwnerSetting(ResourceDownloadOwnerSettingJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("SageMakerJobArn", targetDepth)) {
                     context.nextToken();

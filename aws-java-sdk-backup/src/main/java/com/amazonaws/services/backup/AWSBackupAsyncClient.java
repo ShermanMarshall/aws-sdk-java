@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -414,6 +414,39 @@ public class AWSBackupAsyncClient extends AWSBackupClient implements AWSBackupAs
 
                 try {
                     result = executeDescribeBackupVault(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCopyJobResult> describeCopyJobAsync(DescribeCopyJobRequest request) {
+
+        return describeCopyJobAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCopyJobResult> describeCopyJobAsync(final DescribeCopyJobRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeCopyJobRequest, DescribeCopyJobResult> asyncHandler) {
+        final DescribeCopyJobRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeCopyJobResult>() {
+            @Override
+            public DescribeCopyJobResult call() throws Exception {
+                DescribeCopyJobResult result = null;
+
+                try {
+                    result = executeDescribeCopyJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1026,6 +1059,39 @@ public class AWSBackupAsyncClient extends AWSBackupClient implements AWSBackupAs
     }
 
     @Override
+    public java.util.concurrent.Future<ListCopyJobsResult> listCopyJobsAsync(ListCopyJobsRequest request) {
+
+        return listCopyJobsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListCopyJobsResult> listCopyJobsAsync(final ListCopyJobsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListCopyJobsRequest, ListCopyJobsResult> asyncHandler) {
+        final ListCopyJobsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListCopyJobsResult>() {
+            @Override
+            public ListCopyJobsResult call() throws Exception {
+                ListCopyJobsResult result = null;
+
+                try {
+                    result = executeListCopyJobs(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ListProtectedResourcesResult> listProtectedResourcesAsync(ListProtectedResourcesRequest request) {
 
         return listProtectedResourcesAsync(request, null);
@@ -1276,6 +1342,39 @@ public class AWSBackupAsyncClient extends AWSBackupClient implements AWSBackupAs
 
                 try {
                     result = executeStartBackupJob(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartCopyJobResult> startCopyJobAsync(StartCopyJobRequest request) {
+
+        return startCopyJobAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartCopyJobResult> startCopyJobAsync(final StartCopyJobRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartCopyJobRequest, StartCopyJobResult> asyncHandler) {
+        final StartCopyJobRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StartCopyJobResult>() {
+            @Override
+            public StartCopyJobResult call() throws Exception {
+                StartCopyJobResult result = null;
+
+                try {
+                    result = executeStartCopyJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

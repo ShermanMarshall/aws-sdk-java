@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -118,6 +118,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <p>
      * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * </p>
+     * <note>
+     * <p>
+     * If you aren't using the default engine version, then you must specify the engine version.
+     * </p>
+     * </note>
      * <p>
      * <b>Aurora MySQL</b>
      * </p>
@@ -203,8 +208,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * </li>
      * <li>
      * <p>
-     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the restored
-     * DB cluster is not encrypted.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> isn't encrypted, then the restored
+     * DB cluster isn't encrypted.
      * </p>
      * </li>
      * </ul>
@@ -309,6 +314,19 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * </p>
      */
     private Boolean copyTagsToSnapshot;
+    /**
+     * <p>
+     * Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this
+     * operation.
+     * </p>
+     */
+    private String domain;
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     */
+    private String domainIAMRoleName;
 
     /**
      * <p>
@@ -782,6 +800,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <p>
      * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * </p>
+     * <note>
+     * <p>
+     * If you aren't using the default engine version, then you must specify the engine version.
+     * </p>
+     * </note>
      * <p>
      * <b>Aurora MySQL</b>
      * </p>
@@ -819,6 +842,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *        <p>
      *        <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      *        </p>
+     *        <note>
+     *        <p>
+     *        If you aren't using the default engine version, then you must specify the engine version.
+     *        </p>
+     *        </note>
      *        <p>
      *        <b>Aurora MySQL</b>
      *        </p>
@@ -861,6 +889,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <p>
      * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * </p>
+     * <note>
+     * <p>
+     * If you aren't using the default engine version, then you must specify the engine version.
+     * </p>
+     * </note>
      * <p>
      * <b>Aurora MySQL</b>
      * </p>
@@ -897,6 +930,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *         <p>
      *         <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      *         </p>
+     *         <note>
+     *         <p>
+     *         If you aren't using the default engine version, then you must specify the engine version.
+     *         </p>
+     *         </note>
      *         <p>
      *         <b>Aurora MySQL</b>
      *         </p>
@@ -939,6 +977,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <p>
      * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      * </p>
+     * <note>
+     * <p>
+     * If you aren't using the default engine version, then you must specify the engine version.
+     * </p>
+     * </note>
      * <p>
      * <b>Aurora MySQL</b>
      * </p>
@@ -976,6 +1019,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *        <p>
      *        <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
      *        </p>
+     *        <note>
+     *        <p>
+     *        If you aren't using the default engine version, then you must specify the engine version.
+     *        </p>
+     *        </note>
      *        <p>
      *        <b>Aurora MySQL</b>
      *        </p>
@@ -1390,8 +1438,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * </li>
      * <li>
      * <p>
-     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the restored
-     * DB cluster is not encrypted.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> isn't encrypted, then the restored
+     * DB cluster isn't encrypted.
      * </p>
      * </li>
      * </ul>
@@ -1417,8 +1465,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *        </li>
      *        <li>
      *        <p>
-     *        If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the
-     *        restored DB cluster is not encrypted.
+     *        If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> isn't encrypted, then the
+     *        restored DB cluster isn't encrypted.
      *        </p>
      *        </li>
      */
@@ -1449,8 +1497,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * </li>
      * <li>
      * <p>
-     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the restored
-     * DB cluster is not encrypted.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> isn't encrypted, then the restored
+     * DB cluster isn't encrypted.
      * </p>
      * </li>
      * </ul>
@@ -1475,8 +1523,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *         </li>
      *         <li>
      *         <p>
-     *         If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the
-     *         restored DB cluster is not encrypted.
+     *         If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> isn't encrypted, then the
+     *         restored DB cluster isn't encrypted.
      *         </p>
      *         </li>
      */
@@ -1507,8 +1555,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * </li>
      * <li>
      * <p>
-     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the restored
-     * DB cluster is not encrypted.
+     * If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> isn't encrypted, then the restored
+     * DB cluster isn't encrypted.
      * </p>
      * </li>
      * </ul>
@@ -1534,8 +1582,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      *        </li>
      *        <li>
      *        <p>
-     *        If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> is not encrypted, then the
-     *        restored DB cluster is not encrypted.
+     *        If the DB snapshot or DB cluster snapshot in <code>SnapshotIdentifier</code> isn't encrypted, then the
+     *        restored DB cluster isn't encrypted.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2254,6 +2302,92 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
     }
 
     /**
+     * <p>
+     * Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this
+     * operation.
+     * </p>
+     * 
+     * @param domain
+     *        Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior
+     *        to this operation.
+     */
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
+    /**
+     * <p>
+     * Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this
+     * operation.
+     * </p>
+     * 
+     * @return Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior
+     *         to this operation.
+     */
+
+    public String getDomain() {
+        return this.domain;
+    }
+
+    /**
+     * <p>
+     * Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this
+     * operation.
+     * </p>
+     * 
+     * @param domain
+     *        Specify the Active Directory directory ID to restore the DB cluster in. The domain must be created prior
+     *        to this operation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreDBClusterFromSnapshotRequest withDomain(String domain) {
+        setDomain(domain);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @param domainIAMRoleName
+     *        Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     */
+
+    public void setDomainIAMRoleName(String domainIAMRoleName) {
+        this.domainIAMRoleName = domainIAMRoleName;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @return Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     */
+
+    public String getDomainIAMRoleName() {
+        return this.domainIAMRoleName;
+    }
+
+    /**
+     * <p>
+     * Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * </p>
+     * 
+     * @param domainIAMRoleName
+     *        Specify the name of the IAM role to be used when making API calls to the Directory Service.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreDBClusterFromSnapshotRequest withDomainIAMRoleName(String domainIAMRoleName) {
+        setDomainIAMRoleName(domainIAMRoleName);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -2304,7 +2438,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
         if (getDeletionProtection() != null)
             sb.append("DeletionProtection: ").append(getDeletionProtection()).append(",");
         if (getCopyTagsToSnapshot() != null)
-            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot());
+            sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot()).append(",");
+        if (getDomain() != null)
+            sb.append("Domain: ").append(getDomain()).append(",");
+        if (getDomainIAMRoleName() != null)
+            sb.append("DomainIAMRoleName: ").append(getDomainIAMRoleName());
         sb.append("}");
         return sb.toString();
     }
@@ -2400,6 +2538,14 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
             return false;
         if (other.getCopyTagsToSnapshot() != null && other.getCopyTagsToSnapshot().equals(this.getCopyTagsToSnapshot()) == false)
             return false;
+        if (other.getDomain() == null ^ this.getDomain() == null)
+            return false;
+        if (other.getDomain() != null && other.getDomain().equals(this.getDomain()) == false)
+            return false;
+        if (other.getDomainIAMRoleName() == null ^ this.getDomainIAMRoleName() == null)
+            return false;
+        if (other.getDomainIAMRoleName() != null && other.getDomainIAMRoleName().equals(this.getDomainIAMRoleName()) == false)
+            return false;
         return true;
     }
 
@@ -2428,6 +2574,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
         hashCode = prime * hashCode + ((getDBClusterParameterGroupName() == null) ? 0 : getDBClusterParameterGroupName().hashCode());
         hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
         hashCode = prime * hashCode + ((getCopyTagsToSnapshot() == null) ? 0 : getCopyTagsToSnapshot().hashCode());
+        hashCode = prime * hashCode + ((getDomain() == null) ? 0 : getDomain().hashCode());
+        hashCode = prime * hashCode + ((getDomainIAMRoleName() == null) ? 0 : getDomainIAMRoleName().hashCode());
         return hashCode;
     }
 

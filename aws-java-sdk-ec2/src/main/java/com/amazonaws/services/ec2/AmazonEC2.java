@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -144,6 +144,21 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Accepts a transit gateway peering attachment request. The peering attachment must be in the
+     * <code>pendingAcceptance</code> state.
+     * </p>
+     * 
+     * @param acceptTransitGatewayPeeringAttachmentRequest
+     * @return Result of the AcceptTransitGatewayPeeringAttachment operation returned by the service.
+     * @sample AmazonEC2.AcceptTransitGatewayPeeringAttachment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AcceptTransitGatewayPeeringAttachment"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AcceptTransitGatewayPeeringAttachmentResult acceptTransitGatewayPeeringAttachment(
+            AcceptTransitGatewayPeeringAttachmentRequest acceptTransitGatewayPeeringAttachmentRequest);
+
+    /**
+     * <p>
      * Accepts a request to attach a VPC to a transit gateway.
      * </p>
      * <p>
@@ -201,8 +216,8 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Advertises an IPv4 address range that is provisioned for use with your AWS resources through bring your own IP
-     * addresses (BYOIP).
+     * Advertises an IPv4 or IPv6 address range that is provisioned for use with your AWS resources through bring your
+     * own IP addresses (BYOIP).
      * </p>
      * <p>
      * You can perform this operation at most once every 10 seconds, even if you specify different address ranges each
@@ -275,8 +290,8 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Allocates a Dedicated Host to your account. At a minimum, specify the instance size type, Availability Zone, and
-     * quantity of hosts to allocate.
+     * Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family,
+     * the Availability Zone in which to allocate the host, and the number of hosts to allocate.
      * </p>
      * 
      * @param allocateHostsRequest
@@ -311,6 +326,9 @@ public interface AmazonEC2 {
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI">IP Addresses Per
      * Network Interface Per Instance Type</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
+     * <p>
+     * You must specify either the IPv6 addresses or the IPv6 address count in the request.
+     * </p>
      * 
      * @param assignIpv6AddressesRequest
      * @return Result of the AssignIpv6Addresses operation returned by the service.
@@ -341,6 +359,9 @@ public interface AmazonEC2 {
      * Remapping an IP address is an asynchronous operation. When you move an IP address from one network interface to
      * another, check <code>network/interfaces/macs/mac/local-ipv4s</code> in the instance metadata to confirm that the
      * remapping is complete.
+     * </p>
+     * <p>
+     * You must specify either the IP addresses or the IP address count in the request.
      * </p>
      * 
      * @param assignPrivateIpAddressesRequest
@@ -374,6 +395,9 @@ public interface AmazonEC2 {
      * network interface, you get an error unless you allow reassociation. You cannot associate an Elastic IP address
      * with an instance or network interface that has an existing Elastic IP address.
      * </p>
+     * <p>
+     * You cannot associate an Elastic IP address with an interface in a different network border group.
+     * </p>
      * <important>
      * <p>
      * This is an idempotent operation. If you perform the operation more than once, Amazon EC2 doesn't return an error,
@@ -396,6 +420,11 @@ public interface AmazonEC2 {
      * Associates a target network with a Client VPN endpoint. A target network is a subnet in a VPC. You can associate
      * multiple subnets from the same VPC with a Client VPN endpoint. You can associate only one subnet in each
      * Availability Zone. We recommend that you associate at least two subnets to provide Availability Zone redundancy.
+     * </p>
+     * <p>
+     * If you specified a VPC when you created the Client VPN endpoint or if you have previous subnet associations, the
+     * specified subnet must be in the same VPC. To specify a subnet that's in a different VPC, you must first modify
+     * the Client VPN endpoint (<a>ModifyClientVpnEndpoint</a>) and change the VPC that's associated with it.
      * </p>
      * 
      * @param associateClientVpnTargetNetworkRequest
@@ -446,10 +475,10 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Associates a subnet with a route table. The subnet and route table must be in the same VPC. This association
-     * causes traffic originating from the subnet to be routed according to the routes in the route table. The action
-     * returns an association ID, which you need in order to disassociate the route table from the subnet later. A route
-     * table can be associated with multiple subnets.
+     * Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a
+     * route table in your VPC. This association causes traffic from the subnet or gateway to be routed according to the
+     * routes in the route table. The action returns an association ID, which you need in order to disassociate the
+     * route table later. A route table can be associated with multiple subnets.
      * </p>
      * <p>
      * For more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
@@ -480,6 +509,26 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast
+     * domain.
+     * </p>
+     * <p>
+     * The transit gateway attachment must be in the available state before you can add a resource. Use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html"
+     * >DescribeTransitGatewayAttachments</a> to see the state of the attachment.
+     * </p>
+     * 
+     * @param associateTransitGatewayMulticastDomainRequest
+     * @return Result of the AssociateTransitGatewayMulticastDomain operation returned by the service.
+     * @sample AmazonEC2.AssociateTransitGatewayMulticastDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AssociateTransitGatewayMulticastDomain"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AssociateTransitGatewayMulticastDomainResult associateTransitGatewayMulticastDomain(
+            AssociateTransitGatewayMulticastDomainRequest associateTransitGatewayMulticastDomainRequest);
+
+    /**
+     * <p>
      * Associates the specified attachment with the specified transit gateway route table. You can associate only one
      * route table with an attachment.
      * </p>
@@ -494,8 +543,14 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, or you can associate an
-     * Amazon-provided IPv6 CIDR block. The IPv6 CIDR block size is fixed at /56.
+     * Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block, an Amazon-provided IPv6
+     * CIDR block, or an IPv6 CIDR block from an IPv6 address pool that you provisioned through bring your own IP
+     * addresses (<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html">BYOIP</a>). The IPv6 CIDR
+     * block size is fixed at /56.
+     * </p>
+     * <p>
+     * You must specify one of the following in the request: an IPv4 CIDR block, an IPv6 pool, or an Amazon-provided
+     * IPv6 CIDR block.
      * </p>
      * <p>
      * For more information about associating CIDR blocks with your VPC and applicable restrictions, see <a
@@ -536,8 +591,8 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC. For more
-     * information about your VPC and internet gateway, see the <a
+     * Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet
+     * and the VPC. For more information about your VPC and internet gateway, see the <a
      * href="https://docs.aws.amazon.com/vpc/latest/userguide/">Amazon Virtual Private Cloud User Guide</a>.
      * </p>
      * 
@@ -611,7 +666,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param attachVolumeRequest
-     *        Contains the parameters for AttachVolume.
      * @return Result of the AttachVolume operation returned by the service.
      * @sample AmazonEC2.AttachVolume
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/AttachVolume" target="_top">AWS API
@@ -961,7 +1015,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param copySnapshotRequest
-     *        Contains the parameters for CopySnapshot.
      * @return Result of the CopySnapshot operation returned by the service.
      * @sample AmazonEC2.CopySnapshot
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CopySnapshot" target="_top">AWS API
@@ -1057,10 +1110,9 @@ public interface AmazonEC2 {
      * </p>
      * <important>
      * <p>
-     * You cannot create more than one customer gateway with the same VPN type, IP address, and BGP ASN parameter
-     * values. If you run an identical request more than one time, the first request creates the customer gateway, and
-     * subsequent requests return information about the existing customer gateway. The subsequent requests do not create
-     * new customer gateway resources.
+     * To create more than one customer gateway with the same VPN type, IP address, and BGP ASN, specify a unique device
+     * name for each customer gateway. Identical requests return information about the existing customer gateway and do
+     * not create new customer gateways.
      * </p>
      * </important>
      * 
@@ -1393,6 +1445,33 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Creates a static route for the specified local gateway route table.
+     * </p>
+     * 
+     * @param createLocalGatewayRouteRequest
+     * @return Result of the CreateLocalGatewayRoute operation returned by the service.
+     * @sample AmazonEC2.CreateLocalGatewayRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateLocalGatewayRoute" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateLocalGatewayRouteResult createLocalGatewayRoute(CreateLocalGatewayRouteRequest createLocalGatewayRouteRequest);
+
+    /**
+     * <p>
+     * Associates the specified VPC with the specified local gateway route table.
+     * </p>
+     * 
+     * @param createLocalGatewayRouteTableVpcAssociationRequest
+     * @return Result of the CreateLocalGatewayRouteTableVpcAssociation operation returned by the service.
+     * @sample AmazonEC2.CreateLocalGatewayRouteTableVpcAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateLocalGatewayRouteTableVpcAssociation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateLocalGatewayRouteTableVpcAssociationResult createLocalGatewayRouteTableVpcAssociation(
+            CreateLocalGatewayRouteTableVpcAssociationRequest createLocalGatewayRouteTableVpcAssociationRequest);
+
+    /**
+     * <p>
      * Creates a NAT gateway in the specified public subnet. This action creates a network interface in the specified
      * subnet with a private IP address from the IP address range of the subnet. Internet-bound traffic from a private
      * subnet can be routed to the NAT gateway, therefore enabling instances in the private subnet to connect to the
@@ -1564,7 +1643,7 @@ public interface AmazonEC2 {
      * </p>
      * <p>
      * You must specify one of the following targets: internet gateway or virtual private gateway, NAT instance, NAT
-     * gateway, VPC peering connection, network interface, or egress-only internet gateway.
+     * gateway, VPC peering connection, network interface, egress-only internet gateway, or transit gateway.
      * </p>
      * <p>
      * When determining how to route traffic, we use the route with the most specific match. For example, traffic is
@@ -1698,7 +1777,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param createSnapshotRequest
-     *        Contains the parameters for CreateSnapshot.
      * @return Result of the CreateSnapshot operation returned by the service.
      * @sample AmazonEC2.CreateSnapshot
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateSnapshot" target="_top">AWS API
@@ -1710,7 +1788,7 @@ public interface AmazonEC2 {
      * <p>
      * Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3. Volumes are chosen by
      * specifying an instance. Any attached volumes will produce one snapshot each that is crash-consistent across the
-     * instance. Boot volumes can be excluded by changing the paramaters.
+     * instance. Boot volumes can be excluded by changing the parameters.
      * </p>
      * 
      * @param createSnapshotsRequest
@@ -1812,9 +1890,12 @@ public interface AmazonEC2 {
      * A Traffic Mirror filter is a set of rules that defines the traffic to mirror.
      * </p>
      * <p>
-     * By default, no traffic is mirrored. To mirror traffic, use <a>CreateTrafficMirrorFilterRule</a> to add Traffic
-     * Mirror rules to the filter. The rules you add define what traffic gets mirrored. You can also use
-     * <a>ModifyTrafficMirrorFilterNetworkServices</a> to mirror supported network services.
+     * By default, no traffic is mirrored. To mirror traffic, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilterRule.htm"
+     * >CreateTrafficMirrorFilterRule</a> to add Traffic Mirror rules to the filter. The rules you add define what
+     * traffic gets mirrored. You can also use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html"
+     * >ModifyTrafficMirrorFilterNetworkServices</a> to mirror supported network services.
      * </p>
      * 
      * @param createTrafficMirrorFilterRequest
@@ -1827,7 +1908,7 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Creates a Traffic Mirror rule.
+     * Creates a Traffic Mirror filter rule.
      * </p>
      * <p>
      * A Traffic Mirror rule defines the Traffic Mirror source traffic to mirror.
@@ -1858,8 +1939,9 @@ public interface AmazonEC2 {
      * different VPC connected via VPC peering or a transit gateway.
      * </p>
      * <p>
-     * By default, no traffic is mirrored. Use <a>CreateTrafficMirrorFilter</a> to create filter rules that specify the
-     * traffic to mirror.
+     * By default, no traffic is mirrored. Use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm"
+     * >CreateTrafficMirrorFilter</a> to create filter rules that specify the traffic to mirror.
      * </p>
      * 
      * @param createTrafficMirrorSessionRequest
@@ -1883,7 +1965,9 @@ public interface AmazonEC2 {
      * A Traffic Mirror target can be a network interface, or a Network Load Balancer.
      * </p>
      * <p>
-     * To use the target in a Traffic Mirror session, use <a>CreateTrafficMirrorSession</a>.
+     * To use the target in a Traffic Mirror session, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorSession.htm"
+     * >CreateTrafficMirrorSession</a>.
      * </p>
      * 
      * @param createTrafficMirrorTargetRequest
@@ -1927,6 +2011,45 @@ public interface AmazonEC2 {
      *      Documentation</a>
      */
     CreateTransitGatewayResult createTransitGateway(CreateTransitGatewayRequest createTransitGatewayRequest);
+
+    /**
+     * <p>
+     * Creates a multicast domain using the specified transit gateway.
+     * </p>
+     * <p>
+     * The transit gateway must be in the available state before you create a domain. Use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGateways.html"
+     * >DescribeTransitGateways</a> to see the state of transit gateway.
+     * </p>
+     * 
+     * @param createTransitGatewayMulticastDomainRequest
+     * @return Result of the CreateTransitGatewayMulticastDomain operation returned by the service.
+     * @sample AmazonEC2.CreateTransitGatewayMulticastDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTransitGatewayMulticastDomain"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateTransitGatewayMulticastDomainResult createTransitGatewayMulticastDomain(
+            CreateTransitGatewayMulticastDomainRequest createTransitGatewayMulticastDomainRequest);
+
+    /**
+     * <p>
+     * Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer
+     * transit gateway (accepter). The transit gateways must be in different Regions. The peer transit gateway can be in
+     * your account or a different AWS account.
+     * </p>
+     * <p>
+     * After you create the peering attachment, the owner of the accepter transit gateway must accept the attachment
+     * request.
+     * </p>
+     * 
+     * @param createTransitGatewayPeeringAttachmentRequest
+     * @return Result of the CreateTransitGatewayPeeringAttachment operation returned by the service.
+     * @sample AmazonEC2.CreateTransitGatewayPeeringAttachment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTransitGatewayPeeringAttachment"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateTransitGatewayPeeringAttachmentResult createTransitGatewayPeeringAttachment(
+            CreateTransitGatewayPeeringAttachmentRequest createTransitGatewayPeeringAttachmentRequest);
 
     /**
      * <p>
@@ -2002,7 +2125,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param createVolumeRequest
-     *        Contains the parameters for CreateVolume.
      * @return Result of the CreateVolume operation returned by the service.
      * @sample AmazonEC2.CreateVolume
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateVolume" target="_top">AWS API
@@ -2018,8 +2140,10 @@ public interface AmazonEC2 {
      * Subnets</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * <p>
-     * You can optionally request an Amazon-provided IPv6 CIDR block for the VPC. The IPv6 CIDR block uses a /56 prefix
-     * length, and is allocated from Amazon's pool of IPv6 addresses. You cannot choose the IPv6 range for your VPC.
+     * You can optionally request an IPv6 CIDR block for the VPC. You can request an Amazon-provided IPv6 CIDR block
+     * from Amazon's pool of IPv6 addresses, or an IPv6 CIDR block from an IPv6 address pool that you provisioned
+     * through bring your own IP addresses (<a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html">BYOIP</a>).
      * </p>
      * <p>
      * By default, each instance you launch in the VPC has the default DHCP options, which include only a default DNS
@@ -2045,14 +2169,14 @@ public interface AmazonEC2 {
     /**
      * <p>
      * Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between
-     * your VPC and the service. The service may be provided by AWS, an AWS Marketplace partner, or another AWS account.
+     * your VPC and the service. The service may be provided by AWS, an AWS Marketplace Partner, or another AWS account.
      * For more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html">VPC
      * Endpoints</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * <p>
      * A <code>gateway</code> endpoint serves as a target for a route in your route table for traffic destined for the
-     * AWS service. You can specify an endpoint policy to attach to the endpoint that will control access to the service
-     * from your VPC. You can also specify the VPC route tables that use the endpoint.
+     * AWS service. You can specify an endpoint policy to attach to the endpoint, which will control access to the
+     * service from your VPC. You can also specify the VPC route tables that use the endpoint.
      * </p>
      * <p>
      * An <code>interface</code> endpoint is a network interface in your subnet that serves as an endpoint for
@@ -2101,6 +2225,11 @@ public interface AmazonEC2 {
      * To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For
      * more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html">VPC
      * Endpoint Services</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
+     * </p>
+     * <p>
+     * If you set the private DNS name, you must prove that you own the private DNS domain name. For more information,
+     * see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html">VPC Endpoint
+     * Service Private DNS Name Verification</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param createVpcEndpointServiceConfigurationRequest
@@ -2399,6 +2528,33 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Deletes the specified route from the specified local gateway route table.
+     * </p>
+     * 
+     * @param deleteLocalGatewayRouteRequest
+     * @return Result of the DeleteLocalGatewayRoute operation returned by the service.
+     * @sample AmazonEC2.DeleteLocalGatewayRoute
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteLocalGatewayRoute" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteLocalGatewayRouteResult deleteLocalGatewayRoute(DeleteLocalGatewayRouteRequest deleteLocalGatewayRouteRequest);
+
+    /**
+     * <p>
+     * Deletes the specified association between a VPC and local gateway route table.
+     * </p>
+     * 
+     * @param deleteLocalGatewayRouteTableVpcAssociationRequest
+     * @return Result of the DeleteLocalGatewayRouteTableVpcAssociation operation returned by the service.
+     * @sample AmazonEC2.DeleteLocalGatewayRouteTableVpcAssociation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteLocalGatewayRouteTableVpcAssociation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteLocalGatewayRouteTableVpcAssociationResult deleteLocalGatewayRouteTableVpcAssociation(
+            DeleteLocalGatewayRouteTableVpcAssociationRequest deleteLocalGatewayRouteTableVpcAssociationRequest);
+
+    /**
+     * <p>
      * Deletes the specified NAT gateway. Deleting a NAT gateway disassociates its Elastic IP address, but does not
      * release the address from your account. Deleting a NAT gateway does not delete any NAT gateway routes in your
      * route tables.
@@ -2487,6 +2643,19 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Deletes the queued purchases for the specified Reserved Instances.
+     * </p>
+     * 
+     * @param deleteQueuedReservedInstancesRequest
+     * @return Result of the DeleteQueuedReservedInstances operation returned by the service.
+     * @sample AmazonEC2.DeleteQueuedReservedInstances
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteQueuedReservedInstances"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteQueuedReservedInstancesResult deleteQueuedReservedInstances(DeleteQueuedReservedInstancesRequest deleteQueuedReservedInstancesRequest);
+
+    /**
+     * <p>
      * Deletes the specified route from the specified route table.
      * </p>
      * 
@@ -2551,7 +2720,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param deleteSnapshotRequest
-     *        Contains the parameters for DeleteSnapshot.
      * @return Result of the DeleteSnapshot operation returned by the service.
      * @sample AmazonEC2.DeleteSnapshot
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteSnapshot" target="_top">AWS API
@@ -2685,6 +2853,34 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Deletes the specified transit gateway multicast domain.
+     * </p>
+     * 
+     * @param deleteTransitGatewayMulticastDomainRequest
+     * @return Result of the DeleteTransitGatewayMulticastDomain operation returned by the service.
+     * @sample AmazonEC2.DeleteTransitGatewayMulticastDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteTransitGatewayMulticastDomain"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteTransitGatewayMulticastDomainResult deleteTransitGatewayMulticastDomain(
+            DeleteTransitGatewayMulticastDomainRequest deleteTransitGatewayMulticastDomainRequest);
+
+    /**
+     * <p>
+     * Deletes a transit gateway peering attachment.
+     * </p>
+     * 
+     * @param deleteTransitGatewayPeeringAttachmentRequest
+     * @return Result of the DeleteTransitGatewayPeeringAttachment operation returned by the service.
+     * @sample AmazonEC2.DeleteTransitGatewayPeeringAttachment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteTransitGatewayPeeringAttachment"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteTransitGatewayPeeringAttachmentResult deleteTransitGatewayPeeringAttachment(
+            DeleteTransitGatewayPeeringAttachmentRequest deleteTransitGatewayPeeringAttachmentRequest);
+
+    /**
+     * <p>
      * Deletes the specified route from the specified transit gateway route table.
      * </p>
      * 
@@ -2738,7 +2934,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param deleteVolumeRequest
-     *        Contains the parameters for DeleteVolume.
      * @return Result of the DeleteVolume operation returned by the service.
      * @sample AmazonEC2.DeleteVolume
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeleteVolume" target="_top">AWS API
@@ -2864,9 +3059,9 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Deletes the specified virtual private gateway. We recommend that before you delete a virtual private gateway, you
-     * detach it from the VPC and delete the VPN connection. Note that you don't need to delete the virtual private
-     * gateway if you plan to delete and recreate the VPN connection between your VPC and your network.
+     * Deletes the specified virtual private gateway. You must first detach the virtual private gateway from the VPC.
+     * Note that you don't need to delete the virtual private gateway if you plan to delete and recreate the VPN
+     * connection between your VPC and your network.
      * </p>
      * 
      * @param deleteVpnGatewayRequest
@@ -2919,6 +3114,36 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Deregisters the specified members (network interfaces) from the transit gateway multicast group.
+     * </p>
+     * 
+     * @param deregisterTransitGatewayMulticastGroupMembersRequest
+     * @return Result of the DeregisterTransitGatewayMulticastGroupMembers operation returned by the service.
+     * @sample AmazonEC2.DeregisterTransitGatewayMulticastGroupMembers
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterTransitGatewayMulticastGroupMembers"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeregisterTransitGatewayMulticastGroupMembersResult deregisterTransitGatewayMulticastGroupMembers(
+            DeregisterTransitGatewayMulticastGroupMembersRequest deregisterTransitGatewayMulticastGroupMembersRequest);
+
+    /**
+     * <p>
+     * Deregisters the specified sources (network interfaces) from the transit gateway multicast group.
+     * </p>
+     * 
+     * @param deregisterTransitGatewayMulticastGroupSourcesRequest
+     * @return Result of the DeregisterTransitGatewayMulticastGroupSources operation returned by the service.
+     * @sample AmazonEC2.DeregisterTransitGatewayMulticastGroupSources
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DeregisterTransitGatewayMulticastGroupSources"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeregisterTransitGatewayMulticastGroupSourcesResult deregisterTransitGatewayMulticastGroupSources(
+            DeregisterTransitGatewayMulticastGroupSourcesRequest deregisterTransitGatewayMulticastGroupSourcesRequest);
+
+    /**
+     * <p>
      * Describes attributes of your AWS account. The following are the supported account attributes:
      * </p>
      * <ul>
@@ -2935,7 +3160,10 @@ public interface AmazonEC2 {
      * </li>
      * <li>
      * <p>
-     * <code>max-instances</code>: The maximum number of On-Demand Instances that you can run.
+     * <code>max-instances</code>: This attribute is no longer supported. The returned value does not reflect your
+     * actual vCPU limit for running On-Demand Instances. For more information, see <a href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-on-demand-instances.html#ec2-on-demand-instances-limits"
+     * >On-Demand Instance Limits</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * </li>
      * <li>
@@ -3030,12 +3258,12 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Describes the Availability Zones that are available to you. The results include zones only for the Region you're
-     * currently using. If there is an event impacting an Availability Zone, you can use this request to view the state
-     * and any provided message for that Availability Zone.
+     * Describes the Availability Zones and Local Zones that are available to you. If there is an event impacting an
+     * Availability Zone or Local Zone, you can use this request to view the state and any provided messages for that
+     * Availability Zone or Local Zone.
      * </p>
      * <p>
-     * For more information, see <a
+     * For more information about Availability Zones and Local Zones, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">Regions and
      * Availability Zones</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
@@ -3088,7 +3316,7 @@ public interface AmazonEC2 {
      * </p>
      * <p>
      * To describe the address pools that were created when you provisioned the address ranges, use
-     * <a>DescribePublicIpv4Pools</a>.
+     * <a>DescribePublicIpv4Pools</a> or <a>DescribeIpv6Pools</a>.
      * </p>
      * 
      * @param describeByoipCidrsRequest
@@ -3201,6 +3429,19 @@ public interface AmazonEC2 {
      *      target="_top">AWS API Documentation</a>
      */
     DescribeClientVpnTargetNetworksResult describeClientVpnTargetNetworks(DescribeClientVpnTargetNetworksRequest describeClientVpnTargetNetworksRequest);
+
+    /**
+     * <p>
+     * Describes the specified customer-owned address pools or all of your customer-owned address pools.
+     * </p>
+     * 
+     * @param describeCoipPoolsRequest
+     * @return Result of the DescribeCoipPools operation returned by the service.
+     * @sample AmazonEC2.DescribeCoipPools
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeCoipPools" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeCoipPoolsResult describeCoipPools(DescribeCoipPoolsRequest describeCoipPoolsRequest);
 
     /**
      * <p>
@@ -3340,7 +3581,24 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Describes the state of fast snapshot restores for your snapshots.
+     * </p>
+     * 
+     * @param describeFastSnapshotRestoresRequest
+     * @return Result of the DescribeFastSnapshotRestores operation returned by the service.
+     * @sample AmazonEC2.DescribeFastSnapshotRestores
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeFastSnapshotRestores"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeFastSnapshotRestoresResult describeFastSnapshotRestores(DescribeFastSnapshotRestoresRequest describeFastSnapshotRestoresRequest);
+
+    /**
+     * <p>
      * Describes the events for the specified EC2 Fleet during the specified time.
+     * </p>
+     * <p>
+     * EC2 Fleet events are delayed by up to 30 seconds before they can be described. This ensures that you can query by
+     * the last evaluated time and not miss a recorded event. EC2 Fleet events are available for 48 hours.
      * </p>
      * 
      * @param describeFleetHistoryRequest
@@ -3366,7 +3624,7 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Describes the specified EC2 Fleets or all your EC2 Fleets.
+     * Describes the specified EC2 Fleets or all of your EC2 Fleets.
      * </p>
      * 
      * @param describeFleetsRequest
@@ -3430,9 +3688,9 @@ public interface AmazonEC2 {
      * Describes the Dedicated Host reservations that are available to purchase.
      * </p>
      * <p>
-     * The results describe all the Dedicated Host reservation offerings, including offerings that may not match the
-     * instance family and Region of your Dedicated Hosts. When purchasing an offering, ensure that the instance family
-     * and Region of the offering matches that of the Dedicated Hosts with which it is to be associated. For more
+     * The results describe all of the Dedicated Host reservation offerings, including offerings that might not match
+     * the instance family and Region of your Dedicated Hosts. When purchasing an offering, ensure that the instance
+     * family and Region of the offering matches that of the Dedicated Hosts with which it is to be associated. For more
      * information about supported instance types, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html">Dedicated Hosts
      * Overview</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
@@ -3674,19 +3932,19 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Describes the credit option for CPU usage of the specified T2 or T3 instances. The credit options are
-     * <code>standard</code> and <code>unlimited</code>.
+     * Describes the credit option for CPU usage of the specified burstable performance instances. The credit options
+     * are <code>standard</code> and <code>unlimited</code>.
      * </p>
      * <p>
-     * If you do not specify an instance ID, Amazon EC2 returns T2 and T3 instances with the <code>unlimited</code>
-     * credit option, as well as instances that were previously configured as T2 or T3 with the <code>unlimited</code>
-     * credit option. For example, if you resize a T2 instance, while it is configured as <code>unlimited</code>, to an
-     * M4 instance, Amazon EC2 returns the M4 instance.
+     * If you do not specify an instance ID, Amazon EC2 returns burstable performance instances with the
+     * <code>unlimited</code> credit option, as well as instances that were previously configured as T2, T3, and T3a
+     * with the <code>unlimited</code> credit option. For example, if you resize a T2 instance, while it is configured
+     * as <code>unlimited</code>, to an M4 instance, Amazon EC2 returns the M4 instance.
      * </p>
      * <p>
      * If you specify one or more instance IDs, Amazon EC2 returns the credit option (<code>standard</code> or
      * <code>unlimited</code>) of those instances. If you specify an instance ID that is not valid, such as an instance
-     * that is not a T2 or T3 instance, an error is returned.
+     * that is not a burstable performance instance, an error is returned.
      * </p>
      * <p>
      * Recently terminated instances might appear in the returned results. This interval is usually less than one hour.
@@ -3765,6 +4023,34 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Returns a list of all instance types offered. The results can be filtered by location (Region or Availability
+     * Zone). If no location is specified, the instance types offered in the current Region are returned.
+     * </p>
+     * 
+     * @param describeInstanceTypeOfferingsRequest
+     * @return Result of the DescribeInstanceTypeOfferings operation returned by the service.
+     * @sample AmazonEC2.DescribeInstanceTypeOfferings
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceTypeOfferings"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeInstanceTypeOfferingsResult describeInstanceTypeOfferings(DescribeInstanceTypeOfferingsRequest describeInstanceTypeOfferingsRequest);
+
+    /**
+     * <p>
+     * Returns a list of all instance types offered in your current AWS Region. The results can be filtered by the
+     * attributes of the instance types.
+     * </p>
+     * 
+     * @param describeInstanceTypesRequest
+     * @return Result of the DescribeInstanceTypes operation returned by the service.
+     * @sample AmazonEC2.DescribeInstanceTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstanceTypes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeInstanceTypesResult describeInstanceTypes(DescribeInstanceTypesRequest describeInstanceTypesRequest);
+
+    /**
+     * <p>
      * Describes the specified instances or all of AWS account's instances.
      * </p>
      * <p>
@@ -3820,6 +4106,19 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Describes your IPv6 address pools.
+     * </p>
+     * 
+     * @param describeIpv6PoolsRequest
+     * @return Result of the DescribeIpv6Pools operation returned by the service.
+     * @sample AmazonEC2.DescribeIpv6Pools
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeIpv6Pools" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeIpv6PoolsResult describeIpv6Pools(DescribeIpv6PoolsRequest describeIpv6PoolsRequest);
+
+    /**
+     * <p>
      * Describes the specified key pairs or all of your key pairs.
      * </p>
      * <p>
@@ -3869,6 +4168,93 @@ public interface AmazonEC2 {
      *      API Documentation</a>
      */
     DescribeLaunchTemplatesResult describeLaunchTemplates(DescribeLaunchTemplatesRequest describeLaunchTemplatesRequest);
+
+    /**
+     * <p>
+     * Describes the associations between virtual interface groups and local gateway route tables.
+     * </p>
+     * 
+     * @param describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest
+     * @return Result of the DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations operation returned by the
+     *         service.
+     * @sample AmazonEC2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations(
+            DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest);
+
+    /**
+     * <p>
+     * Describes the specified associations between VPCs and local gateway route tables.
+     * </p>
+     * 
+     * @param describeLocalGatewayRouteTableVpcAssociationsRequest
+     * @return Result of the DescribeLocalGatewayRouteTableVpcAssociations operation returned by the service.
+     * @sample AmazonEC2.DescribeLocalGatewayRouteTableVpcAssociations
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayRouteTableVpcAssociations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeLocalGatewayRouteTableVpcAssociationsResult describeLocalGatewayRouteTableVpcAssociations(
+            DescribeLocalGatewayRouteTableVpcAssociationsRequest describeLocalGatewayRouteTableVpcAssociationsRequest);
+
+    /**
+     * <p>
+     * Describes one or more local gateway route tables. By default, all local gateway route tables are described.
+     * Alternatively, you can filter the results.
+     * </p>
+     * 
+     * @param describeLocalGatewayRouteTablesRequest
+     * @return Result of the DescribeLocalGatewayRouteTables operation returned by the service.
+     * @sample AmazonEC2.DescribeLocalGatewayRouteTables
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayRouteTables"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeLocalGatewayRouteTablesResult describeLocalGatewayRouteTables(DescribeLocalGatewayRouteTablesRequest describeLocalGatewayRouteTablesRequest);
+
+    /**
+     * <p>
+     * Describes the specified local gateway virtual interface groups.
+     * </p>
+     * 
+     * @param describeLocalGatewayVirtualInterfaceGroupsRequest
+     * @return Result of the DescribeLocalGatewayVirtualInterfaceGroups operation returned by the service.
+     * @sample AmazonEC2.DescribeLocalGatewayVirtualInterfaceGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayVirtualInterfaceGroups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeLocalGatewayVirtualInterfaceGroupsResult describeLocalGatewayVirtualInterfaceGroups(
+            DescribeLocalGatewayVirtualInterfaceGroupsRequest describeLocalGatewayVirtualInterfaceGroupsRequest);
+
+    /**
+     * <p>
+     * Describes the specified local gateway virtual interfaces.
+     * </p>
+     * 
+     * @param describeLocalGatewayVirtualInterfacesRequest
+     * @return Result of the DescribeLocalGatewayVirtualInterfaces operation returned by the service.
+     * @sample AmazonEC2.DescribeLocalGatewayVirtualInterfaces
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGatewayVirtualInterfaces"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeLocalGatewayVirtualInterfacesResult describeLocalGatewayVirtualInterfaces(
+            DescribeLocalGatewayVirtualInterfacesRequest describeLocalGatewayVirtualInterfacesRequest);
+
+    /**
+     * <p>
+     * Describes one or more local gateways. By default, all local gateways are described. Alternatively, you can filter
+     * the results.
+     * </p>
+     * 
+     * @param describeLocalGatewaysRequest
+     * @return Result of the DescribeLocalGateways operation returned by the service.
+     * @sample AmazonEC2.DescribeLocalGateways
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeLocalGateways" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeLocalGatewaysResult describeLocalGateways(DescribeLocalGatewaysRequest describeLocalGatewaysRequest);
 
     /**
      * <p>
@@ -4346,7 +4732,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param describeSnapshotAttributeRequest
-     *        Contains the parameters for DescribeSnapshotAttribute.
      * @return Result of the DescribeSnapshotAttribute operation returned by the service.
      * @sample AmazonEC2.DescribeSnapshotAttribute
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshotAttribute" target="_top">AWS
@@ -4384,7 +4769,7 @@ public interface AmazonEC2 {
      * </li>
      * </ul>
      * <p>
-     * The list of snapshots returned can be modified by specifying snapshot IDs, snapshot owners, or AWS accounts with
+     * The list of snapshots returned can be filtered by specifying snapshot IDs, snapshot owners, or AWS accounts with
      * create volume permissions. If no options are specified, Amazon EC2 returns all snapshots for which you have
      * create volume permissions.
      * </p>
@@ -4410,6 +4795,9 @@ public interface AmazonEC2 {
      * results exceeds your <code>MaxResults</code> value, then that number of results is returned along with a
      * <code>NextToken</code> value that can be passed to a subsequent <code>DescribeSnapshots</code> request to
      * retrieve the remaining results.
+     * </p>
+     * <p>
+     * To get the state of fast snapshot restores for a snapshot, use <a>DescribeFastSnapshotRestores</a>.
      * </p>
      * <p>
      * For more information about EBS snapshots, see <a
@@ -4697,6 +5085,34 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Describes one or more transit gateway multicast domains.
+     * </p>
+     * 
+     * @param describeTransitGatewayMulticastDomainsRequest
+     * @return Result of the DescribeTransitGatewayMulticastDomains operation returned by the service.
+     * @sample AmazonEC2.DescribeTransitGatewayMulticastDomains
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayMulticastDomains"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeTransitGatewayMulticastDomainsResult describeTransitGatewayMulticastDomains(
+            DescribeTransitGatewayMulticastDomainsRequest describeTransitGatewayMulticastDomainsRequest);
+
+    /**
+     * <p>
+     * Describes your transit gateway peering attachments.
+     * </p>
+     * 
+     * @param describeTransitGatewayPeeringAttachmentsRequest
+     * @return Result of the DescribeTransitGatewayPeeringAttachments operation returned by the service.
+     * @sample AmazonEC2.DescribeTransitGatewayPeeringAttachments
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeTransitGatewayPeeringAttachments"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeTransitGatewayPeeringAttachmentsResult describeTransitGatewayPeeringAttachments(
+            DescribeTransitGatewayPeeringAttachmentsRequest describeTransitGatewayPeeringAttachmentsRequest);
+
+    /**
+     * <p>
      * Describes one or more transit gateway route tables. By default, all transit gateway route tables are described.
      * Alternatively, you can filter the results.
      * </p>
@@ -4749,7 +5165,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param describeVolumeAttributeRequest
-     *        Contains the parameters for DescribeVolumeAttribute.
      * @return Result of the DescribeVolumeAttribute operation returned by the service.
      * @sample AmazonEC2.DescribeVolumeAttribute
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumeAttribute" target="_top">AWS
@@ -5172,7 +5587,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param detachVolumeRequest
-     *        Contains the parameters for DetachVolume.
      * @return Result of the DetachVolume operation returned by the service.
      * @sample AmazonEC2.DetachVolume
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DetachVolume" target="_top">AWS API
@@ -5223,6 +5637,19 @@ public interface AmazonEC2 {
      *      target="_top">AWS API Documentation</a>
      */
     DisableEbsEncryptionByDefaultResult disableEbsEncryptionByDefault(DisableEbsEncryptionByDefaultRequest disableEbsEncryptionByDefaultRequest);
+
+    /**
+     * <p>
+     * Disables fast snapshot restores for the specified snapshots in the specified Availability Zones.
+     * </p>
+     * 
+     * @param disableFastSnapshotRestoresRequest
+     * @return Result of the DisableFastSnapshotRestores operation returned by the service.
+     * @sample AmazonEC2.DisableFastSnapshotRestores
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisableFastSnapshotRestores"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DisableFastSnapshotRestoresResult disableFastSnapshotRestores(DisableFastSnapshotRestoresRequest disableFastSnapshotRestoresRequest);
 
     /**
      * <p>
@@ -5393,6 +5820,20 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Disassociates the specified subnets from the transit gateway multicast domain.
+     * </p>
+     * 
+     * @param disassociateTransitGatewayMulticastDomainRequest
+     * @return Result of the DisassociateTransitGatewayMulticastDomain operation returned by the service.
+     * @sample AmazonEC2.DisassociateTransitGatewayMulticastDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DisassociateTransitGatewayMulticastDomain"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DisassociateTransitGatewayMulticastDomainResult disassociateTransitGatewayMulticastDomain(
+            DisassociateTransitGatewayMulticastDomainRequest disassociateTransitGatewayMulticastDomainRequest);
+
+    /**
+     * <p>
      * Disassociates a resource attachment from a transit gateway route table.
      * </p>
      * 
@@ -5457,6 +5898,29 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Enables fast snapshot restores for the specified snapshots in the specified Availability Zones.
+     * </p>
+     * <p>
+     * You get the full benefit of fast snapshot restores after they enter the <code>enabled</code> state. To get the
+     * current state of fast snapshot restores, use <a>DescribeFastSnapshotRestores</a>. To disable fast snapshot
+     * restores, use <a>DisableFastSnapshotRestores</a>.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html">Amazon EBS Fast
+     * Snapshot Restore</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param enableFastSnapshotRestoresRequest
+     * @return Result of the EnableFastSnapshotRestores operation returned by the service.
+     * @sample AmazonEC2.EnableFastSnapshotRestores
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableFastSnapshotRestores" target="_top">AWS
+     *      API Documentation</a>
+     */
+    EnableFastSnapshotRestoresResult enableFastSnapshotRestores(EnableFastSnapshotRestoresRequest enableFastSnapshotRestoresRequest);
+
+    /**
+     * <p>
      * Enables the specified attachment to propagate routes to the specified propagation route table.
      * </p>
      * 
@@ -5490,7 +5954,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param enableVolumeIORequest
-     *        Contains the parameters for EnableVolumeIO.
      * @return Result of the EnableVolumeIO operation returned by the service.
      * @sample AmazonEC2.EnableVolumeIO
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EnableVolumeIO" target="_top">AWS API
@@ -5597,6 +6060,19 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool.
+     * </p>
+     * 
+     * @param getAssociatedIpv6PoolCidrsRequest
+     * @return Result of the GetAssociatedIpv6PoolCidrs operation returned by the service.
+     * @sample AmazonEC2.GetAssociatedIpv6PoolCidrs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetAssociatedIpv6PoolCidrs" target="_top">AWS
+     *      API Documentation</a>
+     */
+    GetAssociatedIpv6PoolCidrsResult getAssociatedIpv6PoolCidrs(GetAssociatedIpv6PoolCidrsRequest getAssociatedIpv6PoolCidrsRequest);
+
+    /**
+     * <p>
      * Gets usage information about a Capacity Reservation. If the Capacity Reservation is shared, it shows usage
      * information for the Capacity Reservation owner and each AWS account that is currently using the shared capacity.
      * If the Capacity Reservation is not shared, it shows only the Capacity Reservation owner's usage.
@@ -5609,6 +6085,19 @@ public interface AmazonEC2 {
      *      target="_top">AWS API Documentation</a>
      */
     GetCapacityReservationUsageResult getCapacityReservationUsage(GetCapacityReservationUsageRequest getCapacityReservationUsageRequest);
+
+    /**
+     * <p>
+     * Describes the allocations from the specified customer-owned address pool.
+     * </p>
+     * 
+     * @param getCoipPoolUsageRequest
+     * @return Result of the GetCoipPoolUsage operation returned by the service.
+     * @sample AmazonEC2.GetCoipPoolUsage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetCoipPoolUsage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetCoipPoolUsageResult getCoipPoolUsage(GetCoipPoolUsageRequest getCoipPoolUsageRequest);
 
     /**
      * <p>
@@ -5654,6 +6143,24 @@ public interface AmazonEC2 {
      *      Documentation</a>
      */
     GetConsoleScreenshotResult getConsoleScreenshot(GetConsoleScreenshotRequest getConsoleScreenshotRequest);
+
+    /**
+     * <p>
+     * Describes the default credit option for CPU usage of a burstable performance instance family.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html">Burstable
+     * Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param getDefaultCreditSpecificationRequest
+     * @return Result of the GetDefaultCreditSpecification operation returned by the service.
+     * @sample AmazonEC2.GetDefaultCreditSpecification
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetDefaultCreditSpecification"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetDefaultCreditSpecificationResult getDefaultCreditSpecification(GetDefaultCreditSpecificationRequest getDefaultCreditSpecificationRequest);
 
     /**
      * <p>
@@ -5785,6 +6292,20 @@ public interface AmazonEC2 {
      */
     GetTransitGatewayAttachmentPropagationsResult getTransitGatewayAttachmentPropagations(
             GetTransitGatewayAttachmentPropagationsRequest getTransitGatewayAttachmentPropagationsRequest);
+
+    /**
+     * <p>
+     * Gets information about the associations for the transit gateway multicast domain.
+     * </p>
+     * 
+     * @param getTransitGatewayMulticastDomainAssociationsRequest
+     * @return Result of the GetTransitGatewayMulticastDomainAssociations operation returned by the service.
+     * @sample AmazonEC2.GetTransitGatewayMulticastDomainAssociations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/GetTransitGatewayMulticastDomainAssociations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetTransitGatewayMulticastDomainAssociationsResult getTransitGatewayMulticastDomainAssociations(
+            GetTransitGatewayMulticastDomainAssociationsRequest getTransitGatewayMulticastDomainAssociationsRequest);
 
     /**
      * <p>
@@ -5938,6 +6459,19 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Enables or disables a Zone Group for your account. To use Local Zones, you must first enable the Zone Group.
+     * </p>
+     * 
+     * @param modifyAvailabilityZoneGroupRequest
+     * @return Result of the ModifyAvailabilityZoneGroup operation returned by the service.
+     * @sample AmazonEC2.ModifyAvailabilityZoneGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyAvailabilityZoneGroup"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ModifyAvailabilityZoneGroupResult modifyAvailabilityZoneGroup(ModifyAvailabilityZoneGroupRequest modifyAvailabilityZoneGroupRequest);
+
+    /**
+     * <p>
      * Modifies a Capacity Reservation's capacity and the conditions under which it is to be released. You cannot change
      * a Capacity Reservation's instance type, EBS optimization, instance store settings, platform, Availability Zone,
      * or instance eligibility. If you need to modify any of these attributes, we recommend that you cancel the Capacity
@@ -5954,9 +6488,7 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Modifies the specified Client VPN endpoint. You can only modify an endpoint's server certificate information,
-     * client connection logging information, DNS server, and description. Modifying the DNS server resets existing
-     * client connections.
+     * Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client connections.
      * </p>
      * 
      * @param modifyClientVpnEndpointRequest
@@ -5969,12 +6501,39 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Modifies the default credit option for CPU usage of burstable performance instances. The default credit option is
+     * set at the account level per AWS Region, and is specified per instance family. All new burstable performance
+     * instances in the account launch using the default credit option.
+     * </p>
+     * <p>
+     * <code>ModifyDefaultCreditSpecification</code> is an asynchronous operation, which works at an AWS Region level
+     * and modifies the credit option for each Availability Zone. All zones in a Region are updated within five minutes.
+     * But if instances are launched during this operation, they might not get the new credit option until the zone is
+     * updated. To verify whether the update has occurred, you can call <code>GetDefaultCreditSpecification</code> and
+     * check <code>DefaultCreditSpecification</code> for updates.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html">Burstable
+     * Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param modifyDefaultCreditSpecificationRequest
+     * @return Result of the ModifyDefaultCreditSpecification operation returned by the service.
+     * @sample AmazonEC2.ModifyDefaultCreditSpecification
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyDefaultCreditSpecification"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ModifyDefaultCreditSpecificationResult modifyDefaultCreditSpecification(ModifyDefaultCreditSpecificationRequest modifyDefaultCreditSpecificationRequest);
+
+    /**
+     * <p>
      * Changes the default customer master key (CMK) for EBS encryption by default for your account in this Region.
      * </p>
      * <p>
      * AWS creates a unique AWS managed CMK in each Region for use with encryption by default. If you change the default
-     * CMK to a customer managed CMK, it is used instead of the AWS managed CMK. To reset the default CMK to the AWS
-     * managed CMK for EBS, use <a>ResetEbsDefaultKmsKeyId</a>.
+     * CMK to a symmetric customer managed CMK, it is used instead of the AWS managed CMK. To reset the default CMK to
+     * the AWS managed CMK for EBS, use <a>ResetEbsDefaultKmsKeyId</a>. Amazon EBS does not support asymmetric CMKs.
      * </p>
      * <p>
      * If you delete or disable the customer managed CMK that you specified for use with encryption by default, your
@@ -6006,17 +6565,17 @@ public interface AmazonEC2 {
      * <p>
      * To scale up your EC2 Fleet, increase its target capacity. The EC2 Fleet launches the additional Spot Instances
      * according to the allocation strategy for the EC2 Fleet request. If the allocation strategy is
-     * <code>lowestPrice</code>, the EC2 Fleet launches instances using the Spot Instance pool with the lowest price. If
-     * the allocation strategy is <code>diversified</code>, the EC2 Fleet distributes the instances across the Spot
-     * Instance pools. If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from
+     * <code>lowest-price</code>, the EC2 Fleet launches instances using the Spot Instance pool with the lowest price.
+     * If the allocation strategy is <code>diversified</code>, the EC2 Fleet distributes the instances across the Spot
+     * Instance pools. If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from
      * Spot Instance pools with optimal capacity for the number of instances that are launching.
      * </p>
      * <p>
      * To scale down your EC2 Fleet, decrease its target capacity. First, the EC2 Fleet cancels any open requests that
      * exceed the new target capacity. You can request that the EC2 Fleet terminate Spot Instances until the size of the
-     * fleet no longer exceeds the new target capacity. If the allocation strategy is <code>lowestPrice</code>, the EC2
+     * fleet no longer exceeds the new target capacity. If the allocation strategy is <code>lowest-price</code>, the EC2
      * Fleet terminates the instances with the highest price per unit. If the allocation strategy is
-     * <code>capacityOptimized</code>, the EC2 Fleet terminates the instances in the Spot Instance pools that have the
+     * <code>capacity-optimized</code>, the EC2 Fleet terminates the instances in the Spot Instance pools that have the
      * least available Spot Instance capacity. If the allocation strategy is <code>diversified</code>, the EC2 Fleet
      * terminates instances across the Spot Instance pools. Alternatively, you can request that the EC2 Fleet keep the
      * fleet at its current size, but not replace any Spot Instances that are interrupted or that you terminate
@@ -6055,6 +6614,10 @@ public interface AmazonEC2 {
      * Host in your account that has auto-placement enabled. When auto-placement is disabled, you need to provide a host
      * ID to have the instance launch onto a specific host. If no host ID is provided, the instance is launched onto a
      * suitable host with auto-placement enabled.
+     * </p>
+     * <p>
+     * You can also use this API action to modify a Dedicated Host to support either multiple instance types in an
+     * instance family, or to support a specific instance type only.
      * </p>
      * 
      * @param modifyHostsRequest
@@ -6209,8 +6772,8 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Modifies the credit option for CPU usage on a running or stopped T2 or T3 instance. The credit options are
-     * <code>standard</code> and <code>unlimited</code>.
+     * Modifies the credit option for CPU usage on a running or stopped burstable performance instance. The credit
+     * options are <code>standard</code> and <code>unlimited</code>.
      * </p>
      * <p>
      * For more information, see <a
@@ -6238,6 +6801,25 @@ public interface AmazonEC2 {
      *      target="_top">AWS API Documentation</a>
      */
     ModifyInstanceEventStartTimeResult modifyInstanceEventStartTime(ModifyInstanceEventStartTimeRequest modifyInstanceEventStartTimeRequest);
+
+    /**
+     * <p>
+     * Modify the instance metadata parameters on a running or stopped instance. When you modify the parameters on a
+     * stopped instance, they are applied when the instance is started. When you modify the parameters on a running
+     * instance, the API responds with a state of “pending”. After the parameter modifications are successfully applied
+     * to the instance, the state of the modifications changes from “pending” to “applied” in subsequent
+     * describe-instances API calls. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata and User
+     * Data</a>.
+     * </p>
+     * 
+     * @param modifyInstanceMetadataOptionsRequest
+     * @return Result of the ModifyInstanceMetadataOptions operation returned by the service.
+     * @sample AmazonEC2.ModifyInstanceMetadataOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyInstanceMetadataOptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ModifyInstanceMetadataOptionsResult modifyInstanceMetadataOptions(ModifyInstanceMetadataOptionsRequest modifyInstanceMetadataOptionsRequest);
 
     /**
      * <p>
@@ -6356,7 +6938,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param modifySnapshotAttributeRequest
-     *        Contains the parameters for ModifySnapshotAttribute.
      * @return Result of the ModifySnapshotAttribute operation returned by the service.
      * @sample AmazonEC2.ModifySnapshotAttribute
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifySnapshotAttribute" target="_top">AWS
@@ -6431,9 +7012,9 @@ public interface AmazonEC2 {
      * use <code>RemoveNetworkServices</code> to remove the network services from the Traffic Mirror filter.
      * </p>
      * <p>
-     * FFor information about filter rule properties, see <a href=
-     * "https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html#traffic-mirroring-network-services"
-     * >Network Services</a> in the <i>Traffic Mirroring User Guide </i>.
+     * For information about filter rule properties, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html">Network
+     * Services</a> in the <i>Traffic Mirroring User Guide </i>.
      * </p>
      * 
      * @param modifyTrafficMirrorFilterNetworkServicesRequest
@@ -6550,7 +7131,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param modifyVolumeAttributeRequest
-     *        Contains the parameters for ModifyVolumeAttribute.
      * @return Result of the ModifyVolumeAttribute operation returned by the service.
      * @sample AmazonEC2.ModifyVolumeAttribute
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ModifyVolumeAttribute" target="_top">AWS API
@@ -6608,6 +7188,12 @@ public interface AmazonEC2 {
      * Modifies the attributes of your VPC endpoint service configuration. You can change the Network Load Balancers for
      * your service, and you can specify whether acceptance is required for requests to connect to your endpoint service
      * through an interface VPC endpoint.
+     * </p>
+     * <p>
+     * If you set or modify the private DNS name, you must prove that you own the private DNS domain name. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html">VPC Endpoint
+     * Service Private DNS Name Verification</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * 
      * @param modifyVpcEndpointServiceConfigurationRequest
@@ -6764,8 +7350,8 @@ public interface AmazonEC2 {
      * </p>
      * <p>
      * After you perform this operation, the AWS VPN endpoint's IP addresses on the AWS side and the tunnel options
-     * remain intact. Your s2slong; connection will be temporarily unavailable for approximately 10 minutes while we
-     * provision the new endpoints
+     * remain intact. Your AWS Site-to-Site VPN connection will be temporarily unavailable for a brief period while we
+     * provision the new endpoints.
      * </p>
      * 
      * @param modifyVpnConnectionRequest
@@ -6842,9 +7428,9 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Provisions an address range for use with your AWS resources through bring your own IP addresses (BYOIP) and
-     * creates a corresponding address pool. After the address range is provisioned, it is ready to be advertised using
-     * <a>AdvertiseByoipCidr</a>.
+     * Provisions an IPv4 or IPv6 address range for use with your AWS resources through bring your own IP addresses
+     * (BYOIP) and creates a corresponding address pool. After the address range is provisioned, it is ready to be
+     * advertised using <a>AdvertiseByoipCidr</a>.
      * </p>
      * <p>
      * AWS verifies that you own the address range and are authorized to advertise it. You must ensure that the address
@@ -6857,8 +7443,8 @@ public interface AmazonEC2 {
      * Provisioning an address range is an asynchronous operation, so the call returns immediately, but the address
      * range is not ready to use until its status changes from <code>pending-provision</code> to
      * <code>provisioned</code>. To monitor the status of an address range, use <a>DescribeByoipCidrs</a>. To allocate
-     * an Elastic IP address from your address pool, use <a>AllocateAddress</a> with either the specific address from
-     * the address pool or the ID of the address pool.
+     * an Elastic IP address from your IPv4 address pool, use <a>AllocateAddress</a> with either the specific address
+     * from the address pool or the ID of the address pool.
      * </p>
      * 
      * @param provisionByoipCidrRequest
@@ -6893,6 +7479,10 @@ public interface AmazonEC2 {
      * Use <a>DescribeReservedInstancesOfferings</a> to get a list of Reserved Instance offerings that match your
      * specifications. After you've purchased a Reserved Instance, you can check for your new Reserved Instance with
      * <a>DescribeReservedInstances</a>.
+     * </p>
+     * <p>
+     * To queue a purchase for a future date and time, specify a purchase time. If you do not specify a purchase time,
+     * the default is the current time.
      * </p>
      * <p>
      * For more information, see <a
@@ -6979,15 +7569,35 @@ public interface AmazonEC2 {
      * You can't register an image where a secondary (non-root) snapshot has AWS Marketplace product codes.
      * </p>
      * <p>
-     * Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server (SLES), use
-     * the EC2 billing product code associated with an AMI to verify the subscription status for package updates.
-     * Creating an AMI from an EBS snapshot does not maintain this billing code, and instances launched from such an AMI
-     * are not able to connect to package update infrastructure. If you purchase a Reserved Instance offering for one of
-     * these Linux distributions and launch instances using an AMI that does not contain the required billing code, your
-     * Reserved Instance is not applied to these instances.
+     * Windows and some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and SUSE Linux Enterprise Server
+     * (SLES), use the EC2 billing product code associated with an AMI to verify the subscription status for package
+     * updates. To create a new AMI for operating systems that require a billing product code, instead of registering
+     * the AMI, do the following to preserve the billing product code association:
      * </p>
+     * <ol>
+     * <li>
      * <p>
-     * To create an AMI for operating systems that require a billing code, see <a>CreateImage</a>.
+     * Launch an instance from an existing AMI with that billing product code.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Customize the instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Create an AMI from the instance using <a>CreateImage</a>.
+     * </p>
+     * </li>
+     * </ol>
+     * <p>
+     * If you purchase a Reserved Instance to apply to an On-Demand Instance that was launched from an AMI with a
+     * billing product code, make sure that the Reserved Instance has the matching billing product code. If you purchase
+     * a Reserved Instance without the matching billing product code, the Reserved Instance will not be applied to the
+     * On-Demand Instance. For information about how to obtain the platform details and billing information of an AMI,
+     * see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html">Obtaining Billing
+     * Information</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
      * If needed, you can deregister an AMI at any time. Any modifications you make to an AMI backed by an instance
@@ -7003,6 +7613,69 @@ public interface AmazonEC2 {
      *      Documentation</a>
      */
     RegisterImageResult registerImage(RegisterImageRequest registerImageRequest);
+
+    /**
+     * <p>
+     * Registers members (network interfaces) with the transit gateway multicast group. A member is a network interface
+     * associated with a supported EC2 instance that receives multicast traffic. For information about supported
+     * instances, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits">Multicast
+     * Consideration</a> in <i>Amazon VPC Transit Gateways</i>.
+     * </p>
+     * <p>
+     * After you add the members, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html"
+     * >SearchTransitGatewayMulticastGroups</a> to verify that the members were added to the transit gateway multicast
+     * group.
+     * </p>
+     * 
+     * @param registerTransitGatewayMulticastGroupMembersRequest
+     * @return Result of the RegisterTransitGatewayMulticastGroupMembers operation returned by the service.
+     * @sample AmazonEC2.RegisterTransitGatewayMulticastGroupMembers
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RegisterTransitGatewayMulticastGroupMembers"
+     *      target="_top">AWS API Documentation</a>
+     */
+    RegisterTransitGatewayMulticastGroupMembersResult registerTransitGatewayMulticastGroupMembers(
+            RegisterTransitGatewayMulticastGroupMembersRequest registerTransitGatewayMulticastGroupMembersRequest);
+
+    /**
+     * <p>
+     * Registers sources (network interfaces) with the specified transit gateway multicast group.
+     * </p>
+     * <p>
+     * A multicast source is a network interface attached to a supported instance that sends multicast traffic. For
+     * information about supported instances, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-limits.html#multicast-limits">Multicast
+     * Considerations</a> in <i>Amazon VPC Transit Gateways</i>.
+     * </p>
+     * <p>
+     * After you add the source, use <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html"
+     * >SearchTransitGatewayMulticastGroups</a> to verify that the source was added to the multicast group.
+     * </p>
+     * 
+     * @param registerTransitGatewayMulticastGroupSourcesRequest
+     * @return Result of the RegisterTransitGatewayMulticastGroupSources operation returned by the service.
+     * @sample AmazonEC2.RegisterTransitGatewayMulticastGroupSources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RegisterTransitGatewayMulticastGroupSources"
+     *      target="_top">AWS API Documentation</a>
+     */
+    RegisterTransitGatewayMulticastGroupSourcesResult registerTransitGatewayMulticastGroupSources(
+            RegisterTransitGatewayMulticastGroupSourcesRequest registerTransitGatewayMulticastGroupSourcesRequest);
+
+    /**
+     * <p>
+     * Rejects a transit gateway peering attachment request.
+     * </p>
+     * 
+     * @param rejectTransitGatewayPeeringAttachmentRequest
+     * @return Result of the RejectTransitGatewayPeeringAttachment operation returned by the service.
+     * @sample AmazonEC2.RejectTransitGatewayPeeringAttachment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RejectTransitGatewayPeeringAttachment"
+     *      target="_top">AWS API Documentation</a>
+     */
+    RejectTransitGatewayPeeringAttachmentResult rejectTransitGatewayPeeringAttachment(
+            RejectTransitGatewayPeeringAttachmentRequest rejectTransitGatewayPeeringAttachmentRequest);
 
     /**
      * <p>
@@ -7161,8 +7834,8 @@ public interface AmazonEC2 {
     /**
      * <p>
      * Replaces an existing route within a route table in a VPC. You must provide only one of the following: internet
-     * gateway or virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface, or
-     * egress-only internet gateway.
+     * gateway, virtual private gateway, NAT instance, NAT gateway, VPC peering connection, network interface,
+     * egress-only internet gateway, or transit gateway.
      * </p>
      * <p>
      * For more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
@@ -7179,14 +7852,14 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Changes the route table associated with a given subnet in a VPC. After the operation completes, the subnet uses
-     * the routes in the new route table it's associated with. For more information about route tables, see <a
-     * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route Tables</a> in the <i>Amazon
-     * Virtual Private Cloud User Guide</i>.
+     * Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC.
+     * After the operation completes, the subnet or gateway uses the routes in the new route table. For more information
+     * about route tables, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route
+     * Tables</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.
      * </p>
      * <p>
-     * You can also use ReplaceRouteTableAssociation to change which table is the main route table in the VPC. You just
-     * specify the main route table's association ID and the route table to be the new main route table.
+     * You can also use this operation to change which table is the main route table in the VPC. Specify the main route
+     * table's association ID and the route table ID of the new main route table.
      * </p>
      * 
      * @param replaceRouteTableAssociationRequest
@@ -7253,8 +7926,8 @@ public interface AmazonEC2 {
      * you can improve the availability of your fleet.
      * </p>
      * <p>
-     * You can specify tags for the Spot Instances. You cannot tag other resource types in a Spot Fleet request because
-     * only the <code>instance</code> resource type is supported.
+     * You can specify tags for the Spot Fleet and Spot Instances. You cannot tag other resource types in a Spot Fleet
+     * request because only the <code>spot-fleet-request</code> and <code>instance</code> resource types are supported.
      * </p>
      * <p>
      * For more information, see <a
@@ -7389,7 +8062,6 @@ public interface AmazonEC2 {
      * </p>
      * 
      * @param resetSnapshotAttributeRequest
-     *        Contains the parameters for ResetSnapshotAttribute.
      * @return Result of the ResetSnapshotAttribute operation returned by the service.
      * @sample AmazonEC2.ResetSnapshotAttribute
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ResetSnapshotAttribute" target="_top">AWS API
@@ -7603,6 +8275,33 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Searches for routes in the specified local gateway route table.
+     * </p>
+     * 
+     * @param searchLocalGatewayRoutesRequest
+     * @return Result of the SearchLocalGatewayRoutes operation returned by the service.
+     * @sample AmazonEC2.SearchLocalGatewayRoutes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SearchLocalGatewayRoutes" target="_top">AWS
+     *      API Documentation</a>
+     */
+    SearchLocalGatewayRoutesResult searchLocalGatewayRoutes(SearchLocalGatewayRoutesRequest searchLocalGatewayRoutesRequest);
+
+    /**
+     * <p>
+     * Searches one or more transit gateway multicast groups and returns the group membership information.
+     * </p>
+     * 
+     * @param searchTransitGatewayMulticastGroupsRequest
+     * @return Result of the SearchTransitGatewayMulticastGroups operation returned by the service.
+     * @sample AmazonEC2.SearchTransitGatewayMulticastGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/SearchTransitGatewayMulticastGroups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    SearchTransitGatewayMulticastGroupsResult searchTransitGatewayMulticastGroups(
+            SearchTransitGatewayMulticastGroupsRequest searchTransitGatewayMulticastGroupsRequest);
+
+    /**
+     * <p>
      * Searches for routes in the specified transit gateway route table.
      * </p>
      * 
@@ -7681,6 +8380,32 @@ public interface AmazonEC2 {
 
     /**
      * <p>
+     * Initiates the verification process to prove that the service provider owns the private DNS name domain for the
+     * endpoint service.
+     * </p>
+     * <p>
+     * The service provider must successfully perform the verification before the consumer can use the name to access
+     * the service.
+     * </p>
+     * <p>
+     * Before the service provider runs this command, they must add a record to the DNS server. For more information,
+     * see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/userguide/ndpoint-services-dns-validation.html#add-dns-txt-record"
+     * >Adding a TXT Record to Your Domain's DNS Server </a> in the <i>Amazon VPC User Guide</i>.
+     * </p>
+     * 
+     * @param startVpcEndpointServicePrivateDnsVerificationRequest
+     * @return Result of the StartVpcEndpointServicePrivateDnsVerification operation returned by the service.
+     * @sample AmazonEC2.StartVpcEndpointServicePrivateDnsVerification
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartVpcEndpointServicePrivateDnsVerification"
+     *      target="_top">AWS API Documentation</a>
+     */
+    StartVpcEndpointServicePrivateDnsVerificationResult startVpcEndpointServicePrivateDnsVerification(
+            StartVpcEndpointServicePrivateDnsVerificationRequest startVpcEndpointServicePrivateDnsVerificationRequest);
+
+    /**
+     * <p>
      * Stops an Amazon EBS-backed instance.
      * </p>
      * <p>
@@ -7701,8 +8426,8 @@ public interface AmazonEC2 {
      * Amazon EC2 charges a one-minute minimum for instance usage, and thereafter charges per second for instance usage.
      * </p>
      * <p>
-     * You can't start, stop, or hibernate Spot Instances, and you can't stop or hibernate instance store-backed
-     * instances. For information about using hibernation for Spot Instances, see <a
+     * You can't hibernate Spot Instances, and you can't stop or hibernate instance store-backed instances. For
+     * information about using hibernation for Spot Instances, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances"
      * >Hibernating Interrupted Spot Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
@@ -7871,7 +8596,7 @@ public interface AmazonEC2 {
 
     /**
      * <p>
-     * Stops advertising an IPv4 address range that is provisioned as an address pool.
+     * Stops advertising an address range that is provisioned as an address pool.
      * </p>
      * <p>
      * You can perform this operation at most once every 10 seconds, even if you specify different address ranges each

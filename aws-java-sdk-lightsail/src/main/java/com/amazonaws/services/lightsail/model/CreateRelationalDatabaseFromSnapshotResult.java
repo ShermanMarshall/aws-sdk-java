@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,17 +26,20 @@ public class CreateRelationalDatabaseFromSnapshotResult extends com.amazonaws.Am
 
     /**
      * <p>
-     * An object describing the result of your create relational database from snapshot request.
+     * An array of objects that describe the result of the action, such as the status of the request, the time stamp of
+     * the request, and the resources affected by the request.
      * </p>
      */
     private java.util.List<Operation> operations;
 
     /**
      * <p>
-     * An object describing the result of your create relational database from snapshot request.
+     * An array of objects that describe the result of the action, such as the status of the request, the time stamp of
+     * the request, and the resources affected by the request.
      * </p>
      * 
-     * @return An object describing the result of your create relational database from snapshot request.
+     * @return An array of objects that describe the result of the action, such as the status of the request, the time
+     *         stamp of the request, and the resources affected by the request.
      */
 
     public java.util.List<Operation> getOperations() {
@@ -45,11 +48,13 @@ public class CreateRelationalDatabaseFromSnapshotResult extends com.amazonaws.Am
 
     /**
      * <p>
-     * An object describing the result of your create relational database from snapshot request.
+     * An array of objects that describe the result of the action, such as the status of the request, the time stamp of
+     * the request, and the resources affected by the request.
      * </p>
      * 
      * @param operations
-     *        An object describing the result of your create relational database from snapshot request.
+     *        An array of objects that describe the result of the action, such as the status of the request, the time
+     *        stamp of the request, and the resources affected by the request.
      */
 
     public void setOperations(java.util.Collection<Operation> operations) {
@@ -63,7 +68,8 @@ public class CreateRelationalDatabaseFromSnapshotResult extends com.amazonaws.Am
 
     /**
      * <p>
-     * An object describing the result of your create relational database from snapshot request.
+     * An array of objects that describe the result of the action, such as the status of the request, the time stamp of
+     * the request, and the resources affected by the request.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -72,7 +78,8 @@ public class CreateRelationalDatabaseFromSnapshotResult extends com.amazonaws.Am
      * </p>
      * 
      * @param operations
-     *        An object describing the result of your create relational database from snapshot request.
+     *        An array of objects that describe the result of the action, such as the status of the request, the time
+     *        stamp of the request, and the resources affected by the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -88,11 +95,13 @@ public class CreateRelationalDatabaseFromSnapshotResult extends com.amazonaws.Am
 
     /**
      * <p>
-     * An object describing the result of your create relational database from snapshot request.
+     * An array of objects that describe the result of the action, such as the status of the request, the time stamp of
+     * the request, and the resources affected by the request.
      * </p>
      * 
      * @param operations
-     *        An object describing the result of your create relational database from snapshot request.
+     *        An array of objects that describe the result of the action, such as the status of the request, the time
+     *        stamp of the request, and the resources affected by the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

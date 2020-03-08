@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -15,14 +15,15 @@ package com.amazonaws.services.medialive.model;
 import javax.annotation.Generated;
 
 /**
- * Resolution based on lines of vertical resolution; SD is less than 720 lines, HD is 720 to 1080 lines, UHD is greater
- * than 1080 lines
+ * Resolution based on lines of vertical resolution; SD is less than 720 lines, HD is 720 to 1080 lines, FHD is 1080
+ * lines, UHD is greater than 1080 lines
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum ReservationResolution {
 
     SD("SD"),
     HD("HD"),
+    FHD("FHD"),
     UHD("UHD");
 
     private String value;

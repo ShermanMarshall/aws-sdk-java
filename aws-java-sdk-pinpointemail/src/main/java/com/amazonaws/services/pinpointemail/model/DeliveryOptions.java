@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,9 +30,9 @@ public class DeliveryOptions implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection that’s
-     * encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>, Amazon Pinpoint
-     * will bounce email messages that cannot be delivered over TLS. The default value is <code>Optional</code>.
+     * Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). If
+     * the value is <code>Require</code>, messages are only delivered if a TLS connection can be established. If the
+     * value is <code>Optional</code>, messages can be delivered in plain text if a TLS connection can't be established.
      * </p>
      */
     private String tlsPolicy;
@@ -45,16 +45,16 @@ public class DeliveryOptions implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection that’s
-     * encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>, Amazon Pinpoint
-     * will bounce email messages that cannot be delivered over TLS. The default value is <code>Optional</code>.
+     * Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). If
+     * the value is <code>Require</code>, messages are only delivered if a TLS connection can be established. If the
+     * value is <code>Optional</code>, messages can be delivered in plain text if a TLS connection can't be established.
      * </p>
      * 
      * @param tlsPolicy
-     *        Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection that’s
-     *        encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>, Amazon
-     *        Pinpoint will bounce email messages that cannot be delivered over TLS. The default value is
-     *        <code>Optional</code>.
+     *        Specifies whether messages that use the configuration set are required to use Transport Layer Security
+     *        (TLS). If the value is <code>Require</code>, messages are only delivered if a TLS connection can be
+     *        established. If the value is <code>Optional</code>, messages can be delivered in plain text if a TLS
+     *        connection can't be established.
      * @see TlsPolicy
      */
 
@@ -64,15 +64,15 @@ public class DeliveryOptions implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection that’s
-     * encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>, Amazon Pinpoint
-     * will bounce email messages that cannot be delivered over TLS. The default value is <code>Optional</code>.
+     * Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). If
+     * the value is <code>Require</code>, messages are only delivered if a TLS connection can be established. If the
+     * value is <code>Optional</code>, messages can be delivered in plain text if a TLS connection can't be established.
      * </p>
      * 
-     * @return Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection
-     *         that’s encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>,
-     *         Amazon Pinpoint will bounce email messages that cannot be delivered over TLS. The default value is
-     *         <code>Optional</code>.
+     * @return Specifies whether messages that use the configuration set are required to use Transport Layer Security
+     *         (TLS). If the value is <code>Require</code>, messages are only delivered if a TLS connection can be
+     *         established. If the value is <code>Optional</code>, messages can be delivered in plain text if a TLS
+     *         connection can't be established.
      * @see TlsPolicy
      */
 
@@ -82,16 +82,16 @@ public class DeliveryOptions implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection that’s
-     * encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>, Amazon Pinpoint
-     * will bounce email messages that cannot be delivered over TLS. The default value is <code>Optional</code>.
+     * Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). If
+     * the value is <code>Require</code>, messages are only delivered if a TLS connection can be established. If the
+     * value is <code>Optional</code>, messages can be delivered in plain text if a TLS connection can't be established.
      * </p>
      * 
      * @param tlsPolicy
-     *        Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection that’s
-     *        encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>, Amazon
-     *        Pinpoint will bounce email messages that cannot be delivered over TLS. The default value is
-     *        <code>Optional</code>.
+     *        Specifies whether messages that use the configuration set are required to use Transport Layer Security
+     *        (TLS). If the value is <code>Require</code>, messages are only delivered if a TLS connection can be
+     *        established. If the value is <code>Optional</code>, messages can be delivered in plain text if a TLS
+     *        connection can't be established.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TlsPolicy
      */
@@ -103,16 +103,16 @@ public class DeliveryOptions implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection that’s
-     * encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>, Amazon Pinpoint
-     * will bounce email messages that cannot be delivered over TLS. The default value is <code>Optional</code>.
+     * Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). If
+     * the value is <code>Require</code>, messages are only delivered if a TLS connection can be established. If the
+     * value is <code>Optional</code>, messages can be delivered in plain text if a TLS connection can't be established.
      * </p>
      * 
      * @param tlsPolicy
-     *        Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection that’s
-     *        encrypted by using Transport Layer Security (TLS). If this value is set to <code>Require</code>, Amazon
-     *        Pinpoint will bounce email messages that cannot be delivered over TLS. The default value is
-     *        <code>Optional</code>.
+     *        Specifies whether messages that use the configuration set are required to use Transport Layer Security
+     *        (TLS). If the value is <code>Require</code>, messages are only delivered if a TLS connection can be
+     *        established. If the value is <code>Optional</code>, messages can be delivered in plain text if a TLS
+     *        connection can't be established.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TlsPolicy
      */

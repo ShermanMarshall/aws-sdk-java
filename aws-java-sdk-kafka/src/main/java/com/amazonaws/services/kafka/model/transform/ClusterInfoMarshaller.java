@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,10 +49,16 @@ public class ClusterInfoMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("encryptionInfo").build();
     private static final MarshallingInfo<String> ENHANCEDMONITORING_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("enhancedMonitoring").build();
+    private static final MarshallingInfo<StructuredPojo> OPENMONITORING_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("openMonitoring").build();
+    private static final MarshallingInfo<StructuredPojo> LOGGINGINFO_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("loggingInfo").build();
     private static final MarshallingInfo<Integer> NUMBEROFBROKERNODES_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("numberOfBrokerNodes").build();
     private static final MarshallingInfo<String> STATE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("state").build();
+    private static final MarshallingInfo<StructuredPojo> STATEINFO_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("stateInfo").build();
     private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("tags").build();
     private static final MarshallingInfo<String> ZOOKEEPERCONNECTSTRING_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -84,8 +90,11 @@ public class ClusterInfoMarshaller {
             protocolMarshaller.marshall(clusterInfo.getCurrentVersion(), CURRENTVERSION_BINDING);
             protocolMarshaller.marshall(clusterInfo.getEncryptionInfo(), ENCRYPTIONINFO_BINDING);
             protocolMarshaller.marshall(clusterInfo.getEnhancedMonitoring(), ENHANCEDMONITORING_BINDING);
+            protocolMarshaller.marshall(clusterInfo.getOpenMonitoring(), OPENMONITORING_BINDING);
+            protocolMarshaller.marshall(clusterInfo.getLoggingInfo(), LOGGINGINFO_BINDING);
             protocolMarshaller.marshall(clusterInfo.getNumberOfBrokerNodes(), NUMBEROFBROKERNODES_BINDING);
             protocolMarshaller.marshall(clusterInfo.getState(), STATE_BINDING);
+            protocolMarshaller.marshall(clusterInfo.getStateInfo(), STATEINFO_BINDING);
             protocolMarshaller.marshall(clusterInfo.getTags(), TAGS_BINDING);
             protocolMarshaller.marshall(clusterInfo.getZookeeperConnectString(), ZOOKEEPERCONNECTSTRING_BINDING);
         } catch (Exception e) {

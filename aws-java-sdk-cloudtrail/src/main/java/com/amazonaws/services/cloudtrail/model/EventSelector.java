@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,7 +52,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      * >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      * </p>
      * <p>
@@ -68,13 +68,23 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      * >Data Events</a> and <a
      * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in AWS
      * CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<DataResource> dataResources;
+    /**
+     * <p>
+     * An optional list of service event sources from which you do not want management events to be logged on your
+     * trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management
+     * Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     * <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are logged to
+     * your trail.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> excludeManagementEventSources;
 
     /**
      * <p>
@@ -200,7 +210,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      * >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      * </p>
      * <p>
@@ -211,7 +221,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      *        Specify if you want your event selector to include management events for your trail.</p>
      *        <p>
      *        For more information, see <a href=
-     *        "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     *        "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      *        >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      *        </p>
      *        <p>
@@ -228,7 +238,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      * >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      * </p>
      * <p>
@@ -238,7 +248,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * @return Specify if you want your event selector to include management events for your trail.</p>
      *         <p>
      *         For more information, see <a href=
-     *         "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     *         "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      *         >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      *         </p>
      *         <p>
@@ -255,7 +265,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      * >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      * </p>
      * <p>
@@ -266,7 +276,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      *        Specify if you want your event selector to include management events for your trail.</p>
      *        <p>
      *        For more information, see <a href=
-     *        "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     *        "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      *        >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      *        </p>
      *        <p>
@@ -285,7 +295,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      * >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      * </p>
      * <p>
@@ -295,7 +305,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * @return Specify if you want your event selector to include management events for your trail.</p>
      *         <p>
      *         For more information, see <a href=
-     *         "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
+     *         "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-management-events"
      *         >Management Events</a> in the <i>AWS CloudTrail User Guide</i>.
      *         </p>
      *         <p>
@@ -314,7 +324,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      * >Data Events</a> and <a
      * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in AWS
      * CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -326,7 +336,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      *         for all data events. </p>
      *         <p>
      *         For more information, see <a href=
-     *         "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     *         "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      *         >Data Events</a> and <a
      *         href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in
      *         AWS CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -347,7 +357,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      * >Data Events</a> and <a
      * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in AWS
      * CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -360,7 +370,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      *        all data events. </p>
      *        <p>
      *        For more information, see <a href=
-     *        "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     *        "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      *        >Data Events</a> and <a
      *        href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in
      *        AWS CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -383,7 +393,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      * >Data Events</a> and <a
      * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in AWS
      * CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -401,7 +411,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      *        all data events. </p>
      *        <p>
      *        For more information, see <a href=
-     *        "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     *        "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      *        >Data Events</a> and <a
      *        href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in
      *        AWS CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -426,7 +436,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For more information, see <a href=
-     * "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     * "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      * >Data Events</a> and <a
      * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in AWS
      * CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -439,7 +449,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
      *        all data events. </p>
      *        <p>
      *        For more information, see <a href=
-     *        "http://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
+     *        "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events"
      *        >Data Events</a> and <a
      *        href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html">Limits in
      *        AWS CloudTrail</a> in the <i>AWS CloudTrail User Guide</i>.
@@ -448,6 +458,111 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
 
     public EventSelector withDataResources(java.util.Collection<DataResource> dataResources) {
         setDataResources(dataResources);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An optional list of service event sources from which you do not want management events to be logged on your
+     * trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management
+     * Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     * <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are logged to
+     * your trail.
+     * </p>
+     * 
+     * @return An optional list of service event sources from which you do not want management events to be logged on
+     *         your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key
+     *         Management Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     *         <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are
+     *         logged to your trail.
+     */
+
+    public java.util.List<String> getExcludeManagementEventSources() {
+        if (excludeManagementEventSources == null) {
+            excludeManagementEventSources = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return excludeManagementEventSources;
+    }
+
+    /**
+     * <p>
+     * An optional list of service event sources from which you do not want management events to be logged on your
+     * trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management
+     * Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     * <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are logged to
+     * your trail.
+     * </p>
+     * 
+     * @param excludeManagementEventSources
+     *        An optional list of service event sources from which you do not want management events to be logged on
+     *        your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key
+     *        Management Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     *        <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are
+     *        logged to your trail.
+     */
+
+    public void setExcludeManagementEventSources(java.util.Collection<String> excludeManagementEventSources) {
+        if (excludeManagementEventSources == null) {
+            this.excludeManagementEventSources = null;
+            return;
+        }
+
+        this.excludeManagementEventSources = new com.amazonaws.internal.SdkInternalList<String>(excludeManagementEventSources);
+    }
+
+    /**
+     * <p>
+     * An optional list of service event sources from which you do not want management events to be logged on your
+     * trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management
+     * Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     * <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are logged to
+     * your trail.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setExcludeManagementEventSources(java.util.Collection)} or
+     * {@link #withExcludeManagementEventSources(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param excludeManagementEventSources
+     *        An optional list of service event sources from which you do not want management events to be logged on
+     *        your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key
+     *        Management Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     *        <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are
+     *        logged to your trail.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EventSelector withExcludeManagementEventSources(String... excludeManagementEventSources) {
+        if (this.excludeManagementEventSources == null) {
+            setExcludeManagementEventSources(new com.amazonaws.internal.SdkInternalList<String>(excludeManagementEventSources.length));
+        }
+        for (String ele : excludeManagementEventSources) {
+            this.excludeManagementEventSources.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An optional list of service event sources from which you do not want management events to be logged on your
+     * trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management
+     * Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     * <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are logged to
+     * your trail.
+     * </p>
+     * 
+     * @param excludeManagementEventSources
+     *        An optional list of service event sources from which you do not want management events to be logged on
+     *        your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key
+     *        Management Service events by containing <code>"kms.amazonaws.com"</code>. By default,
+     *        <code>ExcludeManagementEventSources</code> is empty, and AWS KMS events are included in events that are
+     *        logged to your trail.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EventSelector withExcludeManagementEventSources(java.util.Collection<String> excludeManagementEventSources) {
+        setExcludeManagementEventSources(excludeManagementEventSources);
         return this;
     }
 
@@ -468,7 +583,9 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
         if (getIncludeManagementEvents() != null)
             sb.append("IncludeManagementEvents: ").append(getIncludeManagementEvents()).append(",");
         if (getDataResources() != null)
-            sb.append("DataResources: ").append(getDataResources());
+            sb.append("DataResources: ").append(getDataResources()).append(",");
+        if (getExcludeManagementEventSources() != null)
+            sb.append("ExcludeManagementEventSources: ").append(getExcludeManagementEventSources());
         sb.append("}");
         return sb.toString();
     }
@@ -495,6 +612,11 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDataResources() != null && other.getDataResources().equals(this.getDataResources()) == false)
             return false;
+        if (other.getExcludeManagementEventSources() == null ^ this.getExcludeManagementEventSources() == null)
+            return false;
+        if (other.getExcludeManagementEventSources() != null
+                && other.getExcludeManagementEventSources().equals(this.getExcludeManagementEventSources()) == false)
+            return false;
         return true;
     }
 
@@ -506,6 +628,7 @@ public class EventSelector implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getReadWriteType() == null) ? 0 : getReadWriteType().hashCode());
         hashCode = prime * hashCode + ((getIncludeManagementEvents() == null) ? 0 : getIncludeManagementEvents().hashCode());
         hashCode = prime * hashCode + ((getDataResources() == null) ? 0 : getDataResources().hashCode());
+        hashCode = prime * hashCode + ((getExcludeManagementEventSources() == null) ? 0 : getExcludeManagementEventSources().hashCode());
         return hashCode;
     }
 

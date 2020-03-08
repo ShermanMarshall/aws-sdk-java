@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -3764,7 +3764,7 @@ public interface AWSWAFRegionalAsync extends AWSWAFRegional {
      * <ol>
      * <li>
      * <p>
-     * Create an Amazon Kinesis Data Firehose .
+     * Create an Amazon Kinesis Data Firehose.
      * </p>
      * <p>
      * Create the data firehose with a PUT source and in the region that you are operating. However, if you are
@@ -3806,7 +3806,7 @@ public interface AWSWAFRegionalAsync extends AWSWAFRegional {
      * <ol>
      * <li>
      * <p>
-     * Create an Amazon Kinesis Data Firehose .
+     * Create an Amazon Kinesis Data Firehose.
      * </p>
      * <p>
      * Create the data firehose with a PUT source and in the region that you are operating. However, if you are

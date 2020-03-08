@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,13 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
      * </p>
      */
     private String content;
+    /**
+     * <p>
+     * A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code> document
+     * requires an <code>ApplicationConfigurationSchema</code> document.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<DocumentRequires> requires;
     /**
      * <p>
      * A list of key and value pairs that describe attachments to a version of a document.
@@ -75,14 +82,13 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
     private String versionName;
     /**
      * <p>
-     * The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     * <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     * The type of document to create.
      * </p>
      */
     private String documentType;
     /**
      * <p>
-     * Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default
+     * Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the default
      * format.
      * </p>
      */
@@ -161,6 +167,87 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     public CreateDocumentRequest withContent(String content) {
         setContent(content);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code> document
+     * requires an <code>ApplicationConfigurationSchema</code> document.
+     * </p>
+     * 
+     * @return A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code>
+     *         document requires an <code>ApplicationConfigurationSchema</code> document.
+     */
+
+    public java.util.List<DocumentRequires> getRequires() {
+        if (requires == null) {
+            requires = new com.amazonaws.internal.SdkInternalList<DocumentRequires>();
+        }
+        return requires;
+    }
+
+    /**
+     * <p>
+     * A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code> document
+     * requires an <code>ApplicationConfigurationSchema</code> document.
+     * </p>
+     * 
+     * @param requires
+     *        A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code>
+     *        document requires an <code>ApplicationConfigurationSchema</code> document.
+     */
+
+    public void setRequires(java.util.Collection<DocumentRequires> requires) {
+        if (requires == null) {
+            this.requires = null;
+            return;
+        }
+
+        this.requires = new com.amazonaws.internal.SdkInternalList<DocumentRequires>(requires);
+    }
+
+    /**
+     * <p>
+     * A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code> document
+     * requires an <code>ApplicationConfigurationSchema</code> document.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setRequires(java.util.Collection)} or {@link #withRequires(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param requires
+     *        A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code>
+     *        document requires an <code>ApplicationConfigurationSchema</code> document.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDocumentRequest withRequires(DocumentRequires... requires) {
+        if (this.requires == null) {
+            setRequires(new com.amazonaws.internal.SdkInternalList<DocumentRequires>(requires.length));
+        }
+        for (DocumentRequires ele : requires) {
+            this.requires.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code> document
+     * requires an <code>ApplicationConfigurationSchema</code> document.
+     * </p>
+     * 
+     * @param requires
+     *        A list of SSM documents required by a document. For example, an <code>ApplicationConfiguration</code>
+     *        document requires an <code>ApplicationConfigurationSchema</code> document.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateDocumentRequest withRequires(java.util.Collection<DocumentRequires> requires) {
+        setRequires(requires);
         return this;
     }
 
@@ -457,13 +544,11 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     * <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     * The type of document to create.
      * </p>
      * 
      * @param documentType
-     *        The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     *        <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     *        The type of document to create.
      * @see DocumentType
      */
 
@@ -473,12 +558,10 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     * <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     * The type of document to create.
      * </p>
      * 
-     * @return The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     *         <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     * @return The type of document to create.
      * @see DocumentType
      */
 
@@ -488,13 +571,11 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     * <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     * The type of document to create.
      * </p>
      * 
      * @param documentType
-     *        The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     *        <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     *        The type of document to create.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DocumentType
      */
@@ -506,13 +587,11 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     * <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     * The type of document to create.
      * </p>
      * 
      * @param documentType
-     *        The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     *        <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     *        The type of document to create.
      * @see DocumentType
      */
 
@@ -522,13 +601,11 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     * <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     * The type of document to create.
      * </p>
      * 
      * @param documentType
-     *        The type of document to create. Valid document types include: <code>Command</code>, <code>Policy</code>,
-     *        <code>Automation</code>, <code>Session</code>, and <code>Package</code>.
+     *        The type of document to create.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DocumentType
      */
@@ -540,12 +617,12 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default
+     * Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the default
      * format.
      * </p>
      * 
      * @param documentFormat
-     *        Specify the document format for the request. The document format can be either JSON or YAML. JSON is the
+     *        Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the
      *        default format.
      * @see DocumentFormat
      */
@@ -556,11 +633,11 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default
+     * Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the default
      * format.
      * </p>
      * 
-     * @return Specify the document format for the request. The document format can be either JSON or YAML. JSON is the
+     * @return Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the
      *         default format.
      * @see DocumentFormat
      */
@@ -571,12 +648,12 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default
+     * Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the default
      * format.
      * </p>
      * 
      * @param documentFormat
-     *        Specify the document format for the request. The document format can be either JSON or YAML. JSON is the
+     *        Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the
      *        default format.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DocumentFormat
@@ -589,12 +666,12 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default
+     * Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the default
      * format.
      * </p>
      * 
      * @param documentFormat
-     *        Specify the document format for the request. The document format can be either JSON or YAML. JSON is the
+     *        Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the
      *        default format.
      * @see DocumentFormat
      */
@@ -605,12 +682,12 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default
+     * Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the default
      * format.
      * </p>
      * 
      * @param documentFormat
-     *        Specify the document format for the request. The document format can be either JSON or YAML. JSON is the
+     *        Specify the document format for the request. The document format can be JSON, YAML, or TEXT. JSON is the
      *        default format.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DocumentFormat
@@ -930,6 +1007,8 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
         sb.append("{");
         if (getContent() != null)
             sb.append("Content: ").append(getContent()).append(",");
+        if (getRequires() != null)
+            sb.append("Requires: ").append(getRequires()).append(",");
         if (getAttachments() != null)
             sb.append("Attachments: ").append(getAttachments()).append(",");
         if (getName() != null)
@@ -961,6 +1040,10 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
         if (other.getContent() == null ^ this.getContent() == null)
             return false;
         if (other.getContent() != null && other.getContent().equals(this.getContent()) == false)
+            return false;
+        if (other.getRequires() == null ^ this.getRequires() == null)
+            return false;
+        if (other.getRequires() != null && other.getRequires().equals(this.getRequires()) == false)
             return false;
         if (other.getAttachments() == null ^ this.getAttachments() == null)
             return false;
@@ -999,6 +1082,7 @@ public class CreateDocumentRequest extends com.amazonaws.AmazonWebServiceRequest
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getContent() == null) ? 0 : getContent().hashCode());
+        hashCode = prime * hashCode + ((getRequires() == null) ? 0 : getRequires().hashCode());
         hashCode = prime * hashCode + ((getAttachments() == null) ? 0 : getAttachments().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getVersionName() == null) ? 0 : getVersionName().hashCode());

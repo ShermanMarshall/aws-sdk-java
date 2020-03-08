@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,139 +50,7 @@ import com.amazonaws.services.organizations.model.transform.*;
  * Client for accessing Organizations. All service calls made using this client are blocking, and will not return until
  * the service call completes.
  * <p>
- * <fullname>AWS Organizations API Reference</fullname>
- * <p>
- * AWS Organizations is a web service that enables you to consolidate your multiple AWS accounts into an
- * <i>organization</i> and centrally manage your accounts and their resources.
- * </p>
- * <p>
- * This guide provides descriptions of the Organizations API. For more information about using this service, see the <a
- * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html">AWS Organizations User
- * Guide</a>.
- * </p>
- * <p>
- * <b>API Version</b>
- * </p>
- * <p>
- * This version of the Organizations API Reference documents the Organizations API version 2016-11-28.
- * </p>
- * <note>
- * <p>
- * As an alternative to using the API directly, you can use one of the AWS SDKs, which consist of libraries and sample
- * code for various programming languages and platforms (Java, Ruby, .NET, iOS, Android, and more). The SDKs provide a
- * convenient way to create programmatic access to AWS Organizations. For example, the SDKs take care of
- * cryptographically signing requests, managing errors, and retrying requests automatically. For more information about
- * the AWS SDKs, including how to download and install them, see <a href="http://aws.amazon.com/tools/">Tools for Amazon
- * Web Services</a>.
- * </p>
- * </note>
- * <p>
- * We recommend that you use the AWS SDKs to make programmatic API calls to Organizations. However, you also can use the
- * Organizations Query API to make direct calls to the Organizations web service. To learn more about the Organizations
- * Query API, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_query-requests.html">Making
- * Query Requests</a> in the <i>AWS Organizations User Guide</i>. Organizations supports GET and POST requests for all
- * actions. That is, the API does not require you to use GET for some actions and POST for others. However, GET requests
- * are subject to the limitation size of a URL. Therefore, for operations that require larger sizes, use a POST request.
- * </p>
- * <p>
- * <b>Signing Requests</b>
- * </p>
- * <p>
- * When you send HTTP requests to AWS, you must sign the requests so that AWS can identify who sent them. You sign
- * requests with your AWS access key, which consists of an access key ID and a secret access key. We strongly recommend
- * that you do not create an access key for your root account. Anyone who has the access key for your root account has
- * unrestricted access to all the resources in your account. Instead, create an access key for an IAM user account that
- * has administrative privileges. As another option, use AWS Security Token Service to generate temporary security
- * credentials, and use those credentials to sign requests.
- * </p>
- * <p>
- * To sign requests, we recommend that you use <a
- * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>. If you have an
- * existing application that uses Signature Version 2, you do not have to update it to use Signature Version 4. However,
- * some operations now require Signature Version 4. The documentation for operations that require version 4 indicate
- * this requirement.
- * </p>
- * <p>
- * When you use the AWS Command Line Interface (AWS CLI) or one of the AWS SDKs to make requests to AWS, these tools
- * automatically sign the requests for you with the access key that you specify when you configure the tools.
- * </p>
- * <p>
- * In this release, each organization can have only one root. In a future release, a single organization will support
- * multiple roots.
- * </p>
- * <p>
- * <b>Support and Feedback for AWS Organizations</b>
- * </p>
- * <p>
- * We welcome your feedback. Send your comments to <a
- * href="mailto:feedback-awsorganizations@amazon.com">feedback-awsorganizations@amazon.com</a> or post your feedback and
- * questions in the <a href="http://forums.aws.amazon.com/forum.jspa?forumID=219">AWS Organizations support forum</a>.
- * For more information about the AWS support forums, see <a href="http://forums.aws.amazon.com/help.jspa">Forums
- * Help</a>.
- * </p>
- * <p>
- * <b>Endpoint to Call When Using the CLI or the AWS API</b>
- * </p>
- * <p>
- * For the current release of Organizations, you must specify the <code>us-east-1</code> region for all AWS API and CLI
- * calls. You can do this in the CLI by using these parameters and commands:
- * </p>
- * <ul>
- * <li>
- * <p>
- * Use the following parameter with each command to specify both the endpoint and its region:
- * </p>
- * <p>
- * <code>--endpoint-url https://organizations.us-east-1.amazonaws.com</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * Use the default endpoint, but configure your default region with this command:
- * </p>
- * <p>
- * <code>aws configure set default.region us-east-1</code>
- * </p>
- * </li>
- * <li>
- * <p>
- * Use the following parameter with each command to specify the endpoint:
- * </p>
- * <p>
- * <code>--region us-east-1</code>
- * </p>
- * </li>
- * </ul>
- * <p>
- * For the various SDKs used to call the APIs, see the documentation for the SDK of interest to learn how to direct the
- * requests to a specific endpoint. For more information, see <a
- * href="https://docs.aws.amazon.com/general/latest/gr/rande.html#sts_region">Regions and Endpoints</a> in the <i>AWS
- * General Reference</i>.
- * </p>
- * <p>
- * <b>How examples are presented</b>
- * </p>
- * <p>
- * The JSON returned by the AWS Organizations service as response to your requests is returned as a single long string
- * without line breaks or formatting whitespace. Both line breaks and whitespace are included in the examples in this
- * guide to improve readability. When example input parameters also would result in long strings that would extend
- * beyond the screen, we insert line breaks to enhance readability. You should always submit the input as a single JSON
- * text string.
- * </p>
- * <p>
- * <b>Recording API Requests</b>
- * </p>
- * <p>
- * AWS Organizations supports AWS CloudTrail, a service that records AWS API calls for your AWS account and delivers log
- * files to an Amazon S3 bucket. By using information collected by AWS CloudTrail, you can determine which requests were
- * successfully made to Organizations, who made the request, when it was made, and so on. For more about AWS
- * Organizations and its support for AWS CloudTrail, see <a
- * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html#orgs_cloudtrail-integration"
- * >Logging AWS Organizations Events with AWS CloudTrail</a> in the <i>AWS Organizations User Guide</i>. To learn more
- * about CloudTrail, including how to turn it on and find your log files, see the <a
- * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html">AWS CloudTrail
- * User Guide</a>.
- * </p>
+ * <fullname>AWS Organizations</fullname>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -268,6 +136,9 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
                             new JsonErrorShapeMetadata().withErrorCode("MasterCannotLeaveOrganizationException").withExceptionUnmarshaller(
                                     com.amazonaws.services.organizations.model.transform.MasterCannotLeaveOrganizationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PolicyChangesInProgressException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.PolicyChangesInProgressExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("DestinationParentNotFoundException").withExceptionUnmarshaller(
                                     com.amazonaws.services.organizations.model.transform.DestinationParentNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
@@ -285,6 +156,9 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("CreateAccountStatusNotFoundException").withExceptionUnmarshaller(
                                     com.amazonaws.services.organizations.model.transform.CreateAccountStatusNotFoundExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("EffectivePolicyNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.organizations.model.transform.EffectivePolicyNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("PolicyNotAttachedException").withExceptionUnmarshaller(
                                     com.amazonaws.services.organizations.model.transform.PolicyNotAttachedExceptionUnmarshaller.getInstance()))
@@ -676,6 +550,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -823,53 +702,24 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
 
     /**
      * <p>
-     * Attaches a policy to a root, an organizational unit (OU), or an individual account. How the policy affects
-     * accounts depends on the type of policy:
+     * Attaches a policy to a root, an organizational unit (OU), or an individual account.
+     * </p>
+     * <p>
+     * How the policy affects accounts depends on the type of policy:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <b>Service control policy (SCP)</b> - An SCP specifies what permissions can be delegated to users in affected
-     * member accounts. The scope of influence for a policy depends on what you attach the policy to:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * If you attach an SCP to a root, it affects all accounts in the organization.
+     * For more information about attaching SCPs, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html">How SCPs
+     * Work</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
      * </li>
      * <li>
      * <p>
-     * If you attach an SCP to an OU, it affects all accounts in that OU and in any child OUs.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * If you attach the policy directly to an account, it affects only that account.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * SCPs are JSON policies that specify the maximum permissions for an organization or organizational unit (OU). You
-     * can attach one SCP to a higher level root or OU, and a different SCP to a child OU or to an account. The child
-     * policy can further restrict only the permissions that pass through the parent filter and are available to the
-     * child. An SCP that is attached to a child can't grant a permission that the parent hasn't already granted. For
-     * example, imagine that the parent SCP allows permissions A, B, C, D, and E. The child SCP allows C, D, E, F, and
-     * G. The result is that the accounts affected by the child SCP are allowed to use only C, D, and E. They can't use
-     * A or B because the child OU filtered them out. They also can't use F and G because the parent OU filtered them
-     * out. They can't be granted back by the child SCP; child SCPs can only filter the permissions they receive from
-     * the parent SCP.
-     * </p>
-     * <p>
-     * AWS Organizations attaches a default SCP named <code>"FullAWSAccess</code> to every root, OU, and account. This
-     * default SCP allows all services and actions, enabling any new child OU or account to inherit the permissions of
-     * the parent root or OU. If you detach the default policy, you must replace it with a policy that specifies the
-     * permissions that you want to allow in that OU or account.
-     * </p>
-     * <p>
-     * For more information about how AWS Organizations policies permissions work, see <a
-     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html">Using Service
-     * Control Policies</a> in the <i>AWS Organizations User Guide.</i>
+     * For information about attaching tag policies, see <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies-inheritance.html">How
+     * Policy Inheritance Works</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
      * </li>
      * </ul>
@@ -890,10 +740,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -1008,8 +858,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -1031,8 +881,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws DuplicatePolicyAttachmentException
@@ -1059,6 +917,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -1166,6 +1029,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.AttachPolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/AttachPolicy" target="_top">AWS API
      *      Documentation</a>
@@ -1265,6 +1133,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -1458,9 +1331,9 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <ul>
      * <li>
      * <p>
-     * When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the
-     * information required for the account to operate as a standalone account, such as a payment method and signing the
-     * end user license agreement (EULA) is <i>not</i> automatically collected. If you must remove an account from your
+     * When you create an account in an organization, the information required for the account to operate as a
+     * standalone account is <i>not</i> automatically collected. For example, information about the payment method and
+     * signing the end user license agreement (EULA) is not collected. If you must remove an account from your
      * organization later, you can do so only after you provide the missing information. Follow the steps at <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      * > To leave an organization as a member account</a> in the <i>AWS Organizations User Guide</i>.
@@ -1513,10 +1386,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -1631,8 +1504,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -1654,8 +1527,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -1680,6 +1561,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -1921,8 +1807,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <p>
      * A role is created in the new account in the commercial Region that allows the master account in the organization
      * in the commercial Region to assume it. An AWS GovCloud (US) account is then created and associated with the
-     * commercial account that you just created. A role is created in the new AWS GovCloud (US) account that can be
-     * assumed by the AWS GovCloud (US) account that is associated with the master account of the commercial
+     * commercial account that you just created. A role is created in the new AWS GovCloud (US) account. This role can
+     * be assumed by the AWS GovCloud (US) account that is associated with the master account of the commercial
      * organization. For more information and to view a diagram that explains how account access works, see <a
      * href="http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html">AWS Organizations</a>
      * in the <i>AWS GovCloud User Guide.</i>
@@ -1936,10 +1822,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <ul>
      * <li>
      * <p>
-     * When you create an account in an organization using the AWS Organizations console, API, or CLI commands, the
-     * information required for the account to operate as a standalone account, such as a payment method and signing the
-     * end user license agreement (EULA) is <i>not</i> automatically collected. If you must remove an account from your
-     * organization later, you can do so only after you provide the missing information. Follow the steps at <a href=
+     * You can create an account in an organization using the AWS Organizations console, API, or CLI commands. When you
+     * do, the information required for the account to operate as a standalone account, such as a payment method, is
+     * <i>not</i> automatically collected. If you must remove an account from your organization later, you can do so
+     * only after you provide the missing information. Follow the steps at <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      * > To leave an organization as a member account</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
@@ -1991,10 +1877,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -2109,8 +1995,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -2132,8 +2018,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -2158,6 +2052,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -2321,10 +2220,9 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * </p>
      * <p>
      * By default (or if you set the <code>FeatureSet</code> parameter to <code>ALL</code>), the new organization is
-     * created with all features enabled and service control policies automatically enabled in the root. If you instead
-     * choose to create the organization supporting only the consolidated billing features by setting the
-     * <code>FeatureSet</code> parameter to <code>CONSOLIDATED_BILLING"</code>, no policy types are enabled by default,
-     * and you can't use organization policies.
+     * created with all features enabled. In addition, service control policies are automatically enabled in the root.
+     * If you instead create the organization supporting only the consolidated billing features, no policy types are
+     * enabled by default, and you can't use organization policies.
      * </p>
      * 
      * @param createOrganizationRequest
@@ -2340,10 +2238,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -2458,8 +2356,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -2481,8 +2379,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -2507,6 +2413,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -2683,10 +2594,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -2801,8 +2712,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -2824,8 +2735,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws DuplicateOrganizationalUnitException
@@ -2852,6 +2771,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -3026,10 +2950,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -3144,8 +3068,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -3167,8 +3091,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws DuplicatePolicyException
@@ -3195,6 +3127,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -3303,6 +3240,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.CreatePolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreatePolicy" target="_top">AWS API
      *      Documentation</a>
@@ -3360,8 +3299,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * the process with a new handshake request.
      * </p>
      * <p>
-     * After you decline a handshake, it continues to appear in the results of relevant APIs for only 30 days. After
-     * that, it's deleted.
+     * After you decline a handshake, it continues to appear in the results of relevant API operations for only 30 days.
+     * After that, it's deleted.
      * </p>
      * 
      * @param declineHandshakeRequest
@@ -3403,6 +3342,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -3586,6 +3530,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -3775,6 +3724,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -3972,6 +3926,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -4070,6 +4029,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.DeletePolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeletePolicy" target="_top">AWS API
      *      Documentation</a>
@@ -4118,7 +4079,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
 
     /**
      * <p>
-     * Retrieves AWS Organizations-related information about the specified account.
+     * Retrieves AWS Organizations related information about the specified account.
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -4132,7 +4093,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
      *         Management</a> in the <i>IAM User Guide.</i>
      * @throws AccountNotFoundException
-     *         We can't find an AWS account with the <code>AccountId</code> that you specified, or the account whose
+     *         We can't find an AWS account with the <code>AccountId</code> that you specified. Or the account whose
      *         credentials you used to make this request isn't a member of an organization.
      * @throws AWSOrganizationsNotInUseException
      *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
@@ -4159,6 +4120,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -4321,7 +4287,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
      *         account that belongs to an organization.
      * @throws CreateAccountStatusNotFoundException
-     *         We can't find an create account request with the <code>CreateAccountRequestId</code> that you specified.
+     *         We can't find a create account request with the <code>CreateAccountRequestId</code> that you specified.
      * @throws InvalidInputException
      *         The requested operation failed because you provided invalid values for one or more of the request
      *         parameters. This exception includes a reason that contains additional information about the violated
@@ -4344,6 +4310,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -4493,6 +4464,369 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
 
     /**
      * <p>
+     * Returns the contents of the effective tag policy for the account. The effective tag policy is the aggregation of
+     * any tag policies the account inherits, plus any policy directly that is attached to the account.
+     * </p>
+     * <p>
+     * This action returns information on tag policies only.
+     * </p>
+     * <p>
+     * For more information on policy inheritance, see <a
+     * href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies-inheritance.html">How Policy
+     * Inheritance Works</a> in the <i>AWS Organizations User Guide</i>.
+     * </p>
+     * <p>
+     * This operation can be called from any account in the organization.
+     * </p>
+     * 
+     * @param describeEffectivePolicyRequest
+     * @return Result of the DescribeEffectivePolicy operation returned by the service.
+     * @throws AccessDeniedException
+     *         You don't have permissions to perform the requested operation. The user or role that is making the
+     *         request must have at least one IAM permissions policy attached that grants the required permissions. For
+     *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
+     *         Management</a> in the <i>IAM User Guide.</i>
+     * @throws AWSOrganizationsNotInUseException
+     *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
+     *         account that belongs to an organization.
+     * @throws ConstraintViolationException
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that doesn't
+     *         yet have enough information to exist as a standalone account. This account requires you to first agree to
+     *         the AWS Customer Agreement. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization
+     *         that doesn't yet have enough information to exist as a standalone account. This account requires you to
+     *         first complete phone verification. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create
+     *         in one day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an
+     *         organization. If you need more accounts, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a> to request an increase in your
+     *         limit.
+     *         </p>
+     *         <p>
+     *         Or the number of invitations that you tried to send would cause you to exceed the limit of accounts in
+     *         your organization. Send fewer invitations or contact AWS Support to request an increase in the number of
+     *         accounts.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Deleted and closed accounts still count toward your limit.
+     *         </p>
+     *         </note> <important>
+     *         <p>
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a>.
+     *         </p>
+     *         </important></li>
+     *         <li>
+     *         <p>
+     *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
+     *         day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first
+     *         must migrate the organization's master account to the marketplace that corresponds to the master
+     *         account's address. For example, accounts with India addresses must be associated with the AISPL
+     *         marketplace. All accounts in an organization must be associated with the same marketplace.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_MISSING_CONTACT_INFO: To complete this operation, you must first provide contact a valid
+     *         address and phone number for the master account. Then try the operation again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED: To complete this operation, the master account must have an
+     *         associated account in the AWS GovCloud (US-West) Region. For more information, see <a
+     *         href="http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html">AWS
+     *         Organizations</a> in the <i>AWS GovCloud User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this master account, you first
+     *         must associate a valid payment instrument, such as a credit card, with the account. Follow the steps at
+     *         <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain
+     *         type that can be attached to an entity at one time.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_TAG_LIMIT_EXCEEDED: You have exceeded the number of tags allowed on this resource.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you
+     *         first must associate a valid payment instrument, such as a credit card, with the account. Follow the
+     *         steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an OU tree that is too many levels deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports only consolidated
+     *         billing features can't perform this operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of OUs that you can have in an organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
+     *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     * @throws ServiceException
+     *         AWS Organizations can't complete your request because of an internal service error. Try again later.
+     * @throws TooManyRequestsException
+     *         You have sent too many requests in too short a period of time. The limit helps protect against
+     *         denial-of-service attacks. Try again later.</p>
+     *         <p>
+     *         For information on limits that affect AWS Organizations, see <a
+     *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
+     *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws TargetNotFoundException
+     *         We can't find a root, OU, or account with the <code>TargetId</code> that you specified.
+     * @throws EffectivePolicyNotFoundException
+     *         If you ran this action on the master account, this policy type is not enabled. If you ran the action on a
+     *         member account, the account doesn't have an effective policy of this type. Contact the administrator of
+     *         your organization about attaching a policy of this type to the account.
+     * @throws InvalidInputException
+     *         The requested operation failed because you provided invalid values for one or more of the request
+     *         parameters. This exception includes a reason that contains additional information about the violated
+     *         limit:
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         </note>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and can't be modified.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the <code>NextToken</code> parameter from the response to a
+     *         previous call of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that isn't valid. A role name can't begin with the reserved
+     *         prefix <code>AWSServiceRoleFor</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid Amazon Resource Name (ARN) for the
+     *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYSTEM_TAGS_PARAMETER: You specified a tag key that is a system tag. You can’t add, edit, or
+     *         delete system tag keys because they're reserved for AWS use. System tags don’t count against your tags
+     *         per resource limit.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
+     *         </p>
+     *         </li>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @sample AWSOrganizations.DescribeEffectivePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeEffectivePolicy"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeEffectivePolicyResult describeEffectivePolicy(DescribeEffectivePolicyRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeEffectivePolicy(request);
+    }
+
+    @SdkInternalApi
+    final DescribeEffectivePolicyResult executeDescribeEffectivePolicy(DescribeEffectivePolicyRequest describeEffectivePolicyRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeEffectivePolicyRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeEffectivePolicyRequest> request = null;
+        Response<DescribeEffectivePolicyResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeEffectivePolicyRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeEffectivePolicyRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Organizations");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeEffectivePolicy");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeEffectivePolicyResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeEffectivePolicyResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Retrieves information about a previously requested handshake. The handshake ID comes from the response to the
      * original <a>InviteAccountToOrganization</a> operation that generated the handshake.
      * </p>
@@ -4537,6 +4871,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -4805,6 +5144,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -4992,6 +5336,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -5087,6 +5436,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.DescribePolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribePolicy" target="_top">AWS
      *      API Documentation</a>
@@ -5140,16 +5491,17 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * immediate.
      * </p>
      * <p>
-     * <b>Note:</b> Every root, OU, and account must have at least one SCP attached. If you want to replace the default
-     * <code>FullAWSAccess</code> policy with one that limits the permissions that can be delegated, you must attach the
-     * replacement policy before you can remove the default one. This is the authorization strategy of <a href=
+     * <b>Note:</b> Every root, OU, and account must have at least one SCP attached. You can replace the default
+     * <code>FullAWSAccess</code> policy with one that limits the permissions that can be delegated. To do that, you
+     * must attach the replacement policy before you can remove the default one. This is the authorization strategy of
+     * using an <a href=
      * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist"
-     * >whitelisting</a>. If you instead attach a second SCP and leave the <code>FullAWSAccess</code> SCP still
-     * attached, and specify <code>"Effect": "Deny"</code> in the second SCP to override the
-     * <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP), you're using
-     * the authorization strategy of <a href=
+     * >allow list</a>. You could instead attach a second SCP and leave the <code>FullAWSAccess</code> SCP still
+     * attached. You could then specify <code>"Effect": "Deny"</code> in the second SCP to override the
+     * <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP). If you take
+     * these steps, you're using the authorization strategy of a <a href=
      * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist"
-     * >blacklisting</a> .
+     * >deny list</a>.
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -5168,10 +5520,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -5286,8 +5638,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -5309,8 +5661,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -5335,6 +5695,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -5438,6 +5803,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.DetachPolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DetachPolicy" target="_top">AWS API
      *      Documentation</a>
@@ -5505,8 +5875,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * </important>
      * <p>
      * After you perform the <code>DisableAWSServiceAccess</code> operation, the specified service can no longer perform
-     * operations in your organization's accounts unless the operations are explicitly permitted by the IAM policies
-     * that are attached to your roles.
+     * operations in your organization's accounts. The only exception is when the operations are explicitly permitted by
+     * IAM policies that are attached to your roles.
      * </p>
      * <p>
      * For more information about integrating other services with AWS Organizations, including the list of services that
@@ -5531,10 +5901,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -5649,8 +6019,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -5672,8 +6042,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -5698,6 +6076,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -5845,10 +6228,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
 
     /**
      * <p>
-     * Disables an organizational control policy type in a root. A policy of a certain type can be attached to entities
-     * in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach
-     * policies of the specified type to that root or to any organizational unit (OU) or account in that root. You can
-     * undo this by using the <a>EnablePolicyType</a> operation.
+     * Disables an organizational control policy type in a root and detaches all policies of that type from the
+     * organization root, OUs, and accounts. A policy of a certain type can be attached to entities in a root only if
+     * that type is enabled in the root. After you perform this operation, you no longer can attach policies of the
+     * specified type to that root or to any organizational unit (OU) or account in that root. You can undo this by
+     * using the <a>EnablePolicyType</a> operation.
      * </p>
      * <p>
      * This is an asynchronous request that AWS performs in the background. If you disable a policy for a root, it still
@@ -5877,10 +6261,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -5995,8 +6379,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -6018,8 +6402,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -6044,6 +6436,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -6149,6 +6546,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.DisablePolicyType
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DisablePolicyType"
      *      target="_top">AWS API Documentation</a>
@@ -6237,10 +6639,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -6355,8 +6757,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -6378,8 +6780,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -6404,6 +6814,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -6552,8 +6967,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <p>
      * Enables all features in an organization. This enables the use of organization policies that can restrict the
      * services and actions that can be called in each account. Until you enable all features, you have access only to
-     * consolidated billing, and you can't use any of the advanced account administration features that AWS
-     * Organizations supports. For more information, see <a
+     * consolidated billing. You can't use any of the advanced account administration features that AWS Organizations
+     * supports. For more information, see <a
      * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html"
      * >Enabling All Features in Your Organization</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
@@ -6562,7 +6977,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * This operation is required only for organizations that were created explicitly with only the consolidated billing
      * features enabled. Calling this operation sends a handshake to every invited account in the organization. The
      * feature set change can be finalized and the additional features enabled only after all administrators in the
-     * invited accounts approve the change by accepting the handshake.
+     * invited accounts approve the change. Accepting the handshake approves the change.
      * </p>
      * </important>
      * <p>
@@ -6681,6 +7096,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -6855,10 +7275,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -6973,8 +7393,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -6996,8 +7416,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -7022,6 +7450,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -7129,6 +7562,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         information, see <a href=
      *         "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root"
      *         >Enabling and Disabling a Policy Type on a Root</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.EnablePolicyType
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/EnablePolicyType" target="_top">AWS
      *      API Documentation</a>
@@ -7185,19 +7623,20 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <ul>
      * <li>
      * <p>
-     * You can invite AWS accounts only from the same seller as the master account. For example, if your organization's
-     * master account was created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India, you can invite
-     * only other AISPL accounts to your organization. You can't combine accounts from AISPL and AWS or from any other
-     * AWS seller. For more information, see <a
+     * You can invite AWS accounts only from the same seller as the master account. For example, assume that your
+     * organization's master account was created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India.
+     * You can invite only other AISPL accounts to your organization. You can't combine accounts from AISPL and AWS or
+     * from any other AWS seller. For more information, see <a
      * href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html"
      * >Consolidated Billing in India</a>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If you receive an exception that indicates that you exceeded your account limits for the organization or that the
-     * operation failed because your organization is still initializing, wait one hour and then try again. If the error
-     * persists after an hour, contact <a href="https://console.aws.amazon.com/support/home#/">AWS Support</a>.
+     * You might receive an exception that indicates that you exceeded your account limits for the organization or that
+     * the operation failed because your organization is still initializing. If so, wait one hour and then try again. If
+     * the error persists after an hour, contact <a href="https://console.aws.amazon.com/support/home#/">AWS
+     * Support</a>.
      * </p>
      * </li>
      * </ul>
@@ -7313,6 +7752,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -7476,17 +7920,17 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <li>
      * <p>
      * The master account in an organization with all features enabled can set service control policies (SCPs) that can
-     * restrict what administrators of member accounts can do, including preventing them from successfully calling
-     * <code>LeaveOrganization</code> and leaving the organization.
+     * restrict what administrators of member accounts can do. These restrictions can include preventing member accounts
+     * from successfully calling <code>LeaveOrganization</code>.
      * </p>
      * </li>
      * <li>
      * <p>
      * You can leave an organization as a member account only if the account is configured with the information required
      * to operate as a standalone account. When you create an account in an organization using the AWS Organizations
-     * console, API, or CLI commands, the information required of standalone accounts is <i>not</i> automatically
-     * collected. For each account that you want to make standalone, you must accept the end user license agreement
-     * (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment
+     * console, API, or CLI, the information required of standalone accounts is <i>not</i> automatically collected. For
+     * each account that you want to make standalone, you must accept the end user license agreement (EULA). You must
+     * also choose a support plan, provide and verify the required contact information, and provide a current payment
      * method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the
      * account isn't attached to an organization. Follow the steps at <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
@@ -7514,7 +7958,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
      *         Management</a> in the <i>IAM User Guide.</i>
      * @throws AccountNotFoundException
-     *         We can't find an AWS account with the <code>AccountId</code> that you specified, or the account whose
+     *         We can't find an AWS account with the <code>AccountId</code> that you specified. Or the account whose
      *         credentials you used to make this request isn't a member of an organization.
      * @throws AWSOrganizationsNotInUseException
      *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
@@ -7522,10 +7966,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -7640,8 +8084,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -7663,8 +8107,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -7689,6 +8141,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -7862,10 +8319,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
      *         account that belongs to an organization.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -7980,8 +8437,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -8003,8 +8460,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -8029,6 +8494,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -8229,6 +8699,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -8419,6 +8894,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -8618,6 +9098,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -8808,6 +9293,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -9006,6 +9496,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -9211,6 +9706,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -9400,6 +9900,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -9610,6 +10115,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -9801,6 +10311,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -9894,6 +10409,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.ListPolicies
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListPolicies" target="_top">AWS API
      *      Documentation</a>
@@ -9993,6 +10510,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -10088,6 +10610,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.ListPoliciesForTarget
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListPoliciesForTarget"
      *      target="_top">AWS API Documentation</a>
@@ -10191,6 +10715,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -10341,6 +10870,9 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <p>
      * Currently, you can list tags on an account in AWS Organizations.
      * </p>
+     * <p>
+     * This operation can be called only from the organization's master account.
+     * </p>
      * 
      * @param listTagsForResourceRequest
      * @return Result of the ListTagsForResource operation returned by the service.
@@ -10376,6 +10908,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -10571,6 +11108,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -10666,6 +11208,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.ListTargetsForPolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListTargetsForPolicy"
      *      target="_top">AWS API Documentation</a>
@@ -10750,6 +11294,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -10845,7 +11394,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws DuplicateAccountException
      *         That account is already present in the specified destination.
      * @throws AccountNotFoundException
-     *         We can't find an AWS account with the <code>AccountId</code> that you specified, or the account whose
+     *         We can't find an AWS account with the <code>AccountId</code> that you specified. Or the account whose
      *         credentials you used to make this request isn't a member of an organization.
      * @throws TooManyRequestsException
      *         You have sent too many requests in too short a period of time. The limit helps protect against
@@ -10924,12 +11473,12 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <p>
      * You can remove an account from your organization only if the account is configured with the information required
      * to operate as a standalone account. When you create an account in an organization using the AWS Organizations
-     * console, API, or CLI commands, the information required of standalone accounts is <i>not</i> automatically
-     * collected. For an account that you want to make standalone, you must accept the end user license agreement
-     * (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment
-     * method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the
-     * account isn't attached to an organization. To remove an account that doesn't yet have this information, you must
-     * sign in as the member account and follow the steps at <a href=
+     * console, API, or CLI, the information required of standalone accounts is <i>not</i> automatically collected. For
+     * an account that you want to make standalone, you must accept the end user license agreement (EULA). You must also
+     * choose a support plan, provide and verify the required contact information, and provide a current payment method.
+     * AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account
+     * isn't attached to an organization. To remove an account that doesn't yet have this information, you must sign in
+     * as the member account. Then follow the steps at <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      * > To leave an organization when all required account information has not yet been provided</a> in the <i>AWS
      * Organizations User Guide.</i>
@@ -10944,7 +11493,7 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
      *         Management</a> in the <i>IAM User Guide.</i>
      * @throws AccountNotFoundException
-     *         We can't find an AWS account with the <code>AccountId</code> that you specified, or the account whose
+     *         We can't find an AWS account with the <code>AccountId</code> that you specified. Or the account whose
      *         credentials you used to make this request isn't a member of an organization.
      * @throws AWSOrganizationsNotInUseException
      *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
@@ -10952,10 +11501,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -11070,8 +11619,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -11093,8 +11642,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -11119,6 +11676,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -11274,6 +11836,9 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <p>
      * Currently, you can tag and untag accounts in AWS Organizations.
      * </p>
+     * <p>
+     * This operation can be called only from the organization's master account.
+     * </p>
      * 
      * @param tagResourceRequest
      * @return Result of the TagResource operation returned by the service.
@@ -11290,10 +11855,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws TargetNotFoundException
      *         We can't find a root, OU, or account with the <code>TargetId</code> that you specified.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -11408,8 +11973,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -11431,8 +11996,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -11457,6 +12030,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -11607,6 +12185,9 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * <p>
      * Currently, you can tag and untag accounts in AWS Organizations.
      * </p>
+     * <p>
+     * This operation can be called only from the organization's master account.
+     * </p>
      * 
      * @param untagResourceRequest
      * @return Result of the UntagResource operation returned by the service.
@@ -11623,10 +12204,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws TargetNotFoundException
      *         We can't find a root, OU, or account with the <code>TargetId</code> that you specified.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -11741,8 +12322,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -11764,8 +12345,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws InvalidInputException
@@ -11790,6 +12379,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -11982,6 +12576,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
      *         </p>
      *         </li>
@@ -12147,10 +12746,10 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      * @throws ConcurrentModificationException
      *         The target of the operation is currently being modified by a different request. Try again later.
      * @throws ConstraintViolationException
-     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
-     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
-     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
-     *         that contains additional information about the violated limit.</p>
+     *         Performing this operation violates a minimum or maximum value limit. Examples include attempting to
+     *         remove the last service control policy (SCP) from an OU or root, or attaching too many policies to an
+     *         account, OU, or root. This exception includes a reason that contains additional information about the
+     *         violated limit.</p>
      *         <p>
      *         Some of the reasons in the following list might not be applicable to this specific API or operation:
      *         </p>
@@ -12265,8 +12864,8 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
-     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity, which would
+     *         cause the entity to have fewer than the minimum number of policies of the required type.
      *         </p>
      *         </li>
      *         <li>
@@ -12288,8 +12887,16 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         </li>
      *         <li>
      *         <p>
-     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         POLICY_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of policies that you can have in an
      *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         TAG_POLICY_VIOLATION: Tags associated with the resource must be compliant with the tag policy that’s in
+     *         effect for the account. For more information, see <a
+     *         href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html"
+     *         >Tag Policies</a> in the <i>AWS Organizations User Guide.</i>
      *         </p>
      *         </li>
      * @throws DuplicatePolicyException
@@ -12316,6 +12923,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         <li>
      *         <p>
      *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM_POLICY_TYPE: You specified an invalid policy type.
      *         </p>
      *         </li>
      *         <li>
@@ -12420,6 +13032,11 @@ public class AWSOrganizationsClient extends AmazonWebServiceClient implements AW
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.UpdatePolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/UpdatePolicy" target="_top">AWS API
      *      Documentation</a>

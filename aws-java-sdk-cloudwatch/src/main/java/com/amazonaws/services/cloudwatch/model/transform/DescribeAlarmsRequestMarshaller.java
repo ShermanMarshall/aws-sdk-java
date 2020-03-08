@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,28 @@ public class DescribeAlarmsRequestMarshaller implements Marshaller<Request<Descr
 
         if (describeAlarmsRequest.getAlarmNamePrefix() != null) {
             request.addParameter("AlarmNamePrefix", StringUtils.fromString(describeAlarmsRequest.getAlarmNamePrefix()));
+        }
+
+        if (!describeAlarmsRequest.getAlarmTypes().isEmpty()
+                || !((com.amazonaws.internal.SdkInternalList<String>) describeAlarmsRequest.getAlarmTypes()).isAutoConstruct()) {
+            com.amazonaws.internal.SdkInternalList<String> alarmTypesList = (com.amazonaws.internal.SdkInternalList<String>) describeAlarmsRequest
+                    .getAlarmTypes();
+            int alarmTypesListIndex = 1;
+
+            for (String alarmTypesListValue : alarmTypesList) {
+                if (alarmTypesListValue != null) {
+                    request.addParameter("AlarmTypes.member." + alarmTypesListIndex, StringUtils.fromString(alarmTypesListValue));
+                }
+                alarmTypesListIndex++;
+            }
+        }
+
+        if (describeAlarmsRequest.getChildrenOfAlarmName() != null) {
+            request.addParameter("ChildrenOfAlarmName", StringUtils.fromString(describeAlarmsRequest.getChildrenOfAlarmName()));
+        }
+
+        if (describeAlarmsRequest.getParentsOfAlarmName() != null) {
+            request.addParameter("ParentsOfAlarmName", StringUtils.fromString(describeAlarmsRequest.getParentsOfAlarmName()));
         }
 
         if (describeAlarmsRequest.getStateValue() != null) {

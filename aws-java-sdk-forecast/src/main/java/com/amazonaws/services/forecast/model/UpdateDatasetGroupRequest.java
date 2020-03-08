@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class UpdateDatasetGroupRequest extends com.amazonaws.AmazonWebServiceReq
     private String datasetGroupArn;
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     * An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      * </p>
      */
     private java.util.List<String> datasetArns;
@@ -80,10 +80,10 @@ public class UpdateDatasetGroupRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     * An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      * </p>
      * 
-     * @return An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     * @return An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      */
 
     public java.util.List<String> getDatasetArns() {
@@ -92,11 +92,11 @@ public class UpdateDatasetGroupRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     * An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      * </p>
      * 
      * @param datasetArns
-     *        An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     *        An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      */
 
     public void setDatasetArns(java.util.Collection<String> datasetArns) {
@@ -110,7 +110,7 @@ public class UpdateDatasetGroupRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     * An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -119,7 +119,7 @@ public class UpdateDatasetGroupRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * 
      * @param datasetArns
-     *        An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     *        An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,11 +135,11 @@ public class UpdateDatasetGroupRequest extends com.amazonaws.AmazonWebServiceReq
 
     /**
      * <p>
-     * An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     * An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      * </p>
      * 
      * @param datasetArns
-     *        An array of Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
+     *        An array of the Amazon Resource Names (ARNs) of the datasets to add to the dataset group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,8 +60,10 @@ public class WorkspaceImage implements Serializable, Cloneable, StructuredPojo {
     private String state;
     /**
      * <p>
-     * Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is enabled, this
-     * value is set to DEDICATED.
+     * Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this
+     * value is set to <code>DEDICATED</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own Windows
+     * Desktop Images</a>.
      * </p>
      */
     private String requiredTenancy;
@@ -299,13 +301,17 @@ public class WorkspaceImage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is enabled, this
-     * value is set to DEDICATED.
+     * Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this
+     * value is set to <code>DEDICATED</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own Windows
+     * Desktop Images</a>.
      * </p>
      * 
      * @param requiredTenancy
-     *        Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is
-     *        enabled, this value is set to DEDICATED.
+     *        Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is
+     *        enabled, this value is set to <code>DEDICATED</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own
+     *        Windows Desktop Images</a>.
      * @see WorkspaceImageRequiredTenancy
      */
 
@@ -315,12 +321,16 @@ public class WorkspaceImage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is enabled, this
-     * value is set to DEDICATED.
+     * Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this
+     * value is set to <code>DEDICATED</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own Windows
+     * Desktop Images</a>.
      * </p>
      * 
-     * @return Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is
-     *         enabled, this value is set to DEDICATED.
+     * @return Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is
+     *         enabled, this value is set to <code>DEDICATED</code>. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own
+     *         Windows Desktop Images</a>.
      * @see WorkspaceImageRequiredTenancy
      */
 
@@ -330,13 +340,17 @@ public class WorkspaceImage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is enabled, this
-     * value is set to DEDICATED.
+     * Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this
+     * value is set to <code>DEDICATED</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own Windows
+     * Desktop Images</a>.
      * </p>
      * 
      * @param requiredTenancy
-     *        Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is
-     *        enabled, this value is set to DEDICATED.
+     *        Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is
+     *        enabled, this value is set to <code>DEDICATED</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own
+     *        Windows Desktop Images</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see WorkspaceImageRequiredTenancy
      */
@@ -348,13 +362,17 @@ public class WorkspaceImage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is enabled, this
-     * value is set to DEDICATED.
+     * Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this
+     * value is set to <code>DEDICATED</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own Windows
+     * Desktop Images</a>.
      * </p>
      * 
      * @param requiredTenancy
-     *        Specifies whether the image is running on dedicated hardware. When bring your own license (BYOL) is
-     *        enabled, this value is set to DEDICATED.
+     *        Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is
+     *        enabled, this value is set to <code>DEDICATED</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html">Bring Your Own
+     *        Windows Desktop Images</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see WorkspaceImageRequiredTenancy
      */

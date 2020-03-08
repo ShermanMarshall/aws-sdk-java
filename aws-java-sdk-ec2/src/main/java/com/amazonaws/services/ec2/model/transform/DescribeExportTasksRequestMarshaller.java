@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,6 +50,33 @@ public class DescribeExportTasksRequestMarshaller implements Marshaller<Request<
                     request.addParameter("ExportTaskId." + exportTaskIdsListIndex, StringUtils.fromString(describeExportTasksRequestExportTaskIdsListValue));
                 }
                 exportTaskIdsListIndex++;
+            }
+        }
+
+        com.amazonaws.internal.SdkInternalList<Filter> describeExportTasksRequestFiltersList = (com.amazonaws.internal.SdkInternalList<Filter>) describeExportTasksRequest
+                .getFilters();
+        if (!describeExportTasksRequestFiltersList.isEmpty() || !describeExportTasksRequestFiltersList.isAutoConstruct()) {
+            int filtersListIndex = 1;
+
+            for (Filter describeExportTasksRequestFiltersListValue : describeExportTasksRequestFiltersList) {
+
+                if (describeExportTasksRequestFiltersListValue.getName() != null) {
+                    request.addParameter("Filter." + filtersListIndex + ".Name", StringUtils.fromString(describeExportTasksRequestFiltersListValue.getName()));
+                }
+
+                com.amazonaws.internal.SdkInternalList<String> filterValuesList = (com.amazonaws.internal.SdkInternalList<String>) describeExportTasksRequestFiltersListValue
+                        .getValues();
+                if (!filterValuesList.isEmpty() || !filterValuesList.isAutoConstruct()) {
+                    int valuesListIndex = 1;
+
+                    for (String filterValuesListValue : filterValuesList) {
+                        if (filterValuesListValue != null) {
+                            request.addParameter("Filter." + filtersListIndex + ".Value." + valuesListIndex, StringUtils.fromString(filterValuesListValue));
+                        }
+                        valuesListIndex++;
+                    }
+                }
+                filtersListIndex++;
             }
         }
 

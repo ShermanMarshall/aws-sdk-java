@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class DescribeMountTargetsRequestMarshaller {
             .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("FileSystemId").build();
     private static final MarshallingInfo<String> MOUNTTARGETID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("MountTargetId").build();
+    private static final MarshallingInfo<String> ACCESSPOINTID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("AccessPointId").build();
 
     private static final DescribeMountTargetsRequestMarshaller instance = new DescribeMountTargetsRequestMarshaller();
 
@@ -56,6 +58,7 @@ public class DescribeMountTargetsRequestMarshaller {
             protocolMarshaller.marshall(describeMountTargetsRequest.getMarker(), MARKER_BINDING);
             protocolMarshaller.marshall(describeMountTargetsRequest.getFileSystemId(), FILESYSTEMID_BINDING);
             protocolMarshaller.marshall(describeMountTargetsRequest.getMountTargetId(), MOUNTTARGETID_BINDING);
+            protocolMarshaller.marshall(describeMountTargetsRequest.getAccessPointId(), ACCESSPOINTID_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

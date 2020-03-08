@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,6 +28,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class UpdateOriginEndpointRequestMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> AUTHORIZATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("authorization").build();
     private static final MarshallingInfo<StructuredPojo> CMAFPACKAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("cmafPackage").build();
     private static final MarshallingInfo<StructuredPojo> DASHPACKAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -42,6 +44,8 @@ public class UpdateOriginEndpointRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("manifestName").build();
     private static final MarshallingInfo<StructuredPojo> MSSPACKAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("mssPackage").build();
+    private static final MarshallingInfo<String> ORIGINATION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("origination").build();
     private static final MarshallingInfo<Integer> STARTOVERWINDOWSECONDS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("startoverWindowSeconds").build();
     private static final MarshallingInfo<Integer> TIMEDELAYSECONDS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -65,6 +69,7 @@ public class UpdateOriginEndpointRequestMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(updateOriginEndpointRequest.getAuthorization(), AUTHORIZATION_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getCmafPackage(), CMAFPACKAGE_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getDashPackage(), DASHPACKAGE_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getDescription(), DESCRIPTION_BINDING);
@@ -72,6 +77,7 @@ public class UpdateOriginEndpointRequestMarshaller {
             protocolMarshaller.marshall(updateOriginEndpointRequest.getId(), ID_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getManifestName(), MANIFESTNAME_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getMssPackage(), MSSPACKAGE_BINDING);
+            protocolMarshaller.marshall(updateOriginEndpointRequest.getOrigination(), ORIGINATION_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getStartoverWindowSeconds(), STARTOVERWINDOWSECONDS_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getTimeDelaySeconds(), TIMEDELAYSECONDS_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getWhitelist(), WHITELIST_BINDING);

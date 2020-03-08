@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,7 +32,7 @@ public class CreateVpcEndpointServiceConfigurationResult extends com.amazonaws.A
     private ServiceConfiguration serviceConfiguration;
     /**
      * <p>
-     * Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+     * Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
      * </p>
      */
     private String clientToken;
@@ -79,11 +79,11 @@ public class CreateVpcEndpointServiceConfigurationResult extends com.amazonaws.A
 
     /**
      * <p>
-     * Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+     * Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
      * </p>
      * 
      * @param clientToken
-     *        Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+     *        Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
      */
 
     public void setClientToken(String clientToken) {
@@ -92,10 +92,10 @@ public class CreateVpcEndpointServiceConfigurationResult extends com.amazonaws.A
 
     /**
      * <p>
-     * Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+     * Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
      * </p>
      * 
-     * @return Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+     * @return Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
      */
 
     public String getClientToken() {
@@ -104,11 +104,11 @@ public class CreateVpcEndpointServiceConfigurationResult extends com.amazonaws.A
 
     /**
      * <p>
-     * Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+     * Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
      * </p>
      * 
      * @param clientToken
-     *        Unique, case-sensitive identifier you provide to ensure the idempotency of the request.
+     *        Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

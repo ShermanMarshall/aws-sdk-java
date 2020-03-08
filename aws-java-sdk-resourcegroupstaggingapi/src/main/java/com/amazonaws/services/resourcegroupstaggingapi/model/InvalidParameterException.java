@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,8 +16,37 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.
+ * This error indicates one of the following:
  * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * A parameter is missing.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * A malformed string was supplied for the request parameter.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * An out-of-range value was supplied for the request parameter.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * The target ID is invalid, unsupported, or doesn't exist.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * You can't access the Amazon S3 bucket for report storage. For more information, see <a href=
+ * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-prereqs.html#bucket-policies-org-report"
+ * >Additional Requirements for Organization-wide Tag Compliance Reports</a> in the <i>AWS Organizations User Guide.</i>
+ * </p>
+ * </li>
+ * </ul>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class InvalidParameterException extends com.amazonaws.services.resourcegroupstaggingapi.model.AWSResourceGroupsTaggingAPIException {

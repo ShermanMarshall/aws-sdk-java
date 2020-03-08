@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -439,6 +439,13 @@ public class UpdateMaintenanceWindowTaskResult extends com.amazonaws.AmazonWebSe
         setTaskParameters(taskParameters);
         return this;
     }
+
+    /**
+     * Add a single TaskParameters entry
+     *
+     * @see UpdateMaintenanceWindowTaskResult#withTaskParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateMaintenanceWindowTaskResult addTaskParametersEntry(String key, MaintenanceWindowTaskParameterValueExpression value) {
         if (null == this.taskParameters) {

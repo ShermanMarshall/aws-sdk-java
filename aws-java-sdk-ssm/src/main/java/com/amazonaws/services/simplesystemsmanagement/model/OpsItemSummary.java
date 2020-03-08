@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -88,6 +88,18 @@ public class OpsItemSummary implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private java.util.Map<String, OpsItemDataValue> operationalData;
+    /**
+     * <p>
+     * A list of OpsItems by category.
+     * </p>
+     */
+    private String category;
+    /**
+     * <p>
+     * A list of OpsItems by severity.
+     * </p>
+     */
+    private String severity;
 
     /**
      * <p>
@@ -508,6 +520,13 @@ public class OpsItemSummary implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single OperationalData entry
+     *
+     * @see OpsItemSummary#withOperationalData
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public OpsItemSummary addOperationalDataEntry(String key, OpsItemDataValue value) {
         if (null == this.operationalData) {
             this.operationalData = new java.util.HashMap<String, OpsItemDataValue>();
@@ -526,6 +545,86 @@ public class OpsItemSummary implements Serializable, Cloneable, StructuredPojo {
 
     public OpsItemSummary clearOperationalDataEntries() {
         this.operationalData = null;
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of OpsItems by category.
+     * </p>
+     * 
+     * @param category
+     *        A list of OpsItems by category.
+     */
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     * <p>
+     * A list of OpsItems by category.
+     * </p>
+     * 
+     * @return A list of OpsItems by category.
+     */
+
+    public String getCategory() {
+        return this.category;
+    }
+
+    /**
+     * <p>
+     * A list of OpsItems by category.
+     * </p>
+     * 
+     * @param category
+     *        A list of OpsItems by category.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public OpsItemSummary withCategory(String category) {
+        setCategory(category);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of OpsItems by severity.
+     * </p>
+     * 
+     * @param severity
+     *        A list of OpsItems by severity.
+     */
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
+    }
+
+    /**
+     * <p>
+     * A list of OpsItems by severity.
+     * </p>
+     * 
+     * @return A list of OpsItems by severity.
+     */
+
+    public String getSeverity() {
+        return this.severity;
+    }
+
+    /**
+     * <p>
+     * A list of OpsItems by severity.
+     * </p>
+     * 
+     * @param severity
+     *        A list of OpsItems by severity.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public OpsItemSummary withSeverity(String severity) {
+        setSeverity(severity);
         return this;
     }
 
@@ -560,7 +659,11 @@ public class OpsItemSummary implements Serializable, Cloneable, StructuredPojo {
         if (getTitle() != null)
             sb.append("Title: ").append(getTitle()).append(",");
         if (getOperationalData() != null)
-            sb.append("OperationalData: ").append(getOperationalData());
+            sb.append("OperationalData: ").append(getOperationalData()).append(",");
+        if (getCategory() != null)
+            sb.append("Category: ").append(getCategory()).append(",");
+        if (getSeverity() != null)
+            sb.append("Severity: ").append(getSeverity());
         sb.append("}");
         return sb.toString();
     }
@@ -615,6 +718,14 @@ public class OpsItemSummary implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getOperationalData() != null && other.getOperationalData().equals(this.getOperationalData()) == false)
             return false;
+        if (other.getCategory() == null ^ this.getCategory() == null)
+            return false;
+        if (other.getCategory() != null && other.getCategory().equals(this.getCategory()) == false)
+            return false;
+        if (other.getSeverity() == null ^ this.getSeverity() == null)
+            return false;
+        if (other.getSeverity() != null && other.getSeverity().equals(this.getSeverity()) == false)
+            return false;
         return true;
     }
 
@@ -633,6 +744,8 @@ public class OpsItemSummary implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getOpsItemId() == null) ? 0 : getOpsItemId().hashCode());
         hashCode = prime * hashCode + ((getTitle() == null) ? 0 : getTitle().hashCode());
         hashCode = prime * hashCode + ((getOperationalData() == null) ? 0 : getOperationalData().hashCode());
+        hashCode = prime * hashCode + ((getCategory() == null) ? 0 : getCategory().hashCode());
+        hashCode = prime * hashCode + ((getSeverity() == null) ? 0 : getSeverity().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * Dispatches {@link MonitoringEvent}s to the local agent asynchronously.
@@ -86,7 +87,15 @@ public class AsynchronousAgentDispatcher {
     public synchronized void init() {
         if (!initialized) {
             tasks = new LinkedBlockingQueue<WriteTask>(QUEUE_SIZE);
-            exec = Executors.newSingleThreadExecutor();
+            exec = Executors.newSingleThreadExecutor(new ThreadFactory() {
+                @Override
+                public Thread newThread(Runnable r) {
+                    Thread t = new Thread(r);
+                    t.setName("CsmAgentAsyncDispatchThread");
+                    t.setDaemon(true);
+                    return t;
+                }
+            });
             exec.submit(new WriterRunnable());
             initialized = true;
         }

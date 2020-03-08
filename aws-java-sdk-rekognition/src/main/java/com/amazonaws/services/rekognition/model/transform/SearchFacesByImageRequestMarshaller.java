@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class SearchFacesByImageRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("MaxFaces").build();
     private static final MarshallingInfo<Float> FACEMATCHTHRESHOLD_BINDING = MarshallingInfo.builder(MarshallingType.FLOAT)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("FaceMatchThreshold").build();
+    private static final MarshallingInfo<String> QUALITYFILTER_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("QualityFilter").build();
 
     private static final SearchFacesByImageRequestMarshaller instance = new SearchFacesByImageRequestMarshaller();
 
@@ -56,6 +58,7 @@ public class SearchFacesByImageRequestMarshaller {
             protocolMarshaller.marshall(searchFacesByImageRequest.getImage(), IMAGE_BINDING);
             protocolMarshaller.marshall(searchFacesByImageRequest.getMaxFaces(), MAXFACES_BINDING);
             protocolMarshaller.marshall(searchFacesByImageRequest.getFaceMatchThreshold(), FACEMATCHTHRESHOLD_BINDING);
+            protocolMarshaller.marshall(searchFacesByImageRequest.getQualityFilter(), QUALITYFILTER_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

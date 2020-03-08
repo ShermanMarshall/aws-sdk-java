@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-java-sdk-pom</artifactId>
-    <version>1.11.631-SNAPSHOT</version>
+    <version>1.11.740-SNAPSHOT</version>
   </parent>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-osgi</artifactId>
@@ -15,6 +15,180 @@
 
   <!-- The dependencies section in pom.xml is auto generated. No manual changes are allowed -->
   <dependencies>
+    <dependency>
+        <artifactId>aws-java-sdk-codestarconnections</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-detective</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-kinesisvideosignalingchannels</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-ebs</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-augmentedairuntime</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-outposts</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-codeguruprofiler</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-codegurureviewer</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-frauddetector</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-kendra</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-networkmanager</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-computeoptimizer</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-accessanalyzer</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-schemas</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-imagebuilder</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-elasticinference</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-iotsecuretunneling</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-appconfig</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-wafv2</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-connectparticipant</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-migrationhubconfig</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-dataexchange</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-sesv2</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-marketplacecatalog</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-ssooidc</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-sso</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-savingsplans</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-codestarnotifications</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
+    <dependency>
+        <artifactId>aws-java-sdk-workmailmessageflow</artifactId>
+        <groupId>com.amazonaws</groupId>
+        <optional>false</optional>
+        <version>${awsjavasdk.version}</version>
+    </dependency>
     <dependency>
         <artifactId>aws-java-sdk-qldbsession</artifactId>
         <groupId>com.amazonaws</groupId>
@@ -1269,6 +1443,122 @@
                           </taglets>
                           <groups>
                               <group>
+                                  <title>AWS CodeStar connections</title>
+                                  <packages>com.amazonaws.services.codestarconnections*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Detective</title>
+                                  <packages>com.amazonaws.services.detective*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Kinesis Video Signaling Channels</title>
+                                  <packages>com.amazonaws.services.kinesisvideosignalingchannels*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Elastic Block Store</title>
+                                  <packages>com.amazonaws.services.ebs*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Augmented AI Runtime</title>
+                                  <packages>com.amazonaws.services.augmentedairuntime*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Outposts</title>
+                                  <packages>com.amazonaws.services.outposts*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon CodeGuru Profiler</title>
+                                  <packages>com.amazonaws.services.codeguruprofiler*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon CodeGuru Reviewer</title>
+                                  <packages>com.amazonaws.services.codegurureviewer*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Fraud Detector</title>
+                                  <packages>com.amazonaws.services.frauddetector*</packages>
+                              </group>
+                              <group>
+                                  <title>AWSKendraFrontend</title>
+                                  <packages>com.amazonaws.services.kendra*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Network Manager</title>
+                                  <packages>com.amazonaws.services.networkmanager*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Compute Optimizer</title>
+                                  <packages>com.amazonaws.services.computeoptimizer*</packages>
+                              </group>
+                              <group>
+                                  <title>Access Analyzer</title>
+                                  <packages>com.amazonaws.services.accessanalyzer*</packages>
+                              </group>
+                              <group>
+                                  <title>Schemas</title>
+                                  <packages>com.amazonaws.services.schemas*</packages>
+                              </group>
+                              <group>
+                                  <title>EC2 Image Builder</title>
+                                  <packages>com.amazonaws.services.imagebuilder*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Elastic  Inference</title>
+                                  <packages>com.amazonaws.services.elasticinference*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS IoT Secure Tunneling</title>
+                                  <packages>com.amazonaws.services.iotsecuretunneling*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon AppConfig</title>
+                                  <packages>com.amazonaws.services.appconfig*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS WAFV2</title>
+                                  <packages>com.amazonaws.services.wafv2*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Connect Participant</title>
+                                  <packages>com.amazonaws.services.connectparticipant*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Migration Hub Config</title>
+                                  <packages>com.amazonaws.services.migrationhubconfig*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Data Exchange</title>
+                                  <packages>com.amazonaws.services.dataexchange*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon Simple Email</title>
+                                  <packages>com.amazonaws.services.sesv2*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Marketplace Catalog</title>
+                                  <packages>com.amazonaws.services.marketplacecatalog*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS SSO OIDC</title>
+                                  <packages>com.amazonaws.services.ssooidc*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Single Sign-On</title>
+                                  <packages>com.amazonaws.services.sso*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS Savings Plans</title>
+                                  <packages>com.amazonaws.services.savingsplans*</packages>
+                              </group>
+                              <group>
+                                  <title>AWS CodeStar Notifications</title>
+                                  <packages>com.amazonaws.services.codestarnotifications*</packages>
+                              </group>
+                              <group>
+                                  <title>Amazon WorkMail Message Flow</title>
+                                  <packages>com.amazonaws.services.workmailmessageflow*</packages>
+                              </group>
+                              <group>
                                   <title>Amazon QLDB Session</title>
                                   <packages>com.amazonaws.services.qldbsession*</packages>
                               </group>
@@ -2009,7 +2299,7 @@
                               <label>Search</label>
                           </span>
 
-                          <form id="nav-search-form" target="_parent" method="get" action="http://docs.aws.amazon.com/search/doc-search.html#facet_doc_guide=API+Reference&facet_doc_product=AWS+SDK+for+Java">
+                          <form id="nav-search-form" target="_parent" method="get" action="https://docs.aws.amazon.com/search/doc-search.html#facet_doc_guide=API+Reference&facet_doc_product=AWS+SDK+for+Java">
                               <div id="nav-searchfield-outer" class="nav-sprite">
                                   <div class="nav-searchfield-inner nav-sprite">
                                       <div id="nav-searchfield-width">
@@ -2095,7 +2385,7 @@
                       //-->
                       &lt;/script>
                       &lt;noscript>
-                      &lt;img src="http://amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazondev/1/H.25.2--NS/0" height="1" width="1" border="0" alt="" />
+                      &lt;img src="https://amazonwebservices.d2.sc.omtrdc.net/b/ss/awsamazondev/1/H.25.2--NS/0" height="1" width="1" border="0" alt="" />
                   &lt;/noscript>
                   &lt;!--/DO NOT REMOVE/-->
                   &lt;!-- End SiteCatalyst code version: H.25.2. -->

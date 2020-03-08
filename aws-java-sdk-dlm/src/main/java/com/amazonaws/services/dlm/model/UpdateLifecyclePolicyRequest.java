@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,10 +51,7 @@ public class UpdateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
     private String description;
     /**
      * <p>
-     * The configuration of the lifecycle policy.
-     * </p>
-     * <p>
-     * Target tags cannot be re-used across policies.
+     * The configuration of the lifecycle policy. You cannot update the policy type or the resource type.
      * </p>
      */
     private PolicyDetails policyDetails;
@@ -243,16 +240,11 @@ public class UpdateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The configuration of the lifecycle policy.
-     * </p>
-     * <p>
-     * Target tags cannot be re-used across policies.
+     * The configuration of the lifecycle policy. You cannot update the policy type or the resource type.
      * </p>
      * 
      * @param policyDetails
-     *        The configuration of the lifecycle policy.</p>
-     *        <p>
-     *        Target tags cannot be re-used across policies.
+     *        The configuration of the lifecycle policy. You cannot update the policy type or the resource type.
      */
 
     public void setPolicyDetails(PolicyDetails policyDetails) {
@@ -261,15 +253,10 @@ public class UpdateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The configuration of the lifecycle policy.
-     * </p>
-     * <p>
-     * Target tags cannot be re-used across policies.
+     * The configuration of the lifecycle policy. You cannot update the policy type or the resource type.
      * </p>
      * 
-     * @return The configuration of the lifecycle policy.</p>
-     *         <p>
-     *         Target tags cannot be re-used across policies.
+     * @return The configuration of the lifecycle policy. You cannot update the policy type or the resource type.
      */
 
     public PolicyDetails getPolicyDetails() {
@@ -278,16 +265,11 @@ public class UpdateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The configuration of the lifecycle policy.
-     * </p>
-     * <p>
-     * Target tags cannot be re-used across policies.
+     * The configuration of the lifecycle policy. You cannot update the policy type or the resource type.
      * </p>
      * 
      * @param policyDetails
-     *        The configuration of the lifecycle policy.</p>
-     *        <p>
-     *        Target tags cannot be re-used across policies.
+     *        The configuration of the lifecycle policy. You cannot update the policy type or the resource type.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

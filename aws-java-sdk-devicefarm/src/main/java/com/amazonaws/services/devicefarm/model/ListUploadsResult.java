@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,8 +34,8 @@ public class ListUploadsResult extends com.amazonaws.AmazonWebServiceResult<com.
     private java.util.List<Upload> uploads;
     /**
      * <p>
-     * If the number of items that are returned is significantly large, this is an identifier that is also returned,
-     * which can be used in a subsequent call to this operation to return the next set of items in the list.
+     * If the number of items that are returned is significantly large, this is an identifier that is also returned. It
+     * can be used in a subsequent call to this operation to return the next set of items in the list.
      * </p>
      */
     private String nextToken;
@@ -112,13 +112,13 @@ public class ListUploadsResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * If the number of items that are returned is significantly large, this is an identifier that is also returned,
-     * which can be used in a subsequent call to this operation to return the next set of items in the list.
+     * If the number of items that are returned is significantly large, this is an identifier that is also returned. It
+     * can be used in a subsequent call to this operation to return the next set of items in the list.
      * </p>
      * 
      * @param nextToken
      *        If the number of items that are returned is significantly large, this is an identifier that is also
-     *        returned, which can be used in a subsequent call to this operation to return the next set of items in the
+     *        returned. It can be used in a subsequent call to this operation to return the next set of items in the
      *        list.
      */
 
@@ -128,12 +128,12 @@ public class ListUploadsResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * If the number of items that are returned is significantly large, this is an identifier that is also returned,
-     * which can be used in a subsequent call to this operation to return the next set of items in the list.
+     * If the number of items that are returned is significantly large, this is an identifier that is also returned. It
+     * can be used in a subsequent call to this operation to return the next set of items in the list.
      * </p>
      * 
      * @return If the number of items that are returned is significantly large, this is an identifier that is also
-     *         returned, which can be used in a subsequent call to this operation to return the next set of items in the
+     *         returned. It can be used in a subsequent call to this operation to return the next set of items in the
      *         list.
      */
 
@@ -143,13 +143,13 @@ public class ListUploadsResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * If the number of items that are returned is significantly large, this is an identifier that is also returned,
-     * which can be used in a subsequent call to this operation to return the next set of items in the list.
+     * If the number of items that are returned is significantly large, this is an identifier that is also returned. It
+     * can be used in a subsequent call to this operation to return the next set of items in the list.
      * </p>
      * 
      * @param nextToken
      *        If the number of items that are returned is significantly large, this is an identifier that is also
-     *        returned, which can be used in a subsequent call to this operation to return the next set of items in the
+     *        returned. It can be used in a subsequent call to this operation to return the next set of items in the
      *        list.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

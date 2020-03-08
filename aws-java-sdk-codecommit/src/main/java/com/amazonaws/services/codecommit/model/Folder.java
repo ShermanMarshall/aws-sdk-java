@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,7 @@ public class Folder implements Serializable, Cloneable, StructuredPojo {
     private String treeId;
     /**
      * <p>
-     * The fully-qualified path of the folder in the repository.
+     * The fully qualified path of the folder in the repository.
      * </p>
      */
     private String absolutePath;
@@ -89,11 +89,11 @@ public class Folder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The fully-qualified path of the folder in the repository.
+     * The fully qualified path of the folder in the repository.
      * </p>
      * 
      * @param absolutePath
-     *        The fully-qualified path of the folder in the repository.
+     *        The fully qualified path of the folder in the repository.
      */
 
     public void setAbsolutePath(String absolutePath) {
@@ -102,10 +102,10 @@ public class Folder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The fully-qualified path of the folder in the repository.
+     * The fully qualified path of the folder in the repository.
      * </p>
      * 
-     * @return The fully-qualified path of the folder in the repository.
+     * @return The fully qualified path of the folder in the repository.
      */
 
     public String getAbsolutePath() {
@@ -114,11 +114,11 @@ public class Folder implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The fully-qualified path of the folder in the repository.
+     * The fully qualified path of the folder in the repository.
      * </p>
      * 
      * @param absolutePath
-     *        The fully-qualified path of the folder in the repository.
+     *        The fully qualified path of the folder in the repository.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

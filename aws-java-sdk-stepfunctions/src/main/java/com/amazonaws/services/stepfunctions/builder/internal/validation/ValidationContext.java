@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -159,6 +159,15 @@ final class ValidationContext {
     /**
      * Asserts that the string represents a valid JsonPath expression.
      *
+     * @param path Path expression to validate.
+     */
+    public void assertIsValidItemsPath(String path) {
+        assertIsValidReferencePath(path, PropertyNames.ITEMS_PATH);
+    }
+
+    /**
+     * Asserts that the string represents a valid JsonPath expression.
+     *
      * @param path         Path expression to validate.
      * @param propertyName Name of property.
      */
@@ -218,6 +227,15 @@ final class ValidationContext {
         return newChildContext()
                 .identifier(String.valueOf(index))
                 .location(Location.Branch)
+                .build();
+    }
+
+    /**
+     * @return Iterator sub-context.
+     */
+    public ValidationContext iterator() {
+        return newChildContext()
+                .location(Location.Iterator)
                 .build();
     }
 

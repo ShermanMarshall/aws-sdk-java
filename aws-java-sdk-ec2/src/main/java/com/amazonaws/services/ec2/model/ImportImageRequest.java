@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -78,10 +78,10 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
     private String hypervisor;
     /**
      * <p>
-     * An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the
-     * encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this parameter is not
-     * specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the <code>Encrypted</code>
-     * flag must also be set.
+     * An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when
+     * creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this
+     * parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
+     * <code>Encrypted</code> flag must also be set.
      * </p>
      * <p>
      * The CMK identifier may be provided in any of the following formats:
@@ -121,6 +121,9 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * <p>
      * The specified CMK must exist in the Region that the AMI is being copied to.
      * </p>
+     * <p>
+     * Amazon EBS does not support asymmetric CMKs.
+     * </p>
      */
     private String kmsKeyId;
     /**
@@ -155,6 +158,12 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * </p>
      */
     private String roleName;
+    /**
+     * <p>
+     * The ARNs of the license configurations.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationRequest> licenseSpecifications;
 
     /**
      * <p>
@@ -541,10 +550,10 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
 
     /**
      * <p>
-     * An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the
-     * encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this parameter is not
-     * specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the <code>Encrypted</code>
-     * flag must also be set.
+     * An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when
+     * creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this
+     * parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
+     * <code>Encrypted</code> flag must also be set.
      * </p>
      * <p>
      * The CMK identifier may be provided in any of the following formats:
@@ -584,11 +593,14 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * <p>
      * The specified CMK must exist in the Region that the AMI is being copied to.
      * </p>
+     * <p>
+     * Amazon EBS does not support asymmetric CMKs.
+     * </p>
      * 
      * @param kmsKeyId
-     *        An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating
-     *        the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this parameter
-     *        is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
+     *        An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when
+     *        creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this
+     *        parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
      *        <code>Encrypted</code> flag must also be set. </p>
      *        <p>
      *        The CMK identifier may be provided in any of the following formats:
@@ -627,6 +639,9 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *        </p>
      *        <p>
      *        The specified CMK must exist in the Region that the AMI is being copied to.
+     *        </p>
+     *        <p>
+     *        Amazon EBS does not support asymmetric CMKs.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -635,10 +650,10 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
 
     /**
      * <p>
-     * An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the
-     * encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this parameter is not
-     * specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the <code>Encrypted</code>
-     * flag must also be set.
+     * An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when
+     * creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this
+     * parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
+     * <code>Encrypted</code> flag must also be set.
      * </p>
      * <p>
      * The CMK identifier may be provided in any of the following formats:
@@ -678,11 +693,14 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * <p>
      * The specified CMK must exist in the Region that the AMI is being copied to.
      * </p>
+     * <p>
+     * Amazon EBS does not support asymmetric CMKs.
+     * </p>
      * 
-     * @return An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating
-     *         the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this
-     *         parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
-     *         <code>Encrypted</code> flag must also be set. </p>
+     * @return An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use
+     *         when creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if
+     *         this parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is
+     *         specified, the <code>Encrypted</code> flag must also be set. </p>
      *         <p>
      *         The CMK identifier may be provided in any of the following formats:
      *         </p>
@@ -721,6 +739,9 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *         </p>
      *         <p>
      *         The specified CMK must exist in the Region that the AMI is being copied to.
+     *         </p>
+     *         <p>
+     *         Amazon EBS does not support asymmetric CMKs.
      */
 
     public String getKmsKeyId() {
@@ -729,10 +750,10 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
 
     /**
      * <p>
-     * An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the
-     * encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this parameter is not
-     * specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the <code>Encrypted</code>
-     * flag must also be set.
+     * An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when
+     * creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this
+     * parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
+     * <code>Encrypted</code> flag must also be set.
      * </p>
      * <p>
      * The CMK identifier may be provided in any of the following formats:
@@ -772,11 +793,14 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * <p>
      * The specified CMK must exist in the Region that the AMI is being copied to.
      * </p>
+     * <p>
+     * Amazon EBS does not support asymmetric CMKs.
+     * </p>
      * 
      * @param kmsKeyId
-     *        An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating
-     *        the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this parameter
-     *        is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
+     *        An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when
+     *        creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this
+     *        parameter is not specified, the default CMK for EBS is used. If a <code>KmsKeyId</code> is specified, the
      *        <code>Encrypted</code> flag must also be set. </p>
      *        <p>
      *        The CMK identifier may be provided in any of the following formats:
@@ -815,6 +839,9 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *        </p>
      *        <p>
      *        The specified CMK must exist in the Region that the AMI is being copied to.
+     *        </p>
+     *        <p>
+     *        Amazon EBS does not support asymmetric CMKs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1022,6 +1049,79 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
     }
 
     /**
+     * <p>
+     * The ARNs of the license configurations.
+     * </p>
+     * 
+     * @return The ARNs of the license configurations.
+     */
+
+    public java.util.List<ImportImageLicenseConfigurationRequest> getLicenseSpecifications() {
+        if (licenseSpecifications == null) {
+            licenseSpecifications = new com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationRequest>();
+        }
+        return licenseSpecifications;
+    }
+
+    /**
+     * <p>
+     * The ARNs of the license configurations.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The ARNs of the license configurations.
+     */
+
+    public void setLicenseSpecifications(java.util.Collection<ImportImageLicenseConfigurationRequest> licenseSpecifications) {
+        if (licenseSpecifications == null) {
+            this.licenseSpecifications = null;
+            return;
+        }
+
+        this.licenseSpecifications = new com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationRequest>(licenseSpecifications);
+    }
+
+    /**
+     * <p>
+     * The ARNs of the license configurations.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setLicenseSpecifications(java.util.Collection)} or
+     * {@link #withLicenseSpecifications(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The ARNs of the license configurations.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImportImageRequest withLicenseSpecifications(ImportImageLicenseConfigurationRequest... licenseSpecifications) {
+        if (this.licenseSpecifications == null) {
+            setLicenseSpecifications(new com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationRequest>(licenseSpecifications.length));
+        }
+        for (ImportImageLicenseConfigurationRequest ele : licenseSpecifications) {
+            this.licenseSpecifications.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARNs of the license configurations.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The ARNs of the license configurations.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImportImageRequest withLicenseSpecifications(java.util.Collection<ImportImageLicenseConfigurationRequest> licenseSpecifications) {
+        setLicenseSpecifications(licenseSpecifications);
+        return this;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -1065,7 +1165,9 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
         if (getPlatform() != null)
             sb.append("Platform: ").append(getPlatform()).append(",");
         if (getRoleName() != null)
-            sb.append("RoleName: ").append(getRoleName());
+            sb.append("RoleName: ").append(getRoleName()).append(",");
+        if (getLicenseSpecifications() != null)
+            sb.append("LicenseSpecifications: ").append(getLicenseSpecifications());
         sb.append("}");
         return sb.toString();
     }
@@ -1124,6 +1226,10 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
             return false;
         if (other.getRoleName() != null && other.getRoleName().equals(this.getRoleName()) == false)
             return false;
+        if (other.getLicenseSpecifications() == null ^ this.getLicenseSpecifications() == null)
+            return false;
+        if (other.getLicenseSpecifications() != null && other.getLicenseSpecifications().equals(this.getLicenseSpecifications()) == false)
+            return false;
         return true;
     }
 
@@ -1143,6 +1249,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
         hashCode = prime * hashCode + ((getLicenseType() == null) ? 0 : getLicenseType().hashCode());
         hashCode = prime * hashCode + ((getPlatform() == null) ? 0 : getPlatform().hashCode());
         hashCode = prime * hashCode + ((getRoleName() == null) ? 0 : getRoleName().hashCode());
+        hashCode = prime * hashCode + ((getLicenseSpecifications() == null) ? 0 : getLicenseSpecifications().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class ListTargetsForPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by
-     * from 8 to 128 lower-case letters or digits.
+     * from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
      * </p>
      */
     private String policyId;
@@ -62,14 +62,14 @@ public class ListTargetsForPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by
-     * from 8 to 128 lower-case letters or digits.
+     * from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
      * </p>
      * 
      * @param policyId
      *        The unique identifier (ID) of the policy whose attachments you want to know.</p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-"
-     *        followed by from 8 to 128 lower-case letters or digits.
+     *        followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
      */
 
     public void setPolicyId(String policyId) {
@@ -82,13 +82,13 @@ public class ListTargetsForPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by
-     * from 8 to 128 lower-case letters or digits.
+     * from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
      * </p>
      * 
      * @return The unique identifier (ID) of the policy whose attachments you want to know.</p>
      *         <p>
      *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-"
-     *         followed by from 8 to 128 lower-case letters or digits.
+     *         followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
      */
 
     public String getPolicyId() {
@@ -101,14 +101,14 @@ public class ListTargetsForPolicyRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed by
-     * from 8 to 128 lower-case letters or digits.
+     * from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
      * </p>
      * 
      * @param policyId
      *        The unique identifier (ID) of the policy whose attachments you want to know.</p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-"
-     *        followed by from 8 to 128 lower-case letters or digits.
+     *        followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

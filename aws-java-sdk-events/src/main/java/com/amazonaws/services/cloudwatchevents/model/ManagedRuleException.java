@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,10 +16,10 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * An AWS service created this rule on behalf of your account. That service manages it. If you see this error in
- * response to <code>DeleteRule</code> or <code>RemoveTargets</code>, you can use the <code>Force</code> parameter in
- * those calls to delete the rule or remove targets from the rule. You can't modify these managed rules by using
- * <code>DisableRule</code>, <code>EnableRule</code>, <code>PutTargets</code>, <code>PutRule</code>,
+ * This rule was created by an AWS service on behalf of your account. It is managed by that service. If you see this
+ * error in response to <code>DeleteRule</code> or <code>RemoveTargets</code>, you can use the <code>Force</code>
+ * parameter in those calls to delete the rule or remove targets from the rule. You cannot modify these managed rules by
+ * using <code>DisableRule</code>, <code>EnableRule</code>, <code>PutTargets</code>, <code>PutRule</code>,
  * <code>TagResource</code>, or <code>UntagResource</code>.
  * </p>
  */

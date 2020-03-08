@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -71,6 +71,36 @@ public class Settings implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private Boolean channelIdentification;
+    /**
+     * <p>
+     * Determines whether the transcription contains alternative transcriptions. If you set the
+     * <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to return in
+     * the <code>MaxAlternatives</code> field.
+     * </p>
+     */
+    private Boolean showAlternatives;
+    /**
+     * <p>
+     * The number of alternative transcriptions that the service should return. If you specify the
+     * <code>MaxAlternatives</code> field, you must set the <code>ShowAlternatives</code> field to true.
+     * </p>
+     */
+    private Integer maxAlternatives;
+    /**
+     * <p>
+     * The name of the vocabulary filter to use when transcribing the audio. The filter that you specify must have the
+     * same language code as the transcription job.
+     * </p>
+     */
+    private String vocabularyFilterName;
+    /**
+     * <p>
+     * Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks ("***")
+     * as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript without using
+     * placeholder text.
+     * </p>
+     */
+    private String vocabularyFilterMethod;
 
     /**
      * <p>
@@ -397,6 +427,241 @@ public class Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Determines whether the transcription contains alternative transcriptions. If you set the
+     * <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to return in
+     * the <code>MaxAlternatives</code> field.
+     * </p>
+     * 
+     * @param showAlternatives
+     *        Determines whether the transcription contains alternative transcriptions. If you set the
+     *        <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to
+     *        return in the <code>MaxAlternatives</code> field.
+     */
+
+    public void setShowAlternatives(Boolean showAlternatives) {
+        this.showAlternatives = showAlternatives;
+    }
+
+    /**
+     * <p>
+     * Determines whether the transcription contains alternative transcriptions. If you set the
+     * <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to return in
+     * the <code>MaxAlternatives</code> field.
+     * </p>
+     * 
+     * @return Determines whether the transcription contains alternative transcriptions. If you set the
+     *         <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to
+     *         return in the <code>MaxAlternatives</code> field.
+     */
+
+    public Boolean getShowAlternatives() {
+        return this.showAlternatives;
+    }
+
+    /**
+     * <p>
+     * Determines whether the transcription contains alternative transcriptions. If you set the
+     * <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to return in
+     * the <code>MaxAlternatives</code> field.
+     * </p>
+     * 
+     * @param showAlternatives
+     *        Determines whether the transcription contains alternative transcriptions. If you set the
+     *        <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to
+     *        return in the <code>MaxAlternatives</code> field.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Settings withShowAlternatives(Boolean showAlternatives) {
+        setShowAlternatives(showAlternatives);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Determines whether the transcription contains alternative transcriptions. If you set the
+     * <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to return in
+     * the <code>MaxAlternatives</code> field.
+     * </p>
+     * 
+     * @return Determines whether the transcription contains alternative transcriptions. If you set the
+     *         <code>ShowAlternatives</code> field to true, you must also set the maximum number of alternatives to
+     *         return in the <code>MaxAlternatives</code> field.
+     */
+
+    public Boolean isShowAlternatives() {
+        return this.showAlternatives;
+    }
+
+    /**
+     * <p>
+     * The number of alternative transcriptions that the service should return. If you specify the
+     * <code>MaxAlternatives</code> field, you must set the <code>ShowAlternatives</code> field to true.
+     * </p>
+     * 
+     * @param maxAlternatives
+     *        The number of alternative transcriptions that the service should return. If you specify the
+     *        <code>MaxAlternatives</code> field, you must set the <code>ShowAlternatives</code> field to true.
+     */
+
+    public void setMaxAlternatives(Integer maxAlternatives) {
+        this.maxAlternatives = maxAlternatives;
+    }
+
+    /**
+     * <p>
+     * The number of alternative transcriptions that the service should return. If you specify the
+     * <code>MaxAlternatives</code> field, you must set the <code>ShowAlternatives</code> field to true.
+     * </p>
+     * 
+     * @return The number of alternative transcriptions that the service should return. If you specify the
+     *         <code>MaxAlternatives</code> field, you must set the <code>ShowAlternatives</code> field to true.
+     */
+
+    public Integer getMaxAlternatives() {
+        return this.maxAlternatives;
+    }
+
+    /**
+     * <p>
+     * The number of alternative transcriptions that the service should return. If you specify the
+     * <code>MaxAlternatives</code> field, you must set the <code>ShowAlternatives</code> field to true.
+     * </p>
+     * 
+     * @param maxAlternatives
+     *        The number of alternative transcriptions that the service should return. If you specify the
+     *        <code>MaxAlternatives</code> field, you must set the <code>ShowAlternatives</code> field to true.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Settings withMaxAlternatives(Integer maxAlternatives) {
+        setMaxAlternatives(maxAlternatives);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the vocabulary filter to use when transcribing the audio. The filter that you specify must have the
+     * same language code as the transcription job.
+     * </p>
+     * 
+     * @param vocabularyFilterName
+     *        The name of the vocabulary filter to use when transcribing the audio. The filter that you specify must
+     *        have the same language code as the transcription job.
+     */
+
+    public void setVocabularyFilterName(String vocabularyFilterName) {
+        this.vocabularyFilterName = vocabularyFilterName;
+    }
+
+    /**
+     * <p>
+     * The name of the vocabulary filter to use when transcribing the audio. The filter that you specify must have the
+     * same language code as the transcription job.
+     * </p>
+     * 
+     * @return The name of the vocabulary filter to use when transcribing the audio. The filter that you specify must
+     *         have the same language code as the transcription job.
+     */
+
+    public String getVocabularyFilterName() {
+        return this.vocabularyFilterName;
+    }
+
+    /**
+     * <p>
+     * The name of the vocabulary filter to use when transcribing the audio. The filter that you specify must have the
+     * same language code as the transcription job.
+     * </p>
+     * 
+     * @param vocabularyFilterName
+     *        The name of the vocabulary filter to use when transcribing the audio. The filter that you specify must
+     *        have the same language code as the transcription job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Settings withVocabularyFilterName(String vocabularyFilterName) {
+        setVocabularyFilterName(vocabularyFilterName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks ("***")
+     * as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript without using
+     * placeholder text.
+     * </p>
+     * 
+     * @param vocabularyFilterMethod
+     *        Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks
+     *        ("***") as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript
+     *        without using placeholder text.
+     * @see VocabularyFilterMethod
+     */
+
+    public void setVocabularyFilterMethod(String vocabularyFilterMethod) {
+        this.vocabularyFilterMethod = vocabularyFilterMethod;
+    }
+
+    /**
+     * <p>
+     * Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks ("***")
+     * as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript without using
+     * placeholder text.
+     * </p>
+     * 
+     * @return Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks
+     *         ("***") as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript
+     *         without using placeholder text.
+     * @see VocabularyFilterMethod
+     */
+
+    public String getVocabularyFilterMethod() {
+        return this.vocabularyFilterMethod;
+    }
+
+    /**
+     * <p>
+     * Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks ("***")
+     * as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript without using
+     * placeholder text.
+     * </p>
+     * 
+     * @param vocabularyFilterMethod
+     *        Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks
+     *        ("***") as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript
+     *        without using placeholder text.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see VocabularyFilterMethod
+     */
+
+    public Settings withVocabularyFilterMethod(String vocabularyFilterMethod) {
+        setVocabularyFilterMethod(vocabularyFilterMethod);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks ("***")
+     * as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript without using
+     * placeholder text.
+     * </p>
+     * 
+     * @param vocabularyFilterMethod
+     *        Set to <code>mask</code> to remove filtered text from the transcript and replace it with three asterisks
+     *        ("***") as placeholder text. Set to <code>remove</code> to remove filtered text from the transcript
+     *        without using placeholder text.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see VocabularyFilterMethod
+     */
+
+    public Settings withVocabularyFilterMethod(VocabularyFilterMethod vocabularyFilterMethod) {
+        this.vocabularyFilterMethod = vocabularyFilterMethod.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -415,7 +680,15 @@ public class Settings implements Serializable, Cloneable, StructuredPojo {
         if (getMaxSpeakerLabels() != null)
             sb.append("MaxSpeakerLabels: ").append(getMaxSpeakerLabels()).append(",");
         if (getChannelIdentification() != null)
-            sb.append("ChannelIdentification: ").append(getChannelIdentification());
+            sb.append("ChannelIdentification: ").append(getChannelIdentification()).append(",");
+        if (getShowAlternatives() != null)
+            sb.append("ShowAlternatives: ").append(getShowAlternatives()).append(",");
+        if (getMaxAlternatives() != null)
+            sb.append("MaxAlternatives: ").append(getMaxAlternatives()).append(",");
+        if (getVocabularyFilterName() != null)
+            sb.append("VocabularyFilterName: ").append(getVocabularyFilterName()).append(",");
+        if (getVocabularyFilterMethod() != null)
+            sb.append("VocabularyFilterMethod: ").append(getVocabularyFilterMethod());
         sb.append("}");
         return sb.toString();
     }
@@ -446,6 +719,22 @@ public class Settings implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getChannelIdentification() != null && other.getChannelIdentification().equals(this.getChannelIdentification()) == false)
             return false;
+        if (other.getShowAlternatives() == null ^ this.getShowAlternatives() == null)
+            return false;
+        if (other.getShowAlternatives() != null && other.getShowAlternatives().equals(this.getShowAlternatives()) == false)
+            return false;
+        if (other.getMaxAlternatives() == null ^ this.getMaxAlternatives() == null)
+            return false;
+        if (other.getMaxAlternatives() != null && other.getMaxAlternatives().equals(this.getMaxAlternatives()) == false)
+            return false;
+        if (other.getVocabularyFilterName() == null ^ this.getVocabularyFilterName() == null)
+            return false;
+        if (other.getVocabularyFilterName() != null && other.getVocabularyFilterName().equals(this.getVocabularyFilterName()) == false)
+            return false;
+        if (other.getVocabularyFilterMethod() == null ^ this.getVocabularyFilterMethod() == null)
+            return false;
+        if (other.getVocabularyFilterMethod() != null && other.getVocabularyFilterMethod().equals(this.getVocabularyFilterMethod()) == false)
+            return false;
         return true;
     }
 
@@ -458,6 +747,10 @@ public class Settings implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getShowSpeakerLabels() == null) ? 0 : getShowSpeakerLabels().hashCode());
         hashCode = prime * hashCode + ((getMaxSpeakerLabels() == null) ? 0 : getMaxSpeakerLabels().hashCode());
         hashCode = prime * hashCode + ((getChannelIdentification() == null) ? 0 : getChannelIdentification().hashCode());
+        hashCode = prime * hashCode + ((getShowAlternatives() == null) ? 0 : getShowAlternatives().hashCode());
+        hashCode = prime * hashCode + ((getMaxAlternatives() == null) ? 0 : getMaxAlternatives().hashCode());
+        hashCode = prime * hashCode + ((getVocabularyFilterName() == null) ? 0 : getVocabularyFilterName().hashCode());
+        hashCode = prime * hashCode + ((getVocabularyFilterMethod() == null) ? 0 : getVocabularyFilterMethod().hashCode());
         return hashCode;
     }
 

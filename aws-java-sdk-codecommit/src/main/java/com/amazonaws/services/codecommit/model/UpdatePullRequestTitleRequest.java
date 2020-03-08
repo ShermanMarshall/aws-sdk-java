@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class UpdatePullRequestTitleRequest extends com.amazonaws.AmazonWebServic
     private String pullRequestId;
     /**
      * <p>
-     * The updated title of the pull request. This will replace the existing title.
+     * The updated title of the pull request. This replaces the existing title.
      * </p>
      */
     private String title;
@@ -80,11 +80,11 @@ public class UpdatePullRequestTitleRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The updated title of the pull request. This will replace the existing title.
+     * The updated title of the pull request. This replaces the existing title.
      * </p>
      * 
      * @param title
-     *        The updated title of the pull request. This will replace the existing title.
+     *        The updated title of the pull request. This replaces the existing title.
      */
 
     public void setTitle(String title) {
@@ -93,10 +93,10 @@ public class UpdatePullRequestTitleRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The updated title of the pull request. This will replace the existing title.
+     * The updated title of the pull request. This replaces the existing title.
      * </p>
      * 
-     * @return The updated title of the pull request. This will replace the existing title.
+     * @return The updated title of the pull request. This replaces the existing title.
      */
 
     public String getTitle() {
@@ -105,11 +105,11 @@ public class UpdatePullRequestTitleRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The updated title of the pull request. This will replace the existing title.
+     * The updated title of the pull request. This replaces the existing title.
      * </p>
      * 
      * @param title
-     *        The updated title of the pull request. This will replace the existing title.
+     *        The updated title of the pull request. This replaces the existing title.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

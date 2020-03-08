@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -58,15 +58,15 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
     private String dBParameterGroupFamily;
     /**
      * <p>
-     * This parameter is not currently supported.
+     * This parameter isn't currently supported.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
      * The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is
-     * available, a pagination token called a marker is included in the response so that the following results can be
-     * retrieved.
+     * available, a pagination token called a marker is included in the response so you can retrieve the remaining
+     * results.
      * </p>
      * <p>
      * Default: 100
@@ -312,10 +312,10 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * This parameter is not currently supported.
+     * This parameter isn't currently supported.
      * </p>
      * 
-     * @return This parameter is not currently supported.
+     * @return This parameter isn't currently supported.
      */
 
     public java.util.List<Filter> getFilters() {
@@ -327,11 +327,11 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * This parameter is not currently supported.
+     * This parameter isn't currently supported.
      * </p>
      * 
      * @param filters
-     *        This parameter is not currently supported.
+     *        This parameter isn't currently supported.
      */
 
     public void setFilters(java.util.Collection<Filter> filters) {
@@ -345,7 +345,7 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * This parameter is not currently supported.
+     * This parameter isn't currently supported.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -354,7 +354,7 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
      * </p>
      * 
      * @param filters
-     *        This parameter is not currently supported.
+     *        This parameter isn't currently supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -370,11 +370,11 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * This parameter is not currently supported.
+     * This parameter isn't currently supported.
      * </p>
      * 
      * @param filters
-     *        This parameter is not currently supported.
+     *        This parameter isn't currently supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -386,8 +386,8 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
     /**
      * <p>
      * The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is
-     * available, a pagination token called a marker is included in the response so that the following results can be
-     * retrieved.
+     * available, a pagination token called a marker is included in the response so you can retrieve the remaining
+     * results.
      * </p>
      * <p>
      * Default: 100
@@ -398,8 +398,8 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
      * 
      * @param maxRecords
      *        The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value
-     *        is available, a pagination token called a marker is included in the response so that the following results
-     *        can be retrieved. </p>
+     *        is available, a pagination token called a marker is included in the response so you can retrieve the
+     *        remaining results. </p>
      *        <p>
      *        Default: 100
      *        </p>
@@ -414,8 +414,8 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
     /**
      * <p>
      * The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is
-     * available, a pagination token called a marker is included in the response so that the following results can be
-     * retrieved.
+     * available, a pagination token called a marker is included in the response so you can retrieve the remaining
+     * results.
      * </p>
      * <p>
      * Default: 100
@@ -425,8 +425,8 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
      * </p>
      * 
      * @return The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value
-     *         is available, a pagination token called a marker is included in the response so that the following
-     *         results can be retrieved. </p>
+     *         is available, a pagination token called a marker is included in the response so you can retrieve the
+     *         remaining results. </p>
      *         <p>
      *         Default: 100
      *         </p>
@@ -441,8 +441,8 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
     /**
      * <p>
      * The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is
-     * available, a pagination token called a marker is included in the response so that the following results can be
-     * retrieved.
+     * available, a pagination token called a marker is included in the response so you can retrieve the remaining
+     * results.
      * </p>
      * <p>
      * Default: 100
@@ -453,8 +453,8 @@ public class DescribeDBEngineVersionsRequest extends com.amazonaws.AmazonWebServ
      * 
      * @param maxRecords
      *        The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value
-     *        is available, a pagination token called a marker is included in the response so that the following results
-     *        can be retrieved. </p>
+     *        is available, a pagination token called a marker is included in the response so you can retrieve the
+     *        remaining results. </p>
      *        <p>
      *        Default: 100
      *        </p>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,7 +29,8 @@ public class PendingMaintenanceAction implements Serializable, Cloneable {
     /**
      * <p>
      * The type of pending maintenance action that is available for the resource. Valid actions are
-     * <code>system-update</code>, <code>db-upgrade</code>, and <code>hardware-maintenance</code>.
+     * <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>, and
+     * <code>ca-certificate-rotation</code>.
      * </p>
      */
     private String action;
@@ -73,12 +74,14 @@ public class PendingMaintenanceAction implements Serializable, Cloneable {
     /**
      * <p>
      * The type of pending maintenance action that is available for the resource. Valid actions are
-     * <code>system-update</code>, <code>db-upgrade</code>, and <code>hardware-maintenance</code>.
+     * <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>, and
+     * <code>ca-certificate-rotation</code>.
      * </p>
      * 
      * @param action
      *        The type of pending maintenance action that is available for the resource. Valid actions are
-     *        <code>system-update</code>, <code>db-upgrade</code>, and <code>hardware-maintenance</code>.
+     *        <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>, and
+     *        <code>ca-certificate-rotation</code>.
      */
 
     public void setAction(String action) {
@@ -88,11 +91,13 @@ public class PendingMaintenanceAction implements Serializable, Cloneable {
     /**
      * <p>
      * The type of pending maintenance action that is available for the resource. Valid actions are
-     * <code>system-update</code>, <code>db-upgrade</code>, and <code>hardware-maintenance</code>.
+     * <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>, and
+     * <code>ca-certificate-rotation</code>.
      * </p>
      * 
      * @return The type of pending maintenance action that is available for the resource. Valid actions are
-     *         <code>system-update</code>, <code>db-upgrade</code>, and <code>hardware-maintenance</code>.
+     *         <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>, and
+     *         <code>ca-certificate-rotation</code>.
      */
 
     public String getAction() {
@@ -102,12 +107,14 @@ public class PendingMaintenanceAction implements Serializable, Cloneable {
     /**
      * <p>
      * The type of pending maintenance action that is available for the resource. Valid actions are
-     * <code>system-update</code>, <code>db-upgrade</code>, and <code>hardware-maintenance</code>.
+     * <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>, and
+     * <code>ca-certificate-rotation</code>.
      * </p>
      * 
      * @param action
      *        The type of pending maintenance action that is available for the resource. Valid actions are
-     *        <code>system-update</code>, <code>db-upgrade</code>, and <code>hardware-maintenance</code>.
+     *        <code>system-update</code>, <code>db-upgrade</code>, <code>hardware-maintenance</code>, and
+     *        <code>ca-certificate-rotation</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

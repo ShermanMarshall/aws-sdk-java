@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -67,6 +67,32 @@ public class AmazonEKSWaiters {
         return new WaiterBuilder<DescribeClusterRequest, DescribeClusterResult>().withSdkFunction(new DescribeClusterFunction(client))
                 .withAcceptors(new ClusterActive.IsDELETINGMatcher(), new ClusterActive.IsFAILEDMatcher(), new ClusterActive.IsACTIVEMatcher())
                 .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(40), new FixedDelayStrategy(30)))
+                .withExecutorService(executorService).build();
+    }
+
+    /**
+     * Builds a NodegroupDeleted waiter by using custom parameters waiterParameters and other parameters defined in the
+     * waiters specification, and then polls until it determines whether the resource entered the desired state or not,
+     * where polling criteria is bound by either default polling strategy or custom polling strategy.
+     */
+    public Waiter<DescribeNodegroupRequest> nodegroupDeleted() {
+
+        return new WaiterBuilder<DescribeNodegroupRequest, DescribeNodegroupResult>().withSdkFunction(new DescribeNodegroupFunction(client))
+                .withAcceptors(new NodegroupDeleted.IsDELETE_FAILEDMatcher(), new NodegroupDeleted.IsResourceNotFoundExceptionMatcher())
+                .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(40), new FixedDelayStrategy(30)))
+                .withExecutorService(executorService).build();
+    }
+
+    /**
+     * Builds a NodegroupActive waiter by using custom parameters waiterParameters and other parameters defined in the
+     * waiters specification, and then polls until it determines whether the resource entered the desired state or not,
+     * where polling criteria is bound by either default polling strategy or custom polling strategy.
+     */
+    public Waiter<DescribeNodegroupRequest> nodegroupActive() {
+
+        return new WaiterBuilder<DescribeNodegroupRequest, DescribeNodegroupResult>().withSdkFunction(new DescribeNodegroupFunction(client))
+                .withAcceptors(new NodegroupActive.IsCREATE_FAILEDMatcher(), new NodegroupActive.IsACTIVEMatcher())
+                .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(80), new FixedDelayStrategy(30)))
                 .withExecutorService(executorService).build();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,8 +36,7 @@ public class SolutionConfig implements Serializable, Cloneable, StructuredPojo {
     private String eventValueThreshold;
     /**
      * <p>
-     * Describes the properties for hyperparameter optimization (HPO). For use with the bring-your-own-recipe feature.
-     * Not used with Amazon Personalize predefined recipes.
+     * Describes the properties for hyperparameter optimization (HPO).
      * </p>
      */
     private HPOConfig hpoConfig;
@@ -102,13 +101,11 @@ public class SolutionConfig implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Describes the properties for hyperparameter optimization (HPO). For use with the bring-your-own-recipe feature.
-     * Not used with Amazon Personalize predefined recipes.
+     * Describes the properties for hyperparameter optimization (HPO).
      * </p>
      * 
      * @param hpoConfig
-     *        Describes the properties for hyperparameter optimization (HPO). For use with the bring-your-own-recipe
-     *        feature. Not used with Amazon Personalize predefined recipes.
+     *        Describes the properties for hyperparameter optimization (HPO).
      */
 
     public void setHpoConfig(HPOConfig hpoConfig) {
@@ -117,12 +114,10 @@ public class SolutionConfig implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Describes the properties for hyperparameter optimization (HPO). For use with the bring-your-own-recipe feature.
-     * Not used with Amazon Personalize predefined recipes.
+     * Describes the properties for hyperparameter optimization (HPO).
      * </p>
      * 
-     * @return Describes the properties for hyperparameter optimization (HPO). For use with the bring-your-own-recipe
-     *         feature. Not used with Amazon Personalize predefined recipes.
+     * @return Describes the properties for hyperparameter optimization (HPO).
      */
 
     public HPOConfig getHpoConfig() {
@@ -131,13 +126,11 @@ public class SolutionConfig implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Describes the properties for hyperparameter optimization (HPO). For use with the bring-your-own-recipe feature.
-     * Not used with Amazon Personalize predefined recipes.
+     * Describes the properties for hyperparameter optimization (HPO).
      * </p>
      * 
      * @param hpoConfig
-     *        Describes the properties for hyperparameter optimization (HPO). For use with the bring-your-own-recipe
-     *        feature. Not used with Amazon Personalize predefined recipes.
+     *        Describes the properties for hyperparameter optimization (HPO).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -185,6 +178,13 @@ public class SolutionConfig implements Serializable, Cloneable, StructuredPojo {
         setAlgorithmHyperParameters(algorithmHyperParameters);
         return this;
     }
+
+    /**
+     * Add a single AlgorithmHyperParameters entry
+     *
+     * @see SolutionConfig#withAlgorithmHyperParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public SolutionConfig addAlgorithmHyperParametersEntry(String key, String value) {
         if (null == this.algorithmHyperParameters) {
@@ -246,6 +246,13 @@ public class SolutionConfig implements Serializable, Cloneable, StructuredPojo {
         setFeatureTransformationParameters(featureTransformationParameters);
         return this;
     }
+
+    /**
+     * Add a single FeatureTransformationParameters entry
+     *
+     * @see SolutionConfig#withFeatureTransformationParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public SolutionConfig addFeatureTransformationParametersEntry(String key, String value) {
         if (null == this.featureTransformationParameters) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String resourceArn;
     /**
      * <p>
-     * The tags to assign.
+     * The tags to add.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
@@ -80,10 +80,10 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The tags to assign.
+     * The tags to add.
      * </p>
      * 
-     * @return The tags to assign.
+     * @return The tags to add.
      */
 
     public java.util.List<Tag> getTags() {
@@ -95,11 +95,11 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The tags to assign.
+     * The tags to add.
      * </p>
      * 
      * @param tags
-     *        The tags to assign.
+     *        The tags to add.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -113,7 +113,7 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The tags to assign.
+     * The tags to add.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -122,7 +122,7 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param tags
-     *        The tags to assign.
+     *        The tags to add.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -138,11 +138,11 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The tags to assign.
+     * The tags to add.
      * </p>
      * 
      * @param tags
-     *        The tags to assign.
+     *        The tags to add.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

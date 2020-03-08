@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class AcceptHandshakeRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by
-     * from 8 to 32 lower-case letters or digits.
+     * from 8 to 32 lowercase letters or digits.
      * </p>
      */
     private String handshakeId;
@@ -42,14 +42,14 @@ public class AcceptHandshakeRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by
-     * from 8 to 32 lower-case letters or digits.
+     * from 8 to 32 lowercase letters or digits.
      * </p>
      * 
      * @param handshakeId
      *        The unique identifier (ID) of the handshake that you want to accept.</p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-"
-     *        followed by from 8 to 32 lower-case letters or digits.
+     *        followed by from 8 to 32 lowercase letters or digits.
      */
 
     public void setHandshakeId(String handshakeId) {
@@ -62,13 +62,13 @@ public class AcceptHandshakeRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by
-     * from 8 to 32 lower-case letters or digits.
+     * from 8 to 32 lowercase letters or digits.
      * </p>
      * 
      * @return The unique identifier (ID) of the handshake that you want to accept.</p>
      *         <p>
      *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-"
-     *         followed by from 8 to 32 lower-case letters or digits.
+     *         followed by from 8 to 32 lowercase letters or digits.
      */
 
     public String getHandshakeId() {
@@ -81,14 +81,14 @@ public class AcceptHandshakeRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      * <p>
      * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by
-     * from 8 to 32 lower-case letters or digits.
+     * from 8 to 32 lowercase letters or digits.
      * </p>
      * 
      * @param handshakeId
      *        The unique identifier (ID) of the handshake that you want to accept.</p>
      *        <p>
      *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-"
-     *        followed by from 8 to 32 lower-case letters or digits.
+     *        followed by from 8 to 32 lowercase letters or digits.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

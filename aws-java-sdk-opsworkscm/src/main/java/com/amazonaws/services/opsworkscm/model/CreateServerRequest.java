@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,6 +32,65 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      */
     private Boolean associatePublicIpAddress;
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. An optional public endpoint of a server, such as
+     * <code>https://aws.my-company.com</code>. To access the server, create a CNAME DNS record in your preferred DNS
+     * service that points the custom domain to the endpoint that is generated when the server is created (the value of
+     * the CreateServer Endpoint attribute). You cannot access the server by using the generated <code>Endpoint</code>
+     * value if the server is using a custom domain. If you specify a custom domain, you must also specify values for
+     * <code>CustomCertificate</code> and <code>CustomPrivateKey</code>.
+     * </p>
+     */
+    private String customDomain;
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. A PEM-formatted HTTPS certificate. The value can be be a single,
+     * self-signed certificate, or a certificate chain. If you specify a custom certificate, you must also specify
+     * values for <code>CustomDomain</code> and <code>CustomPrivateKey</code>. The following are requirements for the
+     * <code>CustomCertificate</code> value:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You can provide either a self-signed, custom certificate, or the full certificate chain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must be a valid X509 certificate, or a certificate chain in PEM format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must be valid at the time of upload. A certificate can't be used before its validity period
+     * begins (the certificate's <code>NotBefore</code> date), or after it expires (the certificate's
+     * <code>NotAfter</code> date).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate’s common name or subject alternative names (SANs), if present, must match the value of
+     * <code>CustomDomain</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must match the value of <code>CustomPrivateKey</code>.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String customCertificate;
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. A private key in PEM format for connecting to the server by using
+     * HTTPS. The private key must not be encrypted; it cannot be protected by a password or passphrase. If you specify
+     * a custom private key, you must also specify values for <code>CustomDomain</code> and
+     * <code>CustomCertificate</code>.
+     * </p>
+     */
+    private String customPrivateKey;
     /**
      * <p>
      * Enable or disable scheduled backups. Valid values are <code>true</code> or <code>false</code>. The default value
@@ -229,6 +288,42 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
     private java.util.List<String> subnetIds;
     /**
      * <p>
+     * A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
+     * Puppet Enterprise server.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The key cannot be empty.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Leading and trailing white spaces are trimmed from both the key and value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private java.util.List<Tag> tags;
+    /**
+     * <p>
      * If you specify this field, AWS OpsWorks CM creates the server by using the backup represented by BackupId.
      * </p>
      */
@@ -292,6 +387,370 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     public Boolean isAssociatePublicIpAddress() {
         return this.associatePublicIpAddress;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. An optional public endpoint of a server, such as
+     * <code>https://aws.my-company.com</code>. To access the server, create a CNAME DNS record in your preferred DNS
+     * service that points the custom domain to the endpoint that is generated when the server is created (the value of
+     * the CreateServer Endpoint attribute). You cannot access the server by using the generated <code>Endpoint</code>
+     * value if the server is using a custom domain. If you specify a custom domain, you must also specify values for
+     * <code>CustomCertificate</code> and <code>CustomPrivateKey</code>.
+     * </p>
+     * 
+     * @param customDomain
+     *        Supported on servers running Chef Automate 2. An optional public endpoint of a server, such as
+     *        <code>https://aws.my-company.com</code>. To access the server, create a CNAME DNS record in your preferred
+     *        DNS service that points the custom domain to the endpoint that is generated when the server is created
+     *        (the value of the CreateServer Endpoint attribute). You cannot access the server by using the generated
+     *        <code>Endpoint</code> value if the server is using a custom domain. If you specify a custom domain, you
+     *        must also specify values for <code>CustomCertificate</code> and <code>CustomPrivateKey</code>.
+     */
+
+    public void setCustomDomain(String customDomain) {
+        this.customDomain = customDomain;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. An optional public endpoint of a server, such as
+     * <code>https://aws.my-company.com</code>. To access the server, create a CNAME DNS record in your preferred DNS
+     * service that points the custom domain to the endpoint that is generated when the server is created (the value of
+     * the CreateServer Endpoint attribute). You cannot access the server by using the generated <code>Endpoint</code>
+     * value if the server is using a custom domain. If you specify a custom domain, you must also specify values for
+     * <code>CustomCertificate</code> and <code>CustomPrivateKey</code>.
+     * </p>
+     * 
+     * @return Supported on servers running Chef Automate 2. An optional public endpoint of a server, such as
+     *         <code>https://aws.my-company.com</code>. To access the server, create a CNAME DNS record in your
+     *         preferred DNS service that points the custom domain to the endpoint that is generated when the server is
+     *         created (the value of the CreateServer Endpoint attribute). You cannot access the server by using the
+     *         generated <code>Endpoint</code> value if the server is using a custom domain. If you specify a custom
+     *         domain, you must also specify values for <code>CustomCertificate</code> and <code>CustomPrivateKey</code>
+     *         .
+     */
+
+    public String getCustomDomain() {
+        return this.customDomain;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. An optional public endpoint of a server, such as
+     * <code>https://aws.my-company.com</code>. To access the server, create a CNAME DNS record in your preferred DNS
+     * service that points the custom domain to the endpoint that is generated when the server is created (the value of
+     * the CreateServer Endpoint attribute). You cannot access the server by using the generated <code>Endpoint</code>
+     * value if the server is using a custom domain. If you specify a custom domain, you must also specify values for
+     * <code>CustomCertificate</code> and <code>CustomPrivateKey</code>.
+     * </p>
+     * 
+     * @param customDomain
+     *        Supported on servers running Chef Automate 2. An optional public endpoint of a server, such as
+     *        <code>https://aws.my-company.com</code>. To access the server, create a CNAME DNS record in your preferred
+     *        DNS service that points the custom domain to the endpoint that is generated when the server is created
+     *        (the value of the CreateServer Endpoint attribute). You cannot access the server by using the generated
+     *        <code>Endpoint</code> value if the server is using a custom domain. If you specify a custom domain, you
+     *        must also specify values for <code>CustomCertificate</code> and <code>CustomPrivateKey</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServerRequest withCustomDomain(String customDomain) {
+        setCustomDomain(customDomain);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. A PEM-formatted HTTPS certificate. The value can be be a single,
+     * self-signed certificate, or a certificate chain. If you specify a custom certificate, you must also specify
+     * values for <code>CustomDomain</code> and <code>CustomPrivateKey</code>. The following are requirements for the
+     * <code>CustomCertificate</code> value:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You can provide either a self-signed, custom certificate, or the full certificate chain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must be a valid X509 certificate, or a certificate chain in PEM format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must be valid at the time of upload. A certificate can't be used before its validity period
+     * begins (the certificate's <code>NotBefore</code> date), or after it expires (the certificate's
+     * <code>NotAfter</code> date).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate’s common name or subject alternative names (SANs), if present, must match the value of
+     * <code>CustomDomain</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must match the value of <code>CustomPrivateKey</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param customCertificate
+     *        Supported on servers running Chef Automate 2. A PEM-formatted HTTPS certificate. The value can be be a
+     *        single, self-signed certificate, or a certificate chain. If you specify a custom certificate, you must
+     *        also specify values for <code>CustomDomain</code> and <code>CustomPrivateKey</code>. The following are
+     *        requirements for the <code>CustomCertificate</code> value:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        You can provide either a self-signed, custom certificate, or the full certificate chain.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The certificate must be a valid X509 certificate, or a certificate chain in PEM format.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The certificate must be valid at the time of upload. A certificate can't be used before its validity
+     *        period begins (the certificate's <code>NotBefore</code> date), or after it expires (the certificate's
+     *        <code>NotAfter</code> date).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The certificate’s common name or subject alternative names (SANs), if present, must match the value of
+     *        <code>CustomDomain</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The certificate must match the value of <code>CustomPrivateKey</code>.
+     *        </p>
+     *        </li>
+     */
+
+    public void setCustomCertificate(String customCertificate) {
+        this.customCertificate = customCertificate;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. A PEM-formatted HTTPS certificate. The value can be be a single,
+     * self-signed certificate, or a certificate chain. If you specify a custom certificate, you must also specify
+     * values for <code>CustomDomain</code> and <code>CustomPrivateKey</code>. The following are requirements for the
+     * <code>CustomCertificate</code> value:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You can provide either a self-signed, custom certificate, or the full certificate chain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must be a valid X509 certificate, or a certificate chain in PEM format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must be valid at the time of upload. A certificate can't be used before its validity period
+     * begins (the certificate's <code>NotBefore</code> date), or after it expires (the certificate's
+     * <code>NotAfter</code> date).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate’s common name or subject alternative names (SANs), if present, must match the value of
+     * <code>CustomDomain</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must match the value of <code>CustomPrivateKey</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return Supported on servers running Chef Automate 2. A PEM-formatted HTTPS certificate. The value can be be a
+     *         single, self-signed certificate, or a certificate chain. If you specify a custom certificate, you must
+     *         also specify values for <code>CustomDomain</code> and <code>CustomPrivateKey</code>. The following are
+     *         requirements for the <code>CustomCertificate</code> value:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         You can provide either a self-signed, custom certificate, or the full certificate chain.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The certificate must be a valid X509 certificate, or a certificate chain in PEM format.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The certificate must be valid at the time of upload. A certificate can't be used before its validity
+     *         period begins (the certificate's <code>NotBefore</code> date), or after it expires (the certificate's
+     *         <code>NotAfter</code> date).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The certificate’s common name or subject alternative names (SANs), if present, must match the value of
+     *         <code>CustomDomain</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The certificate must match the value of <code>CustomPrivateKey</code>.
+     *         </p>
+     *         </li>
+     */
+
+    public String getCustomCertificate() {
+        return this.customCertificate;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. A PEM-formatted HTTPS certificate. The value can be be a single,
+     * self-signed certificate, or a certificate chain. If you specify a custom certificate, you must also specify
+     * values for <code>CustomDomain</code> and <code>CustomPrivateKey</code>. The following are requirements for the
+     * <code>CustomCertificate</code> value:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You can provide either a self-signed, custom certificate, or the full certificate chain.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must be a valid X509 certificate, or a certificate chain in PEM format.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must be valid at the time of upload. A certificate can't be used before its validity period
+     * begins (the certificate's <code>NotBefore</code> date), or after it expires (the certificate's
+     * <code>NotAfter</code> date).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate’s common name or subject alternative names (SANs), if present, must match the value of
+     * <code>CustomDomain</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The certificate must match the value of <code>CustomPrivateKey</code>.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param customCertificate
+     *        Supported on servers running Chef Automate 2. A PEM-formatted HTTPS certificate. The value can be be a
+     *        single, self-signed certificate, or a certificate chain. If you specify a custom certificate, you must
+     *        also specify values for <code>CustomDomain</code> and <code>CustomPrivateKey</code>. The following are
+     *        requirements for the <code>CustomCertificate</code> value:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        You can provide either a self-signed, custom certificate, or the full certificate chain.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The certificate must be a valid X509 certificate, or a certificate chain in PEM format.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The certificate must be valid at the time of upload. A certificate can't be used before its validity
+     *        period begins (the certificate's <code>NotBefore</code> date), or after it expires (the certificate's
+     *        <code>NotAfter</code> date).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The certificate’s common name or subject alternative names (SANs), if present, must match the value of
+     *        <code>CustomDomain</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The certificate must match the value of <code>CustomPrivateKey</code>.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServerRequest withCustomCertificate(String customCertificate) {
+        setCustomCertificate(customCertificate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. A private key in PEM format for connecting to the server by using
+     * HTTPS. The private key must not be encrypted; it cannot be protected by a password or passphrase. If you specify
+     * a custom private key, you must also specify values for <code>CustomDomain</code> and
+     * <code>CustomCertificate</code>.
+     * </p>
+     * 
+     * @param customPrivateKey
+     *        Supported on servers running Chef Automate 2. A private key in PEM format for connecting to the server by
+     *        using HTTPS. The private key must not be encrypted; it cannot be protected by a password or passphrase. If
+     *        you specify a custom private key, you must also specify values for <code>CustomDomain</code> and
+     *        <code>CustomCertificate</code>.
+     */
+
+    public void setCustomPrivateKey(String customPrivateKey) {
+        this.customPrivateKey = customPrivateKey;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. A private key in PEM format for connecting to the server by using
+     * HTTPS. The private key must not be encrypted; it cannot be protected by a password or passphrase. If you specify
+     * a custom private key, you must also specify values for <code>CustomDomain</code> and
+     * <code>CustomCertificate</code>.
+     * </p>
+     * 
+     * @return Supported on servers running Chef Automate 2. A private key in PEM format for connecting to the server by
+     *         using HTTPS. The private key must not be encrypted; it cannot be protected by a password or passphrase.
+     *         If you specify a custom private key, you must also specify values for <code>CustomDomain</code> and
+     *         <code>CustomCertificate</code>.
+     */
+
+    public String getCustomPrivateKey() {
+        return this.customPrivateKey;
+    }
+
+    /**
+     * <p>
+     * Supported on servers running Chef Automate 2. A private key in PEM format for connecting to the server by using
+     * HTTPS. The private key must not be encrypted; it cannot be protected by a password or passphrase. If you specify
+     * a custom private key, you must also specify values for <code>CustomDomain</code> and
+     * <code>CustomCertificate</code>.
+     * </p>
+     * 
+     * @param customPrivateKey
+     *        Supported on servers running Chef Automate 2. A private key in PEM format for connecting to the server by
+     *        using HTTPS. The private key must not be encrypted; it cannot be protected by a password or passphrase. If
+     *        you specify a custom private key, you must also specify values for <code>CustomDomain</code> and
+     *        <code>CustomCertificate</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServerRequest withCustomPrivateKey(String customPrivateKey) {
+        setCustomPrivateKey(customPrivateKey);
+        return this;
     }
 
     /**
@@ -1756,6 +2215,312 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
+     * A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
+     * Puppet Enterprise server.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The key cannot be empty.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Leading and trailing white spaces are trimmed from both the key and value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS
+     *         OpsWorks for Puppet Enterprise server.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         The key cannot be empty.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators,
+     *         or the following special characters: <code>+ - = . _ : /</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or
+     *         the following special characters: <code>+ - = . _ : /</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Leading and trailing white spaces are trimmed from both the key and value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     *         </p>
+     *         </li>
+     */
+
+    public java.util.List<Tag> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
+     * Puppet Enterprise server.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The key cannot be empty.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Leading and trailing white spaces are trimmed from both the key and value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param tags
+     *        A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS OpsWorks
+     *        for Puppet Enterprise server.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        The key cannot be empty.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators,
+     *        or the following special characters: <code>+ - = . _ : /</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or
+     *        the following special characters: <code>+ - = . _ : /</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Leading and trailing white spaces are trimmed from both the key and value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     *        </p>
+     *        </li>
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new java.util.ArrayList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
+     * Puppet Enterprise server.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The key cannot be empty.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Leading and trailing white spaces are trimmed from both the key and value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS OpsWorks
+     *        for Puppet Enterprise server.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        The key cannot be empty.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators,
+     *        or the following special characters: <code>+ - = . _ : /</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or
+     *        the following special characters: <code>+ - = . _ : /</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Leading and trailing white spaces are trimmed from both the key and value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServerRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new java.util.ArrayList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
+     * Puppet Enterprise server.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * The key cannot be empty.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the
+     * following special characters: <code>+ - = . _ : /</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Leading and trailing white spaces are trimmed from both the key and value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param tags
+     *        A map that contains tag keys and tag values to attach to an AWS OpsWorks for Chef Automate or AWS OpsWorks
+     *        for Puppet Enterprise server.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        The key cannot be empty.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators,
+     *        or the following special characters: <code>+ - = . _ : /</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or
+     *        the following special characters: <code>+ - = . _ : /</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Leading and trailing white spaces are trimmed from both the key and value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM server.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateServerRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * <p>
      * If you specify this field, AWS OpsWorks CM creates the server by using the backup represented by BackupId.
      * </p>
      * 
@@ -1809,6 +2574,12 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
         sb.append("{");
         if (getAssociatePublicIpAddress() != null)
             sb.append("AssociatePublicIpAddress: ").append(getAssociatePublicIpAddress()).append(",");
+        if (getCustomDomain() != null)
+            sb.append("CustomDomain: ").append(getCustomDomain()).append(",");
+        if (getCustomCertificate() != null)
+            sb.append("CustomCertificate: ").append(getCustomCertificate()).append(",");
+        if (getCustomPrivateKey() != null)
+            sb.append("CustomPrivateKey: ").append("***Sensitive Data Redacted***").append(",");
         if (getDisableAutomatedBackup() != null)
             sb.append("DisableAutomatedBackup: ").append(getDisableAutomatedBackup()).append(",");
         if (getEngine() != null)
@@ -1839,6 +2610,8 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
             sb.append("ServiceRoleArn: ").append(getServiceRoleArn()).append(",");
         if (getSubnetIds() != null)
             sb.append("SubnetIds: ").append(getSubnetIds()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags()).append(",");
         if (getBackupId() != null)
             sb.append("BackupId: ").append(getBackupId());
         sb.append("}");
@@ -1858,6 +2631,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
         if (other.getAssociatePublicIpAddress() == null ^ this.getAssociatePublicIpAddress() == null)
             return false;
         if (other.getAssociatePublicIpAddress() != null && other.getAssociatePublicIpAddress().equals(this.getAssociatePublicIpAddress()) == false)
+            return false;
+        if (other.getCustomDomain() == null ^ this.getCustomDomain() == null)
+            return false;
+        if (other.getCustomDomain() != null && other.getCustomDomain().equals(this.getCustomDomain()) == false)
+            return false;
+        if (other.getCustomCertificate() == null ^ this.getCustomCertificate() == null)
+            return false;
+        if (other.getCustomCertificate() != null && other.getCustomCertificate().equals(this.getCustomCertificate()) == false)
+            return false;
+        if (other.getCustomPrivateKey() == null ^ this.getCustomPrivateKey() == null)
+            return false;
+        if (other.getCustomPrivateKey() != null && other.getCustomPrivateKey().equals(this.getCustomPrivateKey()) == false)
             return false;
         if (other.getDisableAutomatedBackup() == null ^ this.getDisableAutomatedBackup() == null)
             return false;
@@ -1919,6 +2704,10 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
             return false;
         if (other.getSubnetIds() != null && other.getSubnetIds().equals(this.getSubnetIds()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         if (other.getBackupId() == null ^ this.getBackupId() == null)
             return false;
         if (other.getBackupId() != null && other.getBackupId().equals(this.getBackupId()) == false)
@@ -1932,6 +2721,9 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getAssociatePublicIpAddress() == null) ? 0 : getAssociatePublicIpAddress().hashCode());
+        hashCode = prime * hashCode + ((getCustomDomain() == null) ? 0 : getCustomDomain().hashCode());
+        hashCode = prime * hashCode + ((getCustomCertificate() == null) ? 0 : getCustomCertificate().hashCode());
+        hashCode = prime * hashCode + ((getCustomPrivateKey() == null) ? 0 : getCustomPrivateKey().hashCode());
         hashCode = prime * hashCode + ((getDisableAutomatedBackup() == null) ? 0 : getDisableAutomatedBackup().hashCode());
         hashCode = prime * hashCode + ((getEngine() == null) ? 0 : getEngine().hashCode());
         hashCode = prime * hashCode + ((getEngineModel() == null) ? 0 : getEngineModel().hashCode());
@@ -1947,6 +2739,7 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
         hashCode = prime * hashCode + ((getSecurityGroupIds() == null) ? 0 : getSecurityGroupIds().hashCode());
         hashCode = prime * hashCode + ((getServiceRoleArn() == null) ? 0 : getServiceRoleArn().hashCode());
         hashCode = prime * hashCode + ((getSubnetIds() == null) ? 0 : getSubnetIds().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getBackupId() == null) ? 0 : getBackupId().hashCode());
         return hashCode;
     }

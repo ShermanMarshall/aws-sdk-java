@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,6 +52,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      * of failed stacks within a region exceeds the failure tolerance, the status of the operation in the region is set
      * to <code>FAILED</code>. This in turn sets the status of the operation as a whole to <code>FAILED</code>, and AWS
      * CloudFormation cancels the operation in any remaining regions.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     * operations. The operation is queued to be performed. For more information, see the <a href=
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     * >stack set operation status codes</a> in the AWS CloudFormation User Guide.
      * </p>
      * </li>
      * <li>
@@ -246,6 +254,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     * operations. The operation is queued to be performed. For more information, see the <a href=
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     * >stack set operation status codes</a> in the AWS CloudFormation User Guide.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>RUNNING</code>: The operation is currently being performed.
      * </p>
      * </li>
@@ -277,6 +293,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      *        the number of failed stacks within a region exceeds the failure tolerance, the status of the operation in
      *        the region is set to <code>FAILED</code>. This in turn sets the status of the operation as a whole to
      *        <code>FAILED</code>, and AWS CloudFormation cancels the operation in any remaining regions.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     *        operations. The operation is queued to be performed. For more information, see the <a href=
+     *        "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     *        >stack set operation status codes</a> in the AWS CloudFormation User Guide.
      *        </p>
      *        </li>
      *        <li>
@@ -323,6 +347,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     * operations. The operation is queued to be performed. For more information, see the <a href=
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     * >stack set operation status codes</a> in the AWS CloudFormation User Guide.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>RUNNING</code>: The operation is currently being performed.
      * </p>
      * </li>
@@ -353,6 +385,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      *         the number of failed stacks within a region exceeds the failure tolerance, the status of the operation in
      *         the region is set to <code>FAILED</code>. This in turn sets the status of the operation as a whole to
      *         <code>FAILED</code>, and AWS CloudFormation cancels the operation in any remaining regions.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     *         operations. The operation is queued to be performed. For more information, see the <a href=
+     *         "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     *         >stack set operation status codes</a> in the AWS CloudFormation User Guide.
      *         </p>
      *         </li>
      *         <li>
@@ -399,6 +439,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     * operations. The operation is queued to be performed. For more information, see the <a href=
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     * >stack set operation status codes</a> in the AWS CloudFormation User Guide.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>RUNNING</code>: The operation is currently being performed.
      * </p>
      * </li>
@@ -430,6 +478,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      *        the number of failed stacks within a region exceeds the failure tolerance, the status of the operation in
      *        the region is set to <code>FAILED</code>. This in turn sets the status of the operation as a whole to
      *        <code>FAILED</code>, and AWS CloudFormation cancels the operation in any remaining regions.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     *        operations. The operation is queued to be performed. For more information, see the <a href=
+     *        "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     *        >stack set operation status codes</a> in the AWS CloudFormation User Guide.
      *        </p>
      *        </li>
      *        <li>
@@ -478,6 +534,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     * operations. The operation is queued to be performed. For more information, see the <a href=
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     * >stack set operation status codes</a> in the AWS CloudFormation User Guide.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>RUNNING</code>: The operation is currently being performed.
      * </p>
      * </li>
@@ -509,6 +573,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      *        the number of failed stacks within a region exceeds the failure tolerance, the status of the operation in
      *        the region is set to <code>FAILED</code>. This in turn sets the status of the operation as a whole to
      *        <code>FAILED</code>, and AWS CloudFormation cancels the operation in any remaining regions.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     *        operations. The operation is queued to be performed. For more information, see the <a href=
+     *        "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     *        >stack set operation status codes</a> in the AWS CloudFormation User Guide.
      *        </p>
      *        </li>
      *        <li>
@@ -555,6 +627,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     * operations. The operation is queued to be performed. For more information, see the <a href=
+     * "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     * >stack set operation status codes</a> in the AWS CloudFormation User Guide.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>RUNNING</code>: The operation is currently being performed.
      * </p>
      * </li>
@@ -586,6 +666,14 @@ public class StackSetOperationSummary implements Serializable, Cloneable {
      *        the number of failed stacks within a region exceeds the failure tolerance, the status of the operation in
      *        the region is set to <code>FAILED</code>. This in turn sets the status of the operation as a whole to
      *        <code>FAILED</code>, and AWS CloudFormation cancels the operation in any remaining regions.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>QUEUED</code>: [Service-managed permissions] For automatic deployments that require a sequence of
+     *        operations. The operation is queued to be performed. For more information, see the <a href=
+     *        "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-status-codes"
+     *        >stack set operation status codes</a> in the AWS CloudFormation User Guide.
      *        </p>
      *        </li>
      *        <li>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,6 +17,11 @@ import javax.annotation.Generated;
 
 import com.amazonaws.AmazonWebServiceRequest;
 
+/**
+ * <p>
+ * Updates a RouteResponse.
+ * </p>
+ */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateRouteResponseRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
@@ -28,7 +33,7 @@ public class UpdateRouteResponseRequest extends com.amazonaws.AmazonWebServiceRe
     private String apiId;
     /**
      * <p>
-     * The model selection expression for the route response.
+     * The model selection expression for the route response. Supported only for WebSocket APIs.
      * </p>
      */
     private String modelSelectionExpression;
@@ -105,11 +110,11 @@ public class UpdateRouteResponseRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The model selection expression for the route response.
+     * The model selection expression for the route response. Supported only for WebSocket APIs.
      * </p>
      * 
      * @param modelSelectionExpression
-     *        The model selection expression for the route response.
+     *        The model selection expression for the route response. Supported only for WebSocket APIs.
      */
 
     public void setModelSelectionExpression(String modelSelectionExpression) {
@@ -118,10 +123,10 @@ public class UpdateRouteResponseRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The model selection expression for the route response.
+     * The model selection expression for the route response. Supported only for WebSocket APIs.
      * </p>
      * 
-     * @return The model selection expression for the route response.
+     * @return The model selection expression for the route response. Supported only for WebSocket APIs.
      */
 
     public String getModelSelectionExpression() {
@@ -130,11 +135,11 @@ public class UpdateRouteResponseRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The model selection expression for the route response.
+     * The model selection expression for the route response. Supported only for WebSocket APIs.
      * </p>
      * 
      * @param modelSelectionExpression
-     *        The model selection expression for the route response.
+     *        The model selection expression for the route response. Supported only for WebSocket APIs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -182,6 +187,13 @@ public class UpdateRouteResponseRequest extends com.amazonaws.AmazonWebServiceRe
         setResponseModels(responseModels);
         return this;
     }
+
+    /**
+     * Add a single ResponseModels entry
+     *
+     * @see UpdateRouteResponseRequest#withResponseModels
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateRouteResponseRequest addResponseModelsEntry(String key, String value) {
         if (null == this.responseModels) {
@@ -243,6 +255,13 @@ public class UpdateRouteResponseRequest extends com.amazonaws.AmazonWebServiceRe
         setResponseParameters(responseParameters);
         return this;
     }
+
+    /**
+     * Add a single ResponseParameters entry
+     *
+     * @see UpdateRouteResponseRequest#withResponseParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateRouteResponseRequest addResponseParametersEntry(String key, ParameterConstraints value) {
         if (null == this.responseParameters) {

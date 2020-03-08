@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,7 +43,7 @@ public class AudioNormalizationSettings implements Serializable, Cloneable, Stru
     private String algorithmControl;
     /**
      * Content measuring above this level will be corrected to the target level. Content measuring below this level will
-     * not be corrected. Gating only applies when not using real_time_correction.
+     * not be corrected.
      */
     private Integer correctionGateLevel;
     /** If set to LOG, log each output's audio track loudness to a CSV file. */
@@ -218,11 +218,11 @@ public class AudioNormalizationSettings implements Serializable, Cloneable, Stru
 
     /**
      * Content measuring above this level will be corrected to the target level. Content measuring below this level will
-     * not be corrected. Gating only applies when not using real_time_correction.
+     * not be corrected.
      * 
      * @param correctionGateLevel
      *        Content measuring above this level will be corrected to the target level. Content measuring below this
-     *        level will not be corrected. Gating only applies when not using real_time_correction.
+     *        level will not be corrected.
      */
 
     public void setCorrectionGateLevel(Integer correctionGateLevel) {
@@ -231,10 +231,10 @@ public class AudioNormalizationSettings implements Serializable, Cloneable, Stru
 
     /**
      * Content measuring above this level will be corrected to the target level. Content measuring below this level will
-     * not be corrected. Gating only applies when not using real_time_correction.
+     * not be corrected.
      * 
      * @return Content measuring above this level will be corrected to the target level. Content measuring below this
-     *         level will not be corrected. Gating only applies when not using real_time_correction.
+     *         level will not be corrected.
      */
 
     public Integer getCorrectionGateLevel() {
@@ -243,11 +243,11 @@ public class AudioNormalizationSettings implements Serializable, Cloneable, Stru
 
     /**
      * Content measuring above this level will be corrected to the target level. Content measuring below this level will
-     * not be corrected. Gating only applies when not using real_time_correction.
+     * not be corrected.
      * 
      * @param correctionGateLevel
      *        Content measuring above this level will be corrected to the target level. Content measuring below this
-     *        level will not be corrected. Gating only applies when not using real_time_correction.
+     *        level will not be corrected.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

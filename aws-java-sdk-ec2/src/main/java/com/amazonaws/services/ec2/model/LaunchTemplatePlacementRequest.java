@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,20 @@ public class LaunchTemplatePlacementRequest implements Serializable, Cloneable {
      * </p>
      */
     private String spreadDomain;
+    /**
+     * <p>
+     * The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN,
+     * omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * </p>
+     */
+    private String hostResourceGroupArn;
+    /**
+     * <p>
+     * The number of the partition the instance should launch in. Valid only if the placement group strategy is set to
+     * <code>partition</code>.
+     * </p>
+     */
+    private Integer partitionNumber;
 
     /**
      * <p>
@@ -332,6 +346,98 @@ public class LaunchTemplatePlacementRequest implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN,
+     * omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * </p>
+     * 
+     * @param hostResourceGroupArn
+     *        The ARN of the host resource group in which to launch the instances. If you specify a host resource group
+     *        ARN, omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     */
+
+    public void setHostResourceGroupArn(String hostResourceGroupArn) {
+        this.hostResourceGroupArn = hostResourceGroupArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN,
+     * omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * </p>
+     * 
+     * @return The ARN of the host resource group in which to launch the instances. If you specify a host resource group
+     *         ARN, omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     */
+
+    public String getHostResourceGroupArn() {
+        return this.hostResourceGroupArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN,
+     * omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * </p>
+     * 
+     * @param hostResourceGroupArn
+     *        The ARN of the host resource group in which to launch the instances. If you specify a host resource group
+     *        ARN, omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public LaunchTemplatePlacementRequest withHostResourceGroupArn(String hostResourceGroupArn) {
+        setHostResourceGroupArn(hostResourceGroupArn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of the partition the instance should launch in. Valid only if the placement group strategy is set to
+     * <code>partition</code>.
+     * </p>
+     * 
+     * @param partitionNumber
+     *        The number of the partition the instance should launch in. Valid only if the placement group strategy is
+     *        set to <code>partition</code>.
+     */
+
+    public void setPartitionNumber(Integer partitionNumber) {
+        this.partitionNumber = partitionNumber;
+    }
+
+    /**
+     * <p>
+     * The number of the partition the instance should launch in. Valid only if the placement group strategy is set to
+     * <code>partition</code>.
+     * </p>
+     * 
+     * @return The number of the partition the instance should launch in. Valid only if the placement group strategy is
+     *         set to <code>partition</code>.
+     */
+
+    public Integer getPartitionNumber() {
+        return this.partitionNumber;
+    }
+
+    /**
+     * <p>
+     * The number of the partition the instance should launch in. Valid only if the placement group strategy is set to
+     * <code>partition</code>.
+     * </p>
+     * 
+     * @param partitionNumber
+     *        The number of the partition the instance should launch in. Valid only if the placement group strategy is
+     *        set to <code>partition</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public LaunchTemplatePlacementRequest withPartitionNumber(Integer partitionNumber) {
+        setPartitionNumber(partitionNumber);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -354,7 +460,11 @@ public class LaunchTemplatePlacementRequest implements Serializable, Cloneable {
         if (getTenancy() != null)
             sb.append("Tenancy: ").append(getTenancy()).append(",");
         if (getSpreadDomain() != null)
-            sb.append("SpreadDomain: ").append(getSpreadDomain());
+            sb.append("SpreadDomain: ").append(getSpreadDomain()).append(",");
+        if (getHostResourceGroupArn() != null)
+            sb.append("HostResourceGroupArn: ").append(getHostResourceGroupArn()).append(",");
+        if (getPartitionNumber() != null)
+            sb.append("PartitionNumber: ").append(getPartitionNumber());
         sb.append("}");
         return sb.toString();
     }
@@ -393,6 +503,14 @@ public class LaunchTemplatePlacementRequest implements Serializable, Cloneable {
             return false;
         if (other.getSpreadDomain() != null && other.getSpreadDomain().equals(this.getSpreadDomain()) == false)
             return false;
+        if (other.getHostResourceGroupArn() == null ^ this.getHostResourceGroupArn() == null)
+            return false;
+        if (other.getHostResourceGroupArn() != null && other.getHostResourceGroupArn().equals(this.getHostResourceGroupArn()) == false)
+            return false;
+        if (other.getPartitionNumber() == null ^ this.getPartitionNumber() == null)
+            return false;
+        if (other.getPartitionNumber() != null && other.getPartitionNumber().equals(this.getPartitionNumber()) == false)
+            return false;
         return true;
     }
 
@@ -407,6 +525,8 @@ public class LaunchTemplatePlacementRequest implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getHostId() == null) ? 0 : getHostId().hashCode());
         hashCode = prime * hashCode + ((getTenancy() == null) ? 0 : getTenancy().hashCode());
         hashCode = prime * hashCode + ((getSpreadDomain() == null) ? 0 : getSpreadDomain().hashCode());
+        hashCode = prime * hashCode + ((getHostResourceGroupArn() == null) ? 0 : getHostResourceGroupArn().hashCode());
+        hashCode = prime * hashCode + ((getPartitionNumber() == null) ? 0 : getPartitionNumber().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class GetIPSetRequest extends com.amazonaws.AmazonWebServiceRequest imple
     private String detectorId;
     /**
      * <p>
-     * The unique ID of the ipSet you want to get.
+     * The unique ID of the IPSet to retrieve.
      * </p>
      */
     private String ipSetId;
@@ -80,11 +80,11 @@ public class GetIPSetRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The unique ID of the ipSet you want to get.
+     * The unique ID of the IPSet to retrieve.
      * </p>
      * 
      * @param ipSetId
-     *        The unique ID of the ipSet you want to get.
+     *        The unique ID of the IPSet to retrieve.
      */
 
     public void setIpSetId(String ipSetId) {
@@ -93,10 +93,10 @@ public class GetIPSetRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The unique ID of the ipSet you want to get.
+     * The unique ID of the IPSet to retrieve.
      * </p>
      * 
-     * @return The unique ID of the ipSet you want to get.
+     * @return The unique ID of the IPSet to retrieve.
      */
 
     public String getIpSetId() {
@@ -105,11 +105,11 @@ public class GetIPSetRequest extends com.amazonaws.AmazonWebServiceRequest imple
 
     /**
      * <p>
-     * The unique ID of the ipSet you want to get.
+     * The unique ID of the IPSet to retrieve.
      * </p>
      * 
      * @param ipSetId
-     *        The unique ID of the ipSet you want to get.
+     *        The unique ID of the IPSet to retrieve.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

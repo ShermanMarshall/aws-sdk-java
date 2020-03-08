@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,11 +26,6 @@ public class GetBackupSelectionResult extends com.amazonaws.AmazonWebServiceResu
     /**
      * <p>
      * Specifies the body of a request to assign a set of resources to a backup plan.
-     * </p>
-     * <p>
-     * It includes an array of resources, an optional array of patterns to exclude resources, an optional role to
-     * provide access to the AWS service that the resource belongs to, and an optional array of tags used to identify a
-     * set of resources.
      * </p>
      */
     private BackupSelection backupSelection;
@@ -66,18 +61,9 @@ public class GetBackupSelectionResult extends com.amazonaws.AmazonWebServiceResu
      * <p>
      * Specifies the body of a request to assign a set of resources to a backup plan.
      * </p>
-     * <p>
-     * It includes an array of resources, an optional array of patterns to exclude resources, an optional role to
-     * provide access to the AWS service that the resource belongs to, and an optional array of tags used to identify a
-     * set of resources.
-     * </p>
      * 
      * @param backupSelection
-     *        Specifies the body of a request to assign a set of resources to a backup plan.</p>
-     *        <p>
-     *        It includes an array of resources, an optional array of patterns to exclude resources, an optional role to
-     *        provide access to the AWS service that the resource belongs to, and an optional array of tags used to
-     *        identify a set of resources.
+     *        Specifies the body of a request to assign a set of resources to a backup plan.
      */
 
     public void setBackupSelection(BackupSelection backupSelection) {
@@ -88,17 +74,8 @@ public class GetBackupSelectionResult extends com.amazonaws.AmazonWebServiceResu
      * <p>
      * Specifies the body of a request to assign a set of resources to a backup plan.
      * </p>
-     * <p>
-     * It includes an array of resources, an optional array of patterns to exclude resources, an optional role to
-     * provide access to the AWS service that the resource belongs to, and an optional array of tags used to identify a
-     * set of resources.
-     * </p>
      * 
-     * @return Specifies the body of a request to assign a set of resources to a backup plan.</p>
-     *         <p>
-     *         It includes an array of resources, an optional array of patterns to exclude resources, an optional role
-     *         to provide access to the AWS service that the resource belongs to, and an optional array of tags used to
-     *         identify a set of resources.
+     * @return Specifies the body of a request to assign a set of resources to a backup plan.
      */
 
     public BackupSelection getBackupSelection() {
@@ -109,18 +86,9 @@ public class GetBackupSelectionResult extends com.amazonaws.AmazonWebServiceResu
      * <p>
      * Specifies the body of a request to assign a set of resources to a backup plan.
      * </p>
-     * <p>
-     * It includes an array of resources, an optional array of patterns to exclude resources, an optional role to
-     * provide access to the AWS service that the resource belongs to, and an optional array of tags used to identify a
-     * set of resources.
-     * </p>
      * 
      * @param backupSelection
-     *        Specifies the body of a request to assign a set of resources to a backup plan.</p>
-     *        <p>
-     *        It includes an array of resources, an optional array of patterns to exclude resources, an optional role to
-     *        provide access to the AWS service that the resource belongs to, and an optional array of tags used to
-     *        identify a set of resources.
+     *        Specifies the body of a request to assign a set of resources to a backup plan.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

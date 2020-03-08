@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -57,8 +57,12 @@ public class ActionMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("iotAnalytics").build();
     private static final MarshallingInfo<StructuredPojo> IOTEVENTS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("iotEvents").build();
+    private static final MarshallingInfo<StructuredPojo> IOTSITEWISE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("iotSiteWise").build();
     private static final MarshallingInfo<StructuredPojo> STEPFUNCTIONS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("stepFunctions").build();
+    private static final MarshallingInfo<StructuredPojo> HTTP_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("http").build();
 
     private static final ActionMarshaller instance = new ActionMarshaller();
 
@@ -91,7 +95,9 @@ public class ActionMarshaller {
             protocolMarshaller.marshall(action.getSalesforce(), SALESFORCE_BINDING);
             protocolMarshaller.marshall(action.getIotAnalytics(), IOTANALYTICS_BINDING);
             protocolMarshaller.marshall(action.getIotEvents(), IOTEVENTS_BINDING);
+            protocolMarshaller.marshall(action.getIotSiteWise(), IOTSITEWISE_BINDING);
             protocolMarshaller.marshall(action.getStepFunctions(), STEPFUNCTIONS_BINDING);
+            protocolMarshaller.marshall(action.getHttp(), HTTP_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

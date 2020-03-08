@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Object used for associating a license configuration with a resource.
+ * Details for associating a license configuration with a resource.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/license-manager-2018-08-01/LicenseSpecification"
@@ -30,18 +30,18 @@ public class LicenseSpecification implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * ARN of the <code>LicenseConfiguration</code> object.
+     * Amazon Resource Name (ARN) of the license configuration.
      * </p>
      */
     private String licenseConfigurationArn;
 
     /**
      * <p>
-     * ARN of the <code>LicenseConfiguration</code> object.
+     * Amazon Resource Name (ARN) of the license configuration.
      * </p>
      * 
      * @param licenseConfigurationArn
-     *        ARN of the <code>LicenseConfiguration</code> object.
+     *        Amazon Resource Name (ARN) of the license configuration.
      */
 
     public void setLicenseConfigurationArn(String licenseConfigurationArn) {
@@ -50,10 +50,10 @@ public class LicenseSpecification implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * ARN of the <code>LicenseConfiguration</code> object.
+     * Amazon Resource Name (ARN) of the license configuration.
      * </p>
      * 
-     * @return ARN of the <code>LicenseConfiguration</code> object.
+     * @return Amazon Resource Name (ARN) of the license configuration.
      */
 
     public String getLicenseConfigurationArn() {
@@ -62,11 +62,11 @@ public class LicenseSpecification implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * ARN of the <code>LicenseConfiguration</code> object.
+     * Amazon Resource Name (ARN) of the license configuration.
      * </p>
      * 
      * @param licenseConfigurationArn
-     *        ARN of the <code>LicenseConfiguration</code> object.
+     *        Amazon Resource Name (ARN) of the license configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

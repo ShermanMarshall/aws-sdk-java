@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Limits the property names that are included in the response.
+ * Specified in the <a>GetSearchSuggestions</a> request. Limits the property names that are included in the response.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/SuggestionQuery" target="_top">AWS API
@@ -30,21 +30,21 @@ public class SuggestionQuery implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * A type of <code>SuggestionQuery</code>. Defines a property name hint. Only property names that match the
-     * specified hint are included in the response.
+     * Defines a property name hint. Only property names that begin with the specified hint are included in the
+     * response.
      * </p>
      */
     private PropertyNameQuery propertyNameQuery;
 
     /**
      * <p>
-     * A type of <code>SuggestionQuery</code>. Defines a property name hint. Only property names that match the
-     * specified hint are included in the response.
+     * Defines a property name hint. Only property names that begin with the specified hint are included in the
+     * response.
      * </p>
      * 
      * @param propertyNameQuery
-     *        A type of <code>SuggestionQuery</code>. Defines a property name hint. Only property names that match the
-     *        specified hint are included in the response.
+     *        Defines a property name hint. Only property names that begin with the specified hint are included in the
+     *        response.
      */
 
     public void setPropertyNameQuery(PropertyNameQuery propertyNameQuery) {
@@ -53,12 +53,12 @@ public class SuggestionQuery implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * A type of <code>SuggestionQuery</code>. Defines a property name hint. Only property names that match the
-     * specified hint are included in the response.
+     * Defines a property name hint. Only property names that begin with the specified hint are included in the
+     * response.
      * </p>
      * 
-     * @return A type of <code>SuggestionQuery</code>. Defines a property name hint. Only property names that match the
-     *         specified hint are included in the response.
+     * @return Defines a property name hint. Only property names that begin with the specified hint are included in the
+     *         response.
      */
 
     public PropertyNameQuery getPropertyNameQuery() {
@@ -67,13 +67,13 @@ public class SuggestionQuery implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * A type of <code>SuggestionQuery</code>. Defines a property name hint. Only property names that match the
-     * specified hint are included in the response.
+     * Defines a property name hint. Only property names that begin with the specified hint are included in the
+     * response.
      * </p>
      * 
      * @param propertyNameQuery
-     *        A type of <code>SuggestionQuery</code>. Defines a property name hint. Only property names that match the
-     *        specified hint are included in the response.
+     *        Defines a property name hint. Only property names that begin with the specified hint are included in the
+     *        response.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

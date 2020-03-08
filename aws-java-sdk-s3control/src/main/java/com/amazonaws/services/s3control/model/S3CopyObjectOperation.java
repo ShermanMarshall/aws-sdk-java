@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,13 +52,13 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     private java.util.Date unModifiedSinceConstraint;
     /** <p/> */
     private String sSEAwsKmsKeyId;
-
+    /** <p/> */
     private String targetKeyPrefix;
-
+    /** <p/> */
     private String objectLockLegalHoldStatus;
-
+    /** <p/> */
     private String objectLockMode;
-
+    /** <p/> */
     private java.util.Date objectLockRetainUntilDate;
 
     /**
@@ -558,6 +558,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param targetKeyPrefix
      */
 
@@ -566,6 +568,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @return
      */
 
@@ -574,6 +578,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param targetKeyPrefix
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -584,6 +590,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param objectLockLegalHoldStatus
      * @see S3ObjectLockLegalHoldStatus
      */
@@ -593,6 +601,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @return
      * @see S3ObjectLockLegalHoldStatus
      */
@@ -602,6 +612,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param objectLockLegalHoldStatus
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see S3ObjectLockLegalHoldStatus
@@ -613,6 +625,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param objectLockLegalHoldStatus
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see S3ObjectLockLegalHoldStatus
@@ -624,6 +638,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param objectLockMode
      * @see S3ObjectLockMode
      */
@@ -633,6 +649,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @return
      * @see S3ObjectLockMode
      */
@@ -642,6 +660,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param objectLockMode
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see S3ObjectLockMode
@@ -653,6 +673,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param objectLockMode
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see S3ObjectLockMode
@@ -664,6 +686,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param objectLockRetainUntilDate
      */
 
@@ -672,6 +696,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @return
      */
 
@@ -680,6 +706,8 @@ public class S3CopyObjectOperation implements Serializable, Cloneable {
     }
 
     /**
+     * <p/>
+     * 
      * @param objectLockRetainUntilDate
      * @return Returns a reference to this object so that method calls can be chained together.
      */

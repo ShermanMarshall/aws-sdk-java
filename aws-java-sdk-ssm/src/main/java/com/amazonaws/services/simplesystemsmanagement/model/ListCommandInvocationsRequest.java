@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,7 +52,8 @@ public class ListCommandInvocationsRequest extends com.amazonaws.AmazonWebServic
     private String nextToken;
     /**
      * <p>
-     * (Optional) One or more filters. Use a filter to return a more specific list of results.
+     * (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     * <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<CommandFilter> filters;
@@ -232,10 +233,12 @@ public class ListCommandInvocationsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * (Optional) One or more filters. Use a filter to return a more specific list of results.
+     * (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     * <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      * </p>
      * 
-     * @return (Optional) One or more filters. Use a filter to return a more specific list of results.
+     * @return (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     *         <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      */
 
     public java.util.List<CommandFilter> getFilters() {
@@ -247,11 +250,13 @@ public class ListCommandInvocationsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * (Optional) One or more filters. Use a filter to return a more specific list of results.
+     * (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     * <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      * </p>
      * 
      * @param filters
-     *        (Optional) One or more filters. Use a filter to return a more specific list of results.
+     *        (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     *        <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      */
 
     public void setFilters(java.util.Collection<CommandFilter> filters) {
@@ -265,7 +270,8 @@ public class ListCommandInvocationsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * (Optional) One or more filters. Use a filter to return a more specific list of results.
+     * (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     * <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -274,7 +280,8 @@ public class ListCommandInvocationsRequest extends com.amazonaws.AmazonWebServic
      * </p>
      * 
      * @param filters
-     *        (Optional) One or more filters. Use a filter to return a more specific list of results.
+     *        (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     *        <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -290,11 +297,13 @@ public class ListCommandInvocationsRequest extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * (Optional) One or more filters. Use a filter to return a more specific list of results.
+     * (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     * <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      * </p>
      * 
      * @param filters
-     *        (Optional) One or more filters. Use a filter to return a more specific list of results.
+     *        (Optional) One or more filters. Use a filter to return a more specific list of results. Note that the
+     *        <code>DocumentName</code> filter is not supported for ListCommandInvocations.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

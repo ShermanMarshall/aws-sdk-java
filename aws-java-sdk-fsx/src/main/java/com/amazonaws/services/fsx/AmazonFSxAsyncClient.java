@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,39 @@ public class AmazonFSxAsyncClient extends AmazonFSxClient implements AmazonFSxAs
     }
 
     @Override
+    public java.util.concurrent.Future<CancelDataRepositoryTaskResult> cancelDataRepositoryTaskAsync(CancelDataRepositoryTaskRequest request) {
+
+        return cancelDataRepositoryTaskAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CancelDataRepositoryTaskResult> cancelDataRepositoryTaskAsync(final CancelDataRepositoryTaskRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CancelDataRepositoryTaskRequest, CancelDataRepositoryTaskResult> asyncHandler) {
+        final CancelDataRepositoryTaskRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CancelDataRepositoryTaskResult>() {
+            @Override
+            public CancelDataRepositoryTaskResult call() throws Exception {
+                CancelDataRepositoryTaskResult result = null;
+
+                try {
+                    result = executeCancelDataRepositoryTask(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateBackupResult> createBackupAsync(CreateBackupRequest request) {
 
         return createBackupAsync(request, null);
@@ -80,6 +113,39 @@ public class AmazonFSxAsyncClient extends AmazonFSxClient implements AmazonFSxAs
 
                 try {
                     result = executeCreateBackup(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateDataRepositoryTaskResult> createDataRepositoryTaskAsync(CreateDataRepositoryTaskRequest request) {
+
+        return createDataRepositoryTaskAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateDataRepositoryTaskResult> createDataRepositoryTaskAsync(final CreateDataRepositoryTaskRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateDataRepositoryTaskRequest, CreateDataRepositoryTaskResult> asyncHandler) {
+        final CreateDataRepositoryTaskRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateDataRepositoryTaskResult>() {
+            @Override
+            public CreateDataRepositoryTaskResult call() throws Exception {
+                CreateDataRepositoryTaskResult result = null;
+
+                try {
+                    result = executeCreateDataRepositoryTask(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -245,6 +311,39 @@ public class AmazonFSxAsyncClient extends AmazonFSxClient implements AmazonFSxAs
 
                 try {
                     result = executeDescribeBackups(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeDataRepositoryTasksResult> describeDataRepositoryTasksAsync(DescribeDataRepositoryTasksRequest request) {
+
+        return describeDataRepositoryTasksAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeDataRepositoryTasksResult> describeDataRepositoryTasksAsync(final DescribeDataRepositoryTasksRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeDataRepositoryTasksRequest, DescribeDataRepositoryTasksResult> asyncHandler) {
+        final DescribeDataRepositoryTasksRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeDataRepositoryTasksResult>() {
+            @Override
+            public DescribeDataRepositoryTasksResult call() throws Exception {
+                DescribeDataRepositoryTasksResult result = null;
+
+                try {
+                    result = executeDescribeDataRepositoryTasks(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

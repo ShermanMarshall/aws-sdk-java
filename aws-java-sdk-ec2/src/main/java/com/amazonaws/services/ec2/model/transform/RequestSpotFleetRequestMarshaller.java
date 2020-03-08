@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -160,16 +160,16 @@ public class RequestSpotFleetRequestMarshaller implements Marshaller<Request<Req
                                             StringUtils.fromString(ebs.getVolumeType()));
                                 }
 
-                                if (ebs.getEncrypted() != null) {
-                                    request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
-                                            + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.Encrypted",
-                                            StringUtils.fromBoolean(ebs.getEncrypted()));
-                                }
-
                                 if (ebs.getKmsKeyId() != null) {
                                     request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
                                             + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.KmsKeyId",
                                             StringUtils.fromString(ebs.getKmsKeyId()));
+                                }
+
+                                if (ebs.getEncrypted() != null) {
+                                    request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex
+                                            + ".BlockDeviceMapping." + blockDeviceMappingsListIndex + ".Ebs.Encrypted",
+                                            StringUtils.fromBoolean(ebs.getEncrypted()));
                                 }
                             }
 
@@ -614,6 +614,42 @@ public class RequestSpotFleetRequestMarshaller implements Marshaller<Request<Req
             if (spotFleetRequestConfig.getInstancePoolsToUseCount() != null) {
                 request.addParameter("SpotFleetRequestConfig.InstancePoolsToUseCount",
                         StringUtils.fromInteger(spotFleetRequestConfig.getInstancePoolsToUseCount()));
+            }
+
+            com.amazonaws.internal.SdkInternalList<TagSpecification> spotFleetRequestConfigDataTagSpecificationsList = (com.amazonaws.internal.SdkInternalList<TagSpecification>) spotFleetRequestConfig
+                    .getTagSpecifications();
+            if (!spotFleetRequestConfigDataTagSpecificationsList.isEmpty() || !spotFleetRequestConfigDataTagSpecificationsList.isAutoConstruct()) {
+                int tagSpecificationsListIndex = 1;
+
+                for (TagSpecification spotFleetRequestConfigDataTagSpecificationsListValue : spotFleetRequestConfigDataTagSpecificationsList) {
+
+                    if (spotFleetRequestConfigDataTagSpecificationsListValue.getResourceType() != null) {
+                        request.addParameter("SpotFleetRequestConfig.TagSpecification." + tagSpecificationsListIndex + ".ResourceType",
+                                StringUtils.fromString(spotFleetRequestConfigDataTagSpecificationsListValue.getResourceType()));
+                    }
+
+                    com.amazonaws.internal.SdkInternalList<Tag> tagSpecificationTagsList = (com.amazonaws.internal.SdkInternalList<Tag>) spotFleetRequestConfigDataTagSpecificationsListValue
+                            .getTags();
+                    if (!tagSpecificationTagsList.isEmpty() || !tagSpecificationTagsList.isAutoConstruct()) {
+                        int tagsListIndex = 1;
+
+                        for (Tag tagSpecificationTagsListValue : tagSpecificationTagsList) {
+
+                            if (tagSpecificationTagsListValue.getKey() != null) {
+                                request.addParameter(
+                                        "SpotFleetRequestConfig.TagSpecification." + tagSpecificationsListIndex + ".Tag." + tagsListIndex + ".Key",
+                                        StringUtils.fromString(tagSpecificationTagsListValue.getKey()));
+                            }
+
+                            if (tagSpecificationTagsListValue.getValue() != null) {
+                                request.addParameter("SpotFleetRequestConfig.TagSpecification." + tagSpecificationsListIndex + ".Tag." + tagsListIndex
+                                        + ".Value", StringUtils.fromString(tagSpecificationTagsListValue.getValue()));
+                            }
+                            tagsListIndex++;
+                        }
+                    }
+                    tagSpecificationsListIndex++;
+                }
             }
         }
 

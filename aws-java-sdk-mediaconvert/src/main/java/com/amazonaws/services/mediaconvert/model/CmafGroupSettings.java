@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,13 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CmafGroupSettings implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for each
+     * CMAF output group in your job. These default manifests reference every output in the output group. To create
+     * additional top-level manifests that reference a subset of the outputs in the output group, specify a list of them
+     * here. For each additional manifest that you specify, the service creates one HLS manifest and one DASH manifest.
+     */
+    private java.util.List<CmafAdditionalManifest> additionalManifests;
     /**
      * A partial URI prefix that will be put in the manifest file at the top level BaseURL element. Can be used if
      * streams are delivered from a different URL than the manifest file.
@@ -74,6 +81,14 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
      */
     private Double minFinalSegmentLength;
     /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     */
+    private String mpdProfile;
+    /**
      * When set to SINGLE_FILE, a single output file is generated, which is internally segmented using the Fragment
      * Length and Segment Length. When set to SEGMENTED_FILES, separate segment files will be created.
      */
@@ -93,6 +108,104 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
     private String writeDashManifest;
     /** When set to ENABLED, an Apple HLS manifest will be generated for this output. */
     private String writeHlsManifest;
+    /**
+     * When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your DASH
+     * manifest shows precise segment durations. The segment duration information appears inside the SegmentTimeline
+     * element, inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment
+     * durations in your DASH manifest are approximate. The segment duration information appears in the duration
+     * attribute of the SegmentTemplate element.
+     */
+    private String writeSegmentTimelineInRepresentation;
+
+    /**
+     * By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for each
+     * CMAF output group in your job. These default manifests reference every output in the output group. To create
+     * additional top-level manifests that reference a subset of the outputs in the output group, specify a list of them
+     * here. For each additional manifest that you specify, the service creates one HLS manifest and one DASH manifest.
+     * 
+     * @return By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest
+     *         for each CMAF output group in your job. These default manifests reference every output in the output
+     *         group. To create additional top-level manifests that reference a subset of the outputs in the output
+     *         group, specify a list of them here. For each additional manifest that you specify, the service creates
+     *         one HLS manifest and one DASH manifest.
+     */
+
+    public java.util.List<CmafAdditionalManifest> getAdditionalManifests() {
+        return additionalManifests;
+    }
+
+    /**
+     * By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for each
+     * CMAF output group in your job. These default manifests reference every output in the output group. To create
+     * additional top-level manifests that reference a subset of the outputs in the output group, specify a list of them
+     * here. For each additional manifest that you specify, the service creates one HLS manifest and one DASH manifest.
+     * 
+     * @param additionalManifests
+     *        By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for
+     *        each CMAF output group in your job. These default manifests reference every output in the output group. To
+     *        create additional top-level manifests that reference a subset of the outputs in the output group, specify
+     *        a list of them here. For each additional manifest that you specify, the service creates one HLS manifest
+     *        and one DASH manifest.
+     */
+
+    public void setAdditionalManifests(java.util.Collection<CmafAdditionalManifest> additionalManifests) {
+        if (additionalManifests == null) {
+            this.additionalManifests = null;
+            return;
+        }
+
+        this.additionalManifests = new java.util.ArrayList<CmafAdditionalManifest>(additionalManifests);
+    }
+
+    /**
+     * By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for each
+     * CMAF output group in your job. These default manifests reference every output in the output group. To create
+     * additional top-level manifests that reference a subset of the outputs in the output group, specify a list of them
+     * here. For each additional manifest that you specify, the service creates one HLS manifest and one DASH manifest.
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAdditionalManifests(java.util.Collection)} or {@link #withAdditionalManifests(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param additionalManifests
+     *        By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for
+     *        each CMAF output group in your job. These default manifests reference every output in the output group. To
+     *        create additional top-level manifests that reference a subset of the outputs in the output group, specify
+     *        a list of them here. For each additional manifest that you specify, the service creates one HLS manifest
+     *        and one DASH manifest.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CmafGroupSettings withAdditionalManifests(CmafAdditionalManifest... additionalManifests) {
+        if (this.additionalManifests == null) {
+            setAdditionalManifests(new java.util.ArrayList<CmafAdditionalManifest>(additionalManifests.length));
+        }
+        for (CmafAdditionalManifest ele : additionalManifests) {
+            this.additionalManifests.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for each
+     * CMAF output group in your job. These default manifests reference every output in the output group. To create
+     * additional top-level manifests that reference a subset of the outputs in the output group, specify a list of them
+     * here. For each additional manifest that you specify, the service creates one HLS manifest and one DASH manifest.
+     * 
+     * @param additionalManifests
+     *        By default, the service creates one top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for
+     *        each CMAF output group in your job. These default manifests reference every output in the output group. To
+     *        create additional top-level manifests that reference a subset of the outputs in the output group, specify
+     *        a list of them here. For each additional manifest that you specify, the service creates one HLS manifest
+     *        and one DASH manifest.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CmafGroupSettings withAdditionalManifests(java.util.Collection<CmafAdditionalManifest> additionalManifests) {
+        setAdditionalManifests(additionalManifests);
+        return this;
+    }
 
     /**
      * A partial URI prefix that will be put in the manifest file at the top level BaseURL element. Can be used if
@@ -626,6 +739,89 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     * 
+     * @param mpdProfile
+     *        Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the
+     *        service signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose
+     *        On-demand (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your
+     *        .mpd. When you choose On-demand, you must also set the output group setting Segment control
+     *        (SegmentControl) to Single file (SINGLE_FILE).
+     * @see CmafMpdProfile
+     */
+
+    public void setMpdProfile(String mpdProfile) {
+        this.mpdProfile = mpdProfile;
+    }
+
+    /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     * 
+     * @return Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the
+     *         service signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose
+     *         On-demand (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your
+     *         .mpd. When you choose On-demand, you must also set the output group setting Segment control
+     *         (SegmentControl) to Single file (SINGLE_FILE).
+     * @see CmafMpdProfile
+     */
+
+    public String getMpdProfile() {
+        return this.mpdProfile;
+    }
+
+    /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     * 
+     * @param mpdProfile
+     *        Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the
+     *        service signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose
+     *        On-demand (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your
+     *        .mpd. When you choose On-demand, you must also set the output group setting Segment control
+     *        (SegmentControl) to Single file (SINGLE_FILE).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see CmafMpdProfile
+     */
+
+    public CmafGroupSettings withMpdProfile(String mpdProfile) {
+        setMpdProfile(mpdProfile);
+        return this;
+    }
+
+    /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     * 
+     * @param mpdProfile
+     *        Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the
+     *        service signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose
+     *        On-demand (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your
+     *        .mpd. When you choose On-demand, you must also set the output group setting Segment control
+     *        (SegmentControl) to Single file (SINGLE_FILE).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see CmafMpdProfile
+     */
+
+    public CmafGroupSettings withMpdProfile(CmafMpdProfile mpdProfile) {
+        this.mpdProfile = mpdProfile.toString();
+        return this;
+    }
+
+    /**
      * When set to SINGLE_FILE, a single output file is generated, which is internally segmented using the Fragment
      * Length and Segment Length. When set to SEGMENTED_FILES, separate segment files will be created.
      * 
@@ -902,6 +1098,89 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your DASH
+     * manifest shows precise segment durations. The segment duration information appears inside the SegmentTimeline
+     * element, inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment
+     * durations in your DASH manifest are approximate. The segment duration information appears in the duration
+     * attribute of the SegmentTemplate element.
+     * 
+     * @param writeSegmentTimelineInRepresentation
+     *        When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your
+     *        DASH manifest shows precise segment durations. The segment duration information appears inside the
+     *        SegmentTimeline element, inside SegmentTemplate at the Representation level. When this feature isn't
+     *        enabled, the segment durations in your DASH manifest are approximate. The segment duration information
+     *        appears in the duration attribute of the SegmentTemplate element.
+     * @see CmafWriteSegmentTimelineInRepresentation
+     */
+
+    public void setWriteSegmentTimelineInRepresentation(String writeSegmentTimelineInRepresentation) {
+        this.writeSegmentTimelineInRepresentation = writeSegmentTimelineInRepresentation;
+    }
+
+    /**
+     * When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your DASH
+     * manifest shows precise segment durations. The segment duration information appears inside the SegmentTimeline
+     * element, inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment
+     * durations in your DASH manifest are approximate. The segment duration information appears in the duration
+     * attribute of the SegmentTemplate element.
+     * 
+     * @return When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your
+     *         DASH manifest shows precise segment durations. The segment duration information appears inside the
+     *         SegmentTimeline element, inside SegmentTemplate at the Representation level. When this feature isn't
+     *         enabled, the segment durations in your DASH manifest are approximate. The segment duration information
+     *         appears in the duration attribute of the SegmentTemplate element.
+     * @see CmafWriteSegmentTimelineInRepresentation
+     */
+
+    public String getWriteSegmentTimelineInRepresentation() {
+        return this.writeSegmentTimelineInRepresentation;
+    }
+
+    /**
+     * When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your DASH
+     * manifest shows precise segment durations. The segment duration information appears inside the SegmentTimeline
+     * element, inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment
+     * durations in your DASH manifest are approximate. The segment duration information appears in the duration
+     * attribute of the SegmentTemplate element.
+     * 
+     * @param writeSegmentTimelineInRepresentation
+     *        When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your
+     *        DASH manifest shows precise segment durations. The segment duration information appears inside the
+     *        SegmentTimeline element, inside SegmentTemplate at the Representation level. When this feature isn't
+     *        enabled, the segment durations in your DASH manifest are approximate. The segment duration information
+     *        appears in the duration attribute of the SegmentTemplate element.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see CmafWriteSegmentTimelineInRepresentation
+     */
+
+    public CmafGroupSettings withWriteSegmentTimelineInRepresentation(String writeSegmentTimelineInRepresentation) {
+        setWriteSegmentTimelineInRepresentation(writeSegmentTimelineInRepresentation);
+        return this;
+    }
+
+    /**
+     * When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your DASH
+     * manifest shows precise segment durations. The segment duration information appears inside the SegmentTimeline
+     * element, inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment
+     * durations in your DASH manifest are approximate. The segment duration information appears in the duration
+     * attribute of the SegmentTemplate element.
+     * 
+     * @param writeSegmentTimelineInRepresentation
+     *        When you enable Precise segment duration in DASH manifests (writeSegmentTimelineInRepresentation), your
+     *        DASH manifest shows precise segment durations. The segment duration information appears inside the
+     *        SegmentTimeline element, inside SegmentTemplate at the Representation level. When this feature isn't
+     *        enabled, the segment durations in your DASH manifest are approximate. The segment duration information
+     *        appears in the duration attribute of the SegmentTemplate element.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see CmafWriteSegmentTimelineInRepresentation
+     */
+
+    public CmafGroupSettings withWriteSegmentTimelineInRepresentation(CmafWriteSegmentTimelineInRepresentation writeSegmentTimelineInRepresentation) {
+        this.writeSegmentTimelineInRepresentation = writeSegmentTimelineInRepresentation.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -913,6 +1192,8 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getAdditionalManifests() != null)
+            sb.append("AdditionalManifests: ").append(getAdditionalManifests()).append(",");
         if (getBaseUrl() != null)
             sb.append("BaseUrl: ").append(getBaseUrl()).append(",");
         if (getClientCache() != null)
@@ -935,6 +1216,8 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
             sb.append("MinBufferTime: ").append(getMinBufferTime()).append(",");
         if (getMinFinalSegmentLength() != null)
             sb.append("MinFinalSegmentLength: ").append(getMinFinalSegmentLength()).append(",");
+        if (getMpdProfile() != null)
+            sb.append("MpdProfile: ").append(getMpdProfile()).append(",");
         if (getSegmentControl() != null)
             sb.append("SegmentControl: ").append(getSegmentControl()).append(",");
         if (getSegmentLength() != null)
@@ -944,7 +1227,9 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
         if (getWriteDashManifest() != null)
             sb.append("WriteDashManifest: ").append(getWriteDashManifest()).append(",");
         if (getWriteHlsManifest() != null)
-            sb.append("WriteHlsManifest: ").append(getWriteHlsManifest());
+            sb.append("WriteHlsManifest: ").append(getWriteHlsManifest()).append(",");
+        if (getWriteSegmentTimelineInRepresentation() != null)
+            sb.append("WriteSegmentTimelineInRepresentation: ").append(getWriteSegmentTimelineInRepresentation());
         sb.append("}");
         return sb.toString();
     }
@@ -959,6 +1244,10 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
         if (obj instanceof CmafGroupSettings == false)
             return false;
         CmafGroupSettings other = (CmafGroupSettings) obj;
+        if (other.getAdditionalManifests() == null ^ this.getAdditionalManifests() == null)
+            return false;
+        if (other.getAdditionalManifests() != null && other.getAdditionalManifests().equals(this.getAdditionalManifests()) == false)
+            return false;
         if (other.getBaseUrl() == null ^ this.getBaseUrl() == null)
             return false;
         if (other.getBaseUrl() != null && other.getBaseUrl().equals(this.getBaseUrl()) == false)
@@ -1003,6 +1292,10 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
             return false;
         if (other.getMinFinalSegmentLength() != null && other.getMinFinalSegmentLength().equals(this.getMinFinalSegmentLength()) == false)
             return false;
+        if (other.getMpdProfile() == null ^ this.getMpdProfile() == null)
+            return false;
+        if (other.getMpdProfile() != null && other.getMpdProfile().equals(this.getMpdProfile()) == false)
+            return false;
         if (other.getSegmentControl() == null ^ this.getSegmentControl() == null)
             return false;
         if (other.getSegmentControl() != null && other.getSegmentControl().equals(this.getSegmentControl()) == false)
@@ -1023,6 +1316,11 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
             return false;
         if (other.getWriteHlsManifest() != null && other.getWriteHlsManifest().equals(this.getWriteHlsManifest()) == false)
             return false;
+        if (other.getWriteSegmentTimelineInRepresentation() == null ^ this.getWriteSegmentTimelineInRepresentation() == null)
+            return false;
+        if (other.getWriteSegmentTimelineInRepresentation() != null
+                && other.getWriteSegmentTimelineInRepresentation().equals(this.getWriteSegmentTimelineInRepresentation()) == false)
+            return false;
         return true;
     }
 
@@ -1031,6 +1329,7 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getAdditionalManifests() == null) ? 0 : getAdditionalManifests().hashCode());
         hashCode = prime * hashCode + ((getBaseUrl() == null) ? 0 : getBaseUrl().hashCode());
         hashCode = prime * hashCode + ((getClientCache() == null) ? 0 : getClientCache().hashCode());
         hashCode = prime * hashCode + ((getCodecSpecification() == null) ? 0 : getCodecSpecification().hashCode());
@@ -1042,11 +1341,13 @@ public class CmafGroupSettings implements Serializable, Cloneable, StructuredPoj
         hashCode = prime * hashCode + ((getManifestDurationFormat() == null) ? 0 : getManifestDurationFormat().hashCode());
         hashCode = prime * hashCode + ((getMinBufferTime() == null) ? 0 : getMinBufferTime().hashCode());
         hashCode = prime * hashCode + ((getMinFinalSegmentLength() == null) ? 0 : getMinFinalSegmentLength().hashCode());
+        hashCode = prime * hashCode + ((getMpdProfile() == null) ? 0 : getMpdProfile().hashCode());
         hashCode = prime * hashCode + ((getSegmentControl() == null) ? 0 : getSegmentControl().hashCode());
         hashCode = prime * hashCode + ((getSegmentLength() == null) ? 0 : getSegmentLength().hashCode());
         hashCode = prime * hashCode + ((getStreamInfResolution() == null) ? 0 : getStreamInfResolution().hashCode());
         hashCode = prime * hashCode + ((getWriteDashManifest() == null) ? 0 : getWriteDashManifest().hashCode());
         hashCode = prime * hashCode + ((getWriteHlsManifest() == null) ? 0 : getWriteHlsManifest().hashCode());
+        hashCode = prime * hashCode + ((getWriteSegmentTimelineInRepresentation() == null) ? 0 : getWriteSegmentTimelineInRepresentation().hashCode());
         return hashCode;
     }
 

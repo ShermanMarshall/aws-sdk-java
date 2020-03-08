@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,9 +33,8 @@ public class DetectKeyPhrasesRequest extends com.amazonaws.AmazonWebServiceReque
     private String text;
     /**
      * <p>
-     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend:
-     * German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents
-     * must be in the same language.
+     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend.
+     * All documents must be in the same language.
      * </p>
      */
     private String languageCode;
@@ -82,15 +81,13 @@ public class DetectKeyPhrasesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend:
-     * German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents
-     * must be in the same language.
+     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend.
+     * All documents must be in the same language.
      * </p>
      * 
      * @param languageCode
      *        The language of the input documents. You can specify any of the primary languages supported by Amazon
-     *        Comprehend: German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese
-     *        ("pt"). All documents must be in the same language.
+     *        Comprehend. All documents must be in the same language.
      * @see LanguageCode
      */
 
@@ -100,14 +97,12 @@ public class DetectKeyPhrasesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend:
-     * German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents
-     * must be in the same language.
+     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend.
+     * All documents must be in the same language.
      * </p>
      * 
      * @return The language of the input documents. You can specify any of the primary languages supported by Amazon
-     *         Comprehend: German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese
-     *         ("pt"). All documents must be in the same language.
+     *         Comprehend. All documents must be in the same language.
      * @see LanguageCode
      */
 
@@ -117,15 +112,13 @@ public class DetectKeyPhrasesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend:
-     * German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents
-     * must be in the same language.
+     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend.
+     * All documents must be in the same language.
      * </p>
      * 
      * @param languageCode
      *        The language of the input documents. You can specify any of the primary languages supported by Amazon
-     *        Comprehend: German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese
-     *        ("pt"). All documents must be in the same language.
+     *        Comprehend. All documents must be in the same language.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LanguageCode
      */
@@ -137,15 +130,13 @@ public class DetectKeyPhrasesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend:
-     * German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese ("pt"). All documents
-     * must be in the same language.
+     * The language of the input documents. You can specify any of the primary languages supported by Amazon Comprehend.
+     * All documents must be in the same language.
      * </p>
      * 
      * @param languageCode
      *        The language of the input documents. You can specify any of the primary languages supported by Amazon
-     *        Comprehend: German ("de"), English ("en"), Spanish ("es"), French ("fr"), Italian ("it"), or Portuguese
-     *        ("pt"). All documents must be in the same language.
+     *        Comprehend. All documents must be in the same language.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LanguageCode
      */

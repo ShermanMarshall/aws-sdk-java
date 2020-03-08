@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,18 @@ public class SearchRecordJsonUnmarshaller implements Unmarshaller<SearchRecord, 
                 if (context.testExpression("TrainingJob", targetDepth)) {
                     context.nextToken();
                     searchRecord.setTrainingJob(TrainingJobJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("Experiment", targetDepth)) {
+                    context.nextToken();
+                    searchRecord.setExperiment(ExperimentJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("Trial", targetDepth)) {
+                    context.nextToken();
+                    searchRecord.setTrial(TrialJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("TrialComponent", targetDepth)) {
+                    context.nextToken();
+                    searchRecord.setTrialComponent(TrialComponentJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

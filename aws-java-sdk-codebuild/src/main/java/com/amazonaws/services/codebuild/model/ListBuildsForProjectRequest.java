@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,7 +52,7 @@ public class ListBuildsForProjectRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * During a previous call, if there are more than 100 items in the list, only the first 100 items are returned,
-     * along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this
+     * along with a unique string called a <i>nextToken</i>. To get the next batch of items in the list, call this
      * operation again, adding the next token to the call. To get all of the items in the list, keep calling this
      * operation with each subsequent next token that is returned, until no more next tokens are returned.
      * </p>
@@ -290,14 +290,14 @@ public class ListBuildsForProjectRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * During a previous call, if there are more than 100 items in the list, only the first 100 items are returned,
-     * along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this
+     * along with a unique string called a <i>nextToken</i>. To get the next batch of items in the list, call this
      * operation again, adding the next token to the call. To get all of the items in the list, keep calling this
      * operation with each subsequent next token that is returned, until no more next tokens are returned.
      * </p>
      * 
      * @param nextToken
      *        During a previous call, if there are more than 100 items in the list, only the first 100 items are
-     *        returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the
+     *        returned, along with a unique string called a <i>nextToken</i>. To get the next batch of items in the
      *        list, call this operation again, adding the next token to the call. To get all of the items in the list,
      *        keep calling this operation with each subsequent next token that is returned, until no more next tokens
      *        are returned.
@@ -310,13 +310,13 @@ public class ListBuildsForProjectRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * During a previous call, if there are more than 100 items in the list, only the first 100 items are returned,
-     * along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this
+     * along with a unique string called a <i>nextToken</i>. To get the next batch of items in the list, call this
      * operation again, adding the next token to the call. To get all of the items in the list, keep calling this
      * operation with each subsequent next token that is returned, until no more next tokens are returned.
      * </p>
      * 
      * @return During a previous call, if there are more than 100 items in the list, only the first 100 items are
-     *         returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the
+     *         returned, along with a unique string called a <i>nextToken</i>. To get the next batch of items in the
      *         list, call this operation again, adding the next token to the call. To get all of the items in the list,
      *         keep calling this operation with each subsequent next token that is returned, until no more next tokens
      *         are returned.
@@ -329,14 +329,14 @@ public class ListBuildsForProjectRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * During a previous call, if there are more than 100 items in the list, only the first 100 items are returned,
-     * along with a unique string called a <i>next token</i>. To get the next batch of items in the list, call this
+     * along with a unique string called a <i>nextToken</i>. To get the next batch of items in the list, call this
      * operation again, adding the next token to the call. To get all of the items in the list, keep calling this
      * operation with each subsequent next token that is returned, until no more next tokens are returned.
      * </p>
      * 
      * @param nextToken
      *        During a previous call, if there are more than 100 items in the list, only the first 100 items are
-     *        returned, along with a unique string called a <i>next token</i>. To get the next batch of items in the
+     *        returned, along with a unique string called a <i>nextToken</i>. To get the next batch of items in the
      *        list, call this operation again, adding the next token to the call. To get all of the items in the list,
      *        keep calling this operation with each subsequent next token that is returned, until no more next tokens
      *        are returned.

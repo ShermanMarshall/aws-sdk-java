@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,7 +38,7 @@ public class CreatePlatformEndpointRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Unique identifier created by the notification service for an app on a device. The specific name for Token will
      * vary, depending on which notification service is being used. For example, when using APNS as the notification
-     * service, you need the device token. Alternatively, when using GCM or ADM, the device token equivalent is called
+     * service, you need the device token. Alternatively, when using FCM or ADM, the device token equivalent is called
      * the registration ID.
      * </p>
      */
@@ -102,14 +102,14 @@ public class CreatePlatformEndpointRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Unique identifier created by the notification service for an app on a device. The specific name for Token will
      * vary, depending on which notification service is being used. For example, when using APNS as the notification
-     * service, you need the device token. Alternatively, when using GCM or ADM, the device token equivalent is called
+     * service, you need the device token. Alternatively, when using FCM or ADM, the device token equivalent is called
      * the registration ID.
      * </p>
      * 
      * @param token
      *        Unique identifier created by the notification service for an app on a device. The specific name for Token
      *        will vary, depending on which notification service is being used. For example, when using APNS as the
-     *        notification service, you need the device token. Alternatively, when using GCM or ADM, the device token
+     *        notification service, you need the device token. Alternatively, when using FCM or ADM, the device token
      *        equivalent is called the registration ID.
      */
 
@@ -121,13 +121,13 @@ public class CreatePlatformEndpointRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Unique identifier created by the notification service for an app on a device. The specific name for Token will
      * vary, depending on which notification service is being used. For example, when using APNS as the notification
-     * service, you need the device token. Alternatively, when using GCM or ADM, the device token equivalent is called
+     * service, you need the device token. Alternatively, when using FCM or ADM, the device token equivalent is called
      * the registration ID.
      * </p>
      * 
      * @return Unique identifier created by the notification service for an app on a device. The specific name for Token
      *         will vary, depending on which notification service is being used. For example, when using APNS as the
-     *         notification service, you need the device token. Alternatively, when using GCM or ADM, the device token
+     *         notification service, you need the device token. Alternatively, when using FCM or ADM, the device token
      *         equivalent is called the registration ID.
      */
 
@@ -139,14 +139,14 @@ public class CreatePlatformEndpointRequest extends com.amazonaws.AmazonWebServic
      * <p>
      * Unique identifier created by the notification service for an app on a device. The specific name for Token will
      * vary, depending on which notification service is being used. For example, when using APNS as the notification
-     * service, you need the device token. Alternatively, when using GCM or ADM, the device token equivalent is called
+     * service, you need the device token. Alternatively, when using FCM or ADM, the device token equivalent is called
      * the registration ID.
      * </p>
      * 
      * @param token
      *        Unique identifier created by the notification service for an app on a device. The specific name for Token
      *        will vary, depending on which notification service is being used. For example, when using APNS as the
-     *        notification service, you need the device token. Alternatively, when using GCM or ADM, the device token
+     *        notification service, you need the device token. Alternatively, when using FCM or ADM, the device token
      *        equivalent is called the registration ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -253,6 +253,13 @@ public class CreatePlatformEndpointRequest extends com.amazonaws.AmazonWebServic
         setAttributes(attributes);
         return this;
     }
+
+    /**
+     * Add a single Attributes entry
+     *
+     * @see CreatePlatformEndpointRequest#withAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreatePlatformEndpointRequest addAttributesEntry(String key, String value) {
         if (null == this.attributes) {

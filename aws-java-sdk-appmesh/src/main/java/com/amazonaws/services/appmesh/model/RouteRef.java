@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing a route returned by a list operation.
+ * An object that represents a route returned by a list operation.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/RouteRef" target="_top">AWS API
@@ -40,6 +40,22 @@ public class RouteRef implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String meshName;
+    /**
+     * <p>
+     * The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of the
+     * account that shared the mesh with your account. For more information about mesh sharing, see <a
+     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * </p>
+     */
+    private String meshOwner;
+    /**
+     * <p>
+     * The AWS IAM account ID of the resource owner. If the account ID is not your own, then it's the ID of the mesh
+     * owner, or another account that the mesh is shared with. For more information about mesh sharing, see <a
+     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * </p>
+     */
+    private String resourceOwner;
     /**
      * <p>
      * The name of the route.
@@ -130,6 +146,113 @@ public class RouteRef implements Serializable, Cloneable, StructuredPojo {
 
     public RouteRef withMeshName(String meshName) {
         setMeshName(meshName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of the
+     * account that shared the mesh with your account. For more information about mesh sharing, see <a
+     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * </p>
+     * 
+     * @param meshOwner
+     *        The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of
+     *        the account that shared the mesh with your account. For more information about mesh sharing, see <a
+     *        href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     */
+
+    public void setMeshOwner(String meshOwner) {
+        this.meshOwner = meshOwner;
+    }
+
+    /**
+     * <p>
+     * The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of the
+     * account that shared the mesh with your account. For more information about mesh sharing, see <a
+     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * </p>
+     * 
+     * @return The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of
+     *         the account that shared the mesh with your account. For more information about mesh sharing, see <a
+     *         href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     */
+
+    public String getMeshOwner() {
+        return this.meshOwner;
+    }
+
+    /**
+     * <p>
+     * The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of the
+     * account that shared the mesh with your account. For more information about mesh sharing, see <a
+     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * </p>
+     * 
+     * @param meshOwner
+     *        The AWS IAM account ID of the service mesh owner. If the account ID is not your own, then it's the ID of
+     *        the account that shared the mesh with your account. For more information about mesh sharing, see <a
+     *        href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RouteRef withMeshOwner(String meshOwner) {
+        setMeshOwner(meshOwner);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The AWS IAM account ID of the resource owner. If the account ID is not your own, then it's the ID of the mesh
+     * owner, or another account that the mesh is shared with. For more information about mesh sharing, see <a
+     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * </p>
+     * 
+     * @param resourceOwner
+     *        The AWS IAM account ID of the resource owner. If the account ID is not your own, then it's the ID of the
+     *        mesh owner, or another account that the mesh is shared with. For more information about mesh sharing, see
+     *        <a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared
+     *        Meshes</a>.
+     */
+
+    public void setResourceOwner(String resourceOwner) {
+        this.resourceOwner = resourceOwner;
+    }
+
+    /**
+     * <p>
+     * The AWS IAM account ID of the resource owner. If the account ID is not your own, then it's the ID of the mesh
+     * owner, or another account that the mesh is shared with. For more information about mesh sharing, see <a
+     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * </p>
+     * 
+     * @return The AWS IAM account ID of the resource owner. If the account ID is not your own, then it's the ID of the
+     *         mesh owner, or another account that the mesh is shared with. For more information about mesh sharing, see
+     *         <a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared
+     *         Meshes</a>.
+     */
+
+    public String getResourceOwner() {
+        return this.resourceOwner;
+    }
+
+    /**
+     * <p>
+     * The AWS IAM account ID of the resource owner. If the account ID is not your own, then it's the ID of the mesh
+     * owner, or another account that the mesh is shared with. For more information about mesh sharing, see <a
+     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared Meshes</a>.
+     * </p>
+     * 
+     * @param resourceOwner
+     *        The AWS IAM account ID of the resource owner. If the account ID is not your own, then it's the ID of the
+     *        mesh owner, or another account that the mesh is shared with. For more information about mesh sharing, see
+     *        <a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working with Shared
+     *        Meshes</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RouteRef withResourceOwner(String resourceOwner) {
+        setResourceOwner(resourceOwner);
         return this;
     }
 
@@ -229,6 +352,10 @@ public class RouteRef implements Serializable, Cloneable, StructuredPojo {
             sb.append("Arn: ").append(getArn()).append(",");
         if (getMeshName() != null)
             sb.append("MeshName: ").append(getMeshName()).append(",");
+        if (getMeshOwner() != null)
+            sb.append("MeshOwner: ").append(getMeshOwner()).append(",");
+        if (getResourceOwner() != null)
+            sb.append("ResourceOwner: ").append(getResourceOwner()).append(",");
         if (getRouteName() != null)
             sb.append("RouteName: ").append(getRouteName()).append(",");
         if (getVirtualRouterName() != null)
@@ -255,6 +382,14 @@ public class RouteRef implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getMeshName() != null && other.getMeshName().equals(this.getMeshName()) == false)
             return false;
+        if (other.getMeshOwner() == null ^ this.getMeshOwner() == null)
+            return false;
+        if (other.getMeshOwner() != null && other.getMeshOwner().equals(this.getMeshOwner()) == false)
+            return false;
+        if (other.getResourceOwner() == null ^ this.getResourceOwner() == null)
+            return false;
+        if (other.getResourceOwner() != null && other.getResourceOwner().equals(this.getResourceOwner()) == false)
+            return false;
         if (other.getRouteName() == null ^ this.getRouteName() == null)
             return false;
         if (other.getRouteName() != null && other.getRouteName().equals(this.getRouteName()) == false)
@@ -273,6 +408,8 @@ public class RouteRef implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
         hashCode = prime * hashCode + ((getMeshName() == null) ? 0 : getMeshName().hashCode());
+        hashCode = prime * hashCode + ((getMeshOwner() == null) ? 0 : getMeshOwner().hashCode());
+        hashCode = prime * hashCode + ((getResourceOwner() == null) ? 0 : getResourceOwner().hashCode());
         hashCode = prime * hashCode + ((getRouteName() == null) ? 0 : getRouteName().hashCode());
         hashCode = prime * hashCode + ((getVirtualRouterName() == null) ? 0 : getVirtualRouterName().hashCode());
         return hashCode;

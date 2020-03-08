@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,12 +32,16 @@ public class VpcConfigResponseMarshaller {
             .marshallLocationName("subnetIds").build();
     private static final MarshallingInfo<List> SECURITYGROUPIDS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("securityGroupIds").build();
+    private static final MarshallingInfo<String> CLUSTERSECURITYGROUPID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("clusterSecurityGroupId").build();
     private static final MarshallingInfo<String> VPCID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("vpcId").build();
     private static final MarshallingInfo<Boolean> ENDPOINTPUBLICACCESS_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("endpointPublicAccess").build();
     private static final MarshallingInfo<Boolean> ENDPOINTPRIVATEACCESS_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("endpointPrivateAccess").build();
+    private static final MarshallingInfo<List> PUBLICACCESSCIDRS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("publicAccessCidrs").build();
 
     private static final VpcConfigResponseMarshaller instance = new VpcConfigResponseMarshaller();
 
@@ -57,9 +61,11 @@ public class VpcConfigResponseMarshaller {
         try {
             protocolMarshaller.marshall(vpcConfigResponse.getSubnetIds(), SUBNETIDS_BINDING);
             protocolMarshaller.marshall(vpcConfigResponse.getSecurityGroupIds(), SECURITYGROUPIDS_BINDING);
+            protocolMarshaller.marshall(vpcConfigResponse.getClusterSecurityGroupId(), CLUSTERSECURITYGROUPID_BINDING);
             protocolMarshaller.marshall(vpcConfigResponse.getVpcId(), VPCID_BINDING);
             protocolMarshaller.marshall(vpcConfigResponse.getEndpointPublicAccess(), ENDPOINTPUBLICACCESS_BINDING);
             protocolMarshaller.marshall(vpcConfigResponse.getEndpointPrivateAccess(), ENDPOINTPRIVATEACCESS_BINDING);
+            protocolMarshaller.marshall(vpcConfigResponse.getPublicAccessCidrs(), PUBLICACCESSCIDRS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

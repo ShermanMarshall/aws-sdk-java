@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -142,6 +142,21 @@ public class ImportImageRequestMarshaller implements Marshaller<Request<ImportIm
 
         if (importImageRequest.getRoleName() != null) {
             request.addParameter("RoleName", StringUtils.fromString(importImageRequest.getRoleName()));
+        }
+
+        com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationRequest> importImageRequestLicenseSpecificationsList = (com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationRequest>) importImageRequest
+                .getLicenseSpecifications();
+        if (!importImageRequestLicenseSpecificationsList.isEmpty() || !importImageRequestLicenseSpecificationsList.isAutoConstruct()) {
+            int licenseSpecificationsListIndex = 1;
+
+            for (ImportImageLicenseConfigurationRequest importImageRequestLicenseSpecificationsListValue : importImageRequestLicenseSpecificationsList) {
+
+                if (importImageRequestLicenseSpecificationsListValue.getLicenseConfigurationArn() != null) {
+                    request.addParameter("LicenseSpecifications." + licenseSpecificationsListIndex + ".LicenseConfigurationArn",
+                            StringUtils.fromString(importImageRequestLicenseSpecificationsListValue.getLicenseConfigurationArn()));
+                }
+                licenseSpecificationsListIndex++;
+            }
         }
 
         return request;

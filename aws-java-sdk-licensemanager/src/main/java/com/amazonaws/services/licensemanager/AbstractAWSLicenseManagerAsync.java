@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -90,6 +90,21 @@ public class AbstractAWSLicenseManagerAsync extends AbstractAWSLicenseManager im
     public java.util.concurrent.Future<ListAssociationsForLicenseConfigurationResult> listAssociationsForLicenseConfigurationAsync(
             ListAssociationsForLicenseConfigurationRequest request,
             com.amazonaws.handlers.AsyncHandler<ListAssociationsForLicenseConfigurationRequest, ListAssociationsForLicenseConfigurationResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListFailuresForLicenseConfigurationOperationsResult> listFailuresForLicenseConfigurationOperationsAsync(
+            ListFailuresForLicenseConfigurationOperationsRequest request) {
+
+        return listFailuresForLicenseConfigurationOperationsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListFailuresForLicenseConfigurationOperationsResult> listFailuresForLicenseConfigurationOperationsAsync(
+            ListFailuresForLicenseConfigurationOperationsRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListFailuresForLicenseConfigurationOperationsRequest, ListFailuresForLicenseConfigurationOperationsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

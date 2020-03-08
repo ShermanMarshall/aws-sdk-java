@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,8 @@ public class FailureMarshaller {
             .marshallLocationName("arn").build();
     private static final MarshallingInfo<String> REASON_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("reason").build();
+    private static final MarshallingInfo<String> DETAIL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("detail").build();
 
     private static final FailureMarshaller instance = new FailureMarshaller();
 
@@ -50,6 +52,7 @@ public class FailureMarshaller {
         try {
             protocolMarshaller.marshall(failure.getArn(), ARN_BINDING);
             protocolMarshaller.marshall(failure.getReason(), REASON_BINDING);
+            protocolMarshaller.marshall(failure.getDetail(), DETAIL_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

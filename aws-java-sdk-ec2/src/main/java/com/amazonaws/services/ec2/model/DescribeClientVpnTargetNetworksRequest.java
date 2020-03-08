@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,23 @@ public class DescribeClientVpnTargetNetworksRequest extends AmazonWebServiceRequ
      * <p>
      * One or more filters. Filter names and values are case-sensitive.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>association-id</code> - The ID of the association.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     * </p>
+     * </li>
+     * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
 
@@ -261,8 +278,41 @@ public class DescribeClientVpnTargetNetworksRequest extends AmazonWebServiceRequ
      * <p>
      * One or more filters. Filter names and values are case-sensitive.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>association-id</code> - The ID of the association.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return One or more filters. Filter names and values are case-sensitive.
+     * @return One or more filters. Filter names and values are case-sensitive.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>association-id</code> - The ID of the association.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Filter> getFilters() {
@@ -276,9 +326,42 @@ public class DescribeClientVpnTargetNetworksRequest extends AmazonWebServiceRequ
      * <p>
      * One or more filters. Filter names and values are case-sensitive.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>association-id</code> - The ID of the association.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param filters
-     *        One or more filters. Filter names and values are case-sensitive.
+     *        One or more filters. Filter names and values are case-sensitive.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>association-id</code> - The ID of the association.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     *        </p>
+     *        </li>
      */
 
     public void setFilters(java.util.Collection<Filter> filters) {
@@ -294,6 +377,23 @@ public class DescribeClientVpnTargetNetworksRequest extends AmazonWebServiceRequ
      * <p>
      * One or more filters. Filter names and values are case-sensitive.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>association-id</code> - The ID of the association.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setFilters(java.util.Collection)} or {@link #withFilters(java.util.Collection)} if you want to override
@@ -301,7 +401,23 @@ public class DescribeClientVpnTargetNetworksRequest extends AmazonWebServiceRequ
      * </p>
      * 
      * @param filters
-     *        One or more filters. Filter names and values are case-sensitive.
+     *        One or more filters. Filter names and values are case-sensitive.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>association-id</code> - The ID of the association.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -319,9 +435,42 @@ public class DescribeClientVpnTargetNetworksRequest extends AmazonWebServiceRequ
      * <p>
      * One or more filters. Filter names and values are case-sensitive.
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>association-id</code> - The ID of the association.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param filters
-     *        One or more filters. Filter names and values are case-sensitive.
+     *        One or more filters. Filter names and values are case-sensitive.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>association-id</code> - The ID of the association.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>target-network-id</code> - The ID of the subnet specified as the target network.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>vpc-id</code> - The ID of the VPC in which the target network is located.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

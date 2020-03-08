@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -73,12 +73,37 @@ public class AbstractAmazonConnect implements AmazonConnect {
     }
 
     @Override
+    public ListContactFlowsResult listContactFlows(ListContactFlowsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListHoursOfOperationsResult listHoursOfOperations(ListHoursOfOperationsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListPhoneNumbersResult listPhoneNumbers(ListPhoneNumbersRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListQueuesResult listQueues(ListQueuesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListRoutingProfilesResult listRoutingProfiles(ListRoutingProfilesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public ListSecurityProfilesResult listSecurityProfiles(ListSecurityProfilesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -93,12 +118,27 @@ public class AbstractAmazonConnect implements AmazonConnect {
     }
 
     @Override
+    public StartChatContactResult startChatContact(StartChatContactRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public StartOutboundVoiceContactResult startOutboundVoiceContact(StartOutboundVoiceContactRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public StopContactResult stopContact(StopContactRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,6 +60,11 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
      * significant security implications: an attacker could use a leaked token to access your AWS resources for the
      * token's duration.
      * </p>
+     * <note>
+     * <p>
+     * Please provide for a small grace period, usually no more than 5 minutes, to account for clock skew.
+     * </p>
+     * </note>
      */
     private Long tokenDuration;
 
@@ -216,6 +221,13 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
         return this;
     }
 
+    /**
+     * Add a single Logins entry
+     *
+     * @see GetOpenIdTokenForDeveloperIdentityRequest#withLogins
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public GetOpenIdTokenForDeveloperIdentityRequest addLoginsEntry(String key, String value) {
         if (null == this.logins) {
             this.logins = new java.util.HashMap<String, String>();
@@ -246,6 +258,11 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
      * significant security implications: an attacker could use a leaked token to access your AWS resources for the
      * token's duration.
      * </p>
+     * <note>
+     * <p>
+     * Please provide for a small grace period, usually no more than 5 minutes, to account for clock skew.
+     * </p>
+     * </note>
      * 
      * @param tokenDuration
      *        The expiration time of the token, in seconds. You can specify a custom expiration time for the token so
@@ -253,7 +270,10 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
      *        exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of one
      *        hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration
      *        time for a token, as there are significant security implications: an attacker could use a leaked token to
-     *        access your AWS resources for the token's duration.
+     *        access your AWS resources for the token's duration.</p> <note>
+     *        <p>
+     *        Please provide for a small grace period, usually no more than 5 minutes, to account for clock skew.
+     *        </p>
      */
 
     public void setTokenDuration(Long tokenDuration) {
@@ -269,13 +289,21 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
      * significant security implications: an attacker could use a leaked token to access your AWS resources for the
      * token's duration.
      * </p>
+     * <note>
+     * <p>
+     * Please provide for a small grace period, usually no more than 5 minutes, to account for clock skew.
+     * </p>
+     * </note>
      * 
      * @return The expiration time of the token, in seconds. You can specify a custom expiration time for the token so
      *         that you can cache it. If you don't provide an expiration time, the token is valid for 15 minutes. You
      *         can exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of
      *         one hour. The maximum token duration you can set is 24 hours. You should take care in setting the
      *         expiration time for a token, as there are significant security implications: an attacker could use a
-     *         leaked token to access your AWS resources for the token's duration.
+     *         leaked token to access your AWS resources for the token's duration.</p> <note>
+     *         <p>
+     *         Please provide for a small grace period, usually no more than 5 minutes, to account for clock skew.
+     *         </p>
      */
 
     public Long getTokenDuration() {
@@ -291,6 +319,11 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
      * significant security implications: an attacker could use a leaked token to access your AWS resources for the
      * token's duration.
      * </p>
+     * <note>
+     * <p>
+     * Please provide for a small grace period, usually no more than 5 minutes, to account for clock skew.
+     * </p>
+     * </note>
      * 
      * @param tokenDuration
      *        The expiration time of the token, in seconds. You can specify a custom expiration time for the token so
@@ -298,7 +331,10 @@ public class GetOpenIdTokenForDeveloperIdentityRequest extends com.amazonaws.Ama
      *        exchange the token with Amazon STS for temporary AWS credentials, which are valid for a maximum of one
      *        hour. The maximum token duration you can set is 24 hours. You should take care in setting the expiration
      *        time for a token, as there are significant security implications: an attacker could use a leaked token to
-     *        access your AWS resources for the token's duration.
+     *        access your AWS resources for the token's duration.</p> <note>
+     *        <p>
+     *        Please provide for a small grace period, usually no more than 5 minutes, to account for clock skew.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,8 +27,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 public class VideoSelector implements Serializable, Cloneable, StructuredPojo {
 
     /**
-     * Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine if any
-     * conversion will be performed.
+     * Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     * description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      */
     private String colorSpace;
     /**
@@ -44,12 +44,12 @@ public class VideoSelector implements Serializable, Cloneable, StructuredPojo {
     private VideoSelectorSettings selectorSettings;
 
     /**
-     * Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine if any
-     * conversion will be performed.
+     * Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     * description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      * 
      * @param colorSpace
-     *        Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine
-     *        if any conversion will be performed.
+     *        Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     *        description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      * @see VideoSelectorColorSpace
      */
 
@@ -58,11 +58,11 @@ public class VideoSelector implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine if any
-     * conversion will be performed.
+     * Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     * description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      * 
-     * @return Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine
-     *         if any conversion will be performed.
+     * @return Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     *         description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      * @see VideoSelectorColorSpace
      */
 
@@ -71,12 +71,12 @@ public class VideoSelector implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine if any
-     * conversion will be performed.
+     * Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     * description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      * 
      * @param colorSpace
-     *        Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine
-     *        if any conversion will be performed.
+     *        Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     *        description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see VideoSelectorColorSpace
      */
@@ -87,12 +87,12 @@ public class VideoSelector implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine if any
-     * conversion will be performed.
+     * Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     * description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      * 
      * @param colorSpace
-     *        Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine
-     *        if any conversion will be performed.
+     *        Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video
+     *        description's colorSpaceSettingsChoice to determine if any conversion will be performed.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see VideoSelectorColorSpace
      */

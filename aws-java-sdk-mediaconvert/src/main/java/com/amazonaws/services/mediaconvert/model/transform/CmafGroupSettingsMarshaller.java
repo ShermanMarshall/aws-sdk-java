@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.mediaconvert.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -27,6 +28,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class CmafGroupSettingsMarshaller {
 
+    private static final MarshallingInfo<List> ADDITIONALMANIFESTS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("additionalManifests").build();
     private static final MarshallingInfo<String> BASEURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("baseUrl").build();
     private static final MarshallingInfo<String> CLIENTCACHE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -49,6 +52,8 @@ public class CmafGroupSettingsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("minBufferTime").build();
     private static final MarshallingInfo<Double> MINFINALSEGMENTLENGTH_BINDING = MarshallingInfo.builder(MarshallingType.DOUBLE)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("minFinalSegmentLength").build();
+    private static final MarshallingInfo<String> MPDPROFILE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("mpdProfile").build();
     private static final MarshallingInfo<String> SEGMENTCONTROL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("segmentControl").build();
     private static final MarshallingInfo<Integer> SEGMENTLENGTH_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -59,6 +64,8 @@ public class CmafGroupSettingsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("writeDashManifest").build();
     private static final MarshallingInfo<String> WRITEHLSMANIFEST_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("writeHlsManifest").build();
+    private static final MarshallingInfo<String> WRITESEGMENTTIMELINEINREPRESENTATION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("writeSegmentTimelineInRepresentation").build();
 
     private static final CmafGroupSettingsMarshaller instance = new CmafGroupSettingsMarshaller();
 
@@ -76,6 +83,7 @@ public class CmafGroupSettingsMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(cmafGroupSettings.getAdditionalManifests(), ADDITIONALMANIFESTS_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getBaseUrl(), BASEURL_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getClientCache(), CLIENTCACHE_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getCodecSpecification(), CODECSPECIFICATION_BINDING);
@@ -87,11 +95,13 @@ public class CmafGroupSettingsMarshaller {
             protocolMarshaller.marshall(cmafGroupSettings.getManifestDurationFormat(), MANIFESTDURATIONFORMAT_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getMinBufferTime(), MINBUFFERTIME_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getMinFinalSegmentLength(), MINFINALSEGMENTLENGTH_BINDING);
+            protocolMarshaller.marshall(cmafGroupSettings.getMpdProfile(), MPDPROFILE_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getSegmentControl(), SEGMENTCONTROL_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getSegmentLength(), SEGMENTLENGTH_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getStreamInfResolution(), STREAMINFRESOLUTION_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getWriteDashManifest(), WRITEDASHMANIFEST_BINDING);
             protocolMarshaller.marshall(cmafGroupSettings.getWriteHlsManifest(), WRITEHLSMANIFEST_BINDING);
+            protocolMarshaller.marshall(cmafGroupSettings.getWriteSegmentTimelineInRepresentation(), WRITESEGMENTTIMELINEINREPRESENTATION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

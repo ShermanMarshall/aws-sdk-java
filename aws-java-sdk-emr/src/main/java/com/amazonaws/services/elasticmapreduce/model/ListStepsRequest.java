@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,8 @@ public class ListStepsRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private com.amazonaws.internal.SdkInternalList<String> stepStates;
     /**
      * <p>
-     * The filter to limit the step list based on the identifier of the steps.
+     * The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten Step
+     * IDs. The character constraint applies to the overall length of the array.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> stepIds;
@@ -196,10 +197,12 @@ public class ListStepsRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The filter to limit the step list based on the identifier of the steps.
+     * The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten Step
+     * IDs. The character constraint applies to the overall length of the array.
      * </p>
      * 
-     * @return The filter to limit the step list based on the identifier of the steps.
+     * @return The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten
+     *         Step IDs. The character constraint applies to the overall length of the array.
      */
 
     public java.util.List<String> getStepIds() {
@@ -211,11 +214,13 @@ public class ListStepsRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The filter to limit the step list based on the identifier of the steps.
+     * The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten Step
+     * IDs. The character constraint applies to the overall length of the array.
      * </p>
      * 
      * @param stepIds
-     *        The filter to limit the step list based on the identifier of the steps.
+     *        The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten
+     *        Step IDs. The character constraint applies to the overall length of the array.
      */
 
     public void setStepIds(java.util.Collection<String> stepIds) {
@@ -229,7 +234,8 @@ public class ListStepsRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The filter to limit the step list based on the identifier of the steps.
+     * The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten Step
+     * IDs. The character constraint applies to the overall length of the array.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -238,7 +244,8 @@ public class ListStepsRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      * 
      * @param stepIds
-     *        The filter to limit the step list based on the identifier of the steps.
+     *        The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten
+     *        Step IDs. The character constraint applies to the overall length of the array.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -254,11 +261,13 @@ public class ListStepsRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The filter to limit the step list based on the identifier of the steps.
+     * The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten Step
+     * IDs. The character constraint applies to the overall length of the array.
      * </p>
      * 
      * @param stepIds
-     *        The filter to limit the step list based on the identifier of the steps.
+     *        The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten
+     *        Step IDs. The character constraint applies to the overall length of the array.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

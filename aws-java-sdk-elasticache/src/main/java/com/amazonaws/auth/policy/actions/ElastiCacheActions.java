@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public enum ElastiCacheActions implements Action {
     BatchApplyUpdateAction("elasticache:BatchApplyUpdateAction"),
     /** Action for the BatchStopUpdateAction operation. */
     BatchStopUpdateAction("elasticache:BatchStopUpdateAction"),
+    /** Action for the CompleteMigration operation. */
+    CompleteMigration("elasticache:CompleteMigration"),
     /** Action for the CopySnapshot operation. */
     CopySnapshot("elasticache:CopySnapshot"),
     /** Action for the CreateCacheCluster operation. */
@@ -115,6 +117,8 @@ public enum ElastiCacheActions implements Action {
     ResetCacheParameterGroup("elasticache:ResetCacheParameterGroup"),
     /** Action for the RevokeCacheSecurityGroupIngress operation. */
     RevokeCacheSecurityGroupIngress("elasticache:RevokeCacheSecurityGroupIngress"),
+    /** Action for the StartMigration operation. */
+    StartMigration("elasticache:StartMigration"),
     /** Action for the TestFailover operation. */
     TestFailover("elasticache:TestFailover"),
 

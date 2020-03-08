@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,6 +17,11 @@ import javax.annotation.Generated;
 
 import com.amazonaws.AmazonWebServiceRequest;
 
+/**
+ * <p>
+ * Creates a new IntegrationResponse resource to represent an integration response.
+ * </p>
+ */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateIntegrationResponseRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
@@ -77,7 +82,7 @@ public class CreateIntegrationResponseRequest extends com.amazonaws.AmazonWebSer
     private java.util.Map<String, String> responseTemplates;
     /**
      * <p>
-     * The template selection expression for the integration response.
+     * The template selection expression for the integration response. Supported only for WebSocket APIs.
      * </p>
      */
     private String templateSelectionExpression;
@@ -426,6 +431,13 @@ public class CreateIntegrationResponseRequest extends com.amazonaws.AmazonWebSer
         return this;
     }
 
+    /**
+     * Add a single ResponseParameters entry
+     *
+     * @see CreateIntegrationResponseRequest#withResponseParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public CreateIntegrationResponseRequest addResponseParametersEntry(String key, String value) {
         if (null == this.responseParameters) {
             this.responseParameters = new java.util.HashMap<String, String>();
@@ -499,6 +511,13 @@ public class CreateIntegrationResponseRequest extends com.amazonaws.AmazonWebSer
         return this;
     }
 
+    /**
+     * Add a single ResponseTemplates entry
+     *
+     * @see CreateIntegrationResponseRequest#withResponseTemplates
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public CreateIntegrationResponseRequest addResponseTemplatesEntry(String key, String value) {
         if (null == this.responseTemplates) {
             this.responseTemplates = new java.util.HashMap<String, String>();
@@ -522,11 +541,11 @@ public class CreateIntegrationResponseRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The template selection expression for the integration response.
+     * The template selection expression for the integration response. Supported only for WebSocket APIs.
      * </p>
      * 
      * @param templateSelectionExpression
-     *        The template selection expression for the integration response.
+     *        The template selection expression for the integration response. Supported only for WebSocket APIs.
      */
 
     public void setTemplateSelectionExpression(String templateSelectionExpression) {
@@ -535,10 +554,10 @@ public class CreateIntegrationResponseRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The template selection expression for the integration response.
+     * The template selection expression for the integration response. Supported only for WebSocket APIs.
      * </p>
      * 
-     * @return The template selection expression for the integration response.
+     * @return The template selection expression for the integration response. Supported only for WebSocket APIs.
      */
 
     public String getTemplateSelectionExpression() {
@@ -547,11 +566,11 @@ public class CreateIntegrationResponseRequest extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The template selection expression for the integration response.
+     * The template selection expression for the integration response. Supported only for WebSocket APIs.
      * </p>
      * 
      * @param templateSelectionExpression
-     *        The template selection expression for the integration response.
+     *        The template selection expression for the integration response. Supported only for WebSocket APIs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

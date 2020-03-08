@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -75,7 +75,7 @@ public class DirectoryDescription implements Serializable, Cloneable, Structured
     private String accessUrl;
     /**
      * <p>
-     * The textual description for the directory.
+     * The description for the directory.
      * </p>
      */
     private String description;
@@ -552,11 +552,11 @@ public class DirectoryDescription implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The textual description for the directory.
+     * The description for the directory.
      * </p>
      * 
      * @param description
-     *        The textual description for the directory.
+     *        The description for the directory.
      */
 
     public void setDescription(String description) {
@@ -565,10 +565,10 @@ public class DirectoryDescription implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The textual description for the directory.
+     * The description for the directory.
      * </p>
      * 
-     * @return The textual description for the directory.
+     * @return The description for the directory.
      */
 
     public String getDescription() {
@@ -577,11 +577,11 @@ public class DirectoryDescription implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The textual description for the directory.
+     * The description for the directory.
      * </p>
      * 
      * @param description
-     *        The textual description for the directory.
+     *        The description for the directory.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

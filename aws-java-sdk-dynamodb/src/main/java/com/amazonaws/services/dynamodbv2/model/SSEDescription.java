@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -53,8 +53,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your account
-     * and is managed by AWS KMS (KMS charges apply).
+     * <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your account
+     * and is managed by AWS KMS (AWS KMS charges apply).
      * </p>
      * </li>
      * </ul>
@@ -62,10 +62,19 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
     private String sSEType;
     /**
      * <p>
-     * The KMS customer master key (CMK) ARN used for the KMS encryption.
+     * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
      * </p>
      */
     private String kMSMasterKeyArn;
+    /**
+     * <p>
+     * Indicates the time, in UNIX epoch date format, when DynamoDB detected that the table's AWS KMS key was
+     * inaccessible. This attribute will automatically be cleared when DynamoDB detects that the table's AWS KMS key is
+     * accessible again. DynamoDB will initiate the table archival process when table's AWS KMS key remains inaccessible
+     * for more than seven days from this date.
+     * </p>
+     */
+    private java.util.Date inaccessibleEncryptionDateTime;
 
     /**
      * <p>
@@ -225,8 +234,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your account
-     * and is managed by AWS KMS (KMS charges apply).
+     * <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your account
+     * and is managed by AWS KMS (AWS KMS charges apply).
      * </p>
      * </li>
      * </ul>
@@ -236,8 +245,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your
-     *        account and is managed by AWS KMS (KMS charges apply).
+     *        <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your
+     *        account and is managed by AWS KMS (AWS KMS charges apply).
      *        </p>
      *        </li>
      * @see SSEType
@@ -254,8 +263,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your account
-     * and is managed by AWS KMS (KMS charges apply).
+     * <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your account
+     * and is managed by AWS KMS (AWS KMS charges apply).
      * </p>
      * </li>
      * </ul>
@@ -264,8 +273,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your
-     *         account and is managed by AWS KMS (KMS charges apply).
+     *         <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your
+     *         account and is managed by AWS KMS (AWS KMS charges apply).
      *         </p>
      *         </li>
      * @see SSEType
@@ -282,8 +291,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your account
-     * and is managed by AWS KMS (KMS charges apply).
+     * <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your account
+     * and is managed by AWS KMS (AWS KMS charges apply).
      * </p>
      * </li>
      * </ul>
@@ -293,8 +302,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your
-     *        account and is managed by AWS KMS (KMS charges apply).
+     *        <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your
+     *        account and is managed by AWS KMS (AWS KMS charges apply).
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -313,8 +322,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your account
-     * and is managed by AWS KMS (KMS charges apply).
+     * <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your account
+     * and is managed by AWS KMS (AWS KMS charges apply).
      * </p>
      * </li>
      * </ul>
@@ -324,8 +333,8 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>KMS</code> - Server-side encryption which uses AWS Key Management Service. Key is stored in your
-     *        account and is managed by AWS KMS (KMS charges apply).
+     *        <code>KMS</code> - Server-side encryption that uses AWS Key Management Service. The key is stored in your
+     *        account and is managed by AWS KMS (AWS KMS charges apply).
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -339,11 +348,11 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The KMS customer master key (CMK) ARN used for the KMS encryption.
+     * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
      * </p>
      * 
      * @param kMSMasterKeyArn
-     *        The KMS customer master key (CMK) ARN used for the KMS encryption.
+     *        The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
      */
 
     public void setKMSMasterKeyArn(String kMSMasterKeyArn) {
@@ -352,10 +361,10 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The KMS customer master key (CMK) ARN used for the KMS encryption.
+     * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
      * </p>
      * 
-     * @return The KMS customer master key (CMK) ARN used for the KMS encryption.
+     * @return The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
      */
 
     public String getKMSMasterKeyArn() {
@@ -364,16 +373,74 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The KMS customer master key (CMK) ARN used for the KMS encryption.
+     * The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
      * </p>
      * 
      * @param kMSMasterKeyArn
-     *        The KMS customer master key (CMK) ARN used for the KMS encryption.
+     *        The AWS KMS customer master key (CMK) ARN used for the AWS KMS encryption.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SSEDescription withKMSMasterKeyArn(String kMSMasterKeyArn) {
         setKMSMasterKeyArn(kMSMasterKeyArn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates the time, in UNIX epoch date format, when DynamoDB detected that the table's AWS KMS key was
+     * inaccessible. This attribute will automatically be cleared when DynamoDB detects that the table's AWS KMS key is
+     * accessible again. DynamoDB will initiate the table archival process when table's AWS KMS key remains inaccessible
+     * for more than seven days from this date.
+     * </p>
+     * 
+     * @param inaccessibleEncryptionDateTime
+     *        Indicates the time, in UNIX epoch date format, when DynamoDB detected that the table's AWS KMS key was
+     *        inaccessible. This attribute will automatically be cleared when DynamoDB detects that the table's AWS KMS
+     *        key is accessible again. DynamoDB will initiate the table archival process when table's AWS KMS key
+     *        remains inaccessible for more than seven days from this date.
+     */
+
+    public void setInaccessibleEncryptionDateTime(java.util.Date inaccessibleEncryptionDateTime) {
+        this.inaccessibleEncryptionDateTime = inaccessibleEncryptionDateTime;
+    }
+
+    /**
+     * <p>
+     * Indicates the time, in UNIX epoch date format, when DynamoDB detected that the table's AWS KMS key was
+     * inaccessible. This attribute will automatically be cleared when DynamoDB detects that the table's AWS KMS key is
+     * accessible again. DynamoDB will initiate the table archival process when table's AWS KMS key remains inaccessible
+     * for more than seven days from this date.
+     * </p>
+     * 
+     * @return Indicates the time, in UNIX epoch date format, when DynamoDB detected that the table's AWS KMS key was
+     *         inaccessible. This attribute will automatically be cleared when DynamoDB detects that the table's AWS KMS
+     *         key is accessible again. DynamoDB will initiate the table archival process when table's AWS KMS key
+     *         remains inaccessible for more than seven days from this date.
+     */
+
+    public java.util.Date getInaccessibleEncryptionDateTime() {
+        return this.inaccessibleEncryptionDateTime;
+    }
+
+    /**
+     * <p>
+     * Indicates the time, in UNIX epoch date format, when DynamoDB detected that the table's AWS KMS key was
+     * inaccessible. This attribute will automatically be cleared when DynamoDB detects that the table's AWS KMS key is
+     * accessible again. DynamoDB will initiate the table archival process when table's AWS KMS key remains inaccessible
+     * for more than seven days from this date.
+     * </p>
+     * 
+     * @param inaccessibleEncryptionDateTime
+     *        Indicates the time, in UNIX epoch date format, when DynamoDB detected that the table's AWS KMS key was
+     *        inaccessible. This attribute will automatically be cleared when DynamoDB detects that the table's AWS KMS
+     *        key is accessible again. DynamoDB will initiate the table archival process when table's AWS KMS key
+     *        remains inaccessible for more than seven days from this date.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SSEDescription withInaccessibleEncryptionDateTime(java.util.Date inaccessibleEncryptionDateTime) {
+        setInaccessibleEncryptionDateTime(inaccessibleEncryptionDateTime);
         return this;
     }
 
@@ -394,7 +461,9 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
         if (getSSEType() != null)
             sb.append("SSEType: ").append(getSSEType()).append(",");
         if (getKMSMasterKeyArn() != null)
-            sb.append("KMSMasterKeyArn: ").append(getKMSMasterKeyArn());
+            sb.append("KMSMasterKeyArn: ").append(getKMSMasterKeyArn()).append(",");
+        if (getInaccessibleEncryptionDateTime() != null)
+            sb.append("InaccessibleEncryptionDateTime: ").append(getInaccessibleEncryptionDateTime());
         sb.append("}");
         return sb.toString();
     }
@@ -421,6 +490,11 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getKMSMasterKeyArn() != null && other.getKMSMasterKeyArn().equals(this.getKMSMasterKeyArn()) == false)
             return false;
+        if (other.getInaccessibleEncryptionDateTime() == null ^ this.getInaccessibleEncryptionDateTime() == null)
+            return false;
+        if (other.getInaccessibleEncryptionDateTime() != null
+                && other.getInaccessibleEncryptionDateTime().equals(this.getInaccessibleEncryptionDateTime()) == false)
+            return false;
         return true;
     }
 
@@ -432,6 +506,7 @@ public class SSEDescription implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getSSEType() == null) ? 0 : getSSEType().hashCode());
         hashCode = prime * hashCode + ((getKMSMasterKeyArn() == null) ? 0 : getKMSMasterKeyArn().hashCode());
+        hashCode = prime * hashCode + ((getInaccessibleEncryptionDateTime() == null) ? 0 : getInaccessibleEncryptionDateTime().hashCode());
         return hashCode;
     }
 

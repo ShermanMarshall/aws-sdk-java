@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * This parameter is ignored for models that contain only a <code>PrimaryContainer</code>.
      * </p>
      * <p>
-     * When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of ths parameter uniquely
+     * When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of the parameter uniquely
      * identifies the container for the purposes of logging and metrics. For information, see <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html">Use Logs and Metrics
      * to Monitor an Inference Pipeline</a>. If you don't specify a value for this parameter for a
@@ -56,6 +56,12 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * </p>
      */
     private String image;
+    /**
+     * <p>
+     * Whether the container hosts a single model or multiple models.
+     * </p>
+     */
+    private String mode;
     /**
      * <p>
      * The S3 path where the model artifacts, which result from model training, are stored. This path must point to a
@@ -99,7 +105,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * This parameter is ignored for models that contain only a <code>PrimaryContainer</code>.
      * </p>
      * <p>
-     * When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of ths parameter uniquely
+     * When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of the parameter uniquely
      * identifies the container for the purposes of logging and metrics. For information, see <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html">Use Logs and Metrics
      * to Monitor an Inference Pipeline</a>. If you don't specify a value for this parameter for a
@@ -113,7 +119,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * @param containerHostname
      *        This parameter is ignored for models that contain only a <code>PrimaryContainer</code>.</p>
      *        <p>
-     *        When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of ths parameter
+     *        When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of the parameter
      *        uniquely identifies the container for the purposes of logging and metrics. For information, see <a
      *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html">Use Logs and
      *        Metrics to Monitor an Inference Pipeline</a>. If you don't specify a value for this parameter for a
@@ -133,7 +139,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * This parameter is ignored for models that contain only a <code>PrimaryContainer</code>.
      * </p>
      * <p>
-     * When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of ths parameter uniquely
+     * When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of the parameter uniquely
      * identifies the container for the purposes of logging and metrics. For information, see <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html">Use Logs and Metrics
      * to Monitor an Inference Pipeline</a>. If you don't specify a value for this parameter for a
@@ -146,7 +152,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * 
      * @return This parameter is ignored for models that contain only a <code>PrimaryContainer</code>.</p>
      *         <p>
-     *         When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of ths parameter
+     *         When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of the parameter
      *         uniquely identifies the container for the purposes of logging and metrics. For information, see <a
      *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html">Use Logs and
      *         Metrics to Monitor an Inference Pipeline</a>. If you don't specify a value for this parameter for a
@@ -166,7 +172,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * This parameter is ignored for models that contain only a <code>PrimaryContainer</code>.
      * </p>
      * <p>
-     * When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of ths parameter uniquely
+     * When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of the parameter uniquely
      * identifies the container for the purposes of logging and metrics. For information, see <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html">Use Logs and Metrics
      * to Monitor an Inference Pipeline</a>. If you don't specify a value for this parameter for a
@@ -180,7 +186,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
      * @param containerHostname
      *        This parameter is ignored for models that contain only a <code>PrimaryContainer</code>.</p>
      *        <p>
-     *        When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of ths parameter
+     *        When a <code>ContainerDefinition</code> is part of an inference pipeline, the value of the parameter
      *        uniquely identifies the container for the purposes of logging and metrics. For information, see <a
      *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipeline-logs-metrics.html">Use Logs and
      *        Metrics to Monitor an Inference Pipeline</a>. If you don't specify a value for this parameter for a
@@ -264,6 +270,65 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
 
     public ContainerDefinition withImage(String image) {
         setImage(image);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Whether the container hosts a single model or multiple models.
+     * </p>
+     * 
+     * @param mode
+     *        Whether the container hosts a single model or multiple models.
+     * @see ContainerMode
+     */
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    /**
+     * <p>
+     * Whether the container hosts a single model or multiple models.
+     * </p>
+     * 
+     * @return Whether the container hosts a single model or multiple models.
+     * @see ContainerMode
+     */
+
+    public String getMode() {
+        return this.mode;
+    }
+
+    /**
+     * <p>
+     * Whether the container hosts a single model or multiple models.
+     * </p>
+     * 
+     * @param mode
+     *        Whether the container hosts a single model or multiple models.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ContainerMode
+     */
+
+    public ContainerDefinition withMode(String mode) {
+        setMode(mode);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Whether the container hosts a single model or multiple models.
+     * </p>
+     * 
+     * @param mode
+     *        Whether the container hosts a single model or multiple models.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see ContainerMode
+     */
+
+    public ContainerDefinition withMode(ContainerMode mode) {
+        this.mode = mode.toString();
         return this;
     }
 
@@ -465,6 +530,13 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
         return this;
     }
 
+    /**
+     * Add a single Environment entry
+     *
+     * @see ContainerDefinition#withEnvironment
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public ContainerDefinition addEnvironmentEntry(String key, String value) {
         if (null == this.environment) {
             this.environment = new java.util.HashMap<String, String>();
@@ -542,6 +614,8 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
             sb.append("ContainerHostname: ").append(getContainerHostname()).append(",");
         if (getImage() != null)
             sb.append("Image: ").append(getImage()).append(",");
+        if (getMode() != null)
+            sb.append("Mode: ").append(getMode()).append(",");
         if (getModelDataUrl() != null)
             sb.append("ModelDataUrl: ").append(getModelDataUrl()).append(",");
         if (getEnvironment() != null)
@@ -570,6 +644,10 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
             return false;
         if (other.getImage() != null && other.getImage().equals(this.getImage()) == false)
             return false;
+        if (other.getMode() == null ^ this.getMode() == null)
+            return false;
+        if (other.getMode() != null && other.getMode().equals(this.getMode()) == false)
+            return false;
         if (other.getModelDataUrl() == null ^ this.getModelDataUrl() == null)
             return false;
         if (other.getModelDataUrl() != null && other.getModelDataUrl().equals(this.getModelDataUrl()) == false)
@@ -592,6 +670,7 @@ public class ContainerDefinition implements Serializable, Cloneable, StructuredP
 
         hashCode = prime * hashCode + ((getContainerHostname() == null) ? 0 : getContainerHostname().hashCode());
         hashCode = prime * hashCode + ((getImage() == null) ? 0 : getImage().hashCode());
+        hashCode = prime * hashCode + ((getMode() == null) ? 0 : getMode().hashCode());
         hashCode = prime * hashCode + ((getModelDataUrl() == null) ? 0 : getModelDataUrl().hashCode());
         hashCode = prime * hashCode + ((getEnvironment() == null) ? 0 : getEnvironment().hashCode());
         hashCode = prime * hashCode + ((getModelPackageName() == null) ? 0 : getModelPackageName().hashCode());

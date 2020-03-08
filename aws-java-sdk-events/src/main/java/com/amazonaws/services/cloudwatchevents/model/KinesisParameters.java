@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon
- * Kinesis data stream so that you can control the shard that the event goes to. If you don't include this parameter,
+ * Kinesis data stream, so that you can control the shard to which the event goes. If you do not include this parameter,
  * the default is to use the <code>eventId</code> as the partition key.
  * </p>
  * 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,14 +28,14 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AccelerationSettings implements Serializable, Cloneable, StructuredPojo {
 
-    /** Acceleration configuration for the job. */
+    /** Specify the conditions when the service will run your job with accelerated transcoding. */
     private String mode;
 
     /**
-     * Acceleration configuration for the job.
+     * Specify the conditions when the service will run your job with accelerated transcoding.
      * 
      * @param mode
-     *        Acceleration configuration for the job.
+     *        Specify the conditions when the service will run your job with accelerated transcoding.
      * @see AccelerationMode
      */
 
@@ -44,9 +44,9 @@ public class AccelerationSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Acceleration configuration for the job.
+     * Specify the conditions when the service will run your job with accelerated transcoding.
      * 
-     * @return Acceleration configuration for the job.
+     * @return Specify the conditions when the service will run your job with accelerated transcoding.
      * @see AccelerationMode
      */
 
@@ -55,10 +55,10 @@ public class AccelerationSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Acceleration configuration for the job.
+     * Specify the conditions when the service will run your job with accelerated transcoding.
      * 
      * @param mode
-     *        Acceleration configuration for the job.
+     *        Specify the conditions when the service will run your job with accelerated transcoding.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AccelerationMode
      */
@@ -69,10 +69,10 @@ public class AccelerationSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * Acceleration configuration for the job.
+     * Specify the conditions when the service will run your job with accelerated transcoding.
      * 
      * @param mode
-     *        Acceleration configuration for the job.
+     *        Specify the conditions when the service will run your job with accelerated transcoding.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AccelerationMode
      */

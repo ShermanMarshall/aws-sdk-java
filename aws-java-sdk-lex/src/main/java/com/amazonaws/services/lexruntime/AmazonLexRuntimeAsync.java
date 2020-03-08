@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -298,8 +298,8 @@ public interface AmazonLexRuntimeAsync extends AmazonLexRuntime {
 
     /**
      * <p>
-     * Sends user input (text or SSML) to Amazon Lex. Client applications can use this API to send requests to Amazon
-     * Lex at runtime. Amazon Lex then interprets the user input using the machine learning model it built for the bot.
+     * Sends user input to Amazon Lex. Client applications can use this API to send requests to Amazon Lex at runtime.
+     * Amazon Lex then interprets the user input using the machine learning model it built for the bot.
      * </p>
      * <p>
      * In response, Amazon Lex returns the next <code>message</code> to convey to the user an optional
@@ -390,8 +390,8 @@ public interface AmazonLexRuntimeAsync extends AmazonLexRuntime {
 
     /**
      * <p>
-     * Sends user input (text or SSML) to Amazon Lex. Client applications can use this API to send requests to Amazon
-     * Lex at runtime. Amazon Lex then interprets the user input using the machine learning model it built for the bot.
+     * Sends user input to Amazon Lex. Client applications can use this API to send requests to Amazon Lex at runtime.
+     * Amazon Lex then interprets the user input using the machine learning model it built for the bot.
      * </p>
      * <p>
      * In response, Amazon Lex returns the next <code>message</code> to convey to the user an optional

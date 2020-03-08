@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,10 +42,10 @@ public class AuthorizerMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("identitySource").build();
     private static final MarshallingInfo<String> IDENTITYVALIDATIONEXPRESSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("identityValidationExpression").build();
+    private static final MarshallingInfo<StructuredPojo> JWTCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("jwtConfiguration").build();
     private static final MarshallingInfo<String> NAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("name").build();
-    private static final MarshallingInfo<List> PROVIDERARNS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
-            .marshallLocationName("providerArns").build();
 
     private static final AuthorizerMarshaller instance = new AuthorizerMarshaller();
 
@@ -70,8 +70,8 @@ public class AuthorizerMarshaller {
             protocolMarshaller.marshall(authorizer.getAuthorizerUri(), AUTHORIZERURI_BINDING);
             protocolMarshaller.marshall(authorizer.getIdentitySource(), IDENTITYSOURCE_BINDING);
             protocolMarshaller.marshall(authorizer.getIdentityValidationExpression(), IDENTITYVALIDATIONEXPRESSION_BINDING);
+            protocolMarshaller.marshall(authorizer.getJwtConfiguration(), JWTCONFIGURATION_BINDING);
             protocolMarshaller.marshall(authorizer.getName(), NAME_BINDING);
-            protocolMarshaller.marshall(authorizer.getProviderArns(), PROVIDERARNS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

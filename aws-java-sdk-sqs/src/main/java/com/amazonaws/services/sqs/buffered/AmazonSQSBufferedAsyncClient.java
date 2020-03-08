@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2012-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -164,7 +164,8 @@ public class AmazonSQSBufferedAsyncClient implements AmazonSQSAsync {
     public DeleteMessageBatchResult deleteMessageBatch(DeleteMessageBatchRequest deleteMessageBatchRequest)
             throws AmazonServiceException, AmazonClientException {
         ResultConverter.appendUserAgent(deleteMessageBatchRequest, USER_AGENT);
-        return realSQS.deleteMessageBatch(deleteMessageBatchRequest);
+        QueueBuffer buffer = getQBuffer(deleteMessageBatchRequest.getQueueUrl());
+        return buffer.deleteMessageBatchSync(deleteMessageBatchRequest);
     }
 
     public DeleteMessageResult deleteMessage(DeleteMessageRequest deleteMessageRequest) throws AmazonServiceException,

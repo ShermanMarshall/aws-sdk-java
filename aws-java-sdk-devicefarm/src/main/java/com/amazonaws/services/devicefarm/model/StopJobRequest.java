@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,18 +27,18 @@ public class StopJobRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.
+     * Represents the Amazon Resource Name (ARN) of the Device Farm job to stop.
      * </p>
      */
     private String arn;
 
     /**
      * <p>
-     * Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.
+     * Represents the Amazon Resource Name (ARN) of the Device Farm job to stop.
      * </p>
      * 
      * @param arn
-     *        Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.
+     *        Represents the Amazon Resource Name (ARN) of the Device Farm job to stop.
      */
 
     public void setArn(String arn) {
@@ -47,10 +47,10 @@ public class StopJobRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.
+     * Represents the Amazon Resource Name (ARN) of the Device Farm job to stop.
      * </p>
      * 
-     * @return Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.
+     * @return Represents the Amazon Resource Name (ARN) of the Device Farm job to stop.
      */
 
     public String getArn() {
@@ -59,11 +59,11 @@ public class StopJobRequest extends com.amazonaws.AmazonWebServiceRequest implem
 
     /**
      * <p>
-     * Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.
+     * Represents the Amazon Resource Name (ARN) of the Device Farm job to stop.
      * </p>
      * 
      * @param arn
-     *        Represents the Amazon Resource Name (ARN) of the Device Farm job you wish to stop.
+     *        Represents the Amazon Resource Name (ARN) of the Device Farm job to stop.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

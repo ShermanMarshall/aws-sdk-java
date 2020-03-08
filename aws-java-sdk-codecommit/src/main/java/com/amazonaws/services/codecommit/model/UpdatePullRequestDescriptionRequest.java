@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class UpdatePullRequestDescriptionRequest extends com.amazonaws.AmazonWeb
     private String pullRequestId;
     /**
      * <p>
-     * The updated content of the description for the pull request. This content will replace the existing description.
+     * The updated content of the description for the pull request. This content replaces the existing description.
      * </p>
      */
     private String description;
@@ -80,11 +80,11 @@ public class UpdatePullRequestDescriptionRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The updated content of the description for the pull request. This content will replace the existing description.
+     * The updated content of the description for the pull request. This content replaces the existing description.
      * </p>
      * 
      * @param description
-     *        The updated content of the description for the pull request. This content will replace the existing
+     *        The updated content of the description for the pull request. This content replaces the existing
      *        description.
      */
 
@@ -94,10 +94,10 @@ public class UpdatePullRequestDescriptionRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The updated content of the description for the pull request. This content will replace the existing description.
+     * The updated content of the description for the pull request. This content replaces the existing description.
      * </p>
      * 
-     * @return The updated content of the description for the pull request. This content will replace the existing
+     * @return The updated content of the description for the pull request. This content replaces the existing
      *         description.
      */
 
@@ -107,11 +107,11 @@ public class UpdatePullRequestDescriptionRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The updated content of the description for the pull request. This content will replace the existing description.
+     * The updated content of the description for the pull request. This content replaces the existing description.
      * </p>
      * 
      * @param description
-     *        The updated content of the description for the pull request. This content will replace the existing
+     *        The updated content of the description for the pull request. This content replaces the existing
      *        description.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

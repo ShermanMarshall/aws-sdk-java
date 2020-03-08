@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -525,6 +525,39 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<CreateContactMethodResult> createContactMethodAsync(CreateContactMethodRequest request) {
+
+        return createContactMethodAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateContactMethodResult> createContactMethodAsync(final CreateContactMethodRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateContactMethodRequest, CreateContactMethodResult> asyncHandler) {
+        final CreateContactMethodRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateContactMethodResult>() {
+            @Override
+            public CreateContactMethodResult call() throws Exception {
+                CreateContactMethodResult result = null;
+
+                try {
+                    result = executeCreateContactMethod(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateDiskResult> createDiskAsync(CreateDiskRequest request) {
 
         return createDiskAsync(request, null);
@@ -977,6 +1010,105 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
 
                 try {
                     result = executeCreateRelationalDatabaseSnapshot(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAlarmResult> deleteAlarmAsync(DeleteAlarmRequest request) {
+
+        return deleteAlarmAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAlarmResult> deleteAlarmAsync(final DeleteAlarmRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteAlarmRequest, DeleteAlarmResult> asyncHandler) {
+        final DeleteAlarmRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteAlarmResult>() {
+            @Override
+            public DeleteAlarmResult call() throws Exception {
+                DeleteAlarmResult result = null;
+
+                try {
+                    result = executeDeleteAlarm(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAutoSnapshotResult> deleteAutoSnapshotAsync(DeleteAutoSnapshotRequest request) {
+
+        return deleteAutoSnapshotAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAutoSnapshotResult> deleteAutoSnapshotAsync(final DeleteAutoSnapshotRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteAutoSnapshotRequest, DeleteAutoSnapshotResult> asyncHandler) {
+        final DeleteAutoSnapshotRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteAutoSnapshotResult>() {
+            @Override
+            public DeleteAutoSnapshotResult call() throws Exception {
+                DeleteAutoSnapshotResult result = null;
+
+                try {
+                    result = executeDeleteAutoSnapshot(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteContactMethodResult> deleteContactMethodAsync(DeleteContactMethodRequest request) {
+
+        return deleteContactMethodAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteContactMethodResult> deleteContactMethodAsync(final DeleteContactMethodRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteContactMethodRequest, DeleteContactMethodResult> asyncHandler) {
+        final DeleteContactMethodRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteContactMethodResult>() {
+            @Override
+            public DeleteContactMethodResult call() throws Exception {
+                DeleteContactMethodResult result = null;
+
+                try {
+                    result = executeDeleteContactMethod(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1494,6 +1626,39 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<DisableAddOnResult> disableAddOnAsync(DisableAddOnRequest request) {
+
+        return disableAddOnAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DisableAddOnResult> disableAddOnAsync(final DisableAddOnRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DisableAddOnRequest, DisableAddOnResult> asyncHandler) {
+        final DisableAddOnRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DisableAddOnResult>() {
+            @Override
+            public DisableAddOnResult call() throws Exception {
+                DisableAddOnResult result = null;
+
+                try {
+                    result = executeDisableAddOn(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DownloadDefaultKeyPairResult> downloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest request) {
 
         return downloadDefaultKeyPairAsync(request, null);
@@ -1511,6 +1676,39 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
 
                 try {
                     result = executeDownloadDefaultKeyPair(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<EnableAddOnResult> enableAddOnAsync(EnableAddOnRequest request) {
+
+        return enableAddOnAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<EnableAddOnResult> enableAddOnAsync(final EnableAddOnRequest request,
+            final com.amazonaws.handlers.AsyncHandler<EnableAddOnRequest, EnableAddOnResult> asyncHandler) {
+        final EnableAddOnRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<EnableAddOnResult>() {
+            @Override
+            public EnableAddOnResult call() throws Exception {
+                EnableAddOnResult result = null;
+
+                try {
+                    result = executeEnableAddOn(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1577,6 +1775,72 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
 
                 try {
                     result = executeGetActiveNames(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAlarmsResult> getAlarmsAsync(GetAlarmsRequest request) {
+
+        return getAlarmsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAlarmsResult> getAlarmsAsync(final GetAlarmsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetAlarmsRequest, GetAlarmsResult> asyncHandler) {
+        final GetAlarmsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetAlarmsResult>() {
+            @Override
+            public GetAlarmsResult call() throws Exception {
+                GetAlarmsResult result = null;
+
+                try {
+                    result = executeGetAlarms(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAutoSnapshotsResult> getAutoSnapshotsAsync(GetAutoSnapshotsRequest request) {
+
+        return getAutoSnapshotsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAutoSnapshotsResult> getAutoSnapshotsAsync(final GetAutoSnapshotsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetAutoSnapshotsRequest, GetAutoSnapshotsResult> asyncHandler) {
+        final GetAutoSnapshotsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetAutoSnapshotsResult>() {
+            @Override
+            public GetAutoSnapshotsResult call() throws Exception {
+                GetAutoSnapshotsResult result = null;
+
+                try {
+                    result = executeGetAutoSnapshots(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1677,6 +1941,39 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
 
                 try {
                     result = executeGetCloudFormationStackRecords(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetContactMethodsResult> getContactMethodsAsync(GetContactMethodsRequest request) {
+
+        return getContactMethodsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetContactMethodsResult> getContactMethodsAsync(final GetContactMethodsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetContactMethodsRequest, GetContactMethodsResult> asyncHandler) {
+        final GetContactMethodsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetContactMethodsResult>() {
+            @Override
+            public GetContactMethodsResult call() throws Exception {
+                GetContactMethodsResult result = null;
+
+                try {
+                    result = executeGetContactMethods(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -3126,6 +3423,39 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
     }
 
     @Override
+    public java.util.concurrent.Future<PutAlarmResult> putAlarmAsync(PutAlarmRequest request) {
+
+        return putAlarmAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutAlarmResult> putAlarmAsync(final PutAlarmRequest request,
+            final com.amazonaws.handlers.AsyncHandler<PutAlarmRequest, PutAlarmResult> asyncHandler) {
+        final PutAlarmRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<PutAlarmResult>() {
+            @Override
+            public PutAlarmResult call() throws Exception {
+                PutAlarmResult result = null;
+
+                try {
+                    result = executePutAlarm(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<PutInstancePublicPortsResult> putInstancePublicPortsAsync(PutInstancePublicPortsRequest request) {
 
         return putInstancePublicPortsAsync(request, null);
@@ -3242,6 +3572,40 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
 
                 try {
                     result = executeReleaseStaticIp(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<SendContactMethodVerificationResult> sendContactMethodVerificationAsync(SendContactMethodVerificationRequest request) {
+
+        return sendContactMethodVerificationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<SendContactMethodVerificationResult> sendContactMethodVerificationAsync(
+            final SendContactMethodVerificationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<SendContactMethodVerificationRequest, SendContactMethodVerificationResult> asyncHandler) {
+        final SendContactMethodVerificationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<SendContactMethodVerificationResult>() {
+            @Override
+            public SendContactMethodVerificationResult call() throws Exception {
+                SendContactMethodVerificationResult result = null;
+
+                try {
+                    result = executeSendContactMethodVerification(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -3407,6 +3771,39 @@ public class AmazonLightsailAsyncClient extends AmazonLightsailClient implements
 
                 try {
                     result = executeTagResource(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<TestAlarmResult> testAlarmAsync(TestAlarmRequest request) {
+
+        return testAlarmAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<TestAlarmResult> testAlarmAsync(final TestAlarmRequest request,
+            final com.amazonaws.handlers.AsyncHandler<TestAlarmRequest, TestAlarmResult> asyncHandler) {
+        final TestAlarmRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<TestAlarmResult>() {
+            @Override
+            public TestAlarmResult call() throws Exception {
+                TestAlarmResult result = null;
+
+                try {
+                    result = executeTestAlarm(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

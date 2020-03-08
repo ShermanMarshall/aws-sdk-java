@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -113,6 +113,10 @@ public class DescribeBrokerResultJsonUnmarshaller implements Unmarshaller<Descri
                     context.nextToken();
                     describeBrokerResult.setPendingEngineVersion(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("pendingHostInstanceType", targetDepth)) {
+                    context.nextToken();
+                    describeBrokerResult.setPendingHostInstanceType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("pendingSecurityGroups", targetDepth)) {
                     context.nextToken();
                     describeBrokerResult.setPendingSecurityGroups(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
@@ -124,6 +128,10 @@ public class DescribeBrokerResultJsonUnmarshaller implements Unmarshaller<Descri
                 if (context.testExpression("securityGroups", targetDepth)) {
                     context.nextToken();
                     describeBrokerResult.setSecurityGroups(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("storageType", targetDepth)) {
+                    context.nextToken();
+                    describeBrokerResult.setStorageType(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("subnetIds", targetDepth)) {
                     context.nextToken();

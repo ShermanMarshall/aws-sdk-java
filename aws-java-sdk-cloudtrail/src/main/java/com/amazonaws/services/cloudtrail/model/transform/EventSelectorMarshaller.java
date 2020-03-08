@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,8 @@ public class EventSelectorMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IncludeManagementEvents").build();
     private static final MarshallingInfo<List> DATARESOURCES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("DataResources").build();
+    private static final MarshallingInfo<List> EXCLUDEMANAGEMENTEVENTSOURCES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ExcludeManagementEventSources").build();
 
     private static final EventSelectorMarshaller instance = new EventSelectorMarshaller();
 
@@ -54,6 +56,7 @@ public class EventSelectorMarshaller {
             protocolMarshaller.marshall(eventSelector.getReadWriteType(), READWRITETYPE_BINDING);
             protocolMarshaller.marshall(eventSelector.getIncludeManagementEvents(), INCLUDEMANAGEMENTEVENTS_BINDING);
             protocolMarshaller.marshall(eventSelector.getDataResources(), DATARESOURCES_BINDING);
+            protocolMarshaller.marshall(eventSelector.getExcludeManagementEventSources(), EXCLUDEMANAGEMENTEVENTSOURCES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

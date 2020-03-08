@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -163,8 +163,9 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      * <p>
      * To create a change set for a stack that doesn't exist, for the <code>ChangeSetType</code> parameter, specify
      * <code>CREATE</code>. To create a change set for an existing stack, specify <code>UPDATE</code> for the
-     * <code>ChangeSetType</code> parameter. After the <code>CreateChangeSet</code> call successfully completes, AWS
-     * CloudFormation starts creating the change set. To check the status of the change set or to review it, use the
+     * <code>ChangeSetType</code> parameter. To create a change set for an import operation, specify <code>IMPORT</code>
+     * for the <code>ChangeSetType</code> parameter. After the <code>CreateChangeSet</code> call successfully completes,
+     * AWS CloudFormation starts creating the change set. To check the status of the change set or to review it, use the
      * <a>DescribeChangeSet</a> action.
      * </p>
      * <p>
@@ -194,8 +195,9 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      * <p>
      * To create a change set for a stack that doesn't exist, for the <code>ChangeSetType</code> parameter, specify
      * <code>CREATE</code>. To create a change set for an existing stack, specify <code>UPDATE</code> for the
-     * <code>ChangeSetType</code> parameter. After the <code>CreateChangeSet</code> call successfully completes, AWS
-     * CloudFormation starts creating the change set. To check the status of the change set or to review it, use the
+     * <code>ChangeSetType</code> parameter. To create a change set for an import operation, specify <code>IMPORT</code>
+     * for the <code>ChangeSetType</code> parameter. After the <code>CreateChangeSet</code> call successfully completes,
+     * AWS CloudFormation starts creating the change set. To check the status of the change set or to review it, use the
      * <a>DescribeChangeSet</a> action.
      * </p>
      * <p>
@@ -255,8 +257,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
     /**
      * <p>
      * Creates stack instances for the specified accounts, within the specified regions. A stack instance refers to a
-     * stack in a specific account and region. <code>Accounts</code> and <code>Regions</code> are required
-     * parameters—you must specify at least one account and one region.
+     * stack in a specific account and region. You must specify at least one value for either <code>Accounts</code> or
+     * <code>DeploymentTargets</code>, and you must specify at least one value for <code>Regions</code>.
      * </p>
      * 
      * @param createStackInstancesRequest
@@ -270,8 +272,8 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
     /**
      * <p>
      * Creates stack instances for the specified accounts, within the specified regions. A stack instance refers to a
-     * stack in a specific account and region. <code>Accounts</code> and <code>Regions</code> are required
-     * parameters—you must specify at least one account and one region.
+     * stack in a specific account and region. You must specify at least one value for either <code>Accounts</code> or
+     * <code>DeploymentTargets</code>, and you must specify at least one value for <code>Regions</code>.
      * </p>
      * 
      * @param createStackInstancesRequest
@@ -455,6 +457,55 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      */
     java.util.concurrent.Future<DeleteStackSetResult> deleteStackSetAsync(DeleteStackSetRequest deleteStackSetRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteStackSetRequest, DeleteStackSetResult> asyncHandler);
+
+    /**
+     * <p>
+     * Removes a type or type version from active use in the CloudFormation registry. If a type or type version is
+     * deregistered, it cannot be used in CloudFormation operations.
+     * </p>
+     * <p>
+     * To deregister a type, you must individually deregister all registered versions of that type. If a type has only a
+     * single registered version, deregistering that version results in the type itself being deregistered.
+     * </p>
+     * <p>
+     * You cannot deregister the default version of a type, unless it is the only registered version of that type, in
+     * which case the type itself is deregistered as well.
+     * </p>
+     * 
+     * @param deregisterTypeRequest
+     * @return A Java Future containing the result of the DeregisterType operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DeregisterType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeregisterType" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeregisterTypeResult> deregisterTypeAsync(DeregisterTypeRequest deregisterTypeRequest);
+
+    /**
+     * <p>
+     * Removes a type or type version from active use in the CloudFormation registry. If a type or type version is
+     * deregistered, it cannot be used in CloudFormation operations.
+     * </p>
+     * <p>
+     * To deregister a type, you must individually deregister all registered versions of that type. If a type has only a
+     * single registered version, deregistering that version results in the type itself being deregistered.
+     * </p>
+     * <p>
+     * You cannot deregister the default version of a type, unless it is the only registered version of that type, in
+     * which case the type itself is deregistered as well.
+     * </p>
+     * 
+     * @param deregisterTypeRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeregisterType operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DeregisterType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DeregisterType" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeregisterTypeResult> deregisterTypeAsync(DeregisterTypeRequest deregisterTypeRequest,
+            com.amazonaws.handlers.AsyncHandler<DeregisterTypeRequest, DeregisterTypeResult> asyncHandler);
 
     /**
      * <p>
@@ -988,6 +1039,92 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
 
     /**
      * <p>
+     * Returns detailed information about a type that has been registered.
+     * </p>
+     * <p>
+     * If you specify a <code>VersionId</code>, <code>DescribeType</code> returns information about that specific type
+     * version. Otherwise, it returns information about the default type version.
+     * </p>
+     * 
+     * @param describeTypeRequest
+     * @return A Java Future containing the result of the DescribeType operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DescribeType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeType" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeTypeResult> describeTypeAsync(DescribeTypeRequest describeTypeRequest);
+
+    /**
+     * <p>
+     * Returns detailed information about a type that has been registered.
+     * </p>
+     * <p>
+     * If you specify a <code>VersionId</code>, <code>DescribeType</code> returns information about that specific type
+     * version. Otherwise, it returns information about the default type version.
+     * </p>
+     * 
+     * @param describeTypeRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeType operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DescribeType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeType" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeTypeResult> describeTypeAsync(DescribeTypeRequest describeTypeRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeTypeRequest, DescribeTypeResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about a type's registration, including its current status and type and version identifiers.
+     * </p>
+     * <p>
+     * When you initiate a registration request using <code> <a>RegisterType</a> </code>, you can then use
+     * <code> <a>DescribeTypeRegistration</a> </code> to monitor the progress of that registration request.
+     * </p>
+     * <p>
+     * Once the registration request has completed, use <code> <a>DescribeType</a> </code> to return detailed
+     * informaiton about a type.
+     * </p>
+     * 
+     * @param describeTypeRegistrationRequest
+     * @return A Java Future containing the result of the DescribeTypeRegistration operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DescribeTypeRegistration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeTypeRegistration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeTypeRegistrationResult> describeTypeRegistrationAsync(DescribeTypeRegistrationRequest describeTypeRegistrationRequest);
+
+    /**
+     * <p>
+     * Returns information about a type's registration, including its current status and type and version identifiers.
+     * </p>
+     * <p>
+     * When you initiate a registration request using <code> <a>RegisterType</a> </code>, you can then use
+     * <code> <a>DescribeTypeRegistration</a> </code> to monitor the progress of that registration request.
+     * </p>
+     * <p>
+     * Once the registration request has completed, use <code> <a>DescribeType</a> </code> to return detailed
+     * informaiton about a type.
+     * </p>
+     * 
+     * @param describeTypeRegistrationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeTypeRegistration operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DescribeTypeRegistration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DescribeTypeRegistration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeTypeRegistrationResult> describeTypeRegistrationAsync(DescribeTypeRegistrationRequest describeTypeRegistrationRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeTypeRegistrationRequest, DescribeTypeRegistrationResult> asyncHandler);
+
+    /**
+     * <p>
      * Detects whether a stack's actual configuration differs, or has <i>drifted</i>, from it's expected configuration,
      * as defined in the stack template and any values specified as template parameters. For each resource in the stack
      * that supports drift detection, AWS CloudFormation compares the actual configuration of the resource with its
@@ -1131,6 +1268,125 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      */
     java.util.concurrent.Future<DetectStackResourceDriftResult> detectStackResourceDriftAsync(DetectStackResourceDriftRequest detectStackResourceDriftRequest,
             com.amazonaws.handlers.AsyncHandler<DetectStackResourceDriftRequest, DetectStackResourceDriftResult> asyncHandler);
+
+    /**
+     * <p>
+     * Detect drift on a stack set. When CloudFormation performs drift detection on a stack set, it performs drift
+     * detection on the stack associated with each stack instance in the stack set. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html">How CloudFormation
+     * Performs Drift Detection on a Stack Set</a>.
+     * </p>
+     * <p>
+     * <code>DetectStackSetDrift</code> returns the <code>OperationId</code> of the stack set drift detection operation.
+     * Use this operation id with <code> <a>DescribeStackSetOperation</a> </code> to monitor the progress of the drift
+     * detection operation. The drift detection operation may take some time, depending on the number of stack instances
+     * included in the stack set, as well as the number of resources included in each stack.
+     * </p>
+     * <p>
+     * Once the operation has completed, use the following actions to return drift information:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Use <code> <a>DescribeStackSet</a> </code> to return detailed informaiton about the stack set, including detailed
+     * information about the last <i>completed</i> drift operation performed on the stack set. (Information about drift
+     * operations that are in progress is not included.)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use <code> <a>ListStackInstances</a> </code> to return a list of stack instances belonging to the stack set,
+     * including the drift status and last drift time checked of each instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use <code> <a>DescribeStackInstance</a> </code> to return detailed information about a specific stack instance,
+     * including its drift status and last drift time checked.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information on performing a drift detection operation on a stack set, see <a
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html">Detecting Unmanaged
+     * Changes in Stack Sets</a>.
+     * </p>
+     * <p>
+     * You can only run a single drift detection operation on a given stack set at one time.
+     * </p>
+     * <p>
+     * To stop a drift detection stack set operation, use <code> <a>StopStackSetOperation</a> </code>.
+     * </p>
+     * 
+     * @param detectStackSetDriftRequest
+     * @return A Java Future containing the result of the DetectStackSetDrift operation returned by the service.
+     * @sample AmazonCloudFormationAsync.DetectStackSetDrift
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DetectStackSetDrift"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DetectStackSetDriftResult> detectStackSetDriftAsync(DetectStackSetDriftRequest detectStackSetDriftRequest);
+
+    /**
+     * <p>
+     * Detect drift on a stack set. When CloudFormation performs drift detection on a stack set, it performs drift
+     * detection on the stack associated with each stack instance in the stack set. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html">How CloudFormation
+     * Performs Drift Detection on a Stack Set</a>.
+     * </p>
+     * <p>
+     * <code>DetectStackSetDrift</code> returns the <code>OperationId</code> of the stack set drift detection operation.
+     * Use this operation id with <code> <a>DescribeStackSetOperation</a> </code> to monitor the progress of the drift
+     * detection operation. The drift detection operation may take some time, depending on the number of stack instances
+     * included in the stack set, as well as the number of resources included in each stack.
+     * </p>
+     * <p>
+     * Once the operation has completed, use the following actions to return drift information:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Use <code> <a>DescribeStackSet</a> </code> to return detailed informaiton about the stack set, including detailed
+     * information about the last <i>completed</i> drift operation performed on the stack set. (Information about drift
+     * operations that are in progress is not included.)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use <code> <a>ListStackInstances</a> </code> to return a list of stack instances belonging to the stack set,
+     * including the drift status and last drift time checked of each instance.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use <code> <a>DescribeStackInstance</a> </code> to return detailed information about a specific stack instance,
+     * including its drift status and last drift time checked.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information on performing a drift detection operation on a stack set, see <a
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html">Detecting Unmanaged
+     * Changes in Stack Sets</a>.
+     * </p>
+     * <p>
+     * You can only run a single drift detection operation on a given stack set at one time.
+     * </p>
+     * <p>
+     * To stop a drift detection stack set operation, use <code> <a>StopStackSetOperation</a> </code>.
+     * </p>
+     * 
+     * @param detectStackSetDriftRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DetectStackSetDrift operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.DetectStackSetDrift
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/DetectStackSetDrift"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DetectStackSetDriftResult> detectStackSetDriftAsync(DetectStackSetDriftRequest detectStackSetDriftRequest,
+            com.amazonaws.handlers.AsyncHandler<DetectStackSetDriftRequest, DetectStackSetDriftResult> asyncHandler);
 
     /**
      * <p>
@@ -1738,6 +1994,225 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
 
     /**
      * <p>
+     * Returns a list of registration tokens for the specified type(s).
+     * </p>
+     * 
+     * @param listTypeRegistrationsRequest
+     * @return A Java Future containing the result of the ListTypeRegistrations operation returned by the service.
+     * @sample AmazonCloudFormationAsync.ListTypeRegistrations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypeRegistrations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListTypeRegistrationsResult> listTypeRegistrationsAsync(ListTypeRegistrationsRequest listTypeRegistrationsRequest);
+
+    /**
+     * <p>
+     * Returns a list of registration tokens for the specified type(s).
+     * </p>
+     * 
+     * @param listTypeRegistrationsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListTypeRegistrations operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.ListTypeRegistrations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypeRegistrations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListTypeRegistrationsResult> listTypeRegistrationsAsync(ListTypeRegistrationsRequest listTypeRegistrationsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListTypeRegistrationsRequest, ListTypeRegistrationsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns summary information about the versions of a type.
+     * </p>
+     * 
+     * @param listTypeVersionsRequest
+     * @return A Java Future containing the result of the ListTypeVersions operation returned by the service.
+     * @sample AmazonCloudFormationAsync.ListTypeVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypeVersions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListTypeVersionsResult> listTypeVersionsAsync(ListTypeVersionsRequest listTypeVersionsRequest);
+
+    /**
+     * <p>
+     * Returns summary information about the versions of a type.
+     * </p>
+     * 
+     * @param listTypeVersionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListTypeVersions operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.ListTypeVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypeVersions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListTypeVersionsResult> listTypeVersionsAsync(ListTypeVersionsRequest listTypeVersionsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListTypeVersionsRequest, ListTypeVersionsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns summary information about types that have been registered with CloudFormation.
+     * </p>
+     * 
+     * @param listTypesRequest
+     * @return A Java Future containing the result of the ListTypes operation returned by the service.
+     * @sample AmazonCloudFormationAsync.ListTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTypesResult> listTypesAsync(ListTypesRequest listTypesRequest);
+
+    /**
+     * <p>
+     * Returns summary information about types that have been registered with CloudFormation.
+     * </p>
+     * 
+     * @param listTypesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListTypes operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.ListTypes
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/ListTypes" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTypesResult> listTypesAsync(ListTypesRequest listTypesRequest,
+            com.amazonaws.handlers.AsyncHandler<ListTypesRequest, ListTypesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Reports progress of a resource handler to CloudFormation.
+     * </p>
+     * <p>
+     * Reserved for use by the <a
+     * href="https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html"
+     * >CloudFormation CLI</a>. Do not use this API in your code.
+     * </p>
+     * 
+     * @param recordHandlerProgressRequest
+     * @return A Java Future containing the result of the RecordHandlerProgress operation returned by the service.
+     * @sample AmazonCloudFormationAsync.RecordHandlerProgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RecordHandlerProgress"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<RecordHandlerProgressResult> recordHandlerProgressAsync(RecordHandlerProgressRequest recordHandlerProgressRequest);
+
+    /**
+     * <p>
+     * Reports progress of a resource handler to CloudFormation.
+     * </p>
+     * <p>
+     * Reserved for use by the <a
+     * href="https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html"
+     * >CloudFormation CLI</a>. Do not use this API in your code.
+     * </p>
+     * 
+     * @param recordHandlerProgressRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the RecordHandlerProgress operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.RecordHandlerProgress
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RecordHandlerProgress"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<RecordHandlerProgressResult> recordHandlerProgressAsync(RecordHandlerProgressRequest recordHandlerProgressRequest,
+            com.amazonaws.handlers.AsyncHandler<RecordHandlerProgressRequest, RecordHandlerProgressResult> asyncHandler);
+
+    /**
+     * <p>
+     * Registers a type with the CloudFormation service. Registering a type makes it available for use in CloudFormation
+     * templates in your AWS account, and includes:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Validating the resource schema
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Determining which handlers have been specified for the resource
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Making the resource type available for use in your account
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information on how to develop types and ready them for registeration, see <a
+     * href="https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html">Creating Resource
+     * Providers</a> in the <i>CloudFormation CLI User Guide</i>.
+     * </p>
+     * <p>
+     * Once you have initiated a registration request using <code> <a>RegisterType</a> </code>, you can use
+     * <code> <a>DescribeTypeRegistration</a> </code> to monitor the progress of the registration request.
+     * </p>
+     * 
+     * @param registerTypeRequest
+     * @return A Java Future containing the result of the RegisterType operation returned by the service.
+     * @sample AmazonCloudFormationAsync.RegisterType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RegisterType" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<RegisterTypeResult> registerTypeAsync(RegisterTypeRequest registerTypeRequest);
+
+    /**
+     * <p>
+     * Registers a type with the CloudFormation service. Registering a type makes it available for use in CloudFormation
+     * templates in your AWS account, and includes:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Validating the resource schema
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Determining which handlers have been specified for the resource
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Making the resource type available for use in your account
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information on how to develop types and ready them for registeration, see <a
+     * href="https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html">Creating Resource
+     * Providers</a> in the <i>CloudFormation CLI User Guide</i>.
+     * </p>
+     * <p>
+     * Once you have initiated a registration request using <code> <a>RegisterType</a> </code>, you can use
+     * <code> <a>DescribeTypeRegistration</a> </code> to monitor the progress of the registration request.
+     * </p>
+     * 
+     * @param registerTypeRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the RegisterType operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.RegisterType
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/RegisterType" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<RegisterTypeResult> registerTypeAsync(RegisterTypeRequest registerTypeRequest,
+            com.amazonaws.handlers.AsyncHandler<RegisterTypeRequest, RegisterTypeResult> asyncHandler);
+
+    /**
+     * <p>
      * Sets a stack policy for a specified stack.
      * </p>
      * 
@@ -1768,6 +2243,37 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      */
     java.util.concurrent.Future<SetStackPolicyResult> setStackPolicyAsync(SetStackPolicyRequest setStackPolicyRequest,
             com.amazonaws.handlers.AsyncHandler<SetStackPolicyRequest, SetStackPolicyResult> asyncHandler);
+
+    /**
+     * <p>
+     * Specify the default version of a type. The default version of a type will be used in CloudFormation operations.
+     * </p>
+     * 
+     * @param setTypeDefaultVersionRequest
+     * @return A Java Future containing the result of the SetTypeDefaultVersion operation returned by the service.
+     * @sample AmazonCloudFormationAsync.SetTypeDefaultVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SetTypeDefaultVersion"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<SetTypeDefaultVersionResult> setTypeDefaultVersionAsync(SetTypeDefaultVersionRequest setTypeDefaultVersionRequest);
+
+    /**
+     * <p>
+     * Specify the default version of a type. The default version of a type will be used in CloudFormation operations.
+     * </p>
+     * 
+     * @param setTypeDefaultVersionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the SetTypeDefaultVersion operation returned by the service.
+     * @sample AmazonCloudFormationAsyncHandler.SetTypeDefaultVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/SetTypeDefaultVersion"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<SetTypeDefaultVersionResult> setTypeDefaultVersionAsync(SetTypeDefaultVersionRequest setTypeDefaultVersionRequest,
+            com.amazonaws.handlers.AsyncHandler<SetTypeDefaultVersionRequest, SetTypeDefaultVersionResult> asyncHandler);
 
     /**
      * <p>
@@ -2014,12 +2520,12 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      * <p>
      * Updates termination protection for the specified stack. If a user attempts to delete a stack with termination
      * protection enabled, the operation fails and the stack remains unchanged. For more information, see <a
-     * href="AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a Stack From Being Deleted</a>
-     * in the <i>AWS CloudFormation User Guide</i>.
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a
+     * Stack From Being Deleted</a> in the <i>AWS CloudFormation User Guide</i>.
      * </p>
      * <p>
-     * For <a href="AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested stacks</a>, termination
-     * protection is set on the root stack and cannot be changed directly on the nested stack.
+     * For <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested
+     * stacks</a>, termination protection is set on the root stack and cannot be changed directly on the nested stack.
      * </p>
      * 
      * @param updateTerminationProtectionRequest
@@ -2035,12 +2541,12 @@ public interface AmazonCloudFormationAsync extends AmazonCloudFormation {
      * <p>
      * Updates termination protection for the specified stack. If a user attempts to delete a stack with termination
      * protection enabled, the operation fails and the stack remains unchanged. For more information, see <a
-     * href="AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a Stack From Being Deleted</a>
-     * in the <i>AWS CloudFormation User Guide</i>.
+     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html">Protecting a
+     * Stack From Being Deleted</a> in the <i>AWS CloudFormation User Guide</i>.
      * </p>
      * <p>
-     * For <a href="AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested stacks</a>, termination
-     * protection is set on the root stack and cannot be changed directly on the nested stack.
+     * For <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html">nested
+     * stacks</a>, termination protection is set on the root stack and cannot be changed directly on the nested stack.
      * </p>
      * 
      * @param updateTerminationProtectionRequest

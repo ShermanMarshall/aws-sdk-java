@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -100,6 +100,13 @@ public class Get implements Serializable, Cloneable, StructuredPojo {
         setKey(key);
         return this;
     }
+
+    /**
+     * Add a single Key entry
+     *
+     * @see Get#withKey
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public Get addKeyEntry(String key, AttributeValue value) {
         if (null == this.key) {
@@ -256,6 +263,13 @@ public class Get implements Serializable, Cloneable, StructuredPojo {
         setExpressionAttributeNames(expressionAttributeNames);
         return this;
     }
+
+    /**
+     * Add a single ExpressionAttributeNames entry
+     *
+     * @see Get#withExpressionAttributeNames
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public Get addExpressionAttributeNamesEntry(String key, String value) {
         if (null == this.expressionAttributeNames) {

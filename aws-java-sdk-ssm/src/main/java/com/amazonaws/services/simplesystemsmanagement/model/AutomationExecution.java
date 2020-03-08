@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -636,6 +636,13 @@ public class AutomationExecution implements Serializable, Cloneable, StructuredP
         return this;
     }
 
+    /**
+     * Add a single Parameters entry
+     *
+     * @see AutomationExecution#withParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public AutomationExecution addParametersEntry(String key, java.util.List<String> value) {
         if (null == this.parameters) {
             this.parameters = new java.util.HashMap<String, java.util.List<String>>();
@@ -696,6 +703,13 @@ public class AutomationExecution implements Serializable, Cloneable, StructuredP
         setOutputs(outputs);
         return this;
     }
+
+    /**
+     * Add a single Outputs entry
+     *
+     * @see AutomationExecution#withOutputs
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public AutomationExecution addOutputsEntry(String key, java.util.List<String> value) {
         if (null == this.outputs) {

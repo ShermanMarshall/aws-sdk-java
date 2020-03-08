@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,6 +45,14 @@ public class CreateInstancesFromSnapshotRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("keyPairName").build();
     private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("tags").build();
+    private static final MarshallingInfo<List> ADDONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("addOns").build();
+    private static final MarshallingInfo<String> SOURCEINSTANCENAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("sourceInstanceName").build();
+    private static final MarshallingInfo<String> RESTOREDATE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("restoreDate").build();
+    private static final MarshallingInfo<Boolean> USELATESTRESTORABLEAUTOSNAPSHOT_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("useLatestRestorableAutoSnapshot").build();
 
     private static final CreateInstancesFromSnapshotRequestMarshaller instance = new CreateInstancesFromSnapshotRequestMarshaller();
 
@@ -70,6 +78,10 @@ public class CreateInstancesFromSnapshotRequestMarshaller {
             protocolMarshaller.marshall(createInstancesFromSnapshotRequest.getUserData(), USERDATA_BINDING);
             protocolMarshaller.marshall(createInstancesFromSnapshotRequest.getKeyPairName(), KEYPAIRNAME_BINDING);
             protocolMarshaller.marshall(createInstancesFromSnapshotRequest.getTags(), TAGS_BINDING);
+            protocolMarshaller.marshall(createInstancesFromSnapshotRequest.getAddOns(), ADDONS_BINDING);
+            protocolMarshaller.marshall(createInstancesFromSnapshotRequest.getSourceInstanceName(), SOURCEINSTANCENAME_BINDING);
+            protocolMarshaller.marshall(createInstancesFromSnapshotRequest.getRestoreDate(), RESTOREDATE_BINDING);
+            protocolMarshaller.marshall(createInstancesFromSnapshotRequest.getUseLatestRestorableAutoSnapshot(), USELATESTRESTORABLEAUTOSNAPSHOT_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

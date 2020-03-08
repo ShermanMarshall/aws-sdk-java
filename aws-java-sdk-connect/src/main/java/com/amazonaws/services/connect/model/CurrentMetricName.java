@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,7 +16,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * A list of current metric names.
+ * The current metric names.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -31,7 +31,10 @@ public enum CurrentMetricName {
     AGENTS_STAFFED("AGENTS_STAFFED"),
     CONTACTS_IN_QUEUE("CONTACTS_IN_QUEUE"),
     OLDEST_CONTACT_AGE("OLDEST_CONTACT_AGE"),
-    CONTACTS_SCHEDULED("CONTACTS_SCHEDULED");
+    CONTACTS_SCHEDULED("CONTACTS_SCHEDULED"),
+    AGENTS_ON_CONTACT("AGENTS_ON_CONTACT"),
+    SLOTS_ACTIVE("SLOTS_ACTIVE"),
+    SLOTS_AVAILABLE("SLOTS_AVAILABLE");
 
     private String value;
 

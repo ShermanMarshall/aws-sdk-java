@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -67,6 +67,10 @@ public class OutputGroupSettingsJsonUnmarshaller implements Unmarshaller<OutputG
                 if (context.testExpression("msSmoothGroupSettings", targetDepth)) {
                     context.nextToken();
                     outputGroupSettings.setMsSmoothGroupSettings(MsSmoothGroupSettingsJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("multiplexGroupSettings", targetDepth)) {
+                    context.nextToken();
+                    outputGroupSettings.setMultiplexGroupSettings(MultiplexGroupSettingsJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("rtmpGroupSettings", targetDepth)) {
                     context.nextToken();

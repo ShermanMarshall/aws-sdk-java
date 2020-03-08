@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,6 +45,8 @@ public enum ESPartitionInstanceType {
     C54xlargeElasticsearch("c5.4xlarge.elasticsearch"),
     C59xlargeElasticsearch("c5.9xlarge.elasticsearch"),
     C518xlargeElasticsearch("c5.18xlarge.elasticsearch"),
+    Ultrawarm1MediumElasticsearch("ultrawarm1.medium.elasticsearch"),
+    Ultrawarm1LargeElasticsearch("ultrawarm1.large.elasticsearch"),
     T2MicroElasticsearch("t2.micro.elasticsearch"),
     T2SmallElasticsearch("t2.small.elasticsearch"),
     T2MediumElasticsearch("t2.medium.elasticsearch"),

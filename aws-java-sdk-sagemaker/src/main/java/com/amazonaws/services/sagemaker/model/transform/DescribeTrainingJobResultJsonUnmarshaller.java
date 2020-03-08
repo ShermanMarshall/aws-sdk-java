@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,10 @@ public class DescribeTrainingJobResultJsonUnmarshaller implements Unmarshaller<D
                 if (context.testExpression("LabelingJobArn", targetDepth)) {
                     context.nextToken();
                     describeTrainingJobResult.setLabelingJobArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("AutoMLJobArn", targetDepth)) {
+                    context.nextToken();
+                    describeTrainingJobResult.setAutoMLJobArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("ModelArtifacts", targetDepth)) {
                     context.nextToken();
@@ -162,6 +166,28 @@ public class DescribeTrainingJobResultJsonUnmarshaller implements Unmarshaller<D
                 if (context.testExpression("BillableTimeInSeconds", targetDepth)) {
                     context.nextToken();
                     describeTrainingJobResult.setBillableTimeInSeconds(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("DebugHookConfig", targetDepth)) {
+                    context.nextToken();
+                    describeTrainingJobResult.setDebugHookConfig(DebugHookConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("ExperimentConfig", targetDepth)) {
+                    context.nextToken();
+                    describeTrainingJobResult.setExperimentConfig(ExperimentConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("DebugRuleConfigurations", targetDepth)) {
+                    context.nextToken();
+                    describeTrainingJobResult.setDebugRuleConfigurations(new ListUnmarshaller<DebugRuleConfiguration>(DebugRuleConfigurationJsonUnmarshaller
+                            .getInstance()).unmarshall(context));
+                }
+                if (context.testExpression("TensorBoardOutputConfig", targetDepth)) {
+                    context.nextToken();
+                    describeTrainingJobResult.setTensorBoardOutputConfig(TensorBoardOutputConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("DebugRuleEvaluationStatuses", targetDepth)) {
+                    context.nextToken();
+                    describeTrainingJobResult.setDebugRuleEvaluationStatuses(new ListUnmarshaller<DebugRuleEvaluationStatus>(
+                            DebugRuleEvaluationStatusJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

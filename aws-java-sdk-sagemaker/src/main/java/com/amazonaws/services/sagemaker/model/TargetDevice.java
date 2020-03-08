@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,17 +27,21 @@ public enum TargetDevice {
     Ml_c5("ml_c5"),
     Ml_p2("ml_p2"),
     Ml_p3("ml_p3"),
+    Ml_inf1("ml_inf1"),
     Jetson_tx1("jetson_tx1"),
     Jetson_tx2("jetson_tx2"),
     Jetson_nano("jetson_nano"),
+    Jetson_xavier("jetson_xavier"),
     Rasp3b("rasp3b"),
+    Imx8qm("imx8qm"),
     Deeplens("deeplens"),
     Rk3399("rk3399"),
     Rk3288("rk3288"),
     Aisage("aisage"),
     Sbe_c("sbe_c"),
     Qcs605("qcs605"),
-    Qcs603("qcs603");
+    Qcs603("qcs603"),
+    Amba_cv22("amba_cv22");
 
     private String value;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,6 +70,16 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
      * </p>
      */
     private String message;
+    /**
+     * <p>
+     * The sentiment expressed in and utterance.
+     * </p>
+     * <p>
+     * When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field contains
+     * the result of the analysis.
+     * </p>
+     */
+    private SentimentResponse sentimentResponse;
     /**
      * <p>
      * The format of the response message. One of the following values:
@@ -177,6 +187,12 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
      * </p>
      */
     private ResponseCard responseCard;
+    /**
+     * <p>
+     * A unique identifier for the session.
+     * </p>
+     */
+    private String sessionId;
 
     /**
      * <p>
@@ -309,6 +325,13 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         return this;
     }
 
+    /**
+     * Add a single Slots entry
+     *
+     * @see PostTextResult#withSlots
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public PostTextResult addSlotsEntry(String key, String value) {
         if (null == this.slots) {
             this.slots = new java.util.HashMap<String, String>();
@@ -369,6 +392,13 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         setSessionAttributes(sessionAttributes);
         return this;
     }
+
+    /**
+     * Add a single SessionAttributes entry
+     *
+     * @see PostTextResult#withSessionAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public PostTextResult addSessionAttributesEntry(String key, String value) {
         if (null == this.sessionAttributes) {
@@ -518,6 +548,67 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
 
     public PostTextResult withMessage(String message) {
         setMessage(message);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The sentiment expressed in and utterance.
+     * </p>
+     * <p>
+     * When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field contains
+     * the result of the analysis.
+     * </p>
+     * 
+     * @param sentimentResponse
+     *        The sentiment expressed in and utterance.</p>
+     *        <p>
+     *        When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field
+     *        contains the result of the analysis.
+     */
+
+    public void setSentimentResponse(SentimentResponse sentimentResponse) {
+        this.sentimentResponse = sentimentResponse;
+    }
+
+    /**
+     * <p>
+     * The sentiment expressed in and utterance.
+     * </p>
+     * <p>
+     * When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field contains
+     * the result of the analysis.
+     * </p>
+     * 
+     * @return The sentiment expressed in and utterance.</p>
+     *         <p>
+     *         When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field
+     *         contains the result of the analysis.
+     */
+
+    public SentimentResponse getSentimentResponse() {
+        return this.sentimentResponse;
+    }
+
+    /**
+     * <p>
+     * The sentiment expressed in and utterance.
+     * </p>
+     * <p>
+     * When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field contains
+     * the result of the analysis.
+     * </p>
+     * 
+     * @param sentimentResponse
+     *        The sentiment expressed in and utterance.</p>
+     *        <p>
+     *        When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field
+     *        contains the result of the analysis.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PostTextResult withSentimentResponse(SentimentResponse sentimentResponse) {
+        setSentimentResponse(sentimentResponse);
         return this;
     }
 
@@ -1566,6 +1657,46 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
     }
 
     /**
+     * <p>
+     * A unique identifier for the session.
+     * </p>
+     * 
+     * @param sessionId
+     *        A unique identifier for the session.
+     */
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    /**
+     * <p>
+     * A unique identifier for the session.
+     * </p>
+     * 
+     * @return A unique identifier for the session.
+     */
+
+    public String getSessionId() {
+        return this.sessionId;
+    }
+
+    /**
+     * <p>
+     * A unique identifier for the session.
+     * </p>
+     * 
+     * @param sessionId
+     *        A unique identifier for the session.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PostTextResult withSessionId(String sessionId) {
+        setSessionId(sessionId);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1585,6 +1716,8 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
             sb.append("SessionAttributes: ").append("***Sensitive Data Redacted***").append(",");
         if (getMessage() != null)
             sb.append("Message: ").append("***Sensitive Data Redacted***").append(",");
+        if (getSentimentResponse() != null)
+            sb.append("SentimentResponse: ").append(getSentimentResponse()).append(",");
         if (getMessageFormat() != null)
             sb.append("MessageFormat: ").append(getMessageFormat()).append(",");
         if (getDialogState() != null)
@@ -1592,7 +1725,9 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         if (getSlotToElicit() != null)
             sb.append("SlotToElicit: ").append(getSlotToElicit()).append(",");
         if (getResponseCard() != null)
-            sb.append("ResponseCard: ").append(getResponseCard());
+            sb.append("ResponseCard: ").append(getResponseCard()).append(",");
+        if (getSessionId() != null)
+            sb.append("SessionId: ").append(getSessionId());
         sb.append("}");
         return sb.toString();
     }
@@ -1623,6 +1758,10 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
             return false;
         if (other.getMessage() != null && other.getMessage().equals(this.getMessage()) == false)
             return false;
+        if (other.getSentimentResponse() == null ^ this.getSentimentResponse() == null)
+            return false;
+        if (other.getSentimentResponse() != null && other.getSentimentResponse().equals(this.getSentimentResponse()) == false)
+            return false;
         if (other.getMessageFormat() == null ^ this.getMessageFormat() == null)
             return false;
         if (other.getMessageFormat() != null && other.getMessageFormat().equals(this.getMessageFormat()) == false)
@@ -1639,6 +1778,10 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
             return false;
         if (other.getResponseCard() != null && other.getResponseCard().equals(this.getResponseCard()) == false)
             return false;
+        if (other.getSessionId() == null ^ this.getSessionId() == null)
+            return false;
+        if (other.getSessionId() != null && other.getSessionId().equals(this.getSessionId()) == false)
+            return false;
         return true;
     }
 
@@ -1651,10 +1794,12 @@ public class PostTextResult extends com.amazonaws.AmazonWebServiceResult<com.ama
         hashCode = prime * hashCode + ((getSlots() == null) ? 0 : getSlots().hashCode());
         hashCode = prime * hashCode + ((getSessionAttributes() == null) ? 0 : getSessionAttributes().hashCode());
         hashCode = prime * hashCode + ((getMessage() == null) ? 0 : getMessage().hashCode());
+        hashCode = prime * hashCode + ((getSentimentResponse() == null) ? 0 : getSentimentResponse().hashCode());
         hashCode = prime * hashCode + ((getMessageFormat() == null) ? 0 : getMessageFormat().hashCode());
         hashCode = prime * hashCode + ((getDialogState() == null) ? 0 : getDialogState().hashCode());
         hashCode = prime * hashCode + ((getSlotToElicit() == null) ? 0 : getSlotToElicit().hashCode());
         hashCode = prime * hashCode + ((getResponseCard() == null) ? 0 : getResponseCard().hashCode());
+        hashCode = prime * hashCode + ((getSessionId() == null) ? 0 : getSessionId().hashCode());
         return hashCode;
     }
 

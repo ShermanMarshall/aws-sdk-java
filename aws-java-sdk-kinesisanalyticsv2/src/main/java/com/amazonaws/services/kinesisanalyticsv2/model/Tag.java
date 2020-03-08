@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -22,8 +22,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * A key-value pair (the value is optional) that you can define and assign to AWS resources. If you specify a tag that
  * already exists, the tag value is replaced with the value that you specify in the request. Note that the maximum
  * number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more
- * information, see <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using
- * Cost Allocation Tags</a> in the <i>AWS Billing and Cost Management Guide</i>.
+ * information, see <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using
+ * Tagging</a>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/Tag" target="_top">AWS API

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Calls a Lambda function, passing in information about the detector model instance and the event which triggered the
+ * Calls a Lambda function, passing in information about the detector model instance and the event that triggered the
  * action.
  * </p>
  * 
@@ -31,18 +31,18 @@ public class LambdaAction implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN of the Lambda function which is executed.
+     * The ARN of the Lambda function that is executed.
      * </p>
      */
     private String functionArn;
 
     /**
      * <p>
-     * The ARN of the Lambda function which is executed.
+     * The ARN of the Lambda function that is executed.
      * </p>
      * 
      * @param functionArn
-     *        The ARN of the Lambda function which is executed.
+     *        The ARN of the Lambda function that is executed.
      */
 
     public void setFunctionArn(String functionArn) {
@@ -51,10 +51,10 @@ public class LambdaAction implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN of the Lambda function which is executed.
+     * The ARN of the Lambda function that is executed.
      * </p>
      * 
-     * @return The ARN of the Lambda function which is executed.
+     * @return The ARN of the Lambda function that is executed.
      */
 
     public String getFunctionArn() {
@@ -63,11 +63,11 @@ public class LambdaAction implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The ARN of the Lambda function which is executed.
+     * The ARN of the Lambda function that is executed.
      * </p>
      * 
      * @param functionArn
-     *        The ARN of the Lambda function which is executed.
+     *        The ARN of the Lambda function that is executed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

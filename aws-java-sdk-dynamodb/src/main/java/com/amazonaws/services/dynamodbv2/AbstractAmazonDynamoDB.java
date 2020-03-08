@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -126,6 +126,11 @@ public class AbstractAmazonDynamoDB implements AmazonDynamoDB {
     }
 
     @Override
+    public DescribeContributorInsightsResult describeContributorInsights(DescribeContributorInsightsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeEndpointsResult describeEndpoints(DescribeEndpointsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -156,6 +161,11 @@ public class AbstractAmazonDynamoDB implements AmazonDynamoDB {
     }
 
     @Override
+    public DescribeTableReplicaAutoScalingResult describeTableReplicaAutoScaling(DescribeTableReplicaAutoScalingRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeTimeToLiveResult describeTimeToLive(DescribeTimeToLiveRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -177,6 +187,11 @@ public class AbstractAmazonDynamoDB implements AmazonDynamoDB {
 
     @Override
     public ListBackupsResult listBackups(ListBackupsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListContributorInsightsResult listContributorInsights(ListContributorInsightsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -291,6 +306,11 @@ public class AbstractAmazonDynamoDB implements AmazonDynamoDB {
     }
 
     @Override
+    public UpdateContributorInsightsResult updateContributorInsights(UpdateContributorInsightsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public UpdateGlobalTableResult updateGlobalTable(UpdateGlobalTableRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -324,6 +344,11 @@ public class AbstractAmazonDynamoDB implements AmazonDynamoDB {
     @Override
     public UpdateTableResult updateTable(String tableName, ProvisionedThroughput provisionedThroughput) {
         return updateTable(new UpdateTableRequest().withTableName(tableName).withProvisionedThroughput(provisionedThroughput));
+    }
+
+    @Override
+    public UpdateTableReplicaAutoScalingResult updateTableReplicaAutoScaling(UpdateTableReplicaAutoScalingRequest request) {
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,8 +39,14 @@ public class StartTranscriptionJobRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Media").build();
     private static final MarshallingInfo<String> OUTPUTBUCKETNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OutputBucketName").build();
+    private static final MarshallingInfo<String> OUTPUTENCRYPTIONKMSKEYID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OutputEncryptionKMSKeyId").build();
     private static final MarshallingInfo<StructuredPojo> SETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Settings").build();
+    private static final MarshallingInfo<StructuredPojo> JOBEXECUTIONSETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("JobExecutionSettings").build();
+    private static final MarshallingInfo<StructuredPojo> CONTENTREDACTION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ContentRedaction").build();
 
     private static final StartTranscriptionJobRequestMarshaller instance = new StartTranscriptionJobRequestMarshaller();
 
@@ -64,7 +70,10 @@ public class StartTranscriptionJobRequestMarshaller {
             protocolMarshaller.marshall(startTranscriptionJobRequest.getMediaFormat(), MEDIAFORMAT_BINDING);
             protocolMarshaller.marshall(startTranscriptionJobRequest.getMedia(), MEDIA_BINDING);
             protocolMarshaller.marshall(startTranscriptionJobRequest.getOutputBucketName(), OUTPUTBUCKETNAME_BINDING);
+            protocolMarshaller.marshall(startTranscriptionJobRequest.getOutputEncryptionKMSKeyId(), OUTPUTENCRYPTIONKMSKEYID_BINDING);
             protocolMarshaller.marshall(startTranscriptionJobRequest.getSettings(), SETTINGS_BINDING);
+            protocolMarshaller.marshall(startTranscriptionJobRequest.getJobExecutionSettings(), JOBEXECUTIONSETTINGS_BINDING);
+            protocolMarshaller.marshall(startTranscriptionJobRequest.getContentRedaction(), CONTENTREDACTION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

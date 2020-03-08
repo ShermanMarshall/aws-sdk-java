@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,6 +37,8 @@ public class HyperParameterTuningJobConfigMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ParameterRanges").build();
     private static final MarshallingInfo<String> TRAININGJOBEARLYSTOPPINGTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TrainingJobEarlyStoppingType").build();
+    private static final MarshallingInfo<StructuredPojo> TUNINGJOBCOMPLETIONCRITERIA_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TuningJobCompletionCriteria").build();
 
     private static final HyperParameterTuningJobConfigMarshaller instance = new HyperParameterTuningJobConfigMarshaller();
 
@@ -59,6 +61,7 @@ public class HyperParameterTuningJobConfigMarshaller {
             protocolMarshaller.marshall(hyperParameterTuningJobConfig.getResourceLimits(), RESOURCELIMITS_BINDING);
             protocolMarshaller.marshall(hyperParameterTuningJobConfig.getParameterRanges(), PARAMETERRANGES_BINDING);
             protocolMarshaller.marshall(hyperParameterTuningJobConfig.getTrainingJobEarlyStoppingType(), TRAININGJOBEARLYSTOPPINGTYPE_BINDING);
+            protocolMarshaller.marshall(hyperParameterTuningJobConfig.getTuningJobCompletionCriteria(), TUNINGJOBCOMPLETIONCRITERIA_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

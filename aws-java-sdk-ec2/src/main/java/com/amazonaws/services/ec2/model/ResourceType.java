@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,14 +31,17 @@ public enum ResourceType {
     Image("image"),
     Instance("instance"),
     InternetGateway("internet-gateway"),
+    KeyPair("key-pair"),
     LaunchTemplate("launch-template"),
     Natgateway("natgateway"),
     NetworkAcl("network-acl"),
     NetworkInterface("network-interface"),
+    PlacementGroup("placement-group"),
     ReservedInstances("reserved-instances"),
     RouteTable("route-table"),
     SecurityGroup("security-group"),
     Snapshot("snapshot"),
+    SpotFleetRequest("spot-fleet-request"),
     SpotInstancesRequest("spot-instances-request"),
     Subnet("subnet"),
     TrafficMirrorFilter("traffic-mirror-filter"),
@@ -46,12 +49,14 @@ public enum ResourceType {
     TrafficMirrorTarget("traffic-mirror-target"),
     TransitGateway("transit-gateway"),
     TransitGatewayAttachment("transit-gateway-attachment"),
+    TransitGatewayMulticastDomain("transit-gateway-multicast-domain"),
     TransitGatewayRouteTable("transit-gateway-route-table"),
     Volume("volume"),
     Vpc("vpc"),
     VpcPeeringConnection("vpc-peering-connection"),
     VpnConnection("vpn-connection"),
-    VpnGateway("vpn-gateway");
+    VpnGateway("vpn-gateway"),
+    VpcFlowLog("vpc-flow-log");
 
     private String value;
 

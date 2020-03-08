@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,6 +20,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * The FireLens configuration for the container. This is used to specify and configure a log router for container logs.
+ * For more information, see <a
+ * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html">Custom Log Routing</a> in the
+ * <i>Amazon Elastic Container Service Developer Guide</i>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/FirelensConfiguration" target="_top">AWS API
@@ -36,9 +39,14 @@ public class FirelensConfiguration implements Serializable, Cloneable, Structure
     private String type;
     /**
      * <p>
-     * The options to use when configuring the log router. This field is optional and can be used to add additional
-     * metadata, such as the task, task definition, cluster, and container instance details to the log event. If
-     * specified, the syntax to use is <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.
+     * The options to use when configuring the log router. This field is optional and can be used to specify a custom
+     * configuration file or to add additional metadata, such as the task, task definition, cluster, and container
+     * instance details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>
+     * . For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon Elastic Container Service Developer
+     * Guide</i>.
      * </p>
      */
     private java.util.Map<String, String> options;
@@ -104,15 +112,24 @@ public class FirelensConfiguration implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The options to use when configuring the log router. This field is optional and can be used to add additional
-     * metadata, such as the task, task definition, cluster, and container instance details to the log event. If
-     * specified, the syntax to use is <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.
+     * The options to use when configuring the log router. This field is optional and can be used to specify a custom
+     * configuration file or to add additional metadata, such as the task, task definition, cluster, and container
+     * instance details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>
+     * . For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon Elastic Container Service Developer
+     * Guide</i>.
      * </p>
      * 
-     * @return The options to use when configuring the log router. This field is optional and can be used to add
-     *         additional metadata, such as the task, task definition, cluster, and container instance details to the
-     *         log event. If specified, the syntax to use is
-     *         <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.
+     * @return The options to use when configuring the log router. This field is optional and can be used to specify a
+     *         custom configuration file or to add additional metadata, such as the task, task definition, cluster, and
+     *         container instance details to the log event. If specified, the syntax to use is
+     *         <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>
+     *         . For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef"
+     *         >Creating a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon Elastic Container
+     *         Service Developer Guide</i>.
      */
 
     public java.util.Map<String, String> getOptions() {
@@ -121,15 +138,25 @@ public class FirelensConfiguration implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The options to use when configuring the log router. This field is optional and can be used to add additional
-     * metadata, such as the task, task definition, cluster, and container instance details to the log event. If
-     * specified, the syntax to use is <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.
+     * The options to use when configuring the log router. This field is optional and can be used to specify a custom
+     * configuration file or to add additional metadata, such as the task, task definition, cluster, and container
+     * instance details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>
+     * . For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon Elastic Container Service Developer
+     * Guide</i>.
      * </p>
      * 
      * @param options
-     *        The options to use when configuring the log router. This field is optional and can be used to add
-     *        additional metadata, such as the task, task definition, cluster, and container instance details to the log
-     *        event. If specified, the syntax to use is <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.
+     *        The options to use when configuring the log router. This field is optional and can be used to specify a
+     *        custom configuration file or to add additional metadata, such as the task, task definition, cluster, and
+     *        container instance details to the log event. If specified, the syntax to use is
+     *        <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>
+     *        . For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef"
+     *        >Creating a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon Elastic Container
+     *        Service Developer Guide</i>.
      */
 
     public void setOptions(java.util.Map<String, String> options) {
@@ -138,15 +165,25 @@ public class FirelensConfiguration implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The options to use when configuring the log router. This field is optional and can be used to add additional
-     * metadata, such as the task, task definition, cluster, and container instance details to the log event. If
-     * specified, the syntax to use is <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.
+     * The options to use when configuring the log router. This field is optional and can be used to specify a custom
+     * configuration file or to add additional metadata, such as the task, task definition, cluster, and container
+     * instance details to the log event. If specified, the syntax to use is
+     * <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>
+     * . For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef">Creating
+     * a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon Elastic Container Service Developer
+     * Guide</i>.
      * </p>
      * 
      * @param options
-     *        The options to use when configuring the log router. This field is optional and can be used to add
-     *        additional metadata, such as the task, task definition, cluster, and container instance details to the log
-     *        event. If specified, the syntax to use is <code>"options":{"enable-ecs-log-metadata":"true|false"}</code>.
+     *        The options to use when configuring the log router. This field is optional and can be used to specify a
+     *        custom configuration file or to add additional metadata, such as the task, task definition, cluster, and
+     *        container instance details to the log event. If specified, the syntax to use is
+     *        <code>"options":{"enable-ecs-log-metadata":"true|false","config-file-type:"s3|file","config-file-value":"arn:aws:s3:::mybucket/fluent.conf|filepath"}</code>
+     *        . For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html#firelens-taskdef"
+     *        >Creating a Task Definition that Uses a FireLens Configuration</a> in the <i>Amazon Elastic Container
+     *        Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -154,6 +191,13 @@ public class FirelensConfiguration implements Serializable, Cloneable, Structure
         setOptions(options);
         return this;
     }
+
+    /**
+     * Add a single Options entry
+     *
+     * @see FirelensConfiguration#withOptions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public FirelensConfiguration addOptionsEntry(String key, String value) {
         if (null == this.options) {

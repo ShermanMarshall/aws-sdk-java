@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,7 @@ public class GlobalTable implements Serializable, Cloneable, StructuredPojo {
     private String globalTableName;
     /**
      * <p>
-     * The regions where the global table has replicas.
+     * The Regions where the global table has replicas.
      * </p>
      */
     private java.util.List<Replica> replicationGroup;
@@ -83,10 +83,10 @@ public class GlobalTable implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The regions where the global table has replicas.
+     * The Regions where the global table has replicas.
      * </p>
      * 
-     * @return The regions where the global table has replicas.
+     * @return The Regions where the global table has replicas.
      */
 
     public java.util.List<Replica> getReplicationGroup() {
@@ -95,11 +95,11 @@ public class GlobalTable implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The regions where the global table has replicas.
+     * The Regions where the global table has replicas.
      * </p>
      * 
      * @param replicationGroup
-     *        The regions where the global table has replicas.
+     *        The Regions where the global table has replicas.
      */
 
     public void setReplicationGroup(java.util.Collection<Replica> replicationGroup) {
@@ -113,7 +113,7 @@ public class GlobalTable implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The regions where the global table has replicas.
+     * The Regions where the global table has replicas.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -122,7 +122,7 @@ public class GlobalTable implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param replicationGroup
-     *        The regions where the global table has replicas.
+     *        The Regions where the global table has replicas.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -138,11 +138,11 @@ public class GlobalTable implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The regions where the global table has replicas.
+     * The Regions where the global table has replicas.
      * </p>
      * 
      * @param replicationGroup
-     *        The regions where the global table has replicas.
+     *        The Regions where the global table has replicas.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

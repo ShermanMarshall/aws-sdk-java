@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -73,6 +73,10 @@ public class EncoderSettingsJsonUnmarshaller implements Unmarshaller<EncoderSett
                 if (context.testExpression("globalConfiguration", targetDepth)) {
                     context.nextToken();
                     encoderSettings.setGlobalConfiguration(GlobalConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("nielsenConfiguration", targetDepth)) {
+                    context.nextToken();
+                    encoderSettings.setNielsenConfiguration(NielsenConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("outputGroups", targetDepth)) {
                     context.nextToken();

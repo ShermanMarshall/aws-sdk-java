@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,19 @@ public class AmazonCloudWatchWaiters {
 
         return new WaiterBuilder<DescribeAlarmsRequest, DescribeAlarmsResult>().withSdkFunction(new DescribeAlarmsFunction(client))
                 .withAcceptors(new AlarmExists.IsTrueMatcher())
+                .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(40), new FixedDelayStrategy(5)))
+                .withExecutorService(executorService).build();
+    }
+
+    /**
+     * Builds a CompositeAlarmExists waiter by using custom parameters waiterParameters and other parameters defined in
+     * the waiters specification, and then polls until it determines whether the resource entered the desired state or
+     * not, where polling criteria is bound by either default polling strategy or custom polling strategy.
+     */
+    public Waiter<DescribeAlarmsRequest> compositeAlarmExists() {
+
+        return new WaiterBuilder<DescribeAlarmsRequest, DescribeAlarmsResult>().withSdkFunction(new DescribeAlarmsFunction(client))
+                .withAcceptors(new CompositeAlarmExists.IsTrueMatcher())
                 .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(40), new FixedDelayStrategy(5)))
                 .withExecutorService(executorService).build();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,26 +44,25 @@ import java.util.concurrent.ExecutorService;
  * <ul>
  * <li>
  * <p>
- * Tag and untag supported resources located in the specified region for the AWS account
+ * Tag and untag supported resources located in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * Use tag-based filters to search for resources located in the specified region for the AWS account
+ * Use tag-based filters to search for resources located in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * List all existing tag keys in the specified region for the AWS account
+ * List all existing tag keys in the specified Region for the AWS account.
  * </p>
  * </li>
  * <li>
  * <p>
- * List all existing values for the specified key in the specified region for the AWS account
+ * List all existing values for the specified key in the specified Region for the AWS account.
  * </p>
  * </li>
  * </ul>
- * <p/>
  * <p>
  * To use resource groups tagging API operations, you must add the following permissions to your IAM policy:
  * </p>
@@ -119,7 +118,7 @@ import java.util.concurrent.ExecutorService;
  * </li>
  * <li>
  * <p>
- * AWS AppStream
+ * Amazon AppStream
  * </p>
  * </li>
  * <li>
@@ -239,6 +238,11 @@ import java.util.concurrent.ExecutorService;
  * </li>
  * <li>
  * <p>
+ * AWS Data Exchange
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS Data Pipeline
  * </p>
  * </li>
@@ -249,7 +253,12 @@ import java.util.concurrent.ExecutorService;
  * </li>
  * <li>
  * <p>
- * AWS Datasync
+ * AWS DataSync
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Device Farm
  * </p>
  * </li>
  * <li>
@@ -285,6 +294,11 @@ import java.util.concurrent.ExecutorService;
  * <li>
  * <p>
  * Amazon ECS
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon EKS
  * </p>
  * </li>
  * <li>
@@ -339,12 +353,17 @@ import java.util.concurrent.ExecutorService;
  * </li>
  * <li>
  * <p>
- * Amazon Glacier
+ * Amazon S3 Glacier
  * </p>
  * </li>
  * <li>
  * <p>
  * AWS Glue
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon GuardDuty
  * </p>
  * </li>
  * <li>
@@ -374,7 +393,17 @@ import java.util.concurrent.ExecutorService;
  * </li>
  * <li>
  * <p>
+ * AWS IoT Events
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS IoT Greengrass
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS IoT 1-Click
  * </p>
  * </li>
  * <li>
@@ -434,6 +463,16 @@ import java.util.concurrent.ExecutorService;
  * </li>
  * <li>
  * <p>
+ * AWS Organizations
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon Quantum Ledger Database (QLDB)
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * Amazon RDS
  * </p>
  * </li>
@@ -484,6 +523,11 @@ import java.util.concurrent.ExecutorService;
  * </li>
  * <li>
  * <p>
+ * AWS Security Hub
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * AWS Service Catalog
  * </p>
  * </li>
@@ -499,7 +543,7 @@ import java.util.concurrent.ExecutorService;
  * </li>
  * <li>
  * <p>
- * AWS Simple System Manager (SSM)
+ * Amazon Simple Workflow Service
  * </p>
  * </li>
  * <li>
@@ -510,6 +554,11 @@ import java.util.concurrent.ExecutorService;
  * <li>
  * <p>
  * AWS Storage Gateway
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Systems Manager
  * </p>
  * </li>
  * <li>
@@ -560,6 +609,72 @@ public class AWSResourceGroupsTaggingAPIAsyncClient extends AWSResourceGroupsTag
      */
     public ExecutorService getExecutorService() {
         return executorService;
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeReportCreationResult> describeReportCreationAsync(DescribeReportCreationRequest request) {
+
+        return describeReportCreationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeReportCreationResult> describeReportCreationAsync(final DescribeReportCreationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeReportCreationRequest, DescribeReportCreationResult> asyncHandler) {
+        final DescribeReportCreationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeReportCreationResult>() {
+            @Override
+            public DescribeReportCreationResult call() throws Exception {
+                DescribeReportCreationResult result = null;
+
+                try {
+                    result = executeDescribeReportCreation(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetComplianceSummaryResult> getComplianceSummaryAsync(GetComplianceSummaryRequest request) {
+
+        return getComplianceSummaryAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetComplianceSummaryResult> getComplianceSummaryAsync(final GetComplianceSummaryRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetComplianceSummaryRequest, GetComplianceSummaryResult> asyncHandler) {
+        final GetComplianceSummaryRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetComplianceSummaryResult>() {
+            @Override
+            public GetComplianceSummaryResult call() throws Exception {
+                GetComplianceSummaryResult result = null;
+
+                try {
+                    result = executeGetComplianceSummary(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     @Override
@@ -646,6 +761,39 @@ public class AWSResourceGroupsTaggingAPIAsyncClient extends AWSResourceGroupsTag
 
                 try {
                     result = executeGetTagValues(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartReportCreationResult> startReportCreationAsync(StartReportCreationRequest request) {
+
+        return startReportCreationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartReportCreationResult> startReportCreationAsync(final StartReportCreationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartReportCreationRequest, StartReportCreationResult> asyncHandler) {
+        final StartReportCreationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StartReportCreationResult>() {
+            @Override
+            public StartReportCreationResult call() throws Exception {
+                StartReportCreationResult result = null;
+
+                try {
+                    result = executeStartReportCreation(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

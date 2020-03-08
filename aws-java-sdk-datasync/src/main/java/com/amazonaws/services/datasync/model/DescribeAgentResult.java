@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -66,7 +66,11 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
      * </p>
      */
     private String endpointType;
-
+    /**
+     * <p>
+     * The subnet and the security group that DataSync used to access a VPC endpoint.
+     * </p>
+     */
     private PrivateLinkConfig privateLinkConfig;
 
     /**
@@ -380,7 +384,12 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
+     * <p>
+     * The subnet and the security group that DataSync used to access a VPC endpoint.
+     * </p>
+     * 
      * @param privateLinkConfig
+     *        The subnet and the security group that DataSync used to access a VPC endpoint.
      */
 
     public void setPrivateLinkConfig(PrivateLinkConfig privateLinkConfig) {
@@ -388,7 +397,11 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
-     * @return
+     * <p>
+     * The subnet and the security group that DataSync used to access a VPC endpoint.
+     * </p>
+     * 
+     * @return The subnet and the security group that DataSync used to access a VPC endpoint.
      */
 
     public PrivateLinkConfig getPrivateLinkConfig() {
@@ -396,7 +409,12 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
+     * <p>
+     * The subnet and the security group that DataSync used to access a VPC endpoint.
+     * </p>
+     * 
      * @param privateLinkConfig
+     *        The subnet and the security group that DataSync used to access a VPC endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

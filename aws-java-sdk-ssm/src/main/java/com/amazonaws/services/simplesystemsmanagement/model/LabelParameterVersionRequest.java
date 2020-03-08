@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,7 @@ public class LabelParameterVersionRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The specific version of the parameter on which you want to attach one or more labels. If no version is specified,
-     * the system attaches the label to the latest version.)
+     * the system attaches the label to the latest version.
      * </p>
      */
     private Long parameterVersion;
@@ -88,12 +88,12 @@ public class LabelParameterVersionRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The specific version of the parameter on which you want to attach one or more labels. If no version is specified,
-     * the system attaches the label to the latest version.)
+     * the system attaches the label to the latest version.
      * </p>
      * 
      * @param parameterVersion
      *        The specific version of the parameter on which you want to attach one or more labels. If no version is
-     *        specified, the system attaches the label to the latest version.)
+     *        specified, the system attaches the label to the latest version.
      */
 
     public void setParameterVersion(Long parameterVersion) {
@@ -103,11 +103,11 @@ public class LabelParameterVersionRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The specific version of the parameter on which you want to attach one or more labels. If no version is specified,
-     * the system attaches the label to the latest version.)
+     * the system attaches the label to the latest version.
      * </p>
      * 
      * @return The specific version of the parameter on which you want to attach one or more labels. If no version is
-     *         specified, the system attaches the label to the latest version.)
+     *         specified, the system attaches the label to the latest version.
      */
 
     public Long getParameterVersion() {
@@ -117,12 +117,12 @@ public class LabelParameterVersionRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The specific version of the parameter on which you want to attach one or more labels. If no version is specified,
-     * the system attaches the label to the latest version.)
+     * the system attaches the label to the latest version.
      * </p>
      * 
      * @param parameterVersion
      *        The specific version of the parameter on which you want to attach one or more labels. If no version is
-     *        specified, the system attaches the label to the latest version.)
+     *        specified, the system attaches the label to the latest version.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

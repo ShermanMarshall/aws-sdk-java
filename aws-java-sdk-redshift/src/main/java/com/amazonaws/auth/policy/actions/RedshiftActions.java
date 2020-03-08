@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,8 @@ public enum RedshiftActions implements Action {
     CreateHsmClientCertificate("redshift:CreateHsmClientCertificate"),
     /** Action for the CreateHsmConfiguration operation. */
     CreateHsmConfiguration("redshift:CreateHsmConfiguration"),
+    /** Action for the CreateScheduledAction operation. */
+    CreateScheduledAction("redshift:CreateScheduledAction"),
     /** Action for the CreateSnapshotCopyGrant operation. */
     CreateSnapshotCopyGrant("redshift:CreateSnapshotCopyGrant"),
     /** Action for the CreateSnapshotSchedule operation. */
@@ -77,6 +79,8 @@ public enum RedshiftActions implements Action {
     DeleteHsmClientCertificate("redshift:DeleteHsmClientCertificate"),
     /** Action for the DeleteHsmConfiguration operation. */
     DeleteHsmConfiguration("redshift:DeleteHsmConfiguration"),
+    /** Action for the DeleteScheduledAction operation. */
+    DeleteScheduledAction("redshift:DeleteScheduledAction"),
     /** Action for the DeleteSnapshotCopyGrant operation. */
     DeleteSnapshotCopyGrant("redshift:DeleteSnapshotCopyGrant"),
     /** Action for the DeleteSnapshotSchedule operation. */
@@ -117,6 +121,8 @@ public enum RedshiftActions implements Action {
     DescribeHsmConfigurations("redshift:DescribeHsmConfigurations"),
     /** Action for the DescribeLoggingStatus operation. */
     DescribeLoggingStatus("redshift:DescribeLoggingStatus"),
+    /** Action for the DescribeNodeConfigurationOptions operation. */
+    DescribeNodeConfigurationOptions("redshift:DescribeNodeConfigurationOptions"),
     /** Action for the DescribeOrderableClusterOptions operation. */
     DescribeOrderableClusterOptions("redshift:DescribeOrderableClusterOptions"),
     /** Action for the DescribeReservedNodeOfferings operation. */
@@ -125,6 +131,8 @@ public enum RedshiftActions implements Action {
     DescribeReservedNodes("redshift:DescribeReservedNodes"),
     /** Action for the DescribeResize operation. */
     DescribeResize("redshift:DescribeResize"),
+    /** Action for the DescribeScheduledActions operation. */
+    DescribeScheduledActions("redshift:DescribeScheduledActions"),
     /** Action for the DescribeSnapshotCopyGrants operation. */
     DescribeSnapshotCopyGrants("redshift:DescribeSnapshotCopyGrants"),
     /** Action for the DescribeSnapshotSchedules operation. */
@@ -165,6 +173,8 @@ public enum RedshiftActions implements Action {
     ModifyClusterSubnetGroup("redshift:ModifyClusterSubnetGroup"),
     /** Action for the ModifyEventSubscription operation. */
     ModifyEventSubscription("redshift:ModifyEventSubscription"),
+    /** Action for the ModifyScheduledAction operation. */
+    ModifyScheduledAction("redshift:ModifyScheduledAction"),
     /** Action for the ModifySnapshotCopyRetentionPeriod operation. */
     ModifySnapshotCopyRetentionPeriod("redshift:ModifySnapshotCopyRetentionPeriod"),
     /** Action for the ModifySnapshotSchedule operation. */

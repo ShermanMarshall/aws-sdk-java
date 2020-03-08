@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class UntagResourceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported resources are
-     * Amazon ECS tasks, services, task definitions, clusters, and container instances.
+     * Amazon ECS capacity providers, tasks, services, task definitions, clusters, and container instances.
      * </p>
      */
     private String resourceArn;
@@ -42,12 +42,13 @@ public class UntagResourceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported resources are
-     * Amazon ECS tasks, services, task definitions, clusters, and container instances.
+     * Amazon ECS capacity providers, tasks, services, task definitions, clusters, and container instances.
      * </p>
      * 
      * @param resourceArn
      *        The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported
-     *        resources are Amazon ECS tasks, services, task definitions, clusters, and container instances.
+     *        resources are Amazon ECS capacity providers, tasks, services, task definitions, clusters, and container
+     *        instances.
      */
 
     public void setResourceArn(String resourceArn) {
@@ -57,11 +58,12 @@ public class UntagResourceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported resources are
-     * Amazon ECS tasks, services, task definitions, clusters, and container instances.
+     * Amazon ECS capacity providers, tasks, services, task definitions, clusters, and container instances.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported
-     *         resources are Amazon ECS tasks, services, task definitions, clusters, and container instances.
+     *         resources are Amazon ECS capacity providers, tasks, services, task definitions, clusters, and container
+     *         instances.
      */
 
     public String getResourceArn() {
@@ -71,12 +73,13 @@ public class UntagResourceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported resources are
-     * Amazon ECS tasks, services, task definitions, clusters, and container instances.
+     * Amazon ECS capacity providers, tasks, services, task definitions, clusters, and container instances.
      * </p>
      * 
      * @param resourceArn
      *        The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the supported
-     *        resources are Amazon ECS tasks, services, task definitions, clusters, and container instances.
+     *        resources are Amazon ECS capacity providers, tasks, services, task definitions, clusters, and container
+     *        instances.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

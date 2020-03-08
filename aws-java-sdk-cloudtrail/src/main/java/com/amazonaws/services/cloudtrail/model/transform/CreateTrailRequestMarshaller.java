@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.cloudtrail.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -49,6 +50,8 @@ public class CreateTrailRequestMarshaller {
             .marshallLocationName("KmsKeyId").build();
     private static final MarshallingInfo<Boolean> ISORGANIZATIONTRAIL_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IsOrganizationTrail").build();
+    private static final MarshallingInfo<List> TAGSLIST_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("TagsList").build();
 
     private static final CreateTrailRequestMarshaller instance = new CreateTrailRequestMarshaller();
 
@@ -77,6 +80,7 @@ public class CreateTrailRequestMarshaller {
             protocolMarshaller.marshall(createTrailRequest.getCloudWatchLogsRoleArn(), CLOUDWATCHLOGSROLEARN_BINDING);
             protocolMarshaller.marshall(createTrailRequest.getKmsKeyId(), KMSKEYID_BINDING);
             protocolMarshaller.marshall(createTrailRequest.getIsOrganizationTrail(), ISORGANIZATIONTRAIL_BINDING);
+            protocolMarshaller.marshall(createTrailRequest.getTagsList(), TAGSLIST_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

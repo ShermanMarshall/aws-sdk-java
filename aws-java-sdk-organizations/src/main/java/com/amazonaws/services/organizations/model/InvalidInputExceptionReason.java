@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -24,6 +24,7 @@ public enum InvalidInputExceptionReason {
     INVALID_SYNTAX_ORGANIZATION_ARN("INVALID_SYNTAX_ORGANIZATION_ARN"),
     INVALID_SYNTAX_POLICY_ID("INVALID_SYNTAX_POLICY_ID"),
     INVALID_ENUM("INVALID_ENUM"),
+    INVALID_ENUM_POLICY_TYPE("INVALID_ENUM_POLICY_TYPE"),
     INVALID_LIST_MEMBER("INVALID_LIST_MEMBER"),
     MAX_LENGTH_EXCEEDED("MAX_LENGTH_EXCEEDED"),
     MAX_VALUE_EXCEEDED("MAX_VALUE_EXCEEDED"),
@@ -39,7 +40,8 @@ public enum InvalidInputExceptionReason {
     INVALID_FULL_NAME_TARGET("INVALID_FULL_NAME_TARGET"),
     UNRECOGNIZED_SERVICE_PRINCIPAL("UNRECOGNIZED_SERVICE_PRINCIPAL"),
     INVALID_ROLE_NAME("INVALID_ROLE_NAME"),
-    INVALID_SYSTEM_TAGS_PARAMETER("INVALID_SYSTEM_TAGS_PARAMETER");
+    INVALID_SYSTEM_TAGS_PARAMETER("INVALID_SYSTEM_TAGS_PARAMETER"),
+    TARGET_NOT_SUPPORTED("TARGET_NOT_SUPPORTED");
 
     private String value;
 

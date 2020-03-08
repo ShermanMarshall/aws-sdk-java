@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,6 +50,18 @@ public class AssociateVpcCidrBlockRequestMarshaller implements Marshaller<Reques
 
         if (associateVpcCidrBlockRequest.getVpcId() != null) {
             request.addParameter("VpcId", StringUtils.fromString(associateVpcCidrBlockRequest.getVpcId()));
+        }
+
+        if (associateVpcCidrBlockRequest.getIpv6CidrBlockNetworkBorderGroup() != null) {
+            request.addParameter("Ipv6CidrBlockNetworkBorderGroup", StringUtils.fromString(associateVpcCidrBlockRequest.getIpv6CidrBlockNetworkBorderGroup()));
+        }
+
+        if (associateVpcCidrBlockRequest.getIpv6Pool() != null) {
+            request.addParameter("Ipv6Pool", StringUtils.fromString(associateVpcCidrBlockRequest.getIpv6Pool()));
+        }
+
+        if (associateVpcCidrBlockRequest.getIpv6CidrBlock() != null) {
+            request.addParameter("Ipv6CidrBlock", StringUtils.fromString(associateVpcCidrBlockRequest.getIpv6CidrBlock()));
         }
 
         return request;

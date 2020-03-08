@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,6 +32,8 @@ public class ContainerInstanceMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("containerInstanceArn").build();
     private static final MarshallingInfo<String> EC2INSTANCEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ec2InstanceId").build();
+    private static final MarshallingInfo<String> CAPACITYPROVIDERNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("capacityProviderName").build();
     private static final MarshallingInfo<Long> VERSION_BINDING = MarshallingInfo.builder(MarshallingType.LONG).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("version").build();
     private static final MarshallingInfo<StructuredPojo> VERSIONINFO_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -79,6 +81,7 @@ public class ContainerInstanceMarshaller {
         try {
             protocolMarshaller.marshall(containerInstance.getContainerInstanceArn(), CONTAINERINSTANCEARN_BINDING);
             protocolMarshaller.marshall(containerInstance.getEc2InstanceId(), EC2INSTANCEID_BINDING);
+            protocolMarshaller.marshall(containerInstance.getCapacityProviderName(), CAPACITYPROVIDERNAME_BINDING);
             protocolMarshaller.marshall(containerInstance.getVersion(), VERSION_BINDING);
             protocolMarshaller.marshall(containerInstance.getVersionInfo(), VERSIONINFO_BINDING);
             protocolMarshaller.marshall(containerInstance.getRemainingResources(), REMAININGRESOURCES_BINDING);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,14 +28,15 @@ public class Action implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of action. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * The type of action.
      * </p>
      */
     private String type;
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>.
+     * The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>
+     * and you want to route to a single target group. To route to one or more target groups, use
+     * <code>ForwardConfig</code> instead.
      * </p>
      */
     private String targetGroupArn;
@@ -56,8 +57,8 @@ public class Action implements Serializable, Cloneable {
     /**
      * <p>
      * The order for the action. This value is required for rules with multiple actions. The action with the lowest
-     * value for order is performed first. The final action to be performed must be a <code>forward</code> or a
-     * <code>fixed-response</code> action.
+     * value for order is performed first. The last action to be performed must be one of the following types of
+     * actions: a <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
      * </p>
      */
     private Integer order;
@@ -75,16 +76,24 @@ public class Action implements Serializable, Cloneable {
      * </p>
      */
     private FixedResponseActionConfig fixedResponseConfig;
+    /**
+     * <p>
+     * Information for creating an action that distributes requests among one or more target groups. For Network Load
+     * Balancers, you can specify a single target group. Specify only when <code>Type</code> is <code>forward</code>. If
+     * you specify both <code>ForwardConfig</code> and <code>TargetGroupArn</code>, you can specify only one target
+     * group using <code>ForwardConfig</code> and it must be the same target group specified in
+     * <code>TargetGroupArn</code>.
+     * </p>
+     */
+    private ForwardActionConfig forwardConfig;
 
     /**
      * <p>
-     * The type of action. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * The type of action.
      * </p>
      * 
      * @param type
-     *        The type of action. Each rule must include exactly one of the following types of actions:
-     *        <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
+     *        The type of action.
      * @see ActionTypeEnum
      */
 
@@ -94,12 +103,10 @@ public class Action implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of action. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * The type of action.
      * </p>
      * 
-     * @return The type of action. Each rule must include exactly one of the following types of actions:
-     *         <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
+     * @return The type of action.
      * @see ActionTypeEnum
      */
 
@@ -109,13 +116,11 @@ public class Action implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of action. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * The type of action.
      * </p>
      * 
      * @param type
-     *        The type of action. Each rule must include exactly one of the following types of actions:
-     *        <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
+     *        The type of action.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ActionTypeEnum
      */
@@ -127,13 +132,11 @@ public class Action implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of action. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * The type of action.
      * </p>
      * 
      * @param type
-     *        The type of action. Each rule must include exactly one of the following types of actions:
-     *        <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
+     *        The type of action.
      * @see ActionTypeEnum
      */
 
@@ -143,13 +146,11 @@ public class Action implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The type of action. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * The type of action.
      * </p>
      * 
      * @param type
-     *        The type of action. Each rule must include exactly one of the following types of actions:
-     *        <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
+     *        The type of action.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ActionTypeEnum
      */
@@ -161,12 +162,15 @@ public class Action implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>.
+     * The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>
+     * and you want to route to a single target group. To route to one or more target groups, use
+     * <code>ForwardConfig</code> instead.
      * </p>
      * 
      * @param targetGroupArn
      *        The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is
-     *        <code>forward</code>.
+     *        <code>forward</code> and you want to route to a single target group. To route to one or more target
+     *        groups, use <code>ForwardConfig</code> instead.
      */
 
     public void setTargetGroupArn(String targetGroupArn) {
@@ -175,11 +179,14 @@ public class Action implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>.
+     * The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>
+     * and you want to route to a single target group. To route to one or more target groups, use
+     * <code>ForwardConfig</code> instead.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is
-     *         <code>forward</code>.
+     *         <code>forward</code> and you want to route to a single target group. To route to one or more target
+     *         groups, use <code>ForwardConfig</code> instead.
      */
 
     public String getTargetGroupArn() {
@@ -188,12 +195,15 @@ public class Action implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>.
+     * The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is <code>forward</code>
+     * and you want to route to a single target group. To route to one or more target groups, use
+     * <code>ForwardConfig</code> instead.
      * </p>
      * 
      * @param targetGroupArn
      *        The Amazon Resource Name (ARN) of the target group. Specify only when <code>Type</code> is
-     *        <code>forward</code>.
+     *        <code>forward</code> and you want to route to a single target group. To route to one or more target
+     *        groups, use <code>ForwardConfig</code> instead.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -297,14 +307,14 @@ public class Action implements Serializable, Cloneable {
     /**
      * <p>
      * The order for the action. This value is required for rules with multiple actions. The action with the lowest
-     * value for order is performed first. The final action to be performed must be a <code>forward</code> or a
-     * <code>fixed-response</code> action.
+     * value for order is performed first. The last action to be performed must be one of the following types of
+     * actions: a <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
      * </p>
      * 
      * @param order
      *        The order for the action. This value is required for rules with multiple actions. The action with the
-     *        lowest value for order is performed first. The final action to be performed must be a <code>forward</code>
-     *        or a <code>fixed-response</code> action.
+     *        lowest value for order is performed first. The last action to be performed must be one of the following
+     *        types of actions: a <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
      */
 
     public void setOrder(Integer order) {
@@ -314,13 +324,13 @@ public class Action implements Serializable, Cloneable {
     /**
      * <p>
      * The order for the action. This value is required for rules with multiple actions. The action with the lowest
-     * value for order is performed first. The final action to be performed must be a <code>forward</code> or a
-     * <code>fixed-response</code> action.
+     * value for order is performed first. The last action to be performed must be one of the following types of
+     * actions: a <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
      * </p>
      * 
      * @return The order for the action. This value is required for rules with multiple actions. The action with the
-     *         lowest value for order is performed first. The final action to be performed must be a
-     *         <code>forward</code> or a <code>fixed-response</code> action.
+     *         lowest value for order is performed first. The last action to be performed must be one of the following
+     *         types of actions: a <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
      */
 
     public Integer getOrder() {
@@ -330,14 +340,14 @@ public class Action implements Serializable, Cloneable {
     /**
      * <p>
      * The order for the action. This value is required for rules with multiple actions. The action with the lowest
-     * value for order is performed first. The final action to be performed must be a <code>forward</code> or a
-     * <code>fixed-response</code> action.
+     * value for order is performed first. The last action to be performed must be one of the following types of
+     * actions: a <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
      * </p>
      * 
      * @param order
      *        The order for the action. This value is required for rules with multiple actions. The action with the
-     *        lowest value for order is performed first. The final action to be performed must be a <code>forward</code>
-     *        or a <code>fixed-response</code> action.
+     *        lowest value for order is performed first. The last action to be performed must be one of the following
+     *        types of actions: a <code>forward</code>, <code>fixed-response</code>, or <code>redirect</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -439,6 +449,70 @@ public class Action implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Information for creating an action that distributes requests among one or more target groups. For Network Load
+     * Balancers, you can specify a single target group. Specify only when <code>Type</code> is <code>forward</code>. If
+     * you specify both <code>ForwardConfig</code> and <code>TargetGroupArn</code>, you can specify only one target
+     * group using <code>ForwardConfig</code> and it must be the same target group specified in
+     * <code>TargetGroupArn</code>.
+     * </p>
+     * 
+     * @param forwardConfig
+     *        Information for creating an action that distributes requests among one or more target groups. For Network
+     *        Load Balancers, you can specify a single target group. Specify only when <code>Type</code> is
+     *        <code>forward</code>. If you specify both <code>ForwardConfig</code> and <code>TargetGroupArn</code>, you
+     *        can specify only one target group using <code>ForwardConfig</code> and it must be the same target group
+     *        specified in <code>TargetGroupArn</code>.
+     */
+
+    public void setForwardConfig(ForwardActionConfig forwardConfig) {
+        this.forwardConfig = forwardConfig;
+    }
+
+    /**
+     * <p>
+     * Information for creating an action that distributes requests among one or more target groups. For Network Load
+     * Balancers, you can specify a single target group. Specify only when <code>Type</code> is <code>forward</code>. If
+     * you specify both <code>ForwardConfig</code> and <code>TargetGroupArn</code>, you can specify only one target
+     * group using <code>ForwardConfig</code> and it must be the same target group specified in
+     * <code>TargetGroupArn</code>.
+     * </p>
+     * 
+     * @return Information for creating an action that distributes requests among one or more target groups. For Network
+     *         Load Balancers, you can specify a single target group. Specify only when <code>Type</code> is
+     *         <code>forward</code>. If you specify both <code>ForwardConfig</code> and <code>TargetGroupArn</code>, you
+     *         can specify only one target group using <code>ForwardConfig</code> and it must be the same target group
+     *         specified in <code>TargetGroupArn</code>.
+     */
+
+    public ForwardActionConfig getForwardConfig() {
+        return this.forwardConfig;
+    }
+
+    /**
+     * <p>
+     * Information for creating an action that distributes requests among one or more target groups. For Network Load
+     * Balancers, you can specify a single target group. Specify only when <code>Type</code> is <code>forward</code>. If
+     * you specify both <code>ForwardConfig</code> and <code>TargetGroupArn</code>, you can specify only one target
+     * group using <code>ForwardConfig</code> and it must be the same target group specified in
+     * <code>TargetGroupArn</code>.
+     * </p>
+     * 
+     * @param forwardConfig
+     *        Information for creating an action that distributes requests among one or more target groups. For Network
+     *        Load Balancers, you can specify a single target group. Specify only when <code>Type</code> is
+     *        <code>forward</code>. If you specify both <code>ForwardConfig</code> and <code>TargetGroupArn</code>, you
+     *        can specify only one target group using <code>ForwardConfig</code> and it must be the same target group
+     *        specified in <code>TargetGroupArn</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Action withForwardConfig(ForwardActionConfig forwardConfig) {
+        setForwardConfig(forwardConfig);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -463,7 +537,9 @@ public class Action implements Serializable, Cloneable {
         if (getRedirectConfig() != null)
             sb.append("RedirectConfig: ").append(getRedirectConfig()).append(",");
         if (getFixedResponseConfig() != null)
-            sb.append("FixedResponseConfig: ").append(getFixedResponseConfig());
+            sb.append("FixedResponseConfig: ").append(getFixedResponseConfig()).append(",");
+        if (getForwardConfig() != null)
+            sb.append("ForwardConfig: ").append(getForwardConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -506,6 +582,10 @@ public class Action implements Serializable, Cloneable {
             return false;
         if (other.getFixedResponseConfig() != null && other.getFixedResponseConfig().equals(this.getFixedResponseConfig()) == false)
             return false;
+        if (other.getForwardConfig() == null ^ this.getForwardConfig() == null)
+            return false;
+        if (other.getForwardConfig() != null && other.getForwardConfig().equals(this.getForwardConfig()) == false)
+            return false;
         return true;
     }
 
@@ -521,6 +601,7 @@ public class Action implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getOrder() == null) ? 0 : getOrder().hashCode());
         hashCode = prime * hashCode + ((getRedirectConfig() == null) ? 0 : getRedirectConfig().hashCode());
         hashCode = prime * hashCode + ((getFixedResponseConfig() == null) ? 0 : getFixedResponseConfig().hashCode());
+        hashCode = prime * hashCode + ((getForwardConfig() == null) ? 0 : getForwardConfig().hashCode());
         return hashCode;
     }
 

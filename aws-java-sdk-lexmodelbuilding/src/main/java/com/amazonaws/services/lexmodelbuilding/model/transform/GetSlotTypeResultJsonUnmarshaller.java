@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -80,6 +80,16 @@ public class GetSlotTypeResultJsonUnmarshaller implements Unmarshaller<GetSlotTy
                 if (context.testExpression("valueSelectionStrategy", targetDepth)) {
                     context.nextToken();
                     getSlotTypeResult.setValueSelectionStrategy(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("parentSlotTypeSignature", targetDepth)) {
+                    context.nextToken();
+                    getSlotTypeResult.setParentSlotTypeSignature(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("slotTypeConfigurations", targetDepth)) {
+                    context.nextToken();
+                    getSlotTypeResult
+                            .setSlotTypeConfigurations(new ListUnmarshaller<SlotTypeConfiguration>(SlotTypeConfigurationJsonUnmarshaller.getInstance())
+                                    .unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

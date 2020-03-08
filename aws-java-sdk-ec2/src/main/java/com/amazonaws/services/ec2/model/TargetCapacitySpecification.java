@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,10 +23,11 @@ import javax.annotation.Generated;
  * </p>
  * <p>
  * You can use the On-Demand Instance <code>MaxTotalPrice</code> parameter, the Spot Instance <code>MaxTotalPrice</code>
- * , or both to ensure your fleet cost does not exceed your budget. If you set a maximum price per hour for the
+ * , or both to ensure that your fleet cost does not exceed your budget. If you set a maximum price per hour for the
  * On-Demand Instances and Spot Instances in your request, EC2 Fleet will launch instances until it reaches the maximum
- * amount you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops launching
- * instances even if it hasn’t met the target capacity. The <code>MaxTotalPrice</code> parameters are located in and
+ * amount that you're willing to pay. When the maximum amount you're willing to pay is reached, the fleet stops
+ * launching instances even if it hasn’t met the target capacity. The <code>MaxTotalPrice</code> parameters are located
+ * in and
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TargetCapacitySpecification" target="_top">AWS

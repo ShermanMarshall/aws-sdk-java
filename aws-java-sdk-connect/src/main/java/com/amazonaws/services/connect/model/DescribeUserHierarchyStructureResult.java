@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,18 +26,18 @@ public class DescribeUserHierarchyStructureResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A <code>HierarchyStructure</code> object.
+     * Information about the hierarchy structure.
      * </p>
      */
     private HierarchyStructure hierarchyStructure;
 
     /**
      * <p>
-     * A <code>HierarchyStructure</code> object.
+     * Information about the hierarchy structure.
      * </p>
      * 
      * @param hierarchyStructure
-     *        A <code>HierarchyStructure</code> object.
+     *        Information about the hierarchy structure.
      */
 
     public void setHierarchyStructure(HierarchyStructure hierarchyStructure) {
@@ -46,10 +46,10 @@ public class DescribeUserHierarchyStructureResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A <code>HierarchyStructure</code> object.
+     * Information about the hierarchy structure.
      * </p>
      * 
-     * @return A <code>HierarchyStructure</code> object.
+     * @return Information about the hierarchy structure.
      */
 
     public HierarchyStructure getHierarchyStructure() {
@@ -58,11 +58,11 @@ public class DescribeUserHierarchyStructureResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A <code>HierarchyStructure</code> object.
+     * Information about the hierarchy structure.
      * </p>
      * 
      * @param hierarchyStructure
-     *        A <code>HierarchyStructure</code> object.
+     *        Information about the hierarchy structure.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

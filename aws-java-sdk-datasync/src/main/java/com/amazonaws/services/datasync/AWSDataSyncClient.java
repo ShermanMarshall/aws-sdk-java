@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -337,7 +337,66 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
 
     /**
      * <p>
-     * Creates an endpoint for a Network File System (NFS) file system.
+     * Creates an endpoint for an Amazon FSx for Windows file system.
+     * </p>
+     * 
+     * @param createLocationFsxWindowsRequest
+     * @return Result of the CreateLocationFsxWindows operation returned by the service.
+     * @throws InvalidRequestException
+     *         This exception is thrown when the client submits a malformed request.
+     * @throws InternalException
+     *         This exception is thrown when an error occurs in the AWS DataSync service.
+     * @sample AWSDataSync.CreateLocationFsxWindows
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/CreateLocationFsxWindows"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public CreateLocationFsxWindowsResult createLocationFsxWindows(CreateLocationFsxWindowsRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateLocationFsxWindows(request);
+    }
+
+    @SdkInternalApi
+    final CreateLocationFsxWindowsResult executeCreateLocationFsxWindows(CreateLocationFsxWindowsRequest createLocationFsxWindowsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createLocationFsxWindowsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateLocationFsxWindowsRequest> request = null;
+        Response<CreateLocationFsxWindowsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateLocationFsxWindowsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(createLocationFsxWindowsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "DataSync");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateLocationFsxWindows");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateLocationFsxWindowsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new CreateLocationFsxWindowsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Defines a file system on a Network File System (NFS) server that can be read from or written to
      * </p>
      * 
      * @param createLocationNfsRequest
@@ -404,7 +463,9 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
      * examples section.
      * </p>
      * <p>
-     * For more information, see Configuring Amazon S3 Location Settings in the <i>AWS DataSync User Guide.</i>
+     * For more information, see
+     * https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location in the
+     * <i>AWS DataSync User Guide.</i>
      * </p>
      * 
      * @param createLocationS3Request
@@ -462,7 +523,7 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
 
     /**
      * <p>
-     * Creates an endpoint for a Server Message Block (SMB) file system.
+     * Defines a file system on an Server Message Block (SMB) server that can be read from or written to.
      * </p>
      * 
      * @param createLocationSmbRequest
@@ -873,6 +934,65 @@ public class AWSDataSyncClient extends AmazonWebServiceClient implements AWSData
 
             HttpResponseHandler<AmazonWebServiceResponse<DescribeLocationEfsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DescribeLocationEfsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns metadata, such as the path information about an Amazon FSx for Windows location.
+     * </p>
+     * 
+     * @param describeLocationFsxWindowsRequest
+     * @return Result of the DescribeLocationFsxWindows operation returned by the service.
+     * @throws InvalidRequestException
+     *         This exception is thrown when the client submits a malformed request.
+     * @throws InternalException
+     *         This exception is thrown when an error occurs in the AWS DataSync service.
+     * @sample AWSDataSync.DescribeLocationFsxWindows
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/datasync-2018-11-09/DescribeLocationFsxWindows"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeLocationFsxWindowsResult describeLocationFsxWindows(DescribeLocationFsxWindowsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeLocationFsxWindows(request);
+    }
+
+    @SdkInternalApi
+    final DescribeLocationFsxWindowsResult executeDescribeLocationFsxWindows(DescribeLocationFsxWindowsRequest describeLocationFsxWindowsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeLocationFsxWindowsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeLocationFsxWindowsRequest> request = null;
+        Response<DescribeLocationFsxWindowsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeLocationFsxWindowsRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(describeLocationFsxWindowsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "DataSync");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeLocationFsxWindows");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DescribeLocationFsxWindowsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new DescribeLocationFsxWindowsResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

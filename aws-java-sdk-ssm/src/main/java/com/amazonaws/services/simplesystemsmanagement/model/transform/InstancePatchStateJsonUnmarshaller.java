@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -80,6 +80,10 @@ public class InstancePatchStateJsonUnmarshaller implements Unmarshaller<Instance
                     context.nextToken();
                     instancePatchState.setInstalledOtherCount(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
+                if (context.testExpression("InstalledPendingRebootCount", targetDepth)) {
+                    context.nextToken();
+                    instancePatchState.setInstalledPendingRebootCount(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
                 if (context.testExpression("InstalledRejectedCount", targetDepth)) {
                     context.nextToken();
                     instancePatchState.setInstalledRejectedCount(context.getUnmarshaller(Integer.class).unmarshall(context));
@@ -111,6 +115,14 @@ public class InstancePatchStateJsonUnmarshaller implements Unmarshaller<Instance
                 if (context.testExpression("Operation", targetDepth)) {
                     context.nextToken();
                     instancePatchState.setOperation(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("LastNoRebootInstallOperationTime", targetDepth)) {
+                    context.nextToken();
+                    instancePatchState.setLastNoRebootInstallOperationTime(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
+                if (context.testExpression("RebootOption", targetDepth)) {
+                    context.nextToken();
+                    instancePatchState.setRebootOption(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

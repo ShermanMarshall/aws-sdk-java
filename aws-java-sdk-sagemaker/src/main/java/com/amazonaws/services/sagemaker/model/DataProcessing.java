@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,7 +63,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies the source of the data to join with the transformed data. The valid values are <code>None</code> and
-     * <code>Input</code> The default value is <code>None</code> which specifies not to join the input with the
+     * <code>Input</code>. The default value is <code>None</code>, which specifies not to join the input with the
      * transformed data. If you want the batch transform job to join the original input data with the transformed data,
      * set <code>JoinSource</code> to <code>Input</code>.
      * </p>
@@ -252,7 +252,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies the source of the data to join with the transformed data. The valid values are <code>None</code> and
-     * <code>Input</code> The default value is <code>None</code> which specifies not to join the input with the
+     * <code>Input</code>. The default value is <code>None</code>, which specifies not to join the input with the
      * transformed data. If you want the batch transform job to join the original input data with the transformed data,
      * set <code>JoinSource</code> to <code>Input</code>.
      * </p>
@@ -271,7 +271,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param joinSource
      *        Specifies the source of the data to join with the transformed data. The valid values are <code>None</code>
-     *        and <code>Input</code> The default value is <code>None</code> which specifies not to join the input with
+     *        and <code>Input</code>. The default value is <code>None</code>, which specifies not to join the input with
      *        the transformed data. If you want the batch transform job to join the original input data with the
      *        transformed data, set <code>JoinSource</code> to <code>Input</code>. </p>
      *        <p>
@@ -295,7 +295,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies the source of the data to join with the transformed data. The valid values are <code>None</code> and
-     * <code>Input</code> The default value is <code>None</code> which specifies not to join the input with the
+     * <code>Input</code>. The default value is <code>None</code>, which specifies not to join the input with the
      * transformed data. If you want the batch transform job to join the original input data with the transformed data,
      * set <code>JoinSource</code> to <code>Input</code>.
      * </p>
@@ -313,7 +313,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @return Specifies the source of the data to join with the transformed data. The valid values are
-     *         <code>None</code> and <code>Input</code> The default value is <code>None</code> which specifies not to
+     *         <code>None</code> and <code>Input</code>. The default value is <code>None</code>, which specifies not to
      *         join the input with the transformed data. If you want the batch transform job to join the original input
      *         data with the transformed data, set <code>JoinSource</code> to <code>Input</code>. </p>
      *         <p>
@@ -337,7 +337,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies the source of the data to join with the transformed data. The valid values are <code>None</code> and
-     * <code>Input</code> The default value is <code>None</code> which specifies not to join the input with the
+     * <code>Input</code>. The default value is <code>None</code>, which specifies not to join the input with the
      * transformed data. If you want the batch transform job to join the original input data with the transformed data,
      * set <code>JoinSource</code> to <code>Input</code>.
      * </p>
@@ -356,7 +356,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param joinSource
      *        Specifies the source of the data to join with the transformed data. The valid values are <code>None</code>
-     *        and <code>Input</code> The default value is <code>None</code> which specifies not to join the input with
+     *        and <code>Input</code>. The default value is <code>None</code>, which specifies not to join the input with
      *        the transformed data. If you want the batch transform job to join the original input data with the
      *        transformed data, set <code>JoinSource</code> to <code>Input</code>. </p>
      *        <p>
@@ -382,7 +382,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Specifies the source of the data to join with the transformed data. The valid values are <code>None</code> and
-     * <code>Input</code> The default value is <code>None</code> which specifies not to join the input with the
+     * <code>Input</code>. The default value is <code>None</code>, which specifies not to join the input with the
      * transformed data. If you want the batch transform job to join the original input data with the transformed data,
      * set <code>JoinSource</code> to <code>Input</code>.
      * </p>
@@ -401,7 +401,7 @@ public class DataProcessing implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param joinSource
      *        Specifies the source of the data to join with the transformed data. The valid values are <code>None</code>
-     *        and <code>Input</code> The default value is <code>None</code> which specifies not to join the input with
+     *        and <code>Input</code>. The default value is <code>None</code>, which specifies not to join the input with
      *        the transformed data. If you want the batch transform job to join the original input data with the
      *        transformed data, set <code>JoinSource</code> to <code>Input</code>. </p>
      *        <p>

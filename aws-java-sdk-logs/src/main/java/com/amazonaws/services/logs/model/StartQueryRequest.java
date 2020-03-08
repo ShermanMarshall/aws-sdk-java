@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,7 +70,7 @@ public class StartQueryRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The maximum number of log events to return in the query. If the query string uses the <code>fields</code>
-     * command, only the specified fields and their values are returned.
+     * command, only the specified fields and their values are returned. The default is 1000.
      * </p>
      */
     private Integer limit;
@@ -384,12 +384,12 @@ public class StartQueryRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The maximum number of log events to return in the query. If the query string uses the <code>fields</code>
-     * command, only the specified fields and their values are returned.
+     * command, only the specified fields and their values are returned. The default is 1000.
      * </p>
      * 
      * @param limit
      *        The maximum number of log events to return in the query. If the query string uses the <code>fields</code>
-     *        command, only the specified fields and their values are returned.
+     *        command, only the specified fields and their values are returned. The default is 1000.
      */
 
     public void setLimit(Integer limit) {
@@ -399,11 +399,11 @@ public class StartQueryRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The maximum number of log events to return in the query. If the query string uses the <code>fields</code>
-     * command, only the specified fields and their values are returned.
+     * command, only the specified fields and their values are returned. The default is 1000.
      * </p>
      * 
      * @return The maximum number of log events to return in the query. If the query string uses the <code>fields</code>
-     *         command, only the specified fields and their values are returned.
+     *         command, only the specified fields and their values are returned. The default is 1000.
      */
 
     public Integer getLimit() {
@@ -413,12 +413,12 @@ public class StartQueryRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The maximum number of log events to return in the query. If the query string uses the <code>fields</code>
-     * command, only the specified fields and their values are returned.
+     * command, only the specified fields and their values are returned. The default is 1000.
      * </p>
      * 
      * @param limit
      *        The maximum number of log events to return in the query. If the query string uses the <code>fields</code>
-     *        command, only the specified fields and their values are returned.
+     *        command, only the specified fields and their values are returned. The default is 1000.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

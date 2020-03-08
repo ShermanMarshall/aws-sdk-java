@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -594,6 +594,39 @@ public class AmazonCloudFormationAsyncClient extends AmazonCloudFormationClient 
     }
 
     @Override
+    public java.util.concurrent.Future<DeregisterTypeResult> deregisterTypeAsync(DeregisterTypeRequest request) {
+
+        return deregisterTypeAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeregisterTypeResult> deregisterTypeAsync(final DeregisterTypeRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeregisterTypeRequest, DeregisterTypeResult> asyncHandler) {
+        final DeregisterTypeRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeregisterTypeResult>() {
+            @Override
+            public DeregisterTypeResult call() throws Exception {
+                DeregisterTypeResult result = null;
+
+                try {
+                    result = executeDeregisterType(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeAccountLimitsResult> describeAccountLimitsAsync(DescribeAccountLimitsRequest request) {
 
         return describeAccountLimitsAsync(request, null);
@@ -982,6 +1015,72 @@ public class AmazonCloudFormationAsyncClient extends AmazonCloudFormationClient 
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeTypeResult> describeTypeAsync(DescribeTypeRequest request) {
+
+        return describeTypeAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeTypeResult> describeTypeAsync(final DescribeTypeRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeTypeRequest, DescribeTypeResult> asyncHandler) {
+        final DescribeTypeRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeTypeResult>() {
+            @Override
+            public DescribeTypeResult call() throws Exception {
+                DescribeTypeResult result = null;
+
+                try {
+                    result = executeDescribeType(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeTypeRegistrationResult> describeTypeRegistrationAsync(DescribeTypeRegistrationRequest request) {
+
+        return describeTypeRegistrationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeTypeRegistrationResult> describeTypeRegistrationAsync(final DescribeTypeRegistrationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeTypeRegistrationRequest, DescribeTypeRegistrationResult> asyncHandler) {
+        final DescribeTypeRegistrationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeTypeRegistrationResult>() {
+            @Override
+            public DescribeTypeRegistrationResult call() throws Exception {
+                DescribeTypeRegistrationResult result = null;
+
+                try {
+                    result = executeDescribeTypeRegistration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DetectStackDriftResult> detectStackDriftAsync(DetectStackDriftRequest request) {
 
         return detectStackDriftAsync(request, null);
@@ -1032,6 +1131,39 @@ public class AmazonCloudFormationAsyncClient extends AmazonCloudFormationClient 
 
                 try {
                     result = executeDetectStackResourceDrift(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DetectStackSetDriftResult> detectStackSetDriftAsync(DetectStackSetDriftRequest request) {
+
+        return detectStackSetDriftAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DetectStackSetDriftResult> detectStackSetDriftAsync(final DetectStackSetDriftRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DetectStackSetDriftRequest, DetectStackSetDriftResult> asyncHandler) {
+        final DetectStackSetDriftRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DetectStackSetDriftResult>() {
+            @Override
+            public DetectStackSetDriftResult call() throws Exception {
+                DetectStackSetDriftResult result = null;
+
+                try {
+                    result = executeDetectStackSetDrift(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1578,6 +1710,171 @@ public class AmazonCloudFormationAsyncClient extends AmazonCloudFormationClient 
     }
 
     @Override
+    public java.util.concurrent.Future<ListTypeRegistrationsResult> listTypeRegistrationsAsync(ListTypeRegistrationsRequest request) {
+
+        return listTypeRegistrationsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTypeRegistrationsResult> listTypeRegistrationsAsync(final ListTypeRegistrationsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListTypeRegistrationsRequest, ListTypeRegistrationsResult> asyncHandler) {
+        final ListTypeRegistrationsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListTypeRegistrationsResult>() {
+            @Override
+            public ListTypeRegistrationsResult call() throws Exception {
+                ListTypeRegistrationsResult result = null;
+
+                try {
+                    result = executeListTypeRegistrations(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTypeVersionsResult> listTypeVersionsAsync(ListTypeVersionsRequest request) {
+
+        return listTypeVersionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTypeVersionsResult> listTypeVersionsAsync(final ListTypeVersionsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListTypeVersionsRequest, ListTypeVersionsResult> asyncHandler) {
+        final ListTypeVersionsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListTypeVersionsResult>() {
+            @Override
+            public ListTypeVersionsResult call() throws Exception {
+                ListTypeVersionsResult result = null;
+
+                try {
+                    result = executeListTypeVersions(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTypesResult> listTypesAsync(ListTypesRequest request) {
+
+        return listTypesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTypesResult> listTypesAsync(final ListTypesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListTypesRequest, ListTypesResult> asyncHandler) {
+        final ListTypesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListTypesResult>() {
+            @Override
+            public ListTypesResult call() throws Exception {
+                ListTypesResult result = null;
+
+                try {
+                    result = executeListTypes(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<RecordHandlerProgressResult> recordHandlerProgressAsync(RecordHandlerProgressRequest request) {
+
+        return recordHandlerProgressAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<RecordHandlerProgressResult> recordHandlerProgressAsync(final RecordHandlerProgressRequest request,
+            final com.amazonaws.handlers.AsyncHandler<RecordHandlerProgressRequest, RecordHandlerProgressResult> asyncHandler) {
+        final RecordHandlerProgressRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<RecordHandlerProgressResult>() {
+            @Override
+            public RecordHandlerProgressResult call() throws Exception {
+                RecordHandlerProgressResult result = null;
+
+                try {
+                    result = executeRecordHandlerProgress(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<RegisterTypeResult> registerTypeAsync(RegisterTypeRequest request) {
+
+        return registerTypeAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<RegisterTypeResult> registerTypeAsync(final RegisterTypeRequest request,
+            final com.amazonaws.handlers.AsyncHandler<RegisterTypeRequest, RegisterTypeResult> asyncHandler) {
+        final RegisterTypeRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<RegisterTypeResult>() {
+            @Override
+            public RegisterTypeResult call() throws Exception {
+                RegisterTypeResult result = null;
+
+                try {
+                    result = executeRegisterType(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<SetStackPolicyResult> setStackPolicyAsync(SetStackPolicyRequest request) {
 
         return setStackPolicyAsync(request, null);
@@ -1595,6 +1892,39 @@ public class AmazonCloudFormationAsyncClient extends AmazonCloudFormationClient 
 
                 try {
                     result = executeSetStackPolicy(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<SetTypeDefaultVersionResult> setTypeDefaultVersionAsync(SetTypeDefaultVersionRequest request) {
+
+        return setTypeDefaultVersionAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<SetTypeDefaultVersionResult> setTypeDefaultVersionAsync(final SetTypeDefaultVersionRequest request,
+            final com.amazonaws.handlers.AsyncHandler<SetTypeDefaultVersionRequest, SetTypeDefaultVersionResult> asyncHandler) {
+        final SetTypeDefaultVersionRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<SetTypeDefaultVersionResult>() {
+            @Override
+            public SetTypeDefaultVersionResult call() throws Exception {
+                SetTypeDefaultVersionResult result = null;
+
+                try {
+                    result = executeSetTypeDefaultVersion(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

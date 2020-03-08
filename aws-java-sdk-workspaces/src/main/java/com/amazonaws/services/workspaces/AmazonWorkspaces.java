@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -311,7 +311,32 @@ public interface AmazonWorkspaces {
 
     /**
      * <p>
-     * Retrieves a list that describes the configuration of bring your own license (BYOL) for the specified account.
+     * Deregisters the specified directory. This operation is asynchronous and returns before the WorkSpace directory is
+     * deregistered. If any WorkSpaces are registered to this directory, you must remove them before you can deregister
+     * the directory.
+     * </p>
+     * 
+     * @param deregisterWorkspaceDirectoryRequest
+     * @return Result of the DeregisterWorkspaceDirectory operation returned by the service.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws OperationNotSupportedException
+     *         This operation is not supported.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws InvalidResourceStateException
+     *         The state of the resource is not valid for this operation.
+     * @sample AmazonWorkspaces.DeregisterWorkspaceDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeregisterWorkspaceDirectory"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeregisterWorkspaceDirectoryResult deregisterWorkspaceDirectory(DeregisterWorkspaceDirectoryRequest deregisterWorkspaceDirectoryRequest);
+
+    /**
+     * <p>
+     * Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account.
      * </p>
      * 
      * @param describeAccountRequest
@@ -326,7 +351,7 @@ public interface AmazonWorkspaces {
 
     /**
      * <p>
-     * Retrieves a list that describes modifications to the configuration of bring your own license (BYOL) for the
+     * Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the
      * specified account.
      * </p>
      * 
@@ -418,7 +443,7 @@ public interface AmazonWorkspaces {
 
     /**
      * <p>
-     * Describes the available AWS Directory Service directories that are registered with Amazon WorkSpaces.
+     * Describes the available directories that are registered with Amazon WorkSpaces.
      * </p>
      * 
      * @param describeWorkspaceDirectoriesRequest
@@ -453,6 +478,25 @@ public interface AmazonWorkspaces {
      *      target="_top">AWS API Documentation</a>
      */
     DescribeWorkspaceImagesResult describeWorkspaceImages(DescribeWorkspaceImagesRequest describeWorkspaceImagesRequest);
+
+    /**
+     * <p>
+     * Describes the snapshots for the specified WorkSpace.
+     * </p>
+     * 
+     * @param describeWorkspaceSnapshotsRequest
+     * @return Result of the DescribeWorkspaceSnapshots operation returned by the service.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @sample AmazonWorkspaces.DescribeWorkspaceSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceSnapshots"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeWorkspaceSnapshotsResult describeWorkspaceSnapshots(DescribeWorkspaceSnapshotsRequest describeWorkspaceSnapshotsRequest);
 
     /**
      * <p>
@@ -521,7 +565,7 @@ public interface AmazonWorkspaces {
 
     /**
      * <p>
-     * Imports the specified Windows 7 or Windows 10 bring your own license (BYOL) image into Amazon WorkSpaces. The
+     * Imports the specified Windows 7 or Windows 10 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The
      * image must be an already licensed EC2 image that is in your AWS account, and you must own the image.
      * </p>
      * 
@@ -548,7 +592,7 @@ public interface AmazonWorkspaces {
     /**
      * <p>
      * Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management
-     * interface when you enable bring your own license (BYOL).
+     * interface when you enable Bring Your Own License (BYOL).
      * </p>
      * <p>
      * The management network interface is connected to a secure Amazon WorkSpaces management network. It is used for
@@ -570,7 +614,44 @@ public interface AmazonWorkspaces {
 
     /**
      * <p>
-     * Modifies the configuration of bring your own license (BYOL) for the specified account.
+     * Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user
+     * volume.
+     * </p>
+     * <p>
+     * The migration process recreates the WorkSpace by using a new root volume from the target bundle image and the
+     * user volume from the last available snapshot of the original WorkSpace. During migration, the original
+     * <code>D:\Users\%USERNAME%</code> user profile folder is renamed to
+     * <code>D:\Users\%USERNAME%MMddyyTHHmmss%.NotMigrated</code>. A new <code>D:\Users\%USERNAME%\</code> folder is
+     * generated by the new OS. Certain files in the old user profile are moved to the new user profile.
+     * </p>
+     * <p>
+     * For available migration scenarios, details about what happens during migration, and best practices, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html">Migrate a WorkSpace</a>.
+     * </p>
+     * 
+     * @param migrateWorkspaceRequest
+     * @return Result of the MigrateWorkspace operation returned by the service.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws OperationNotSupportedException
+     *         This operation is not supported.
+     * @throws OperationInProgressException
+     *         The properties of this WorkSpace are currently being modified. Try again in a moment.
+     * @throws ResourceUnavailableException
+     *         The specified resource is not available.
+     * @sample AmazonWorkspaces.MigrateWorkspace
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/MigrateWorkspace" target="_top">AWS
+     *      API Documentation</a>
+     */
+    MigrateWorkspaceResult migrateWorkspace(MigrateWorkspaceRequest migrateWorkspaceRequest);
+
+    /**
+     * <p>
+     * Modifies the configuration of Bring Your Own License (BYOL) for the specified account.
      * </p>
      * 
      * @param modifyAccountRequest
@@ -612,6 +693,66 @@ public interface AmazonWorkspaces {
 
     /**
      * <p>
+     * Modifies the self-service WorkSpace management capabilities for your users. For more information, see <a href=
+     * "https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html"
+     * >Enable Self-Service WorkSpace Management Capabilities for Your Users</a>.
+     * </p>
+     * 
+     * @param modifySelfservicePermissionsRequest
+     * @return Result of the ModifySelfservicePermissions operation returned by the service.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @sample AmazonWorkspaces.ModifySelfservicePermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifySelfservicePermissions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ModifySelfservicePermissionsResult modifySelfservicePermissions(ModifySelfservicePermissionsRequest modifySelfservicePermissionsRequest);
+
+    /**
+     * <p>
+     * Specifies which devices and operating systems users can use to access their WorkSpaces. For more information, see
+     * <a href=
+     * "https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access">
+     * Control Device Access</a>.
+     * </p>
+     * 
+     * @param modifyWorkspaceAccessPropertiesRequest
+     * @return Result of the ModifyWorkspaceAccessProperties operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @sample AmazonWorkspaces.ModifyWorkspaceAccessProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceAccessProperties"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ModifyWorkspaceAccessPropertiesResult modifyWorkspaceAccessProperties(ModifyWorkspaceAccessPropertiesRequest modifyWorkspaceAccessPropertiesRequest);
+
+    /**
+     * <p>
+     * Modify the default properties used to create WorkSpaces.
+     * </p>
+     * 
+     * @param modifyWorkspaceCreationPropertiesRequest
+     * @return Result of the ModifyWorkspaceCreationProperties operation returned by the service.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @sample AmazonWorkspaces.ModifyWorkspaceCreationProperties
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceCreationProperties"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ModifyWorkspaceCreationPropertiesResult modifyWorkspaceCreationProperties(ModifyWorkspaceCreationPropertiesRequest modifyWorkspaceCreationPropertiesRequest);
+
+    /**
+     * <p>
      * Modifies the specified WorkSpace properties.
      * </p>
      * 
@@ -624,9 +765,9 @@ public interface AmazonWorkspaces {
      * @throws OperationInProgressException
      *         The properties of this WorkSpace are currently being modified. Try again in a moment.
      * @throws UnsupportedWorkspaceConfigurationException
-     *         The configuration of this WorkSpace is not supported for this operation. For more information, see the <a
-     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/">Amazon WorkSpaces Administration
-     *         Guide</a>.
+     *         The configuration of this WorkSpace is not supported for this operation. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/required-service-components.html">Required
+     *         Configuration and Service Components for WorkSpaces </a>.
      * @throws ResourceNotFoundException
      *         The resource could not be found.
      * @throws AccessDeniedException
@@ -688,8 +829,8 @@ public interface AmazonWorkspaces {
      * Rebuilds the specified WorkSpace.
      * </p>
      * <p>
-     * You cannot rebuild a WorkSpace unless its state is <code>AVAILABLE</code>, <code>ERROR</code>, or
-     * <code>UNHEALTHY</code>.
+     * You cannot rebuild a WorkSpace unless its state is <code>AVAILABLE</code>, <code>ERROR</code>,
+     * <code>UNHEALTHY</code>, or <code>STOPPED</code>.
      * </p>
      * <p>
      * Rebuilding a WorkSpace is a potentially destructive action that can result in the loss of data. For more
@@ -707,6 +848,77 @@ public interface AmazonWorkspaces {
      *      API Documentation</a>
      */
     RebuildWorkspacesResult rebuildWorkspaces(RebuildWorkspacesRequest rebuildWorkspacesRequest);
+
+    /**
+     * <p>
+     * Registers the specified directory. This operation is asynchronous and returns before the WorkSpace directory is
+     * registered. If this is the first time you are registering a directory, you will need to create the
+     * workspaces_DefaultRole role before you can register a directory. For more information, see <a href=
+     * "https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role">
+     * Creating the workspaces_DefaultRole Role</a>.
+     * </p>
+     * 
+     * @param registerWorkspaceDirectoryRequest
+     * @return Result of the RegisterWorkspaceDirectory operation returned by the service.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws ResourceLimitExceededException
+     *         Your resource limits have been exceeded.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @throws WorkspacesDefaultRoleNotFoundException
+     *         The workspaces_DefaultRole role could not be found. If this is the first time you are registering a
+     *         directory, you will need to create the workspaces_DefaultRole role before you can register a directory.
+     *         For more information, see <a href=
+     *         "https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role"
+     *         >Creating the workspaces_DefaultRole Role</a>.
+     * @throws InvalidResourceStateException
+     *         The state of the resource is not valid for this operation.
+     * @throws UnsupportedNetworkConfigurationException
+     *         The configuration of this network is not supported for this operation, or your network configuration
+     *         conflicts with the Amazon WorkSpaces management network IP range. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html"> Configure a
+     *         VPC for Amazon WorkSpaces</a>.
+     * @throws OperationNotSupportedException
+     *         This operation is not supported.
+     * @sample AmazonWorkspaces.RegisterWorkspaceDirectory
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RegisterWorkspaceDirectory"
+     *      target="_top">AWS API Documentation</a>
+     */
+    RegisterWorkspaceDirectoryResult registerWorkspaceDirectory(RegisterWorkspaceDirectoryRequest registerWorkspaceDirectoryRequest);
+
+    /**
+     * <p>
+     * Restores the specified WorkSpace to its last known healthy state.
+     * </p>
+     * <p>
+     * You cannot restore a WorkSpace unless its state is <code> AVAILABLE</code>, <code>ERROR</code>,
+     * <code>UNHEALTHY</code>, or <code>STOPPED</code>.
+     * </p>
+     * <p>
+     * Restoring a WorkSpace is a potentially destructive action that can result in the loss of data. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/restore-workspace.html">Restore a WorkSpace</a>.
+     * </p>
+     * <p>
+     * This operation is asynchronous and returns before the WorkSpace is completely restored.
+     * </p>
+     * 
+     * @param restoreWorkspaceRequest
+     * @return Result of the RestoreWorkspace operation returned by the service.
+     * @throws InvalidParameterValuesException
+     *         One or more parameter values are not valid.
+     * @throws ResourceNotFoundException
+     *         The resource could not be found.
+     * @throws AccessDeniedException
+     *         The user is not authorized to access a resource.
+     * @sample AmazonWorkspaces.RestoreWorkspace
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RestoreWorkspace" target="_top">AWS
+     *      API Documentation</a>
+     */
+    RestoreWorkspaceResult restoreWorkspace(RestoreWorkspaceRequest restoreWorkspaceRequest);
 
     /**
      * <p>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,17 +25,20 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     * The list of AWS accounts that were not deleted. For each account, the list includes the account ID and the email
+     * address.
      * </p>
      */
     private java.util.List<Result> unprocessedAccounts;
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     * The list of AWS accounts that were not deleted. For each account, the list includes the account ID and the email
+     * address.
      * </p>
      * 
-     * @return A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     * @return The list of AWS accounts that were not deleted. For each account, the list includes the account ID and
+     *         the email address.
      */
 
     public java.util.List<Result> getUnprocessedAccounts() {
@@ -44,11 +47,13 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     * The list of AWS accounts that were not deleted. For each account, the list includes the account ID and the email
+     * address.
      * </p>
      * 
      * @param unprocessedAccounts
-     *        A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     *        The list of AWS accounts that were not deleted. For each account, the list includes the account ID and the
+     *        email address.
      */
 
     public void setUnprocessedAccounts(java.util.Collection<Result> unprocessedAccounts) {
@@ -62,7 +67,8 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     * The list of AWS accounts that were not deleted. For each account, the list includes the account ID and the email
+     * address.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -71,7 +77,8 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
      * </p>
      * 
      * @param unprocessedAccounts
-     *        A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     *        The list of AWS accounts that were not deleted. For each account, the list includes the account ID and the
+     *        email address.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -87,11 +94,13 @@ public class DeleteMembersResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     * The list of AWS accounts that were not deleted. For each account, the list includes the account ID and the email
+     * address.
      * </p>
      * 
      * @param unprocessedAccounts
-     *        A list of account ID and email address pairs of the AWS accounts that weren't deleted.
+     *        The list of AWS accounts that were not deleted. For each account, the list includes the account ID and the
+     *        email address.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

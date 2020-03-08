@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -140,6 +140,13 @@ public class UpdateAccountAuditConfigurationRequest extends com.amazonaws.Amazon
         setAuditNotificationTargetConfigurations(auditNotificationTargetConfigurations);
         return this;
     }
+
+    /**
+     * Add a single AuditNotificationTargetConfigurations entry
+     *
+     * @see UpdateAccountAuditConfigurationRequest#withAuditNotificationTargetConfigurations
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateAccountAuditConfigurationRequest addAuditNotificationTargetConfigurationsEntry(String key, AuditNotificationTarget value) {
         if (null == this.auditNotificationTargetConfigurations) {
@@ -282,6 +289,13 @@ public class UpdateAccountAuditConfigurationRequest extends com.amazonaws.Amazon
         setAuditCheckConfigurations(auditCheckConfigurations);
         return this;
     }
+
+    /**
+     * Add a single AuditCheckConfigurations entry
+     *
+     * @see UpdateAccountAuditConfigurationRequest#withAuditCheckConfigurations
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateAccountAuditConfigurationRequest addAuditCheckConfigurationsEntry(String key, AuditCheckConfiguration value) {
         if (null == this.auditCheckConfigurations) {

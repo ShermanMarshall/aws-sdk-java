@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -22,7 +22,7 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A list of continuous export ids to search for.
+     * A list of continuous export IDs to search for.
      * </p>
      */
     private java.util.List<String> exportIds;
@@ -41,10 +41,10 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A list of continuous export ids to search for.
+     * A list of continuous export IDs to search for.
      * </p>
      * 
-     * @return A list of continuous export ids to search for.
+     * @return A list of continuous export IDs to search for.
      */
 
     public java.util.List<String> getExportIds() {
@@ -53,11 +53,11 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A list of continuous export ids to search for.
+     * A list of continuous export IDs to search for.
      * </p>
      * 
      * @param exportIds
-     *        A list of continuous export ids to search for.
+     *        A list of continuous export IDs to search for.
      */
 
     public void setExportIds(java.util.Collection<String> exportIds) {
@@ -71,7 +71,7 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A list of continuous export ids to search for.
+     * A list of continuous export IDs to search for.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -80,7 +80,7 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
      * </p>
      * 
      * @param exportIds
-     *        A list of continuous export ids to search for.
+     *        A list of continuous export IDs to search for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -96,11 +96,11 @@ public class DescribeExportConfigurationsRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * A list of continuous export ids to search for.
+     * A list of continuous export IDs to search for.
      * </p>
      * 
      * @param exportIds
-     *        A list of continuous export ids to search for.
+     *        A list of continuous export IDs to search for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

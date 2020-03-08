@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ import com.amazonaws.services.rds.model.*;
  * </p>
  * <p>
  * Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a
- * relational database in the cloud. It provides cost-efficient, resizable capacity for an industry-standard relational
+ * relational database in the cloud. It provides cost-efficient, resizeable capacity for an industry-standard relational
  * database and manages common database administration tasks, freeing up developers to focus on what makes their
  * applications and businesses unique.
  * </p>
@@ -44,9 +44,9 @@ import com.amazonaws.services.rds.model.*;
  * </p>
  * <p>
  * This interface reference for Amazon RDS contains documentation for a programming or command line interface you can
- * use to manage Amazon RDS. Note that Amazon RDS is asynchronous, which means that some interfaces might require
- * techniques such as polling or callback functions to determine when a command has been applied. In this reference, the
- * parameter descriptions indicate whether a command is applied immediately, on the next instance reboot, or during the
+ * use to manage Amazon RDS. Amazon RDS is asynchronous, which means that some interfaces might require techniques such
+ * as polling or callback functions to determine when a command has been applied. In this reference, the parameter
+ * descriptions indicate whether a command is applied immediately, on the next instance reboot, or during the
  * maintenance window. The reference structure is as follows, and we list following some related topics from the user
  * guide.
  * </p>
@@ -420,6 +420,39 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
+     * Cancels an export task in progress that is exporting a snapshot to Amazon S3. Any data that has already been
+     * written to the S3 bucket isn't removed.
+     * </p>
+     * 
+     * @param cancelExportTaskRequest
+     * @return A Java Future containing the result of the CancelExportTask operation returned by the service.
+     * @sample AmazonRDSAsync.CancelExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CancelExportTask" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CancelExportTaskResult> cancelExportTaskAsync(CancelExportTaskRequest cancelExportTaskRequest);
+
+    /**
+     * <p>
+     * Cancels an export task in progress that is exporting a snapshot to Amazon S3. Any data that has already been
+     * written to the S3 bucket isn't removed.
+     * </p>
+     * 
+     * @param cancelExportTaskRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CancelExportTask operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.CancelExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CancelExportTask" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CancelExportTaskResult> cancelExportTaskAsync(CancelExportTaskRequest cancelExportTaskRequest,
+            com.amazonaws.handlers.AsyncHandler<CancelExportTaskRequest, CancelExportTaskResult> asyncHandler);
+
+    /**
+     * <p>
      * Copies the specified DB cluster parameter group.
      * </p>
      * <note>
@@ -502,7 +535,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </li>
      * <li>
      * <p>
-     * <code>DestinationRegion</code> - The name of the AWS Region that the DB cluster snapshot will be created in.
+     * <code>DestinationRegion</code> - The name of the AWS Region that the DB cluster snapshot is to be created in.
      * </p>
      * </li>
      * <li>
@@ -522,7 +555,14 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing
      * Process</a>.
      * </p>
-     * </li>
+     * <note>
+     * <p>
+     * If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     * <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     * Specifying <code>SourceRegion</code> autogenerates a pre-signed URL that is a valid request for the operation
+     * that can be executed in the source AWS Region.
+     * </p>
+     * </note></li>
      * <li>
      * <p>
      * <code>TargetDBClusterSnapshotIdentifier</code> - The identifier for the new copy of the DB cluster snapshot in
@@ -607,7 +647,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </li>
      * <li>
      * <p>
-     * <code>DestinationRegion</code> - The name of the AWS Region that the DB cluster snapshot will be created in.
+     * <code>DestinationRegion</code> - The name of the AWS Region that the DB cluster snapshot is to be created in.
      * </p>
      * </li>
      * <li>
@@ -627,7 +667,14 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html"> Signature Version 4 Signing
      * Process</a>.
      * </p>
-     * </li>
+     * <note>
+     * <p>
+     * If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     * <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     * Specifying <code>SourceRegion</code> autogenerates a pre-signed URL that is a valid request for the operation
+     * that can be executed in the source AWS Region.
+     * </p>
+     * </note></li>
      * <li>
      * <p>
      * <code>TargetDBClusterSnapshotIdentifier</code> - The identifier for the new copy of the DB cluster snapshot in
@@ -716,8 +763,8 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </p>
      * <p>
      * For more information about copying snapshots, see <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html">Copying a DB Snapshot</a>
-     * in the <i>Amazon RDS User Guide.</i>
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot">Copying
+     * a DB Snapshot</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
      * 
      * @param copyDBSnapshotRequest
@@ -738,8 +785,8 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </p>
      * <p>
      * For more information about copying snapshots, see <a
-     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopyDBSnapshot.html">Copying a DB Snapshot</a>
-     * in the <i>Amazon RDS User Guide.</i>
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot">Copying
+     * a DB Snapshot</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
      * 
      * @param copyDBSnapshotRequest
@@ -785,6 +832,57 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<OptionGroup> copyOptionGroupAsync(CopyOptionGroupRequest copyOptionGroupRequest,
             com.amazonaws.handlers.AsyncHandler<CopyOptionGroupRequest, OptionGroup> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a custom Availability Zone (AZ).
+     * </p>
+     * <p>
+     * A custom AZ is an on-premises AZ that is integrated with a VMware vSphere cluster.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * 
+     * @param createCustomAvailabilityZoneRequest
+     * @return A Java Future containing the result of the CreateCustomAvailabilityZone operation returned by the
+     *         service.
+     * @sample AmazonRDSAsync.CreateCustomAvailabilityZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateCustomAvailabilityZone"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CustomAvailabilityZone> createCustomAvailabilityZoneAsync(
+            CreateCustomAvailabilityZoneRequest createCustomAvailabilityZoneRequest);
+
+    /**
+     * <p>
+     * Creates a custom Availability Zone (AZ).
+     * </p>
+     * <p>
+     * A custom AZ is an on-premises AZ that is integrated with a VMware vSphere cluster.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * 
+     * @param createCustomAvailabilityZoneRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateCustomAvailabilityZone operation returned by the
+     *         service.
+     * @sample AmazonRDSAsyncHandler.CreateCustomAvailabilityZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateCustomAvailabilityZone"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CustomAvailabilityZone> createCustomAvailabilityZoneAsync(
+            CreateCustomAvailabilityZoneRequest createCustomAvailabilityZoneRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateCustomAvailabilityZoneRequest, CustomAvailabilityZone> asyncHandler);
 
     /**
      * <p>
@@ -1202,6 +1300,47 @@ public interface AmazonRDSAsync extends AmazonRDS {
             com.amazonaws.handlers.AsyncHandler<CreateDBParameterGroupRequest, DBParameterGroup> asyncHandler);
 
     /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Creates a new DB proxy.
+     * </p>
+     * 
+     * @param createDBProxyRequest
+     * @return A Java Future containing the result of the CreateDBProxy operation returned by the service.
+     * @sample AmazonRDSAsync.CreateDBProxy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBProxy" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateDBProxyResult> createDBProxyAsync(CreateDBProxyRequest createDBProxyRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Creates a new DB proxy.
+     * </p>
+     * 
+     * @param createDBProxyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateDBProxy operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.CreateDBProxy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBProxy" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateDBProxyResult> createDBProxyAsync(CreateDBProxyRequest createDBProxyRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateDBProxyRequest, CreateDBProxyResult> asyncHandler);
+
+    /**
      * <p>
      * Creates a new DB security group. DB security groups control access to a DB instance.
      * </p>
@@ -1308,7 +1447,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
-     * Creates an RDS event notification subscription. This action requires a topic ARN (Amazon Resource Name) created
+     * Creates an RDS event notification subscription. This action requires a topic Amazon Resource Name (ARN) created
      * by either the RDS console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in
      * Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
      * </p>
@@ -1322,9 +1461,15 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * If you specify both the SourceType and SourceIds, such as SourceType = db-instance and SourceIdentifier =
      * myDBInstance1, you are notified of all the db-instance events for the specified source. If you specify a
      * SourceType but do not specify a SourceIdentifier, you receive notice of the events for that source type for all
-     * your RDS sources. If you do not specify either the SourceType nor the SourceIdentifier, you are notified of
-     * events generated from all RDS sources belonging to your customer account.
+     * your RDS sources. If you don't specify either the SourceType or the SourceIdentifier, you are notified of events
+     * generated from all RDS sources belonging to your customer account.
      * </p>
+     * <note>
+     * <p>
+     * RDS event notification is only available for unencrypted SNS topics. If you specify an encrypted SNS topic, event
+     * notifications aren't sent for the topic.
+     * </p>
+     * </note>
      * 
      * @param createEventSubscriptionRequest
      * @return A Java Future containing the result of the CreateEventSubscription operation returned by the service.
@@ -1336,7 +1481,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
-     * Creates an RDS event notification subscription. This action requires a topic ARN (Amazon Resource Name) created
+     * Creates an RDS event notification subscription. This action requires a topic Amazon Resource Name (ARN) created
      * by either the RDS console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in
      * Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
      * </p>
@@ -1350,9 +1495,15 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * If you specify both the SourceType and SourceIds, such as SourceType = db-instance and SourceIdentifier =
      * myDBInstance1, you are notified of all the db-instance events for the specified source. If you specify a
      * SourceType but do not specify a SourceIdentifier, you receive notice of the events for that source type for all
-     * your RDS sources. If you do not specify either the SourceType nor the SourceIdentifier, you are notified of
-     * events generated from all RDS sources belonging to your customer account.
+     * your RDS sources. If you don't specify either the SourceType or the SourceIdentifier, you are notified of events
+     * generated from all RDS sources belonging to your customer account.
      * </p>
+     * <note>
+     * <p>
+     * RDS event notification is only available for unencrypted SNS topics. If you specify an encrypted SNS topic, event
+     * notifications aren't sent for the topic.
+     * </p>
+     * </note>
      * 
      * @param createEventSubscriptionRequest
      * @param asyncHandler
@@ -1456,6 +1607,57 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<OptionGroup> createOptionGroupAsync(CreateOptionGroupRequest createOptionGroupRequest,
             com.amazonaws.handlers.AsyncHandler<CreateOptionGroupRequest, OptionGroup> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes a custom Availability Zone (AZ).
+     * </p>
+     * <p>
+     * A custom AZ is an on-premises AZ that is integrated with a VMware vSphere cluster.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * 
+     * @param deleteCustomAvailabilityZoneRequest
+     * @return A Java Future containing the result of the DeleteCustomAvailabilityZone operation returned by the
+     *         service.
+     * @sample AmazonRDSAsync.DeleteCustomAvailabilityZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteCustomAvailabilityZone"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CustomAvailabilityZone> deleteCustomAvailabilityZoneAsync(
+            DeleteCustomAvailabilityZoneRequest deleteCustomAvailabilityZoneRequest);
+
+    /**
+     * <p>
+     * Deletes a custom Availability Zone (AZ).
+     * </p>
+     * <p>
+     * A custom AZ is an on-premises AZ that is integrated with a VMware vSphere cluster.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * 
+     * @param deleteCustomAvailabilityZoneRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteCustomAvailabilityZone operation returned by the
+     *         service.
+     * @sample AmazonRDSAsyncHandler.DeleteCustomAvailabilityZone
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteCustomAvailabilityZone"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CustomAvailabilityZone> deleteCustomAvailabilityZoneAsync(
+            DeleteCustomAvailabilityZoneRequest deleteCustomAvailabilityZoneRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteCustomAvailabilityZoneRequest, CustomAvailabilityZone> asyncHandler);
 
     /**
      * <p>
@@ -1685,7 +1887,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * operation. The action can't be canceled or reverted once submitted.
      * </p>
      * <p>
-     * Note that when a DB instance is in a failure state and has a status of <code>failed</code>,
+     * When a DB instance is in a failure state and has a status of <code>failed</code>,
      * <code>incompatible-restore</code>, or <code>incompatible-network</code>, you can only delete it when you skip
      * creation of the final snapshot with the <code>SkipFinalSnapshot</code> parameter.
      * </p>
@@ -1731,7 +1933,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * operation. The action can't be canceled or reverted once submitted.
      * </p>
      * <p>
-     * Note that when a DB instance is in a failure state and has a status of <code>failed</code>,
+     * When a DB instance is in a failure state and has a status of <code>failed</code>,
      * <code>incompatible-restore</code>, or <code>incompatible-network</code>, you can only delete it when you skip
      * creation of the final snapshot with the <code>SkipFinalSnapshot</code> parameter.
      * </p>
@@ -1841,6 +2043,47 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<DeleteDBParameterGroupResult> deleteDBParameterGroupAsync(DeleteDBParameterGroupRequest deleteDBParameterGroupRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteDBParameterGroupRequest, DeleteDBParameterGroupResult> asyncHandler);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Deletes an existing proxy.
+     * </p>
+     * 
+     * @param deleteDBProxyRequest
+     * @return A Java Future containing the result of the DeleteDBProxy operation returned by the service.
+     * @sample AmazonRDSAsync.DeleteDBProxy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBProxy" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteDBProxyResult> deleteDBProxyAsync(DeleteDBProxyRequest deleteDBProxyRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Deletes an existing proxy.
+     * </p>
+     * 
+     * @param deleteDBProxyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteDBProxy operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DeleteDBProxy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteDBProxy" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteDBProxyResult> deleteDBProxyAsync(DeleteDBProxyRequest deleteDBProxyRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteDBProxyRequest, DeleteDBProxyResult> asyncHandler);
 
     /**
      * <p>
@@ -2041,6 +2284,39 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
+     * Deletes the installation medium for a DB engine that requires an on-premises customer provided license, such as
+     * Microsoft SQL Server.
+     * </p>
+     * 
+     * @param deleteInstallationMediaRequest
+     * @return A Java Future containing the result of the DeleteInstallationMedia operation returned by the service.
+     * @sample AmazonRDSAsync.DeleteInstallationMedia
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteInstallationMedia" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteInstallationMediaResult> deleteInstallationMediaAsync(DeleteInstallationMediaRequest deleteInstallationMediaRequest);
+
+    /**
+     * <p>
+     * Deletes the installation medium for a DB engine that requires an on-premises customer provided license, such as
+     * Microsoft SQL Server.
+     * </p>
+     * 
+     * @param deleteInstallationMediaRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteInstallationMedia operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DeleteInstallationMedia
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeleteInstallationMedia" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteInstallationMediaResult> deleteInstallationMediaAsync(DeleteInstallationMediaRequest deleteInstallationMediaRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteInstallationMediaRequest, DeleteInstallationMediaResult> asyncHandler);
+
+    /**
+     * <p>
      * Deletes an existing option group.
      * </p>
      * 
@@ -2069,6 +2345,49 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<DeleteOptionGroupResult> deleteOptionGroupAsync(DeleteOptionGroupRequest deleteOptionGroupRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteOptionGroupRequest, DeleteOptionGroupResult> asyncHandler);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Remove the association between one or more <code>DBProxyTarget</code> data structures and a
+     * <code>DBProxyTargetGroup</code>.
+     * </p>
+     * 
+     * @param deregisterDBProxyTargetsRequest
+     * @return A Java Future containing the result of the DeregisterDBProxyTargets operation returned by the service.
+     * @sample AmazonRDSAsync.DeregisterDBProxyTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeregisterDBProxyTargets" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeregisterDBProxyTargetsResult> deregisterDBProxyTargetsAsync(DeregisterDBProxyTargetsRequest deregisterDBProxyTargetsRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Remove the association between one or more <code>DBProxyTarget</code> data structures and a
+     * <code>DBProxyTargetGroup</code>.
+     * </p>
+     * 
+     * @param deregisterDBProxyTargetsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeregisterDBProxyTargets operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DeregisterDBProxyTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DeregisterDBProxyTargets" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeregisterDBProxyTargetsResult> deregisterDBProxyTargetsAsync(DeregisterDBProxyTargetsRequest deregisterDBProxyTargetsRequest,
+            com.amazonaws.handlers.AsyncHandler<DeregisterDBProxyTargetsRequest, DeregisterDBProxyTargetsResult> asyncHandler);
 
     /**
      * <p>
@@ -2173,6 +2492,57 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<DescribeCertificatesResult> describeCertificatesAsync(
             com.amazonaws.handlers.AsyncHandler<DescribeCertificatesRequest, DescribeCertificatesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns information about custom Availability Zones (AZs).
+     * </p>
+     * <p>
+     * A custom AZ is an on-premises AZ that is integrated with a VMware vSphere cluster.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * 
+     * @param describeCustomAvailabilityZonesRequest
+     * @return A Java Future containing the result of the DescribeCustomAvailabilityZones operation returned by the
+     *         service.
+     * @sample AmazonRDSAsync.DescribeCustomAvailabilityZones
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeCustomAvailabilityZones"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeCustomAvailabilityZonesResult> describeCustomAvailabilityZonesAsync(
+            DescribeCustomAvailabilityZonesRequest describeCustomAvailabilityZonesRequest);
+
+    /**
+     * <p>
+     * Returns information about custom Availability Zones (AZs).
+     * </p>
+     * <p>
+     * A custom AZ is an on-premises AZ that is integrated with a VMware vSphere cluster.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * 
+     * @param describeCustomAvailabilityZonesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeCustomAvailabilityZones operation returned by the
+     *         service.
+     * @sample AmazonRDSAsyncHandler.DescribeCustomAvailabilityZones
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeCustomAvailabilityZones"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeCustomAvailabilityZonesResult> describeCustomAvailabilityZonesAsync(
+            DescribeCustomAvailabilityZonesRequest describeCustomAvailabilityZonesRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeCustomAvailabilityZonesRequest, DescribeCustomAvailabilityZonesResult> asyncHandler);
 
     /**
      * <p>
@@ -2542,7 +2912,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </p>
      * <note>
      * <p>
-     * This action only applies to Aurora DB clusters.
+     * This operation can also return information for Amazon Neptune DB instances and Amazon DocumentDB instances.
      * </p>
      * </note>
      * 
@@ -2565,7 +2935,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </p>
      * <note>
      * <p>
-     * This action only applies to Aurora DB clusters.
+     * This operation can also return information for Amazon Neptune DB instances and Amazon DocumentDB instances.
      * </p>
      * </note>
      * 
@@ -2696,6 +3066,11 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * <p>
      * Returns information about provisioned RDS instances. This API supports pagination.
      * </p>
+     * <note>
+     * <p>
+     * This operation can also return information for Amazon Neptune DB instances and Amazon DocumentDB instances.
+     * </p>
+     * </note>
      * 
      * @param describeDBInstancesRequest
      * @return A Java Future containing the result of the DescribeDBInstances operation returned by the service.
@@ -2709,6 +3084,11 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * <p>
      * Returns information about provisioned RDS instances. This API supports pagination.
      * </p>
+     * <note>
+     * <p>
+     * This operation can also return information for Amazon Neptune DB instances and Amazon DocumentDB instances.
+     * </p>
+     * </note>
      * 
      * @param describeDBInstancesRequest
      * @param asyncHandler
@@ -2849,6 +3229,131 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<DescribeDBParametersResult> describeDBParametersAsync(DescribeDBParametersRequest describeDBParametersRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeDBParametersRequest, DescribeDBParametersResult> asyncHandler);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Returns information about DB proxies.
+     * </p>
+     * 
+     * @param describeDBProxiesRequest
+     * @return A Java Future containing the result of the DescribeDBProxies operation returned by the service.
+     * @sample AmazonRDSAsync.DescribeDBProxies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBProxies" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeDBProxiesResult> describeDBProxiesAsync(DescribeDBProxiesRequest describeDBProxiesRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Returns information about DB proxies.
+     * </p>
+     * 
+     * @param describeDBProxiesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeDBProxies operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DescribeDBProxies
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBProxies" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeDBProxiesResult> describeDBProxiesAsync(DescribeDBProxiesRequest describeDBProxiesRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeDBProxiesRequest, DescribeDBProxiesResult> asyncHandler);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Returns information about DB proxy target groups, represented by <code>DBProxyTargetGroup</code> data structures.
+     * </p>
+     * 
+     * @param describeDBProxyTargetGroupsRequest
+     * @return A Java Future containing the result of the DescribeDBProxyTargetGroups operation returned by the service.
+     * @sample AmazonRDSAsync.DescribeDBProxyTargetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBProxyTargetGroups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeDBProxyTargetGroupsResult> describeDBProxyTargetGroupsAsync(
+            DescribeDBProxyTargetGroupsRequest describeDBProxyTargetGroupsRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Returns information about DB proxy target groups, represented by <code>DBProxyTargetGroup</code> data structures.
+     * </p>
+     * 
+     * @param describeDBProxyTargetGroupsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeDBProxyTargetGroups operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DescribeDBProxyTargetGroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBProxyTargetGroups"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeDBProxyTargetGroupsResult> describeDBProxyTargetGroupsAsync(
+            DescribeDBProxyTargetGroupsRequest describeDBProxyTargetGroupsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeDBProxyTargetGroupsRequest, DescribeDBProxyTargetGroupsResult> asyncHandler);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Returns information about <code>DBProxyTarget</code> objects. This API supports pagination.
+     * </p>
+     * 
+     * @param describeDBProxyTargetsRequest
+     * @return A Java Future containing the result of the DescribeDBProxyTargets operation returned by the service.
+     * @sample AmazonRDSAsync.DescribeDBProxyTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBProxyTargets" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeDBProxyTargetsResult> describeDBProxyTargetsAsync(DescribeDBProxyTargetsRequest describeDBProxyTargetsRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Returns information about <code>DBProxyTarget</code> objects. This API supports pagination.
+     * </p>
+     * 
+     * @param describeDBProxyTargetsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeDBProxyTargets operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DescribeDBProxyTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeDBProxyTargets" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeDBProxyTargetsResult> describeDBProxyTargetsAsync(DescribeDBProxyTargetsRequest describeDBProxyTargetsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeDBProxyTargetsRequest, DescribeDBProxyTargetsResult> asyncHandler);
 
     /**
      * <p>
@@ -3310,6 +3815,37 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
+     * Returns information about a snapshot export to Amazon S3. This API operation supports pagination.
+     * </p>
+     * 
+     * @param describeExportTasksRequest
+     * @return A Java Future containing the result of the DescribeExportTasks operation returned by the service.
+     * @sample AmazonRDSAsync.DescribeExportTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeExportTasks" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeExportTasksResult> describeExportTasksAsync(DescribeExportTasksRequest describeExportTasksRequest);
+
+    /**
+     * <p>
+     * Returns information about a snapshot export to Amazon S3. This API operation supports pagination.
+     * </p>
+     * 
+     * @param describeExportTasksRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeExportTasks operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DescribeExportTasks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeExportTasks" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeExportTasksResult> describeExportTasksAsync(DescribeExportTasksRequest describeExportTasksRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeExportTasksRequest, DescribeExportTasksResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns information about Aurora global database clusters. This API supports pagination.
      * </p>
      * <p>
@@ -3358,6 +3894,41 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<DescribeGlobalClustersResult> describeGlobalClustersAsync(DescribeGlobalClustersRequest describeGlobalClustersRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeGlobalClustersRequest, DescribeGlobalClustersResult> asyncHandler);
+
+    /**
+     * <p>
+     * Describes the available installation media for a DB engine that requires an on-premises customer provided
+     * license, such as Microsoft SQL Server.
+     * </p>
+     * 
+     * @param describeInstallationMediaRequest
+     * @return A Java Future containing the result of the DescribeInstallationMedia operation returned by the service.
+     * @sample AmazonRDSAsync.DescribeInstallationMedia
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeInstallationMedia" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeInstallationMediaResult> describeInstallationMediaAsync(
+            DescribeInstallationMediaRequest describeInstallationMediaRequest);
+
+    /**
+     * <p>
+     * Describes the available installation media for a DB engine that requires an on-premises customer provided
+     * license, such as Microsoft SQL Server.
+     * </p>
+     * 
+     * @param describeInstallationMediaRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeInstallationMedia operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.DescribeInstallationMedia
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DescribeInstallationMedia" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeInstallationMediaResult> describeInstallationMediaAsync(
+            DescribeInstallationMediaRequest describeInstallationMediaRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeInstallationMediaRequest, DescribeInstallationMediaResult> asyncHandler);
 
     /**
      * <p>
@@ -3811,6 +4382,39 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
+     * Imports the installation media for a DB engine that requires an on-premises customer provided license, such as
+     * SQL Server.
+     * </p>
+     * 
+     * @param importInstallationMediaRequest
+     * @return A Java Future containing the result of the ImportInstallationMedia operation returned by the service.
+     * @sample AmazonRDSAsync.ImportInstallationMedia
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ImportInstallationMedia" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ImportInstallationMediaResult> importInstallationMediaAsync(ImportInstallationMediaRequest importInstallationMediaRequest);
+
+    /**
+     * <p>
+     * Imports the installation media for a DB engine that requires an on-premises customer provided license, such as
+     * SQL Server.
+     * </p>
+     * 
+     * @param importInstallationMediaRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ImportInstallationMedia operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.ImportInstallationMedia
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ImportInstallationMedia" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ImportInstallationMediaResult> importInstallationMediaAsync(ImportInstallationMediaRequest importInstallationMediaRequest,
+            com.amazonaws.handlers.AsyncHandler<ImportInstallationMediaRequest, ImportInstallationMediaResult> asyncHandler);
+
+    /**
+     * <p>
      * Lists all tags on an Amazon RDS resource.
      * </p>
      * <p>
@@ -3849,6 +4453,105 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
             com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS
+     * for new DB instances temporarily, or remove the override.
+     * </p>
+     * <p>
+     * By using this operation, you can specify an RDS-approved SSL/TLS certificate for new DB instances that is
+     * different from the default certificate provided by RDS. You can also use this operation to remove the override,
+     * so that new DB instances use the default certificate provided by RDS.
+     * </p>
+     * <p>
+     * You might need to override the default certificate in the following situations:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You already migrated your applications to support the latest certificate authority (CA) certificate, but the new
+     * CA certificate is not yet the RDS default CA certificate for the specified AWS Region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * RDS has already moved to a new default CA certificate for the specified AWS Region, but you are still in the
+     * process of supporting the new CA certificate. In this case, you temporarily need additional time to finish your
+     * application changes.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @param modifyCertificatesRequest
+     * @return A Java Future containing the result of the ModifyCertificates operation returned by the service.
+     * @sample AmazonRDSAsync.ModifyCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyCertificates" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<Certificate> modifyCertificatesAsync(ModifyCertificatesRequest modifyCertificatesRequest);
+
+    /**
+     * <p>
+     * Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS
+     * for new DB instances temporarily, or remove the override.
+     * </p>
+     * <p>
+     * By using this operation, you can specify an RDS-approved SSL/TLS certificate for new DB instances that is
+     * different from the default certificate provided by RDS. You can also use this operation to remove the override,
+     * so that new DB instances use the default certificate provided by RDS.
+     * </p>
+     * <p>
+     * You might need to override the default certificate in the following situations:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You already migrated your applications to support the latest certificate authority (CA) certificate, but the new
+     * CA certificate is not yet the RDS default CA certificate for the specified AWS Region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * RDS has already moved to a new default CA certificate for the specified AWS Region, but you are still in the
+     * process of supporting the new CA certificate. In this case, you temporarily need additional time to finish your
+     * application changes.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon RDS User Guide</i>.
+     * </p>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide</i>.
+     * </p>
+     * 
+     * @param modifyCertificatesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ModifyCertificates operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.ModifyCertificates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyCertificates" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<Certificate> modifyCertificatesAsync(ModifyCertificatesRequest modifyCertificatesRequest,
+            com.amazonaws.handlers.AsyncHandler<ModifyCertificatesRequest, Certificate> asyncHandler);
 
     /**
      * <p>
@@ -4054,6 +4757,11 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * console</a> or the <code>DescribeDBClusterParameters</code> action to verify that your DB cluster parameter group
      * has been created or modified.
      * </p>
+     * <p>
+     * If the modified DB cluster parameter group is used by an Aurora Serverless cluster, Aurora applies the update
+     * immediately. The cluster restart might interrupt your workload. In that case, your application must reopen any
+     * connections and retry any transactions that were active when the parameter changes took effect.
+     * </p>
      * </important> <note>
      * <p>
      * This action only applies to Aurora DB clusters.
@@ -4096,6 +4804,11 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * can use the <i>Parameter Groups</i> option of the <a href="https://console.aws.amazon.com/rds/">Amazon RDS
      * console</a> or the <code>DescribeDBClusterParameters</code> action to verify that your DB cluster parameter group
      * has been created or modified.
+     * </p>
+     * <p>
+     * If the modified DB cluster parameter group is used by an Aurora Serverless cluster, Aurora applies the update
+     * immediately. The cluster restart might interrupt your workload. In that case, your application must reopen any
+     * connections and retry any transactions that were active when the parameter changes took effect.
      * </p>
      * </important> <note>
      * <p>
@@ -4294,11 +5007,93 @@ public interface AmazonRDSAsync extends AmazonRDS {
             com.amazonaws.handlers.AsyncHandler<ModifyDBParameterGroupRequest, ModifyDBParameterGroupResult> asyncHandler);
 
     /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Changes the settings for an existing DB proxy.
+     * </p>
+     * 
+     * @param modifyDBProxyRequest
+     * @return A Java Future containing the result of the ModifyDBProxy operation returned by the service.
+     * @sample AmazonRDSAsync.ModifyDBProxy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBProxy" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyDBProxyResult> modifyDBProxyAsync(ModifyDBProxyRequest modifyDBProxyRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Changes the settings for an existing DB proxy.
+     * </p>
+     * 
+     * @param modifyDBProxyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ModifyDBProxy operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.ModifyDBProxy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBProxy" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyDBProxyResult> modifyDBProxyAsync(ModifyDBProxyRequest modifyDBProxyRequest,
+            com.amazonaws.handlers.AsyncHandler<ModifyDBProxyRequest, ModifyDBProxyResult> asyncHandler);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Modifies the properties of a <code>DBProxyTargetGroup</code>.
+     * </p>
+     * 
+     * @param modifyDBProxyTargetGroupRequest
+     * @return A Java Future containing the result of the ModifyDBProxyTargetGroup operation returned by the service.
+     * @sample AmazonRDSAsync.ModifyDBProxyTargetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBProxyTargetGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyDBProxyTargetGroupResult> modifyDBProxyTargetGroupAsync(ModifyDBProxyTargetGroupRequest modifyDBProxyTargetGroupRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Modifies the properties of a <code>DBProxyTargetGroup</code>.
+     * </p>
+     * 
+     * @param modifyDBProxyTargetGroupRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ModifyDBProxyTargetGroup operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.ModifyDBProxyTargetGroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/ModifyDBProxyTargetGroup" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyDBProxyTargetGroupResult> modifyDBProxyTargetGroupAsync(ModifyDBProxyTargetGroupRequest modifyDBProxyTargetGroupRequest,
+            com.amazonaws.handlers.AsyncHandler<ModifyDBProxyTargetGroupRequest, ModifyDBProxyTargetGroupResult> asyncHandler);
+
+    /**
      * <p>
      * Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version.
      * </p>
      * <p>
-     * Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
+     * Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and PostgreSQL.
      * </p>
      * 
      * @param modifyDBSnapshotRequest
@@ -4314,7 +5109,7 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * Updates a manual DB snapshot, which can be encrypted or not encrypted, with a new engine version.
      * </p>
      * <p>
-     * Amazon RDS supports upgrading DB snapshots for MySQL and Oracle.
+     * Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and PostgreSQL.
      * </p>
      * 
      * @param modifyDBSnapshotRequest
@@ -4424,9 +5219,9 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
-     * Modifies an existing RDS event notification subscription. Note that you can't modify the source identifiers using
-     * this call; to change source identifiers for a subscription, use the
-     * <code>AddSourceIdentifierToSubscription</code> and <code>RemoveSourceIdentifierFromSubscription</code> calls.
+     * Modifies an existing RDS event notification subscription. You can't modify the source identifiers using this
+     * call. To change source identifiers for a subscription, use the <code>AddSourceIdentifierToSubscription</code> and
+     * <code>RemoveSourceIdentifierFromSubscription</code> calls.
      * </p>
      * <p>
      * You can see a list of the event categories for a given SourceType in the <a
@@ -4444,9 +5239,9 @@ public interface AmazonRDSAsync extends AmazonRDS {
 
     /**
      * <p>
-     * Modifies an existing RDS event notification subscription. Note that you can't modify the source identifiers using
-     * this call; to change source identifiers for a subscription, use the
-     * <code>AddSourceIdentifierToSubscription</code> and <code>RemoveSourceIdentifierFromSubscription</code> calls.
+     * Modifies an existing RDS event notification subscription. You can't modify the source identifiers using this
+     * call. To change source identifiers for a subscription, use the <code>AddSourceIdentifierToSubscription</code> and
+     * <code>RemoveSourceIdentifierFromSubscription</code> calls.
      * </p>
      * <p>
      * You can see a list of the event categories for a given SourceType in the <a
@@ -4740,6 +5535,47 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<DBInstance> rebootDBInstanceAsync(RebootDBInstanceRequest rebootDBInstanceRequest,
             com.amazonaws.handlers.AsyncHandler<RebootDBInstanceRequest, DBInstance> asyncHandler);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Associate one or more <code>DBProxyTarget</code> data structures with a <code>DBProxyTargetGroup</code>.
+     * </p>
+     * 
+     * @param registerDBProxyTargetsRequest
+     * @return A Java Future containing the result of the RegisterDBProxyTargets operation returned by the service.
+     * @sample AmazonRDSAsync.RegisterDBProxyTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RegisterDBProxyTargets" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<RegisterDBProxyTargetsResult> registerDBProxyTargetsAsync(RegisterDBProxyTargetsRequest registerDBProxyTargetsRequest);
+
+    /**
+     * <note>
+     * <p>
+     * This is prerelease documentation for the RDS Database Proxy feature in preview release. It is subject to change.
+     * </p>
+     * </note>
+     * <p>
+     * Associate one or more <code>DBProxyTarget</code> data structures with a <code>DBProxyTargetGroup</code>.
+     * </p>
+     * 
+     * @param registerDBProxyTargetsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the RegisterDBProxyTargets operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.RegisterDBProxyTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/RegisterDBProxyTargets" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<RegisterDBProxyTargetsResult> registerDBProxyTargetsAsync(RegisterDBProxyTargetsRequest registerDBProxyTargetsRequest,
+            com.amazonaws.handlers.AsyncHandler<RegisterDBProxyTargetsRequest, RegisterDBProxyTargetsResult> asyncHandler);
 
     /**
      * <p>
@@ -5113,8 +5949,8 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </p>
      * <p>
      * If a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point
-     * with the same configuration as the original source DB cluster, except that the new DB cluster is created with the
-     * default security group.
+     * with the same configuration as the original source DB cluster. If you don't specify a security group, the new DB
+     * cluster is associated with the default security group.
      * </p>
      * <p>
      * For more information on Amazon Aurora, see <a
@@ -5146,8 +5982,8 @@ public interface AmazonRDSAsync extends AmazonRDS {
      * </p>
      * <p>
      * If a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point
-     * with the same configuration as the original source DB cluster, except that the new DB cluster is created with the
-     * default security group.
+     * with the same configuration as the original source DB cluster. If you don't specify a security group, the new DB
+     * cluster is associated with the default security group.
      * </p>
      * <p>
      * For more information on Amazon Aurora, see <a
@@ -5607,6 +6443,37 @@ public interface AmazonRDSAsync extends AmazonRDS {
      */
     java.util.concurrent.Future<DBInstance> startDBInstanceAsync(StartDBInstanceRequest startDBInstanceRequest,
             com.amazonaws.handlers.AsyncHandler<StartDBInstanceRequest, DBInstance> asyncHandler);
+
+    /**
+     * <p>
+     * Starts an export of a snapshot to Amazon S3. The provided IAM role must have access to the S3 bucket.
+     * </p>
+     * 
+     * @param startExportTaskRequest
+     * @return A Java Future containing the result of the StartExportTask operation returned by the service.
+     * @sample AmazonRDSAsync.StartExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/StartExportTask" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<StartExportTaskResult> startExportTaskAsync(StartExportTaskRequest startExportTaskRequest);
+
+    /**
+     * <p>
+     * Starts an export of a snapshot to Amazon S3. The provided IAM role must have access to the S3 bucket.
+     * </p>
+     * 
+     * @param startExportTaskRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the StartExportTask operation returned by the service.
+     * @sample AmazonRDSAsyncHandler.StartExportTask
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/StartExportTask" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<StartExportTaskResult> startExportTaskAsync(StartExportTaskRequest startExportTaskRequest,
+            com.amazonaws.handlers.AsyncHandler<StartExportTaskRequest, StartExportTaskResult> asyncHandler);
 
     /**
      * <p>

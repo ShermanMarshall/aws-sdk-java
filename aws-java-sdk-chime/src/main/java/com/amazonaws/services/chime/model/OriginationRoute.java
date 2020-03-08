@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Origination routes define call distribution properties for your SIP hosts to receive inbound calls using your Amazon
- * Chime Voice Connector. Limit: 10 origination routes per Amazon Chime Voice Connector.
+ * Chime Voice Connector. Limit: Ten origination routes for each Amazon Chime Voice Connector.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/OriginationRoute" target="_top">AWS API
@@ -31,7 +31,7 @@ public class OriginationRoute implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The FODN or IP address to contact for origination traffic.
+     * The FQDN or IP address to contact for origination traffic.
      * </p>
      */
     private String host;
@@ -65,11 +65,11 @@ public class OriginationRoute implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The FODN or IP address to contact for origination traffic.
+     * The FQDN or IP address to contact for origination traffic.
      * </p>
      * 
      * @param host
-     *        The FODN or IP address to contact for origination traffic.
+     *        The FQDN or IP address to contact for origination traffic.
      */
 
     public void setHost(String host) {
@@ -78,10 +78,10 @@ public class OriginationRoute implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The FODN or IP address to contact for origination traffic.
+     * The FQDN or IP address to contact for origination traffic.
      * </p>
      * 
-     * @return The FODN or IP address to contact for origination traffic.
+     * @return The FQDN or IP address to contact for origination traffic.
      */
 
     public String getHost() {
@@ -90,11 +90,11 @@ public class OriginationRoute implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * The FODN or IP address to contact for origination traffic.
+     * The FQDN or IP address to contact for origination traffic.
      * </p>
      * 
      * @param host
-     *        The FODN or IP address to contact for origination traffic.
+     *        The FQDN or IP address to contact for origination traffic.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

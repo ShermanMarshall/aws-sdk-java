@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,7 +45,7 @@ public class CreateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
     private SimulationSoftwareSuite simulationSoftwareSuite;
     /**
      * <p>
-     * The robot software suite of the simulation application.
+     * The robot software suite (ROS distribution) used by the simulation application.
      * </p>
      */
     private RobotSoftwareSuite robotSoftwareSuite;
@@ -214,11 +214,11 @@ public class CreateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The robot software suite of the simulation application.
+     * The robot software suite (ROS distribution) used by the simulation application.
      * </p>
      * 
      * @param robotSoftwareSuite
-     *        The robot software suite of the simulation application.
+     *        The robot software suite (ROS distribution) used by the simulation application.
      */
 
     public void setRobotSoftwareSuite(RobotSoftwareSuite robotSoftwareSuite) {
@@ -227,10 +227,10 @@ public class CreateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The robot software suite of the simulation application.
+     * The robot software suite (ROS distribution) used by the simulation application.
      * </p>
      * 
-     * @return The robot software suite of the simulation application.
+     * @return The robot software suite (ROS distribution) used by the simulation application.
      */
 
     public RobotSoftwareSuite getRobotSoftwareSuite() {
@@ -239,11 +239,11 @@ public class CreateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The robot software suite of the simulation application.
+     * The robot software suite (ROS distribution) used by the simulation application.
      * </p>
      * 
      * @param robotSoftwareSuite
-     *        The robot software suite of the simulation application.
+     *        The robot software suite (ROS distribution) used by the simulation application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -331,6 +331,13 @@ public class CreateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see CreateSimulationApplicationRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreateSimulationApplicationRequest addTagsEntry(String key, String value) {
         if (null == this.tags) {

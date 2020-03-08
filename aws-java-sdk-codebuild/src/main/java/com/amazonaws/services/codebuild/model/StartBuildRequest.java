@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,7 +52,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -142,8 +142,18 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
     private GitSubmodulesConfig gitSubmodulesConfigOverride;
     /**
      * <p>
-     * A build spec declaration that overrides, for this build only, the latest one already defined in the build
+     * A buildspec file declaration that overrides, for this build only, the latest one already defined in the build
      * project.
+     * </p>
+     * <p>
+     * If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec file
+     * relative to the value of the built-in <code>CODEBUILD_SRC_DIR</code> environment variable, or the path to an S3
+     * bucket. The bucket must be in the same AWS Region as the build project. Specify the buildspec file using its ARN
+     * (for example, <code>arn:aws:s3:::my-codebuild-sample2/buildspec.yml</code>). If this value is not provided or is
+     * set to an empty string, the source code must contain a buildspec file in its root directory. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage"
+     * >Buildspec File Name and Storage Location</a>.
      * </p>
      */
     private String buildspecOverride;
@@ -161,6 +171,11 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is
      * thrown.
      * </p>
+     * <note>
+     * <p>
+     * The status of a build triggered by a webhook is always reported to your source provider.
+     * </p>
+     * </note>
      */
     private Boolean reportBuildStatusOverride;
     /**
@@ -218,6 +233,23 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      */
     private Integer queuedTimeoutInMinutesOverride;
+    /**
+     * <p>
+     * The AWS Key Management Service (AWS KMS) customer master key (CMK) that overrides the one specified in the build
+     * project. The CMK key encrypts the build output artifacts.
+     * </p>
+     * <note>
+     * <p>
+     * You can use a cross-account KMS key to encrypt the build output artifacts if your service role has permission to
+     * that key.
+     * </p>
+     * </note>
+     * <p>
+     * You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the
+     * format <code>alias/<i>alias-name</i> </code>).
+     * </p>
+     */
+    private String encryptionKeyOverride;
     /**
      * <p>
      * A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is
@@ -458,7 +490,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -499,7 +531,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <ul>
      *        <li>
      *        <p>
-     *        For AWS CodeCommit: the commit ID to use.
+     *        For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      *        </p>
      *        </li>
      *        <li>
@@ -546,7 +578,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -586,7 +618,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *         <ul>
      *         <li>
      *         <p>
-     *         For AWS CodeCommit: the commit ID to use.
+     *         For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      *         </p>
      *         </li>
      *         <li>
@@ -633,7 +665,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -674,7 +706,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <ul>
      *        <li>
      *        <p>
-     *        For AWS CodeCommit: the commit ID to use.
+     *        For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      *        </p>
      *        </li>
      *        <li>
@@ -1142,13 +1174,32 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A build spec declaration that overrides, for this build only, the latest one already defined in the build
+     * A buildspec file declaration that overrides, for this build only, the latest one already defined in the build
      * project.
+     * </p>
+     * <p>
+     * If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec file
+     * relative to the value of the built-in <code>CODEBUILD_SRC_DIR</code> environment variable, or the path to an S3
+     * bucket. The bucket must be in the same AWS Region as the build project. Specify the buildspec file using its ARN
+     * (for example, <code>arn:aws:s3:::my-codebuild-sample2/buildspec.yml</code>). If this value is not provided or is
+     * set to an empty string, the source code must contain a buildspec file in its root directory. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage"
+     * >Buildspec File Name and Storage Location</a>.
      * </p>
      * 
      * @param buildspecOverride
-     *        A build spec declaration that overrides, for this build only, the latest one already defined in the build
-     *        project.
+     *        A buildspec file declaration that overrides, for this build only, the latest one already defined in the
+     *        build project.</p>
+     *        <p>
+     *        If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec
+     *        file relative to the value of the built-in <code>CODEBUILD_SRC_DIR</code> environment variable, or the
+     *        path to an S3 bucket. The bucket must be in the same AWS Region as the build project. Specify the
+     *        buildspec file using its ARN (for example, <code>arn:aws:s3:::my-codebuild-sample2/buildspec.yml</code>).
+     *        If this value is not provided or is set to an empty string, the source code must contain a buildspec file
+     *        in its root directory. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage"
+     *        >Buildspec File Name and Storage Location</a>.
      */
 
     public void setBuildspecOverride(String buildspecOverride) {
@@ -1157,12 +1208,31 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A build spec declaration that overrides, for this build only, the latest one already defined in the build
+     * A buildspec file declaration that overrides, for this build only, the latest one already defined in the build
      * project.
      * </p>
+     * <p>
+     * If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec file
+     * relative to the value of the built-in <code>CODEBUILD_SRC_DIR</code> environment variable, or the path to an S3
+     * bucket. The bucket must be in the same AWS Region as the build project. Specify the buildspec file using its ARN
+     * (for example, <code>arn:aws:s3:::my-codebuild-sample2/buildspec.yml</code>). If this value is not provided or is
+     * set to an empty string, the source code must contain a buildspec file in its root directory. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage"
+     * >Buildspec File Name and Storage Location</a>.
+     * </p>
      * 
-     * @return A build spec declaration that overrides, for this build only, the latest one already defined in the build
-     *         project.
+     * @return A buildspec file declaration that overrides, for this build only, the latest one already defined in the
+     *         build project.</p>
+     *         <p>
+     *         If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec
+     *         file relative to the value of the built-in <code>CODEBUILD_SRC_DIR</code> environment variable, or the
+     *         path to an S3 bucket. The bucket must be in the same AWS Region as the build project. Specify the
+     *         buildspec file using its ARN (for example, <code>arn:aws:s3:::my-codebuild-sample2/buildspec.yml</code>).
+     *         If this value is not provided or is set to an empty string, the source code must contain a buildspec file
+     *         in its root directory. For more information, see <a href=
+     *         "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage"
+     *         >Buildspec File Name and Storage Location</a>.
      */
 
     public String getBuildspecOverride() {
@@ -1171,13 +1241,32 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * A build spec declaration that overrides, for this build only, the latest one already defined in the build
+     * A buildspec file declaration that overrides, for this build only, the latest one already defined in the build
      * project.
+     * </p>
+     * <p>
+     * If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec file
+     * relative to the value of the built-in <code>CODEBUILD_SRC_DIR</code> environment variable, or the path to an S3
+     * bucket. The bucket must be in the same AWS Region as the build project. Specify the buildspec file using its ARN
+     * (for example, <code>arn:aws:s3:::my-codebuild-sample2/buildspec.yml</code>). If this value is not provided or is
+     * set to an empty string, the source code must contain a buildspec file in its root directory. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage"
+     * >Buildspec File Name and Storage Location</a>.
      * </p>
      * 
      * @param buildspecOverride
-     *        A build spec declaration that overrides, for this build only, the latest one already defined in the build
-     *        project.
+     *        A buildspec file declaration that overrides, for this build only, the latest one already defined in the
+     *        build project.</p>
+     *        <p>
+     *        If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec
+     *        file relative to the value of the built-in <code>CODEBUILD_SRC_DIR</code> environment variable, or the
+     *        path to an S3 bucket. The bucket must be in the same AWS Region as the build project. Specify the
+     *        buildspec file using its ARN (for example, <code>arn:aws:s3:::my-codebuild-sample2/buildspec.yml</code>).
+     *        If this value is not provided or is set to an empty string, the source code must contain a buildspec file
+     *        in its root directory. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage"
+     *        >Buildspec File Name and Storage Location</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1260,11 +1349,19 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is
      * thrown.
      * </p>
+     * <note>
+     * <p>
+     * The status of a build triggered by a webhook is always reported to your source provider.
+     * </p>
+     * </note>
      * 
      * @param reportBuildStatusOverride
      *        Set to true to report to your source provider the status of a build's start and completion. If you use
      *        this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an
-     *        invalidInputException is thrown.
+     *        invalidInputException is thrown. </p> <note>
+     *        <p>
+     *        The status of a build triggered by a webhook is always reported to your source provider.
+     *        </p>
      */
 
     public void setReportBuildStatusOverride(Boolean reportBuildStatusOverride) {
@@ -1277,10 +1374,18 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is
      * thrown.
      * </p>
+     * <note>
+     * <p>
+     * The status of a build triggered by a webhook is always reported to your source provider.
+     * </p>
+     * </note>
      * 
      * @return Set to true to report to your source provider the status of a build's start and completion. If you use
      *         this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an
-     *         invalidInputException is thrown.
+     *         invalidInputException is thrown. </p> <note>
+     *         <p>
+     *         The status of a build triggered by a webhook is always reported to your source provider.
+     *         </p>
      */
 
     public Boolean getReportBuildStatusOverride() {
@@ -1293,11 +1398,19 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is
      * thrown.
      * </p>
+     * <note>
+     * <p>
+     * The status of a build triggered by a webhook is always reported to your source provider.
+     * </p>
+     * </note>
      * 
      * @param reportBuildStatusOverride
      *        Set to true to report to your source provider the status of a build's start and completion. If you use
      *        this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an
-     *        invalidInputException is thrown.
+     *        invalidInputException is thrown. </p> <note>
+     *        <p>
+     *        The status of a build triggered by a webhook is always reported to your source provider.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1312,10 +1425,18 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is
      * thrown.
      * </p>
+     * <note>
+     * <p>
+     * The status of a build triggered by a webhook is always reported to your source provider.
+     * </p>
+     * </note>
      * 
      * @return Set to true to report to your source provider the status of a build's start and completion. If you use
      *         this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an
-     *         invalidInputException is thrown.
+     *         invalidInputException is thrown. </p> <note>
+     *         <p>
+     *         The status of a build triggered by a webhook is always reported to your source provider.
+     *         </p>
      */
 
     public Boolean isReportBuildStatusOverride() {
@@ -1740,6 +1861,106 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
+     * The AWS Key Management Service (AWS KMS) customer master key (CMK) that overrides the one specified in the build
+     * project. The CMK key encrypts the build output artifacts.
+     * </p>
+     * <note>
+     * <p>
+     * You can use a cross-account KMS key to encrypt the build output artifacts if your service role has permission to
+     * that key.
+     * </p>
+     * </note>
+     * <p>
+     * You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the
+     * format <code>alias/<i>alias-name</i> </code>).
+     * </p>
+     * 
+     * @param encryptionKeyOverride
+     *        The AWS Key Management Service (AWS KMS) customer master key (CMK) that overrides the one specified in the
+     *        build project. The CMK key encrypts the build output artifacts.</p> <note>
+     *        <p>
+     *        You can use a cross-account KMS key to encrypt the build output artifacts if your service role has
+     *        permission to that key.
+     *        </p>
+     *        </note>
+     *        <p>
+     *        You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using
+     *        the format <code>alias/<i>alias-name</i> </code>).
+     */
+
+    public void setEncryptionKeyOverride(String encryptionKeyOverride) {
+        this.encryptionKeyOverride = encryptionKeyOverride;
+    }
+
+    /**
+     * <p>
+     * The AWS Key Management Service (AWS KMS) customer master key (CMK) that overrides the one specified in the build
+     * project. The CMK key encrypts the build output artifacts.
+     * </p>
+     * <note>
+     * <p>
+     * You can use a cross-account KMS key to encrypt the build output artifacts if your service role has permission to
+     * that key.
+     * </p>
+     * </note>
+     * <p>
+     * You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the
+     * format <code>alias/<i>alias-name</i> </code>).
+     * </p>
+     * 
+     * @return The AWS Key Management Service (AWS KMS) customer master key (CMK) that overrides the one specified in
+     *         the build project. The CMK key encrypts the build output artifacts.</p> <note>
+     *         <p>
+     *         You can use a cross-account KMS key to encrypt the build output artifacts if your service role has
+     *         permission to that key.
+     *         </p>
+     *         </note>
+     *         <p>
+     *         You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using
+     *         the format <code>alias/<i>alias-name</i> </code>).
+     */
+
+    public String getEncryptionKeyOverride() {
+        return this.encryptionKeyOverride;
+    }
+
+    /**
+     * <p>
+     * The AWS Key Management Service (AWS KMS) customer master key (CMK) that overrides the one specified in the build
+     * project. The CMK key encrypts the build output artifacts.
+     * </p>
+     * <note>
+     * <p>
+     * You can use a cross-account KMS key to encrypt the build output artifacts if your service role has permission to
+     * that key.
+     * </p>
+     * </note>
+     * <p>
+     * You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the
+     * format <code>alias/<i>alias-name</i> </code>).
+     * </p>
+     * 
+     * @param encryptionKeyOverride
+     *        The AWS Key Management Service (AWS KMS) customer master key (CMK) that overrides the one specified in the
+     *        build project. The CMK key encrypts the build output artifacts.</p> <note>
+     *        <p>
+     *        You can use a cross-account KMS key to encrypt the build output artifacts if your service role has
+     *        permission to that key.
+     *        </p>
+     *        </note>
+     *        <p>
+     *        You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using
+     *        the format <code>alias/<i>alias-name</i> </code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartBuildRequest withEncryptionKeyOverride(String encryptionKeyOverride) {
+        setEncryptionKeyOverride(encryptionKeyOverride);
+        return this;
+    }
+
+    /**
+     * <p>
      * A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is
      * included in the StartBuild request and is valid for 12 hours. If you repeat the StartBuild request with the same
      * token, but change a parameter, AWS CodeBuild returns a parameter mismatch error.
@@ -2121,6 +2342,8 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
             sb.append("TimeoutInMinutesOverride: ").append(getTimeoutInMinutesOverride()).append(",");
         if (getQueuedTimeoutInMinutesOverride() != null)
             sb.append("QueuedTimeoutInMinutesOverride: ").append(getQueuedTimeoutInMinutesOverride()).append(",");
+        if (getEncryptionKeyOverride() != null)
+            sb.append("EncryptionKeyOverride: ").append(getEncryptionKeyOverride()).append(",");
         if (getIdempotencyToken() != null)
             sb.append("IdempotencyToken: ").append(getIdempotencyToken()).append(",");
         if (getLogsConfigOverride() != null)
@@ -2241,6 +2464,10 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
         if (other.getQueuedTimeoutInMinutesOverride() != null
                 && other.getQueuedTimeoutInMinutesOverride().equals(this.getQueuedTimeoutInMinutesOverride()) == false)
             return false;
+        if (other.getEncryptionKeyOverride() == null ^ this.getEncryptionKeyOverride() == null)
+            return false;
+        if (other.getEncryptionKeyOverride() != null && other.getEncryptionKeyOverride().equals(this.getEncryptionKeyOverride()) == false)
+            return false;
         if (other.getIdempotencyToken() == null ^ this.getIdempotencyToken() == null)
             return false;
         if (other.getIdempotencyToken() != null && other.getIdempotencyToken().equals(this.getIdempotencyToken()) == false)
@@ -2290,6 +2517,7 @@ public class StartBuildRequest extends com.amazonaws.AmazonWebServiceRequest imp
         hashCode = prime * hashCode + ((getPrivilegedModeOverride() == null) ? 0 : getPrivilegedModeOverride().hashCode());
         hashCode = prime * hashCode + ((getTimeoutInMinutesOverride() == null) ? 0 : getTimeoutInMinutesOverride().hashCode());
         hashCode = prime * hashCode + ((getQueuedTimeoutInMinutesOverride() == null) ? 0 : getQueuedTimeoutInMinutesOverride().hashCode());
+        hashCode = prime * hashCode + ((getEncryptionKeyOverride() == null) ? 0 : getEncryptionKeyOverride().hashCode());
         hashCode = prime * hashCode + ((getIdempotencyToken() == null) ? 0 : getIdempotencyToken().hashCode());
         hashCode = prime * hashCode + ((getLogsConfigOverride() == null) ? 0 : getLogsConfigOverride().hashCode());
         hashCode = prime * hashCode + ((getRegistryCredentialOverride() == null) ? 0 : getRegistryCredentialOverride().hashCode());

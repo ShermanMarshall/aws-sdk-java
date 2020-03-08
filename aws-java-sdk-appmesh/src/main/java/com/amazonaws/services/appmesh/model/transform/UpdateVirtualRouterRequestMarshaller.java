@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,8 @@ public class UpdateVirtualRouterRequestMarshaller {
             .defaultValueSupplier(com.amazonaws.util.IdempotentUtils.getGenerator()).build();
     private static final MarshallingInfo<String> MESHNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
             .marshallLocationName("meshName").build();
+    private static final MarshallingInfo<String> MESHOWNER_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("meshOwner").build();
     private static final MarshallingInfo<StructuredPojo> SPEC_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("spec").build();
     private static final MarshallingInfo<String> VIRTUALROUTERNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -57,6 +59,7 @@ public class UpdateVirtualRouterRequestMarshaller {
         try {
             protocolMarshaller.marshall(updateVirtualRouterRequest.getClientToken(), CLIENTTOKEN_BINDING);
             protocolMarshaller.marshall(updateVirtualRouterRequest.getMeshName(), MESHNAME_BINDING);
+            protocolMarshaller.marshall(updateVirtualRouterRequest.getMeshOwner(), MESHOWNER_BINDING);
             protocolMarshaller.marshall(updateVirtualRouterRequest.getSpec(), SPEC_BINDING);
             protocolMarshaller.marshall(updateVirtualRouterRequest.getVirtualRouterName(), VIRTUALROUTERNAME_BINDING);
         } catch (Exception e) {

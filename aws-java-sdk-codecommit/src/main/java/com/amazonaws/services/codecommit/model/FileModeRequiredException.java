@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,8 +16,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The commit cannot be created because a file mode is required to update mode permissions for an existing file, but no
- * file mode has been specified.
+ * The commit cannot be created because no file mode has been specified. A file mode is required to update mode
+ * permissions for a file.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

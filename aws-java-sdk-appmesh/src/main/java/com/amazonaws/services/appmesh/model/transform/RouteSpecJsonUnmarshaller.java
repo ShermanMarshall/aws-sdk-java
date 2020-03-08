@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,6 +48,14 @@ public class RouteSpecJsonUnmarshaller implements Unmarshaller<RouteSpec, JsonUn
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("grpcRoute", targetDepth)) {
+                    context.nextToken();
+                    routeSpec.setGrpcRoute(GrpcRouteJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("http2Route", targetDepth)) {
+                    context.nextToken();
+                    routeSpec.setHttp2Route(HttpRouteJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("httpRoute", targetDepth)) {
                     context.nextToken();
                     routeSpec.setHttpRoute(HttpRouteJsonUnmarshaller.getInstance().unmarshall(context));

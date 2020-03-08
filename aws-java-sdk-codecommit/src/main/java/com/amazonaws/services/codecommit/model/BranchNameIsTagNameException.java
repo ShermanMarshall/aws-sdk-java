@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,8 +16,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The specified branch name is not valid because it is a tag name. Type the name of a current branch in the repository.
- * For a list of valid branch names, use <a>ListBranches</a>.
+ * The specified branch name is not valid because it is a tag name. Enter the name of a branch in the repository. For a
+ * list of valid branch names, use <a>ListBranches</a>.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

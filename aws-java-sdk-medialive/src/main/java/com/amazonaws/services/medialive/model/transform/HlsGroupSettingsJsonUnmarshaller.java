@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,9 +56,17 @@ public class HlsGroupSettingsJsonUnmarshaller implements Unmarshaller<HlsGroupSe
                     context.nextToken();
                     hlsGroupSettings.setBaseUrlContent(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("baseUrlContent1", targetDepth)) {
+                    context.nextToken();
+                    hlsGroupSettings.setBaseUrlContent1(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("baseUrlManifest", targetDepth)) {
                     context.nextToken();
                     hlsGroupSettings.setBaseUrlManifest(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("baseUrlManifest1", targetDepth)) {
+                    context.nextToken();
+                    hlsGroupSettings.setBaseUrlManifest1(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("captionLanguageMappings", targetDepth)) {
                     context.nextToken();
@@ -96,6 +104,10 @@ public class HlsGroupSettingsJsonUnmarshaller implements Unmarshaller<HlsGroupSe
                 if (context.testExpression("hlsCdnSettings", targetDepth)) {
                     context.nextToken();
                     hlsGroupSettings.setHlsCdnSettings(HlsCdnSettingsJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("hlsId3SegmentTagging", targetDepth)) {
+                    context.nextToken();
+                    hlsGroupSettings.setHlsId3SegmentTagging(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("iFrameOnlyPlaylists", targetDepth)) {
                     context.nextToken();

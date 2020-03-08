@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Specifies whether charges for devices will be recurring.
+ * Specifies whether charges for devices are recurring.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/RecurringCharge" target="_top">AWS API
@@ -36,7 +36,7 @@ public class RecurringCharge implements Serializable, Cloneable, StructuredPojo 
     private MonetaryAmount cost;
     /**
      * <p>
-     * The frequency in which charges will recur.
+     * The frequency in which charges recur.
      * </p>
      */
     private String frequency;
@@ -83,11 +83,11 @@ public class RecurringCharge implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The frequency in which charges will recur.
+     * The frequency in which charges recur.
      * </p>
      * 
      * @param frequency
-     *        The frequency in which charges will recur.
+     *        The frequency in which charges recur.
      * @see RecurringChargeFrequency
      */
 
@@ -97,10 +97,10 @@ public class RecurringCharge implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The frequency in which charges will recur.
+     * The frequency in which charges recur.
      * </p>
      * 
-     * @return The frequency in which charges will recur.
+     * @return The frequency in which charges recur.
      * @see RecurringChargeFrequency
      */
 
@@ -110,11 +110,11 @@ public class RecurringCharge implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The frequency in which charges will recur.
+     * The frequency in which charges recur.
      * </p>
      * 
      * @param frequency
-     *        The frequency in which charges will recur.
+     *        The frequency in which charges recur.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RecurringChargeFrequency
      */
@@ -126,11 +126,11 @@ public class RecurringCharge implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The frequency in which charges will recur.
+     * The frequency in which charges recur.
      * </p>
      * 
      * @param frequency
-     *        The frequency in which charges will recur.
+     *        The frequency in which charges recur.
      * @see RecurringChargeFrequency
      */
 
@@ -140,11 +140,11 @@ public class RecurringCharge implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The frequency in which charges will recur.
+     * The frequency in which charges recur.
      * </p>
      * 
      * @param frequency
-     *        The frequency in which charges will recur.
+     *        The frequency in which charges recur.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RecurringChargeFrequency
      */

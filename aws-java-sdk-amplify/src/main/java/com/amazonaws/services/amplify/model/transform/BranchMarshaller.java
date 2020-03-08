@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -71,6 +71,16 @@ public class BranchMarshaller {
             .marshallLocationName("ttl").build();
     private static final MarshallingInfo<List> ASSOCIATEDRESOURCES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("associatedResources").build();
+    private static final MarshallingInfo<Boolean> ENABLEPULLREQUESTPREVIEW_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("enablePullRequestPreview").build();
+    private static final MarshallingInfo<String> PULLREQUESTENVIRONMENTNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("pullRequestEnvironmentName").build();
+    private static final MarshallingInfo<String> DESTINATIONBRANCH_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("destinationBranch").build();
+    private static final MarshallingInfo<String> SOURCEBRANCH_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("sourceBranch").build();
+    private static final MarshallingInfo<String> BACKENDENVIRONMENTARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("backendEnvironmentArn").build();
 
     private static final BranchMarshaller instance = new BranchMarshaller();
 
@@ -109,6 +119,11 @@ public class BranchMarshaller {
             protocolMarshaller.marshall(branch.getBuildSpec(), BUILDSPEC_BINDING);
             protocolMarshaller.marshall(branch.getTtl(), TTL_BINDING);
             protocolMarshaller.marshall(branch.getAssociatedResources(), ASSOCIATEDRESOURCES_BINDING);
+            protocolMarshaller.marshall(branch.getEnablePullRequestPreview(), ENABLEPULLREQUESTPREVIEW_BINDING);
+            protocolMarshaller.marshall(branch.getPullRequestEnvironmentName(), PULLREQUESTENVIRONMENTNAME_BINDING);
+            protocolMarshaller.marshall(branch.getDestinationBranch(), DESTINATIONBRANCH_BINDING);
+            protocolMarshaller.marshall(branch.getSourceBranch(), SOURCEBRANCH_BINDING);
+            protocolMarshaller.marshall(branch.getBackendEnvironmentArn(), BACKENDENVIRONMENTARN_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

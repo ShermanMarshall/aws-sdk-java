@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -135,6 +135,11 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
      * must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
      */
     private String klvDataPids;
+    /**
+     * If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     * equivalent ID3 tag will be inserted in the output.
+     */
+    private String nielsenId3Behavior;
     /**
      * Value in bits per second of extra null packets to insert into the transport stream. This can be used if a
      * downstream encryption system requires periodic null packets.
@@ -1525,6 +1530,65 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     * equivalent ID3 tag will be inserted in the output.
+     * 
+     * @param nielsenId3Behavior
+     *        If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and
+     *        an equivalent ID3 tag will be inserted in the output.
+     * @see M2tsNielsenId3Behavior
+     */
+
+    public void setNielsenId3Behavior(String nielsenId3Behavior) {
+        this.nielsenId3Behavior = nielsenId3Behavior;
+    }
+
+    /**
+     * If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     * equivalent ID3 tag will be inserted in the output.
+     * 
+     * @return If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and
+     *         an equivalent ID3 tag will be inserted in the output.
+     * @see M2tsNielsenId3Behavior
+     */
+
+    public String getNielsenId3Behavior() {
+        return this.nielsenId3Behavior;
+    }
+
+    /**
+     * If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     * equivalent ID3 tag will be inserted in the output.
+     * 
+     * @param nielsenId3Behavior
+     *        If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and
+     *        an equivalent ID3 tag will be inserted in the output.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see M2tsNielsenId3Behavior
+     */
+
+    public M2tsSettings withNielsenId3Behavior(String nielsenId3Behavior) {
+        setNielsenId3Behavior(nielsenId3Behavior);
+        return this;
+    }
+
+    /**
+     * If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an
+     * equivalent ID3 tag will be inserted in the output.
+     * 
+     * @param nielsenId3Behavior
+     *        If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and
+     *        an equivalent ID3 tag will be inserted in the output.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see M2tsNielsenId3Behavior
+     */
+
+    public M2tsSettings withNielsenId3Behavior(M2tsNielsenId3Behavior nielsenId3Behavior) {
+        this.nielsenId3Behavior = nielsenId3Behavior.toString();
+        return this;
+    }
+
+    /**
      * Value in bits per second of extra null packets to insert into the transport stream. This can be used if a
      * downstream encryption system requires periodic null packets.
      * 
@@ -2545,6 +2609,8 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
             sb.append("Klv: ").append(getKlv()).append(",");
         if (getKlvDataPids() != null)
             sb.append("KlvDataPids: ").append(getKlvDataPids()).append(",");
+        if (getNielsenId3Behavior() != null)
+            sb.append("NielsenId3Behavior: ").append(getNielsenId3Behavior()).append(",");
         if (getNullPacketBitrate() != null)
             sb.append("NullPacketBitrate: ").append(getNullPacketBitrate()).append(",");
         if (getPatInterval() != null)
@@ -2705,6 +2771,10 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getKlvDataPids() != null && other.getKlvDataPids().equals(this.getKlvDataPids()) == false)
             return false;
+        if (other.getNielsenId3Behavior() == null ^ this.getNielsenId3Behavior() == null)
+            return false;
+        if (other.getNielsenId3Behavior() != null && other.getNielsenId3Behavior().equals(this.getNielsenId3Behavior()) == false)
+            return false;
         if (other.getNullPacketBitrate() == null ^ this.getNullPacketBitrate() == null)
             return false;
         if (other.getNullPacketBitrate() != null && other.getNullPacketBitrate().equals(this.getNullPacketBitrate()) == false)
@@ -2816,6 +2886,7 @@ public class M2tsSettings implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getFragmentTime() == null) ? 0 : getFragmentTime().hashCode());
         hashCode = prime * hashCode + ((getKlv() == null) ? 0 : getKlv().hashCode());
         hashCode = prime * hashCode + ((getKlvDataPids() == null) ? 0 : getKlvDataPids().hashCode());
+        hashCode = prime * hashCode + ((getNielsenId3Behavior() == null) ? 0 : getNielsenId3Behavior().hashCode());
         hashCode = prime * hashCode + ((getNullPacketBitrate() == null) ? 0 : getNullPacketBitrate().hashCode());
         hashCode = prime * hashCode + ((getPatInterval() == null) ? 0 : getPatInterval().hashCode());
         hashCode = prime * hashCode + ((getPcrControl() == null) ? 0 : getPcrControl().hashCode());

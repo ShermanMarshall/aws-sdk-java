@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,16 +37,18 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
     private String bodyOverride;
     /**
      * <p>
-     * A map of custom attributes to attach to the message for the address. For a push notification, this payload is
-     * added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery
-     * receipt event attributes.
+     * A map of custom attributes to attach to the message for the address. Attribute names are case sensitive.
+     * </p>
+     * <p>
+     * For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this
+     * payload is added to email/SMS delivery receipt event attributes.
      * </p>
      */
     private java.util.Map<String, String> context;
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all
+     * other values for the message.
      * </p>
      */
     private String rawContent;
@@ -107,14 +109,18 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * A map of custom attributes to attach to the message for the address. For a push notification, this payload is
-     * added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery
-     * receipt event attributes.
+     * A map of custom attributes to attach to the message for the address. Attribute names are case sensitive.
+     * </p>
+     * <p>
+     * For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this
+     * payload is added to email/SMS delivery receipt event attributes.
      * </p>
      * 
-     * @return A map of custom attributes to attach to the message for the address. For a push notification, this
-     *         payload is added to the data.pinpoint object. For an email or text message, this payload is added to
-     *         email/SMS delivery receipt event attributes.
+     * @return A map of custom attributes to attach to the message for the address. Attribute names are case
+     *         sensitive.</p>
+     *         <p>
+     *         For a push notification, this payload is added to the data.pinpoint object. For an email or text message,
+     *         this payload is added to email/SMS delivery receipt event attributes.
      */
 
     public java.util.Map<String, String> getContext() {
@@ -123,15 +129,19 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * A map of custom attributes to attach to the message for the address. For a push notification, this payload is
-     * added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery
-     * receipt event attributes.
+     * A map of custom attributes to attach to the message for the address. Attribute names are case sensitive.
+     * </p>
+     * <p>
+     * For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this
+     * payload is added to email/SMS delivery receipt event attributes.
      * </p>
      * 
      * @param context
-     *        A map of custom attributes to attach to the message for the address. For a push notification, this payload
-     *        is added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS
-     *        delivery receipt event attributes.
+     *        A map of custom attributes to attach to the message for the address. Attribute names are case
+     *        sensitive.</p>
+     *        <p>
+     *        For a push notification, this payload is added to the data.pinpoint object. For an email or text message,
+     *        this payload is added to email/SMS delivery receipt event attributes.
      */
 
     public void setContext(java.util.Map<String, String> context) {
@@ -140,15 +150,19 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * A map of custom attributes to attach to the message for the address. For a push notification, this payload is
-     * added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery
-     * receipt event attributes.
+     * A map of custom attributes to attach to the message for the address. Attribute names are case sensitive.
+     * </p>
+     * <p>
+     * For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this
+     * payload is added to email/SMS delivery receipt event attributes.
      * </p>
      * 
      * @param context
-     *        A map of custom attributes to attach to the message for the address. For a push notification, this payload
-     *        is added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS
-     *        delivery receipt event attributes.
+     *        A map of custom attributes to attach to the message for the address. Attribute names are case
+     *        sensitive.</p>
+     *        <p>
+     *        For a push notification, this payload is added to the data.pinpoint object. For an email or text message,
+     *        this payload is added to email/SMS delivery receipt event attributes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -156,6 +170,13 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
         setContext(context);
         return this;
     }
+
+    /**
+     * Add a single Context entry
+     *
+     * @see EndpointSendConfiguration#withContext
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public EndpointSendConfiguration addContextEntry(String key, String value) {
         if (null == this.context) {
@@ -180,13 +201,13 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all
+     * other values for the message.
      * </p>
      * 
      * @param rawContent
      *        The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides
-     *        the message.
+     *        all other values for the message.
      */
 
     public void setRawContent(String rawContent) {
@@ -195,12 +216,12 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all
+     * other values for the message.
      * </p>
      * 
      * @return The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides
-     *         the message.
+     *         all other values for the message.
      */
 
     public String getRawContent() {
@@ -209,13 +230,13 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all
+     * other values for the message.
      * </p>
      * 
      * @param rawContent
      *        The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides
-     *        the message.
+     *        all other values for the message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -272,6 +293,13 @@ public class EndpointSendConfiguration implements Serializable, Cloneable, Struc
         setSubstitutions(substitutions);
         return this;
     }
+
+    /**
+     * Add a single Substitutions entry
+     *
+     * @see EndpointSendConfiguration#withSubstitutions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public EndpointSendConfiguration addSubstitutionsEntry(String key, java.util.List<String> value) {
         if (null == this.substitutions) {

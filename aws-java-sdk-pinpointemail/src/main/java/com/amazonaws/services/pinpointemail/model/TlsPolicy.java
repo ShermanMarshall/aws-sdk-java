@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,10 +16,9 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Specifies whether Amazon Pinpoint should require that incoming email is delivered over a connection encrypted with
- * Transport Layer Security (TLS). If this parameter is set to <code>Require</code>, Amazon Pinpoint rejects emails that
- * weren't received over TLS. If the parameter is set to <code>Optional</code>, then Amazon Pinpoint accepts emails that
- * weren't received over TLS. The default value is <code>Optional</code>.
+ * Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS). If the
+ * value is <code>Require</code>, messages are only delivered if a TLS connection can be established. If the value is
+ * <code>Optional</code>, messages can be delivered in plain text if a TLS connection can't be established.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

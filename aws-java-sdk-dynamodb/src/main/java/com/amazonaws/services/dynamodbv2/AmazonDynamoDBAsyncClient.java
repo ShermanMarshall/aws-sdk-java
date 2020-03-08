@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -755,6 +755,39 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeContributorInsightsResult> describeContributorInsightsAsync(DescribeContributorInsightsRequest request) {
+
+        return describeContributorInsightsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeContributorInsightsResult> describeContributorInsightsAsync(final DescribeContributorInsightsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeContributorInsightsRequest, DescribeContributorInsightsResult> asyncHandler) {
+        final DescribeContributorInsightsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeContributorInsightsResult>() {
+            @Override
+            public DescribeContributorInsightsResult call() throws Exception {
+                DescribeContributorInsightsResult result = null;
+
+                try {
+                    result = executeDescribeContributorInsights(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeEndpointsResult> describeEndpointsAsync(DescribeEndpointsRequest request) {
 
         return describeEndpointsAsync(request, null);
@@ -943,6 +976,41 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeTableReplicaAutoScalingResult> describeTableReplicaAutoScalingAsync(
+            DescribeTableReplicaAutoScalingRequest request) {
+
+        return describeTableReplicaAutoScalingAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeTableReplicaAutoScalingResult> describeTableReplicaAutoScalingAsync(
+            final DescribeTableReplicaAutoScalingRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeTableReplicaAutoScalingRequest, DescribeTableReplicaAutoScalingResult> asyncHandler) {
+        final DescribeTableReplicaAutoScalingRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeTableReplicaAutoScalingResult>() {
+            @Override
+            public DescribeTableReplicaAutoScalingResult call() throws Exception {
+                DescribeTableReplicaAutoScalingResult result = null;
+
+                try {
+                    result = executeDescribeTableReplicaAutoScaling(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeTimeToLiveResult> describeTimeToLiveAsync(DescribeTimeToLiveRequest request) {
 
         return describeTimeToLiveAsync(request, null);
@@ -1072,6 +1140,39 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
 
                 try {
                     result = executeListBackups(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListContributorInsightsResult> listContributorInsightsAsync(ListContributorInsightsRequest request) {
+
+        return listContributorInsightsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListContributorInsightsResult> listContributorInsightsAsync(final ListContributorInsightsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListContributorInsightsRequest, ListContributorInsightsResult> asyncHandler) {
+        final ListContributorInsightsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListContributorInsightsResult>() {
+            @Override
+            public ListContributorInsightsResult call() throws Exception {
+                ListContributorInsightsResult result = null;
+
+                try {
+                    result = executeListContributorInsights(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1724,6 +1825,39 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<UpdateContributorInsightsResult> updateContributorInsightsAsync(UpdateContributorInsightsRequest request) {
+
+        return updateContributorInsightsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateContributorInsightsResult> updateContributorInsightsAsync(final UpdateContributorInsightsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateContributorInsightsRequest, UpdateContributorInsightsResult> asyncHandler) {
+        final UpdateContributorInsightsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateContributorInsightsResult>() {
+            @Override
+            public UpdateContributorInsightsResult call() throws Exception {
+                UpdateContributorInsightsResult result = null;
+
+                try {
+                    result = executeUpdateContributorInsights(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<UpdateGlobalTableResult> updateGlobalTableAsync(UpdateGlobalTableRequest request) {
 
         return updateGlobalTableAsync(request, null);
@@ -1928,6 +2062,40 @@ public class AmazonDynamoDBAsyncClient extends AmazonDynamoDBClient implements A
             com.amazonaws.handlers.AsyncHandler<UpdateTableRequest, UpdateTableResult> asyncHandler) {
 
         return updateTableAsync(new UpdateTableRequest().withTableName(tableName).withProvisionedThroughput(provisionedThroughput), asyncHandler);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateTableReplicaAutoScalingResult> updateTableReplicaAutoScalingAsync(UpdateTableReplicaAutoScalingRequest request) {
+
+        return updateTableReplicaAutoScalingAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateTableReplicaAutoScalingResult> updateTableReplicaAutoScalingAsync(
+            final UpdateTableReplicaAutoScalingRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateTableReplicaAutoScalingRequest, UpdateTableReplicaAutoScalingResult> asyncHandler) {
+        final UpdateTableReplicaAutoScalingRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateTableReplicaAutoScalingResult>() {
+            @Override
+            public UpdateTableReplicaAutoScalingResult call() throws Exception {
+                UpdateTableReplicaAutoScalingResult result = null;
+
+                try {
+                    result = executeUpdateTableReplicaAutoScaling(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     @Override

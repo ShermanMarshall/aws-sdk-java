@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,8 +60,9 @@ public class AssumeRoleWithWebIdentityResult extends com.amazonaws.AmazonWebServ
     private AssumedRoleUser assumedRoleUser;
     /**
      * <p>
-     * A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a
-     * packed size greater than 100 percent, which means the policy exceeded the allowed space.
+     * A percentage value that indicates the packed size of the session policies and session tags combined passed in the
+     * request. The request fails if the packed size is greater than 100 percent, which means the policies and tags
+     * exceeded the allowed space.
      * </p>
      */
     private Integer packedPolicySize;
@@ -278,13 +279,15 @@ public class AssumeRoleWithWebIdentityResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a
-     * packed size greater than 100 percent, which means the policy exceeded the allowed space.
+     * A percentage value that indicates the packed size of the session policies and session tags combined passed in the
+     * request. The request fails if the packed size is greater than 100 percent, which means the policies and tags
+     * exceeded the allowed space.
      * </p>
      * 
      * @param packedPolicySize
-     *        A percentage value that indicates the size of the policy in packed form. The service rejects any policy
-     *        with a packed size greater than 100 percent, which means the policy exceeded the allowed space.
+     *        A percentage value that indicates the packed size of the session policies and session tags combined passed
+     *        in the request. The request fails if the packed size is greater than 100 percent, which means the policies
+     *        and tags exceeded the allowed space.
      */
 
     public void setPackedPolicySize(Integer packedPolicySize) {
@@ -293,12 +296,14 @@ public class AssumeRoleWithWebIdentityResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a
-     * packed size greater than 100 percent, which means the policy exceeded the allowed space.
+     * A percentage value that indicates the packed size of the session policies and session tags combined passed in the
+     * request. The request fails if the packed size is greater than 100 percent, which means the policies and tags
+     * exceeded the allowed space.
      * </p>
      * 
-     * @return A percentage value that indicates the size of the policy in packed form. The service rejects any policy
-     *         with a packed size greater than 100 percent, which means the policy exceeded the allowed space.
+     * @return A percentage value that indicates the packed size of the session policies and session tags combined
+     *         passed in the request. The request fails if the packed size is greater than 100 percent, which means the
+     *         policies and tags exceeded the allowed space.
      */
 
     public Integer getPackedPolicySize() {
@@ -307,13 +312,15 @@ public class AssumeRoleWithWebIdentityResult extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a
-     * packed size greater than 100 percent, which means the policy exceeded the allowed space.
+     * A percentage value that indicates the packed size of the session policies and session tags combined passed in the
+     * request. The request fails if the packed size is greater than 100 percent, which means the policies and tags
+     * exceeded the allowed space.
      * </p>
      * 
      * @param packedPolicySize
-     *        A percentage value that indicates the size of the policy in packed form. The service rejects any policy
-     *        with a packed size greater than 100 percent, which means the policy exceeded the allowed space.
+     *        A percentage value that indicates the packed size of the session policies and session tags combined passed
+     *        in the request. The request fails if the packed size is greater than 100 percent, which means the policies
+     *        and tags exceeded the allowed space.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

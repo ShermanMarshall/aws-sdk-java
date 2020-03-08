@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) for the given GuardDuty resource
+     * The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag to.
      * </p>
      */
     private String resourceArn;
@@ -40,11 +40,11 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) for the given GuardDuty resource
+     * The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag to.
      * </p>
      * 
      * @param resourceArn
-     *        The Amazon Resource Name (ARN) for the given GuardDuty resource
+     *        The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag to.
      */
 
     public void setResourceArn(String resourceArn) {
@@ -53,10 +53,10 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) for the given GuardDuty resource
+     * The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag to.
      * </p>
      * 
-     * @return The Amazon Resource Name (ARN) for the given GuardDuty resource
+     * @return The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag to.
      */
 
     public String getResourceArn() {
@@ -65,11 +65,11 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The Amazon Resource Name (ARN) for the given GuardDuty resource
+     * The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag to.
      * </p>
      * 
      * @param resourceArn
-     *        The Amazon Resource Name (ARN) for the given GuardDuty resource
+     *        The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -117,6 +117,13 @@ public class TagResourceRequest extends com.amazonaws.AmazonWebServiceRequest im
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see TagResourceRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public TagResourceRequest addTagsEntry(String key, String value) {
         if (null == this.tags) {

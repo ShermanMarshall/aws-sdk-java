@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -54,7 +54,8 @@ public class Principal implements Serializable, Cloneable, StructuredPojo {
     private java.util.Date lastUpdatedTime;
     /**
      * <p>
-     * Indicates whether the principal belongs to the same organization as the AWS account that owns the resource share.
+     * Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the resource
+     * share.
      * </p>
      */
     private Boolean external;
@@ -221,12 +222,13 @@ public class Principal implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Indicates whether the principal belongs to the same organization as the AWS account that owns the resource share.
+     * Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the resource
+     * share.
      * </p>
      * 
      * @param external
-     *        Indicates whether the principal belongs to the same organization as the AWS account that owns the resource
-     *        share.
+     *        Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the
+     *        resource share.
      */
 
     public void setExternal(Boolean external) {
@@ -235,10 +237,11 @@ public class Principal implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Indicates whether the principal belongs to the same organization as the AWS account that owns the resource share.
+     * Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the resource
+     * share.
      * </p>
      * 
-     * @return Indicates whether the principal belongs to the same organization as the AWS account that owns the
+     * @return Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the
      *         resource share.
      */
 
@@ -248,12 +251,13 @@ public class Principal implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Indicates whether the principal belongs to the same organization as the AWS account that owns the resource share.
+     * Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the resource
+     * share.
      * </p>
      * 
      * @param external
-     *        Indicates whether the principal belongs to the same organization as the AWS account that owns the resource
-     *        share.
+     *        Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the
+     *        resource share.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -264,10 +268,11 @@ public class Principal implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Indicates whether the principal belongs to the same organization as the AWS account that owns the resource share.
+     * Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the resource
+     * share.
      * </p>
      * 
-     * @return Indicates whether the principal belongs to the same organization as the AWS account that owns the
+     * @return Indicates whether the principal belongs to the same AWS organization as the AWS account that owns the
      *         resource share.
      */
 

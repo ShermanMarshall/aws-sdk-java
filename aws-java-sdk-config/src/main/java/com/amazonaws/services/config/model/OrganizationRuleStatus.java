@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,12 +23,12 @@ public enum OrganizationRuleStatus {
     CREATE_SUCCESSFUL("CREATE_SUCCESSFUL"),
     CREATE_IN_PROGRESS("CREATE_IN_PROGRESS"),
     CREATE_FAILED("CREATE_FAILED"),
-    UPDATE_SUCCESSFUL("UPDATE_SUCCESSFUL"),
-    UPDATE_FAILED("UPDATE_FAILED"),
-    UPDATE_IN_PROGRESS("UPDATE_IN_PROGRESS"),
     DELETE_SUCCESSFUL("DELETE_SUCCESSFUL"),
     DELETE_FAILED("DELETE_FAILED"),
-    DELETE_IN_PROGRESS("DELETE_IN_PROGRESS");
+    DELETE_IN_PROGRESS("DELETE_IN_PROGRESS"),
+    UPDATE_SUCCESSFUL("UPDATE_SUCCESSFUL"),
+    UPDATE_IN_PROGRESS("UPDATE_IN_PROGRESS"),
+    UPDATE_FAILED("UPDATE_FAILED");
 
     private String value;
 

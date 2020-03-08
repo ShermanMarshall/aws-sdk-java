@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,8 +37,25 @@ public class SetUserPoolMfaConfigResult extends com.amazonaws.AmazonWebServiceRe
     private SoftwareTokenMfaConfigType softwareTokenMfaConfiguration;
     /**
      * <p>
-     * The MFA configuration.
+     * The MFA configuration. Valid values include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>OFF</code> MFA will not be used for any users.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ON</code> MFA is required for all users to sign in.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String mfaConfiguration;
 
@@ -124,11 +141,44 @@ public class SetUserPoolMfaConfigResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The MFA configuration.
+     * The MFA configuration. Valid values include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>OFF</code> MFA will not be used for any users.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ON</code> MFA is required for all users to sign in.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param mfaConfiguration
-     *        The MFA configuration.
+     *        The MFA configuration. Valid values include:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>OFF</code> MFA will not be used for any users.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ON</code> MFA is required for all users to sign in.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     *        </p>
+     *        </li>
      * @see UserPoolMfaType
      */
 
@@ -138,10 +188,43 @@ public class SetUserPoolMfaConfigResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The MFA configuration.
+     * The MFA configuration. Valid values include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>OFF</code> MFA will not be used for any users.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ON</code> MFA is required for all users to sign in.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The MFA configuration.
+     * @return The MFA configuration. Valid values include:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>OFF</code> MFA will not be used for any users.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ON</code> MFA is required for all users to sign in.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     *         </p>
+     *         </li>
      * @see UserPoolMfaType
      */
 
@@ -151,11 +234,44 @@ public class SetUserPoolMfaConfigResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The MFA configuration.
+     * The MFA configuration. Valid values include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>OFF</code> MFA will not be used for any users.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ON</code> MFA is required for all users to sign in.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param mfaConfiguration
-     *        The MFA configuration.
+     *        The MFA configuration. Valid values include:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>OFF</code> MFA will not be used for any users.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ON</code> MFA is required for all users to sign in.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see UserPoolMfaType
      */
@@ -167,11 +283,44 @@ public class SetUserPoolMfaConfigResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The MFA configuration.
+     * The MFA configuration. Valid values include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>OFF</code> MFA will not be used for any users.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ON</code> MFA is required for all users to sign in.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param mfaConfiguration
-     *        The MFA configuration.
+     *        The MFA configuration. Valid values include:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>OFF</code> MFA will not be used for any users.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ON</code> MFA is required for all users to sign in.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>OPTIONAL</code> MFA will be required only for individual users who have an MFA factor enabled.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see UserPoolMfaType
      */

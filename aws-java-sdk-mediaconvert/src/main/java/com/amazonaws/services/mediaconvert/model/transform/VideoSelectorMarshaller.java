@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class VideoSelectorMarshaller {
 
+    private static final MarshallingInfo<String> ALPHABEHAVIOR_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("alphaBehavior").build();
     private static final MarshallingInfo<String> COLORSPACE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("colorSpace").build();
     private static final MarshallingInfo<String> COLORSPACEUSAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -56,6 +58,7 @@ public class VideoSelectorMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(videoSelector.getAlphaBehavior(), ALPHABEHAVIOR_BINDING);
             protocolMarshaller.marshall(videoSelector.getColorSpace(), COLORSPACE_BINDING);
             protocolMarshaller.marshall(videoSelector.getColorSpaceUsage(), COLORSPACEUSAGE_BINDING);
             protocolMarshaller.marshall(videoSelector.getHdr10Metadata(), HDR10METADATA_BINDING);

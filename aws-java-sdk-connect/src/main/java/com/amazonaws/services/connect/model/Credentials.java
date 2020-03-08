@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The credentials to use for federation.
+ * Contains credentials to use for federation.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08/Credentials" target="_top">AWS API
@@ -30,13 +30,13 @@ public class Credentials implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An access token generated for a federated user to access Amazon Connect
+     * An access token generated for a federated user to access Amazon Connect.
      * </p>
      */
     private String accessToken;
     /**
      * <p>
-     * A token generated with an expiration time for the session a user is logged in to Amazon Connect
+     * A token generated with an expiration time for the session a user is logged in to Amazon Connect.
      * </p>
      */
     private java.util.Date accessTokenExpiration;
@@ -55,11 +55,11 @@ public class Credentials implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An access token generated for a federated user to access Amazon Connect
+     * An access token generated for a federated user to access Amazon Connect.
      * </p>
      * 
      * @param accessToken
-     *        An access token generated for a federated user to access Amazon Connect
+     *        An access token generated for a federated user to access Amazon Connect.
      */
 
     public void setAccessToken(String accessToken) {
@@ -68,10 +68,10 @@ public class Credentials implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An access token generated for a federated user to access Amazon Connect
+     * An access token generated for a federated user to access Amazon Connect.
      * </p>
      * 
-     * @return An access token generated for a federated user to access Amazon Connect
+     * @return An access token generated for a federated user to access Amazon Connect.
      */
 
     public String getAccessToken() {
@@ -80,11 +80,11 @@ public class Credentials implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * An access token generated for a federated user to access Amazon Connect
+     * An access token generated for a federated user to access Amazon Connect.
      * </p>
      * 
      * @param accessToken
-     *        An access token generated for a federated user to access Amazon Connect
+     *        An access token generated for a federated user to access Amazon Connect.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -95,11 +95,11 @@ public class Credentials implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A token generated with an expiration time for the session a user is logged in to Amazon Connect
+     * A token generated with an expiration time for the session a user is logged in to Amazon Connect.
      * </p>
      * 
      * @param accessTokenExpiration
-     *        A token generated with an expiration time for the session a user is logged in to Amazon Connect
+     *        A token generated with an expiration time for the session a user is logged in to Amazon Connect.
      */
 
     public void setAccessTokenExpiration(java.util.Date accessTokenExpiration) {
@@ -108,10 +108,10 @@ public class Credentials implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A token generated with an expiration time for the session a user is logged in to Amazon Connect
+     * A token generated with an expiration time for the session a user is logged in to Amazon Connect.
      * </p>
      * 
-     * @return A token generated with an expiration time for the session a user is logged in to Amazon Connect
+     * @return A token generated with an expiration time for the session a user is logged in to Amazon Connect.
      */
 
     public java.util.Date getAccessTokenExpiration() {
@@ -120,11 +120,11 @@ public class Credentials implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A token generated with an expiration time for the session a user is logged in to Amazon Connect
+     * A token generated with an expiration time for the session a user is logged in to Amazon Connect.
      * </p>
      * 
      * @param accessTokenExpiration
-     *        A token generated with an expiration time for the session a user is logged in to Amazon Connect
+     *        A token generated with an expiration time for the session a user is logged in to Amazon Connect.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

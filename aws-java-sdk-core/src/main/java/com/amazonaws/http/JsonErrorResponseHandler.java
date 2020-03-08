@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import com.amazonaws.transform.JsonUnmarshallerContextImpl;
 import com.amazonaws.transform.Unmarshaller;
 import com.fasterxml.jackson.core.JsonFactory;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.commons.logging.Log;
@@ -141,7 +142,7 @@ public class JsonErrorResponseHandler implements HttpResponseHandler<AmazonServi
                 try {
                     if (unmarshaller instanceof EnhancedJsonErrorUnmarshaller) {
                         EnhancedJsonErrorUnmarshaller enhancedUnmarshaller = (EnhancedJsonErrorUnmarshaller) unmarshaller;
-                        return doEnhancedUnmarshall(enhancedUnmarshaller, response, rawContent);
+                        return doEnhancedUnmarshall(enhancedUnmarshaller, errorCode, response, rawContent);
                     } else {
                         return doLegacyUnmarshall(unmarshaller, jsonNode);
                     }
@@ -154,14 +155,30 @@ public class JsonErrorResponseHandler implements HttpResponseHandler<AmazonServi
         return null;
     }
 
-    private AmazonServiceException doEnhancedUnmarshall(EnhancedJsonErrorUnmarshaller unmarshaller, HttpResponse response, byte[] rawContent) throws Exception {
+    private AmazonServiceException doEnhancedUnmarshall(EnhancedJsonErrorUnmarshaller unmarshaller,
+                                                        String errorCode,
+                                                        HttpResponse response,
+                                                        byte[] rawContent) throws Exception {
         if (rawContent == null) {
             rawContent = new byte[0];
         }
+
         JsonParser jsonParser = jsonFactory.createParser(rawContent);
         JsonUnmarshallerContext unmarshallerContext = new JsonUnmarshallerContextImpl(
                 jsonParser, simpleTypeUnmarshallers, customTypeUnmarshallers, response);
-        return unmarshaller.unmarshallFromContext(unmarshallerContext);
+        try {
+            return unmarshaller.unmarshallFromContext(unmarshallerContext);
+        } catch (JsonParseException e) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug(String.format("Received response with error code '%s', but response body did not contain " +
+                                        "valid JSON. Treating it as an empty object.", errorCode), e);
+            }
+            // This is to keep consistent with the previous behavior
+            JsonParser emptyParser = jsonFactory.createParser("{}");
+            unmarshallerContext = new JsonUnmarshallerContextImpl(
+                    emptyParser, simpleTypeUnmarshallers, customTypeUnmarshallers, response);
+            return unmarshaller.unmarshallFromContext(unmarshallerContext);
+        }
     }
 
     private AmazonServiceException doLegacyUnmarshall(JsonErrorUnmarshaller unmarshaller, JsonNode jsonNode) throws Exception {

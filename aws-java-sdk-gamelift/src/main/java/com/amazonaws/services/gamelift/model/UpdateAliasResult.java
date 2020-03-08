@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,18 +28,18 @@ public class UpdateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Object that contains the updated alias configuration.
+     * The updated alias resource.
      * </p>
      */
     private Alias alias;
 
     /**
      * <p>
-     * Object that contains the updated alias configuration.
+     * The updated alias resource.
      * </p>
      * 
      * @param alias
-     *        Object that contains the updated alias configuration.
+     *        The updated alias resource.
      */
 
     public void setAlias(Alias alias) {
@@ -48,10 +48,10 @@ public class UpdateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Object that contains the updated alias configuration.
+     * The updated alias resource.
      * </p>
      * 
-     * @return Object that contains the updated alias configuration.
+     * @return The updated alias resource.
      */
 
     public Alias getAlias() {
@@ -60,11 +60,11 @@ public class UpdateAliasResult extends com.amazonaws.AmazonWebServiceResult<com.
 
     /**
      * <p>
-     * Object that contains the updated alias configuration.
+     * The updated alias resource.
      * </p>
      * 
      * @param alias
-     *        Object that contains the updated alias configuration.
+     *        The updated alias resource.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

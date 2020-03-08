@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -72,6 +72,14 @@ public class GetSubscriptionAttributesResult extends com.amazonaws.AmazonWebServ
      * </li>
      * <li>
      * <p>
+     * <code>RedrivePolicy</code> – When specified, sends undeliverable messages to the specified Amazon SQS dead-letter
+     * queue. Messages that can't be delivered due to client errors (for example, when the subscribed endpoint is
+     * unreachable) or server errors (for example, when the service that powers the subscribed endpoint becomes
+     * unavailable) are held in the dead-letter queue for further analysis or reprocessing.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>SubscriptionArn</code> – The subscription's ARN.
      * </p>
      * </li>
@@ -130,6 +138,14 @@ public class GetSubscriptionAttributesResult extends com.amazonaws.AmazonWebServ
      * </li>
      * <li>
      * <p>
+     * <code>RedrivePolicy</code> – When specified, sends undeliverable messages to the specified Amazon SQS dead-letter
+     * queue. Messages that can't be delivered due to client errors (for example, when the subscribed endpoint is
+     * unreachable) or server errors (for example, when the service that powers the subscribed endpoint becomes
+     * unavailable) are held in the dead-letter queue for further analysis or reprocessing.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>SubscriptionArn</code> – The subscription's ARN.
      * </p>
      * </li>
@@ -181,6 +197,15 @@ public class GetSubscriptionAttributesResult extends com.amazonaws.AmazonWebServ
      *         <code>RawMessageDelivery</code> – <code>true</code> if raw message delivery is enabled for the
      *         subscription. Raw messages are free of JSON formatting and can be sent to HTTP/S and Amazon SQS
      *         endpoints.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>RedrivePolicy</code> – When specified, sends undeliverable messages to the specified Amazon SQS
+     *         dead-letter queue. Messages that can't be delivered due to client errors (for example, when the
+     *         subscribed endpoint is unreachable) or server errors (for example, when the service that powers the
+     *         subscribed endpoint becomes unavailable) are held in the dead-letter queue for further analysis or
+     *         reprocessing.
      *         </p>
      *         </li>
      *         <li>
@@ -248,6 +273,14 @@ public class GetSubscriptionAttributesResult extends com.amazonaws.AmazonWebServ
      * </li>
      * <li>
      * <p>
+     * <code>RedrivePolicy</code> – When specified, sends undeliverable messages to the specified Amazon SQS dead-letter
+     * queue. Messages that can't be delivered due to client errors (for example, when the subscribed endpoint is
+     * unreachable) or server errors (for example, when the service that powers the subscribed endpoint becomes
+     * unavailable) are held in the dead-letter queue for further analysis or reprocessing.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>SubscriptionArn</code> – The subscription's ARN.
      * </p>
      * </li>
@@ -298,6 +331,14 @@ public class GetSubscriptionAttributesResult extends com.amazonaws.AmazonWebServ
      *        <p>
      *        <code>RawMessageDelivery</code> – <code>true</code> if raw message delivery is enabled for the
      *        subscription. Raw messages are free of JSON formatting and can be sent to HTTP/S and Amazon SQS endpoints.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RedrivePolicy</code> – When specified, sends undeliverable messages to the specified Amazon SQS
+     *        dead-letter queue. Messages that can't be delivered due to client errors (for example, when the subscribed
+     *        endpoint is unreachable) or server errors (for example, when the service that powers the subscribed
+     *        endpoint becomes unavailable) are held in the dead-letter queue for further analysis or reprocessing.
      *        </p>
      *        </li>
      *        <li>
@@ -362,6 +403,14 @@ public class GetSubscriptionAttributesResult extends com.amazonaws.AmazonWebServ
      * </li>
      * <li>
      * <p>
+     * <code>RedrivePolicy</code> – When specified, sends undeliverable messages to the specified Amazon SQS dead-letter
+     * queue. Messages that can't be delivered due to client errors (for example, when the subscribed endpoint is
+     * unreachable) or server errors (for example, when the service that powers the subscribed endpoint becomes
+     * unavailable) are held in the dead-letter queue for further analysis or reprocessing.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>SubscriptionArn</code> – The subscription's ARN.
      * </p>
      * </li>
@@ -416,6 +465,14 @@ public class GetSubscriptionAttributesResult extends com.amazonaws.AmazonWebServ
      *        </li>
      *        <li>
      *        <p>
+     *        <code>RedrivePolicy</code> – When specified, sends undeliverable messages to the specified Amazon SQS
+     *        dead-letter queue. Messages that can't be delivered due to client errors (for example, when the subscribed
+     *        endpoint is unreachable) or server errors (for example, when the service that powers the subscribed
+     *        endpoint becomes unavailable) are held in the dead-letter queue for further analysis or reprocessing.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        <code>SubscriptionArn</code> – The subscription's ARN.
      *        </p>
      *        </li>
@@ -431,6 +488,13 @@ public class GetSubscriptionAttributesResult extends com.amazonaws.AmazonWebServ
         setAttributes(attributes);
         return this;
     }
+
+    /**
+     * Add a single Attributes entry
+     *
+     * @see GetSubscriptionAttributesResult#withAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public GetSubscriptionAttributesResult addAttributesEntry(String key, String value) {
         if (null == this.attributes) {

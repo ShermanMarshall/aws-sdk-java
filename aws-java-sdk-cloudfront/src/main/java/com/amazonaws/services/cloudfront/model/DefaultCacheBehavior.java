@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,7 +37,7 @@ public class DefaultCacheBehavior implements Serializable, Cloneable {
     private String targetOriginId;
     /**
      * <p>
-     * A complex type that specifies how CloudFront handles query strings and cookies.
+     * A complex type that specifies how CloudFront handles query strings, cookies, and HTTP headers.
      * </p>
      */
     private ForwardedValues forwardedValues;
@@ -229,11 +229,11 @@ public class DefaultCacheBehavior implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A complex type that specifies how CloudFront handles query strings and cookies.
+     * A complex type that specifies how CloudFront handles query strings, cookies, and HTTP headers.
      * </p>
      * 
      * @param forwardedValues
-     *        A complex type that specifies how CloudFront handles query strings and cookies.
+     *        A complex type that specifies how CloudFront handles query strings, cookies, and HTTP headers.
      */
 
     public void setForwardedValues(ForwardedValues forwardedValues) {
@@ -242,10 +242,10 @@ public class DefaultCacheBehavior implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A complex type that specifies how CloudFront handles query strings and cookies.
+     * A complex type that specifies how CloudFront handles query strings, cookies, and HTTP headers.
      * </p>
      * 
-     * @return A complex type that specifies how CloudFront handles query strings and cookies.
+     * @return A complex type that specifies how CloudFront handles query strings, cookies, and HTTP headers.
      */
 
     public ForwardedValues getForwardedValues() {
@@ -254,11 +254,11 @@ public class DefaultCacheBehavior implements Serializable, Cloneable {
 
     /**
      * <p>
-     * A complex type that specifies how CloudFront handles query strings and cookies.
+     * A complex type that specifies how CloudFront handles query strings, cookies, and HTTP headers.
      * </p>
      * 
      * @param forwardedValues
-     *        A complex type that specifies how CloudFront handles query strings and cookies.
+     *        A complex type that specifies how CloudFront handles query strings, cookies, and HTTP headers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

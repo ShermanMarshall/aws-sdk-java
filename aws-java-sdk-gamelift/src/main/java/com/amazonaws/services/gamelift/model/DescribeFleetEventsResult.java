@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class DescribeFleetEventsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Collection of objects containing event log entries for the specified fleet.
+     * A collection of objects containing event log entries for the specified fleet.
      * </p>
      */
     private java.util.List<Event> events;
@@ -42,10 +42,10 @@ public class DescribeFleetEventsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Collection of objects containing event log entries for the specified fleet.
+     * A collection of objects containing event log entries for the specified fleet.
      * </p>
      * 
-     * @return Collection of objects containing event log entries for the specified fleet.
+     * @return A collection of objects containing event log entries for the specified fleet.
      */
 
     public java.util.List<Event> getEvents() {
@@ -54,11 +54,11 @@ public class DescribeFleetEventsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Collection of objects containing event log entries for the specified fleet.
+     * A collection of objects containing event log entries for the specified fleet.
      * </p>
      * 
      * @param events
-     *        Collection of objects containing event log entries for the specified fleet.
+     *        A collection of objects containing event log entries for the specified fleet.
      */
 
     public void setEvents(java.util.Collection<Event> events) {
@@ -72,7 +72,7 @@ public class DescribeFleetEventsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Collection of objects containing event log entries for the specified fleet.
+     * A collection of objects containing event log entries for the specified fleet.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -81,7 +81,7 @@ public class DescribeFleetEventsResult extends com.amazonaws.AmazonWebServiceRes
      * </p>
      * 
      * @param events
-     *        Collection of objects containing event log entries for the specified fleet.
+     *        A collection of objects containing event log entries for the specified fleet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -97,11 +97,11 @@ public class DescribeFleetEventsResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * Collection of objects containing event log entries for the specified fleet.
+     * A collection of objects containing event log entries for the specified fleet.
      * </p>
      * 
      * @param events
-     *        Collection of objects containing event log entries for the specified fleet.
+     *        A collection of objects containing event log entries for the specified fleet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

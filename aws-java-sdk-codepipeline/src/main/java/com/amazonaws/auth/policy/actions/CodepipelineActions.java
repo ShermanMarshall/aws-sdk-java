@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -91,6 +91,8 @@ public enum CodepipelineActions implements Action {
     RetryStageExecution("codepipeline:RetryStageExecution"),
     /** Action for the StartPipelineExecution operation. */
     StartPipelineExecution("codepipeline:StartPipelineExecution"),
+    /** Action for the StopPipelineExecution operation. */
+    StopPipelineExecution("codepipeline:StopPipelineExecution"),
     /** Action for the TagResource operation. */
     TagResource("codepipeline:TagResource"),
     /** Action for the UntagResource operation. */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -74,6 +74,25 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Associates a trial component with a trial. A trial component can be associated with multiple trials. To
+     * disassociate a trial component from a trial, call the <a>DisassociateTrialComponent</a> API.
+     * </p>
+     * 
+     * @param associateTrialComponentRequest
+     * @return Result of the AssociateTrialComponent operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @sample AmazonSageMaker.AssociateTrialComponent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/AssociateTrialComponent"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AssociateTrialComponentResult associateTrialComponent(AssociateTrialComponentRequest associateTrialComponentRequest);
+
+    /**
+     * <p>
      * Create a machine learning algorithm that you can use in Amazon SageMaker and list in the AWS Marketplace.
      * </p>
      * 
@@ -84,6 +103,46 @@ public interface AmazonSageMaker {
      *      Documentation</a>
      */
     CreateAlgorithmResult createAlgorithm(CreateAlgorithmRequest createAlgorithmRequest);
+
+    /**
+     * <p>
+     * Creates a running App for the specified UserProfile. Supported Apps are JupyterServer and KernelGateway. This
+     * operation is automatically invoked by Amazon SageMaker Amazon SageMaker Studio (Studio) upon access to the
+     * associated Studio Domain, and when new kernel configurations are selected by the user. A user may have multiple
+     * Apps active simultaneously. Apps will automatically terminate and be deleted when stopped from within Studio, or
+     * when the DeleteApp API is manually called. UserProfiles are limited to 5 concurrently running Apps at a time.
+     * </p>
+     * 
+     * @param createAppRequest
+     * @return Result of the CreateApp operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @sample AmazonSageMaker.CreateApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateApp" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateAppResult createApp(CreateAppRequest createAppRequest);
+
+    /**
+     * <p>
+     * Creates an AutoPilot job.
+     * </p>
+     * 
+     * @param createAutoMLJobRequest
+     * @return Result of the CreateAutoMLJob operation returned by the service.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @sample AmazonSageMaker.CreateAutoMLJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateAutoMLJob" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateAutoMLJobResult createAutoMLJob(CreateAutoMLJobRequest createAutoMLJobRequest);
 
     /**
      * <p>
@@ -166,17 +225,45 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Creates a Domain for Amazon SageMaker Amazon SageMaker Studio (Studio), which can be accessed by end-users in a
+     * web browser. A Domain has an associated directory, list of authorized users, and a variety of security,
+     * application, policies, and Amazon Virtual Private Cloud configurations. An AWS account is limited to one Domain,
+     * per region. Users within a domain can share notebook files and other artifacts with each other. When a Domain is
+     * created, an Amazon Elastic File System (EFS) is also created for use by all of the users within the Domain. Each
+     * user receives a private home directory within the EFS for notebooks, Git repositories, and data files.
+     * </p>
+     * 
+     * @param createDomainRequest
+     * @return Result of the CreateDomain operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @sample AmazonSageMaker.CreateDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateDomain" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateDomainResult createDomain(CreateDomainRequest createDomainRequest);
+
+    /**
+     * <p>
      * Creates an endpoint using the endpoint configuration specified in the request. Amazon SageMaker uses the endpoint
      * to provision resources and deploy models. You create the endpoint configuration with the <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html">CreateEndpointConfig</a>
      * API.
      * </p>
-     * <note>
      * <p>
-     * Use this API only for hosting models using Amazon SageMaker hosting services.
+     * Use this API to deploy models using Amazon SageMaker hosting services.
      * </p>
      * <p>
-     * You must not delete an <code>EndpointConfig</code> in use by an endpoint that is live or while the
+     * For an example that calls this method when deploying a model to Amazon SageMaker hosting services, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto">Deploy the
+     * Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).</a>
+     * </p>
+     * <note>
+     * <p>
+     * You must not delete an <code>EndpointConfig</code> that is in use by an endpoint that is live or while the
      * <code>UpdateEndpoint</code> or <code>CreateEndpoint</code> operations are being performed on the endpoint. To
      * update an endpoint, you must create a new <code>EndpointConfig</code>.
      * </p>
@@ -195,16 +282,12 @@ public interface AmazonSageMaker {
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html">DescribeEndpoint</a> API.
      * </p>
      * <p>
-     * For an example, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html">Exercise 1: Using the
-     * K-Means Algorithm Provided by Amazon SageMaker</a>.
-     * </p>
-     * <p>
      * If any of the models hosted at this endpoint get model data from an Amazon S3 location, Amazon SageMaker uses AWS
      * Security Token Service to download model artifacts from the S3 path you provided. AWS STS is activated in your
      * IAM user account by default. If you previously deactivated AWS STS for a region, you need to reactivate AWS STS
      * for that region. For more information, see <a
-     * href="IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">Activating and Deactivating AWS STS i an AWS
-     * Region</a> in the <i>AWS Identity and Access Management User Guide</i>.
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">Activating and
+     * Deactivating AWS STS in an AWS Region</a> in the <i>AWS Identity and Access Management User Guide</i>.
      * </p>
      * 
      * @param createEndpointRequest
@@ -227,11 +310,11 @@ public interface AmazonSageMaker {
      * </p>
      * <note>
      * <p>
-     * Use this API only if you want to use Amazon SageMaker hosting services to deploy models into production.
+     * Use this API if you want to use Amazon SageMaker hosting services to deploy models into production.
      * </p>
      * </note>
      * <p>
-     * In the request, you define one or more <code>ProductionVariant</code>s, each of which identifies a model. Each
+     * In the request, you define a <code>ProductionVariant</code>, for each model that you want to deploy. Each
      * <code>ProductionVariant</code> parameter also describes the resources that you want Amazon SageMaker to
      * provision. This includes the number and type of ML compute instances to deploy.
      * </p>
@@ -240,6 +323,11 @@ public interface AmazonSageMaker {
      * want to allocate to each model. For example, suppose that you want to host two models, A and B, and you assign
      * traffic weight 2 for model A and 1 for model B. Amazon SageMaker distributes two-thirds of the traffic to Model
      * A, and one-third to model B.
+     * </p>
+     * <p>
+     * For an example that calls this method when deploying a model to Amazon SageMaker hosting services, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto">Deploy the
+     * Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).</a>
      * </p>
      * 
      * @param createEndpointConfigRequest
@@ -252,6 +340,84 @@ public interface AmazonSageMaker {
      *      API Documentation</a>
      */
     CreateEndpointConfigResult createEndpointConfig(CreateEndpointConfigRequest createEndpointConfigRequest);
+
+    /**
+     * <p>
+     * Creates an Amazon SageMaker <i>experiment</i>. An experiment is a collection of <i>trials</i> that are observed,
+     * compared and evaluated as a group. A trial is a set of steps, called <i>trial components</i>, that produce a
+     * machine learning model.
+     * </p>
+     * <p>
+     * The goal of an experiment is to determine the components that produce the best model. Multiple trials are
+     * performed, each one isolating and measuring the impact of a change to one or more inputs, while keeping the
+     * remaining inputs constant.
+     * </p>
+     * <p>
+     * When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments, trials, and trial
+     * components are automatically tracked, logged, and indexed. When you use the AWS SDK for Python (Boto), you must
+     * use the logging APIs provided by the SDK.
+     * </p>
+     * <p>
+     * You can add tags to experiments, trials, trial components and then use the <a>Search</a> API to search for the
+     * tags.
+     * </p>
+     * <p>
+     * To add a description to an experiment, specify the optional <code>Description</code> parameter. To add a
+     * description later, or to change the description, call the <a>UpdateExperiment</a> API.
+     * </p>
+     * <p>
+     * To get a list of all your experiments, call the <a>ListExperiments</a> API. To view an experiment's properties,
+     * call the <a>DescribeExperiment</a> API. To get a list of all the trials associated with an experiment, call the
+     * <a>ListTrials</a> API. To create a trial call the <a>CreateTrial</a> API.
+     * </p>
+     * 
+     * @param createExperimentRequest
+     * @return Result of the CreateExperiment operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @sample AmazonSageMaker.CreateExperiment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateExperiment" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateExperimentResult createExperiment(CreateExperimentRequest createExperimentRequest);
+
+    /**
+     * <p>
+     * Creates a flow definition.
+     * </p>
+     * 
+     * @param createFlowDefinitionRequest
+     * @return Result of the CreateFlowDefinition operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @sample AmazonSageMaker.CreateFlowDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateFlowDefinition" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateFlowDefinitionResult createFlowDefinition(CreateFlowDefinitionRequest createFlowDefinitionRequest);
+
+    /**
+     * <p>
+     * Defines the settings you will use for the human review workflow user interface. Reviewers will see a three-panel
+     * interface with an instruction area, the item to review, and an input area.
+     * </p>
+     * 
+     * @param createHumanTaskUiRequest
+     * @return Result of the CreateHumanTaskUi operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @sample AmazonSageMaker.CreateHumanTaskUi
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateHumanTaskUi" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateHumanTaskUiResult createHumanTaskUi(CreateHumanTaskUiRequest createHumanTaskUiRequest);
 
     /**
      * <p>
@@ -334,8 +500,8 @@ public interface AmazonSageMaker {
     /**
      * <p>
      * Creates a model in Amazon SageMaker. In the request, you name the model and describe a primary container. For the
-     * primary container, you specify the docker image containing inference code, artifacts (from prior training), and
-     * custom environment map that the inference code uses when you deploy the model for predictions.
+     * primary container, you specify the Docker image that contains inference code, artifacts (from prior training),
+     * and a custom environment map that the inference code uses when you deploy the model for predictions.
      * </p>
      * <p>
      * Use this API to create a model if you want to use Amazon SageMaker hosting services or run a batch transform job.
@@ -344,6 +510,11 @@ public interface AmazonSageMaker {
      * To host your model, you create an endpoint configuration with the <code>CreateEndpointConfig</code> API, and then
      * create an endpoint with the <code>CreateEndpoint</code> API. Amazon SageMaker then deploys all of the containers
      * that you defined for the model in the hosting environment.
+     * </p>
+     * <p>
+     * For an example that calls this method when deploying a model to Amazon SageMaker hosting services, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto">Deploy the
+     * Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).</a>
      * </p>
      * <p>
      * To run a batch transform using your model, you start a job with the <code>CreateTransformJob</code> API. Amazon
@@ -390,6 +561,25 @@ public interface AmazonSageMaker {
      *      API Documentation</a>
      */
     CreateModelPackageResult createModelPackage(CreateModelPackageRequest createModelPackageRequest);
+
+    /**
+     * <p>
+     * Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an
+     * Amazon SageMaker Endoint.
+     * </p>
+     * 
+     * @param createMonitoringScheduleRequest
+     * @return Result of the CreateMonitoringSchedule operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @sample AmazonSageMaker.CreateMonitoringSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateMonitoringSchedule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateMonitoringScheduleResult createMonitoringSchedule(CreateMonitoringScheduleRequest createMonitoringScheduleRequest);
 
     /**
      * <p>
@@ -497,6 +687,24 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be
+     * automatically signed in to Amazon SageMaker Amazon SageMaker Studio (Studio), and granted access to all of the
+     * Apps and files associated with that Amazon Elastic File System (EFS). This operation can only be called when
+     * AuthMode equals IAM.
+     * </p>
+     * 
+     * @param createPresignedDomainUrlRequest
+     * @return Result of the CreatePresignedDomainUrl operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.CreatePresignedDomainUrl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreatePresignedDomainUrl"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreatePresignedDomainUrlResult createPresignedDomainUrl(CreatePresignedDomainUrlRequest createPresignedDomainUrlRequest);
+
+    /**
+     * <p>
      * Returns a URL that you can use to connect to the Jupyter server from a notebook instance. In the Amazon SageMaker
      * console, when you choose <code>Open</code> next to a notebook instance, Amazon SageMaker opens a new tab showing
      * the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the
@@ -508,8 +716,8 @@ public interface AmazonSageMaker {
      * it returns to a list of IP addresses that you specify. Use the <code>NotIpAddress</code> condition operator and
      * the <code>aws:SourceIP</code> condition context key to specify the list of IP addresses that you want to have
      * access to the notebook instance. For more information, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html">Limit Access to a Notebook Instance by
-     * IP Address</a>.
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_id-based-policy-examples.html#nbi-ip-filter"
+     * >Limit Access to a Notebook Instance by IP Address</a>.
      * </p>
      * <note>
      * <p>
@@ -526,6 +734,26 @@ public interface AmazonSageMaker {
      */
     CreatePresignedNotebookInstanceUrlResult createPresignedNotebookInstanceUrl(
             CreatePresignedNotebookInstanceUrlRequest createPresignedNotebookInstanceUrlRequest);
+
+    /**
+     * <p>
+     * Creates a processing job.
+     * </p>
+     * 
+     * @param createProcessingJobRequest
+     * @return Result of the CreateProcessingJob operation returned by the service.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.CreateProcessingJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateProcessingJob" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateProcessingJobResult createProcessingJob(CreateProcessingJobRequest createProcessingJobRequest);
 
     /**
      * <p>
@@ -590,7 +818,7 @@ public interface AmazonSageMaker {
      * <li>
      * <p>
      * <code>StoppingCondition</code> - To help cap training costs, use <code>MaxRuntimeInSeconds</code> to set a time
-     * limit for training. Use <code>MaxWaitTimeInSeconds</code> to specify how long you are willing to to wait for a
+     * limit for training. Use <code>MaxWaitTimeInSeconds</code> to specify how long you are willing to wait for a
      * managed spot training job to complete.
      * </p>
      * </li>
@@ -607,6 +835,8 @@ public interface AmazonSageMaker {
      * @throws ResourceLimitExceededException
      *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
      *         created.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
      * @sample AmazonSageMaker.CreateTrainingJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateTrainingJob" target="_top">AWS
      *      API Documentation</a>
@@ -657,8 +887,8 @@ public interface AmazonSageMaker {
      * </li>
      * </ul>
      * <p>
-     * For more information about how batch transformation works Amazon SageMaker, see <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html">How It Works</a>.
+     * For more information about how batch transformation works, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html">Batch Transform</a>.
      * </p>
      * 
      * @param createTransformJobRequest
@@ -668,11 +898,101 @@ public interface AmazonSageMaker {
      * @throws ResourceLimitExceededException
      *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
      *         created.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
      * @sample AmazonSageMaker.CreateTransformJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateTransformJob" target="_top">AWS
      *      API Documentation</a>
      */
     CreateTransformJobResult createTransformJob(CreateTransformJobRequest createTransformJobRequest);
+
+    /**
+     * <p>
+     * Creates an Amazon SageMaker <i>trial</i>. A trial is a set of steps called <i>trial components</i> that produce a
+     * machine learning model. A trial is part of a single Amazon SageMaker <i>experiment</i>.
+     * </p>
+     * <p>
+     * When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments, trials, and trial
+     * components are automatically tracked, logged, and indexed. When you use the AWS SDK for Python (Boto), you must
+     * use the logging APIs provided by the SDK.
+     * </p>
+     * <p>
+     * You can add tags to a trial and then use the <a>Search</a> API to search for the tags.
+     * </p>
+     * <p>
+     * To get a list of all your trials, call the <a>ListTrials</a> API. To view a trial's properties, call the
+     * <a>DescribeTrial</a> API. To create a trial component, call the <a>CreateTrialComponent</a> API.
+     * </p>
+     * 
+     * @param createTrialRequest
+     * @return Result of the CreateTrial operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @sample AmazonSageMaker.CreateTrial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateTrial" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateTrialResult createTrial(CreateTrialRequest createTrialRequest);
+
+    /**
+     * <p>
+     * Creates a <i>trial component</i>, which is a stage of a machine learning <i>trial</i>. A trial is composed of one
+     * or more trial components. A trial component can be used in multiple trials.
+     * </p>
+     * <p>
+     * Trial components include pre-processing jobs, training jobs, and batch transform jobs.
+     * </p>
+     * <p>
+     * When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments, trials, and trial
+     * components are automatically tracked, logged, and indexed. When you use the AWS SDK for Python (Boto), you must
+     * use the logging APIs provided by the SDK.
+     * </p>
+     * <p>
+     * You can add tags to a trial component and then use the <a>Search</a> API to search for the tags.
+     * </p>
+     * <note>
+     * <p>
+     * <code>CreateTrialComponent</code> can only be invoked from within an Amazon SageMaker managed environment. This
+     * includes Amazon SageMaker training jobs, processing jobs, transform jobs, and Amazon SageMaker notebooks. A call
+     * to <code>CreateTrialComponent</code> from outside one of these environments results in an error.
+     * </p>
+     * </note>
+     * 
+     * @param createTrialComponentRequest
+     * @return Result of the CreateTrialComponent operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @sample AmazonSageMaker.CreateTrialComponent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateTrialComponent" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateTrialComponentResult createTrialComponent(CreateTrialComponentRequest createTrialComponentRequest);
+
+    /**
+     * <p>
+     * Creates a new user profile. A user profile represents a single user within a Domain, and is the main way to
+     * reference a "person" for the purposes of sharing, reporting and other user-oriented features. This entity is
+     * created during on-boarding. If an administrator invites a person by email or imports them from SSO, a new
+     * UserProfile is automatically created. This entity is the primary holder of settings for an individual user and
+     * has a reference to the user's private Amazon Elastic File System (EFS) home directory.
+     * </p>
+     * 
+     * @param createUserProfileRequest
+     * @return Result of the CreateUserProfile operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @sample AmazonSageMaker.CreateUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CreateUserProfile" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateUserProfileResult createUserProfile(CreateUserProfileRequest createUserProfileRequest);
 
     /**
      * <p>
@@ -711,6 +1031,23 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Used to stop and delete an app.
+     * </p>
+     * 
+     * @param deleteAppRequest
+     * @return Result of the DeleteApp operation returned by the service.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DeleteApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteApp" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteAppResult deleteApp(DeleteAppRequest deleteAppRequest);
+
+    /**
+     * <p>
      * Deletes the specified Git repository from your account.
      * </p>
      * 
@@ -721,6 +1058,25 @@ public interface AmazonSageMaker {
      *      API Documentation</a>
      */
     DeleteCodeRepositoryResult deleteCodeRepository(DeleteCodeRepositoryRequest deleteCodeRepositoryRequest);
+
+    /**
+     * <p>
+     * Used to delete a domain. If you on-boarded with IAM mode, you will need to delete your domain to on-board again
+     * using SSO. Use with caution. All of the members of the domain will lose access to their EFS volume, including
+     * data, notebooks, and other artifacts.
+     * </p>
+     * 
+     * @param deleteDomainRequest
+     * @return Result of the DeleteDomain operation returned by the service.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DeleteDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteDomain" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteDomainResult deleteDomain(DeleteDomainRequest deleteDomainRequest);
 
     /**
      * <p>
@@ -756,6 +1112,37 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Deletes an Amazon SageMaker experiment. All trials associated with the experiment must be deleted first. Use the
+     * <a>ListTrials</a> API to get a list of the trials associated with the experiment.
+     * </p>
+     * 
+     * @param deleteExperimentRequest
+     * @return Result of the DeleteExperiment operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DeleteExperiment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteExperiment" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteExperimentResult deleteExperiment(DeleteExperimentRequest deleteExperimentRequest);
+
+    /**
+     * <p>
+     * Deletes the specified flow definition.
+     * </p>
+     * 
+     * @param deleteFlowDefinitionRequest
+     * @return Result of the DeleteFlowDefinition operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DeleteFlowDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteFlowDefinition" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteFlowDefinitionResult deleteFlowDefinition(DeleteFlowDefinitionRequest deleteFlowDefinitionRequest);
+
+    /**
+     * <p>
      * Deletes a model. The <code>DeleteModel</code> API deletes only the model entry that was created in Amazon
      * SageMaker when you called the <a
      * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html">CreateModel</a> API. It does not
@@ -786,6 +1173,22 @@ public interface AmazonSageMaker {
      *      API Documentation</a>
      */
     DeleteModelPackageResult deleteModelPackage(DeleteModelPackageRequest deleteModelPackageRequest);
+
+    /**
+     * <p>
+     * Deletes a monitoring schedule. Also stops the schedule had not already been stopped. This does not delete the job
+     * execution history of the monitoring schedule.
+     * </p>
+     * 
+     * @param deleteMonitoringScheduleRequest
+     * @return Result of the DeleteMonitoringSchedule operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DeleteMonitoringSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteMonitoringSchedule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteMonitoringScheduleResult deleteMonitoringSchedule(DeleteMonitoringScheduleRequest deleteMonitoringScheduleRequest);
 
     /**
      * <p>
@@ -845,6 +1248,56 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Deletes the specified trial. All trial components that make up the trial must be deleted first. Use the
+     * <a>DescribeTrialComponent</a> API to get the list of trial components.
+     * </p>
+     * 
+     * @param deleteTrialRequest
+     * @return Result of the DeleteTrial operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DeleteTrial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteTrial" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteTrialResult deleteTrial(DeleteTrialRequest deleteTrialRequest);
+
+    /**
+     * <p>
+     * Deletes the specified trial component. A trial component must be disassociated from all trials before the trial
+     * component can be deleted. To disassociate a trial component from a trial, call the
+     * <a>DisassociateTrialComponent</a> API.
+     * </p>
+     * 
+     * @param deleteTrialComponentRequest
+     * @return Result of the DeleteTrialComponent operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DeleteTrialComponent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteTrialComponent" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteTrialComponentResult deleteTrialComponent(DeleteTrialComponentRequest deleteTrialComponentRequest);
+
+    /**
+     * <p>
+     * Deletes a user profile.
+     * </p>
+     * 
+     * @param deleteUserProfileRequest
+     * @return Result of the DeleteUserProfile operation returned by the service.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DeleteUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteUserProfile" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteUserProfileResult deleteUserProfile(DeleteUserProfileRequest deleteUserProfileRequest);
+
+    /**
+     * <p>
      * Deletes an existing work team. This operation can't be undone.
      * </p>
      * 
@@ -871,6 +1324,36 @@ public interface AmazonSageMaker {
      *      API Documentation</a>
      */
     DescribeAlgorithmResult describeAlgorithm(DescribeAlgorithmRequest describeAlgorithmRequest);
+
+    /**
+     * <p>
+     * Describes the app.
+     * </p>
+     * 
+     * @param describeAppRequest
+     * @return Result of the DescribeApp operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeApp
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeApp" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeAppResult describeApp(DescribeAppRequest describeAppRequest);
+
+    /**
+     * <p>
+     * Returns information about an Amazon SageMaker job.
+     * </p>
+     * 
+     * @param describeAutoMLJobRequest
+     * @return Result of the DescribeAutoMLJob operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeAutoMLJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeAutoMLJob" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeAutoMLJobResult describeAutoMLJob(DescribeAutoMLJobRequest describeAutoMLJobRequest);
 
     /**
      * <p>
@@ -906,6 +1389,21 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * The desciption of the domain.
+     * </p>
+     * 
+     * @param describeDomainRequest
+     * @return Result of the DescribeDomain operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeDomain" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeDomainResult describeDomain(DescribeDomainRequest describeDomainRequest);
+
+    /**
+     * <p>
      * Returns the description of an endpoint.
      * </p>
      * 
@@ -929,6 +1427,51 @@ public interface AmazonSageMaker {
      *      target="_top">AWS API Documentation</a>
      */
     DescribeEndpointConfigResult describeEndpointConfig(DescribeEndpointConfigRequest describeEndpointConfigRequest);
+
+    /**
+     * <p>
+     * Provides a list of an experiment's properties.
+     * </p>
+     * 
+     * @param describeExperimentRequest
+     * @return Result of the DescribeExperiment operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeExperiment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeExperiment" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeExperimentResult describeExperiment(DescribeExperimentRequest describeExperimentRequest);
+
+    /**
+     * <p>
+     * Returns information about the specified flow definition.
+     * </p>
+     * 
+     * @param describeFlowDefinitionRequest
+     * @return Result of the DescribeFlowDefinition operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeFlowDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeFlowDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeFlowDefinitionResult describeFlowDefinition(DescribeFlowDefinitionRequest describeFlowDefinitionRequest);
+
+    /**
+     * <p>
+     * Returns information about the requested human task user interface.
+     * </p>
+     * 
+     * @param describeHumanTaskUiRequest
+     * @return Result of the DescribeHumanTaskUi operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeHumanTaskUi
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeHumanTaskUi" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeHumanTaskUiResult describeHumanTaskUi(DescribeHumanTaskUiRequest describeHumanTaskUiRequest);
 
     /**
      * <p>
@@ -992,6 +1535,21 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Describes the schedule for a monitoring job.
+     * </p>
+     * 
+     * @param describeMonitoringScheduleRequest
+     * @return Result of the DescribeMonitoringSchedule operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeMonitoringSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeMonitoringSchedule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeMonitoringScheduleResult describeMonitoringSchedule(DescribeMonitoringScheduleRequest describeMonitoringScheduleRequest);
+
+    /**
+     * <p>
      * Returns information about a notebook instance.
      * </p>
      * 
@@ -1022,6 +1580,21 @@ public interface AmazonSageMaker {
      */
     DescribeNotebookInstanceLifecycleConfigResult describeNotebookInstanceLifecycleConfig(
             DescribeNotebookInstanceLifecycleConfigRequest describeNotebookInstanceLifecycleConfigRequest);
+
+    /**
+     * <p>
+     * Returns a description of a processing job.
+     * </p>
+     * 
+     * @param describeProcessingJobRequest
+     * @return Result of the DescribeProcessingJob operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeProcessingJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeProcessingJob"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeProcessingJobResult describeProcessingJob(DescribeProcessingJobRequest describeProcessingJobRequest);
 
     /**
      * <p>
@@ -1069,6 +1642,72 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Provides a list of a trial's properties.
+     * </p>
+     * 
+     * @param describeTrialRequest
+     * @return Result of the DescribeTrial operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeTrial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeTrial" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeTrialResult describeTrial(DescribeTrialRequest describeTrialRequest);
+
+    /**
+     * <p>
+     * Provides a list of a trials component's properties.
+     * </p>
+     * 
+     * @param describeTrialComponentRequest
+     * @return Result of the DescribeTrialComponent operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeTrialComponent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeTrialComponent"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeTrialComponentResult describeTrialComponent(DescribeTrialComponentRequest describeTrialComponentRequest);
+
+    /**
+     * <p>
+     * Describes the user profile.
+     * </p>
+     * 
+     * @param describeUserProfileRequest
+     * @return Result of the DescribeUserProfile operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DescribeUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeUserProfile" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeUserProfileResult describeUserProfile(DescribeUserProfileRequest describeUserProfileRequest);
+
+    /**
+     * <p>
+     * Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable,
+     * allowed IP address ranges (<a
+     * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html">CIDRs</a>). Allowable IP address ranges
+     * are the IP addresses that workers can use to access tasks.
+     * </p>
+     * <important>
+     * <p>
+     * This operation applies only to private workforces.
+     * </p>
+     * </important>
+     * 
+     * @param describeWorkforceRequest
+     * @return Result of the DescribeWorkforce operation returned by the service.
+     * @sample AmazonSageMaker.DescribeWorkforce
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DescribeWorkforce" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeWorkforceResult describeWorkforce(DescribeWorkforceRequest describeWorkforceRequest);
+
+    /**
+     * <p>
      * Gets information about a specific work team. You can see information such as the create date, the last updated
      * date, membership information, and the work team's Amazon Resource Name (ARN).
      * </p>
@@ -1080,6 +1719,28 @@ public interface AmazonSageMaker {
      *      Documentation</a>
      */
     DescribeWorkteamResult describeWorkteam(DescribeWorkteamRequest describeWorkteamRequest);
+
+    /**
+     * <p>
+     * Disassociates a trial component from a trial. This doesn't effect other trials the component is associated with.
+     * Before you can delete a component, you must disassociate the component from all trials it is associated with. To
+     * associate a trial component with a trial, call the <a>AssociateTrialComponent</a> API.
+     * </p>
+     * <p>
+     * To get a list of the trials a component is associated with, use the <a>Search</a> API. Specify
+     * <code>ExperimentTrialComponent</code> for the <code>Resource</code> parameter. The list appears in the response
+     * under <code>Results.TrialComponent.Parents</code>.
+     * </p>
+     * 
+     * @param disassociateTrialComponentRequest
+     * @return Result of the DisassociateTrialComponent operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.DisassociateTrialComponent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DisassociateTrialComponent"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DisassociateTrialComponentResult disassociateTrialComponent(DisassociateTrialComponentRequest disassociateTrialComponentRequest);
 
     /**
      * <p>
@@ -1108,6 +1769,47 @@ public interface AmazonSageMaker {
      *      Documentation</a>
      */
     ListAlgorithmsResult listAlgorithms(ListAlgorithmsRequest listAlgorithmsRequest);
+
+    /**
+     * <p>
+     * Lists apps.
+     * </p>
+     * 
+     * @param listAppsRequest
+     * @return Result of the ListApps operation returned by the service.
+     * @sample AmazonSageMaker.ListApps
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListApps" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListAppsResult listApps(ListAppsRequest listAppsRequest);
+
+    /**
+     * <p>
+     * Request a list of jobs.
+     * </p>
+     * 
+     * @param listAutoMLJobsRequest
+     * @return Result of the ListAutoMLJobs operation returned by the service.
+     * @sample AmazonSageMaker.ListAutoMLJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListAutoMLJobs" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListAutoMLJobsResult listAutoMLJobs(ListAutoMLJobsRequest listAutoMLJobsRequest);
+
+    /**
+     * <p>
+     * List the Candidates created for the job.
+     * </p>
+     * 
+     * @param listCandidatesForAutoMLJobRequest
+     * @return Result of the ListCandidatesForAutoMLJob operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.ListCandidatesForAutoMLJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListCandidatesForAutoMLJob"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListCandidatesForAutoMLJobResult listCandidatesForAutoMLJob(ListCandidatesForAutoMLJobRequest listCandidatesForAutoMLJobRequest);
 
     /**
      * <p>
@@ -1141,6 +1843,19 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Lists the domains.
+     * </p>
+     * 
+     * @param listDomainsRequest
+     * @return Result of the ListDomains operation returned by the service.
+     * @sample AmazonSageMaker.ListDomains
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListDomains" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListDomainsResult listDomains(ListDomainsRequest listDomainsRequest);
+
+    /**
+     * <p>
      * Lists endpoint configurations.
      * </p>
      * 
@@ -1164,6 +1879,46 @@ public interface AmazonSageMaker {
      *      Documentation</a>
      */
     ListEndpointsResult listEndpoints(ListEndpointsRequest listEndpointsRequest);
+
+    /**
+     * <p>
+     * Lists all the experiments in your account. The list can be filtered to show only experiments that were created in
+     * a specific time range. The list can be sorted by experiment name or creation time.
+     * </p>
+     * 
+     * @param listExperimentsRequest
+     * @return Result of the ListExperiments operation returned by the service.
+     * @sample AmazonSageMaker.ListExperiments
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListExperiments" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListExperimentsResult listExperiments(ListExperimentsRequest listExperimentsRequest);
+
+    /**
+     * <p>
+     * Returns information about the flow definitions in your account.
+     * </p>
+     * 
+     * @param listFlowDefinitionsRequest
+     * @return Result of the ListFlowDefinitions operation returned by the service.
+     * @sample AmazonSageMaker.ListFlowDefinitions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListFlowDefinitions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListFlowDefinitionsResult listFlowDefinitions(ListFlowDefinitionsRequest listFlowDefinitionsRequest);
+
+    /**
+     * <p>
+     * Returns information about the human task user interfaces in your account.
+     * </p>
+     * 
+     * @param listHumanTaskUisRequest
+     * @return Result of the ListHumanTaskUis operation returned by the service.
+     * @sample AmazonSageMaker.ListHumanTaskUis
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListHumanTaskUis" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListHumanTaskUisResult listHumanTaskUis(ListHumanTaskUisRequest listHumanTaskUisRequest);
 
     /**
      * <p>
@@ -1236,6 +1991,32 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Returns list of all monitoring job executions.
+     * </p>
+     * 
+     * @param listMonitoringExecutionsRequest
+     * @return Result of the ListMonitoringExecutions operation returned by the service.
+     * @sample AmazonSageMaker.ListMonitoringExecutions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListMonitoringExecutions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListMonitoringExecutionsResult listMonitoringExecutions(ListMonitoringExecutionsRequest listMonitoringExecutionsRequest);
+
+    /**
+     * <p>
+     * Returns list of all monitoring schedules.
+     * </p>
+     * 
+     * @param listMonitoringSchedulesRequest
+     * @return Result of the ListMonitoringSchedules operation returned by the service.
+     * @sample AmazonSageMaker.ListMonitoringSchedules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListMonitoringSchedules"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListMonitoringSchedulesResult listMonitoringSchedules(ListMonitoringSchedulesRequest listMonitoringSchedulesRequest);
+
+    /**
+     * <p>
      * Lists notebook instance lifestyle configurations created with the <a>CreateNotebookInstanceLifecycleConfig</a>
      * API.
      * </p>
@@ -1261,6 +2042,19 @@ public interface AmazonSageMaker {
      *      target="_top">AWS API Documentation</a>
      */
     ListNotebookInstancesResult listNotebookInstances(ListNotebookInstancesRequest listNotebookInstancesRequest);
+
+    /**
+     * <p>
+     * Lists processing jobs that satisfy various filters.
+     * </p>
+     * 
+     * @param listProcessingJobsRequest
+     * @return Result of the ListProcessingJobs operation returned by the service.
+     * @sample AmazonSageMaker.ListProcessingJobs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListProcessingJobs" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListProcessingJobsResult listProcessingJobs(ListProcessingJobsRequest listProcessingJobsRequest);
 
     /**
      * <p>
@@ -1335,6 +2129,71 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Lists the trial components in your account. You can sort the list by trial component name or creation time. You
+     * can filter the list to show only components that were created in a specific time range. You can also filter on
+     * one of the following:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ExperimentName</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SourceArn</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>TrialName</code>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param listTrialComponentsRequest
+     * @return Result of the ListTrialComponents operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.ListTrialComponents
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListTrialComponents" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListTrialComponentsResult listTrialComponents(ListTrialComponentsRequest listTrialComponentsRequest);
+
+    /**
+     * <p>
+     * Lists the trials in your account. Specify an experiment name to limit the list to the trials that are part of
+     * that experiment. Specify a trial component name to limit the list to the trials that associated with that trial
+     * component. The list can be filtered to show only trials that were created in a specific time range. The list can
+     * be sorted by trial name or creation time.
+     * </p>
+     * 
+     * @param listTrialsRequest
+     * @return Result of the ListTrials operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.ListTrials
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListTrials" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListTrialsResult listTrials(ListTrialsRequest listTrialsRequest);
+
+    /**
+     * <p>
+     * Lists user profiles.
+     * </p>
+     * 
+     * @param listUserProfilesRequest
+     * @return Result of the ListUserProfiles operation returned by the service.
+     * @sample AmazonSageMaker.ListUserProfiles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/ListUserProfiles" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListUserProfilesResult listUserProfiles(ListUserProfilesRequest listUserProfilesRequest);
+
+    /**
+     * <p>
      * Gets a list of work teams that you have defined in a region. The list may be empty if no work team satisfies the
      * filter specified in the <code>NameContains</code> parameter.
      * </p>
@@ -1367,7 +2226,7 @@ public interface AmazonSageMaker {
      * ascending or descending order.
      * </p>
      * <p>
-     * You can query against the following value types: numerical, text, Booleans, and timestamps.
+     * You can query against the following value types: numeric, text, Boolean, and timestamp.
      * </p>
      * 
      * @param searchRequest
@@ -1377,6 +2236,26 @@ public interface AmazonSageMaker {
      *      Documentation</a>
      */
     SearchResult search(SearchRequest searchRequest);
+
+    /**
+     * <p>
+     * Starts a previously stopped monitoring schedule.
+     * </p>
+     * <note>
+     * <p>
+     * New monitoring schedules are immediately started after creation.
+     * </p>
+     * </note>
+     * 
+     * @param startMonitoringScheduleRequest
+     * @return Result of the StartMonitoringSchedule operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.StartMonitoringSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/StartMonitoringSchedule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    StartMonitoringScheduleResult startMonitoringSchedule(StartMonitoringScheduleRequest startMonitoringScheduleRequest);
 
     /**
      * <p>
@@ -1396,6 +2275,21 @@ public interface AmazonSageMaker {
      *      target="_top">AWS API Documentation</a>
      */
     StartNotebookInstanceResult startNotebookInstance(StartNotebookInstanceRequest startNotebookInstanceRequest);
+
+    /**
+     * <p>
+     * A method for forcing the termination of a running job.
+     * </p>
+     * 
+     * @param stopAutoMLJobRequest
+     * @return Result of the StopAutoMLJob operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.StopAutoMLJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/StopAutoMLJob" target="_top">AWS API
+     *      Documentation</a>
+     */
+    StopAutoMLJobResult stopAutoMLJob(StopAutoMLJobRequest stopAutoMLJobRequest);
 
     /**
      * <p>
@@ -1459,6 +2353,21 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Stops a previously started monitoring schedule.
+     * </p>
+     * 
+     * @param stopMonitoringScheduleRequest
+     * @return Result of the StopMonitoringSchedule operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.StopMonitoringSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/StopMonitoringSchedule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    StopMonitoringScheduleResult stopMonitoringSchedule(StopMonitoringScheduleRequest stopMonitoringScheduleRequest);
+
+    /**
+     * <p>
      * Terminates the ML compute instance. Before terminating the instance, Amazon SageMaker disconnects the ML storage
      * volume from it. Amazon SageMaker preserves the ML storage volume. Amazon SageMaker stops charging you for the ML
      * compute instance when you call <code>StopNotebookInstance</code>.
@@ -1476,6 +2385,21 @@ public interface AmazonSageMaker {
      *      API Documentation</a>
      */
     StopNotebookInstanceResult stopNotebookInstance(StopNotebookInstanceRequest stopNotebookInstanceRequest);
+
+    /**
+     * <p>
+     * Stops a processing job.
+     * </p>
+     * 
+     * @param stopProcessingJobRequest
+     * @return Result of the StopProcessingJob operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.StopProcessingJob
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/StopProcessingJob" target="_top">AWS
+     *      API Documentation</a>
+     */
+    StopProcessingJobResult stopProcessingJob(StopProcessingJobRequest stopProcessingJobRequest);
 
     /**
      * <p>
@@ -1533,6 +2457,26 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Updates a domain. Changes will impact all of the people in the domain.
+     * </p>
+     * 
+     * @param updateDomainRequest
+     * @return Result of the UpdateDomain operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.UpdateDomain
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/UpdateDomain" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateDomainResult updateDomain(UpdateDomainRequest updateDomainRequest);
+
+    /**
+     * <p>
      * Deploys the new <code>EndpointConfig</code> specified in the request, switches to using newly created endpoint,
      * and then deletes resources provisioned for the endpoint using the previous <code>EndpointConfig</code> (there is
      * no availability loss).
@@ -1584,6 +2528,41 @@ public interface AmazonSageMaker {
 
     /**
      * <p>
+     * Adds, updates, or removes the description of an experiment. Updates the display name of an experiment.
+     * </p>
+     * 
+     * @param updateExperimentRequest
+     * @return Result of the UpdateExperiment operation returned by the service.
+     * @throws ConflictException
+     *         There was a conflict when you attempted to modify an experiment, trial, or trial component.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.UpdateExperiment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/UpdateExperiment" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateExperimentResult updateExperiment(UpdateExperimentRequest updateExperimentRequest);
+
+    /**
+     * <p>
+     * Updates a previously created schedule.
+     * </p>
+     * 
+     * @param updateMonitoringScheduleRequest
+     * @return Result of the UpdateMonitoringSchedule operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.UpdateMonitoringSchedule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/UpdateMonitoringSchedule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateMonitoringScheduleResult updateMonitoringSchedule(UpdateMonitoringScheduleRequest updateMonitoringScheduleRequest);
+
+    /**
+     * <p>
      * Updates a notebook instance. NotebookInstance updates include upgrading or downgrading the ML compute instance
      * used for your notebook instance to accommodate changes in your workload requirements.
      * </p>
@@ -1616,6 +2595,86 @@ public interface AmazonSageMaker {
      */
     UpdateNotebookInstanceLifecycleConfigResult updateNotebookInstanceLifecycleConfig(
             UpdateNotebookInstanceLifecycleConfigRequest updateNotebookInstanceLifecycleConfigRequest);
+
+    /**
+     * <p>
+     * Updates the display name of a trial.
+     * </p>
+     * 
+     * @param updateTrialRequest
+     * @return Result of the UpdateTrial operation returned by the service.
+     * @throws ConflictException
+     *         There was a conflict when you attempted to modify an experiment, trial, or trial component.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.UpdateTrial
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/UpdateTrial" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateTrialResult updateTrial(UpdateTrialRequest updateTrialRequest);
+
+    /**
+     * <p>
+     * Updates one or more properties of a trial component.
+     * </p>
+     * 
+     * @param updateTrialComponentRequest
+     * @return Result of the UpdateTrialComponent operation returned by the service.
+     * @throws ConflictException
+     *         There was a conflict when you attempted to modify an experiment, trial, or trial component.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.UpdateTrialComponent
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/UpdateTrialComponent" target="_top">AWS
+     *      API Documentation</a>
+     */
+    UpdateTrialComponentResult updateTrialComponent(UpdateTrialComponentRequest updateTrialComponentRequest);
+
+    /**
+     * <p>
+     * Updates a user profile.
+     * </p>
+     * 
+     * @param updateUserProfileRequest
+     * @return Result of the UpdateUserProfile operation returned by the service.
+     * @throws ResourceLimitExceededException
+     *         You have exceeded an Amazon SageMaker resource limit. For example, you might have too many training jobs
+     *         created.
+     * @throws ResourceInUseException
+     *         Resource being accessed is in use.
+     * @throws ResourceNotFoundException
+     *         Resource being access is not found.
+     * @sample AmazonSageMaker.UpdateUserProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/UpdateUserProfile" target="_top">AWS
+     *      API Documentation</a>
+     */
+    UpdateUserProfileResult updateUserProfile(UpdateUserProfileRequest updateUserProfileRequest);
+
+    /**
+     * <p>
+     * Restricts access to tasks assigned to workers in the specified workforce to those within specific ranges of IP
+     * addresses. You specify allowed IP addresses by creating a list of up to four <a
+     * href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html">CIDRs</a>.
+     * </p>
+     * <p>
+     * By default, a workforce isn't restricted to specific IP addresses. If you specify a range of IP addresses,
+     * workers who attempt to access tasks using any IP address outside the specified range are denied access and get a
+     * <code>Not Found</code> error message on the worker portal. After restricting access with this operation, you can
+     * see the allowed IP values for a private workforce with the operation.
+     * </p>
+     * <important>
+     * <p>
+     * This operation applies only to private workforces.
+     * </p>
+     * </important>
+     * 
+     * @param updateWorkforceRequest
+     * @return Result of the UpdateWorkforce operation returned by the service.
+     * @sample AmazonSageMaker.UpdateWorkforce
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/UpdateWorkforce" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateWorkforceResult updateWorkforce(UpdateWorkforceRequest updateWorkforceRequest);
 
     /**
      * <p>

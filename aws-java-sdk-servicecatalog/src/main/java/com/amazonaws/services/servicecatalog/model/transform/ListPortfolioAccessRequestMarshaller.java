@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,12 @@ public class ListPortfolioAccessRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AcceptLanguage").build();
     private static final MarshallingInfo<String> PORTFOLIOID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PortfolioId").build();
+    private static final MarshallingInfo<String> ORGANIZATIONPARENTID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OrganizationParentId").build();
+    private static final MarshallingInfo<String> PAGETOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("PageToken").build();
+    private static final MarshallingInfo<Integer> PAGESIZE_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PageSize").build();
 
     private static final ListPortfolioAccessRequestMarshaller instance = new ListPortfolioAccessRequestMarshaller();
 
@@ -50,6 +56,9 @@ public class ListPortfolioAccessRequestMarshaller {
         try {
             protocolMarshaller.marshall(listPortfolioAccessRequest.getAcceptLanguage(), ACCEPTLANGUAGE_BINDING);
             protocolMarshaller.marshall(listPortfolioAccessRequest.getPortfolioId(), PORTFOLIOID_BINDING);
+            protocolMarshaller.marshall(listPortfolioAccessRequest.getOrganizationParentId(), ORGANIZATIONPARENTID_BINDING);
+            protocolMarshaller.marshall(listPortfolioAccessRequest.getPageToken(), PAGETOKEN_BINDING);
+            protocolMarshaller.marshall(listPortfolioAccessRequest.getPageSize(), PAGESIZE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

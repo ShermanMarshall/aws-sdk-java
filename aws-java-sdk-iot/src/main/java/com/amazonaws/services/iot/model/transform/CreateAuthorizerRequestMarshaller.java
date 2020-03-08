@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,6 +39,8 @@ public class CreateAuthorizerRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("tokenSigningPublicKeys").build();
     private static final MarshallingInfo<String> STATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("status").build();
+    private static final MarshallingInfo<Boolean> SIGNINGDISABLED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("signingDisabled").build();
 
     private static final CreateAuthorizerRequestMarshaller instance = new CreateAuthorizerRequestMarshaller();
 
@@ -61,6 +63,7 @@ public class CreateAuthorizerRequestMarshaller {
             protocolMarshaller.marshall(createAuthorizerRequest.getTokenKeyName(), TOKENKEYNAME_BINDING);
             protocolMarshaller.marshall(createAuthorizerRequest.getTokenSigningPublicKeys(), TOKENSIGNINGPUBLICKEYS_BINDING);
             protocolMarshaller.marshall(createAuthorizerRequest.getStatus(), STATUS_BINDING);
+            protocolMarshaller.marshall(createAuthorizerRequest.getSigningDisabled(), SIGNINGDISABLED_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

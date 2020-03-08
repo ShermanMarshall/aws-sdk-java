@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -38,15 +38,19 @@ import com.amazonaws.services.s3.model.CORSRule;
 import com.amazonaws.services.s3.model.CORSRule.AllowedMethods;
 import com.amazonaws.services.s3.model.CloudFunctionConfiguration;
 import com.amazonaws.services.s3.model.DeleteMarkerReplication;
+import com.amazonaws.services.s3.model.ExistingObjectReplication;
 import com.amazonaws.services.s3.model.Filter;
 import com.amazonaws.services.s3.model.FilterRule;
 import com.amazonaws.services.s3.model.LambdaConfiguration;
+import com.amazonaws.services.s3.model.Metrics;
 import com.amazonaws.services.s3.model.NotificationConfiguration;
 import com.amazonaws.services.s3.model.PublicAccessBlockConfiguration;
 import com.amazonaws.services.s3.model.QueueConfiguration;
 import com.amazonaws.services.s3.model.RedirectRule;
 import com.amazonaws.services.s3.model.ReplicationDestinationConfig;
 import com.amazonaws.services.s3.model.ReplicationRule;
+import com.amazonaws.services.s3.model.ReplicationTime;
+import com.amazonaws.services.s3.model.ReplicationTimeValue;
 import com.amazonaws.services.s3.model.RoutingRule;
 import com.amazonaws.services.s3.model.RoutingRuleCondition;
 import com.amazonaws.services.s3.model.S3KeyFilter;
@@ -297,6 +301,10 @@ public class BucketConfigurationXmlFactory {
                 xml.start("Priority").value(Integer.toString(priority)).end();
             }
             xml.start("Status").value(rule.getStatus()).end();
+            ExistingObjectReplication existingObjectReplication = rule.getExistingObjectReplication();
+            if (existingObjectReplication != null) {
+                xml.start("ExistingObjectReplication").start("Status").value(existingObjectReplication.getStatus()).end().end();
+            }
             DeleteMarkerReplication deleteMarkerReplication = rule.getDeleteMarkerReplication();
             if (deleteMarkerReplication != null) {
                 xml.start("DeleteMarkerReplication").start("Status").value(deleteMarkerReplication.getStatus()).end().end();
@@ -338,9 +346,42 @@ public class BucketConfigurationXmlFactory {
                 xml.end();
             }
 
+            ReplicationTime replicationTime = config.getReplicationTime();
+            if (replicationTime != null) {
+                xml.start("ReplicationTime");
+                addParameterIfNotNull(xml, "Status", replicationTime.getStatus());
+
+                if (replicationTime.getTime() != null) {
+                    xml.start("Time");
+                    ReplicationTimeValue time = replicationTime.getTime();
+                    if (time.getMinutes() != null) {
+                        xml.start("Minutes").value(time.getMinutes().toString()).end();
+                    }
+                    xml.end();
+                }
+                xml.end();
+            }
+
+            Metrics metrics = config.getMetrics();
+            if (metrics != null) {
+                xml.start("Metrics");
+                addParameterIfNotNull(xml, "Status", metrics.getStatus());
+
+                if (metrics.getEventThreshold() != null) {
+                    xml.start("EventThreshold");
+                    ReplicationTimeValue eventThreshold = metrics.getEventThreshold();
+                    if (eventThreshold.getMinutes() != null) {
+                        xml.start("Minutes").value(eventThreshold.getMinutes().toString()).end();
+                    }
+                    xml.end();
+                }
+                xml.end();
+            }
+
             xml.end();
 
             xml.end();
+
         }
         xml.end();
         return xml.getBytes();

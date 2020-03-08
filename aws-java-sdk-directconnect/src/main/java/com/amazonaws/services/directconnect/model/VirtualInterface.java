@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -73,6 +73,9 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+     * </p>
+     * <p>
+     * The valid values are 1-2147483647.
      * </p>
      */
     private Integer asn;
@@ -224,7 +227,7 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
     private String awsDeviceV2;
     /**
      * <p>
-     * Any tags assigned to the virtual interface.
+     * The tags associated with the virtual interface.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
@@ -513,9 +516,14 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
      * <p>
      * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
      * </p>
+     * <p>
+     * The valid values are 1-2147483647.
+     * </p>
      * 
      * @param asn
-     *        The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+     *        The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+     *        <p>
+     *        The valid values are 1-2147483647.
      */
 
     public void setAsn(Integer asn) {
@@ -526,8 +534,13 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
      * <p>
      * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
      * </p>
+     * <p>
+     * The valid values are 1-2147483647.
+     * </p>
      * 
-     * @return The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+     * @return The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+     *         <p>
+     *         The valid values are 1-2147483647.
      */
 
     public Integer getAsn() {
@@ -538,9 +551,14 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
      * <p>
      * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
      * </p>
+     * <p>
+     * The valid values are 1-2147483647.
+     * </p>
      * 
      * @param asn
-     *        The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+     *        The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+     *        <p>
+     *        The valid values are 1-2147483647.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1849,10 +1867,10 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Any tags assigned to the virtual interface.
+     * The tags associated with the virtual interface.
      * </p>
      * 
-     * @return Any tags assigned to the virtual interface.
+     * @return The tags associated with the virtual interface.
      */
 
     public java.util.List<Tag> getTags() {
@@ -1864,11 +1882,11 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Any tags assigned to the virtual interface.
+     * The tags associated with the virtual interface.
      * </p>
      * 
      * @param tags
-     *        Any tags assigned to the virtual interface.
+     *        The tags associated with the virtual interface.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -1882,7 +1900,7 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Any tags assigned to the virtual interface.
+     * The tags associated with the virtual interface.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1891,7 +1909,7 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
      * </p>
      * 
      * @param tags
-     *        Any tags assigned to the virtual interface.
+     *        The tags associated with the virtual interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1907,11 +1925,11 @@ public class VirtualInterface implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Any tags assigned to the virtual interface.
+     * The tags associated with the virtual interface.
      * </p>
      * 
      * @param tags
-     *        Any tags assigned to the virtual interface.
+     *        The tags associated with the virtual interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

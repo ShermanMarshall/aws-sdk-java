@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class StopFleetActionsRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Unique identifier for a fleet
+     * A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
      * </p>
      */
     private String fleetId;
@@ -40,11 +40,11 @@ public class StopFleetActionsRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Unique identifier for a fleet
+     * A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet
+     *        A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
      */
 
     public void setFleetId(String fleetId) {
@@ -53,10 +53,10 @@ public class StopFleetActionsRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Unique identifier for a fleet
+     * A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
      * </p>
      * 
-     * @return Unique identifier for a fleet
+     * @return A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
      */
 
     public String getFleetId() {
@@ -65,11 +65,11 @@ public class StopFleetActionsRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * Unique identifier for a fleet
+     * A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
      * </p>
      * 
      * @param fleetId
-     *        Unique identifier for a fleet
+     *        A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -471,7 +471,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Adds the specified user to the specified group.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminAddUserToGroupRequest
@@ -539,7 +539,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Confirms user registration as an admin without using a confirmation code. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminConfirmSignUpRequest
@@ -732,7 +732,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Deletes a user as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminDeleteUserRequest
@@ -801,7 +801,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Deletes the user attributes in a user pool as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminDeleteUserAttributesRequest
@@ -968,10 +968,10 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Disables the specified user as an administrator. Works on any user.
+     * Disables the specified user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminDisableUserRequest
@@ -1040,7 +1040,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Enables the specified user as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminEnableUserRequest
@@ -1109,7 +1109,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Forgets the device, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminForgetDeviceRequest
@@ -1180,7 +1180,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Gets the device, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminGetDeviceRequest
@@ -1249,7 +1249,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Gets the specified user by user name in a user pool as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminGetUserRequest
@@ -1318,7 +1318,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Initiates the authentication flow, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminInitiateAuthRequest
@@ -1502,7 +1502,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Lists devices, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminListDevicesRequest
@@ -1571,7 +1571,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Lists the groups that the user belongs to.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminListGroupsForUserRequest
@@ -1709,7 +1709,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Removes the specified user from the specified group.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminRemoveUserFromGroupRequest
@@ -1787,7 +1787,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * message to the end user with the code to change their password.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminResetUserPasswordRequest
@@ -1877,7 +1877,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Responds to an authentication challenge, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminRespondToAuthChallengeRequest
@@ -1981,7 +1981,10 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Sets the user's multi-factor authentication (MFA) preference.
+     * Sets the user's multi-factor authentication (MFA) preference, including which MFA options are enabled and if any
+     * are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a
+     * user if multiple factors are enabled. If multiple options are enabled and no preference is set, a challenge to
+     * choose an MFA option will be returned during sign in.
      * </p>
      * 
      * @param adminSetUserMFAPreferenceRequest
@@ -2049,6 +2052,20 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
     }
 
     /**
+     * <p>
+     * Sets the specified user's password in a user pool as an administrator. Works on any user.
+     * </p>
+     * <p>
+     * The password can be temporary or permanent. If it is temporary, the user status will be placed into the
+     * <code>FORCE_CHANGE_PASSWORD</code> state. When the user next tries to sign in, the InitiateAuth/AdminInitiateAuth
+     * response will contain the <code>NEW_PASSWORD_REQUIRED</code> challenge. If the user does not sign in before it
+     * expires, the user will not be able to sign in and their password will need to be reset by an administrator.
+     * </p>
+     * <p>
+     * Once the user has set a new password, or the password is permanent, the user status will be set to
+     * <code>Confirmed</code>.
+     * </p>
+     * 
      * @param adminSetUserPasswordRequest
      * @return Result of the AdminSetUserPassword operation returned by the service.
      * @throws ResourceNotFoundException
@@ -2113,14 +2130,13 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Sets all the user settings for a specified user name. Works on any user.
-     * </p>
-     * <p>
-     * Requires developer credentials.
+     * <i>This action is no longer supported.</i> You can use it to configure only SMS MFA. You can't use it to
+     * configure TOTP software token MFA. To configure either type of MFA, use the <a>AdminSetUserMFAPreference</a>
+     * action instead.
      * </p>
      * 
      * @param adminSetUserSettingsRequest
-     *        Represents the request to set user settings as an administrator.
+     *        You can use this parameter to set an MFA configuration that uses the SMS delivery medium.
      * @return Result of the AdminSetUserSettings operation returned by the service.
      * @throws ResourceNotFoundException
      *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
@@ -2253,7 +2269,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Updates the device status as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminUpdateDeviceStatusRequest
@@ -2332,7 +2348,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * In addition to updating user attributes, this API can also be used to mark phone and email as verified.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminUpdateUserAttributesRequest
@@ -2422,10 +2438,12 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Signs out users from all devices, as an administrator.
+     * Signs out users from all devices, as an administrator. It also invalidates all refresh tokens issued to a user.
+     * The user's current access and Id tokens remain valid until their expiry. Access and Id tokens expire one hour
+     * after they are issued.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminUserGlobalSignOutRequest
@@ -2888,7 +2906,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Creates a new group in the specified user pool.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param createGroupRequest
@@ -3368,7 +3386,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Deletes a group. Currently only groups with no members can be deleted.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param deleteGroupRequest
@@ -4652,7 +4670,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Gets a group.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param getGroupRequest
@@ -4789,6 +4807,8 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * @return Result of the GetSigningCertificate operation returned by the service.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
      * @throws ResourceNotFoundException
      *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
      * @sample AWSCognitoIdentityProvider.GetSigningCertificate
@@ -5133,7 +5153,8 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Signs out users from all devices.
+     * Signs out users from all devices. It also invalidates all refresh tokens issued to a user. The user's current
+     * access and Id tokens remain valid until their expiry. Access and Id tokens expire one hour after they are issued.
      * </p>
      * 
      * @param globalSignOutRequest
@@ -5233,6 +5254,13 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      *         This exception is thrown when a user is not confirmed successfully.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @throws InvalidSmsRoleAccessPolicyException
+     *         This exception is returned when the role provided for SMS configuration does not have permission to
+     *         publish using Amazon SNS.
+     * @throws InvalidSmsRoleTrustRelationshipException
+     *         This exception is thrown when the trust relationship is invalid for the role provided for SMS
+     *         configuration. This can happen if you do not trust <b>cognito-idp.amazonaws.com</b> or the external ID
+     *         provided in the role does not match what is provided in the SMS configuration for the user pool.
      * @sample AWSCognitoIdentityProvider.InitiateAuth
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/InitiateAuth" target="_top">AWS API
      *      Documentation</a>
@@ -5356,7 +5384,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Lists the groups associated with a user pool.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param listGroupsRequest
@@ -5873,7 +5901,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Lists the users in the specified group.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param listUsersInGroupRequest
@@ -6282,7 +6310,10 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Set the user's multi-factor authentication (MFA) method preference.
+     * Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are enabled and
+     * if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to
+     * authenticate a user if multiple factors are enabled. If multiple options are enabled and no preference is set, a
+     * challenge to choose an MFA option will be returned during sign in.
      * </p>
      * 
      * @param setUserMFAPreferenceRequest
@@ -6349,7 +6380,7 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Set the user pool MFA configuration.
+     * Set the user pool multi-factor authentication (MFA) configuration.
      * </p>
      * 
      * @param setUserPoolMfaConfigRequest
@@ -6419,8 +6450,9 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute
-     * pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
+     * <i>This action is no longer supported.</i> You can use it to configure only SMS MFA. You can't use it to
+     * configure TOTP software token MFA. To configure either type of MFA, use the <a>SetUserMFAPreference</a> action
+     * instead.
      * </p>
      * 
      * @param setUserSettingsRequest
@@ -6995,8 +7027,13 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * Updates the specified group with the specified attributes.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateGroupRequest
      * @return Result of the UpdateGroup operation returned by the service.
@@ -7126,6 +7163,11 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
      * <p>
      * Updates the name and scopes of resource server. All other fields are read-only.
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateResourceServerRequest
      * @return Result of the UpdateResourceServer operation returned by the service.
@@ -7285,9 +7327,14 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Updates the specified user pool with the specified attributes. If you don't provide a value for an attribute, it
-     * will be set to the default value. You can get a list of the current user pool settings with .
+     * Updates the specified user pool with the specified attributes. You can get a list of the current user pool
+     * settings with .
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateUserPoolRequest
      *        Represents the request to update the user pool.
@@ -7367,10 +7414,14 @@ public class AWSCognitoIdentityProviderClient extends AmazonWebServiceClient imp
 
     /**
      * <p>
-     * Updates the specified user pool app client with the specified attributes. If you don't provide a value for an
-     * attribute, it will be set to the default value. You can get a list of the current user pool app client settings
-     * with .
+     * Updates the specified user pool app client with the specified attributes. You can get a list of the current user
+     * pool app client settings with .
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateUserPoolClientRequest
      *        Represents the request to update the user pool client.

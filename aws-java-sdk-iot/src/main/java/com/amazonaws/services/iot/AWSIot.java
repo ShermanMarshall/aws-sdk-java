@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -462,6 +462,30 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Confirms a topic rule destination. When you create a rule requiring a destination, AWS IoT sends a confirmation
+     * message to the endpoint or base address you specify. The message includes a token which you pass back when
+     * calling <code>ConfirmTopicRuleDestination</code> to confirm that you own or have access to the endpoint.
+     * </p>
+     * 
+     * @param confirmTopicRuleDestinationRequest
+     * @return Result of the ConfirmTopicRuleDestination operation returned by the service.
+     * @throws InternalException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ConflictingResourceUpdateException
+     *         A conflicting resource update exception. This exception is thrown when two pending updates cause a
+     *         conflict.
+     * @sample AWSIot.ConfirmTopicRuleDestination
+     */
+    ConfirmTopicRuleDestinationResult confirmTopicRuleDestination(ConfirmTopicRuleDestinationRequest confirmTopicRuleDestinationRequest);
+
+    /**
+     * <p>
      * Creates an authorizer.
      * </p>
      * 
@@ -576,6 +600,38 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Creates a domain configuration.
+     * </p>
+     * <note>
+     * <p>
+     * The domain configuration feature is in public preview and is subject to change.
+     * </p>
+     * </note>
+     * 
+     * @param createDomainConfigurationRequest
+     * @return Result of the CreateDomainConfiguration operation returned by the service.
+     * @throws LimitExceededException
+     *         A limit has been exceeded.
+     * @throws CertificateValidationException
+     *         The certificate is invalid.
+     * @throws ResourceAlreadyExistsException
+     *         The resource already exists.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @sample AWSIot.CreateDomainConfiguration
+     */
+    CreateDomainConfigurationResult createDomainConfiguration(CreateDomainConfigurationRequest createDomainConfigurationRequest);
+
+    /**
+     * <p>
      * Creates a dynamic thing group.
      * </p>
      * 
@@ -624,7 +680,10 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key.
+     * Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key. You can also call
+     * <code>CreateKeysAndCertificate</code> over MQTT from a device, for more information, see <a
+     * href="https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api"
+     * >Provisioning MQTT API</a>.
      * </p>
      * <p>
      * <b>Note</b> This is the only time AWS IoT issues the private key for this certificate, so it is important to keep
@@ -763,6 +822,78 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Creates a provisioning claim.
+     * </p>
+     * 
+     * @param createProvisioningClaimRequest
+     * @return Result of the CreateProvisioningClaim operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.CreateProvisioningClaim
+     */
+    CreateProvisioningClaimResult createProvisioningClaim(CreateProvisioningClaimRequest createProvisioningClaimRequest);
+
+    /**
+     * <p>
+     * Creates a fleet provisioning template.
+     * </p>
+     * 
+     * @param createProvisioningTemplateRequest
+     * @return Result of the CreateProvisioningTemplate operation returned by the service.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws LimitExceededException
+     *         A limit has been exceeded.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ResourceAlreadyExistsException
+     *         The resource already exists.
+     * @sample AWSIot.CreateProvisioningTemplate
+     */
+    CreateProvisioningTemplateResult createProvisioningTemplate(CreateProvisioningTemplateRequest createProvisioningTemplateRequest);
+
+    /**
+     * <p>
+     * Creates a new version of a fleet provisioning template.
+     * </p>
+     * 
+     * @param createProvisioningTemplateVersionRequest
+     * @return Result of the CreateProvisioningTemplateVersion operation returned by the service.
+     * @throws VersionsLimitExceededException
+     *         The number of policy versions exceeds the limit.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ConflictingResourceUpdateException
+     *         A conflicting resource update exception. This exception is thrown when two pending updates cause a
+     *         conflict.
+     * @sample AWSIot.CreateProvisioningTemplateVersion
+     */
+    CreateProvisioningTemplateVersionResult createProvisioningTemplateVersion(CreateProvisioningTemplateVersionRequest createProvisioningTemplateVersionRequest);
+
+    /**
+     * <p>
      * Creates a role alias.
      * </p>
      * 
@@ -830,9 +961,7 @@ public interface AWSIot {
      * <p>
      * Creates a stream for delivering one or more large files in chunks over MQTT. A stream transports data bytes in
      * chunks or blocks packaged as MQTT messages from a source like S3. You can have one or more files associated with
-     * a stream. The total size of a file associated with the stream cannot exceed more than 2 MB. The stream will be
-     * created with version 0. If a stream is created with the same streamID as a stream that existed and was deleted
-     * within last 90 days, we will resurrect that old stream by incrementing the version by 1.
+     * a stream.
      * </p>
      * 
      * @param createStreamRequest
@@ -970,6 +1099,28 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Creates a topic rule destination. The destination must be confirmed prior to use.
+     * </p>
+     * 
+     * @param createTopicRuleDestinationRequest
+     * @return Result of the CreateTopicRuleDestination operation returned by the service.
+     * @throws InternalException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceAlreadyExistsException
+     *         The resource already exists.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws ConflictingResourceUpdateException
+     *         A conflicting resource update exception. This exception is thrown when two pending updates cause a
+     *         conflict.
+     * @sample AWSIot.CreateTopicRuleDestination
+     */
+    CreateTopicRuleDestinationResult createTopicRuleDestination(CreateTopicRuleDestinationRequest createTopicRuleDestinationRequest);
+
+    /**
+     * <p>
      * Restores the default settings for Device Defender audits for this account. Any configuration data you entered is
      * deleted and all audit checks are reset to disabled.
      * </p>
@@ -1091,6 +1242,34 @@ public interface AWSIot {
      * @sample AWSIot.DeleteCertificate
      */
     DeleteCertificateResult deleteCertificate(DeleteCertificateRequest deleteCertificateRequest);
+
+    /**
+     * <p>
+     * Deletes the specified domain configuration.
+     * </p>
+     * <note>
+     * <p>
+     * The domain configuration feature is in public preview and is subject to change.
+     * </p>
+     * </note>
+     * 
+     * @param deleteDomainConfigurationRequest
+     * @return Result of the DeleteDomainConfiguration operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @sample AWSIot.DeleteDomainConfiguration
+     */
+    DeleteDomainConfigurationResult deleteDomainConfiguration(DeleteDomainConfigurationRequest deleteDomainConfigurationRequest);
 
     /**
      * <p>
@@ -1273,6 +1452,52 @@ public interface AWSIot {
      * @sample AWSIot.DeletePolicyVersion
      */
     DeletePolicyVersionResult deletePolicyVersion(DeletePolicyVersionRequest deletePolicyVersionRequest);
+
+    /**
+     * <p>
+     * Deletes a fleet provisioning template.
+     * </p>
+     * 
+     * @param deleteProvisioningTemplateRequest
+     * @return Result of the DeleteProvisioningTemplate operation returned by the service.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws DeleteConflictException
+     *         You can't delete the resource because it is attached to one or more resources.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @sample AWSIot.DeleteProvisioningTemplate
+     */
+    DeleteProvisioningTemplateResult deleteProvisioningTemplate(DeleteProvisioningTemplateRequest deleteProvisioningTemplateRequest);
+
+    /**
+     * <p>
+     * Deletes a fleet provisioning template version.
+     * </p>
+     * 
+     * @param deleteProvisioningTemplateVersionRequest
+     * @return Result of the DeleteProvisioningTemplateVersion operation returned by the service.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws DeleteConflictException
+     *         You can't delete the resource because it is attached to one or more resources.
+     * @sample AWSIot.DeleteProvisioningTemplateVersion
+     */
+    DeleteProvisioningTemplateVersionResult deleteProvisioningTemplateVersion(DeleteProvisioningTemplateVersionRequest deleteProvisioningTemplateVersionRequest);
 
     /**
      * <p>
@@ -1482,6 +1707,28 @@ public interface AWSIot {
      * @sample AWSIot.DeleteTopicRule
      */
     DeleteTopicRuleResult deleteTopicRule(DeleteTopicRuleRequest deleteTopicRuleRequest);
+
+    /**
+     * <p>
+     * Deletes a topic rule destination.
+     * </p>
+     * 
+     * @param deleteTopicRuleDestinationRequest
+     * @return Result of the DeleteTopicRuleDestination operation returned by the service.
+     * @throws InternalException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ConflictingResourceUpdateException
+     *         A conflicting resource update exception. This exception is thrown when two pending updates cause a
+     *         conflict.
+     * @sample AWSIot.DeleteTopicRuleDestination
+     */
+    DeleteTopicRuleDestinationResult deleteTopicRuleDestination(DeleteTopicRuleDestinationRequest deleteTopicRuleDestinationRequest);
 
     /**
      * <p>
@@ -1716,6 +1963,32 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Gets summary information about a domain configuration.
+     * </p>
+     * <note>
+     * <p>
+     * The domain configuration feature is in public preview and is subject to change.
+     * </p>
+     * </note>
+     * 
+     * @param describeDomainConfigurationRequest
+     * @return Result of the DescribeDomainConfiguration operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.DescribeDomainConfiguration
+     */
+    DescribeDomainConfigurationResult describeDomainConfiguration(DescribeDomainConfigurationRequest describeDomainConfigurationRequest);
+
+    /**
+     * <p>
      * Returns a unique endpoint specific to the AWS account making the call.
      * </p>
      * 
@@ -1828,6 +2101,49 @@ public interface AWSIot {
      * @sample AWSIot.DescribeMitigationAction
      */
     DescribeMitigationActionResult describeMitigationAction(DescribeMitigationActionRequest describeMitigationActionRequest);
+
+    /**
+     * <p>
+     * Returns information about a fleet provisioning template.
+     * </p>
+     * 
+     * @param describeProvisioningTemplateRequest
+     * @return Result of the DescribeProvisioningTemplate operation returned by the service.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @sample AWSIot.DescribeProvisioningTemplate
+     */
+    DescribeProvisioningTemplateResult describeProvisioningTemplate(DescribeProvisioningTemplateRequest describeProvisioningTemplateRequest);
+
+    /**
+     * <p>
+     * Returns information about a fleet provisioning template version.
+     * </p>
+     * 
+     * @param describeProvisioningTemplateVersionRequest
+     * @return Result of the DescribeProvisioningTemplateVersion operation returned by the service.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @sample AWSIot.DescribeProvisioningTemplateVersion
+     */
+    DescribeProvisioningTemplateVersionResult describeProvisioningTemplateVersion(
+            DescribeProvisioningTemplateVersionRequest describeProvisioningTemplateVersionRequest);
 
     /**
      * <p>
@@ -2149,6 +2465,35 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Returns the approximate count of unique values that match the query.
+     * </p>
+     * 
+     * @param getCardinalityRequest
+     * @return Result of the GetCardinality operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws InvalidQueryException
+     *         The query is invalid.
+     * @throws InvalidAggregationException
+     *         The aggregation is invalid.
+     * @throws IndexNotReadyException
+     *         The index is not ready.
+     * @sample AWSIot.GetCardinality
+     */
+    GetCardinalityResult getCardinality(GetCardinalityRequest getCardinalityRequest);
+
+    /**
+     * <p>
      * Gets a list of the policies that have an effect on the authorization behavior of the specified device when it
      * connects to the AWS IoT device gateway.
      * </p>
@@ -2175,7 +2520,7 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Gets the search configuration.
+     * Gets the indexing configuration.
      * </p>
      * 
      * @param getIndexingConfigurationRequest
@@ -2259,6 +2604,41 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Groups the aggregated values that match the query into percentile groupings. The default percentile groupings
+     * are: 1,5,25,50,75,95,99, although you can specify your own when you call <code>GetPercentiles</code>. This
+     * function returns a value for each percentile group specified (or the default percentile groupings). The
+     * percentile group "1" contains the aggregated field value that occurs in approximately one percent of the values
+     * that match the query. The percentile group "5" contains the aggregated field value that occurs in approximately
+     * five percent of the values that match the query, and so on. The result is an approximation, the more values that
+     * match the query, the more accurate the percentile values.
+     * </p>
+     * 
+     * @param getPercentilesRequest
+     * @return Result of the GetPercentiles operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws InvalidQueryException
+     *         The query is invalid.
+     * @throws InvalidAggregationException
+     *         The aggregation is invalid.
+     * @throws IndexNotReadyException
+     *         The index is not ready.
+     * @sample AWSIot.GetPercentiles
+     */
+    GetPercentilesResult getPercentiles(GetPercentilesRequest getPercentilesRequest);
+
+    /**
+     * <p>
      * Gets information about the specified policy with the policy document of the default version.
      * </p>
      * 
@@ -2329,7 +2709,9 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Gets statistics about things that match the specified query.
+     * Returns the count, average, sum, minimum, maximum, sum of squares, variance, and standard deviation for the
+     * specified aggregated field. If the aggregation field is of type <code>String</code>, only the count statistic is
+     * returned.
      * </p>
      * 
      * @param getStatisticsRequest
@@ -2375,6 +2757,25 @@ public interface AWSIot {
      * @sample AWSIot.GetTopicRule
      */
     GetTopicRuleResult getTopicRule(GetTopicRuleRequest getTopicRuleRequest);
+
+    /**
+     * <p>
+     * Gets information about a topic rule destination.
+     * </p>
+     * 
+     * @param getTopicRuleDestinationRequest
+     * @return Result of the GetTopicRuleDestination operation returned by the service.
+     * @throws InternalException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @sample AWSIot.GetTopicRuleDestination
+     */
+    GetTopicRuleDestinationResult getTopicRuleDestination(GetTopicRuleDestinationRequest getTopicRuleDestinationRequest);
 
     /**
      * <p>
@@ -2620,6 +3021,33 @@ public interface AWSIot {
      * @sample AWSIot.ListCertificatesByCA
      */
     ListCertificatesByCAResult listCertificatesByCA(ListCertificatesByCARequest listCertificatesByCARequest);
+
+    /**
+     * <p>
+     * Gets a list of domain configurations for the user. This list is sorted alphabetically by domain configuration
+     * name.
+     * </p>
+     * <note>
+     * <p>
+     * The domain configuration feature is in public preview and is subject to change.
+     * </p>
+     * </note>
+     * 
+     * @param listDomainConfigurationsRequest
+     * @return Result of the ListDomainConfigurations operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.ListDomainConfigurations
+     */
+    ListDomainConfigurationsResult listDomainConfigurations(ListDomainConfigurationsRequest listDomainConfigurationsRequest);
 
     /**
      * <p>
@@ -2888,6 +3316,46 @@ public interface AWSIot {
      * @sample AWSIot.ListPrincipalThings
      */
     ListPrincipalThingsResult listPrincipalThings(ListPrincipalThingsRequest listPrincipalThingsRequest);
+
+    /**
+     * <p>
+     * A list of fleet provisioning template versions.
+     * </p>
+     * 
+     * @param listProvisioningTemplateVersionsRequest
+     * @return Result of the ListProvisioningTemplateVersions operation returned by the service.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @sample AWSIot.ListProvisioningTemplateVersions
+     */
+    ListProvisioningTemplateVersionsResult listProvisioningTemplateVersions(ListProvisioningTemplateVersionsRequest listProvisioningTemplateVersionsRequest);
+
+    /**
+     * <p>
+     * Lists the fleet provisioning templates in your AWS account.
+     * </p>
+     * 
+     * @param listProvisioningTemplatesRequest
+     * @return Result of the ListProvisioningTemplates operation returned by the service.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @sample AWSIot.ListProvisioningTemplates
+     */
+    ListProvisioningTemplatesResult listProvisioningTemplates(ListProvisioningTemplatesRequest listProvisioningTemplatesRequest);
 
     /**
      * <p>
@@ -3229,6 +3697,25 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Lists all the topic rule destinations in your AWS account.
+     * </p>
+     * 
+     * @param listTopicRuleDestinationsRequest
+     * @return Result of the ListTopicRuleDestinations operation returned by the service.
+     * @throws InternalException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @sample AWSIot.ListTopicRuleDestinations
+     */
+    ListTopicRuleDestinationsResult listTopicRuleDestinations(ListTopicRuleDestinationsRequest listTopicRuleDestinationsRequest);
+
+    /**
+     * <p>
      * Lists the rules for the specific topic.
      * </p>
      * 
@@ -3352,7 +3839,11 @@ public interface AWSIot {
 
     /**
      * <p>
-     * Provisions a thing.
+     * Provisions a thing in the device registry. RegisterThing calls other AWS IoT control plane APIs. These calls
+     * might exceed your account level <a
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot"> AWS IoT Throttling
+     * Limits</a> and cause throttle errors. Please contact <a href="https://console.aws.amazon.com/support/home">AWS
+     * Customer Support</a> to raise your throttling limits if necessary.
      * </p>
      * 
      * @param registerThingRequest
@@ -3950,6 +4441,36 @@ public interface AWSIot {
 
     /**
      * <p>
+     * Updates values stored in the domain configuration. Domain configurations for default endpoints can't be updated.
+     * </p>
+     * <note>
+     * <p>
+     * The domain configuration feature is in public preview and is subject to change.
+     * </p>
+     * </note>
+     * 
+     * @param updateDomainConfigurationRequest
+     * @return Result of the UpdateDomainConfiguration operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws CertificateValidationException
+     *         The certificate is invalid.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ThrottlingException
+     *         The rate exceeds the limit.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @sample AWSIot.UpdateDomainConfiguration
+     */
+    UpdateDomainConfigurationResult updateDomainConfiguration(UpdateDomainConfigurationRequest updateDomainConfigurationRequest);
+
+    /**
+     * <p>
      * Updates a dynamic thing group.
      * </p>
      * 
@@ -4047,6 +4568,28 @@ public interface AWSIot {
      * @sample AWSIot.UpdateMitigationAction
      */
     UpdateMitigationActionResult updateMitigationAction(UpdateMitigationActionRequest updateMitigationActionRequest);
+
+    /**
+     * <p>
+     * Updates a fleet provisioning template.
+     * </p>
+     * 
+     * @param updateProvisioningTemplateRequest
+     * @return Result of the UpdateProvisioningTemplate operation returned by the service.
+     * @throws InternalFailureException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ResourceNotFoundException
+     *         The specified resource does not exist.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ConflictingResourceUpdateException
+     *         A conflicting resource update exception. This exception is thrown when two pending updates cause a
+     *         conflict.
+     * @sample AWSIot.UpdateProvisioningTemplate
+     */
+    UpdateProvisioningTemplateResult updateProvisioningTemplate(UpdateProvisioningTemplateRequest updateProvisioningTemplateRequest);
 
     /**
      * <p>
@@ -4202,6 +4745,29 @@ public interface AWSIot {
      * @sample AWSIot.UpdateThingGroupsForThing
      */
     UpdateThingGroupsForThingResult updateThingGroupsForThing(UpdateThingGroupsForThingRequest updateThingGroupsForThingRequest);
+
+    /**
+     * <p>
+     * Updates a topic rule destination. You use this to change the status, endpoint URL, or confirmation URL of the
+     * destination.
+     * </p>
+     * 
+     * @param updateTopicRuleDestinationRequest
+     * @return Result of the UpdateTopicRuleDestination operation returned by the service.
+     * @throws InternalException
+     *         An unexpected error has occurred.
+     * @throws InvalidRequestException
+     *         The request is not valid.
+     * @throws ServiceUnavailableException
+     *         The service is temporarily unavailable.
+     * @throws UnauthorizedException
+     *         You are not authorized to perform this operation.
+     * @throws ConflictingResourceUpdateException
+     *         A conflicting resource update exception. This exception is thrown when two pending updates cause a
+     *         conflict.
+     * @sample AWSIot.UpdateTopicRuleDestination
+     */
+    UpdateTopicRuleDestinationResult updateTopicRuleDestination(UpdateTopicRuleDestinationRequest updateTopicRuleDestinationRequest);
 
     /**
      * <p>

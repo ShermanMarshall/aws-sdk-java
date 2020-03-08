@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class GetAppsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the App Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      */
     private String pageSize;
@@ -42,12 +42,12 @@ public class GetAppsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the App Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param pageSize
      *        The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *        not supported by the App Metrics and Campaign Metrics resources.
+     *        not supported for application, campaign, and journey metrics.
      */
 
     public void setPageSize(String pageSize) {
@@ -57,11 +57,11 @@ public class GetAppsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the App Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @return The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *         not supported by the App Metrics and Campaign Metrics resources.
+     *         not supported for application, campaign, and journey metrics.
      */
 
     public String getPageSize() {
@@ -71,12 +71,12 @@ public class GetAppsRequest extends com.amazonaws.AmazonWebServiceRequest implem
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the App Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param pageSize
      *        The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *        not supported by the App Metrics and Campaign Metrics resources.
+     *        not supported for application, campaign, and journey metrics.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

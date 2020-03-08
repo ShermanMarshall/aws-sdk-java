@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class PutInventoryRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more instance IDs where you want to add or update inventory items.
+     * An instance ID where you want to add or update inventory items.
      * </p>
      */
     private String instanceId;
@@ -40,11 +40,11 @@ public class PutInventoryRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more instance IDs where you want to add or update inventory items.
+     * An instance ID where you want to add or update inventory items.
      * </p>
      * 
      * @param instanceId
-     *        One or more instance IDs where you want to add or update inventory items.
+     *        An instance ID where you want to add or update inventory items.
      */
 
     public void setInstanceId(String instanceId) {
@@ -53,10 +53,10 @@ public class PutInventoryRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more instance IDs where you want to add or update inventory items.
+     * An instance ID where you want to add or update inventory items.
      * </p>
      * 
-     * @return One or more instance IDs where you want to add or update inventory items.
+     * @return An instance ID where you want to add or update inventory items.
      */
 
     public String getInstanceId() {
@@ -65,11 +65,11 @@ public class PutInventoryRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * One or more instance IDs where you want to add or update inventory items.
+     * An instance ID where you want to add or update inventory items.
      * </p>
      * 
      * @param instanceId
-     *        One or more instance IDs where you want to add or update inventory items.
+     *        An instance ID where you want to add or update inventory items.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

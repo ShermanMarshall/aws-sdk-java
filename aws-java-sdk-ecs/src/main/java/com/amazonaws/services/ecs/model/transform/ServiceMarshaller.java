@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,6 +48,8 @@ public class ServiceMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("pendingCount").build();
     private static final MarshallingInfo<String> LAUNCHTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("launchType").build();
+    private static final MarshallingInfo<List> CAPACITYPROVIDERSTRATEGY_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("capacityProviderStrategy").build();
     private static final MarshallingInfo<String> PLATFORMVERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("platformVersion").build();
     private static final MarshallingInfo<String> TASKDEFINITION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -111,6 +113,7 @@ public class ServiceMarshaller {
             protocolMarshaller.marshall(service.getRunningCount(), RUNNINGCOUNT_BINDING);
             protocolMarshaller.marshall(service.getPendingCount(), PENDINGCOUNT_BINDING);
             protocolMarshaller.marshall(service.getLaunchType(), LAUNCHTYPE_BINDING);
+            protocolMarshaller.marshall(service.getCapacityProviderStrategy(), CAPACITYPROVIDERSTRATEGY_BINDING);
             protocolMarshaller.marshall(service.getPlatformVersion(), PLATFORMVERSION_BINDING);
             protocolMarshaller.marshall(service.getTaskDefinition(), TASKDEFINITION_BINDING);
             protocolMarshaller.marshall(service.getDeploymentConfiguration(), DEPLOYMENTCONFIGURATION_BINDING);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Summary for a resource.
+ * Summary information about a managed resource.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/license-manager-2018-08-01/ManagedResourceSummary"
@@ -30,7 +30,7 @@ public class ManagedResourceSummary implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * Type of resource associated with a license (instance, host, or AMI).
+     * Type of resource associated with a license.
      * </p>
      */
     private String resourceType;
@@ -43,11 +43,11 @@ public class ManagedResourceSummary implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * Type of resource associated with a license (instance, host, or AMI).
+     * Type of resource associated with a license.
      * </p>
      * 
      * @param resourceType
-     *        Type of resource associated with a license (instance, host, or AMI).
+     *        Type of resource associated with a license.
      * @see ResourceType
      */
 
@@ -57,10 +57,10 @@ public class ManagedResourceSummary implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * Type of resource associated with a license (instance, host, or AMI).
+     * Type of resource associated with a license.
      * </p>
      * 
-     * @return Type of resource associated with a license (instance, host, or AMI).
+     * @return Type of resource associated with a license.
      * @see ResourceType
      */
 
@@ -70,11 +70,11 @@ public class ManagedResourceSummary implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * Type of resource associated with a license (instance, host, or AMI).
+     * Type of resource associated with a license.
      * </p>
      * 
      * @param resourceType
-     *        Type of resource associated with a license (instance, host, or AMI).
+     *        Type of resource associated with a license.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ResourceType
      */
@@ -86,11 +86,11 @@ public class ManagedResourceSummary implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * Type of resource associated with a license (instance, host, or AMI).
+     * Type of resource associated with a license.
      * </p>
      * 
      * @param resourceType
-     *        Type of resource associated with a license (instance, host, or AMI).
+     *        Type of resource associated with a license.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ResourceType
      */

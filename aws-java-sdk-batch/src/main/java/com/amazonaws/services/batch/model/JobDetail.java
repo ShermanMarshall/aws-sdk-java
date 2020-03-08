@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -102,7 +102,7 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
     private Long stoppedAt;
     /**
      * <p>
-     * A list of job names or IDs on which this job depends.
+     * A list of job IDs on which this job depends.
      * </p>
      */
     private java.util.List<JobDependency> dependsOn;
@@ -283,7 +283,7 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
      * </note>
      * 
      * @param status
-     *        The current status for the job. </p> <note>
+     *        The current status for the job.</p> <note>
      *        <p>
      *        If your jobs do not progress to <code>STARTING</code>, see <a
      *        href="https://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable">Jobs
@@ -308,7 +308,7 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * </note>
      * 
-     * @return The current status for the job. </p> <note>
+     * @return The current status for the job.</p> <note>
      *         <p>
      *         If your jobs do not progress to <code>STARTING</code>, see <a
      *         href="https://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable">Jobs
@@ -334,7 +334,7 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
      * </note>
      * 
      * @param status
-     *        The current status for the job. </p> <note>
+     *        The current status for the job.</p> <note>
      *        <p>
      *        If your jobs do not progress to <code>STARTING</code>, see <a
      *        href="https://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable">Jobs
@@ -362,7 +362,7 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
      * </note>
      * 
      * @param status
-     *        The current status for the job. </p> <note>
+     *        The current status for the job.</p> <note>
      *        <p>
      *        If your jobs do not progress to <code>STARTING</code>, see <a
      *        href="https://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable">Jobs
@@ -388,7 +388,7 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
      * </note>
      * 
      * @param status
-     *        The current status for the job. </p> <note>
+     *        The current status for the job.</p> <note>
      *        <p>
      *        If your jobs do not progress to <code>STARTING</code>, see <a
      *        href="https://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable">Jobs
@@ -708,10 +708,10 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of job names or IDs on which this job depends.
+     * A list of job IDs on which this job depends.
      * </p>
      * 
-     * @return A list of job names or IDs on which this job depends.
+     * @return A list of job IDs on which this job depends.
      */
 
     public java.util.List<JobDependency> getDependsOn() {
@@ -720,11 +720,11 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of job names or IDs on which this job depends.
+     * A list of job IDs on which this job depends.
      * </p>
      * 
      * @param dependsOn
-     *        A list of job names or IDs on which this job depends.
+     *        A list of job IDs on which this job depends.
      */
 
     public void setDependsOn(java.util.Collection<JobDependency> dependsOn) {
@@ -738,7 +738,7 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of job names or IDs on which this job depends.
+     * A list of job IDs on which this job depends.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -747,7 +747,7 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param dependsOn
-     *        A list of job names or IDs on which this job depends.
+     *        A list of job IDs on which this job depends.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -763,11 +763,11 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A list of job names or IDs on which this job depends.
+     * A list of job IDs on which this job depends.
      * </p>
      * 
      * @param dependsOn
-     *        A list of job names or IDs on which this job depends.
+     *        A list of job IDs on which this job depends.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -861,6 +861,13 @@ public class JobDetail implements Serializable, Cloneable, StructuredPojo {
         setParameters(parameters);
         return this;
     }
+
+    /**
+     * Add a single Parameters entry
+     *
+     * @see JobDetail#withParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public JobDetail addParametersEntry(String key, String value) {
         if (null == this.parameters) {

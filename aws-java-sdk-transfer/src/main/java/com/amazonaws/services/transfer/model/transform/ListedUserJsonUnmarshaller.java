@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,10 @@ public class ListedUserJsonUnmarshaller implements Unmarshaller<ListedUser, Json
                 if (context.testExpression("HomeDirectory", targetDepth)) {
                     context.nextToken();
                     listedUser.setHomeDirectory(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("HomeDirectoryType", targetDepth)) {
+                    context.nextToken();
+                    listedUser.setHomeDirectoryType(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("Role", targetDepth)) {
                     context.nextToken();

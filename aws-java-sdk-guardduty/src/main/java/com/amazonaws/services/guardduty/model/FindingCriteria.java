@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains finding criteria information.
+ * Contains information about the criteria used for querying findings.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/FindingCriteria" target="_top">AWS API
@@ -74,6 +74,13 @@ public class FindingCriteria implements Serializable, Cloneable, StructuredPojo 
         setCriterion(criterion);
         return this;
     }
+
+    /**
+     * Add a single Criterion entry
+     *
+     * @see FindingCriteria#withCriterion
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public FindingCriteria addCriterionEntry(String key, Condition value) {
         if (null == this.criterion) {

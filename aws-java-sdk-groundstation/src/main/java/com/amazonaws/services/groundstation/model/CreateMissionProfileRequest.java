@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,7 +41,7 @@ public class CreateMissionProfileRequest extends com.amazonaws.AmazonWebServiceR
     private Integer contactPrePassDurationSeconds;
     /**
      * <p>
-     * A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
+     * A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a <i>to</i>
      * <code>Config</code>.
      * </p>
      */
@@ -163,12 +163,12 @@ public class CreateMissionProfileRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
+     * A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a <i>to</i>
      * <code>Config</code>.
      * </p>
      * 
-     * @return A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
-     *         <code>Config</code>.
+     * @return A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a
+     *         <i>to</i> <code>Config</code>.
      */
 
     public java.util.List<java.util.List<String>> getDataflowEdges() {
@@ -177,13 +177,13 @@ public class CreateMissionProfileRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
+     * A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a <i>to</i>
      * <code>Config</code>.
      * </p>
      * 
      * @param dataflowEdges
-     *        A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
-     *        <code>Config</code>.
+     *        A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a
+     *        <i>to</i> <code>Config</code>.
      */
 
     public void setDataflowEdges(java.util.Collection<java.util.List<String>> dataflowEdges) {
@@ -197,7 +197,7 @@ public class CreateMissionProfileRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
+     * A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a <i>to</i>
      * <code>Config</code>.
      * </p>
      * <p>
@@ -207,8 +207,8 @@ public class CreateMissionProfileRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param dataflowEdges
-     *        A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
-     *        <code>Config</code>.
+     *        A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a
+     *        <i>to</i> <code>Config</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -224,13 +224,13 @@ public class CreateMissionProfileRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
+     * A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a <i>to</i>
      * <code>Config</code>.
      * </p>
      * 
      * @param dataflowEdges
-     *        A list of lists of ARNs. Each list of ARNs is an edge, with a from <code>Config</code> and a to
-     *        <code>Config</code>.
+     *        A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i> <code>Config</code> and a
+     *        <i>to</i> <code>Config</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -364,6 +364,13 @@ public class CreateMissionProfileRequest extends com.amazonaws.AmazonWebServiceR
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see CreateMissionProfileRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreateMissionProfileRequest addTagsEntry(String key, String value) {
         if (null == this.tags) {

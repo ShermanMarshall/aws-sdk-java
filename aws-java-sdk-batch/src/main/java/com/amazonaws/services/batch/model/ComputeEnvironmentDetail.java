@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -305,8 +305,8 @@ public class ComputeEnvironmentDetail implements Serializable, Cloneable, Struct
      * </p>
      * 
      * @param state
-     *        The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>.
-     *        </p>
+     *        The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>
+     *        .</p>
      *        <p>
      *        If the state is <code>ENABLED</code>, then the AWS Batch scheduler can attempt to place jobs from an
      *        associated job queue on the compute resources within the environment. If the compute environment is
@@ -340,8 +340,8 @@ public class ComputeEnvironmentDetail implements Serializable, Cloneable, Struct
      * <code>minvCpus</code> value after instances become idle.
      * </p>
      * 
-     * @return The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>.
-     *         </p>
+     * @return The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>
+     *         .</p>
      *         <p>
      *         If the state is <code>ENABLED</code>, then the AWS Batch scheduler can attempt to place jobs from an
      *         associated job queue on the compute resources within the environment. If the compute environment is
@@ -376,8 +376,8 @@ public class ComputeEnvironmentDetail implements Serializable, Cloneable, Struct
      * </p>
      * 
      * @param state
-     *        The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>.
-     *        </p>
+     *        The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>
+     *        .</p>
      *        <p>
      *        If the state is <code>ENABLED</code>, then the AWS Batch scheduler can attempt to place jobs from an
      *        associated job queue on the compute resources within the environment. If the compute environment is
@@ -414,8 +414,8 @@ public class ComputeEnvironmentDetail implements Serializable, Cloneable, Struct
      * </p>
      * 
      * @param state
-     *        The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>.
-     *        </p>
+     *        The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>
+     *        .</p>
      *        <p>
      *        If the state is <code>ENABLED</code>, then the AWS Batch scheduler can attempt to place jobs from an
      *        associated job queue on the compute resources within the environment. If the compute environment is
@@ -450,8 +450,8 @@ public class ComputeEnvironmentDetail implements Serializable, Cloneable, Struct
      * </p>
      * 
      * @param state
-     *        The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>.
-     *        </p>
+     *        The state of the compute environment. The valid values are <code>ENABLED</code> or <code>DISABLED</code>
+     *        .</p>
      *        <p>
      *        If the state is <code>ENABLED</code>, then the AWS Batch scheduler can attempt to place jobs from an
      *        associated job queue on the compute resources within the environment. If the compute environment is

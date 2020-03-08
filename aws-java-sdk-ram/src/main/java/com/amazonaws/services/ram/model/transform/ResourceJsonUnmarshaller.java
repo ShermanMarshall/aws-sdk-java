@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,6 +59,10 @@ public class ResourceJsonUnmarshaller implements Unmarshaller<Resource, JsonUnma
                 if (context.testExpression("resourceShareArn", targetDepth)) {
                     context.nextToken();
                     resource.setResourceShareArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("resourceGroupArn", targetDepth)) {
+                    context.nextToken();
+                    resource.setResourceGroupArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("status", targetDepth)) {
                     context.nextToken();

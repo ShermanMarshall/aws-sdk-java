@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,6 +17,11 @@ import javax.annotation.Generated;
 
 import com.amazonaws.AmazonWebServiceRequest;
 
+/**
+ * <p>
+ * Creates a new DomainName resource to represent a domain name.
+ * </p>
+ */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateDomainNameRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
@@ -34,8 +39,7 @@ public class CreateDomainNameRequest extends com.amazonaws.AmazonWebServiceReque
     private java.util.List<DomainNameConfiguration> domainNameConfigurations;
     /**
      * <p>
-     * The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters
-     * and must not start with aws:. The tag value can be up to 256 characters..
+     * The collection of tags associated with a domain name.
      * </p>
      */
     private java.util.Map<String, String> tags;
@@ -152,12 +156,10 @@ public class CreateDomainNameRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters
-     * and must not start with aws:. The tag value can be up to 256 characters..
+     * The collection of tags associated with a domain name.
      * </p>
      * 
-     * @return The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128
-     *         characters and must not start with aws:. The tag value can be up to 256 characters..
+     * @return The collection of tags associated with a domain name.
      */
 
     public java.util.Map<String, String> getTags() {
@@ -166,13 +168,11 @@ public class CreateDomainNameRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters
-     * and must not start with aws:. The tag value can be up to 256 characters..
+     * The collection of tags associated with a domain name.
      * </p>
      * 
      * @param tags
-     *        The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128
-     *        characters and must not start with aws:. The tag value can be up to 256 characters..
+     *        The collection of tags associated with a domain name.
      */
 
     public void setTags(java.util.Map<String, String> tags) {
@@ -181,13 +181,11 @@ public class CreateDomainNameRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters
-     * and must not start with aws:. The tag value can be up to 256 characters..
+     * The collection of tags associated with a domain name.
      * </p>
      * 
      * @param tags
-     *        The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128
-     *        characters and must not start with aws:. The tag value can be up to 256 characters..
+     *        The collection of tags associated with a domain name.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -195,6 +193,13 @@ public class CreateDomainNameRequest extends com.amazonaws.AmazonWebServiceReque
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see CreateDomainNameRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreateDomainNameRequest addTagsEntry(String key, String value) {
         if (null == this.tags) {

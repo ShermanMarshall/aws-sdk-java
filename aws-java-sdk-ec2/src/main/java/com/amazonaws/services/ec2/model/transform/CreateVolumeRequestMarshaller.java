@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,10 @@ public class CreateVolumeRequestMarshaller implements Marshaller<Request<CreateV
             request.addParameter("KmsKeyId", StringUtils.fromString(createVolumeRequest.getKmsKeyId()));
         }
 
+        if (createVolumeRequest.getOutpostArn() != null) {
+            request.addParameter("OutpostArn", StringUtils.fromString(createVolumeRequest.getOutpostArn()));
+        }
+
         if (createVolumeRequest.getSize() != null) {
             request.addParameter("Size", StringUtils.fromInteger(createVolumeRequest.getSize()));
         }
@@ -101,6 +105,10 @@ public class CreateVolumeRequestMarshaller implements Marshaller<Request<CreateV
                 }
                 tagSpecificationsListIndex++;
             }
+        }
+
+        if (createVolumeRequest.getMultiAttachEnabled() != null) {
+            request.addParameter("MultiAttachEnabled", StringUtils.fromBoolean(createVolumeRequest.getMultiAttachEnabled()));
         }
 
         return request;

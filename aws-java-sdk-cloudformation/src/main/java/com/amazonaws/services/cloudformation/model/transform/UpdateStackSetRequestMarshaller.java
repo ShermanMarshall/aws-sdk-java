@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -183,6 +183,68 @@ public class UpdateStackSetRequestMarshaller implements Marshaller<Request<Updat
 
         if (updateStackSetRequest.getExecutionRoleName() != null) {
             request.addParameter("ExecutionRoleName", StringUtils.fromString(updateStackSetRequest.getExecutionRoleName()));
+        }
+
+        {
+            DeploymentTargets deploymentTargets = updateStackSetRequest.getDeploymentTargets();
+            if (deploymentTargets != null) {
+
+                if (deploymentTargets.getAccounts().isEmpty()
+                        && !((com.amazonaws.internal.SdkInternalList<String>) deploymentTargets.getAccounts()).isAutoConstruct()) {
+                    request.addParameter("DeploymentTargets.Accounts", "");
+                }
+                if (!deploymentTargets.getAccounts().isEmpty()
+                        || !((com.amazonaws.internal.SdkInternalList<String>) deploymentTargets.getAccounts()).isAutoConstruct()) {
+                    com.amazonaws.internal.SdkInternalList<String> accountsList = (com.amazonaws.internal.SdkInternalList<String>) deploymentTargets
+                            .getAccounts();
+                    int accountsListIndex = 1;
+
+                    for (String accountsListValue : accountsList) {
+                        if (accountsListValue != null) {
+                            request.addParameter("DeploymentTargets.Accounts.member." + accountsListIndex, StringUtils.fromString(accountsListValue));
+                        }
+                        accountsListIndex++;
+                    }
+                }
+
+                if (deploymentTargets.getOrganizationalUnitIds().isEmpty()
+                        && !((com.amazonaws.internal.SdkInternalList<String>) deploymentTargets.getOrganizationalUnitIds()).isAutoConstruct()) {
+                    request.addParameter("DeploymentTargets.OrganizationalUnitIds", "");
+                }
+                if (!deploymentTargets.getOrganizationalUnitIds().isEmpty()
+                        || !((com.amazonaws.internal.SdkInternalList<String>) deploymentTargets.getOrganizationalUnitIds()).isAutoConstruct()) {
+                    com.amazonaws.internal.SdkInternalList<String> organizationalUnitIdsList = (com.amazonaws.internal.SdkInternalList<String>) deploymentTargets
+                            .getOrganizationalUnitIds();
+                    int organizationalUnitIdsListIndex = 1;
+
+                    for (String organizationalUnitIdsListValue : organizationalUnitIdsList) {
+                        if (organizationalUnitIdsListValue != null) {
+                            request.addParameter("DeploymentTargets.OrganizationalUnitIds.member." + organizationalUnitIdsListIndex,
+                                    StringUtils.fromString(organizationalUnitIdsListValue));
+                        }
+                        organizationalUnitIdsListIndex++;
+                    }
+                }
+            }
+        }
+
+        if (updateStackSetRequest.getPermissionModel() != null) {
+            request.addParameter("PermissionModel", StringUtils.fromString(updateStackSetRequest.getPermissionModel()));
+        }
+
+        {
+            AutoDeployment autoDeployment = updateStackSetRequest.getAutoDeployment();
+            if (autoDeployment != null) {
+
+                if (autoDeployment.getEnabled() != null) {
+                    request.addParameter("AutoDeployment.Enabled", StringUtils.fromBoolean(autoDeployment.getEnabled()));
+                }
+
+                if (autoDeployment.getRetainStacksOnAccountRemoval() != null) {
+                    request.addParameter("AutoDeployment.RetainStacksOnAccountRemoval",
+                            StringUtils.fromBoolean(autoDeployment.getRetainStacksOnAccountRemoval()));
+                }
+            }
         }
 
         request.addParameter("OperationId", IdempotentUtils.resolveString(updateStackSetRequest.getOperationId()));

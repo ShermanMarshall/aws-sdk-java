@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,8 +52,8 @@ import com.amazonaws.services.iotevents.model.transform.*;
  * <p>
  * <p>
  * AWS IoT Events monitors your equipment or device fleets for failures or changes in operation, and triggers actions
- * when such events occur. AWS IoT Events API commands enable you to create, read, update and delete inputs and detector
- * models, and to list their versions.
+ * when such events occur. You can use AWS IoT Events API commands to create, read, update, and delete inputs and
+ * detector models, and to list their versions.
  * </p>
  */
 @ThreadSafe
@@ -416,8 +416,8 @@ public class AWSIoTEventsClient extends AmazonWebServiceClient implements AWSIoT
 
     /**
      * <p>
-     * Describes a detector model. If the <code>"version"</code> parameter is not specified, information about the
-     * latest version is returned.
+     * Describes a detector model. If the <code>version</code> parameter is not specified, information about the latest
+     * version is returned.
      * </p>
      * 
      * @param describeDetectorModelRequest
@@ -864,9 +864,9 @@ public class AWSIoTEventsClient extends AmazonWebServiceClient implements AWSIoT
      * Sets or updates the AWS IoT Events logging options.
      * </p>
      * <p>
-     * If you update the value of any <code>"loggingOptions"</code> field, it takes up to one minute for the change to
-     * take effect. Also, if you change the policy attached to the role you specified in the <code>"roleArn"</code>
-     * field (for example, to correct an invalid policy) it takes up to five minutes for that change to take effect.
+     * If you update the value of any <code>loggingOptions</code> field, it takes up to one minute for the change to
+     * take effect. If you change the policy attached to the role you specified in the <code>roleArn</code> field (for
+     * example, to correct an invalid policy), it takes up to five minutes for that change to take effect.
      * </p>
      * 
      * @param putLoggingOptionsRequest

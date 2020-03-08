@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,12 @@ public class DescribeActionTargetsRequest extends com.amazonaws.AmazonWebService
     private java.util.List<String> actionTargetArns;
     /**
      * <p>
-     * The token that is required for pagination.
+     * The token that is required for pagination. On your first call to the <code>DescribeActionTargets</code>
+     * operation, set the value of this parameter to <code>NULL</code>.
+     * </p>
+     * <p>
+     * For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value
+     * returned from the previous response.
      * </p>
      */
     private String nextToken;
@@ -116,11 +121,20 @@ public class DescribeActionTargetsRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The token that is required for pagination.
+     * The token that is required for pagination. On your first call to the <code>DescribeActionTargets</code>
+     * operation, set the value of this parameter to <code>NULL</code>.
+     * </p>
+     * <p>
+     * For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value
+     * returned from the previous response.
      * </p>
      * 
      * @param nextToken
-     *        The token that is required for pagination.
+     *        The token that is required for pagination. On your first call to the <code>DescribeActionTargets</code>
+     *        operation, set the value of this parameter to <code>NULL</code>.</p>
+     *        <p>
+     *        For subsequent calls to the operation, to continue listing data, set the value of this parameter to the
+     *        value returned from the previous response.
      */
 
     public void setNextToken(String nextToken) {
@@ -129,10 +143,19 @@ public class DescribeActionTargetsRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The token that is required for pagination.
+     * The token that is required for pagination. On your first call to the <code>DescribeActionTargets</code>
+     * operation, set the value of this parameter to <code>NULL</code>.
+     * </p>
+     * <p>
+     * For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value
+     * returned from the previous response.
      * </p>
      * 
-     * @return The token that is required for pagination.
+     * @return The token that is required for pagination. On your first call to the <code>DescribeActionTargets</code>
+     *         operation, set the value of this parameter to <code>NULL</code>.</p>
+     *         <p>
+     *         For subsequent calls to the operation, to continue listing data, set the value of this parameter to the
+     *         value returned from the previous response.
      */
 
     public String getNextToken() {
@@ -141,11 +164,20 @@ public class DescribeActionTargetsRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The token that is required for pagination.
+     * The token that is required for pagination. On your first call to the <code>DescribeActionTargets</code>
+     * operation, set the value of this parameter to <code>NULL</code>.
+     * </p>
+     * <p>
+     * For subsequent calls to the operation, to continue listing data, set the value of this parameter to the value
+     * returned from the previous response.
      * </p>
      * 
      * @param nextToken
-     *        The token that is required for pagination.
+     *        The token that is required for pagination. On your first call to the <code>DescribeActionTargets</code>
+     *        operation, set the value of this parameter to <code>NULL</code>.</p>
+     *        <p>
+     *        For subsequent calls to the operation, to continue listing data, set the value of this parameter to the
+     *        value returned from the previous response.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

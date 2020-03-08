@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,8 +42,7 @@ public class PullRequestTarget implements Serializable, Cloneable, StructuredPoj
     private String sourceReference;
     /**
      * <p>
-     * The branch of the repository where the pull request changes will be merged into. Also known as the destination
-     * branch.
+     * The branch of the repository where the pull request changes are merged. Also known as the destination branch.
      * </p>
      */
     private String destinationReference;
@@ -57,7 +56,7 @@ public class PullRequestTarget implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * The full commit ID of the tip of the source branch used to create the pull request. If the pull request branch is
-     * updated by a push while the pull request is open, the commit ID will change to reflect the new tip of the branch.
+     * updated by a push while the pull request is open, the commit ID changes to reflect the new tip of the branch.
      * </p>
      */
     private String sourceCommit;
@@ -159,13 +158,12 @@ public class PullRequestTarget implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The branch of the repository where the pull request changes will be merged into. Also known as the destination
-     * branch.
+     * The branch of the repository where the pull request changes are merged. Also known as the destination branch.
      * </p>
      * 
      * @param destinationReference
-     *        The branch of the repository where the pull request changes will be merged into. Also known as the
-     *        destination branch.
+     *        The branch of the repository where the pull request changes are merged. Also known as the destination
+     *        branch.
      */
 
     public void setDestinationReference(String destinationReference) {
@@ -174,12 +172,11 @@ public class PullRequestTarget implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The branch of the repository where the pull request changes will be merged into. Also known as the destination
-     * branch.
+     * The branch of the repository where the pull request changes are merged. Also known as the destination branch.
      * </p>
      * 
-     * @return The branch of the repository where the pull request changes will be merged into. Also known as the
-     *         destination branch.
+     * @return The branch of the repository where the pull request changes are merged. Also known as the destination
+     *         branch.
      */
 
     public String getDestinationReference() {
@@ -188,13 +185,12 @@ public class PullRequestTarget implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The branch of the repository where the pull request changes will be merged into. Also known as the destination
-     * branch.
+     * The branch of the repository where the pull request changes are merged. Also known as the destination branch.
      * </p>
      * 
      * @param destinationReference
-     *        The branch of the repository where the pull request changes will be merged into. Also known as the
-     *        destination branch.
+     *        The branch of the repository where the pull request changes are merged. Also known as the destination
+     *        branch.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -252,13 +248,13 @@ public class PullRequestTarget implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * The full commit ID of the tip of the source branch used to create the pull request. If the pull request branch is
-     * updated by a push while the pull request is open, the commit ID will change to reflect the new tip of the branch.
+     * updated by a push while the pull request is open, the commit ID changes to reflect the new tip of the branch.
      * </p>
      * 
      * @param sourceCommit
      *        The full commit ID of the tip of the source branch used to create the pull request. If the pull request
-     *        branch is updated by a push while the pull request is open, the commit ID will change to reflect the new
-     *        tip of the branch.
+     *        branch is updated by a push while the pull request is open, the commit ID changes to reflect the new tip
+     *        of the branch.
      */
 
     public void setSourceCommit(String sourceCommit) {
@@ -268,12 +264,12 @@ public class PullRequestTarget implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * The full commit ID of the tip of the source branch used to create the pull request. If the pull request branch is
-     * updated by a push while the pull request is open, the commit ID will change to reflect the new tip of the branch.
+     * updated by a push while the pull request is open, the commit ID changes to reflect the new tip of the branch.
      * </p>
      * 
      * @return The full commit ID of the tip of the source branch used to create the pull request. If the pull request
-     *         branch is updated by a push while the pull request is open, the commit ID will change to reflect the new
-     *         tip of the branch.
+     *         branch is updated by a push while the pull request is open, the commit ID changes to reflect the new tip
+     *         of the branch.
      */
 
     public String getSourceCommit() {
@@ -283,13 +279,13 @@ public class PullRequestTarget implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * The full commit ID of the tip of the source branch used to create the pull request. If the pull request branch is
-     * updated by a push while the pull request is open, the commit ID will change to reflect the new tip of the branch.
+     * updated by a push while the pull request is open, the commit ID changes to reflect the new tip of the branch.
      * </p>
      * 
      * @param sourceCommit
      *        The full commit ID of the tip of the source branch used to create the pull request. If the pull request
-     *        branch is updated by a push while the pull request is open, the commit ID will change to reflect the new
-     *        tip of the branch.
+     *        branch is updated by a push while the pull request is open, the commit ID changes to reflect the new tip
+     *        of the branch.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -214,6 +214,37 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
      */
     java.util.concurrent.Future<BatchStopUpdateActionResult> batchStopUpdateActionAsync(BatchStopUpdateActionRequest batchStopUpdateActionRequest,
             com.amazonaws.handlers.AsyncHandler<BatchStopUpdateActionRequest, BatchStopUpdateActionResult> asyncHandler);
+
+    /**
+     * <p>
+     * Complete the migration of data.
+     * </p>
+     * 
+     * @param completeMigrationRequest
+     * @return A Java Future containing the result of the CompleteMigration operation returned by the service.
+     * @sample AmazonElastiCacheAsync.CompleteMigration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CompleteMigration" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ReplicationGroup> completeMigrationAsync(CompleteMigrationRequest completeMigrationRequest);
+
+    /**
+     * <p>
+     * Complete the migration of data.
+     * </p>
+     * 
+     * @param completeMigrationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CompleteMigration operation returned by the service.
+     * @sample AmazonElastiCacheAsyncHandler.CompleteMigration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/CompleteMigration" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ReplicationGroup> completeMigrationAsync(CompleteMigrationRequest completeMigrationRequest,
+            com.amazonaws.handlers.AsyncHandler<CompleteMigrationRequest, ReplicationGroup> asyncHandler);
 
     /**
      * <p>
@@ -2452,6 +2483,37 @@ public interface AmazonElastiCacheAsync extends AmazonElastiCache {
     java.util.concurrent.Future<CacheSecurityGroup> revokeCacheSecurityGroupIngressAsync(
             RevokeCacheSecurityGroupIngressRequest revokeCacheSecurityGroupIngressRequest,
             com.amazonaws.handlers.AsyncHandler<RevokeCacheSecurityGroupIngressRequest, CacheSecurityGroup> asyncHandler);
+
+    /**
+     * <p>
+     * Start the migration of data.
+     * </p>
+     * 
+     * @param startMigrationRequest
+     * @return A Java Future containing the result of the StartMigration operation returned by the service.
+     * @sample AmazonElastiCacheAsync.StartMigration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/StartMigration" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ReplicationGroup> startMigrationAsync(StartMigrationRequest startMigrationRequest);
+
+    /**
+     * <p>
+     * Start the migration of data.
+     * </p>
+     * 
+     * @param startMigrationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the StartMigration operation returned by the service.
+     * @sample AmazonElastiCacheAsyncHandler.StartMigration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/elasticache-2015-02-02/StartMigration" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ReplicationGroup> startMigrationAsync(StartMigrationRequest startMigrationRequest,
+            com.amazonaws.handlers.AsyncHandler<StartMigrationRequest, ReplicationGroup> asyncHandler);
 
     /**
      * <p>

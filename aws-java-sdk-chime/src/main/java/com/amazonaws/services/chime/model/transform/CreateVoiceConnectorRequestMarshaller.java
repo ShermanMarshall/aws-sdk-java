@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class CreateVoiceConnectorRequestMarshaller {
 
     private static final MarshallingInfo<String> NAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Name").build();
+    private static final MarshallingInfo<String> AWSREGION_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("AwsRegion").build();
     private static final MarshallingInfo<Boolean> REQUIREENCRYPTION_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RequireEncryption").build();
 
@@ -49,6 +51,7 @@ public class CreateVoiceConnectorRequestMarshaller {
 
         try {
             protocolMarshaller.marshall(createVoiceConnectorRequest.getName(), NAME_BINDING);
+            protocolMarshaller.marshall(createVoiceConnectorRequest.getAwsRegion(), AWSREGION_BINDING);
             protocolMarshaller.marshall(createVoiceConnectorRequest.getRequireEncryption(), REQUIREENCRYPTION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

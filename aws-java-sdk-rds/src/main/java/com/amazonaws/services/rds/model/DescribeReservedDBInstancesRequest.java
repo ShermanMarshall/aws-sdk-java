@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -82,15 +82,27 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
     private Boolean multiAZ;
     /**
      * <p>
-     * This parameter is not currently supported.
+     * The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified
+     * lease ID.
+     * </p>
+     * <note>
+     * <p>
+     * AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     * </p>
+     * </note>
+     */
+    private String leaseId;
+    /**
+     * <p>
+     * This parameter isn't currently supported.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
     /**
      * <p>
      * The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is
-     * available, a pagination token called a marker is included in the response so that the following results can be
-     * retrieved.
+     * available, a pagination token called a marker is included in the response so you can retrieve the remaining
+     * results.
      * </p>
      * <p>
      * Default: 100
@@ -468,10 +480,80 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * This parameter is not currently supported.
+     * The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified
+     * lease ID.
+     * </p>
+     * <note>
+     * <p>
+     * AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     * </p>
+     * </note>
+     * 
+     * @param leaseId
+     *        The lease identifier filter value. Specify this parameter to show only the reservation that matches the
+     *        specified lease ID.</p> <note>
+     *        <p>
+     *        AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     *        </p>
+     */
+
+    public void setLeaseId(String leaseId) {
+        this.leaseId = leaseId;
+    }
+
+    /**
+     * <p>
+     * The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified
+     * lease ID.
+     * </p>
+     * <note>
+     * <p>
+     * AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     * </p>
+     * </note>
+     * 
+     * @return The lease identifier filter value. Specify this parameter to show only the reservation that matches the
+     *         specified lease ID.</p> <note>
+     *         <p>
+     *         AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     *         </p>
+     */
+
+    public String getLeaseId() {
+        return this.leaseId;
+    }
+
+    /**
+     * <p>
+     * The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified
+     * lease ID.
+     * </p>
+     * <note>
+     * <p>
+     * AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     * </p>
+     * </note>
+     * 
+     * @param leaseId
+     *        The lease identifier filter value. Specify this parameter to show only the reservation that matches the
+     *        specified lease ID.</p> <note>
+     *        <p>
+     *        AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeReservedDBInstancesRequest withLeaseId(String leaseId) {
+        setLeaseId(leaseId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * This parameter isn't currently supported.
      * </p>
      * 
-     * @return This parameter is not currently supported.
+     * @return This parameter isn't currently supported.
      */
 
     public java.util.List<Filter> getFilters() {
@@ -483,11 +565,11 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * This parameter is not currently supported.
+     * This parameter isn't currently supported.
      * </p>
      * 
      * @param filters
-     *        This parameter is not currently supported.
+     *        This parameter isn't currently supported.
      */
 
     public void setFilters(java.util.Collection<Filter> filters) {
@@ -501,7 +583,7 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * This parameter is not currently supported.
+     * This parameter isn't currently supported.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -510,7 +592,7 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param filters
-     *        This parameter is not currently supported.
+     *        This parameter isn't currently supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -526,11 +608,11 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * This parameter is not currently supported.
+     * This parameter isn't currently supported.
      * </p>
      * 
      * @param filters
-     *        This parameter is not currently supported.
+     *        This parameter isn't currently supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -542,8 +624,8 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is
-     * available, a pagination token called a marker is included in the response so that the following results can be
-     * retrieved.
+     * available, a pagination token called a marker is included in the response so you can retrieve the remaining
+     * results.
      * </p>
      * <p>
      * Default: 100
@@ -554,8 +636,8 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
      * 
      * @param maxRecords
      *        The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value
-     *        is available, a pagination token called a marker is included in the response so that the following results
-     *        can be retrieved. </p>
+     *        is available, a pagination token called a marker is included in the response so you can retrieve the
+     *        remaining results. </p>
      *        <p>
      *        Default: 100
      *        </p>
@@ -570,8 +652,8 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is
-     * available, a pagination token called a marker is included in the response so that the following results can be
-     * retrieved.
+     * available, a pagination token called a marker is included in the response so you can retrieve the remaining
+     * results.
      * </p>
      * <p>
      * Default: 100
@@ -581,8 +663,8 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @return The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value
-     *         is available, a pagination token called a marker is included in the response so that the following
-     *         results can be retrieved. </p>
+     *         is available, a pagination token called a marker is included in the response so you can retrieve the
+     *         remaining results. </p>
      *         <p>
      *         Default: 100
      *         </p>
@@ -597,8 +679,8 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value is
-     * available, a pagination token called a marker is included in the response so that the following results can be
-     * retrieved.
+     * available, a pagination token called a marker is included in the response so you can retrieve the remaining
+     * results.
      * </p>
      * <p>
      * Default: 100
@@ -609,8 +691,8 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
      * 
      * @param maxRecords
      *        The maximum number of records to include in the response. If more than the <code>MaxRecords</code> value
-     *        is available, a pagination token called a marker is included in the response so that the following results
-     *        can be retrieved. </p>
+     *        is available, a pagination token called a marker is included in the response so you can retrieve the
+     *        remaining results. </p>
      *        <p>
      *        Default: 100
      *        </p>
@@ -696,6 +778,8 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
             sb.append("OfferingType: ").append(getOfferingType()).append(",");
         if (getMultiAZ() != null)
             sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
+        if (getLeaseId() != null)
+            sb.append("LeaseId: ").append(getLeaseId()).append(",");
         if (getFilters() != null)
             sb.append("Filters: ").append(getFilters()).append(",");
         if (getMaxRecords() != null)
@@ -745,6 +829,10 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
             return false;
         if (other.getMultiAZ() != null && other.getMultiAZ().equals(this.getMultiAZ()) == false)
             return false;
+        if (other.getLeaseId() == null ^ this.getLeaseId() == null)
+            return false;
+        if (other.getLeaseId() != null && other.getLeaseId().equals(this.getLeaseId()) == false)
+            return false;
         if (other.getFilters() == null ^ this.getFilters() == null)
             return false;
         if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false)
@@ -772,6 +860,7 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
         hashCode = prime * hashCode + ((getProductDescription() == null) ? 0 : getProductDescription().hashCode());
         hashCode = prime * hashCode + ((getOfferingType() == null) ? 0 : getOfferingType().hashCode());
         hashCode = prime * hashCode + ((getMultiAZ() == null) ? 0 : getMultiAZ().hashCode());
+        hashCode = prime * hashCode + ((getLeaseId() == null) ? 0 : getLeaseId().hashCode());
         hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode());
         hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
         hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());

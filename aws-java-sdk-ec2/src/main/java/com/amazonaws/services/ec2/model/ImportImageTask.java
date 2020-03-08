@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -111,6 +111,18 @@ public class ImportImageTask implements Serializable, Cloneable {
      * </p>
      */
     private String statusMessage;
+    /**
+     * <p>
+     * The tags for the import image task.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
+    /**
+     * <p>
+     * The ARNs of the license configurations that are associated with the import image task.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationResponse> licenseSpecifications;
 
     /**
      * <p>
@@ -714,6 +726,152 @@ public class ImportImageTask implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The tags for the import image task.
+     * </p>
+     * 
+     * @return The tags for the import image task.
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags for the import image task.
+     * </p>
+     * 
+     * @param tags
+     *        The tags for the import image task.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The tags for the import image task.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The tags for the import image task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImportImageTask withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags for the import image task.
+     * </p>
+     * 
+     * @param tags
+     *        The tags for the import image task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImportImageTask withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARNs of the license configurations that are associated with the import image task.
+     * </p>
+     * 
+     * @return The ARNs of the license configurations that are associated with the import image task.
+     */
+
+    public java.util.List<ImportImageLicenseConfigurationResponse> getLicenseSpecifications() {
+        if (licenseSpecifications == null) {
+            licenseSpecifications = new com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationResponse>();
+        }
+        return licenseSpecifications;
+    }
+
+    /**
+     * <p>
+     * The ARNs of the license configurations that are associated with the import image task.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The ARNs of the license configurations that are associated with the import image task.
+     */
+
+    public void setLicenseSpecifications(java.util.Collection<ImportImageLicenseConfigurationResponse> licenseSpecifications) {
+        if (licenseSpecifications == null) {
+            this.licenseSpecifications = null;
+            return;
+        }
+
+        this.licenseSpecifications = new com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationResponse>(licenseSpecifications);
+    }
+
+    /**
+     * <p>
+     * The ARNs of the license configurations that are associated with the import image task.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setLicenseSpecifications(java.util.Collection)} or
+     * {@link #withLicenseSpecifications(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The ARNs of the license configurations that are associated with the import image task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImportImageTask withLicenseSpecifications(ImportImageLicenseConfigurationResponse... licenseSpecifications) {
+        if (this.licenseSpecifications == null) {
+            setLicenseSpecifications(new com.amazonaws.internal.SdkInternalList<ImportImageLicenseConfigurationResponse>(licenseSpecifications.length));
+        }
+        for (ImportImageLicenseConfigurationResponse ele : licenseSpecifications) {
+            this.licenseSpecifications.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARNs of the license configurations that are associated with the import image task.
+     * </p>
+     * 
+     * @param licenseSpecifications
+     *        The ARNs of the license configurations that are associated with the import image task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ImportImageTask withLicenseSpecifications(java.util.Collection<ImportImageLicenseConfigurationResponse> licenseSpecifications) {
+        setLicenseSpecifications(licenseSpecifications);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -750,7 +908,11 @@ public class ImportImageTask implements Serializable, Cloneable {
         if (getStatus() != null)
             sb.append("Status: ").append(getStatus()).append(",");
         if (getStatusMessage() != null)
-            sb.append("StatusMessage: ").append(getStatusMessage());
+            sb.append("StatusMessage: ").append(getStatusMessage()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getLicenseSpecifications() != null)
+            sb.append("LicenseSpecifications: ").append(getLicenseSpecifications());
         sb.append("}");
         return sb.toString();
     }
@@ -817,6 +979,14 @@ public class ImportImageTask implements Serializable, Cloneable {
             return false;
         if (other.getStatusMessage() != null && other.getStatusMessage().equals(this.getStatusMessage()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getLicenseSpecifications() == null ^ this.getLicenseSpecifications() == null)
+            return false;
+        if (other.getLicenseSpecifications() != null && other.getLicenseSpecifications().equals(this.getLicenseSpecifications()) == false)
+            return false;
         return true;
     }
 
@@ -838,6 +1008,8 @@ public class ImportImageTask implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getSnapshotDetails() == null) ? 0 : getSnapshotDetails().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getStatusMessage() == null) ? 0 : getStatusMessage().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getLicenseSpecifications() == null) ? 0 : getLicenseSpecifications().hashCode());
         return hashCode;
     }
 

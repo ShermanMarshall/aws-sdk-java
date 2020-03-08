@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,18 +27,20 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the accounts to associate with the Security Hub master account.
+     * The list of accounts to associate with the Security Hub master account. For each account, the list includes the
+     * account ID and the email address.
      * </p>
      */
     private java.util.List<AccountDetails> accountDetails;
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the accounts to associate with the Security Hub master account.
+     * The list of accounts to associate with the Security Hub master account. For each account, the list includes the
+     * account ID and the email address.
      * </p>
      * 
-     * @return A list of account ID and email address pairs of the accounts to associate with the Security Hub master
-     *         account.
+     * @return The list of accounts to associate with the Security Hub master account. For each account, the list
+     *         includes the account ID and the email address.
      */
 
     public java.util.List<AccountDetails> getAccountDetails() {
@@ -47,12 +49,13 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the accounts to associate with the Security Hub master account.
+     * The list of accounts to associate with the Security Hub master account. For each account, the list includes the
+     * account ID and the email address.
      * </p>
      * 
      * @param accountDetails
-     *        A list of account ID and email address pairs of the accounts to associate with the Security Hub master
-     *        account.
+     *        The list of accounts to associate with the Security Hub master account. For each account, the list
+     *        includes the account ID and the email address.
      */
 
     public void setAccountDetails(java.util.Collection<AccountDetails> accountDetails) {
@@ -66,7 +69,8 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the accounts to associate with the Security Hub master account.
+     * The list of accounts to associate with the Security Hub master account. For each account, the list includes the
+     * account ID and the email address.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -75,8 +79,8 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param accountDetails
-     *        A list of account ID and email address pairs of the accounts to associate with the Security Hub master
-     *        account.
+     *        The list of accounts to associate with the Security Hub master account. For each account, the list
+     *        includes the account ID and the email address.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -92,12 +96,13 @@ public class CreateMembersRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A list of account ID and email address pairs of the accounts to associate with the Security Hub master account.
+     * The list of accounts to associate with the Security Hub master account. For each account, the list includes the
+     * account ID and the email address.
      * </p>
      * 
      * @param accountDetails
-     *        A list of account ID and email address pairs of the accounts to associate with the Security Hub master
-     *        account.
+     *        The list of accounts to associate with the Security Hub master account. For each account, the list
+     *        includes the account ID and the email address.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

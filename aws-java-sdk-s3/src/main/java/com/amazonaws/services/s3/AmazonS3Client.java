@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -42,6 +42,7 @@ import com.amazonaws.SdkClientException;
 import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.annotation.SdkTestInternalApi;
 import com.amazonaws.annotation.ThreadSafe;
+import com.amazonaws.arn.Arn;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.Presigner;
@@ -89,8 +90,10 @@ import com.amazonaws.services.s3.internal.MD5DigestCalculatingInputStream;
 import com.amazonaws.services.s3.internal.Mimetypes;
 import com.amazonaws.services.s3.internal.MultiFileOutputStream;
 import com.amazonaws.services.s3.internal.ObjectExpirationHeaderHandler;
+import com.amazonaws.services.s3.internal.RegionalEndpointsOptionResolver;
 import com.amazonaws.services.s3.internal.ResponseHeaderHandlerChain;
 import com.amazonaws.services.s3.internal.S3AbortableInputStream;
+import com.amazonaws.services.s3.internal.S3AccessPointBuilder;
 import com.amazonaws.services.s3.internal.S3ErrorResponseHandler;
 import com.amazonaws.services.s3.internal.S3MetadataResponseHandler;
 import com.amazonaws.services.s3.internal.S3ObjectResponseHandler;
@@ -108,6 +111,7 @@ import com.amazonaws.services.s3.internal.ServiceUtils;
 import com.amazonaws.services.s3.internal.SetObjectTaggingResponseHeaderHandler;
 import com.amazonaws.services.s3.internal.SkipMd5CheckStrategy;
 import com.amazonaws.services.s3.internal.UploadObjectStrategy;
+import com.amazonaws.services.s3.internal.UseArnRegionResolver;
 import com.amazonaws.services.s3.internal.XmlWriter;
 import com.amazonaws.services.s3.internal.auth.S3SignerProvider;
 import com.amazonaws.services.s3.metrics.S3ServiceMetric;
@@ -328,6 +332,7 @@ import com.amazonaws.util.RuntimeHttpUtils;
 import com.amazonaws.util.SdkHttpUtils;
 import com.amazonaws.util.ServiceClientHolderInputStream;
 import com.amazonaws.util.StringUtils;
+import com.amazonaws.util.ValidationUtils;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -393,6 +398,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     private static final String S3_SIGNER = "S3SignerType";
     private static final String S3_V4_SIGNER = "AWSS3V4SignerType";
     private static final String SERVICE_ID = "S3";
+    private static final String AWS_PARTITION_KEY = "aws";
 
     protected static final AmazonS3ClientConfigurationFactory configFactory
             = new AmazonS3ClientConfigurationFactory();
@@ -426,6 +432,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     /** Shared factory for converting request payment configuration objects to XML */
     private static final RequestPaymentConfigurationXmlFactory requestPaymentConfigurationXmlFactory = new RequestPaymentConfigurationXmlFactory();
 
+    private static final UseArnRegionResolver USE_ARN_REGION_RESOLVER = new UseArnRegionResolver();
+
     /** S3 specific client configuration options */
     private volatile S3ClientOptions clientOptions = S3ClientOptions.builder().build();
 
@@ -436,6 +444,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
      * requests sent by this client.
      */
     private volatile String clientRegion;
+
+    private static RegionalEndpointsOptionResolver REGIONAL_ENDPOINTS_OPTION_RESOLVER = new RegionalEndpointsOptionResolver();
 
     private static final int BUCKET_REGION_CACHE_SIZE = 300;
 
@@ -703,7 +713,6 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         requestHandler2s.addAll(chainFactory.getGlobalHandlers());
     }
 
-
     /**
      * @deprecated use {@link AmazonS3ClientBuilder#setEndpointConfiguration(AwsClientBuilder.EndpointConfiguration)}
      */
@@ -730,6 +739,12 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     @Override
     @Deprecated
     public synchronized void setRegion(com.amazonaws.regions.Region region) {
+        if (region.getName().equalsIgnoreCase("us-east-1")) {
+            if (clientOptions.isRegionalUsEast1EndpointEnabled() || REGIONAL_ENDPOINTS_OPTION_RESOLVER.useRegionalMode()) {
+                region = RegionUtils.getRegion("us-east-1-regional");
+            }
+        }
+
         super.setRegion(region);
         /*
          * We need to preserve the user provided region. This is because the
@@ -1330,6 +1345,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     public boolean doesBucketExist(String bucketName)
             throws SdkClientException, AmazonServiceException {
         try {
+            ValidationUtils.assertStringNotEmpty(bucketName, "bucketName");
             headBucket(new HeadBucketRequest(bucketName));
             return true;
         } catch (AmazonServiceException ase) {
@@ -1349,6 +1365,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     @Override
     public boolean doesBucketExistV2(String bucketName) throws SdkClientException {
         try {
+            ValidationUtils.assertStringNotEmpty(bucketName, "bucketName");
             getBucketAcl(bucketName);
             return true;
         } catch (AmazonServiceException ase) {
@@ -1368,6 +1385,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     public boolean doesObjectExist(String bucketName, String objectName)
             throws AmazonServiceException, SdkClientException {
         try {
+            ValidationUtils.assertStringNotEmpty(bucketName, "bucketName");
+            ValidationUtils.assertStringNotEmpty(objectName, "objectName");
             getObjectMetadata(bucketName, objectName);
             return true;
         } catch (AmazonS3Exception e) {
@@ -3997,7 +4016,17 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         // in accelerate mode, the endpoint in request is regionless. We need the client-wide endpoint
         // to fetch the region information and pick the correct signer.
         URI uri = clientOptions.isAccelerateModeEnabled() ? endpoint : request.getEndpoint();
-        final Signer signer = getSignerByURI(uri);
+
+        Signer signer;
+        if (isAccessPointArn(bucketName)) {
+            Arn resourceArn = Arn.fromString(bucketName);
+            S3Resource s3Resource = S3ArnConverter.getInstance().convertArn(resourceArn);
+            String region = s3Resource.getRegion();
+            String regionalEndpoint = RegionUtils.getRegion(region).getServiceEndpoint("s3");
+            signer = getSignerByURI(URI.create(uri.getScheme() + "://" + regionalEndpoint));
+        } else {
+            signer = getSignerByURI(uri);
+        }
 
         if (!isSignerOverridden()) {
 
@@ -4609,6 +4638,10 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         }
     }
 
+    private static boolean isRegionFipsEnabled(String regionName) {
+        return regionName.startsWith("fips-") || regionName.endsWith("-fips");
+    }
+
     /**
      * Creates and initializes a new request object for the specified S3
      * resource. This method is responsible for determining the right way to
@@ -4640,6 +4673,71 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     // NOTE: New uses of this method are discouraged and flagged at build time.
     // Be careful not to change its signature.
     protected <X extends AmazonWebServiceRequest> Request<X> createRequest(String bucketName, String key, X originalRequest, HttpMethodName httpMethod, URI endpoint) {
+        String signingRegion;
+
+        Request<X> request = new DefaultRequest<X>(originalRequest, Constants.S3_SERVICE_DISPLAY_NAME);
+        request.setHttpMethod(httpMethod);
+        request.addHandlerContext(S3HandlerContextKeys.IS_CHUNKED_ENCODING_DISABLED,
+                                  clientOptions.isChunkedEncodingDisabled());
+        request.addHandlerContext(S3HandlerContextKeys.IS_PAYLOAD_SIGNING_ENABLED,
+                                  clientOptions.isPayloadSigningEnabled());
+        request.addHandlerContext(HandlerContextKey.SERVICE_ID, SERVICE_ID);
+
+        // If the bucketName appears to be an ARN, parse the ARN as an S3 resource and rewrite target resource arguments
+        // based on the parsed resource.
+        if (isAccessPointArn(bucketName)) {
+            Arn resourceArn = Arn.fromString(bucketName);
+            S3Resource s3Resource = S3ArnConverter.getInstance().convertArn(resourceArn);
+
+            if (S3ResourceType.fromValue(s3Resource.getType()) != S3ResourceType.ACCESS_POINT) {
+                throw new IllegalArgumentException("An ARN was passed as a bucket parameter to an S3 operation, "
+                                                   + "however it does not appear to be a valid S3 access point ARN.");
+            }
+
+            if (isEndpointOverridden()) {
+                throw new IllegalArgumentException("An access point ARN cannot be passed as a bucket parameter to an S3"
+                                                   + " operation if the S3 client has been configured with an endpoint "
+                                                   + "override.");
+            }
+
+            if (isRegionFipsEnabled(getRegionName())) {
+                throw new IllegalArgumentException("An access point ARN cannot be passed as a bucket parameter to an S3"
+                                                   + " operation if the S3 client has been configured with a FIPS"
+                                                   + " enabled region.");
+            }
+
+            if (clientOptions.isAccelerateModeEnabled()) {
+                throw new IllegalArgumentException("An access point ARN cannot be passed as a bucket parameter to an S3 "
+                                                   + "operation if the S3 client has been configured with accelerate mode"
+                                                   + " enabled.");
+            }
+
+            if (clientOptions.isPathStyleAccess()) {
+                throw new IllegalArgumentException("An access point ARN cannot be passed as a bucket parameter to an S3 "
+                                                   + "operation if the S3 client has been configured with path style "
+                                                   + "addressing enabled.");
+            }
+
+            S3AccessPointResource s3EndpointResource = (S3AccessPointResource) s3Resource;
+            com.amazonaws.regions.Region clientRegion = RegionUtils.getRegion(getRegionName());
+            validateS3ResourceArn(resourceArn, clientRegion);
+            endpoint = S3AccessPointBuilder.create()
+                                           .withAccessPointName(s3EndpointResource.getAccessPointName())
+                                           .withAccountId(s3EndpointResource.getAccountId())
+                                           .withRegion(s3EndpointResource.getRegion())
+                                           .withProtocol(clientConfiguration.getProtocol().toString())
+                                           .withDomain(clientRegion.getDomain())
+                                           .withDualstackEnabled(clientOptions.isDualstackEnabled())
+                                           .toURI();
+            signingRegion = s3EndpointResource.getRegion();
+
+            request.addHandlerContext(HandlerContextKey.SIGNING_REGION, signingRegion);
+            resolveAccessPointEndpoint(request, null /* bucketName */, key, endpoint);
+            return request;
+        } else {
+            signingRegion = getSigningRegion();
+        }
+
         // If the underlying AmazonS3Client has enabled accelerate mode and the original
         // request operation is accelerate mode supported, then the request will use the
         // s3-accelerate endpoint to performe the operations.
@@ -4651,16 +4749,49 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
             }
         }
 
-        Request<X> request = new DefaultRequest<X>(originalRequest, Constants.S3_SERVICE_DISPLAY_NAME);
-        request.setHttpMethod(httpMethod);
-        request.addHandlerContext(S3HandlerContextKeys.IS_CHUNKED_ENCODING_DISABLED,
-                Boolean.valueOf(clientOptions.isChunkedEncodingDisabled()));
-        request.addHandlerContext(S3HandlerContextKeys.IS_PAYLOAD_SIGNING_ENABLED,
-                Boolean.valueOf(clientOptions.isPayloadSigningEnabled()));
         resolveRequestEndpoint(request, bucketName, key, endpoint);
-        request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
-        request.addHandlerContext(HandlerContextKey.SERVICE_ID, SERVICE_ID);
+        request.addHandlerContext(HandlerContextKey.SIGNING_REGION, signingRegion);
         return request;
+    }
+
+    private void validateS3ResourceArn(Arn resourceArn, com.amazonaws.regions.Region clientRegion) {
+        String clientPartition = (clientRegion == null) ? null : clientRegion.getPartition();
+
+        if (clientPartition == null || !clientPartition.equals(resourceArn.getPartition())) {
+            throw new IllegalArgumentException("The partition field of the ARN being passed as a bucket parameter to "
+                    + "an S3 operation does not match the partition the S3 client has been configured with. Provided "
+                                               + "partition: '" + resourceArn.getPartition() + "'; client partition: "
+                                               + "'" + clientPartition + "'.");
+        }
+
+        if (!clientOptions.isForceGlobalBucketAccessEnabled() && !useArnRegion()) {
+            if (!clientRegion.getName().equals(resourceArn.getRegion())) {
+                throw new IllegalArgumentException("The region field of the ARN being passed as a bucket parameter to an "
+                        + "S3 operation does not match the region the client was configured "
+                        + "with. Provided region: '" + resourceArn.getRegion() + "'; client "
+                        + "region: '" + clientRegion.getName() + "'.");
+            }
+        }
+    }
+
+    private boolean useArnRegion() {
+
+        // If useArnRegion is false, it was not set to false by the customer, it was simply not enabled
+        if (clientOptions.isUseArnRegion()) {
+            return clientOptions.isUseArnRegion();
+        }
+
+        return USE_ARN_REGION_RESOLVER.useArnRegion();
+    }
+
+    /**
+     * Short circuit endpoint logic when working with access points as the endpoint
+     * is constructed in advance. This resolver will take the existing endpoint and append
+     * the correct path.
+     */
+    private void resolveAccessPointEndpoint(Request<?> request, String bucketName, String key, URI endpoint) {
+        ServiceEndpointBuilder builder = new IdentityEndpointBuilder(endpoint);
+        buildEndpointResolver(builder, bucketName, key).resolveRequestEndpoint(request);
     }
 
     /**
@@ -4974,9 +5105,13 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     }
 
     private boolean shouldPerformHeadRequestToFindRegion(Request<?> request, String bucket) {
-        return bucket != null &&
+        return bucket != null && !isAccessPointArn(bucket) &&
                !(request.getOriginalRequest() instanceof CreateBucketRequest) &&
                bucketRegionShouldBeCached(request);
+    }
+
+    private boolean isAccessPointArn(String s) {
+        return s != null && s.startsWith("arn:") && s.contains(":accesspoint");
     }
 
     private boolean bucketRegionShouldBeCached(Request<?> request) {
@@ -5640,16 +5775,20 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
      * Tries to determine the service endpoint for the bucket name.
      * Returns the endpoint configured in the client if the region cannot be determined.
      */
-    URI resolveServiceEndpoint(String bucketName) {
+    URI resolveServiceEndpointFromBucketName(String bucketName) {
 
         if (getSignerRegion() != null || isSignerOverridden()) return endpoint;
 
         final String regionStr = fetchRegionFromCache(bucketName);
-        final com.amazonaws.regions.Region region = RegionUtils.getRegion(regionStr);
+        return resolveServiceEndpointFromRegion(regionStr);
+    }
+
+    private URI resolveServiceEndpointFromRegion(String regionName) {
+        final com.amazonaws.regions.Region region = RegionUtils.getRegion(regionName);
 
         if (region == null) {
             log.warn("Region information for "
-                    + regionStr
+                    + regionName
                     + " is not available. Please upgrade to latest version of AWS Java SDK");
         }
 

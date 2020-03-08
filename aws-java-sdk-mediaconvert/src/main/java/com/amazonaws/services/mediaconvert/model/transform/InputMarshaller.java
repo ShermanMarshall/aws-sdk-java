@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,8 @@ public class InputMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("supplementalImps").build();
     private static final MarshallingInfo<String> TIMECODESOURCE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("timecodeSource").build();
+    private static final MarshallingInfo<String> TIMECODESTART_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("timecodeStart").build();
     private static final MarshallingInfo<StructuredPojo> VIDEOSELECTOR_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("videoSelector").build();
 
@@ -99,6 +101,7 @@ public class InputMarshaller {
             protocolMarshaller.marshall(input.getPsiControl(), PSICONTROL_BINDING);
             protocolMarshaller.marshall(input.getSupplementalImps(), SUPPLEMENTALIMPS_BINDING);
             protocolMarshaller.marshall(input.getTimecodeSource(), TIMECODESOURCE_BINDING);
+            protocolMarshaller.marshall(input.getTimecodeStart(), TIMECODESTART_BINDING);
             protocolMarshaller.marshall(input.getVideoSelector(), VIDEOSELECTOR_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

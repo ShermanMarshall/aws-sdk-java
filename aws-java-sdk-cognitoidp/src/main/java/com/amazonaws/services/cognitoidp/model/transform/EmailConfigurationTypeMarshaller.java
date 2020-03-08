@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,10 @@ public class EmailConfigurationTypeMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ReplyToEmailAddress").build();
     private static final MarshallingInfo<String> EMAILSENDINGACCOUNT_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EmailSendingAccount").build();
+    private static final MarshallingInfo<String> FROM_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("From").build();
+    private static final MarshallingInfo<String> CONFIGURATIONSET_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ConfigurationSet").build();
 
     private static final EmailConfigurationTypeMarshaller instance = new EmailConfigurationTypeMarshaller();
 
@@ -53,6 +57,8 @@ public class EmailConfigurationTypeMarshaller {
             protocolMarshaller.marshall(emailConfigurationType.getSourceArn(), SOURCEARN_BINDING);
             protocolMarshaller.marshall(emailConfigurationType.getReplyToEmailAddress(), REPLYTOEMAILADDRESS_BINDING);
             protocolMarshaller.marshall(emailConfigurationType.getEmailSendingAccount(), EMAILSENDINGACCOUNT_BINDING);
+            protocolMarshaller.marshall(emailConfigurationType.getFrom(), FROM_BINDING);
+            protocolMarshaller.marshall(emailConfigurationType.getConfigurationSet(), CONFIGURATIONSET_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

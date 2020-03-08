@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,7 +37,7 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
     private Source source;
     /**
      * <p>
-     * Amazon Resource Name (ARN) of your code signing certificate.
+     * The Amazon Resource Name (ARN) of your code signing certificate.
      * </p>
      */
     private SigningMaterial signingMaterial;
@@ -98,7 +98,7 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
     private String statusReason;
     /**
      * <p>
-     * Name of the S3 bucket where the signed code image is saved by AWS Signer.
+     * Name of the S3 bucket where the signed code image is saved by code signing.
      * </p>
      */
     private SignedObject signedObject;
@@ -185,11 +185,11 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) of your code signing certificate.
+     * The Amazon Resource Name (ARN) of your code signing certificate.
      * </p>
      * 
      * @param signingMaterial
-     *        Amazon Resource Name (ARN) of your code signing certificate.
+     *        The Amazon Resource Name (ARN) of your code signing certificate.
      */
 
     public void setSigningMaterial(SigningMaterial signingMaterial) {
@@ -198,10 +198,10 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) of your code signing certificate.
+     * The Amazon Resource Name (ARN) of your code signing certificate.
      * </p>
      * 
-     * @return Amazon Resource Name (ARN) of your code signing certificate.
+     * @return The Amazon Resource Name (ARN) of your code signing certificate.
      */
 
     public SigningMaterial getSigningMaterial() {
@@ -210,11 +210,11 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) of your code signing certificate.
+     * The Amazon Resource Name (ARN) of your code signing certificate.
      * </p>
      * 
      * @param signingMaterial
-     *        Amazon Resource Name (ARN) of your code signing certificate.
+     *        The Amazon Resource Name (ARN) of your code signing certificate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -388,6 +388,13 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
         setSigningParameters(signingParameters);
         return this;
     }
+
+    /**
+     * Add a single SigningParameters entry
+     *
+     * @see DescribeSigningJobResult#withSigningParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public DescribeSigningJobResult addSigningParametersEntry(String key, String value) {
         if (null == this.signingParameters) {
@@ -631,11 +638,11 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Name of the S3 bucket where the signed code image is saved by AWS Signer.
+     * Name of the S3 bucket where the signed code image is saved by code signing.
      * </p>
      * 
      * @param signedObject
-     *        Name of the S3 bucket where the signed code image is saved by AWS Signer.
+     *        Name of the S3 bucket where the signed code image is saved by code signing.
      */
 
     public void setSignedObject(SignedObject signedObject) {
@@ -644,10 +651,10 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Name of the S3 bucket where the signed code image is saved by AWS Signer.
+     * Name of the S3 bucket where the signed code image is saved by code signing.
      * </p>
      * 
-     * @return Name of the S3 bucket where the signed code image is saved by AWS Signer.
+     * @return Name of the S3 bucket where the signed code image is saved by code signing.
      */
 
     public SignedObject getSignedObject() {
@@ -656,11 +663,11 @@ public class DescribeSigningJobResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Name of the S3 bucket where the signed code image is saved by AWS Signer.
+     * Name of the S3 bucket where the signed code image is saved by code signing.
      * </p>
      * 
      * @param signedObject
-     *        Name of the S3 bucket where the signed code image is saved by AWS Signer.
+     *        Name of the S3 bucket where the signed code image is saved by code signing.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

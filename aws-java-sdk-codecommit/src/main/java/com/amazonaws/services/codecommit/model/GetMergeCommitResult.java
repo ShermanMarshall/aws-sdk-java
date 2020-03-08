@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,7 +44,7 @@ public class GetMergeCommitResult extends com.amazonaws.AmazonWebServiceResult<c
     /**
      * <p>
      * The commit ID for the merge commit created when the source branch was merged into the destination branch. If the
-     * fast-forward merge strategy was used, no merge commit exists.
+     * fast-forward merge strategy was used, there is no merge commit.
      * </p>
      */
     private String mergedCommitId;
@@ -172,12 +172,12 @@ public class GetMergeCommitResult extends com.amazonaws.AmazonWebServiceResult<c
     /**
      * <p>
      * The commit ID for the merge commit created when the source branch was merged into the destination branch. If the
-     * fast-forward merge strategy was used, no merge commit exists.
+     * fast-forward merge strategy was used, there is no merge commit.
      * </p>
      * 
      * @param mergedCommitId
      *        The commit ID for the merge commit created when the source branch was merged into the destination branch.
-     *        If the fast-forward merge strategy was used, no merge commit exists.
+     *        If the fast-forward merge strategy was used, there is no merge commit.
      */
 
     public void setMergedCommitId(String mergedCommitId) {
@@ -187,11 +187,11 @@ public class GetMergeCommitResult extends com.amazonaws.AmazonWebServiceResult<c
     /**
      * <p>
      * The commit ID for the merge commit created when the source branch was merged into the destination branch. If the
-     * fast-forward merge strategy was used, no merge commit exists.
+     * fast-forward merge strategy was used, there is no merge commit.
      * </p>
      * 
      * @return The commit ID for the merge commit created when the source branch was merged into the destination branch.
-     *         If the fast-forward merge strategy was used, no merge commit exists.
+     *         If the fast-forward merge strategy was used, there is no merge commit.
      */
 
     public String getMergedCommitId() {
@@ -201,12 +201,12 @@ public class GetMergeCommitResult extends com.amazonaws.AmazonWebServiceResult<c
     /**
      * <p>
      * The commit ID for the merge commit created when the source branch was merged into the destination branch. If the
-     * fast-forward merge strategy was used, no merge commit exists.
+     * fast-forward merge strategy was used, there is no merge commit.
      * </p>
      * 
      * @param mergedCommitId
      *        The commit ID for the merge commit created when the source branch was merged into the destination branch.
-     *        If the fast-forward merge strategy was used, no merge commit exists.
+     *        If the fast-forward merge strategy was used, there is no merge commit.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

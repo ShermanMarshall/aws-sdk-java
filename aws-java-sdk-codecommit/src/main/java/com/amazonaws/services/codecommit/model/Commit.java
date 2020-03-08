@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class Commit implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The full SHA of the specified commit.
+     * The full SHA ID of the specified commit.
      * </p>
      */
     private String commitId;
@@ -74,18 +74,18 @@ public class Commit implements Serializable, Cloneable, StructuredPojo {
     private UserInfo committer;
     /**
      * <p>
-     * Any additional data associated with the specified commit.
+     * Any other data associated with the specified commit.
      * </p>
      */
     private String additionalData;
 
     /**
      * <p>
-     * The full SHA of the specified commit.
+     * The full SHA ID of the specified commit.
      * </p>
      * 
      * @param commitId
-     *        The full SHA of the specified commit.
+     *        The full SHA ID of the specified commit.
      */
 
     public void setCommitId(String commitId) {
@@ -94,10 +94,10 @@ public class Commit implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The full SHA of the specified commit.
+     * The full SHA ID of the specified commit.
      * </p>
      * 
-     * @return The full SHA of the specified commit.
+     * @return The full SHA ID of the specified commit.
      */
 
     public String getCommitId() {
@@ -106,11 +106,11 @@ public class Commit implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The full SHA of the specified commit.
+     * The full SHA ID of the specified commit.
      * </p>
      * 
      * @param commitId
-     *        The full SHA of the specified commit.
+     *        The full SHA ID of the specified commit.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -396,11 +396,11 @@ public class Commit implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Any additional data associated with the specified commit.
+     * Any other data associated with the specified commit.
      * </p>
      * 
      * @param additionalData
-     *        Any additional data associated with the specified commit.
+     *        Any other data associated with the specified commit.
      */
 
     public void setAdditionalData(String additionalData) {
@@ -409,10 +409,10 @@ public class Commit implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Any additional data associated with the specified commit.
+     * Any other data associated with the specified commit.
      * </p>
      * 
-     * @return Any additional data associated with the specified commit.
+     * @return Any other data associated with the specified commit.
      */
 
     public String getAdditionalData() {
@@ -421,11 +421,11 @@ public class Commit implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Any additional data associated with the specified commit.
+     * Any other data associated with the specified commit.
      * </p>
      * 
      * @param additionalData
-     *        Any additional data associated with the specified commit.
+     *        Any other data associated with the specified commit.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

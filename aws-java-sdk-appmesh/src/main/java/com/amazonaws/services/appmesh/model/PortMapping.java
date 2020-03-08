@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing a virtual node or virtual router listener port mapping.
+ * An object that represents a port mapping.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/PortMapping" target="_top">AWS API
@@ -36,7 +36,7 @@ public class PortMapping implements Serializable, Cloneable, StructuredPojo {
     private Integer port;
     /**
      * <p>
-     * The protocol used for the port mapping.
+     * The protocol used for the port mapping. Specify one protocol.
      * </p>
      */
     private String protocol;
@@ -83,11 +83,11 @@ public class PortMapping implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The protocol used for the port mapping.
+     * The protocol used for the port mapping. Specify one protocol.
      * </p>
      * 
      * @param protocol
-     *        The protocol used for the port mapping.
+     *        The protocol used for the port mapping. Specify one protocol.
      * @see PortProtocol
      */
 
@@ -97,10 +97,10 @@ public class PortMapping implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The protocol used for the port mapping.
+     * The protocol used for the port mapping. Specify one protocol.
      * </p>
      * 
-     * @return The protocol used for the port mapping.
+     * @return The protocol used for the port mapping. Specify one protocol.
      * @see PortProtocol
      */
 
@@ -110,11 +110,11 @@ public class PortMapping implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The protocol used for the port mapping.
+     * The protocol used for the port mapping. Specify one protocol.
      * </p>
      * 
      * @param protocol
-     *        The protocol used for the port mapping.
+     *        The protocol used for the port mapping. Specify one protocol.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PortProtocol
      */
@@ -126,11 +126,11 @@ public class PortMapping implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The protocol used for the port mapping.
+     * The protocol used for the port mapping. Specify one protocol.
      * </p>
      * 
      * @param protocol
-     *        The protocol used for the port mapping.
+     *        The protocol used for the port mapping. Specify one protocol.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PortProtocol
      */

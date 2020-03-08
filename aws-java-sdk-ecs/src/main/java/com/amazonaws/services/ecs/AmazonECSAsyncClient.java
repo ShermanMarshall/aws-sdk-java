@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -256,6 +256,39 @@ public class AmazonECSAsyncClient extends AmazonECSClient implements AmazonECSAs
      */
     public ExecutorService getExecutorService() {
         return executorService;
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateCapacityProviderResult> createCapacityProviderAsync(CreateCapacityProviderRequest request) {
+
+        return createCapacityProviderAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateCapacityProviderResult> createCapacityProviderAsync(final CreateCapacityProviderRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateCapacityProviderRequest, CreateCapacityProviderResult> asyncHandler) {
+        final CreateCapacityProviderRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateCapacityProviderResult>() {
+            @Override
+            public CreateCapacityProviderResult call() throws Exception {
+                CreateCapacityProviderResult result = null;
+
+                try {
+                    result = executeCreateCapacityProvider(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
     }
 
     @Override
@@ -596,6 +629,39 @@ public class AmazonECSAsyncClient extends AmazonECSClient implements AmazonECSAs
 
                 try {
                     result = executeDeregisterTaskDefinition(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCapacityProvidersResult> describeCapacityProvidersAsync(DescribeCapacityProvidersRequest request) {
+
+        return describeCapacityProvidersAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCapacityProvidersResult> describeCapacityProvidersAsync(final DescribeCapacityProvidersRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeCapacityProvidersRequest, DescribeCapacityProvidersResult> asyncHandler) {
+        final DescribeCapacityProvidersRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeCapacityProvidersResult>() {
+            @Override
+            public DescribeCapacityProvidersResult call() throws Exception {
+                DescribeCapacityProvidersResult result = null;
+
+                try {
+                    result = executeDescribeCapacityProviders(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1406,6 +1472,39 @@ public class AmazonECSAsyncClient extends AmazonECSClient implements AmazonECSAs
 
                 try {
                     result = executePutAttributes(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutClusterCapacityProvidersResult> putClusterCapacityProvidersAsync(PutClusterCapacityProvidersRequest request) {
+
+        return putClusterCapacityProvidersAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutClusterCapacityProvidersResult> putClusterCapacityProvidersAsync(final PutClusterCapacityProvidersRequest request,
+            final com.amazonaws.handlers.AsyncHandler<PutClusterCapacityProvidersRequest, PutClusterCapacityProvidersResult> asyncHandler) {
+        final PutClusterCapacityProvidersRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<PutClusterCapacityProvidersResult>() {
+            @Override
+            public PutClusterCapacityProvidersResult call() throws Exception {
+                PutClusterCapacityProvidersResult result = null;
+
+                try {
+                    result = executePutClusterCapacityProviders(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

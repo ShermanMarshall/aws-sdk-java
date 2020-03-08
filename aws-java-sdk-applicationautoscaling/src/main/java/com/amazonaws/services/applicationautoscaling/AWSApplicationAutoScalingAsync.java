@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -67,6 +67,16 @@ import com.amazonaws.services.applicationautoscaling.model.*;
  * <li>
  * <p>
  * Custom resources provided by your own applications or services
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon Comprehend document classification endpoints
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Lambda function provisioned concurrency
  * </p>
  * </li>
  * </ul>
@@ -465,8 +475,8 @@ public interface AWSApplicationAutoScalingAsync extends AWSApplicationAutoScalin
      * Multiple scaling policies can be in force at the same time for the same scalable target. You can have one or more
      * target tracking scaling policies, one or more step scaling policies, or both. However, there is a chance that
      * multiple policies could conflict, instructing the scalable target to scale out or in at the same time.
-     * Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale in and
-     * scale out. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent,
+     * Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale out and
+     * scale in. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent,
      * and the current capacity is 10, Application Auto Scaling uses the policy with the highest calculated capacity
      * (200% of 10 = 20) and scales out to 30.
      * </p>
@@ -505,8 +515,8 @@ public interface AWSApplicationAutoScalingAsync extends AWSApplicationAutoScalin
      * Multiple scaling policies can be in force at the same time for the same scalable target. You can have one or more
      * target tracking scaling policies, one or more step scaling policies, or both. However, there is a chance that
      * multiple policies could conflict, instructing the scalable target to scale out or in at the same time.
-     * Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale in and
-     * scale out. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent,
+     * Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale out and
+     * scale in. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent,
      * and the current capacity is 10, Application Auto Scaling uses the policy with the highest calculated capacity
      * (200% of 10 = 20) and scales out to 30.
      * </p>

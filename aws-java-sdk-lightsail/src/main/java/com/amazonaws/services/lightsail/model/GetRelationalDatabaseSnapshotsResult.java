@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,7 +32,14 @@ public class GetRelationalDatabaseSnapshotsResult extends com.amazonaws.AmazonWe
     private java.util.List<RelationalDatabaseSnapshot> relationalDatabaseSnapshots;
     /**
      * <p>
-     * A token used for advancing to the next page of results from your get relational database snapshots request.
+     * The token to advance to the next page of resutls from your request.
+     * </p>
+     * <p>
+     * A next page token is not returned if there are no more results to display.
+     * </p>
+     * <p>
+     * To get the next page of results, perform another <code>GetRelationalDatabaseSnapshots</code> request and specify
+     * the next page token using the <code>pageToken</code> parameter.
      * </p>
      */
     private String nextPageToken;
@@ -109,12 +116,24 @@ public class GetRelationalDatabaseSnapshotsResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A token used for advancing to the next page of results from your get relational database snapshots request.
+     * The token to advance to the next page of resutls from your request.
+     * </p>
+     * <p>
+     * A next page token is not returned if there are no more results to display.
+     * </p>
+     * <p>
+     * To get the next page of results, perform another <code>GetRelationalDatabaseSnapshots</code> request and specify
+     * the next page token using the <code>pageToken</code> parameter.
      * </p>
      * 
      * @param nextPageToken
-     *        A token used for advancing to the next page of results from your get relational database snapshots
-     *        request.
+     *        The token to advance to the next page of resutls from your request.</p>
+     *        <p>
+     *        A next page token is not returned if there are no more results to display.
+     *        </p>
+     *        <p>
+     *        To get the next page of results, perform another <code>GetRelationalDatabaseSnapshots</code> request and
+     *        specify the next page token using the <code>pageToken</code> parameter.
      */
 
     public void setNextPageToken(String nextPageToken) {
@@ -123,11 +142,23 @@ public class GetRelationalDatabaseSnapshotsResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A token used for advancing to the next page of results from your get relational database snapshots request.
+     * The token to advance to the next page of resutls from your request.
+     * </p>
+     * <p>
+     * A next page token is not returned if there are no more results to display.
+     * </p>
+     * <p>
+     * To get the next page of results, perform another <code>GetRelationalDatabaseSnapshots</code> request and specify
+     * the next page token using the <code>pageToken</code> parameter.
      * </p>
      * 
-     * @return A token used for advancing to the next page of results from your get relational database snapshots
-     *         request.
+     * @return The token to advance to the next page of resutls from your request.</p>
+     *         <p>
+     *         A next page token is not returned if there are no more results to display.
+     *         </p>
+     *         <p>
+     *         To get the next page of results, perform another <code>GetRelationalDatabaseSnapshots</code> request and
+     *         specify the next page token using the <code>pageToken</code> parameter.
      */
 
     public String getNextPageToken() {
@@ -136,12 +167,24 @@ public class GetRelationalDatabaseSnapshotsResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * A token used for advancing to the next page of results from your get relational database snapshots request.
+     * The token to advance to the next page of resutls from your request.
+     * </p>
+     * <p>
+     * A next page token is not returned if there are no more results to display.
+     * </p>
+     * <p>
+     * To get the next page of results, perform another <code>GetRelationalDatabaseSnapshots</code> request and specify
+     * the next page token using the <code>pageToken</code> parameter.
      * </p>
      * 
      * @param nextPageToken
-     *        A token used for advancing to the next page of results from your get relational database snapshots
-     *        request.
+     *        The token to advance to the next page of resutls from your request.</p>
+     *        <p>
+     *        A next page token is not returned if there are no more results to display.
+     *        </p>
+     *        <p>
+     *        To get the next page of results, perform another <code>GetRelationalDatabaseSnapshots</code> request and
+     *        specify the next page token using the <code>pageToken</code> parameter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

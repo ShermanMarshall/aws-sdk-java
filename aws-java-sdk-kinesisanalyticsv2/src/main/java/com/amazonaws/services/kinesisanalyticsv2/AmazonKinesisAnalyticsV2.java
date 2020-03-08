@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -202,6 +202,46 @@ public interface AmazonKinesisAnalyticsV2 {
      *      target="_top">AWS API Documentation</a>
      */
     AddApplicationReferenceDataSourceResult addApplicationReferenceDataSource(AddApplicationReferenceDataSourceRequest addApplicationReferenceDataSourceRequest);
+
+    /**
+     * <p>
+     * Adds a Virtual Private Cloud (VPC) configuration to the application. Applications can use VPCs to store and
+     * access resources securely.
+     * </p>
+     * <p>
+     * Note the following about VPC configurations for Kinesis Data Analytics applications:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * VPC configurations are not supported for SQL applications.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * When a VPC is added to a Kinesis Data Analytics application, the application can no longer be accessed from the
+     * Internet directly. To enable Internet access to the application, add an Internet gateway to your VPC.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param addApplicationVpcConfigurationRequest
+     * @return Result of the AddApplicationVpcConfiguration operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Specified application can't be found.
+     * @throws ResourceInUseException
+     *         The application is not available for this operation.
+     * @throws InvalidArgumentException
+     *         The specified input parameter value is not valid.
+     * @throws ConcurrentModificationException
+     *         Exception thrown as a result of concurrent modifications to an application. This error can be the result
+     *         of attempting to modify an application without using the current application ID.
+     * @sample AmazonKinesisAnalyticsV2.AddApplicationVpcConfiguration
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/AddApplicationVpcConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AddApplicationVpcConfigurationResult addApplicationVpcConfiguration(AddApplicationVpcConfigurationRequest addApplicationVpcConfigurationRequest);
 
     /**
      * <p>
@@ -425,6 +465,29 @@ public interface AmazonKinesisAnalyticsV2 {
 
     /**
      * <p>
+     * Removes a VPC configuration from a Kinesis Data Analytics application.
+     * </p>
+     * 
+     * @param deleteApplicationVpcConfigurationRequest
+     * @return Result of the DeleteApplicationVpcConfiguration operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         Specified application can't be found.
+     * @throws ResourceInUseException
+     *         The application is not available for this operation.
+     * @throws InvalidArgumentException
+     *         The specified input parameter value is not valid.
+     * @throws ConcurrentModificationException
+     *         Exception thrown as a result of concurrent modifications to an application. This error can be the result
+     *         of attempting to modify an application without using the current application ID.
+     * @sample AmazonKinesisAnalyticsV2.DeleteApplicationVpcConfiguration
+     * @see <a
+     *      href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/DeleteApplicationVpcConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteApplicationVpcConfigurationResult deleteApplicationVpcConfiguration(DeleteApplicationVpcConfigurationRequest deleteApplicationVpcConfigurationRequest);
+
+    /**
+     * <p>
      * Returns information about a specific Amazon Kinesis Data Analytics application.
      * </p>
      * <p>
@@ -539,7 +602,8 @@ public interface AmazonKinesisAnalyticsV2 {
 
     /**
      * <p>
-     * Retrieves the list of key-value tags assigned to the application.
+     * Retrieves the list of key-value tags assigned to the application. For more information, see <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using Tagging</a>.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -608,7 +672,8 @@ public interface AmazonKinesisAnalyticsV2 {
     /**
      * <p>
      * Adds one or more key-value tags to a Kinesis Analytics application. Note that the maximum number of application
-     * tags includes system tags. The maximum number of user-defined application tags is 50.
+     * tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see
+     * <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using Tagging</a>.
      * </p>
      * 
      * @param tagResourceRequest
@@ -634,7 +699,8 @@ public interface AmazonKinesisAnalyticsV2 {
 
     /**
      * <p>
-     * Removes one or more tags from a Kinesis Analytics application.
+     * Removes one or more tags from a Kinesis Analytics application. For more information, see <a
+     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html">Using Tagging</a>.
      * </p>
      * 
      * @param untagResourceRequest

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -162,9 +162,148 @@ public interface AmazonEKSAsync extends AmazonEKS {
 
     /**
      * <p>
+     * Creates an AWS Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a
+     * cluster to be able to run pods on Fargate.
+     * </p>
+     * <p>
+     * The Fargate profile allows an administrator to declare which pods run on Fargate and specify which pods run on
+     * which Fargate profile. This declaration is done through the profile’s selectors. Each profile can have up to five
+     * selectors that contain a namespace and labels. A namespace is required for every selector. The label field
+     * consists of multiple optional key-value pairs. Pods that match the selectors are scheduled on Fargate. If a
+     * to-be-scheduled pod matches any of the selectors in the Fargate profile, then that pod is run on Fargate.
+     * </p>
+     * <p>
+     * When you create a Fargate profile, you must specify a pod execution role to use with the pods that are scheduled
+     * with the profile. This role is added to the cluster's Kubernetes <a
+     * href="https://kubernetes.io/docs/admin/authorization/rbac/">Role Based Access Control</a> (RBAC) for
+     * authorization so that the <code>kubelet</code> that is running on the Fargate infrastructure can register with
+     * your Amazon EKS cluster so that it can appear in your cluster as a node. The pod execution role also provides IAM
+     * permissions to the Fargate infrastructure to allow read access to Amazon ECR image repositories. For more
+     * information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">Pod Execution
+     * Role</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * <p>
+     * Fargate profiles are immutable. However, you can create a new updated profile to replace an existing profile and
+     * then delete the original after the updated profile has finished creating.
+     * </p>
+     * <p>
+     * If any Fargate profiles in a cluster are in the <code>DELETING</code> status, you must wait for that Fargate
+     * profile to finish deleting before you can create any other profiles in that cluster.
+     * </p>
+     * <p>
+     * For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html">AWS
+     * Fargate Profile</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * 
+     * @param createFargateProfileRequest
+     * @return A Java Future containing the result of the CreateFargateProfile operation returned by the service.
+     * @sample AmazonEKSAsync.CreateFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/CreateFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateFargateProfileResult> createFargateProfileAsync(CreateFargateProfileRequest createFargateProfileRequest);
+
+    /**
+     * <p>
+     * Creates an AWS Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a
+     * cluster to be able to run pods on Fargate.
+     * </p>
+     * <p>
+     * The Fargate profile allows an administrator to declare which pods run on Fargate and specify which pods run on
+     * which Fargate profile. This declaration is done through the profile’s selectors. Each profile can have up to five
+     * selectors that contain a namespace and labels. A namespace is required for every selector. The label field
+     * consists of multiple optional key-value pairs. Pods that match the selectors are scheduled on Fargate. If a
+     * to-be-scheduled pod matches any of the selectors in the Fargate profile, then that pod is run on Fargate.
+     * </p>
+     * <p>
+     * When you create a Fargate profile, you must specify a pod execution role to use with the pods that are scheduled
+     * with the profile. This role is added to the cluster's Kubernetes <a
+     * href="https://kubernetes.io/docs/admin/authorization/rbac/">Role Based Access Control</a> (RBAC) for
+     * authorization so that the <code>kubelet</code> that is running on the Fargate infrastructure can register with
+     * your Amazon EKS cluster so that it can appear in your cluster as a node. The pod execution role also provides IAM
+     * permissions to the Fargate infrastructure to allow read access to Amazon ECR image repositories. For more
+     * information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">Pod Execution
+     * Role</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * <p>
+     * Fargate profiles are immutable. However, you can create a new updated profile to replace an existing profile and
+     * then delete the original after the updated profile has finished creating.
+     * </p>
+     * <p>
+     * If any Fargate profiles in a cluster are in the <code>DELETING</code> status, you must wait for that Fargate
+     * profile to finish deleting before you can create any other profiles in that cluster.
+     * </p>
+     * <p>
+     * For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html">AWS
+     * Fargate Profile</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * 
+     * @param createFargateProfileRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateFargateProfile operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.CreateFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/CreateFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateFargateProfileResult> createFargateProfileAsync(CreateFargateProfileRequest createFargateProfileRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateFargateProfileRequest, CreateFargateProfileResult> asyncHandler);
+
+    /**
+     * <p>
+     * Creates a managed worker node group for an Amazon EKS cluster. You can only create a node group for your cluster
+     * that is equal to the current Kubernetes version for the cluster. All node groups are created with the latest AMI
+     * release version for the respective minor Kubernetes version of the cluster.
+     * </p>
+     * <p>
+     * An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and associated Amazon EC2 instances that are
+     * managed by AWS for an Amazon EKS cluster. Each node group uses a version of the Amazon EKS-optimized Amazon Linux
+     * 2 AMI. For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">Managed Node Groups</a> in the
+     * <i>Amazon EKS User Guide</i>.
+     * </p>
+     * 
+     * @param createNodegroupRequest
+     * @return A Java Future containing the result of the CreateNodegroup operation returned by the service.
+     * @sample AmazonEKSAsync.CreateNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/CreateNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateNodegroupResult> createNodegroupAsync(CreateNodegroupRequest createNodegroupRequest);
+
+    /**
+     * <p>
+     * Creates a managed worker node group for an Amazon EKS cluster. You can only create a node group for your cluster
+     * that is equal to the current Kubernetes version for the cluster. All node groups are created with the latest AMI
+     * release version for the respective minor Kubernetes version of the cluster.
+     * </p>
+     * <p>
+     * An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and associated Amazon EC2 instances that are
+     * managed by AWS for an Amazon EKS cluster. Each node group uses a version of the Amazon EKS-optimized Amazon Linux
+     * 2 AMI. For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">Managed Node Groups</a> in the
+     * <i>Amazon EKS User Guide</i>.
+     * </p>
+     * 
+     * @param createNodegroupRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateNodegroup operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.CreateNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/CreateNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<CreateNodegroupResult> createNodegroupAsync(CreateNodegroupRequest createNodegroupRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateNodegroupRequest, CreateNodegroupResult> asyncHandler);
+
+    /**
+     * <p>
      * Deletes the Amazon EKS cluster control plane.
      * </p>
-     * <note>
      * <p>
      * If you have active services in your cluster that are associated with a load balancer, you must delete those
      * services before deleting the cluster so that the load balancers are deleted properly. Otherwise, you can have
@@ -172,7 +311,10 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * href="https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Deleting a Cluster</a> in the
      * <i>Amazon EKS User Guide</i>.
      * </p>
-     * </note>
+     * <p>
+     * If you have managed node groups or Fargate profiles attached to the cluster, you must delete them first. For more
+     * information, see <a>DeleteNodegroup</a> and<a>DeleteFargateProfile</a>.
+     * </p>
      * 
      * @param deleteClusterRequest
      * @return A Java Future containing the result of the DeleteCluster operation returned by the service.
@@ -186,7 +328,6 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * <p>
      * Deletes the Amazon EKS cluster control plane.
      * </p>
-     * <note>
      * <p>
      * If you have active services in your cluster that are associated with a load balancer, you must delete those
      * services before deleting the cluster so that the load balancers are deleted properly. Otherwise, you can have
@@ -194,7 +335,10 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * href="https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Deleting a Cluster</a> in the
      * <i>Amazon EKS User Guide</i>.
      * </p>
-     * </note>
+     * <p>
+     * If you have managed node groups or Fargate profiles attached to the cluster, you must delete them first. For more
+     * information, see <a>DeleteNodegroup</a> and<a>DeleteFargateProfile</a>.
+     * </p>
      * 
      * @param deleteClusterRequest
      * @param asyncHandler
@@ -208,6 +352,86 @@ public interface AmazonEKSAsync extends AmazonEKS {
      */
     java.util.concurrent.Future<DeleteClusterResult> deleteClusterAsync(DeleteClusterRequest deleteClusterRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteClusterRequest, DeleteClusterResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes an AWS Fargate profile.
+     * </p>
+     * <p>
+     * When you delete a Fargate profile, any pods running on Fargate that were created with the profile are deleted. If
+     * those pods match another Fargate profile, then they are scheduled on Fargate with that profile. If they no longer
+     * match any Fargate profiles, then they are not scheduled on Fargate and they may remain in a pending state.
+     * </p>
+     * <p>
+     * Only one Fargate profile in a cluster can be in the <code>DELETING</code> status at a time. You must wait for a
+     * Fargate profile to finish deleting before you can delete any other profiles in that cluster.
+     * </p>
+     * 
+     * @param deleteFargateProfileRequest
+     * @return A Java Future containing the result of the DeleteFargateProfile operation returned by the service.
+     * @sample AmazonEKSAsync.DeleteFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DeleteFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteFargateProfileResult> deleteFargateProfileAsync(DeleteFargateProfileRequest deleteFargateProfileRequest);
+
+    /**
+     * <p>
+     * Deletes an AWS Fargate profile.
+     * </p>
+     * <p>
+     * When you delete a Fargate profile, any pods running on Fargate that were created with the profile are deleted. If
+     * those pods match another Fargate profile, then they are scheduled on Fargate with that profile. If they no longer
+     * match any Fargate profiles, then they are not scheduled on Fargate and they may remain in a pending state.
+     * </p>
+     * <p>
+     * Only one Fargate profile in a cluster can be in the <code>DELETING</code> status at a time. You must wait for a
+     * Fargate profile to finish deleting before you can delete any other profiles in that cluster.
+     * </p>
+     * 
+     * @param deleteFargateProfileRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteFargateProfile operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.DeleteFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DeleteFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteFargateProfileResult> deleteFargateProfileAsync(DeleteFargateProfileRequest deleteFargateProfileRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteFargateProfileRequest, DeleteFargateProfileResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes an Amazon EKS node group for a cluster.
+     * </p>
+     * 
+     * @param deleteNodegroupRequest
+     * @return A Java Future containing the result of the DeleteNodegroup operation returned by the service.
+     * @sample AmazonEKSAsync.DeleteNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DeleteNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteNodegroupResult> deleteNodegroupAsync(DeleteNodegroupRequest deleteNodegroupRequest);
+
+    /**
+     * <p>
+     * Deletes an Amazon EKS node group for a cluster.
+     * </p>
+     * 
+     * @param deleteNodegroupRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteNodegroup operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.DeleteNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DeleteNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteNodegroupResult> deleteNodegroupAsync(DeleteNodegroupRequest deleteNodegroupRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteNodegroupRequest, DeleteNodegroupResult> asyncHandler);
 
     /**
      * <p>
@@ -266,7 +490,69 @@ public interface AmazonEKSAsync extends AmazonEKS {
 
     /**
      * <p>
-     * Returns descriptive information about an update against your Amazon EKS cluster.
+     * Returns descriptive information about an AWS Fargate profile.
+     * </p>
+     * 
+     * @param describeFargateProfileRequest
+     * @return A Java Future containing the result of the DescribeFargateProfile operation returned by the service.
+     * @sample AmazonEKSAsync.DescribeFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeFargateProfileResult> describeFargateProfileAsync(DescribeFargateProfileRequest describeFargateProfileRequest);
+
+    /**
+     * <p>
+     * Returns descriptive information about an AWS Fargate profile.
+     * </p>
+     * 
+     * @param describeFargateProfileRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeFargateProfile operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.DescribeFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeFargateProfileResult> describeFargateProfileAsync(DescribeFargateProfileRequest describeFargateProfileRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeFargateProfileRequest, DescribeFargateProfileResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns descriptive information about an Amazon EKS node group.
+     * </p>
+     * 
+     * @param describeNodegroupRequest
+     * @return A Java Future containing the result of the DescribeNodegroup operation returned by the service.
+     * @sample AmazonEKSAsync.DescribeNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeNodegroupResult> describeNodegroupAsync(DescribeNodegroupRequest describeNodegroupRequest);
+
+    /**
+     * <p>
+     * Returns descriptive information about an Amazon EKS node group.
+     * </p>
+     * 
+     * @param describeNodegroupRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeNodegroup operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.DescribeNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeNodegroupResult> describeNodegroupAsync(DescribeNodegroupRequest describeNodegroupRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeNodegroupRequest, DescribeNodegroupResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group.
      * </p>
      * <p>
      * When the status of the update is <code>Succeeded</code>, the update is complete. If an update fails, the status
@@ -283,7 +569,7 @@ public interface AmazonEKSAsync extends AmazonEKS {
 
     /**
      * <p>
-     * Returns descriptive information about an update against your Amazon EKS cluster.
+     * Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group.
      * </p>
      * <p>
      * When the status of the update is <code>Succeeded</code>, the update is complete. If an update fails, the status
@@ -336,7 +622,103 @@ public interface AmazonEKSAsync extends AmazonEKS {
 
     /**
      * <p>
-     * Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region.
+     * Lists the AWS Fargate profiles associated with the specified cluster in your AWS account in the specified Region.
+     * </p>
+     * 
+     * @param listFargateProfilesRequest
+     * @return A Java Future containing the result of the ListFargateProfiles operation returned by the service.
+     * @sample AmazonEKSAsync.ListFargateProfiles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListFargateProfiles" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListFargateProfilesResult> listFargateProfilesAsync(ListFargateProfilesRequest listFargateProfilesRequest);
+
+    /**
+     * <p>
+     * Lists the AWS Fargate profiles associated with the specified cluster in your AWS account in the specified Region.
+     * </p>
+     * 
+     * @param listFargateProfilesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListFargateProfiles operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.ListFargateProfiles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListFargateProfiles" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListFargateProfilesResult> listFargateProfilesAsync(ListFargateProfilesRequest listFargateProfilesRequest,
+            com.amazonaws.handlers.AsyncHandler<ListFargateProfilesRequest, ListFargateProfilesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Lists the Amazon EKS node groups associated with the specified cluster in your AWS account in the specified
+     * Region.
+     * </p>
+     * 
+     * @param listNodegroupsRequest
+     * @return A Java Future containing the result of the ListNodegroups operation returned by the service.
+     * @sample AmazonEKSAsync.ListNodegroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListNodegroups" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListNodegroupsResult> listNodegroupsAsync(ListNodegroupsRequest listNodegroupsRequest);
+
+    /**
+     * <p>
+     * Lists the Amazon EKS node groups associated with the specified cluster in your AWS account in the specified
+     * Region.
+     * </p>
+     * 
+     * @param listNodegroupsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListNodegroups operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.ListNodegroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListNodegroups" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListNodegroupsResult> listNodegroupsAsync(ListNodegroupsRequest listNodegroupsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListNodegroupsRequest, ListNodegroupsResult> asyncHandler);
+
+    /**
+     * <p>
+     * List the tags for an Amazon EKS resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AmazonEKSAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * List the tags for an Amazon EKS resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account, in the
+     * specified Region.
      * </p>
      * 
      * @param listUpdatesRequest
@@ -349,7 +731,8 @@ public interface AmazonEKSAsync extends AmazonEKS {
 
     /**
      * <p>
-     * Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region.
+     * Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account, in the
+     * specified Region.
      * </p>
      * 
      * @param listUpdatesRequest
@@ -364,6 +747,76 @@ public interface AmazonEKSAsync extends AmazonEKS {
      */
     java.util.concurrent.Future<ListUpdatesResult> listUpdatesAsync(ListUpdatesRequest listUpdatesRequest,
             com.amazonaws.handlers.AsyncHandler<ListUpdatesRequest, ListUpdatesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Associates the specified tags to a resource with the specified <code>resourceArn</code>. If existing tags on a
+     * resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags
+     * associated with that resource are deleted as well. Tags that you create for Amazon EKS resources do not propagate
+     * to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that
+     * tag does not automatically propagate to the subnets and worker nodes associated with the cluster.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AmazonEKSAsync.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Associates the specified tags to a resource with the specified <code>resourceArn</code>. If existing tags on a
+     * resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags
+     * associated with that resource are deleted as well. Tags that you create for Amazon EKS resources do not propagate
+     * to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that
+     * tag does not automatically propagate to the subnets and worker nodes associated with the cluster.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes specified tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AmazonEKSAsync.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
+     * Deletes specified tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler);
 
     /**
      * <p>
@@ -470,6 +923,10 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * complete (either <code>Failed</code> or <code>Successful</code>), the cluster status moves to <code>Active</code>
      * .
      * </p>
+     * <p>
+     * If your cluster has managed node groups attached to it, all of your node groups’ Kubernetes versions must match
+     * the cluster’s Kubernetes version in order to update the cluster to a new Kubernetes version.
+     * </p>
      * 
      * @param updateClusterVersionRequest
      * @return A Java Future containing the result of the UpdateClusterVersion operation returned by the service.
@@ -491,6 +948,10 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * complete (either <code>Failed</code> or <code>Successful</code>), the cluster status moves to <code>Active</code>
      * .
      * </p>
+     * <p>
+     * If your cluster has managed node groups attached to it, all of your node groups’ Kubernetes versions must match
+     * the cluster’s Kubernetes version in order to update the cluster to a new Kubernetes version.
+     * </p>
      * 
      * @param updateClusterVersionRequest
      * @param asyncHandler
@@ -504,5 +965,105 @@ public interface AmazonEKSAsync extends AmazonEKS {
      */
     java.util.concurrent.Future<UpdateClusterVersionResult> updateClusterVersionAsync(UpdateClusterVersionRequest updateClusterVersionRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateClusterVersionRequest, UpdateClusterVersionResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates an Amazon EKS managed node group configuration. Your node group continues to function during the update.
+     * The response output includes an update ID that you can use to track the status of your node group update with the
+     * <a>DescribeUpdate</a> API operation. Currently you can update the Kubernetes labels for a node group or the
+     * scaling configuration.
+     * </p>
+     * 
+     * @param updateNodegroupConfigRequest
+     * @return A Java Future containing the result of the UpdateNodegroupConfig operation returned by the service.
+     * @sample AmazonEKSAsync.UpdateNodegroupConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupConfig" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateNodegroupConfigResult> updateNodegroupConfigAsync(UpdateNodegroupConfigRequest updateNodegroupConfigRequest);
+
+    /**
+     * <p>
+     * Updates an Amazon EKS managed node group configuration. Your node group continues to function during the update.
+     * The response output includes an update ID that you can use to track the status of your node group update with the
+     * <a>DescribeUpdate</a> API operation. Currently you can update the Kubernetes labels for a node group or the
+     * scaling configuration.
+     * </p>
+     * 
+     * @param updateNodegroupConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateNodegroupConfig operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.UpdateNodegroupConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupConfig" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateNodegroupConfigResult> updateNodegroupConfigAsync(UpdateNodegroupConfigRequest updateNodegroupConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateNodegroupConfigRequest, UpdateNodegroupConfigResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates the Kubernetes version or AMI version of an Amazon EKS managed node group.
+     * </p>
+     * <p>
+     * You can update to the latest available AMI version of a node group's current Kubernetes version by not specifying
+     * a Kubernetes version in the request. You can update to the latest AMI version of your cluster's current
+     * Kubernetes version by specifying your cluster's Kubernetes version in the request. For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">Amazon EKS-Optimized Linux
+     * AMI Versions</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * <p>
+     * You cannot roll back a node group to an earlier Kubernetes version or AMI version.
+     * </p>
+     * <p>
+     * When a node in a managed node group is terminated due to a scaling action or update, the pods in that node are
+     * drained first. Amazon EKS attempts to drain the nodes gracefully and will fail if it is unable to do so. You can
+     * <code>force</code> the update if Amazon EKS is unable to drain the nodes as a result of a pod disruption budget
+     * issue.
+     * </p>
+     * 
+     * @param updateNodegroupVersionRequest
+     * @return A Java Future containing the result of the UpdateNodegroupVersion operation returned by the service.
+     * @sample AmazonEKSAsync.UpdateNodegroupVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupVersion" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateNodegroupVersionResult> updateNodegroupVersionAsync(UpdateNodegroupVersionRequest updateNodegroupVersionRequest);
+
+    /**
+     * <p>
+     * Updates the Kubernetes version or AMI version of an Amazon EKS managed node group.
+     * </p>
+     * <p>
+     * You can update to the latest available AMI version of a node group's current Kubernetes version by not specifying
+     * a Kubernetes version in the request. You can update to the latest AMI version of your cluster's current
+     * Kubernetes version by specifying your cluster's Kubernetes version in the request. For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">Amazon EKS-Optimized Linux
+     * AMI Versions</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * <p>
+     * You cannot roll back a node group to an earlier Kubernetes version or AMI version.
+     * </p>
+     * <p>
+     * When a node in a managed node group is terminated due to a scaling action or update, the pods in that node are
+     * drained first. Amazon EKS attempts to drain the nodes gracefully and will fail if it is unable to do so. You can
+     * <code>force</code> the update if Amazon EKS is unable to drain the nodes as a result of a pod disruption budget
+     * issue.
+     * </p>
+     * 
+     * @param updateNodegroupVersionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateNodegroupVersion operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.UpdateNodegroupVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupVersion" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateNodegroupVersionResult> updateNodegroupVersionAsync(UpdateNodegroupVersionRequest updateNodegroupVersionRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateNodegroupVersionRequest, UpdateNodegroupVersionResult> asyncHandler);
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class DesiredPlayerSession implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * Unique identifier for a player to associate with the player session.
+     * A unique identifier for a player to associate with the player session.
      * </p>
      */
     private String playerId;
@@ -45,11 +45,11 @@ public class DesiredPlayerSession implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * Unique identifier for a player to associate with the player session.
+     * A unique identifier for a player to associate with the player session.
      * </p>
      * 
      * @param playerId
-     *        Unique identifier for a player to associate with the player session.
+     *        A unique identifier for a player to associate with the player session.
      */
 
     public void setPlayerId(String playerId) {
@@ -58,10 +58,10 @@ public class DesiredPlayerSession implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * Unique identifier for a player to associate with the player session.
+     * A unique identifier for a player to associate with the player session.
      * </p>
      * 
-     * @return Unique identifier for a player to associate with the player session.
+     * @return A unique identifier for a player to associate with the player session.
      */
 
     public String getPlayerId() {
@@ -70,11 +70,11 @@ public class DesiredPlayerSession implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * Unique identifier for a player to associate with the player session.
+     * A unique identifier for a player to associate with the player session.
      * </p>
      * 
      * @param playerId
-     *        Unique identifier for a player to associate with the player session.
+     *        A unique identifier for a player to associate with the player session.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class RouteMarshaller {
 
+    private static final MarshallingInfo<Boolean> APIGATEWAYMANAGED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("apiGatewayManaged").build();
     private static final MarshallingInfo<Boolean> APIKEYREQUIRED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("apiKeyRequired").build();
     private static final MarshallingInfo<List> AUTHORIZATIONSCOPES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
@@ -70,6 +72,7 @@ public class RouteMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(route.getApiGatewayManaged(), APIGATEWAYMANAGED_BINDING);
             protocolMarshaller.marshall(route.getApiKeyRequired(), APIKEYREQUIRED_BINDING);
             protocolMarshaller.marshall(route.getAuthorizationScopes(), AUTHORIZATIONSCOPES_BINDING);
             protocolMarshaller.marshall(route.getAuthorizationType(), AUTHORIZATIONTYPE_BINDING);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -147,6 +147,7 @@ public class ApplicationComponent implements Serializable, Cloneable, Structured
      * 
      * @param tier
      *        The stack tier of the application component.
+     * @see Tier
      */
 
     public void setTier(String tier) {
@@ -159,6 +160,7 @@ public class ApplicationComponent implements Serializable, Cloneable, Structured
      * </p>
      * 
      * @return The stack tier of the application component.
+     * @see Tier
      */
 
     public String getTier() {
@@ -173,10 +175,27 @@ public class ApplicationComponent implements Serializable, Cloneable, Structured
      * @param tier
      *        The stack tier of the application component.
      * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Tier
      */
 
     public ApplicationComponent withTier(String tier) {
         setTier(tier);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The stack tier of the application component.
+     * </p>
+     * 
+     * @param tier
+     *        The stack tier of the application component.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Tier
+     */
+
+    public ApplicationComponent withTier(Tier tier) {
+        this.tier = tier.toString();
         return this;
     }
 

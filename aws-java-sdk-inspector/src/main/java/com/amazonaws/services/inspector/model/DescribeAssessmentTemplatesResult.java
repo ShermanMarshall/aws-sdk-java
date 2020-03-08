@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -145,6 +145,13 @@ public class DescribeAssessmentTemplatesResult extends com.amazonaws.AmazonWebSe
         setFailedItems(failedItems);
         return this;
     }
+
+    /**
+     * Add a single FailedItems entry
+     *
+     * @see DescribeAssessmentTemplatesResult#withFailedItems
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public DescribeAssessmentTemplatesResult addFailedItemsEntry(String key, FailedItemDetails value) {
         if (null == this.failedItems) {

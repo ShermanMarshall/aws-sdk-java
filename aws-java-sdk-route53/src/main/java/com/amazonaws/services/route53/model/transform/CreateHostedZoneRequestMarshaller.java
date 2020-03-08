@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -61,36 +61,40 @@ public class CreateHostedZoneRequestMarshaller implements Marshaller<Request<Cre
                     xmlWriter.startElement("Name").value(createHostedZoneRequest.getName()).endElement();
                 }
 
-                VPC vPC = createHostedZoneRequest.getVPC();
-                if (vPC != null) {
-                    xmlWriter.startElement("VPC");
+                {
+                    VPC vPC = createHostedZoneRequest.getVPC();
+                    if (vPC != null) {
+                        xmlWriter.startElement("VPC");
 
-                    if (vPC.getVPCRegion() != null) {
-                        xmlWriter.startElement("VPCRegion").value(vPC.getVPCRegion()).endElement();
-                    }
+                        if (vPC.getVPCRegion() != null) {
+                            xmlWriter.startElement("VPCRegion").value(vPC.getVPCRegion()).endElement();
+                        }
 
-                    if (vPC.getVPCId() != null) {
-                        xmlWriter.startElement("VPCId").value(vPC.getVPCId()).endElement();
+                        if (vPC.getVPCId() != null) {
+                            xmlWriter.startElement("VPCId").value(vPC.getVPCId()).endElement();
+                        }
+                        xmlWriter.endElement();
                     }
-                    xmlWriter.endElement();
                 }
 
                 if (createHostedZoneRequest.getCallerReference() != null) {
                     xmlWriter.startElement("CallerReference").value(createHostedZoneRequest.getCallerReference()).endElement();
                 }
 
-                HostedZoneConfig hostedZoneConfig = createHostedZoneRequest.getHostedZoneConfig();
-                if (hostedZoneConfig != null) {
-                    xmlWriter.startElement("HostedZoneConfig");
+                {
+                    HostedZoneConfig hostedZoneConfig = createHostedZoneRequest.getHostedZoneConfig();
+                    if (hostedZoneConfig != null) {
+                        xmlWriter.startElement("HostedZoneConfig");
 
-                    if (hostedZoneConfig.getComment() != null) {
-                        xmlWriter.startElement("Comment").value(hostedZoneConfig.getComment()).endElement();
-                    }
+                        if (hostedZoneConfig.getComment() != null) {
+                            xmlWriter.startElement("Comment").value(hostedZoneConfig.getComment()).endElement();
+                        }
 
-                    if (hostedZoneConfig.getPrivateZone() != null) {
-                        xmlWriter.startElement("PrivateZone").value(hostedZoneConfig.getPrivateZone()).endElement();
+                        if (hostedZoneConfig.getPrivateZone() != null) {
+                            xmlWriter.startElement("PrivateZone").value(hostedZoneConfig.getPrivateZone()).endElement();
+                        }
+                        xmlWriter.endElement();
                     }
-                    xmlWriter.endElement();
                 }
 
                 if (createHostedZoneRequest.getDelegationSetId() != null) {

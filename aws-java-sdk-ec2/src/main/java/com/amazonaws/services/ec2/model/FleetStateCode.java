@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -24,8 +24,8 @@ public enum FleetStateCode {
     Active("active"),
     Deleted("deleted"),
     Failed("failed"),
-    DeletedRunning("deleted-running"),
-    DeletedTerminating("deleted-terminating"),
+    Deleted_running("deleted_running"),
+    Deleted_terminating("deleted_terminating"),
     Modifying("modifying");
 
     private String value;

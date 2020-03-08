@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -95,6 +95,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      * <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
+     * </p>
+     * </li>
      * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
@@ -175,6 +180,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      * <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return One or more filters.</p>
@@ -240,6 +250,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      *         <li>
      *         <p>
      *         <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
      *         </p>
      *         </li>
      */
@@ -318,6 +333,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      * <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param filters
@@ -383,6 +403,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      *        <li>
      *        <p>
      *        <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
      *        </p>
      *        </li>
      */
@@ -463,6 +488,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      * <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -533,6 +563,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      *        <li>
      *        <p>
      *        <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -615,6 +650,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      * <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param filters
@@ -680,6 +720,11 @@ public class DescribeVpnConnectionsRequest extends AmazonWebServiceRequest imple
      *        <li>
      *        <p>
      *        <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>transit-gateway-id</code> - The ID of a transit gateway associated with the VPN connection.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

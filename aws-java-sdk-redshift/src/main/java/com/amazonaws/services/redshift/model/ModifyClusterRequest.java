@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,15 +56,13 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * parameter.
      * </p>
      * <p>
-     * When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to
-     * read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a
-     * temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the
-     * new connection is complete, the original access permissions for the cluster are restored. You can use
-     * <a>DescribeResize</a> to track the progress of the resize request.
+     * For more information about resizing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in Amazon
+     * Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * <p>
      * Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> |
-     * <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code>
+     * <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> | <code>ra3.16xlarge</code>
      * </p>
      */
     private String nodeType;
@@ -74,11 +72,9 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * parameter.
      * </p>
      * <p>
-     * When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to
-     * read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a
-     * temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the
-     * new connection is complete, the original access permissions for the cluster are restored. You can use
-     * <a>DescribeResize</a> to track the progress of the resize request.
+     * For more information about resizing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in Amazon
+     * Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * <p>
      * Valid Values: Integer greater than <code>0</code>.
@@ -366,10 +362,13 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String maintenanceTrackName;
     /**
      * <p>
-     * Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     * <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If you
-     * don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we will use
-     * legacy encryption if you specify that the cluster is encrypted.
+     * Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for the
+     * <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If you don't
+     * provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use legacy encryption if
+     * you specify that the cluster is encrypted.
+     * </p>
+     * <p>
+     * If the value is not encrypted (false), then the cluster is decrypted.
      * </p>
      */
     private Boolean encrypted;
@@ -533,30 +532,26 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * parameter.
      * </p>
      * <p>
-     * When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to
-     * read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a
-     * temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the
-     * new connection is complete, the original access permissions for the cluster are restored. You can use
-     * <a>DescribeResize</a> to track the progress of the resize request.
+     * For more information about resizing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in Amazon
+     * Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * <p>
      * Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> |
-     * <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code>
+     * <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> | <code>ra3.16xlarge</code>
      * </p>
      * 
      * @param nodeType
      *        The new node type of the cluster. If you specify a new node type, you must also specify the number of
      *        nodes parameter.</p>
      *        <p>
-     *        When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster
-     *        to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there
-     *        will be a temporary outage while the old cluster is deleted and your connection is switched to the new
-     *        cluster. When the new connection is complete, the original access permissions for the cluster are
-     *        restored. You can use <a>DescribeResize</a> to track the progress of the resize request.
+     *        For more information about resizing clusters, go to <a
+     *        href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in
+     *        Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      *        </p>
      *        <p>
      *        Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> |
-     *        <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code>
+     *        <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> | <code>ra3.16xlarge</code>
      */
 
     public void setNodeType(String nodeType) {
@@ -569,29 +564,25 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * parameter.
      * </p>
      * <p>
-     * When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to
-     * read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a
-     * temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the
-     * new connection is complete, the original access permissions for the cluster are restored. You can use
-     * <a>DescribeResize</a> to track the progress of the resize request.
+     * For more information about resizing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in Amazon
+     * Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * <p>
      * Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> |
-     * <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code>
+     * <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> | <code>ra3.16xlarge</code>
      * </p>
      * 
      * @return The new node type of the cluster. If you specify a new node type, you must also specify the number of
      *         nodes parameter.</p>
      *         <p>
-     *         When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster
-     *         to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there
-     *         will be a temporary outage while the old cluster is deleted and your connection is switched to the new
-     *         cluster. When the new connection is complete, the original access permissions for the cluster are
-     *         restored. You can use <a>DescribeResize</a> to track the progress of the resize request.
+     *         For more information about resizing clusters, go to <a
+     *         href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in
+     *         Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      *         </p>
      *         <p>
      *         Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> |
-     *         <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code>
+     *         <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> | <code>ra3.16xlarge</code>
      */
 
     public String getNodeType() {
@@ -604,30 +595,26 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * parameter.
      * </p>
      * <p>
-     * When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to
-     * read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a
-     * temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the
-     * new connection is complete, the original access permissions for the cluster are restored. You can use
-     * <a>DescribeResize</a> to track the progress of the resize request.
+     * For more information about resizing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in Amazon
+     * Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * <p>
      * Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> |
-     * <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code>
+     * <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> | <code>ra3.16xlarge</code>
      * </p>
      * 
      * @param nodeType
      *        The new node type of the cluster. If you specify a new node type, you must also specify the number of
      *        nodes parameter.</p>
      *        <p>
-     *        When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster
-     *        to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there
-     *        will be a temporary outage while the old cluster is deleted and your connection is switched to the new
-     *        cluster. When the new connection is complete, the original access permissions for the cluster are
-     *        restored. You can use <a>DescribeResize</a> to track the progress of the resize request.
+     *        For more information about resizing clusters, go to <a
+     *        href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in
+     *        Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      *        </p>
      *        <p>
      *        Valid Values: <code>ds2.xlarge</code> | <code>ds2.8xlarge</code> | <code>dc1.large</code> |
-     *        <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code>
+     *        <code>dc1.8xlarge</code> | <code>dc2.large</code> | <code>dc2.8xlarge</code> | <code>ra3.16xlarge</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -642,11 +629,9 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * parameter.
      * </p>
      * <p>
-     * When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to
-     * read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a
-     * temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the
-     * new connection is complete, the original access permissions for the cluster are restored. You can use
-     * <a>DescribeResize</a> to track the progress of the resize request.
+     * For more information about resizing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in Amazon
+     * Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * <p>
      * Valid Values: Integer greater than <code>0</code>.
@@ -656,11 +641,9 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the
      *        node type parameter.</p>
      *        <p>
-     *        When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster
-     *        to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there
-     *        will be a temporary outage while the old cluster is deleted and your connection is switched to the new
-     *        cluster. When the new connection is complete, the original access permissions for the cluster are
-     *        restored. You can use <a>DescribeResize</a> to track the progress of the resize request.
+     *        For more information about resizing clusters, go to <a
+     *        href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in
+     *        Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      *        </p>
      *        <p>
      *        Valid Values: Integer greater than <code>0</code>.
@@ -676,11 +659,9 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * parameter.
      * </p>
      * <p>
-     * When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to
-     * read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a
-     * temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the
-     * new connection is complete, the original access permissions for the cluster are restored. You can use
-     * <a>DescribeResize</a> to track the progress of the resize request.
+     * For more information about resizing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in Amazon
+     * Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * <p>
      * Valid Values: Integer greater than <code>0</code>.
@@ -689,11 +670,9 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * @return The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the
      *         node type parameter.</p>
      *         <p>
-     *         When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster
-     *         to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there
-     *         will be a temporary outage while the old cluster is deleted and your connection is switched to the new
-     *         cluster. When the new connection is complete, the original access permissions for the cluster are
-     *         restored. You can use <a>DescribeResize</a> to track the progress of the resize request.
+     *         For more information about resizing clusters, go to <a
+     *         href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in
+     *         Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      *         </p>
      *         <p>
      *         Valid Values: Integer greater than <code>0</code>.
@@ -709,11 +688,9 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      * parameter.
      * </p>
      * <p>
-     * When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to
-     * read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a
-     * temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the
-     * new connection is complete, the original access permissions for the cluster are restored. You can use
-     * <a>DescribeResize</a> to track the progress of the resize request.
+     * For more information about resizing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in Amazon
+     * Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * <p>
      * Valid Values: Integer greater than <code>0</code>.
@@ -723,11 +700,9 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the
      *        node type parameter.</p>
      *        <p>
-     *        When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster
-     *        to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there
-     *        will be a temporary outage while the old cluster is deleted and your connection is switched to the new
-     *        cluster. When the new connection is complete, the original access permissions for the cluster are
-     *        restored. You can use <a>DescribeResize</a> to track the progress of the resize request.
+     *        For more information about resizing clusters, go to <a
+     *        href="https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html">Resizing Clusters in
+     *        Amazon Redshift</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      *        </p>
      *        <p>
      *        Valid Values: Integer greater than <code>0</code>.
@@ -2623,17 +2598,22 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     * <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If you
-     * don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we will use
-     * legacy encryption if you specify that the cluster is encrypted.
+     * Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for the
+     * <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If you don't
+     * provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use legacy encryption if
+     * you specify that the cluster is encrypted.
+     * </p>
+     * <p>
+     * If the value is not encrypted (false), then the cluster is decrypted.
      * </p>
      * 
      * @param encrypted
-     *        Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     *        <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If
-     *        you don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we
-     *        will use legacy encryption if you specify that the cluster is encrypted.
+     *        Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for
+     *        the <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If
+     *        you don't provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use
+     *        legacy encryption if you specify that the cluster is encrypted.</p>
+     *        <p>
+     *        If the value is not encrypted (false), then the cluster is decrypted.
      */
 
     public void setEncrypted(Boolean encrypted) {
@@ -2642,16 +2622,21 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     * <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If you
-     * don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we will use
-     * legacy encryption if you specify that the cluster is encrypted.
+     * Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for the
+     * <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If you don't
+     * provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use legacy encryption if
+     * you specify that the cluster is encrypted.
+     * </p>
+     * <p>
+     * If the value is not encrypted (false), then the cluster is decrypted.
      * </p>
      * 
-     * @return Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     *         <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If
-     *         you don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we
-     *         will use legacy encryption if you specify that the cluster is encrypted.
+     * @return Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for
+     *         the <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If
+     *         you don't provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use
+     *         legacy encryption if you specify that the cluster is encrypted.</p>
+     *         <p>
+     *         If the value is not encrypted (false), then the cluster is decrypted.
      */
 
     public Boolean getEncrypted() {
@@ -2660,17 +2645,22 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     * <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If you
-     * don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we will use
-     * legacy encryption if you specify that the cluster is encrypted.
+     * Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for the
+     * <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If you don't
+     * provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use legacy encryption if
+     * you specify that the cluster is encrypted.
+     * </p>
+     * <p>
+     * If the value is not encrypted (false), then the cluster is decrypted.
      * </p>
      * 
      * @param encrypted
-     *        Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     *        <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If
-     *        you don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we
-     *        will use legacy encryption if you specify that the cluster is encrypted.
+     *        Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for
+     *        the <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If
+     *        you don't provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use
+     *        legacy encryption if you specify that the cluster is encrypted.</p>
+     *        <p>
+     *        If the value is not encrypted (false), then the cluster is decrypted.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2681,16 +2671,21 @@ public class ModifyClusterRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     * <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If you
-     * don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we will use
-     * legacy encryption if you specify that the cluster is encrypted.
+     * Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for the
+     * <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If you don't
+     * provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use legacy encryption if
+     * you specify that the cluster is encrypted.
+     * </p>
+     * <p>
+     * If the value is not encrypted (false), then the cluster is decrypted.
      * </p>
      * 
-     * @return Indicates whether the cluster is encrypted. If the cluster is encrypted and you provide a value for the
-     *         <code>KmsKeyId</code> parameter, we will encrypt the cluster with the provided <code>KmsKeyId</code>. If
-     *         you don't provide a <code>KmsKeyId</code>, we will encrypt with the default key. In the China region we
-     *         will use legacy encryption if you specify that the cluster is encrypted.
+     * @return Indicates whether the cluster is encrypted. If the value is encrypted (true) and you provide a value for
+     *         the <code>KmsKeyId</code> parameter, we encrypt the cluster with the provided <code>KmsKeyId</code>. If
+     *         you don't provide a <code>KmsKeyId</code>, we encrypt with the default key. In the China region we use
+     *         legacy encryption if you specify that the cluster is encrypted.</p>
+     *         <p>
+     *         If the value is not encrypted (false), then the cluster is decrypted.
      */
 
     public Boolean isEncrypted() {

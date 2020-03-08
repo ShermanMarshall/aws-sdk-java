@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -121,8 +121,8 @@ public class GCMMessage implements Serializable, Cloneable, StructuredPojo {
     private String priority;
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value
+     * overrides all other content for the message.
      * </p>
      */
     private String rawContent;
@@ -615,6 +615,13 @@ public class GCMMessage implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single Data entry
+     *
+     * @see GCMMessage#withData
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public GCMMessage addDataEntry(String key, String value) {
         if (null == this.data) {
             this.data = new java.util.HashMap<String, String>();
@@ -879,13 +886,13 @@ public class GCMMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value
+     * overrides all other content for the message.
      * </p>
      * 
      * @param rawContent
-     *        The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *        the message.
+     *        The raw, JSON-formatted string to use as the payload for the notification message. If specified, this
+     *        value overrides all other content for the message.
      */
 
     public void setRawContent(String rawContent) {
@@ -894,12 +901,12 @@ public class GCMMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value
+     * overrides all other content for the message.
      * </p>
      * 
-     * @return The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *         the message.
+     * @return The raw, JSON-formatted string to use as the payload for the notification message. If specified, this
+     *         value overrides all other content for the message.
      */
 
     public String getRawContent() {
@@ -908,13 +915,13 @@ public class GCMMessage implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value
+     * overrides all other content for the message.
      * </p>
      * 
      * @param rawContent
-     *        The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *        the message.
+     *        The raw, JSON-formatted string to use as the payload for the notification message. If specified, this
+     *        value overrides all other content for the message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1177,6 +1184,13 @@ public class GCMMessage implements Serializable, Cloneable, StructuredPojo {
         setSubstitutions(substitutions);
         return this;
     }
+
+    /**
+     * Add a single Substitutions entry
+     *
+     * @see GCMMessage#withSubstitutions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public GCMMessage addSubstitutionsEntry(String key, java.util.List<String> value) {
         if (null == this.substitutions) {

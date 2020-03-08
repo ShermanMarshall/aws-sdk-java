@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -58,8 +58,7 @@ public class Listener implements Serializable, Cloneable {
     private java.util.List<Certificate> certificates;
     /**
      * <p>
-     * [HTTPS or TLS listener] The security policy that defines which ciphers and protocols are supported. The default
-     * is the current predefined security policy.
+     * [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
      * </p>
      */
     private String sslPolicy;
@@ -335,13 +334,11 @@ public class Listener implements Serializable, Cloneable {
 
     /**
      * <p>
-     * [HTTPS or TLS listener] The security policy that defines which ciphers and protocols are supported. The default
-     * is the current predefined security policy.
+     * [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
      * </p>
      * 
      * @param sslPolicy
-     *        [HTTPS or TLS listener] The security policy that defines which ciphers and protocols are supported. The
-     *        default is the current predefined security policy.
+     *        [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
      */
 
     public void setSslPolicy(String sslPolicy) {
@@ -350,12 +347,10 @@ public class Listener implements Serializable, Cloneable {
 
     /**
      * <p>
-     * [HTTPS or TLS listener] The security policy that defines which ciphers and protocols are supported. The default
-     * is the current predefined security policy.
+     * [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
      * </p>
      * 
-     * @return [HTTPS or TLS listener] The security policy that defines which ciphers and protocols are supported. The
-     *         default is the current predefined security policy.
+     * @return [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
      */
 
     public String getSslPolicy() {
@@ -364,13 +359,11 @@ public class Listener implements Serializable, Cloneable {
 
     /**
      * <p>
-     * [HTTPS or TLS listener] The security policy that defines which ciphers and protocols are supported. The default
-     * is the current predefined security policy.
+     * [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
      * </p>
      * 
      * @param sslPolicy
-     *        [HTTPS or TLS listener] The security policy that defines which ciphers and protocols are supported. The
-     *        default is the current predefined security policy.
+     *        [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

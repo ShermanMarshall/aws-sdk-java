@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,7 +23,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <a>StartDocumentTextDetection</a>.
  * </p>
  * <p>
- * The input document can be an image file in JPG or PNG format. It can also be a file in PDF format.
+ * The input document can be an image file in JPEG or PNG format. It can also be a file in PDF format.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/textract-2018-06-27/DocumentLocation" target="_top">AWS API

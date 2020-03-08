@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,7 +59,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic
-     * IP address per subnet.
+     * IP address per subnet if you need static IP addresses for your internet-facing load balancer. For internal load
+     * balancers, you can specify one private IP address per subnet from the IPv4 range of the subnet.
      * </p>
      */
     private java.util.List<SubnetMapping> subnetMappings;
@@ -77,8 +78,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * <p>
      * The default is an Internet-facing load balancer.
@@ -303,7 +304,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic
-     * IP address per subnet.
+     * IP address per subnet if you need static IP addresses for your internet-facing load balancer. For internal load
+     * balancers, you can specify one private IP address per subnet from the IPv4 range of the subnet.
      * </p>
      * 
      * @return The IDs of the public subnets. You can specify only one subnet per Availability Zone. You must specify
@@ -314,7 +316,9 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *         </p>
      *         <p>
      *         [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one
-     *         Elastic IP address per subnet.
+     *         Elastic IP address per subnet if you need static IP addresses for your internet-facing load balancer. For
+     *         internal load balancers, you can specify one private IP address per subnet from the IPv4 range of the
+     *         subnet.
      */
 
     public java.util.List<SubnetMapping> getSubnetMappings() {
@@ -332,7 +336,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic
-     * IP address per subnet.
+     * IP address per subnet if you need static IP addresses for your internet-facing load balancer. For internal load
+     * balancers, you can specify one private IP address per subnet from the IPv4 range of the subnet.
      * </p>
      * 
      * @param subnetMappings
@@ -344,7 +349,9 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        <p>
      *        [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one
-     *        Elastic IP address per subnet.
+     *        Elastic IP address per subnet if you need static IP addresses for your internet-facing load balancer. For
+     *        internal load balancers, you can specify one private IP address per subnet from the IPv4 range of the
+     *        subnet.
      */
 
     public void setSubnetMappings(java.util.Collection<SubnetMapping> subnetMappings) {
@@ -367,7 +374,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic
-     * IP address per subnet.
+     * IP address per subnet if you need static IP addresses for your internet-facing load balancer. For internal load
+     * balancers, you can specify one private IP address per subnet from the IPv4 range of the subnet.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -384,7 +392,9 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        <p>
      *        [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one
-     *        Elastic IP address per subnet.
+     *        Elastic IP address per subnet if you need static IP addresses for your internet-facing load balancer. For
+     *        internal load balancers, you can specify one private IP address per subnet from the IPv4 range of the
+     *        subnet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -409,7 +419,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic
-     * IP address per subnet.
+     * IP address per subnet if you need static IP addresses for your internet-facing load balancer. For internal load
+     * balancers, you can specify one private IP address per subnet from the IPv4 range of the subnet.
      * </p>
      * 
      * @param subnetMappings
@@ -421,7 +432,9 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *        </p>
      *        <p>
      *        [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one
-     *        Elastic IP address per subnet.
+     *        Elastic IP address per subnet if you need static IP addresses for your internet-facing load balancer. For
+     *        internal load balancers, you can specify one private IP address per subnet from the IPv4 range of the
+     *        subnet.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -508,8 +521,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * <p>
      * The default is an Internet-facing load balancer.
@@ -522,7 +535,7 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *        <p>
      *        The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *        balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *        balancers can only route requests from clients with access to the VPC for the load balancer.
+     *        balancers can route requests only from clients with access to the VPC for the load balancer.
      *        </p>
      *        <p>
      *        The default is an Internet-facing load balancer.
@@ -541,8 +554,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * <p>
      * The default is an Internet-facing load balancer.
@@ -554,7 +567,7 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *         <p>
      *         The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *         balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *         balancers can only route requests from clients with access to the VPC for the load balancer.
+     *         balancers can route requests only from clients with access to the VPC for the load balancer.
      *         </p>
      *         <p>
      *         The default is an Internet-facing load balancer.
@@ -573,8 +586,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * <p>
      * The default is an Internet-facing load balancer.
@@ -587,7 +600,7 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *        <p>
      *        The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *        balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *        balancers can only route requests from clients with access to the VPC for the load balancer.
+     *        balancers can route requests only from clients with access to the VPC for the load balancer.
      *        </p>
      *        <p>
      *        The default is an Internet-facing load balancer.
@@ -608,8 +621,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * <p>
      * The default is an Internet-facing load balancer.
@@ -622,7 +635,7 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *        <p>
      *        The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *        balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *        balancers can only route requests from clients with access to the VPC for the load balancer.
+     *        balancers can route requests only from clients with access to the VPC for the load balancer.
      *        </p>
      *        <p>
      *        The default is an Internet-facing load balancer.
@@ -641,8 +654,8 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * <p>
      * The default is an Internet-facing load balancer.
@@ -655,7 +668,7 @@ public class CreateLoadBalancerRequest extends com.amazonaws.AmazonWebServiceReq
      *        <p>
      *        The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *        balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *        balancers can only route requests from clients with access to the VPC for the load balancer.
+     *        balancers can route requests only from clients with access to the VPC for the load balancer.
      *        </p>
      *        <p>
      *        The default is an Internet-facing load balancer.

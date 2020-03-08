@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,6 +39,11 @@ public class AbstractAWSRoboMaker implements AWSRoboMaker {
 
     @Override
     public CancelSimulationJobResult cancelSimulationJob(CancelSimulationJobRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CancelSimulationJobBatchResult cancelSimulationJobBatch(CancelSimulationJobBatchRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -138,6 +143,11 @@ public class AbstractAWSRoboMaker implements AWSRoboMaker {
     }
 
     @Override
+    public DescribeSimulationJobBatchResult describeSimulationJobBatch(DescribeSimulationJobBatchRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListDeploymentJobsResult listDeploymentJobs(ListDeploymentJobsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -163,6 +173,11 @@ public class AbstractAWSRoboMaker implements AWSRoboMaker {
     }
 
     @Override
+    public ListSimulationJobBatchesResult listSimulationJobBatches(ListSimulationJobBatchesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListSimulationJobsResult listSimulationJobs(ListSimulationJobsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -179,6 +194,11 @@ public class AbstractAWSRoboMaker implements AWSRoboMaker {
 
     @Override
     public RestartSimulationJobResult restartSimulationJob(RestartSimulationJobRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public StartSimulationJobBatchResult startSimulationJobBatch(StartSimulationJobBatchRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -136,6 +136,11 @@ public class ProjectJsonUnmarshaller implements Unmarshaller<Project, JsonUnmars
                 if (context.testExpression("logsConfig", targetDepth)) {
                     context.nextToken();
                     project.setLogsConfig(LogsConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("fileSystemLocations", targetDepth)) {
+                    context.nextToken();
+                    project.setFileSystemLocations(new ListUnmarshaller<ProjectFileSystemLocation>(ProjectFileSystemLocationJsonUnmarshaller.getInstance())
+                            .unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

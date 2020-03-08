@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -203,6 +203,13 @@ public class TestInvokeAuthorizerRequest extends com.amazonaws.AmazonWebServiceR
         return this;
     }
 
+    /**
+     * Add a single Headers entry
+     *
+     * @see TestInvokeAuthorizerRequest#withHeaders
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public TestInvokeAuthorizerRequest addHeadersEntry(String key, String value) {
         if (null == this.headers) {
             this.headers = new java.util.HashMap<String, String>();
@@ -269,6 +276,13 @@ public class TestInvokeAuthorizerRequest extends com.amazonaws.AmazonWebServiceR
         setMultiValueHeaders(multiValueHeaders);
         return this;
     }
+
+    /**
+     * Add a single MultiValueHeaders entry
+     *
+     * @see TestInvokeAuthorizerRequest#withMultiValueHeaders
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public TestInvokeAuthorizerRequest addMultiValueHeadersEntry(String key, java.util.List<String> value) {
         if (null == this.multiValueHeaders) {
@@ -417,6 +431,13 @@ public class TestInvokeAuthorizerRequest extends com.amazonaws.AmazonWebServiceR
         return this;
     }
 
+    /**
+     * Add a single StageVariables entry
+     *
+     * @see TestInvokeAuthorizerRequest#withStageVariables
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public TestInvokeAuthorizerRequest addStageVariablesEntry(String key, String value) {
         if (null == this.stageVariables) {
             this.stageVariables = new java.util.HashMap<String, String>();
@@ -477,6 +498,13 @@ public class TestInvokeAuthorizerRequest extends com.amazonaws.AmazonWebServiceR
         setAdditionalContext(additionalContext);
         return this;
     }
+
+    /**
+     * Add a single AdditionalContext entry
+     *
+     * @see TestInvokeAuthorizerRequest#withAdditionalContext
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public TestInvokeAuthorizerRequest addAdditionalContextEntry(String key, String value) {
         if (null == this.additionalContext) {

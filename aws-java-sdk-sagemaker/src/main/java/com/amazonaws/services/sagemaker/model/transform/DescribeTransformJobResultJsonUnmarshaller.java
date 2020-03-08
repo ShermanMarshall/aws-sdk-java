@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -113,9 +113,17 @@ public class DescribeTransformJobResultJsonUnmarshaller implements Unmarshaller<
                     context.nextToken();
                     describeTransformJobResult.setLabelingJobArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("AutoMLJobArn", targetDepth)) {
+                    context.nextToken();
+                    describeTransformJobResult.setAutoMLJobArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("DataProcessing", targetDepth)) {
                     context.nextToken();
                     describeTransformJobResult.setDataProcessing(DataProcessingJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("ExperimentConfig", targetDepth)) {
+                    context.nextToken();
+                    describeTransformJobResult.setExperimentConfig(ExperimentConfigJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

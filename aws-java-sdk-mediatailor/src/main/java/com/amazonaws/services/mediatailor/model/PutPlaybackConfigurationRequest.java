@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,10 +49,22 @@ public class PutPlaybackConfigurationRequest extends com.amazonaws.AmazonWebServ
     private DashConfigurationForPut dashConfiguration;
     /**
      * <p>
+     * The configuration for pre-roll ad insertion.
+     * </p>
+     */
+    private LivePreRollConfiguration livePreRollConfiguration;
+    /**
+     * <p>
      * The identifier for the playback configuration.
      * </p>
      */
     private String name;
+    /**
+     * <p>
+     * The maximum duration of underfilled ad time (in seconds) allowed in an ad break.
+     * </p>
+     */
+    private Integer personalizationThresholdSeconds;
     /**
      * <p>
      * The URL for a high-quality video asset to transcode and use to fill in time that's not used by ads. AWS Elemental
@@ -229,6 +241,46 @@ public class PutPlaybackConfigurationRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
+     * The configuration for pre-roll ad insertion.
+     * </p>
+     * 
+     * @param livePreRollConfiguration
+     *        The configuration for pre-roll ad insertion.
+     */
+
+    public void setLivePreRollConfiguration(LivePreRollConfiguration livePreRollConfiguration) {
+        this.livePreRollConfiguration = livePreRollConfiguration;
+    }
+
+    /**
+     * <p>
+     * The configuration for pre-roll ad insertion.
+     * </p>
+     * 
+     * @return The configuration for pre-roll ad insertion.
+     */
+
+    public LivePreRollConfiguration getLivePreRollConfiguration() {
+        return this.livePreRollConfiguration;
+    }
+
+    /**
+     * <p>
+     * The configuration for pre-roll ad insertion.
+     * </p>
+     * 
+     * @param livePreRollConfiguration
+     *        The configuration for pre-roll ad insertion.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutPlaybackConfigurationRequest withLivePreRollConfiguration(LivePreRollConfiguration livePreRollConfiguration) {
+        setLivePreRollConfiguration(livePreRollConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
      * The identifier for the playback configuration.
      * </p>
      * 
@@ -264,6 +316,46 @@ public class PutPlaybackConfigurationRequest extends com.amazonaws.AmazonWebServ
 
     public PutPlaybackConfigurationRequest withName(String name) {
         setName(name);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The maximum duration of underfilled ad time (in seconds) allowed in an ad break.
+     * </p>
+     * 
+     * @param personalizationThresholdSeconds
+     *        The maximum duration of underfilled ad time (in seconds) allowed in an ad break.
+     */
+
+    public void setPersonalizationThresholdSeconds(Integer personalizationThresholdSeconds) {
+        this.personalizationThresholdSeconds = personalizationThresholdSeconds;
+    }
+
+    /**
+     * <p>
+     * The maximum duration of underfilled ad time (in seconds) allowed in an ad break.
+     * </p>
+     * 
+     * @return The maximum duration of underfilled ad time (in seconds) allowed in an ad break.
+     */
+
+    public Integer getPersonalizationThresholdSeconds() {
+        return this.personalizationThresholdSeconds;
+    }
+
+    /**
+     * <p>
+     * The maximum duration of underfilled ad time (in seconds) allowed in an ad break.
+     * </p>
+     * 
+     * @param personalizationThresholdSeconds
+     *        The maximum duration of underfilled ad time (in seconds) allowed in an ad break.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutPlaybackConfigurationRequest withPersonalizationThresholdSeconds(Integer personalizationThresholdSeconds) {
+        setPersonalizationThresholdSeconds(personalizationThresholdSeconds);
         return this;
     }
 
@@ -367,6 +459,13 @@ public class PutPlaybackConfigurationRequest extends com.amazonaws.AmazonWebServ
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see PutPlaybackConfigurationRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public PutPlaybackConfigurationRequest addTagsEntry(String key, String value) {
         if (null == this.tags) {
@@ -502,8 +601,12 @@ public class PutPlaybackConfigurationRequest extends com.amazonaws.AmazonWebServ
             sb.append("CdnConfiguration: ").append(getCdnConfiguration()).append(",");
         if (getDashConfiguration() != null)
             sb.append("DashConfiguration: ").append(getDashConfiguration()).append(",");
+        if (getLivePreRollConfiguration() != null)
+            sb.append("LivePreRollConfiguration: ").append(getLivePreRollConfiguration()).append(",");
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
+        if (getPersonalizationThresholdSeconds() != null)
+            sb.append("PersonalizationThresholdSeconds: ").append(getPersonalizationThresholdSeconds()).append(",");
         if (getSlateAdUrl() != null)
             sb.append("SlateAdUrl: ").append(getSlateAdUrl()).append(",");
         if (getTags() != null)
@@ -538,9 +641,18 @@ public class PutPlaybackConfigurationRequest extends com.amazonaws.AmazonWebServ
             return false;
         if (other.getDashConfiguration() != null && other.getDashConfiguration().equals(this.getDashConfiguration()) == false)
             return false;
+        if (other.getLivePreRollConfiguration() == null ^ this.getLivePreRollConfiguration() == null)
+            return false;
+        if (other.getLivePreRollConfiguration() != null && other.getLivePreRollConfiguration().equals(this.getLivePreRollConfiguration()) == false)
+            return false;
         if (other.getName() == null ^ this.getName() == null)
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
+            return false;
+        if (other.getPersonalizationThresholdSeconds() == null ^ this.getPersonalizationThresholdSeconds() == null)
+            return false;
+        if (other.getPersonalizationThresholdSeconds() != null
+                && other.getPersonalizationThresholdSeconds().equals(this.getPersonalizationThresholdSeconds()) == false)
             return false;
         if (other.getSlateAdUrl() == null ^ this.getSlateAdUrl() == null)
             return false;
@@ -569,7 +681,9 @@ public class PutPlaybackConfigurationRequest extends com.amazonaws.AmazonWebServ
         hashCode = prime * hashCode + ((getAdDecisionServerUrl() == null) ? 0 : getAdDecisionServerUrl().hashCode());
         hashCode = prime * hashCode + ((getCdnConfiguration() == null) ? 0 : getCdnConfiguration().hashCode());
         hashCode = prime * hashCode + ((getDashConfiguration() == null) ? 0 : getDashConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getLivePreRollConfiguration() == null) ? 0 : getLivePreRollConfiguration().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getPersonalizationThresholdSeconds() == null) ? 0 : getPersonalizationThresholdSeconds().hashCode());
         hashCode = prime * hashCode + ((getSlateAdUrl() == null) ? 0 : getSlateAdUrl().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getTranscodeProfileName() == null) ? 0 : getTranscodeProfileName().hashCode());

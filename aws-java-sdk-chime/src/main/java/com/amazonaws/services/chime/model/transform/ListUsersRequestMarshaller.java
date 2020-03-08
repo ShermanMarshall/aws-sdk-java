@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,8 @@ public class ListUsersRequestMarshaller {
             .marshallLocationName("accountId").build();
     private static final MarshallingInfo<String> USEREMAIL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("user-email").build();
+    private static final MarshallingInfo<String> USERTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("user-type").build();
     private static final MarshallingInfo<Integer> MAXRESULTS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("max-results").build();
     private static final MarshallingInfo<String> NEXTTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -54,6 +56,7 @@ public class ListUsersRequestMarshaller {
         try {
             protocolMarshaller.marshall(listUsersRequest.getAccountId(), ACCOUNTID_BINDING);
             protocolMarshaller.marshall(listUsersRequest.getUserEmail(), USEREMAIL_BINDING);
+            protocolMarshaller.marshall(listUsersRequest.getUserType(), USERTYPE_BINDING);
             protocolMarshaller.marshall(listUsersRequest.getMaxResults(), MAXRESULTS_BINDING);
             protocolMarshaller.marshall(listUsersRequest.getNextToken(), NEXTTOKEN_BINDING);
         } catch (Exception e) {

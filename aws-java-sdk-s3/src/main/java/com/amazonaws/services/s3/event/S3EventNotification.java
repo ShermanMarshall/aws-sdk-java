@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon Technologies, Inc.
+ * Copyright 2014-2020 Amazon Technologies, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
  */
 package com.amazonaws.services.s3.event;
 
+import com.amazonaws.services.s3.model.S3Event;
 import java.util.List;
 
 import com.amazonaws.util.SdkHttpUtils;
@@ -399,6 +400,11 @@ public class S3EventNotification {
 
         public String getEventName() {
             return eventName;
+        }
+
+        @JsonIgnore
+        public S3Event getEventNameAsEnum() {
+            return S3Event.fromValue(eventName);
         }
 
         public String getEventSource() {

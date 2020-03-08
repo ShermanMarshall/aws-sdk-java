@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,8 +37,8 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a
-     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket
-     * Naming Requirements</a>.
+     * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3
+     * Bucket Naming Requirements</a>.
      * </p>
      */
     private String s3BucketName;
@@ -46,14 +46,14 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file
      * delivery. For more information, see <a
-     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
+     * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
      * CloudTrail Log Files</a>.The maximum length is 200 characters.
      * </p>
      */
     private String s3KeyPrefix;
     /**
      * <p>
-     * This field is deprecated. Use SnsTopicARN.
+     * This field is no longer in use. Use SnsTopicARN.
      * </p>
      */
     @Deprecated
@@ -76,7 +76,7 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
     private Boolean includeGlobalServiceEvents;
     /**
      * <p>
-     * Specifies whether the trail belongs only to one region or exists in all regions.
+     * Specifies whether the trail exists only in one region or exists in all regions.
      * </p>
      */
     private Boolean isMultiRegionTrail;
@@ -132,6 +132,12 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
     private Boolean hasCustomEventSelectors;
     /**
      * <p>
+     * Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     * </p>
+     */
+    private Boolean hasInsightSelectors;
+    /**
+     * <p>
      * Specifies whether the trail is an organization trail.
      * </p>
      */
@@ -180,14 +186,14 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a
-     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket
-     * Naming Requirements</a>.
+     * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3
+     * Bucket Naming Requirements</a>.
      * </p>
      * 
      * @param s3BucketName
      *        Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a
-     *        href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3
-     *        Bucket Naming Requirements</a>.
+     *        href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon
+     *        S3 Bucket Naming Requirements</a>.
      */
 
     public void setS3BucketName(String s3BucketName) {
@@ -197,12 +203,12 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a
-     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket
-     * Naming Requirements</a>.
+     * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3
+     * Bucket Naming Requirements</a>.
      * </p>
      * 
      * @return Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a
-     *         href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon
+     *         href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon
      *         S3 Bucket Naming Requirements</a>.
      */
 
@@ -213,14 +219,14 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a
-     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3 Bucket
-     * Naming Requirements</a>.
+     * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3
+     * Bucket Naming Requirements</a>.
      * </p>
      * 
      * @param s3BucketName
      *        Name of the Amazon S3 bucket into which CloudTrail delivers your trail files. See <a
-     *        href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon S3
-     *        Bucket Naming Requirements</a>.
+     *        href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html">Amazon
+     *        S3 Bucket Naming Requirements</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -233,14 +239,14 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file
      * delivery. For more information, see <a
-     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
+     * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
      * CloudTrail Log Files</a>.The maximum length is 200 characters.
      * </p>
      * 
      * @param s3KeyPrefix
      *        Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log
      *        file delivery. For more information, see <a
-     *        href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
+     *        href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
      *        Your CloudTrail Log Files</a>.The maximum length is 200 characters.
      */
 
@@ -252,13 +258,13 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file
      * delivery. For more information, see <a
-     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
+     * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
      * CloudTrail Log Files</a>.The maximum length is 200 characters.
      * </p>
      * 
      * @return Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log
      *         file delivery. For more information, see <a
-     *         href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
+     *         href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
      *         Your CloudTrail Log Files</a>.The maximum length is 200 characters.
      */
 
@@ -270,14 +276,14 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log file
      * delivery. For more information, see <a
-     * href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
+     * href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding Your
      * CloudTrail Log Files</a>.The maximum length is 200 characters.
      * </p>
      * 
      * @param s3KeyPrefix
      *        Specifies the Amazon S3 key prefix that comes after the name of the bucket you have designated for log
      *        file delivery. For more information, see <a
-     *        href="http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
+     *        href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-find-log-files.html">Finding
      *        Your CloudTrail Log Files</a>.The maximum length is 200 characters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -289,11 +295,11 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * This field is deprecated. Use SnsTopicARN.
+     * This field is no longer in use. Use SnsTopicARN.
      * </p>
      * 
      * @param snsTopicName
-     *        This field is deprecated. Use SnsTopicARN.
+     *        This field is no longer in use. Use SnsTopicARN.
      */
     @Deprecated
     public void setSnsTopicName(String snsTopicName) {
@@ -302,10 +308,10 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * This field is deprecated. Use SnsTopicARN.
+     * This field is no longer in use. Use SnsTopicARN.
      * </p>
      * 
-     * @return This field is deprecated. Use SnsTopicARN.
+     * @return This field is no longer in use. Use SnsTopicARN.
      */
     @Deprecated
     public String getSnsTopicName() {
@@ -314,11 +320,11 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * This field is deprecated. Use SnsTopicARN.
+     * This field is no longer in use. Use SnsTopicARN.
      * </p>
      * 
      * @param snsTopicName
-     *        This field is deprecated. Use SnsTopicARN.
+     *        This field is no longer in use. Use SnsTopicARN.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
     @Deprecated
@@ -444,11 +450,11 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the trail belongs only to one region or exists in all regions.
+     * Specifies whether the trail exists only in one region or exists in all regions.
      * </p>
      * 
      * @param isMultiRegionTrail
-     *        Specifies whether the trail belongs only to one region or exists in all regions.
+     *        Specifies whether the trail exists only in one region or exists in all regions.
      */
 
     public void setIsMultiRegionTrail(Boolean isMultiRegionTrail) {
@@ -457,10 +463,10 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the trail belongs only to one region or exists in all regions.
+     * Specifies whether the trail exists only in one region or exists in all regions.
      * </p>
      * 
-     * @return Specifies whether the trail belongs only to one region or exists in all regions.
+     * @return Specifies whether the trail exists only in one region or exists in all regions.
      */
 
     public Boolean getIsMultiRegionTrail() {
@@ -469,11 +475,11 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the trail belongs only to one region or exists in all regions.
+     * Specifies whether the trail exists only in one region or exists in all regions.
      * </p>
      * 
      * @param isMultiRegionTrail
-     *        Specifies whether the trail belongs only to one region or exists in all regions.
+     *        Specifies whether the trail exists only in one region or exists in all regions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -484,10 +490,10 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Specifies whether the trail belongs only to one region or exists in all regions.
+     * Specifies whether the trail exists only in one region or exists in all regions.
      * </p>
      * 
-     * @return Specifies whether the trail belongs only to one region or exists in all regions.
+     * @return Specifies whether the trail exists only in one region or exists in all regions.
      */
 
     public Boolean isMultiRegionTrail() {
@@ -842,6 +848,58 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     * </p>
+     * 
+     * @param hasInsightSelectors
+     *        Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     */
+
+    public void setHasInsightSelectors(Boolean hasInsightSelectors) {
+        this.hasInsightSelectors = hasInsightSelectors;
+    }
+
+    /**
+     * <p>
+     * Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     * </p>
+     * 
+     * @return Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     */
+
+    public Boolean getHasInsightSelectors() {
+        return this.hasInsightSelectors;
+    }
+
+    /**
+     * <p>
+     * Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     * </p>
+     * 
+     * @param hasInsightSelectors
+     *        Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Trail withHasInsightSelectors(Boolean hasInsightSelectors) {
+        setHasInsightSelectors(hasInsightSelectors);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     * </p>
+     * 
+     * @return Specifies whether a trail has insight types specified in an <code>InsightSelector</code> list.
+     */
+
+    public Boolean isHasInsightSelectors() {
+        return this.hasInsightSelectors;
+    }
+
+    /**
+     * <p>
      * Specifies whether the trail is an organization trail.
      * </p>
      * 
@@ -932,6 +990,8 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
             sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
         if (getHasCustomEventSelectors() != null)
             sb.append("HasCustomEventSelectors: ").append(getHasCustomEventSelectors()).append(",");
+        if (getHasInsightSelectors() != null)
+            sb.append("HasInsightSelectors: ").append(getHasInsightSelectors()).append(",");
         if (getIsOrganizationTrail() != null)
             sb.append("IsOrganizationTrail: ").append(getIsOrganizationTrail());
         sb.append("}");
@@ -1004,6 +1064,10 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getHasCustomEventSelectors() != null && other.getHasCustomEventSelectors().equals(this.getHasCustomEventSelectors()) == false)
             return false;
+        if (other.getHasInsightSelectors() == null ^ this.getHasInsightSelectors() == null)
+            return false;
+        if (other.getHasInsightSelectors() != null && other.getHasInsightSelectors().equals(this.getHasInsightSelectors()) == false)
+            return false;
         if (other.getIsOrganizationTrail() == null ^ this.getIsOrganizationTrail() == null)
             return false;
         if (other.getIsOrganizationTrail() != null && other.getIsOrganizationTrail().equals(this.getIsOrganizationTrail()) == false)
@@ -1030,6 +1094,7 @@ public class Trail implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getCloudWatchLogsRoleArn() == null) ? 0 : getCloudWatchLogsRoleArn().hashCode());
         hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
         hashCode = prime * hashCode + ((getHasCustomEventSelectors() == null) ? 0 : getHasCustomEventSelectors().hashCode());
+        hashCode = prime * hashCode + ((getHasInsightSelectors() == null) ? 0 : getHasInsightSelectors().hashCode());
         hashCode = prime * hashCode + ((getIsOrganizationTrail() == null) ? 0 : getIsOrganizationTrail().hashCode());
         return hashCode;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,6 +52,165 @@ import com.amazonaws.services.costexplorer.model.*;
 public interface AWSCostExplorerAsync extends AWSCostExplorer {
 
     /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Creates a new Cost Category with the requested name and rules.
+     * </p>
+     * 
+     * @param createCostCategoryDefinitionRequest
+     * @return A Java Future containing the result of the CreateCostCategoryDefinition operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsync.CreateCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/CreateCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateCostCategoryDefinitionResult> createCostCategoryDefinitionAsync(
+            CreateCostCategoryDefinitionRequest createCostCategoryDefinitionRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Creates a new Cost Category with the requested name and rules.
+     * </p>
+     * 
+     * @param createCostCategoryDefinitionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateCostCategoryDefinition operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsyncHandler.CreateCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/CreateCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateCostCategoryDefinitionResult> createCostCategoryDefinitionAsync(
+            CreateCostCategoryDefinitionRequest createCostCategoryDefinitionRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateCostCategoryDefinitionRequest, CreateCostCategoryDefinitionResult> asyncHandler);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Deletes a Cost Category. Expenses from this month going forward will no longer be categorized with this Cost
+     * Category.
+     * </p>
+     * 
+     * @param deleteCostCategoryDefinitionRequest
+     * @return A Java Future containing the result of the DeleteCostCategoryDefinition operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsync.DeleteCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/DeleteCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteCostCategoryDefinitionResult> deleteCostCategoryDefinitionAsync(
+            DeleteCostCategoryDefinitionRequest deleteCostCategoryDefinitionRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Deletes a Cost Category. Expenses from this month going forward will no longer be categorized with this Cost
+     * Category.
+     * </p>
+     * 
+     * @param deleteCostCategoryDefinitionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteCostCategoryDefinition operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsyncHandler.DeleteCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/DeleteCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteCostCategoryDefinitionResult> deleteCostCategoryDefinitionAsync(
+            DeleteCostCategoryDefinitionRequest deleteCostCategoryDefinitionRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteCostCategoryDefinitionRequest, DeleteCostCategoryDefinitionResult> asyncHandler);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Returns the name, ARN, rules, definition, and effective dates of a Cost Category that's defined in the account.
+     * </p>
+     * <p>
+     * You have the option to use <code>EffectiveOn</code> to return a Cost Category that is active on a specific date.
+     * If there is no <code>EffectiveOn</code> specified, you’ll see a Cost Category that is effective on the current
+     * date. If Cost Category is still effective, <code>EffectiveEnd</code> is omitted in the response.
+     * </p>
+     * 
+     * @param describeCostCategoryDefinitionRequest
+     * @return A Java Future containing the result of the DescribeCostCategoryDefinition operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsync.DescribeCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/DescribeCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeCostCategoryDefinitionResult> describeCostCategoryDefinitionAsync(
+            DescribeCostCategoryDefinitionRequest describeCostCategoryDefinitionRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Returns the name, ARN, rules, definition, and effective dates of a Cost Category that's defined in the account.
+     * </p>
+     * <p>
+     * You have the option to use <code>EffectiveOn</code> to return a Cost Category that is active on a specific date.
+     * If there is no <code>EffectiveOn</code> specified, you’ll see a Cost Category that is effective on the current
+     * date. If Cost Category is still effective, <code>EffectiveEnd</code> is omitted in the response.
+     * </p>
+     * 
+     * @param describeCostCategoryDefinitionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeCostCategoryDefinition operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsyncHandler.DescribeCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/DescribeCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeCostCategoryDefinitionResult> describeCostCategoryDefinitionAsync(
+            DescribeCostCategoryDefinitionRequest describeCostCategoryDefinitionRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeCostCategoryDefinitionRequest, DescribeCostCategoryDefinitionResult> asyncHandler);
+
+    /**
      * <p>
      * Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric, such as
      * <code>BlendedCosts</code> or <code>UsageQuantity</code>, that you want the request to return. You can also filter
@@ -93,6 +252,69 @@ public interface AWSCostExplorerAsync extends AWSCostExplorer {
      */
     java.util.concurrent.Future<GetCostAndUsageResult> getCostAndUsageAsync(GetCostAndUsageRequest getCostAndUsageRequest,
             com.amazonaws.handlers.AsyncHandler<GetCostAndUsageRequest, GetCostAndUsageResult> asyncHandler);
+
+    /**
+     * <p>
+     * Retrieves cost and usage metrics with resources for your account. You can specify which cost and usage-related
+     * metric, such as <code>BlendedCosts</code> or <code>UsageQuantity</code>, that you want the request to return. You
+     * can also filter and group your data by various dimensions, such as <code>SERVICE</code> or <code>AZ</code>, in a
+     * specific time range. For a complete list of valid dimensions, see the <a
+     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html"
+     * >GetDimensionValues</a> operation. Master accounts in an organization in AWS Organizations have access to all
+     * member accounts. This API is currently available for the Amazon Elastic Compute Cloud – Compute service only.
+     * </p>
+     * <note>
+     * <p>
+     * This is an opt-in only feature. You can enable this feature from the Cost Explorer Settings page. For information
+     * on how to access the Settings page, see <a
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html">Controlling Access for Cost
+     * Explorer</a> in the <i>AWS Billing and Cost Management User Guide</i>.
+     * </p>
+     * </note>
+     * 
+     * @param getCostAndUsageWithResourcesRequest
+     * @return A Java Future containing the result of the GetCostAndUsageWithResources operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsync.GetCostAndUsageWithResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetCostAndUsageWithResources"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetCostAndUsageWithResourcesResult> getCostAndUsageWithResourcesAsync(
+            GetCostAndUsageWithResourcesRequest getCostAndUsageWithResourcesRequest);
+
+    /**
+     * <p>
+     * Retrieves cost and usage metrics with resources for your account. You can specify which cost and usage-related
+     * metric, such as <code>BlendedCosts</code> or <code>UsageQuantity</code>, that you want the request to return. You
+     * can also filter and group your data by various dimensions, such as <code>SERVICE</code> or <code>AZ</code>, in a
+     * specific time range. For a complete list of valid dimensions, see the <a
+     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html"
+     * >GetDimensionValues</a> operation. Master accounts in an organization in AWS Organizations have access to all
+     * member accounts. This API is currently available for the Amazon Elastic Compute Cloud – Compute service only.
+     * </p>
+     * <note>
+     * <p>
+     * This is an opt-in only feature. You can enable this feature from the Cost Explorer Settings page. For information
+     * on how to access the Settings page, see <a
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html">Controlling Access for Cost
+     * Explorer</a> in the <i>AWS Billing and Cost Management User Guide</i>.
+     * </p>
+     * </note>
+     * 
+     * @param getCostAndUsageWithResourcesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetCostAndUsageWithResources operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsyncHandler.GetCostAndUsageWithResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetCostAndUsageWithResources"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetCostAndUsageWithResourcesResult> getCostAndUsageWithResourcesAsync(
+            GetCostAndUsageWithResourcesRequest getCostAndUsageWithResourcesRequest,
+            com.amazonaws.handlers.AsyncHandler<GetCostAndUsageWithResourcesRequest, GetCostAndUsageWithResourcesResult> asyncHandler);
 
     /**
      * <p>
@@ -482,6 +704,226 @@ public interface AWSCostExplorerAsync extends AWSCostExplorer {
 
     /**
      * <p>
+     * Retrieves the Savings Plans covered for your account. This enables you to see how much of your cost is covered by
+     * a Savings Plan. An organization’s master account can see the coverage of the associated member accounts. For any
+     * time period, you can filter data for Savings Plans usage with the following dimensions:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>LINKED_ACCOUNT</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>REGION</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SERVICE</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>INSTANCE_FAMILY</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To determine valid values for a dimension, use the <code>GetDimensionValues</code> operation.
+     * </p>
+     * 
+     * @param getSavingsPlansCoverageRequest
+     * @return A Java Future containing the result of the GetSavingsPlansCoverage operation returned by the service.
+     * @sample AWSCostExplorerAsync.GetSavingsPlansCoverage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansCoverage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetSavingsPlansCoverageResult> getSavingsPlansCoverageAsync(GetSavingsPlansCoverageRequest getSavingsPlansCoverageRequest);
+
+    /**
+     * <p>
+     * Retrieves the Savings Plans covered for your account. This enables you to see how much of your cost is covered by
+     * a Savings Plan. An organization’s master account can see the coverage of the associated member accounts. For any
+     * time period, you can filter data for Savings Plans usage with the following dimensions:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>LINKED_ACCOUNT</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>REGION</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SERVICE</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>INSTANCE_FAMILY</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To determine valid values for a dimension, use the <code>GetDimensionValues</code> operation.
+     * </p>
+     * 
+     * @param getSavingsPlansCoverageRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetSavingsPlansCoverage operation returned by the service.
+     * @sample AWSCostExplorerAsyncHandler.GetSavingsPlansCoverage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansCoverage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<GetSavingsPlansCoverageResult> getSavingsPlansCoverageAsync(GetSavingsPlansCoverageRequest getSavingsPlansCoverageRequest,
+            com.amazonaws.handlers.AsyncHandler<GetSavingsPlansCoverageRequest, GetSavingsPlansCoverageResult> asyncHandler);
+
+    /**
+     * <p>
+     * Retrieves your request parameters, Savings Plan Recommendations Summary and Details.
+     * </p>
+     * 
+     * @param getSavingsPlansPurchaseRecommendationRequest
+     * @return A Java Future containing the result of the GetSavingsPlansPurchaseRecommendation operation returned by
+     *         the service.
+     * @sample AWSCostExplorerAsync.GetSavingsPlansPurchaseRecommendation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansPurchaseRecommendation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetSavingsPlansPurchaseRecommendationResult> getSavingsPlansPurchaseRecommendationAsync(
+            GetSavingsPlansPurchaseRecommendationRequest getSavingsPlansPurchaseRecommendationRequest);
+
+    /**
+     * <p>
+     * Retrieves your request parameters, Savings Plan Recommendations Summary and Details.
+     * </p>
+     * 
+     * @param getSavingsPlansPurchaseRecommendationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetSavingsPlansPurchaseRecommendation operation returned by
+     *         the service.
+     * @sample AWSCostExplorerAsyncHandler.GetSavingsPlansPurchaseRecommendation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansPurchaseRecommendation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetSavingsPlansPurchaseRecommendationResult> getSavingsPlansPurchaseRecommendationAsync(
+            GetSavingsPlansPurchaseRecommendationRequest getSavingsPlansPurchaseRecommendationRequest,
+            com.amazonaws.handlers.AsyncHandler<GetSavingsPlansPurchaseRecommendationRequest, GetSavingsPlansPurchaseRecommendationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity.
+     * Master accounts in an organization have access to member accounts. You can use <code>GetDimensionValues</code> in
+     * <code>SAVINGS_PLANS</code> to determine the possible dimension values.
+     * </p>
+     * <note>
+     * <p>
+     * You cannot group by any dimension values for <code>GetSavingsPlansUtilization</code>.
+     * </p>
+     * </note>
+     * 
+     * @param getSavingsPlansUtilizationRequest
+     * @return A Java Future containing the result of the GetSavingsPlansUtilization operation returned by the service.
+     * @sample AWSCostExplorerAsync.GetSavingsPlansUtilization
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansUtilization" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetSavingsPlansUtilizationResult> getSavingsPlansUtilizationAsync(
+            GetSavingsPlansUtilizationRequest getSavingsPlansUtilizationRequest);
+
+    /**
+     * <p>
+     * Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity.
+     * Master accounts in an organization have access to member accounts. You can use <code>GetDimensionValues</code> in
+     * <code>SAVINGS_PLANS</code> to determine the possible dimension values.
+     * </p>
+     * <note>
+     * <p>
+     * You cannot group by any dimension values for <code>GetSavingsPlansUtilization</code>.
+     * </p>
+     * </note>
+     * 
+     * @param getSavingsPlansUtilizationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetSavingsPlansUtilization operation returned by the service.
+     * @sample AWSCostExplorerAsyncHandler.GetSavingsPlansUtilization
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansUtilization" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetSavingsPlansUtilizationResult> getSavingsPlansUtilizationAsync(
+            GetSavingsPlansUtilizationRequest getSavingsPlansUtilizationRequest,
+            com.amazonaws.handlers.AsyncHandler<GetSavingsPlansUtilizationRequest, GetSavingsPlansUtilizationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Retrieves attribute data along with aggregate utilization and savings data for a given time period. This doesn't
+     * support granular or grouped data (daily/monthly) in response. You can't retrieve data by dates in a single
+     * response similar to <code>GetSavingsPlanUtilization</code>, but you have the option to make multiple calls to
+     * <code>GetSavingsPlanUtilizationDetails</code> by providing individual dates. You can use
+     * <code>GetDimensionValues</code> in <code>SAVINGS_PLANS</code> to determine the possible dimension values.
+     * </p>
+     * <note>
+     * <p>
+     * <code>GetSavingsPlanUtilizationDetails</code> internally groups data by <code>SavingsPlansArn</code>.
+     * </p>
+     * </note>
+     * 
+     * @param getSavingsPlansUtilizationDetailsRequest
+     * @return A Java Future containing the result of the GetSavingsPlansUtilizationDetails operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsync.GetSavingsPlansUtilizationDetails
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansUtilizationDetails"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetSavingsPlansUtilizationDetailsResult> getSavingsPlansUtilizationDetailsAsync(
+            GetSavingsPlansUtilizationDetailsRequest getSavingsPlansUtilizationDetailsRequest);
+
+    /**
+     * <p>
+     * Retrieves attribute data along with aggregate utilization and savings data for a given time period. This doesn't
+     * support granular or grouped data (daily/monthly) in response. You can't retrieve data by dates in a single
+     * response similar to <code>GetSavingsPlanUtilization</code>, but you have the option to make multiple calls to
+     * <code>GetSavingsPlanUtilizationDetails</code> by providing individual dates. You can use
+     * <code>GetDimensionValues</code> in <code>SAVINGS_PLANS</code> to determine the possible dimension values.
+     * </p>
+     * <note>
+     * <p>
+     * <code>GetSavingsPlanUtilizationDetails</code> internally groups data by <code>SavingsPlansArn</code>.
+     * </p>
+     * </note>
+     * 
+     * @param getSavingsPlansUtilizationDetailsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetSavingsPlansUtilizationDetails operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsyncHandler.GetSavingsPlansUtilizationDetails
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansUtilizationDetails"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetSavingsPlansUtilizationDetailsResult> getSavingsPlansUtilizationDetailsAsync(
+            GetSavingsPlansUtilizationDetailsRequest getSavingsPlansUtilizationDetailsRequest,
+            com.amazonaws.handlers.AsyncHandler<GetSavingsPlansUtilizationDetailsRequest, GetSavingsPlansUtilizationDetailsResult> asyncHandler);
+
+    /**
+     * <p>
      * Queries for available tag keys and tag values for a specified period. You can search the tag values for an
      * arbitrary string.
      * </p>
@@ -545,5 +987,109 @@ public interface AWSCostExplorerAsync extends AWSCostExplorer {
      */
     java.util.concurrent.Future<GetUsageForecastResult> getUsageForecastAsync(GetUsageForecastRequest getUsageForecastRequest,
             com.amazonaws.handlers.AsyncHandler<GetUsageForecastRequest, GetUsageForecastResult> asyncHandler);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Returns the name, ARN and effective dates of all Cost Categories defined in the account. You have the option to
+     * use <code>EffectiveOn</code> to return a list of Cost Categories that were active on a specific date. If there is
+     * no <code>EffectiveOn</code> specified, you’ll see Cost Categories that are effective on the current date. If Cost
+     * Category is still effective, <code>EffectiveEnd</code> is omitted in the response.
+     * </p>
+     * 
+     * @param listCostCategoryDefinitionsRequest
+     * @return A Java Future containing the result of the ListCostCategoryDefinitions operation returned by the service.
+     * @sample AWSCostExplorerAsync.ListCostCategoryDefinitions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/ListCostCategoryDefinitions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListCostCategoryDefinitionsResult> listCostCategoryDefinitionsAsync(
+            ListCostCategoryDefinitionsRequest listCostCategoryDefinitionsRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Returns the name, ARN and effective dates of all Cost Categories defined in the account. You have the option to
+     * use <code>EffectiveOn</code> to return a list of Cost Categories that were active on a specific date. If there is
+     * no <code>EffectiveOn</code> specified, you’ll see Cost Categories that are effective on the current date. If Cost
+     * Category is still effective, <code>EffectiveEnd</code> is omitted in the response.
+     * </p>
+     * 
+     * @param listCostCategoryDefinitionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListCostCategoryDefinitions operation returned by the service.
+     * @sample AWSCostExplorerAsyncHandler.ListCostCategoryDefinitions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/ListCostCategoryDefinitions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ListCostCategoryDefinitionsResult> listCostCategoryDefinitionsAsync(
+            ListCostCategoryDefinitionsRequest listCostCategoryDefinitionsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListCostCategoryDefinitionsRequest, ListCostCategoryDefinitionsResult> asyncHandler);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Updates an existing Cost Category. Changes made to the Cost Category rules will be used to categorize the current
+     * month’s expenses and future expenses. This won’t change categorization for the previous months.
+     * </p>
+     * 
+     * @param updateCostCategoryDefinitionRequest
+     * @return A Java Future containing the result of the UpdateCostCategoryDefinition operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsync.UpdateCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/UpdateCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateCostCategoryDefinitionResult> updateCostCategoryDefinitionAsync(
+            UpdateCostCategoryDefinitionRequest updateCostCategoryDefinitionRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Updates an existing Cost Category. Changes made to the Cost Category rules will be used to categorize the current
+     * month’s expenses and future expenses. This won’t change categorization for the previous months.
+     * </p>
+     * 
+     * @param updateCostCategoryDefinitionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateCostCategoryDefinition operation returned by the
+     *         service.
+     * @sample AWSCostExplorerAsyncHandler.UpdateCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/UpdateCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateCostCategoryDefinitionResult> updateCostCategoryDefinitionAsync(
+            UpdateCostCategoryDefinitionRequest updateCostCategoryDefinitionRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateCostCategoryDefinitionRequest, UpdateCostCategoryDefinitionResult> asyncHandler);
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,13 +41,15 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
     private String budgetName;
     /**
      * <p>
-     * The total amount of cost, usage, RI utilization, or RI coverage that you want to track with your budget.
+     * The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage that you want to track with your budget.
      * </p>
      * <p>
-     * <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI utilization or coverage
-     * budgets. RI utilization or coverage budgets default to <code>100</code>, which is the only valid value for RI
-     * utilization or coverage budgets. You can't use <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for
-     * <code>CreateBudget</code> and <code>UpdateBudget</code> actions.
+     * <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI or Savings Plans utilization
+     * or coverage budgets. RI and Savings Plans utilization or coverage budgets default to <code>100</code>, which is
+     * the only valid value for RI or Savings Plans utilization or coverage budgets. You can't use
+     * <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for <code>CreateBudget</code> and
+     * <code>UpdateBudget</code> actions.
      * </p>
      */
     private Spend budgetLimit;
@@ -132,15 +134,16 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
      * The types of costs that are included in this <code>COST</code> budget.
      * </p>
      * <p>
-     * <code>USAGE</code>, <code>RI_UTILIZATION</code>, and <code>RI_COVERAGE</code> budgets do not have
-     * <code>CostTypes</code>.
+     * <code>USAGE</code>, <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>
+     * , and <code>Savings_Plans_Coverage</code> budgets do not have <code>CostTypes</code>.
      * </p>
      */
     private CostTypes costTypes;
     /**
      * <p>
      * The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available only
-     * for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     * for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>, and
+     * <code>Savings_Plans_Coverage</code> budgets.
      * </p>
      */
     private String timeUnit;
@@ -173,7 +176,8 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
     private CalculatedSpend calculatedSpend;
     /**
      * <p>
-     * Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     * Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage.
      * </p>
      */
     private String budgetType;
@@ -232,23 +236,26 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The total amount of cost, usage, RI utilization, or RI coverage that you want to track with your budget.
+     * The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage that you want to track with your budget.
      * </p>
      * <p>
-     * <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI utilization or coverage
-     * budgets. RI utilization or coverage budgets default to <code>100</code>, which is the only valid value for RI
-     * utilization or coverage budgets. You can't use <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for
-     * <code>CreateBudget</code> and <code>UpdateBudget</code> actions.
+     * <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI or Savings Plans utilization
+     * or coverage budgets. RI and Savings Plans utilization or coverage budgets default to <code>100</code>, which is
+     * the only valid value for RI or Savings Plans utilization or coverage budgets. You can't use
+     * <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for <code>CreateBudget</code> and
+     * <code>UpdateBudget</code> actions.
      * </p>
      * 
      * @param budgetLimit
-     *        The total amount of cost, usage, RI utilization, or RI coverage that you want to track with your
-     *        budget.</p>
+     *        The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     *        coverage that you want to track with your budget.</p>
      *        <p>
-     *        <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI utilization or
-     *        coverage budgets. RI utilization or coverage budgets default to <code>100</code>, which is the only valid
-     *        value for RI utilization or coverage budgets. You can't use <code>BudgetLimit</code> with
-     *        <code>PlannedBudgetLimits</code> for <code>CreateBudget</code> and <code>UpdateBudget</code> actions.
+     *        <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI or Savings Plans
+     *        utilization or coverage budgets. RI and Savings Plans utilization or coverage budgets default to
+     *        <code>100</code>, which is the only valid value for RI or Savings Plans utilization or coverage budgets.
+     *        You can't use <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for <code>CreateBudget</code>
+     *        and <code>UpdateBudget</code> actions.
      */
 
     public void setBudgetLimit(Spend budgetLimit) {
@@ -257,22 +264,25 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The total amount of cost, usage, RI utilization, or RI coverage that you want to track with your budget.
+     * The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage that you want to track with your budget.
      * </p>
      * <p>
-     * <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI utilization or coverage
-     * budgets. RI utilization or coverage budgets default to <code>100</code>, which is the only valid value for RI
-     * utilization or coverage budgets. You can't use <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for
-     * <code>CreateBudget</code> and <code>UpdateBudget</code> actions.
+     * <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI or Savings Plans utilization
+     * or coverage budgets. RI and Savings Plans utilization or coverage budgets default to <code>100</code>, which is
+     * the only valid value for RI or Savings Plans utilization or coverage budgets. You can't use
+     * <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for <code>CreateBudget</code> and
+     * <code>UpdateBudget</code> actions.
      * </p>
      * 
-     * @return The total amount of cost, usage, RI utilization, or RI coverage that you want to track with your
-     *         budget.</p>
+     * @return The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     *         coverage that you want to track with your budget.</p>
      *         <p>
-     *         <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI utilization or
-     *         coverage budgets. RI utilization or coverage budgets default to <code>100</code>, which is the only valid
-     *         value for RI utilization or coverage budgets. You can't use <code>BudgetLimit</code> with
-     *         <code>PlannedBudgetLimits</code> for <code>CreateBudget</code> and <code>UpdateBudget</code> actions.
+     *         <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI or Savings Plans
+     *         utilization or coverage budgets. RI and Savings Plans utilization or coverage budgets default to
+     *         <code>100</code>, which is the only valid value for RI or Savings Plans utilization or coverage budgets.
+     *         You can't use <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for
+     *         <code>CreateBudget</code> and <code>UpdateBudget</code> actions.
      */
 
     public Spend getBudgetLimit() {
@@ -281,23 +291,26 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The total amount of cost, usage, RI utilization, or RI coverage that you want to track with your budget.
+     * The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage that you want to track with your budget.
      * </p>
      * <p>
-     * <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI utilization or coverage
-     * budgets. RI utilization or coverage budgets default to <code>100</code>, which is the only valid value for RI
-     * utilization or coverage budgets. You can't use <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for
-     * <code>CreateBudget</code> and <code>UpdateBudget</code> actions.
+     * <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI or Savings Plans utilization
+     * or coverage budgets. RI and Savings Plans utilization or coverage budgets default to <code>100</code>, which is
+     * the only valid value for RI or Savings Plans utilization or coverage budgets. You can't use
+     * <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for <code>CreateBudget</code> and
+     * <code>UpdateBudget</code> actions.
      * </p>
      * 
      * @param budgetLimit
-     *        The total amount of cost, usage, RI utilization, or RI coverage that you want to track with your
-     *        budget.</p>
+     *        The total amount of cost, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     *        coverage that you want to track with your budget.</p>
      *        <p>
-     *        <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI utilization or
-     *        coverage budgets. RI utilization or coverage budgets default to <code>100</code>, which is the only valid
-     *        value for RI utilization or coverage budgets. You can't use <code>BudgetLimit</code> with
-     *        <code>PlannedBudgetLimits</code> for <code>CreateBudget</code> and <code>UpdateBudget</code> actions.
+     *        <code>BudgetLimit</code> is required for cost or usage budgets, but optional for RI or Savings Plans
+     *        utilization or coverage budgets. RI and Savings Plans utilization or coverage budgets default to
+     *        <code>100</code>, which is the only valid value for RI or Savings Plans utilization or coverage budgets.
+     *        You can't use <code>BudgetLimit</code> with <code>PlannedBudgetLimits</code> for <code>CreateBudget</code>
+     *        and <code>UpdateBudget</code> actions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -547,6 +560,13 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single PlannedBudgetLimits entry
+     *
+     * @see Budget#withPlannedBudgetLimits
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public Budget addPlannedBudgetLimitsEntry(String key, Spend value) {
         if (null == this.plannedBudgetLimits) {
             this.plannedBudgetLimits = new java.util.HashMap<String, Spend>();
@@ -785,6 +805,13 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single CostFilters entry
+     *
+     * @see Budget#withCostFilters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public Budget addCostFiltersEntry(String key, java.util.List<String> value) {
         if (null == this.costFilters) {
             this.costFilters = new java.util.HashMap<String, java.util.List<String>>();
@@ -811,14 +838,15 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
      * The types of costs that are included in this <code>COST</code> budget.
      * </p>
      * <p>
-     * <code>USAGE</code>, <code>RI_UTILIZATION</code>, and <code>RI_COVERAGE</code> budgets do not have
-     * <code>CostTypes</code>.
+     * <code>USAGE</code>, <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>
+     * , and <code>Savings_Plans_Coverage</code> budgets do not have <code>CostTypes</code>.
      * </p>
      * 
      * @param costTypes
      *        The types of costs that are included in this <code>COST</code> budget.</p>
      *        <p>
-     *        <code>USAGE</code>, <code>RI_UTILIZATION</code>, and <code>RI_COVERAGE</code> budgets do not have
+     *        <code>USAGE</code>, <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>,
+     *        <code>Savings_Plans_Utilization</code>, and <code>Savings_Plans_Coverage</code> budgets do not have
      *        <code>CostTypes</code>.
      */
 
@@ -831,13 +859,14 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
      * The types of costs that are included in this <code>COST</code> budget.
      * </p>
      * <p>
-     * <code>USAGE</code>, <code>RI_UTILIZATION</code>, and <code>RI_COVERAGE</code> budgets do not have
-     * <code>CostTypes</code>.
+     * <code>USAGE</code>, <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>
+     * , and <code>Savings_Plans_Coverage</code> budgets do not have <code>CostTypes</code>.
      * </p>
      * 
      * @return The types of costs that are included in this <code>COST</code> budget.</p>
      *         <p>
-     *         <code>USAGE</code>, <code>RI_UTILIZATION</code>, and <code>RI_COVERAGE</code> budgets do not have
+     *         <code>USAGE</code>, <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>,
+     *         <code>Savings_Plans_Utilization</code>, and <code>Savings_Plans_Coverage</code> budgets do not have
      *         <code>CostTypes</code>.
      */
 
@@ -850,14 +879,15 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
      * The types of costs that are included in this <code>COST</code> budget.
      * </p>
      * <p>
-     * <code>USAGE</code>, <code>RI_UTILIZATION</code>, and <code>RI_COVERAGE</code> budgets do not have
-     * <code>CostTypes</code>.
+     * <code>USAGE</code>, <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>
+     * , and <code>Savings_Plans_Coverage</code> budgets do not have <code>CostTypes</code>.
      * </p>
      * 
      * @param costTypes
      *        The types of costs that are included in this <code>COST</code> budget.</p>
      *        <p>
-     *        <code>USAGE</code>, <code>RI_UTILIZATION</code>, and <code>RI_COVERAGE</code> budgets do not have
+     *        <code>USAGE</code>, <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>,
+     *        <code>Savings_Plans_Utilization</code>, and <code>Savings_Plans_Coverage</code> budgets do not have
      *        <code>CostTypes</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -870,12 +900,14 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available only
-     * for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     * for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>, and
+     * <code>Savings_Plans_Coverage</code> budgets.
      * </p>
      * 
      * @param timeUnit
      *        The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available
-     *        only for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     *        only for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>,
+     *        and <code>Savings_Plans_Coverage</code> budgets.
      * @see TimeUnit
      */
 
@@ -886,11 +918,13 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available only
-     * for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     * for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>, and
+     * <code>Savings_Plans_Coverage</code> budgets.
      * </p>
      * 
      * @return The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available
-     *         only for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     *         only for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>,
+     *         and <code>Savings_Plans_Coverage</code> budgets.
      * @see TimeUnit
      */
 
@@ -901,12 +935,14 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available only
-     * for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     * for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>, and
+     * <code>Savings_Plans_Coverage</code> budgets.
      * </p>
      * 
      * @param timeUnit
      *        The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available
-     *        only for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     *        only for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>,
+     *        and <code>Savings_Plans_Coverage</code> budgets.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TimeUnit
      */
@@ -919,12 +955,14 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available only
-     * for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     * for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>, and
+     * <code>Savings_Plans_Coverage</code> budgets.
      * </p>
      * 
      * @param timeUnit
      *        The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available
-     *        only for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     *        only for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>,
+     *        and <code>Savings_Plans_Coverage</code> budgets.
      * @see TimeUnit
      */
 
@@ -935,12 +973,14 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available only
-     * for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     * for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>, and
+     * <code>Savings_Plans_Coverage</code> budgets.
      * </p>
      * 
      * @param timeUnit
      *        The length of time until a budget resets the actual and forecasted spend. <code>DAILY</code> is available
-     *        only for <code>RI_UTILIZATION</code> and <code>RI_COVERAGE</code> budgets.
+     *        only for <code>RI_UTILIZATION</code>, <code>RI_COVERAGE</code>, <code>Savings_Plans_Utilization</code>,
+     *        and <code>Savings_Plans_Coverage</code> budgets.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TimeUnit
      */
@@ -1122,11 +1162,13 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     * Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage.
      * </p>
      * 
      * @param budgetType
-     *        Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     *        Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or
+     *        Savings Plans coverage.
      * @see BudgetType
      */
 
@@ -1136,10 +1178,12 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     * Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage.
      * </p>
      * 
-     * @return Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     * @return Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or
+     *         Savings Plans coverage.
      * @see BudgetType
      */
 
@@ -1149,11 +1193,13 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     * Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage.
      * </p>
      * 
      * @param budgetType
-     *        Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     *        Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or
+     *        Savings Plans coverage.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see BudgetType
      */
@@ -1165,11 +1211,13 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     * Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage.
      * </p>
      * 
      * @param budgetType
-     *        Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     *        Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or
+     *        Savings Plans coverage.
      * @see BudgetType
      */
 
@@ -1179,11 +1227,13 @@ public class Budget implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     * Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or Savings Plans
+     * coverage.
      * </p>
      * 
      * @param budgetType
-     *        Whether this budget tracks costs, usage, RI utilization, or RI coverage.
+     *        Whether this budget tracks costs, usage, RI utilization, RI coverage, Savings Plans utilization, or
+     *        Savings Plans coverage.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see BudgetType
      */

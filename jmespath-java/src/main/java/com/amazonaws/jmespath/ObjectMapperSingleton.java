@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -16,15 +16,18 @@
 package com.amazonaws.jmespath;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public final class ObjectMapperSingleton {
-
-    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     private ObjectMapperSingleton() {
     }
 
     public static ObjectMapper getObjectMapper() {
-        return objectMapper;
+        return InstanceHolder.OBJECT_MAPPER;
+    }
+
+    private static final class InstanceHolder {
+        private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper().configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
     }
 }

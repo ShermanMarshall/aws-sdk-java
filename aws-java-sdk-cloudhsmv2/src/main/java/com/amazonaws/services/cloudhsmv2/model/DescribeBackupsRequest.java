@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,7 +59,11 @@ public class DescribeBackupsRequest extends com.amazonaws.AmazonWebServiceReques
      * </p>
      */
     private java.util.Map<String, java.util.List<String>> filters;
-
+    /**
+     * <p>
+     * Designates whether or not to sort the return backups by ascending chronological order of generation.
+     * </p>
+     */
     private Boolean sortAscending;
 
     /**
@@ -278,6 +282,13 @@ public class DescribeBackupsRequest extends com.amazonaws.AmazonWebServiceReques
         return this;
     }
 
+    /**
+     * Add a single Filters entry
+     *
+     * @see DescribeBackupsRequest#withFilters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public DescribeBackupsRequest addFiltersEntry(String key, java.util.List<String> value) {
         if (null == this.filters) {
             this.filters = new java.util.HashMap<String, java.util.List<String>>();
@@ -300,7 +311,12 @@ public class DescribeBackupsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
+     * Designates whether or not to sort the return backups by ascending chronological order of generation.
+     * </p>
+     * 
      * @param sortAscending
+     *        Designates whether or not to sort the return backups by ascending chronological order of generation.
      */
 
     public void setSortAscending(Boolean sortAscending) {
@@ -308,7 +324,11 @@ public class DescribeBackupsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
-     * @return
+     * <p>
+     * Designates whether or not to sort the return backups by ascending chronological order of generation.
+     * </p>
+     * 
+     * @return Designates whether or not to sort the return backups by ascending chronological order of generation.
      */
 
     public Boolean getSortAscending() {
@@ -316,7 +336,12 @@ public class DescribeBackupsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
+     * <p>
+     * Designates whether or not to sort the return backups by ascending chronological order of generation.
+     * </p>
+     * 
      * @param sortAscending
+     *        Designates whether or not to sort the return backups by ascending chronological order of generation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -326,7 +351,11 @@ public class DescribeBackupsRequest extends com.amazonaws.AmazonWebServiceReques
     }
 
     /**
-     * @return
+     * <p>
+     * Designates whether or not to sort the return backups by ascending chronological order of generation.
+     * </p>
+     * 
+     * @return Designates whether or not to sort the return backups by ascending chronological order of generation.
      */
 
     public Boolean isSortAscending() {

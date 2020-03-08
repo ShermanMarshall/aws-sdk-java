@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -594,6 +594,13 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * Creates a global table from an existing table. A global table creates a replication relationship between two or
      * more DynamoDB tables with the same table name in the provided Regions.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * <p>
      * If you want to add a new replica table to a global table, each of the following conditions must be true:
      * </p>
@@ -661,6 +668,13 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * Creates a global table from an existing table. A global table creates a replication relationship between two or
      * more DynamoDB tables with the same table name in the provided Regions.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * <p>
      * If you want to add a new replica table to a global table, each of the following conditions must be true:
      * </p>
@@ -1124,6 +1138,39 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
+     * Returns information about contributor insights, for a given table or global secondary index.
+     * </p>
+     * 
+     * @param describeContributorInsightsRequest
+     * @return A Java Future containing the result of the DescribeContributorInsights operation returned by the service.
+     * @sample AmazonDynamoDBAsync.DescribeContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeContributorInsightsResult> describeContributorInsightsAsync(
+            DescribeContributorInsightsRequest describeContributorInsightsRequest);
+
+    /**
+     * <p>
+     * Returns information about contributor insights, for a given table or global secondary index.
+     * </p>
+     * 
+     * @param describeContributorInsightsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeContributorInsights operation returned by the service.
+     * @sample AmazonDynamoDBAsyncHandler.DescribeContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeContributorInsightsResult> describeContributorInsightsAsync(
+            DescribeContributorInsightsRequest describeContributorInsightsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeContributorInsightsRequest, DescribeContributorInsightsResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns the regional endpoint information.
      * </p>
      * 
@@ -1157,6 +1204,13 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * <p>
      * Returns information about the specified global table.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param describeGlobalTableRequest
      * @return A Java Future containing the result of the DescribeGlobalTable operation returned by the service.
@@ -1170,6 +1224,13 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * <p>
      * Returns information about the specified global table.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param describeGlobalTableRequest
      * @param asyncHandler
@@ -1188,6 +1249,13 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * <p>
      * Describes Region-specific settings for a global table.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param describeGlobalTableSettingsRequest
      * @return A Java Future containing the result of the DescribeGlobalTableSettings operation returned by the service.
@@ -1202,6 +1270,13 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * <p>
      * Describes Region-specific settings for a global table.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param describeGlobalTableSettingsRequest
      * @param asyncHandler
@@ -1494,6 +1569,55 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
+     * Describes auto scaling settings across replicas of the global table at once.
+     * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.
+     * </p>
+     * </note>
+     * 
+     * @param describeTableReplicaAutoScalingRequest
+     * @return A Java Future containing the result of the DescribeTableReplicaAutoScaling operation returned by the
+     *         service.
+     * @sample AmazonDynamoDBAsync.DescribeTableReplicaAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeTableReplicaAutoScaling"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeTableReplicaAutoScalingResult> describeTableReplicaAutoScalingAsync(
+            DescribeTableReplicaAutoScalingRequest describeTableReplicaAutoScalingRequest);
+
+    /**
+     * <p>
+     * Describes auto scaling settings across replicas of the global table at once.
+     * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.
+     * </p>
+     * </note>
+     * 
+     * @param describeTableReplicaAutoScalingRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeTableReplicaAutoScaling operation returned by the
+     *         service.
+     * @sample AmazonDynamoDBAsyncHandler.DescribeTableReplicaAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeTableReplicaAutoScaling"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeTableReplicaAutoScalingResult> describeTableReplicaAutoScalingAsync(
+            DescribeTableReplicaAutoScalingRequest describeTableReplicaAutoScalingRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeTableReplicaAutoScalingRequest, DescribeTableReplicaAutoScalingResult> asyncHandler);
+
+    /**
+     * <p>
      * Gives a description of the Time to Live (TTL) status on the specified table.
      * </p>
      * 
@@ -1651,8 +1775,46 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
 
     /**
      * <p>
+     * Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.
+     * </p>
+     * 
+     * @param listContributorInsightsRequest
+     * @return A Java Future containing the result of the ListContributorInsights operation returned by the service.
+     * @sample AmazonDynamoDBAsync.ListContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListContributorInsightsResult> listContributorInsightsAsync(ListContributorInsightsRequest listContributorInsightsRequest);
+
+    /**
+     * <p>
+     * Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.
+     * </p>
+     * 
+     * @param listContributorInsightsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListContributorInsights operation returned by the service.
+     * @sample AmazonDynamoDBAsyncHandler.ListContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListContributorInsightsResult> listContributorInsightsAsync(ListContributorInsightsRequest listContributorInsightsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListContributorInsightsRequest, ListContributorInsightsResult> asyncHandler);
+
+    /**
+     * <p>
      * Lists all global tables that have a replica in the specified Region.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param listGlobalTablesRequest
      * @return A Java Future containing the result of the ListGlobalTables operation returned by the service.
@@ -1666,6 +1828,13 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * <p>
      * Lists all global tables that have a replica in the specified Region.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param listGlobalTablesRequest
      * @param asyncHandler
@@ -2673,27 +2842,6 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * cannot retrieve items from tables in more than one AWS account or Region. The aggregate size of the items in the
      * transaction cannot exceed 4 MB.
      * </p>
-     * <note>
-     * <p>
-     * All AWS Regions and AWS GovCloud (US) support up to 25 items per transaction with up to 4 MB of data, except the
-     * following AWS Regions:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * China (Beijing)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * China (Ningxia)
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The China (Beijing) and China (Ningxia) Regions support up to 10 items per transaction with up to 4 MB of data.
-     * </p>
-     * </note>
      * <p>
      * DynamoDB rejects the entire <code>TransactGetItems</code> request if any of the following is true:
      * </p>
@@ -2737,27 +2885,6 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * cannot retrieve items from tables in more than one AWS account or Region. The aggregate size of the items in the
      * transaction cannot exceed 4 MB.
      * </p>
-     * <note>
-     * <p>
-     * All AWS Regions and AWS GovCloud (US) support up to 25 items per transaction with up to 4 MB of data, except the
-     * following AWS Regions:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * China (Beijing)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * China (Ningxia)
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The China (Beijing) and China (Ningxia) Regions support up to 10 items per transaction with up to 4 MB of data.
-     * </p>
-     * </note>
      * <p>
      * DynamoDB rejects the entire <code>TransactGetItems</code> request if any of the following is true:
      * </p>
@@ -2804,27 +2931,6 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * can target the same item. For example, you cannot both <code>ConditionCheck</code> and <code>Update</code> the
      * same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
      * </p>
-     * <note>
-     * <p>
-     * All AWS Regions and AWS GovCloud (US) support up to 25 items per transaction with up to 4 MB of data, except the
-     * following AWS Regions:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * China (Beijing)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * China (Ningxia)
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The China (Beijing) and China (Ningxia) Regions support up to 10 items per transaction with up to 4 MB of data.
-     * </p>
-     * </note>
      * <p>
      * The actions are completed atomically so that either all of them succeed, or all of them fail. They are defined by
      * the following objects:
@@ -2916,27 +3022,6 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      * can target the same item. For example, you cannot both <code>ConditionCheck</code> and <code>Update</code> the
      * same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
      * </p>
-     * <note>
-     * <p>
-     * All AWS Regions and AWS GovCloud (US) support up to 25 items per transaction with up to 4 MB of data, except the
-     * following AWS Regions:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * China (Beijing)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * China (Ningxia)
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The China (Beijing) and China (Ningxia) Regions support up to 10 items per transaction with up to 4 MB of data.
-     * </p>
-     * </note>
      * <p>
      * The actions are completed atomically so that either all of them succeed, or all of them fail. They are defined by
      * the following objects:
@@ -3121,6 +3206,39 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      */
     java.util.concurrent.Future<UpdateContinuousBackupsResult> updateContinuousBackupsAsync(UpdateContinuousBackupsRequest updateContinuousBackupsRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateContinuousBackupsRequest, UpdateContinuousBackupsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates the status for contributor insights for a specific table or index.
+     * </p>
+     * 
+     * @param updateContributorInsightsRequest
+     * @return A Java Future containing the result of the UpdateContributorInsights operation returned by the service.
+     * @sample AmazonDynamoDBAsync.UpdateContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateContributorInsightsResult> updateContributorInsightsAsync(
+            UpdateContributorInsightsRequest updateContributorInsightsRequest);
+
+    /**
+     * <p>
+     * Updates the status for contributor insights for a specific table or index.
+     * </p>
+     * 
+     * @param updateContributorInsightsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateContributorInsights operation returned by the service.
+     * @sample AmazonDynamoDBAsyncHandler.UpdateContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateContributorInsightsResult> updateContributorInsightsAsync(
+            UpdateContributorInsightsRequest updateContributorInsightsRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateContributorInsightsRequest, UpdateContributorInsightsResult> asyncHandler);
 
     /**
      * <p>
@@ -3435,6 +3553,55 @@ public interface AmazonDynamoDBAsync extends AmazonDynamoDB {
      */
     java.util.concurrent.Future<UpdateTableResult> updateTableAsync(String tableName, ProvisionedThroughput provisionedThroughput,
             com.amazonaws.handlers.AsyncHandler<UpdateTableRequest, UpdateTableResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates auto scaling settings on your global tables at once.
+     * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.
+     * </p>
+     * </note>
+     * 
+     * @param updateTableReplicaAutoScalingRequest
+     * @return A Java Future containing the result of the UpdateTableReplicaAutoScaling operation returned by the
+     *         service.
+     * @sample AmazonDynamoDBAsync.UpdateTableReplicaAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateTableReplicaAutoScaling"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateTableReplicaAutoScalingResult> updateTableReplicaAutoScalingAsync(
+            UpdateTableReplicaAutoScalingRequest updateTableReplicaAutoScalingRequest);
+
+    /**
+     * <p>
+     * Updates auto scaling settings on your global tables at once.
+     * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.
+     * </p>
+     * </note>
+     * 
+     * @param updateTableReplicaAutoScalingRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateTableReplicaAutoScaling operation returned by the
+     *         service.
+     * @sample AmazonDynamoDBAsyncHandler.UpdateTableReplicaAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateTableReplicaAutoScaling"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateTableReplicaAutoScalingResult> updateTableReplicaAutoScalingAsync(
+            UpdateTableReplicaAutoScalingRequest updateTableReplicaAutoScalingRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateTableReplicaAutoScalingRequest, UpdateTableReplicaAutoScalingResult> asyncHandler);
 
     /**
      * <p>

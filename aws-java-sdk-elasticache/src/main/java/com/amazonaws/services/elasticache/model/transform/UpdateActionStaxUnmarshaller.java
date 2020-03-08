@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,6 +47,11 @@ public class UpdateActionStaxUnmarshaller implements Unmarshaller<UpdateAction, 
 
                 if (context.testExpression("ReplicationGroupId", targetDepth)) {
                     updateAction.setReplicationGroupId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("CacheClusterId", targetDepth)) {
+                    updateAction.setCacheClusterId(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
 
@@ -115,8 +120,23 @@ public class UpdateActionStaxUnmarshaller implements Unmarshaller<UpdateAction, 
                     continue;
                 }
 
+                if (context.testExpression("CacheNodeUpdateStatus", targetDepth)) {
+                    updateAction.withCacheNodeUpdateStatus(new ArrayList<CacheNodeUpdateStatus>());
+                    continue;
+                }
+
+                if (context.testExpression("CacheNodeUpdateStatus/CacheNodeUpdateStatus", targetDepth)) {
+                    updateAction.withCacheNodeUpdateStatus(CacheNodeUpdateStatusStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
                 if (context.testExpression("EstimatedUpdateTime", targetDepth)) {
                     updateAction.setEstimatedUpdateTime(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("Engine", targetDepth)) {
+                    updateAction.setEngine(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

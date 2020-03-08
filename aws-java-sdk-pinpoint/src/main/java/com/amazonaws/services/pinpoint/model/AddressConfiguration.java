@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,24 +42,26 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
     private String channelType;
     /**
      * <p>
-     * An object that maps custom attributes to attributes for the address and is attached to the message. For a push
-     * notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is
-     * added to email/SMS delivery receipt event attributes.
+     * An object that maps custom attributes to attributes for the address and is attached to the message. Attribute
+     * names are case sensitive.
+     * </p>
+     * <p>
+     * For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this
+     * payload is added to email/SMS delivery receipt event attributes.
      * </p>
      */
     private java.util.Map<String, String> context;
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all
+     * other values for the message.
      * </p>
      */
     private String rawContent;
     /**
      * <p>
-     * An object that maps variable values for the message. Amazon Pinpoint merges these values with the variable values
-     * specified by properties of the DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.
+     * A map of the message variables to merge with the variables specified by properties of the DefaultMessage object.
+     * The variables specified in this map take precedence over all other variables.
      * </p>
      */
     private java.util.Map<String, java.util.List<String>> substitutions;
@@ -188,14 +190,19 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * An object that maps custom attributes to attributes for the address and is attached to the message. For a push
-     * notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is
-     * added to email/SMS delivery receipt event attributes.
+     * An object that maps custom attributes to attributes for the address and is attached to the message. Attribute
+     * names are case sensitive.
+     * </p>
+     * <p>
+     * For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this
+     * payload is added to email/SMS delivery receipt event attributes.
      * </p>
      * 
-     * @return An object that maps custom attributes to attributes for the address and is attached to the message. For a
-     *         push notification, this payload is added to the data.pinpoint object. For an email or text message, this
-     *         payload is added to email/SMS delivery receipt event attributes.
+     * @return An object that maps custom attributes to attributes for the address and is attached to the message.
+     *         Attribute names are case sensitive.</p>
+     *         <p>
+     *         For a push notification, this payload is added to the data.pinpoint object. For an email or text message,
+     *         this payload is added to email/SMS delivery receipt event attributes.
      */
 
     public java.util.Map<String, String> getContext() {
@@ -204,15 +211,20 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * An object that maps custom attributes to attributes for the address and is attached to the message. For a push
-     * notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is
-     * added to email/SMS delivery receipt event attributes.
+     * An object that maps custom attributes to attributes for the address and is attached to the message. Attribute
+     * names are case sensitive.
+     * </p>
+     * <p>
+     * For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this
+     * payload is added to email/SMS delivery receipt event attributes.
      * </p>
      * 
      * @param context
-     *        An object that maps custom attributes to attributes for the address and is attached to the message. For a
-     *        push notification, this payload is added to the data.pinpoint object. For an email or text message, this
-     *        payload is added to email/SMS delivery receipt event attributes.
+     *        An object that maps custom attributes to attributes for the address and is attached to the message.
+     *        Attribute names are case sensitive.</p>
+     *        <p>
+     *        For a push notification, this payload is added to the data.pinpoint object. For an email or text message,
+     *        this payload is added to email/SMS delivery receipt event attributes.
      */
 
     public void setContext(java.util.Map<String, String> context) {
@@ -221,15 +233,20 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * An object that maps custom attributes to attributes for the address and is attached to the message. For a push
-     * notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is
-     * added to email/SMS delivery receipt event attributes.
+     * An object that maps custom attributes to attributes for the address and is attached to the message. Attribute
+     * names are case sensitive.
+     * </p>
+     * <p>
+     * For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this
+     * payload is added to email/SMS delivery receipt event attributes.
      * </p>
      * 
      * @param context
-     *        An object that maps custom attributes to attributes for the address and is attached to the message. For a
-     *        push notification, this payload is added to the data.pinpoint object. For an email or text message, this
-     *        payload is added to email/SMS delivery receipt event attributes.
+     *        An object that maps custom attributes to attributes for the address and is attached to the message.
+     *        Attribute names are case sensitive.</p>
+     *        <p>
+     *        For a push notification, this payload is added to the data.pinpoint object. For an email or text message,
+     *        this payload is added to email/SMS delivery receipt event attributes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -237,6 +254,13 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
         setContext(context);
         return this;
     }
+
+    /**
+     * Add a single Context entry
+     *
+     * @see AddressConfiguration#withContext
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public AddressConfiguration addContextEntry(String key, String value) {
         if (null == this.context) {
@@ -261,13 +285,13 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all
+     * other values for the message.
      * </p>
      * 
      * @param rawContent
-     *        The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *        the message.
+     *        The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides
+     *        all other values for the message.
      */
 
     public void setRawContent(String rawContent) {
@@ -276,12 +300,12 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all
+     * other values for the message.
      * </p>
      * 
-     * @return The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *         the message.
+     * @return The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides
+     *         all other values for the message.
      */
 
     public String getRawContent() {
@@ -290,13 +314,13 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The raw, JSON-formatted string to use as the payload for the notification message. This value overrides the
-     * message.
+     * The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all
+     * other values for the message.
      * </p>
      * 
      * @param rawContent
-     *        The raw, JSON-formatted string to use as the payload for the notification message. This value overrides
-     *        the message.
+     *        The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides
+     *        all other values for the message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -307,14 +331,12 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * An object that maps variable values for the message. Amazon Pinpoint merges these values with the variable values
-     * specified by properties of the DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.
+     * A map of the message variables to merge with the variables specified by properties of the DefaultMessage object.
+     * The variables specified in this map take precedence over all other variables.
      * </p>
      * 
-     * @return An object that maps variable values for the message. Amazon Pinpoint merges these values with the
-     *         variable values specified by properties of the DefaultMessage object. The substitutions in this map take
-     *         precedence over all other substitutions.
+     * @return A map of the message variables to merge with the variables specified by properties of the DefaultMessage
+     *         object. The variables specified in this map take precedence over all other variables.
      */
 
     public java.util.Map<String, java.util.List<String>> getSubstitutions() {
@@ -323,15 +345,13 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * An object that maps variable values for the message. Amazon Pinpoint merges these values with the variable values
-     * specified by properties of the DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.
+     * A map of the message variables to merge with the variables specified by properties of the DefaultMessage object.
+     * The variables specified in this map take precedence over all other variables.
      * </p>
      * 
      * @param substitutions
-     *        An object that maps variable values for the message. Amazon Pinpoint merges these values with the variable
-     *        values specified by properties of the DefaultMessage object. The substitutions in this map take precedence
-     *        over all other substitutions.
+     *        A map of the message variables to merge with the variables specified by properties of the DefaultMessage
+     *        object. The variables specified in this map take precedence over all other variables.
      */
 
     public void setSubstitutions(java.util.Map<String, java.util.List<String>> substitutions) {
@@ -340,15 +360,13 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * An object that maps variable values for the message. Amazon Pinpoint merges these values with the variable values
-     * specified by properties of the DefaultMessage object. The substitutions in this map take precedence over all
-     * other substitutions.
+     * A map of the message variables to merge with the variables specified by properties of the DefaultMessage object.
+     * The variables specified in this map take precedence over all other variables.
      * </p>
      * 
      * @param substitutions
-     *        An object that maps variable values for the message. Amazon Pinpoint merges these values with the variable
-     *        values specified by properties of the DefaultMessage object. The substitutions in this map take precedence
-     *        over all other substitutions.
+     *        A map of the message variables to merge with the variables specified by properties of the DefaultMessage
+     *        object. The variables specified in this map take precedence over all other variables.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -356,6 +374,13 @@ public class AddressConfiguration implements Serializable, Cloneable, Structured
         setSubstitutions(substitutions);
         return this;
     }
+
+    /**
+     * Add a single Substitutions entry
+     *
+     * @see AddressConfiguration#withSubstitutions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public AddressConfiguration addSubstitutionsEntry(String key, java.util.List<String> value) {
         if (null == this.substitutions) {

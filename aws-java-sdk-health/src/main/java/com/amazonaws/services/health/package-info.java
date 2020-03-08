@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -53,6 +53,54 @@
  * <li>
  * <p>
  * <a>DescribeEntityAggregates</a>: A count of the number of affected entities that meet specified criteria.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * AWS Health integrates with AWS Organizations to provide a centralized view of AWS Health events across all accounts
+ * in your organization.
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>DescribeEventsForOrganization</a>: Summary information about events across the organization.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeAffectedAccountsForOrganization</a>: List of accounts in your organization impacted by an event.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeEventDetailsForOrganization</a>: Detailed information about events in your organization.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeAffectedEntitiesForOrganization</a>: Information about AWS resources in your organization that are
+ * affected by events.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * You can use the following operations to enable or disable AWS Health from working with AWS Organizations.
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <a>EnableHealthServiceAccessForOrganization</a>: Enables AWS Health to work with AWS Organizations.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DisableHealthServiceAccessForOrganization</a>: Disables AWS Health from working with AWS Organizations.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>DescribeHealthServiceStatusForOrganization</a>: Status information about enabling or disabling AWS Health from
+ * working with AWS Organizations.
  * </p>
  * </li>
  * </ul>

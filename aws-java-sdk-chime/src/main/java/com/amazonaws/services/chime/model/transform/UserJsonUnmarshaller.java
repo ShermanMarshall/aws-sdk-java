@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -72,6 +72,10 @@ public class UserJsonUnmarshaller implements Unmarshaller<User, JsonUnmarshaller
                     context.nextToken();
                     user.setLicenseType(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("UserType", targetDepth)) {
+                    context.nextToken();
+                    user.setUserType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("UserRegistrationStatus", targetDepth)) {
                     context.nextToken();
                     user.setUserRegistrationStatus(context.getUnmarshaller(String.class).unmarshall(context));
@@ -87,6 +91,10 @@ public class UserJsonUnmarshaller implements Unmarshaller<User, JsonUnmarshaller
                 if (context.testExpression("InvitedOn", targetDepth)) {
                     context.nextToken();
                     user.setInvitedOn(DateJsonUnmarshallerFactory.getInstance("iso8601").unmarshall(context));
+                }
+                if (context.testExpression("AlexaForBusinessMetadata", targetDepth)) {
+                    context.nextToken();
+                    user.setAlexaForBusinessMetadata(AlexaForBusinessMetadataJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("PersonalPIN", targetDepth)) {
                     context.nextToken();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Queue setting that determines the highest latency allowed for individual players when placing a game session. When a
- * latency policy is in force, a game session cannot be placed at any destination in a region where a player is
- * reporting latency higher than the cap. Latency policies are only enforced when the placement request contains player
- * latency information.
+ * latency policy is in force, a game session cannot be placed with any fleet in a Region where a player reports latency
+ * higher than the cap. Latency policies are only enforced when the placement request contains player latency
+ * information.
  * </p>
  * <ul>
  * <li>

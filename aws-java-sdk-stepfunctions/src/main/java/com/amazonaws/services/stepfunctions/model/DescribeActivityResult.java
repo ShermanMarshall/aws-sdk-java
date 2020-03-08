@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,9 @@ public class DescribeActivityResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+     * </p>
      */
     private String name;
     /**
@@ -146,6 +149,9 @@ public class DescribeActivityResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+     * </p>
      * 
      * @param name
      *        The name of the activity.</p>
@@ -178,6 +184,9 @@ public class DescribeActivityResult extends com.amazonaws.AmazonWebServiceResult
      *        control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
      *        </p>
      *        </li>
+     *        </ul>
+     *        <p>
+     *        To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
      */
 
     public void setName(String name) {
@@ -218,6 +227,9 @@ public class DescribeActivityResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+     * </p>
      * 
      * @return The name of the activity.</p>
      *         <p>
@@ -249,6 +261,9 @@ public class DescribeActivityResult extends com.amazonaws.AmazonWebServiceResult
      *         control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
      *         </p>
      *         </li>
+     *         </ul>
+     *         <p>
+     *         To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
      */
 
     public String getName() {
@@ -289,6 +304,9 @@ public class DescribeActivityResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+     * </p>
      * 
      * @param name
      *        The name of the activity.</p>
@@ -321,6 +339,9 @@ public class DescribeActivityResult extends com.amazonaws.AmazonWebServiceResult
      *        control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
      *        </p>
      *        </li>
+     *        </ul>
+     *        <p>
+     *        To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

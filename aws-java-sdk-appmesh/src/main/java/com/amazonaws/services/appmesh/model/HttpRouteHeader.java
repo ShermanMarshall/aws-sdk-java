@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing the HTTP header in the request.
+ * An object that represents the HTTP header in the request.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/HttpRouteHeader" target="_top">AWS API
@@ -30,8 +30,7 @@ public class HttpRouteHeader implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value. The
-     * default value is <code>False</code>.
+     * Specify <code>True</code> to match anything except the match criteria. The default value is <code>False</code>.
      * </p>
      */
     private Boolean invert;
@@ -50,13 +49,12 @@ public class HttpRouteHeader implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value. The
-     * default value is <code>False</code>.
+     * Specify <code>True</code> to match anything except the match criteria. The default value is <code>False</code>.
      * </p>
      * 
      * @param invert
-     *        Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value.
-     *        The default value is <code>False</code>.
+     *        Specify <code>True</code> to match anything except the match criteria. The default value is
+     *        <code>False</code>.
      */
 
     public void setInvert(Boolean invert) {
@@ -65,12 +63,11 @@ public class HttpRouteHeader implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value. The
-     * default value is <code>False</code>.
+     * Specify <code>True</code> to match anything except the match criteria. The default value is <code>False</code>.
      * </p>
      * 
-     * @return Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value.
-     *         The default value is <code>False</code>.
+     * @return Specify <code>True</code> to match anything except the match criteria. The default value is
+     *         <code>False</code>.
      */
 
     public Boolean getInvert() {
@@ -79,13 +76,12 @@ public class HttpRouteHeader implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value. The
-     * default value is <code>False</code>.
+     * Specify <code>True</code> to match anything except the match criteria. The default value is <code>False</code>.
      * </p>
      * 
      * @param invert
-     *        Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value.
-     *        The default value is <code>False</code>.
+     *        Specify <code>True</code> to match anything except the match criteria. The default value is
+     *        <code>False</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -96,12 +92,11 @@ public class HttpRouteHeader implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value. The
-     * default value is <code>False</code>.
+     * Specify <code>True</code> to match anything except the match criteria. The default value is <code>False</code>.
      * </p>
      * 
-     * @return Specify <code>True</code> to match the opposite of the <code>HeaderMatchMethod</code> method and value.
-     *         The default value is <code>False</code>.
+     * @return Specify <code>True</code> to match anything except the match criteria. The default value is
+     *         <code>False</code>.
      */
 
     public Boolean isInvert() {

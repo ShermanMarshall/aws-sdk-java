@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,6 +60,10 @@ public class GetEventSourceMappingResultJsonUnmarshaller implements Unmarshaller
                     context.nextToken();
                     getEventSourceMappingResult.setMaximumBatchingWindowInSeconds(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
+                if (context.testExpression("ParallelizationFactor", targetDepth)) {
+                    context.nextToken();
+                    getEventSourceMappingResult.setParallelizationFactor(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
                 if (context.testExpression("EventSourceArn", targetDepth)) {
                     context.nextToken();
                     getEventSourceMappingResult.setEventSourceArn(context.getUnmarshaller(String.class).unmarshall(context));
@@ -83,6 +87,22 @@ public class GetEventSourceMappingResultJsonUnmarshaller implements Unmarshaller
                 if (context.testExpression("StateTransitionReason", targetDepth)) {
                     context.nextToken();
                     getEventSourceMappingResult.setStateTransitionReason(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("DestinationConfig", targetDepth)) {
+                    context.nextToken();
+                    getEventSourceMappingResult.setDestinationConfig(DestinationConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("MaximumRecordAgeInSeconds", targetDepth)) {
+                    context.nextToken();
+                    getEventSourceMappingResult.setMaximumRecordAgeInSeconds(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("BisectBatchOnFunctionError", targetDepth)) {
+                    context.nextToken();
+                    getEventSourceMappingResult.setBisectBatchOnFunctionError(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("MaximumRetryAttempts", targetDepth)) {
+                    context.nextToken();
+                    getEventSourceMappingResult.setMaximumRetryAttempts(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

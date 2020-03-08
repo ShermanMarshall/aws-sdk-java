@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,6 +39,8 @@ public enum RDSActions implements Action {
     AuthorizeDBSecurityGroupIngress("rds:AuthorizeDBSecurityGroupIngress"),
     /** Action for the BacktrackDBCluster operation. */
     BacktrackDBCluster("rds:BacktrackDBCluster"),
+    /** Action for the CancelExportTask operation. */
+    CancelExportTask("rds:CancelExportTask"),
     /** Action for the CopyDBClusterParameterGroup operation. */
     CopyDBClusterParameterGroup("rds:CopyDBClusterParameterGroup"),
     /** Action for the CopyDBClusterSnapshot operation. */
@@ -49,6 +51,8 @@ public enum RDSActions implements Action {
     CopyDBSnapshot("rds:CopyDBSnapshot"),
     /** Action for the CopyOptionGroup operation. */
     CopyOptionGroup("rds:CopyOptionGroup"),
+    /** Action for the CreateCustomAvailabilityZone operation. */
+    CreateCustomAvailabilityZone("rds:CreateCustomAvailabilityZone"),
     /** Action for the CreateDBCluster operation. */
     CreateDBCluster("rds:CreateDBCluster"),
     /** Action for the CreateDBClusterEndpoint operation. */
@@ -63,6 +67,8 @@ public enum RDSActions implements Action {
     CreateDBInstanceReadReplica("rds:CreateDBInstanceReadReplica"),
     /** Action for the CreateDBParameterGroup operation. */
     CreateDBParameterGroup("rds:CreateDBParameterGroup"),
+    /** Action for the CreateDBProxy operation. */
+    CreateDBProxy("rds:CreateDBProxy"),
     /** Action for the CreateDBSecurityGroup operation. */
     CreateDBSecurityGroup("rds:CreateDBSecurityGroup"),
     /** Action for the CreateDBSnapshot operation. */
@@ -75,6 +81,8 @@ public enum RDSActions implements Action {
     CreateGlobalCluster("rds:CreateGlobalCluster"),
     /** Action for the CreateOptionGroup operation. */
     CreateOptionGroup("rds:CreateOptionGroup"),
+    /** Action for the DeleteCustomAvailabilityZone operation. */
+    DeleteCustomAvailabilityZone("rds:DeleteCustomAvailabilityZone"),
     /** Action for the DeleteDBCluster operation. */
     DeleteDBCluster("rds:DeleteDBCluster"),
     /** Action for the DeleteDBClusterEndpoint operation. */
@@ -89,6 +97,8 @@ public enum RDSActions implements Action {
     DeleteDBInstanceAutomatedBackup("rds:DeleteDBInstanceAutomatedBackup"),
     /** Action for the DeleteDBParameterGroup operation. */
     DeleteDBParameterGroup("rds:DeleteDBParameterGroup"),
+    /** Action for the DeleteDBProxy operation. */
+    DeleteDBProxy("rds:DeleteDBProxy"),
     /** Action for the DeleteDBSecurityGroup operation. */
     DeleteDBSecurityGroup("rds:DeleteDBSecurityGroup"),
     /** Action for the DeleteDBSnapshot operation. */
@@ -99,12 +109,18 @@ public enum RDSActions implements Action {
     DeleteEventSubscription("rds:DeleteEventSubscription"),
     /** Action for the DeleteGlobalCluster operation. */
     DeleteGlobalCluster("rds:DeleteGlobalCluster"),
+    /** Action for the DeleteInstallationMedia operation. */
+    DeleteInstallationMedia("rds:DeleteInstallationMedia"),
     /** Action for the DeleteOptionGroup operation. */
     DeleteOptionGroup("rds:DeleteOptionGroup"),
+    /** Action for the DeregisterDBProxyTargets operation. */
+    DeregisterDBProxyTargets("rds:DeregisterDBProxyTargets"),
     /** Action for the DescribeAccountAttributes operation. */
     DescribeAccountAttributes("rds:DescribeAccountAttributes"),
     /** Action for the DescribeCertificates operation. */
     DescribeCertificates("rds:DescribeCertificates"),
+    /** Action for the DescribeCustomAvailabilityZones operation. */
+    DescribeCustomAvailabilityZones("rds:DescribeCustomAvailabilityZones"),
     /** Action for the DescribeDBClusterBacktracks operation. */
     DescribeDBClusterBacktracks("rds:DescribeDBClusterBacktracks"),
     /** Action for the DescribeDBClusterEndpoints operation. */
@@ -131,6 +147,12 @@ public enum RDSActions implements Action {
     DescribeDBParameterGroups("rds:DescribeDBParameterGroups"),
     /** Action for the DescribeDBParameters operation. */
     DescribeDBParameters("rds:DescribeDBParameters"),
+    /** Action for the DescribeDBProxies operation. */
+    DescribeDBProxies("rds:DescribeDBProxies"),
+    /** Action for the DescribeDBProxyTargetGroups operation. */
+    DescribeDBProxyTargetGroups("rds:DescribeDBProxyTargetGroups"),
+    /** Action for the DescribeDBProxyTargets operation. */
+    DescribeDBProxyTargets("rds:DescribeDBProxyTargets"),
     /** Action for the DescribeDBSecurityGroups operation. */
     DescribeDBSecurityGroups("rds:DescribeDBSecurityGroups"),
     /** Action for the DescribeDBSnapshotAttributes operation. */
@@ -149,8 +171,12 @@ public enum RDSActions implements Action {
     DescribeEventSubscriptions("rds:DescribeEventSubscriptions"),
     /** Action for the DescribeEvents operation. */
     DescribeEvents("rds:DescribeEvents"),
+    /** Action for the DescribeExportTasks operation. */
+    DescribeExportTasks("rds:DescribeExportTasks"),
     /** Action for the DescribeGlobalClusters operation. */
     DescribeGlobalClusters("rds:DescribeGlobalClusters"),
+    /** Action for the DescribeInstallationMedia operation. */
+    DescribeInstallationMedia("rds:DescribeInstallationMedia"),
     /** Action for the DescribeOptionGroupOptions operation. */
     DescribeOptionGroupOptions("rds:DescribeOptionGroupOptions"),
     /** Action for the DescribeOptionGroups operation. */
@@ -171,8 +197,12 @@ public enum RDSActions implements Action {
     DownloadDBLogFilePortion("rds:DownloadDBLogFilePortion"),
     /** Action for the FailoverDBCluster operation. */
     FailoverDBCluster("rds:FailoverDBCluster"),
+    /** Action for the ImportInstallationMedia operation. */
+    ImportInstallationMedia("rds:ImportInstallationMedia"),
     /** Action for the ListTagsForResource operation. */
     ListTagsForResource("rds:ListTagsForResource"),
+    /** Action for the ModifyCertificates operation. */
+    ModifyCertificates("rds:ModifyCertificates"),
     /** Action for the ModifyCurrentDBClusterCapacity operation. */
     ModifyCurrentDBClusterCapacity("rds:ModifyCurrentDBClusterCapacity"),
     /** Action for the ModifyDBCluster operation. */
@@ -187,6 +217,10 @@ public enum RDSActions implements Action {
     ModifyDBInstance("rds:ModifyDBInstance"),
     /** Action for the ModifyDBParameterGroup operation. */
     ModifyDBParameterGroup("rds:ModifyDBParameterGroup"),
+    /** Action for the ModifyDBProxy operation. */
+    ModifyDBProxy("rds:ModifyDBProxy"),
+    /** Action for the ModifyDBProxyTargetGroup operation. */
+    ModifyDBProxyTargetGroup("rds:ModifyDBProxyTargetGroup"),
     /** Action for the ModifyDBSnapshot operation. */
     ModifyDBSnapshot("rds:ModifyDBSnapshot"),
     /** Action for the ModifyDBSnapshotAttribute operation. */
@@ -207,6 +241,8 @@ public enum RDSActions implements Action {
     PurchaseReservedDBInstancesOffering("rds:PurchaseReservedDBInstancesOffering"),
     /** Action for the RebootDBInstance operation. */
     RebootDBInstance("rds:RebootDBInstance"),
+    /** Action for the RegisterDBProxyTargets operation. */
+    RegisterDBProxyTargets("rds:RegisterDBProxyTargets"),
     /** Action for the RemoveFromGlobalCluster operation. */
     RemoveFromGlobalCluster("rds:RemoveFromGlobalCluster"),
     /** Action for the RemoveRoleFromDBCluster operation. */
@@ -241,6 +277,8 @@ public enum RDSActions implements Action {
     StartDBCluster("rds:StartDBCluster"),
     /** Action for the StartDBInstance operation. */
     StartDBInstance("rds:StartDBInstance"),
+    /** Action for the StartExportTask operation. */
+    StartExportTask("rds:StartExportTask"),
     /** Action for the StopActivityStream operation. */
     StopActivityStream("rds:StopActivityStream"),
     /** Action for the StopDBCluster operation. */

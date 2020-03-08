@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,13 +31,14 @@ public class EndpointUser implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * One or more custom attributes that describe the user by associating a name with an array of values. For example,
-     * the value of an attribute named Interests might be: ["science", "music", "travel"]. You can use these attributes
-     * as filter criteria when you create segments.
+     * the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
+     * as filter criteria when you create segments. Attribute names are case sensitive.
      * </p>
      * <p>
-     * When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:),
-     * question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that
-     * contain these characters. This limitation doesn't apply to attribute values.
+     * An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you
+     * define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question
+     * mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain
+     * these characters. This restriction doesn't apply to attribute values.
      * </p>
      */
     private java.util.Map<String, java.util.List<String>> userAttributes;
@@ -51,22 +52,24 @@ public class EndpointUser implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * One or more custom attributes that describe the user by associating a name with an array of values. For example,
-     * the value of an attribute named Interests might be: ["science", "music", "travel"]. You can use these attributes
-     * as filter criteria when you create segments.
+     * the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
+     * as filter criteria when you create segments. Attribute names are case sensitive.
      * </p>
      * <p>
-     * When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:),
-     * question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that
-     * contain these characters. This limitation doesn't apply to attribute values.
+     * An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you
+     * define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question
+     * mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain
+     * these characters. This restriction doesn't apply to attribute values.
      * </p>
      * 
      * @return One or more custom attributes that describe the user by associating a name with an array of values. For
-     *         example, the value of an attribute named Interests might be: ["science", "music", "travel"]. You can use
-     *         these attributes as filter criteria when you create segments.</p>
+     *         example, the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
+     *         these attributes as filter criteria when you create segments. Attribute names are case sensitive.</p>
      *         <p>
+     *         An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters.
      *         When you define the name of a custom attribute, avoid using the following characters: number sign (#),
      *         colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display
-     *         attribute names that contain these characters. This limitation doesn't apply to attribute values.
+     *         attribute names that contain these characters. This restriction doesn't apply to attribute values.
      */
 
     public java.util.Map<String, java.util.List<String>> getUserAttributes() {
@@ -76,23 +79,25 @@ public class EndpointUser implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * One or more custom attributes that describe the user by associating a name with an array of values. For example,
-     * the value of an attribute named Interests might be: ["science", "music", "travel"]. You can use these attributes
-     * as filter criteria when you create segments.
+     * the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
+     * as filter criteria when you create segments. Attribute names are case sensitive.
      * </p>
      * <p>
-     * When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:),
-     * question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that
-     * contain these characters. This limitation doesn't apply to attribute values.
+     * An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you
+     * define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question
+     * mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain
+     * these characters. This restriction doesn't apply to attribute values.
      * </p>
      * 
      * @param userAttributes
      *        One or more custom attributes that describe the user by associating a name with an array of values. For
-     *        example, the value of an attribute named Interests might be: ["science", "music", "travel"]. You can use
-     *        these attributes as filter criteria when you create segments.</p>
+     *        example, the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
+     *        these attributes as filter criteria when you create segments. Attribute names are case sensitive.</p>
      *        <p>
+     *        An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters.
      *        When you define the name of a custom attribute, avoid using the following characters: number sign (#),
      *        colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display
-     *        attribute names that contain these characters. This limitation doesn't apply to attribute values.
+     *        attribute names that contain these characters. This restriction doesn't apply to attribute values.
      */
 
     public void setUserAttributes(java.util.Map<String, java.util.List<String>> userAttributes) {
@@ -102,23 +107,25 @@ public class EndpointUser implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * One or more custom attributes that describe the user by associating a name with an array of values. For example,
-     * the value of an attribute named Interests might be: ["science", "music", "travel"]. You can use these attributes
-     * as filter criteria when you create segments.
+     * the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use these attributes
+     * as filter criteria when you create segments. Attribute names are case sensitive.
      * </p>
      * <p>
-     * When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:),
-     * question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that
-     * contain these characters. This limitation doesn't apply to attribute values.
+     * An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you
+     * define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question
+     * mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain
+     * these characters. This restriction doesn't apply to attribute values.
      * </p>
      * 
      * @param userAttributes
      *        One or more custom attributes that describe the user by associating a name with an array of values. For
-     *        example, the value of an attribute named Interests might be: ["science", "music", "travel"]. You can use
-     *        these attributes as filter criteria when you create segments.</p>
+     *        example, the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
+     *        these attributes as filter criteria when you create segments. Attribute names are case sensitive.</p>
      *        <p>
+     *        An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters.
      *        When you define the name of a custom attribute, avoid using the following characters: number sign (#),
      *        colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display
-     *        attribute names that contain these characters. This limitation doesn't apply to attribute values.
+     *        attribute names that contain these characters. This restriction doesn't apply to attribute values.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -126,6 +133,13 @@ public class EndpointUser implements Serializable, Cloneable, StructuredPojo {
         setUserAttributes(userAttributes);
         return this;
     }
+
+    /**
+     * Add a single UserAttributes entry
+     *
+     * @see EndpointUser#withUserAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public EndpointUser addUserAttributesEntry(String key, java.util.List<String> value) {
         if (null == this.userAttributes) {

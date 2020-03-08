@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,8 +43,8 @@ public class UpdateServerCertificateRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward
-     * slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F),
-     * including most punctuation characters, digits, and upper and lowercased letters.
+     * slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits, and upper and lowercased letters.
      * </p>
      */
     private String newPath;
@@ -157,8 +157,8 @@ public class UpdateServerCertificateRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward
-     * slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F),
-     * including most punctuation characters, digits, and upper and lowercased letters.
+     * slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits, and upper and lowercased letters.
      * </p>
      * 
      * @param newPath
@@ -167,8 +167,9 @@ public class UpdateServerCertificateRequest extends com.amazonaws.AmazonWebServi
      *        <p>
      *        This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
      *        of characters consisting of either a forward slash (/) by itself or a string that must begin and end with
-     *        forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL
-     *        character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+     *        forward slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through
+     *        the DEL character (<code>\u007F</code>), including most punctuation characters, digits, and upper and
+     *        lowercased letters.
      */
 
     public void setNewPath(String newPath) {
@@ -182,8 +183,8 @@ public class UpdateServerCertificateRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward
-     * slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F),
-     * including most punctuation characters, digits, and upper and lowercased letters.
+     * slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits, and upper and lowercased letters.
      * </p>
      * 
      * @return The new path for the server certificate. Include this only if you are updating the server certificate's
@@ -191,8 +192,9 @@ public class UpdateServerCertificateRequest extends com.amazonaws.AmazonWebServi
      *         <p>
      *         This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
      *         of characters consisting of either a forward slash (/) by itself or a string that must begin and end with
-     *         forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL
-     *         character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+     *         forward slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through
+     *         the DEL character (<code>\u007F</code>), including most punctuation characters, digits, and upper and
+     *         lowercased letters.
      */
 
     public String getNewPath() {
@@ -206,8 +208,8 @@ public class UpdateServerCertificateRequest extends com.amazonaws.AmazonWebServi
      * <p>
      * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward
-     * slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F),
-     * including most punctuation characters, digits, and upper and lowercased letters.
+     * slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits, and upper and lowercased letters.
      * </p>
      * 
      * @param newPath
@@ -216,8 +218,9 @@ public class UpdateServerCertificateRequest extends com.amazonaws.AmazonWebServi
      *        <p>
      *        This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
      *        of characters consisting of either a forward slash (/) by itself or a string that must begin and end with
-     *        forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL
-     *        character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+     *        forward slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through
+     *        the DEL character (<code>\u007F</code>), including most punctuation characters, digits, and upper and
+     *        lowercased letters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

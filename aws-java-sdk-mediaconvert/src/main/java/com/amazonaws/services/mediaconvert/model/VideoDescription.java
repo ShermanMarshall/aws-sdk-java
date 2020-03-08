@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,8 +42,8 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
      * Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video
      * encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For
      * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
-     * settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
-     * * FRAME_CAPTURE, FrameCaptureSettings
+     * settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings * H_265, H265Settings * MPEG2,
+     * Mpeg2Settings * PRORES, ProresSettings
      */
     private VideoCodecSettings codecSettings;
     /**
@@ -261,15 +261,15 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
      * Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video
      * encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For
      * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
-     * settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
-     * * FRAME_CAPTURE, FrameCaptureSettings
+     * settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings * H_265, H265Settings * MPEG2,
+     * Mpeg2Settings * PRORES, ProresSettings
      * 
      * @param codecSettings
      *        Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to
      *        video encoding. The settings in this group vary depending on the value that you choose for Video codec
      *        (Codec). For each codec enum that you choose, define the corresponding settings object. The following
-     *        lists the codec enum, settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2,
-     *        Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE, FrameCaptureSettings
+     *        lists the codec enum, settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings *
+     *        H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
      */
 
     public void setCodecSettings(VideoCodecSettings codecSettings) {
@@ -280,14 +280,14 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
      * Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video
      * encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For
      * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
-     * settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
-     * * FRAME_CAPTURE, FrameCaptureSettings
+     * settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings * H_265, H265Settings * MPEG2,
+     * Mpeg2Settings * PRORES, ProresSettings
      * 
      * @return Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to
      *         video encoding. The settings in this group vary depending on the value that you choose for Video codec
      *         (Codec). For each codec enum that you choose, define the corresponding settings object. The following
-     *         lists the codec enum, settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2,
-     *         Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE, FrameCaptureSettings
+     *         lists the codec enum, settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings
+     *         * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
      */
 
     public VideoCodecSettings getCodecSettings() {
@@ -298,15 +298,15 @@ public class VideoDescription implements Serializable, Cloneable, StructuredPojo
      * Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video
      * encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For
      * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
-     * settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
-     * * FRAME_CAPTURE, FrameCaptureSettings
+     * settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings * H_265, H265Settings * MPEG2,
+     * Mpeg2Settings * PRORES, ProresSettings
      * 
      * @param codecSettings
      *        Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to
      *        video encoding. The settings in this group vary depending on the value that you choose for Video codec
      *        (Codec). For each codec enum that you choose, define the corresponding settings object. The following
-     *        lists the codec enum, settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2,
-     *        Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE, FrameCaptureSettings
+     *        lists the codec enum, settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings *
+     *        H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

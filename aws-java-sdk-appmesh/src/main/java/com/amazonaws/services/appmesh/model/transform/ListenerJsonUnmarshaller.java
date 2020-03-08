@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,10 @@ public class ListenerJsonUnmarshaller implements Unmarshaller<Listener, JsonUnma
                 if (context.testExpression("portMapping", targetDepth)) {
                     context.nextToken();
                     listener.setPortMapping(PortMappingJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("tls", targetDepth)) {
+                    context.nextToken();
+                    listener.setTls(ListenerTlsJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

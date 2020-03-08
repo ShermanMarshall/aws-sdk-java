@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -2180,6 +2180,39 @@ public class AWSSimpleSystemsManagementAsyncClient extends AWSSimpleSystemsManag
     }
 
     @Override
+    public java.util.concurrent.Future<GetCalendarStateResult> getCalendarStateAsync(GetCalendarStateRequest request) {
+
+        return getCalendarStateAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetCalendarStateResult> getCalendarStateAsync(final GetCalendarStateRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetCalendarStateRequest, GetCalendarStateResult> asyncHandler) {
+        final GetCalendarStateRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetCalendarStateResult>() {
+            @Override
+            public GetCalendarStateResult call() throws Exception {
+                GetCalendarStateResult result = null;
+
+                try {
+                    result = executeGetCalendarState(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<GetCommandInvocationResult> getCommandInvocationAsync(GetCommandInvocationRequest request) {
 
         return getCommandInvocationAsync(request, null);
@@ -4250,6 +4283,39 @@ public class AWSSimpleSystemsManagementAsyncClient extends AWSSimpleSystemsManag
 
                 try {
                     result = executeUpdatePatchBaseline(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateResourceDataSyncResult> updateResourceDataSyncAsync(UpdateResourceDataSyncRequest request) {
+
+        return updateResourceDataSyncAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateResourceDataSyncResult> updateResourceDataSyncAsync(final UpdateResourceDataSyncRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateResourceDataSyncRequest, UpdateResourceDataSyncResult> asyncHandler) {
+        final UpdateResourceDataSyncRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateResourceDataSyncResult>() {
+            @Override
+            public UpdateResourceDataSyncResult call() throws Exception {
+                UpdateResourceDataSyncResult result = null;
+
+                try {
+                    result = executeUpdateResourceDataSync(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

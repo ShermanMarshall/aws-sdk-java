@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Fleet designated in a game session queue. Requests for new game sessions in the queue are fulfilled by starting a new
- * game session on any destination configured for a queue.
+ * game session on any destination that is configured for a queue.
  * </p>
  * <ul>
  * <li>
@@ -53,21 +53,21 @@ public class GameSessionQueueDestination implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a
-     * region name, provide a unique identifier across all regions.
+     * The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias
+     * ID and a Region name, provide a unique identifier across all Regions.
      * </p>
      */
     private String destinationArn;
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a
-     * region name, provide a unique identifier across all regions.
+     * The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias
+     * ID and a Region name, provide a unique identifier across all Regions.
      * </p>
      * 
      * @param destinationArn
-     *        Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID
-     *        and a region name, provide a unique identifier across all regions.
+     *        The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID or
+     *        alias ID and a Region name, provide a unique identifier across all Regions.
      */
 
     public void setDestinationArn(String destinationArn) {
@@ -76,12 +76,12 @@ public class GameSessionQueueDestination implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a
-     * region name, provide a unique identifier across all regions.
+     * The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias
+     * ID and a Region name, provide a unique identifier across all Regions.
      * </p>
      * 
-     * @return Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID
-     *         and a region name, provide a unique identifier across all regions.
+     * @return The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID
+     *         or alias ID and a Region name, provide a unique identifier across all Regions.
      */
 
     public String getDestinationArn() {
@@ -90,13 +90,13 @@ public class GameSessionQueueDestination implements Serializable, Cloneable, Str
 
     /**
      * <p>
-     * Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a
-     * region name, provide a unique identifier across all regions.
+     * The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias
+     * ID and a Region name, provide a unique identifier across all Regions.
      * </p>
      * 
      * @param destinationArn
-     *        Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID
-     *        and a region name, provide a unique identifier across all regions.
+     *        The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID or
+     *        alias ID and a Region name, provide a unique identifier across all Regions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

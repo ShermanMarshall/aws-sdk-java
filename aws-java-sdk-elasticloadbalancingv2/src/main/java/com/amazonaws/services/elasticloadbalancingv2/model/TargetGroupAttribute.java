@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,7 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * The name of the attribute.
      * </p>
      * <p>
-     * The following attribute is supported by both Application Load Balancers and Network Load Balancers:
+     * The following attributes are supported by both Application Load Balancers and Network Load Balancers:
      * </p>
      * <ul>
      * <li>
@@ -42,19 +42,6 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * not supported.
      * </p>
      * </li>
-     * </ul>
-     * <p>
-     * The following attributes are supported by Application Load Balancers if the target is not a Lambda function:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target
-     * receives a linearly increasing share of the traffic to the target group. After this time period ends, the target
-     * receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by
-     * default.
-     * </p>
-     * </li>
      * <li>
      * <p>
      * <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code>
@@ -63,7 +50,28 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.
+     * <code>stickiness.type</code> - The type of sticky sessions. The possible values are <code>lb_cookie</code> for
+     * Application Load Balancers or <code>source_ip</code> for Network Load Balancers.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The following attributes are supported by Application Load Balancers if the target is not a Lambda function:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>load_balancing.algorithm.type</code> - The load balancing algorithm determines how the load balancer
+     * selects targets when routing requests. The value is <code>round_robin</code> or
+     * <code>least_outstanding_requests</code>. The default is <code>round_robin</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target
+     * receives a linearly increasing share of the traffic to the target group. After this time period ends, the target
+     * receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by
+     * default.
      * </p>
      * </li>
      * <li>
@@ -113,7 +121,7 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * The name of the attribute.
      * </p>
      * <p>
-     * The following attribute is supported by both Application Load Balancers and Network Load Balancers:
+     * The following attributes are supported by both Application Load Balancers and Network Load Balancers:
      * </p>
      * <ul>
      * <li>
@@ -124,19 +132,6 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * not supported.
      * </p>
      * </li>
-     * </ul>
-     * <p>
-     * The following attributes are supported by Application Load Balancers if the target is not a Lambda function:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target
-     * receives a linearly increasing share of the traffic to the target group. After this time period ends, the target
-     * receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by
-     * default.
-     * </p>
-     * </li>
      * <li>
      * <p>
      * <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code>
@@ -145,7 +140,28 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.
+     * <code>stickiness.type</code> - The type of sticky sessions. The possible values are <code>lb_cookie</code> for
+     * Application Load Balancers or <code>source_ip</code> for Network Load Balancers.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The following attributes are supported by Application Load Balancers if the target is not a Lambda function:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>load_balancing.algorithm.type</code> - The load balancing algorithm determines how the load balancer
+     * selects targets when routing requests. The value is <code>round_robin</code> or
+     * <code>least_outstanding_requests</code>. The default is <code>round_robin</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target
+     * receives a linearly increasing share of the traffic to the target group. After this time period ends, the target
+     * receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by
+     * default.
      * </p>
      * </li>
      * <li>
@@ -185,7 +201,7 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * @param key
      *        The name of the attribute.</p>
      *        <p>
-     *        The following attribute is supported by both Application Load Balancers and Network Load Balancers:
+     *        The following attributes are supported by both Application Load Balancers and Network Load Balancers:
      *        </p>
      *        <ul>
      *        <li>
@@ -196,20 +212,6 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      *        Lambda function, this attribute is not supported.
      *        </p>
      *        </li>
-     *        </ul>
-     *        <p>
-     *        The following attributes are supported by Application Load Balancers if the target is not a Lambda
-     *        function:
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered
-     *        target receives a linearly increasing share of the traffic to the target group. After this time period
-     *        ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start
-     *        mode is disabled by default.
-     *        </p>
-     *        </li>
      *        <li>
      *        <p>
      *        <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is
@@ -218,7 +220,29 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.
+     *        <code>stickiness.type</code> - The type of sticky sessions. The possible values are <code>lb_cookie</code>
+     *        for Application Load Balancers or <code>source_ip</code> for Network Load Balancers.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The following attributes are supported by Application Load Balancers if the target is not a Lambda
+     *        function:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>load_balancing.algorithm.type</code> - The load balancing algorithm determines how the load balancer
+     *        selects targets when routing requests. The value is <code>round_robin</code> or
+     *        <code>least_outstanding_requests</code>. The default is <code>round_robin</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered
+     *        target receives a linearly increasing share of the traffic to the target group. After this time period
+     *        ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start
+     *        mode is disabled by default.
      *        </p>
      *        </li>
      *        <li>
@@ -265,7 +289,7 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * The name of the attribute.
      * </p>
      * <p>
-     * The following attribute is supported by both Application Load Balancers and Network Load Balancers:
+     * The following attributes are supported by both Application Load Balancers and Network Load Balancers:
      * </p>
      * <ul>
      * <li>
@@ -276,19 +300,6 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * not supported.
      * </p>
      * </li>
-     * </ul>
-     * <p>
-     * The following attributes are supported by Application Load Balancers if the target is not a Lambda function:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target
-     * receives a linearly increasing share of the traffic to the target group. After this time period ends, the target
-     * receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by
-     * default.
-     * </p>
-     * </li>
      * <li>
      * <p>
      * <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code>
@@ -297,7 +308,28 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.
+     * <code>stickiness.type</code> - The type of sticky sessions. The possible values are <code>lb_cookie</code> for
+     * Application Load Balancers or <code>source_ip</code> for Network Load Balancers.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The following attributes are supported by Application Load Balancers if the target is not a Lambda function:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>load_balancing.algorithm.type</code> - The load balancing algorithm determines how the load balancer
+     * selects targets when routing requests. The value is <code>round_robin</code> or
+     * <code>least_outstanding_requests</code>. The default is <code>round_robin</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target
+     * receives a linearly increasing share of the traffic to the target group. After this time period ends, the target
+     * receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by
+     * default.
      * </p>
      * </li>
      * <li>
@@ -336,7 +368,7 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * 
      * @return The name of the attribute.</p>
      *         <p>
-     *         The following attribute is supported by both Application Load Balancers and Network Load Balancers:
+     *         The following attributes are supported by both Application Load Balancers and Network Load Balancers:
      *         </p>
      *         <ul>
      *         <li>
@@ -347,20 +379,6 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      *         Lambda function, this attribute is not supported.
      *         </p>
      *         </li>
-     *         </ul>
-     *         <p>
-     *         The following attributes are supported by Application Load Balancers if the target is not a Lambda
-     *         function:
-     *         </p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered
-     *         target receives a linearly increasing share of the traffic to the target group. After this time period
-     *         ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start
-     *         mode is disabled by default.
-     *         </p>
-     *         </li>
      *         <li>
      *         <p>
      *         <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is
@@ -369,7 +387,30 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.
+     *         <code>stickiness.type</code> - The type of sticky sessions. The possible values are
+     *         <code>lb_cookie</code> for Application Load Balancers or <code>source_ip</code> for Network Load
+     *         Balancers.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         The following attributes are supported by Application Load Balancers if the target is not a Lambda
+     *         function:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>load_balancing.algorithm.type</code> - The load balancing algorithm determines how the load
+     *         balancer selects targets when routing requests. The value is <code>round_robin</code> or
+     *         <code>least_outstanding_requests</code>. The default is <code>round_robin</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered
+     *         target receives a linearly increasing share of the traffic to the target group. After this time period
+     *         ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start
+     *         mode is disabled by default.
      *         </p>
      *         </li>
      *         <li>
@@ -416,7 +457,7 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * The name of the attribute.
      * </p>
      * <p>
-     * The following attribute is supported by both Application Load Balancers and Network Load Balancers:
+     * The following attributes are supported by both Application Load Balancers and Network Load Balancers:
      * </p>
      * <ul>
      * <li>
@@ -427,19 +468,6 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * not supported.
      * </p>
      * </li>
-     * </ul>
-     * <p>
-     * The following attributes are supported by Application Load Balancers if the target is not a Lambda function:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target
-     * receives a linearly increasing share of the traffic to the target group. After this time period ends, the target
-     * receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by
-     * default.
-     * </p>
-     * </li>
      * <li>
      * <p>
      * <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code>
@@ -448,7 +476,28 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.
+     * <code>stickiness.type</code> - The type of sticky sessions. The possible values are <code>lb_cookie</code> for
+     * Application Load Balancers or <code>source_ip</code> for Network Load Balancers.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The following attributes are supported by Application Load Balancers if the target is not a Lambda function:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>load_balancing.algorithm.type</code> - The load balancing algorithm determines how the load balancer
+     * selects targets when routing requests. The value is <code>round_robin</code> or
+     * <code>least_outstanding_requests</code>. The default is <code>round_robin</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered target
+     * receives a linearly increasing share of the traffic to the target group. After this time period ends, the target
+     * receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start mode is disabled by
+     * default.
      * </p>
      * </li>
      * <li>
@@ -488,7 +537,7 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      * @param key
      *        The name of the attribute.</p>
      *        <p>
-     *        The following attribute is supported by both Application Load Balancers and Network Load Balancers:
+     *        The following attributes are supported by both Application Load Balancers and Network Load Balancers:
      *        </p>
      *        <ul>
      *        <li>
@@ -499,20 +548,6 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      *        Lambda function, this attribute is not supported.
      *        </p>
      *        </li>
-     *        </ul>
-     *        <p>
-     *        The following attributes are supported by Application Load Balancers if the target is not a Lambda
-     *        function:
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered
-     *        target receives a linearly increasing share of the traffic to the target group. After this time period
-     *        ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start
-     *        mode is disabled by default.
-     *        </p>
-     *        </li>
      *        <li>
      *        <p>
      *        <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is
@@ -521,7 +556,29 @@ public class TargetGroupAttribute implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.
+     *        <code>stickiness.type</code> - The type of sticky sessions. The possible values are <code>lb_cookie</code>
+     *        for Application Load Balancers or <code>source_ip</code> for Network Load Balancers.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The following attributes are supported by Application Load Balancers if the target is not a Lambda
+     *        function:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>load_balancing.algorithm.type</code> - The load balancing algorithm determines how the load balancer
+     *        selects targets when routing requests. The value is <code>round_robin</code> or
+     *        <code>least_outstanding_requests</code>. The default is <code>round_robin</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>slow_start.duration_seconds</code> - The time period, in seconds, during which a newly registered
+     *        target receives a linearly increasing share of the traffic to the target group. After this time period
+     *        ends, the target receives its full share of traffic. The range is 30-900 seconds (15 minutes). Slow start
+     *        mode is disabled by default.
      *        </p>
      *        </li>
      *        <li>

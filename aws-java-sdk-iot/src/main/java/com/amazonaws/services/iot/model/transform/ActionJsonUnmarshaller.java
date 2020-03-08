@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -108,9 +108,17 @@ public class ActionJsonUnmarshaller implements Unmarshaller<Action, JsonUnmarsha
                     context.nextToken();
                     action.setIotEvents(IotEventsActionJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("iotSiteWise", targetDepth)) {
+                    context.nextToken();
+                    action.setIotSiteWise(IotSiteWiseActionJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("stepFunctions", targetDepth)) {
                     context.nextToken();
                     action.setStepFunctions(StepFunctionsActionJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("http", targetDepth)) {
+                    context.nextToken();
+                    action.setHttp(HttpActionJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

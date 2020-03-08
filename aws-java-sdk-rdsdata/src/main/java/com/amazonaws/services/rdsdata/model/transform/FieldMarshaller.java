@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class FieldMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> ARRAYVALUE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("arrayValue").build();
     private static final MarshallingInfo<java.nio.ByteBuffer> BLOBVALUE_BINDING = MarshallingInfo.builder(MarshallingType.BYTE_BUFFER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("blobValue").build();
     private static final MarshallingInfo<Boolean> BOOLEANVALUE_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
@@ -56,6 +58,7 @@ public class FieldMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(field.getArrayValue(), ARRAYVALUE_BINDING);
             protocolMarshaller.marshall(field.getBlobValue(), BLOBVALUE_BINDING);
             protocolMarshaller.marshall(field.getBooleanValue(), BOOLEANVALUE_BINDING);
             protocolMarshaller.marshall(field.getDoubleValue(), DOUBLEVALUE_BINDING);

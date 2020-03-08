@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,7 @@ public class UpdateDomainAssociationRequest extends com.amazonaws.AmazonWebServi
     private String domainName;
     /**
      * <p>
-     * Enables automated creation of Subdomains for branches.
+     * Enables automated creation of Subdomains for branches. (Currently not supported)
      * </p>
      */
     private Boolean enableAutoSubDomain;
@@ -135,11 +135,11 @@ public class UpdateDomainAssociationRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Enables automated creation of Subdomains for branches.
+     * Enables automated creation of Subdomains for branches. (Currently not supported)
      * </p>
      * 
      * @param enableAutoSubDomain
-     *        Enables automated creation of Subdomains for branches.
+     *        Enables automated creation of Subdomains for branches. (Currently not supported)
      */
 
     public void setEnableAutoSubDomain(Boolean enableAutoSubDomain) {
@@ -148,10 +148,10 @@ public class UpdateDomainAssociationRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Enables automated creation of Subdomains for branches.
+     * Enables automated creation of Subdomains for branches. (Currently not supported)
      * </p>
      * 
-     * @return Enables automated creation of Subdomains for branches.
+     * @return Enables automated creation of Subdomains for branches. (Currently not supported)
      */
 
     public Boolean getEnableAutoSubDomain() {
@@ -160,11 +160,11 @@ public class UpdateDomainAssociationRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Enables automated creation of Subdomains for branches.
+     * Enables automated creation of Subdomains for branches. (Currently not supported)
      * </p>
      * 
      * @param enableAutoSubDomain
-     *        Enables automated creation of Subdomains for branches.
+     *        Enables automated creation of Subdomains for branches. (Currently not supported)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -175,10 +175,10 @@ public class UpdateDomainAssociationRequest extends com.amazonaws.AmazonWebServi
 
     /**
      * <p>
-     * Enables automated creation of Subdomains for branches.
+     * Enables automated creation of Subdomains for branches. (Currently not supported)
      * </p>
      * 
-     * @return Enables automated creation of Subdomains for branches.
+     * @return Enables automated creation of Subdomains for branches. (Currently not supported)
      */
 
     public Boolean isEnableAutoSubDomain() {

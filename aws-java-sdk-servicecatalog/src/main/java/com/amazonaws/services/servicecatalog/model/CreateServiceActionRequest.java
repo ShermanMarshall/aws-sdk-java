@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,7 +70,8 @@ public class CreateServiceActionRequest extends com.amazonaws.AmazonWebServiceRe
      * The list of parameters in JSON format.
      * </p>
      * <p>
-     * For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.
+     * For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.
      * </p>
      * </dd>
      * </dl>
@@ -245,7 +246,8 @@ public class CreateServiceActionRequest extends com.amazonaws.AmazonWebServiceRe
      * The list of parameters in JSON format.
      * </p>
      * <p>
-     * For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.
+     * For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.
      * </p>
      * </dd>
      * </dl>
@@ -280,7 +282,8 @@ public class CreateServiceActionRequest extends com.amazonaws.AmazonWebServiceRe
      *         The list of parameters in JSON format.
      *         </p>
      *         <p>
-     *         For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.
+     *         For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     *         <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.
      *         </p>
      *         </dd>
      */
@@ -322,7 +325,8 @@ public class CreateServiceActionRequest extends com.amazonaws.AmazonWebServiceRe
      * The list of parameters in JSON format.
      * </p>
      * <p>
-     * For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.
+     * For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.
      * </p>
      * </dd>
      * </dl>
@@ -358,7 +362,8 @@ public class CreateServiceActionRequest extends com.amazonaws.AmazonWebServiceRe
      *        The list of parameters in JSON format.
      *        </p>
      *        <p>
-     *        For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.
+     *        For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     *        <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.
      *        </p>
      *        </dd>
      */
@@ -400,7 +405,8 @@ public class CreateServiceActionRequest extends com.amazonaws.AmazonWebServiceRe
      * The list of parameters in JSON format.
      * </p>
      * <p>
-     * For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.
+     * For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     * <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.
      * </p>
      * </dd>
      * </dl>
@@ -436,7 +442,8 @@ public class CreateServiceActionRequest extends com.amazonaws.AmazonWebServiceRe
      *        The list of parameters in JSON format.
      *        </p>
      *        <p>
-     *        For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code>.
+     *        For example: <code>[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]</code> or
+     *        <code>[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]</code>.
      *        </p>
      *        </dd>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -446,6 +453,13 @@ public class CreateServiceActionRequest extends com.amazonaws.AmazonWebServiceRe
         setDefinition(definition);
         return this;
     }
+
+    /**
+     * Add a single Definition entry
+     *
+     * @see CreateServiceActionRequest#withDefinition
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreateServiceActionRequest addDefinitionEntry(String key, String value) {
         if (null == this.definition) {

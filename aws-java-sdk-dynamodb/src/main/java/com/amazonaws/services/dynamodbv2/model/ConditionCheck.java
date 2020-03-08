@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,7 +20,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 /**
  * <p>
  * Represents a request to perform a check that an item exists or to check the condition of specific attributes of the
- * item..
+ * item.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ConditionCheck" target="_top">AWS API
@@ -114,6 +114,13 @@ public class ConditionCheck implements Serializable, Cloneable, StructuredPojo {
         setKey(key);
         return this;
     }
+
+    /**
+     * Add a single Key entry
+     *
+     * @see ConditionCheck#withKey
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public ConditionCheck addKeyEntry(String key, AttributeValue value) {
         if (null == this.key) {
@@ -256,6 +263,13 @@ public class ConditionCheck implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single ExpressionAttributeNames entry
+     *
+     * @see ConditionCheck#withExpressionAttributeNames
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public ConditionCheck addExpressionAttributeNamesEntry(String key, String value) {
         if (null == this.expressionAttributeNames) {
             this.expressionAttributeNames = new java.util.HashMap<String, String>();
@@ -316,6 +330,13 @@ public class ConditionCheck implements Serializable, Cloneable, StructuredPojo {
         setExpressionAttributeValues(expressionAttributeValues);
         return this;
     }
+
+    /**
+     * Add a single ExpressionAttributeValues entry
+     *
+     * @see ConditionCheck#withExpressionAttributeValues
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public ConditionCheck addExpressionAttributeValuesEntry(String key, AttributeValue value) {
         if (null == this.expressionAttributeValues) {

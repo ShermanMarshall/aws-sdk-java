@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,19 +30,19 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the pipeline that will start processing the revision to the source.
+     * The name of the pipeline that starts processing the revision to the source.
      * </p>
      */
     private String pipelineName;
     /**
      * <p>
-     * The name of the stage that contains the action that will act upon the revision.
+     * The name of the stage that contains the action that acts on the revision.
      * </p>
      */
     private String stageName;
     /**
      * <p>
-     * The name of the action that will process the revision.
+     * The name of the action that processes the revision.
      * </p>
      */
     private String actionName;
@@ -55,11 +55,11 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the pipeline that will start processing the revision to the source.
+     * The name of the pipeline that starts processing the revision to the source.
      * </p>
      * 
      * @param pipelineName
-     *        The name of the pipeline that will start processing the revision to the source.
+     *        The name of the pipeline that starts processing the revision to the source.
      */
 
     public void setPipelineName(String pipelineName) {
@@ -68,10 +68,10 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the pipeline that will start processing the revision to the source.
+     * The name of the pipeline that starts processing the revision to the source.
      * </p>
      * 
-     * @return The name of the pipeline that will start processing the revision to the source.
+     * @return The name of the pipeline that starts processing the revision to the source.
      */
 
     public String getPipelineName() {
@@ -80,11 +80,11 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the pipeline that will start processing the revision to the source.
+     * The name of the pipeline that starts processing the revision to the source.
      * </p>
      * 
      * @param pipelineName
-     *        The name of the pipeline that will start processing the revision to the source.
+     *        The name of the pipeline that starts processing the revision to the source.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -95,11 +95,11 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the stage that contains the action that will act upon the revision.
+     * The name of the stage that contains the action that acts on the revision.
      * </p>
      * 
      * @param stageName
-     *        The name of the stage that contains the action that will act upon the revision.
+     *        The name of the stage that contains the action that acts on the revision.
      */
 
     public void setStageName(String stageName) {
@@ -108,10 +108,10 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the stage that contains the action that will act upon the revision.
+     * The name of the stage that contains the action that acts on the revision.
      * </p>
      * 
-     * @return The name of the stage that contains the action that will act upon the revision.
+     * @return The name of the stage that contains the action that acts on the revision.
      */
 
     public String getStageName() {
@@ -120,11 +120,11 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the stage that contains the action that will act upon the revision.
+     * The name of the stage that contains the action that acts on the revision.
      * </p>
      * 
      * @param stageName
-     *        The name of the stage that contains the action that will act upon the revision.
+     *        The name of the stage that contains the action that acts on the revision.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,11 +135,11 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the action that will process the revision.
+     * The name of the action that processes the revision.
      * </p>
      * 
      * @param actionName
-     *        The name of the action that will process the revision.
+     *        The name of the action that processes the revision.
      */
 
     public void setActionName(String actionName) {
@@ -148,10 +148,10 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the action that will process the revision.
+     * The name of the action that processes the revision.
      * </p>
      * 
-     * @return The name of the action that will process the revision.
+     * @return The name of the action that processes the revision.
      */
 
     public String getActionName() {
@@ -160,11 +160,11 @@ public class PutActionRevisionRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The name of the action that will process the revision.
+     * The name of the action that processes the revision.
      * </p>
      * 
      * @param actionName
-     *        The name of the action that will process the revision.
+     *        The name of the action that processes the revision.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

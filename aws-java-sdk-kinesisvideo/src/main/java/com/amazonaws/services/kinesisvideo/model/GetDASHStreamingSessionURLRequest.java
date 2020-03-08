@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -133,7 +133,7 @@ public class GetDASHStreamingSessionURLRequest extends com.amazonaws.AmazonWebSe
     private String displayFragmentNumber;
     /**
      * <p>
-     * The time range of the requested fragment, and the source of the timestamps.
+     * The time range of the requested fragment and the source of the timestamps.
      * </p>
      * <p>
      * This parameter is required if <code>PlaybackMode</code> is <code>ON_DEMAND</code> or <code>LIVE_REPLAY</code>.
@@ -1030,7 +1030,7 @@ public class GetDASHStreamingSessionURLRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The time range of the requested fragment, and the source of the timestamps.
+     * The time range of the requested fragment and the source of the timestamps.
      * </p>
      * <p>
      * This parameter is required if <code>PlaybackMode</code> is <code>ON_DEMAND</code> or <code>LIVE_REPLAY</code>.
@@ -1041,7 +1041,7 @@ public class GetDASHStreamingSessionURLRequest extends com.amazonaws.AmazonWebSe
      * </p>
      * 
      * @param dASHFragmentSelector
-     *        The time range of the requested fragment, and the source of the timestamps.</p>
+     *        The time range of the requested fragment and the source of the timestamps.</p>
      *        <p>
      *        This parameter is required if <code>PlaybackMode</code> is <code>ON_DEMAND</code> or
      *        <code>LIVE_REPLAY</code>. This parameter is optional if PlaybackMode is<code/> <code>LIVE</code>. If
@@ -1057,7 +1057,7 @@ public class GetDASHStreamingSessionURLRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The time range of the requested fragment, and the source of the timestamps.
+     * The time range of the requested fragment and the source of the timestamps.
      * </p>
      * <p>
      * This parameter is required if <code>PlaybackMode</code> is <code>ON_DEMAND</code> or <code>LIVE_REPLAY</code>.
@@ -1067,7 +1067,7 @@ public class GetDASHStreamingSessionURLRequest extends com.amazonaws.AmazonWebSe
      * <code>FragmentSelectorType</code> and <code>TimestampRange</code> must be set.
      * </p>
      * 
-     * @return The time range of the requested fragment, and the source of the timestamps.</p>
+     * @return The time range of the requested fragment and the source of the timestamps.</p>
      *         <p>
      *         This parameter is required if <code>PlaybackMode</code> is <code>ON_DEMAND</code> or
      *         <code>LIVE_REPLAY</code>. This parameter is optional if PlaybackMode is<code/> <code>LIVE</code>. If
@@ -1083,7 +1083,7 @@ public class GetDASHStreamingSessionURLRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * The time range of the requested fragment, and the source of the timestamps.
+     * The time range of the requested fragment and the source of the timestamps.
      * </p>
      * <p>
      * This parameter is required if <code>PlaybackMode</code> is <code>ON_DEMAND</code> or <code>LIVE_REPLAY</code>.
@@ -1094,7 +1094,7 @@ public class GetDASHStreamingSessionURLRequest extends com.amazonaws.AmazonWebSe
      * </p>
      * 
      * @param dASHFragmentSelector
-     *        The time range of the requested fragment, and the source of the timestamps.</p>
+     *        The time range of the requested fragment and the source of the timestamps.</p>
      *        <p>
      *        This parameter is required if <code>PlaybackMode</code> is <code>ON_DEMAND</code> or
      *        <code>LIVE_REPLAY</code>. This parameter is optional if PlaybackMode is<code/> <code>LIVE</code>. If

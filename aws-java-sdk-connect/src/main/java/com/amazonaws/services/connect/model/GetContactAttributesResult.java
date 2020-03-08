@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,17 +25,17 @@ public class GetContactAttributesResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The attributes to update.
+     * Information about the attributes.
      * </p>
      */
     private java.util.Map<String, String> attributes;
 
     /**
      * <p>
-     * The attributes to update.
+     * Information about the attributes.
      * </p>
      * 
-     * @return The attributes to update.
+     * @return Information about the attributes.
      */
 
     public java.util.Map<String, String> getAttributes() {
@@ -44,11 +44,11 @@ public class GetContactAttributesResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The attributes to update.
+     * Information about the attributes.
      * </p>
      * 
      * @param attributes
-     *        The attributes to update.
+     *        Information about the attributes.
      */
 
     public void setAttributes(java.util.Map<String, String> attributes) {
@@ -57,11 +57,11 @@ public class GetContactAttributesResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The attributes to update.
+     * Information about the attributes.
      * </p>
      * 
      * @param attributes
-     *        The attributes to update.
+     *        Information about the attributes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -69,6 +69,13 @@ public class GetContactAttributesResult extends com.amazonaws.AmazonWebServiceRe
         setAttributes(attributes);
         return this;
     }
+
+    /**
+     * Add a single Attributes entry
+     *
+     * @see GetContactAttributesResult#withAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public GetContactAttributesResult addAttributesEntry(String key, String value) {
         if (null == this.attributes) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Provides a summary of information about a transcription job. .
+ * Provides a summary of information about a transcription job.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/TranscriptionJobSummary" target="_top">AWS
@@ -40,6 +40,12 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
      * </p>
      */
     private java.util.Date creationTime;
+    /**
+     * <p>
+     * A timestamp that shows when the job started processing.
+     * </p>
+     */
+    private java.util.Date startTime;
     /**
      * <p>
      * A timestamp that shows when the job was completed.
@@ -80,6 +86,12 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
      * </p>
      */
     private String outputLocationType;
+    /**
+     * <p>
+     * The content redaction settings of the transcription job.
+     * </p>
+     */
+    private ContentRedaction contentRedaction;
 
     /**
      * <p>
@@ -158,6 +170,46 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
 
     public TranscriptionJobSummary withCreationTime(java.util.Date creationTime) {
         setCreationTime(creationTime);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A timestamp that shows when the job started processing.
+     * </p>
+     * 
+     * @param startTime
+     *        A timestamp that shows when the job started processing.
+     */
+
+    public void setStartTime(java.util.Date startTime) {
+        this.startTime = startTime;
+    }
+
+    /**
+     * <p>
+     * A timestamp that shows when the job started processing.
+     * </p>
+     * 
+     * @return A timestamp that shows when the job started processing.
+     */
+
+    public java.util.Date getStartTime() {
+        return this.startTime;
+    }
+
+    /**
+     * <p>
+     * A timestamp that shows when the job started processing.
+     * </p>
+     * 
+     * @param startTime
+     *        A timestamp that shows when the job started processing.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TranscriptionJobSummary withStartTime(java.util.Date startTime) {
+        setStartTime(startTime);
         return this;
     }
 
@@ -499,6 +551,46 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
     }
 
     /**
+     * <p>
+     * The content redaction settings of the transcription job.
+     * </p>
+     * 
+     * @param contentRedaction
+     *        The content redaction settings of the transcription job.
+     */
+
+    public void setContentRedaction(ContentRedaction contentRedaction) {
+        this.contentRedaction = contentRedaction;
+    }
+
+    /**
+     * <p>
+     * The content redaction settings of the transcription job.
+     * </p>
+     * 
+     * @return The content redaction settings of the transcription job.
+     */
+
+    public ContentRedaction getContentRedaction() {
+        return this.contentRedaction;
+    }
+
+    /**
+     * <p>
+     * The content redaction settings of the transcription job.
+     * </p>
+     * 
+     * @param contentRedaction
+     *        The content redaction settings of the transcription job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TranscriptionJobSummary withContentRedaction(ContentRedaction contentRedaction) {
+        setContentRedaction(contentRedaction);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -514,6 +606,8 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
             sb.append("TranscriptionJobName: ").append(getTranscriptionJobName()).append(",");
         if (getCreationTime() != null)
             sb.append("CreationTime: ").append(getCreationTime()).append(",");
+        if (getStartTime() != null)
+            sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getCompletionTime() != null)
             sb.append("CompletionTime: ").append(getCompletionTime()).append(",");
         if (getLanguageCode() != null)
@@ -523,7 +617,9 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
         if (getFailureReason() != null)
             sb.append("FailureReason: ").append(getFailureReason()).append(",");
         if (getOutputLocationType() != null)
-            sb.append("OutputLocationType: ").append(getOutputLocationType());
+            sb.append("OutputLocationType: ").append(getOutputLocationType()).append(",");
+        if (getContentRedaction() != null)
+            sb.append("ContentRedaction: ").append(getContentRedaction());
         sb.append("}");
         return sb.toString();
     }
@@ -546,6 +642,10 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
             return false;
         if (other.getCreationTime() != null && other.getCreationTime().equals(this.getCreationTime()) == false)
             return false;
+        if (other.getStartTime() == null ^ this.getStartTime() == null)
+            return false;
+        if (other.getStartTime() != null && other.getStartTime().equals(this.getStartTime()) == false)
+            return false;
         if (other.getCompletionTime() == null ^ this.getCompletionTime() == null)
             return false;
         if (other.getCompletionTime() != null && other.getCompletionTime().equals(this.getCompletionTime()) == false)
@@ -566,6 +666,10 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
             return false;
         if (other.getOutputLocationType() != null && other.getOutputLocationType().equals(this.getOutputLocationType()) == false)
             return false;
+        if (other.getContentRedaction() == null ^ this.getContentRedaction() == null)
+            return false;
+        if (other.getContentRedaction() != null && other.getContentRedaction().equals(this.getContentRedaction()) == false)
+            return false;
         return true;
     }
 
@@ -576,11 +680,13 @@ public class TranscriptionJobSummary implements Serializable, Cloneable, Structu
 
         hashCode = prime * hashCode + ((getTranscriptionJobName() == null) ? 0 : getTranscriptionJobName().hashCode());
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
+        hashCode = prime * hashCode + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
         hashCode = prime * hashCode + ((getCompletionTime() == null) ? 0 : getCompletionTime().hashCode());
         hashCode = prime * hashCode + ((getLanguageCode() == null) ? 0 : getLanguageCode().hashCode());
         hashCode = prime * hashCode + ((getTranscriptionJobStatus() == null) ? 0 : getTranscriptionJobStatus().hashCode());
         hashCode = prime * hashCode + ((getFailureReason() == null) ? 0 : getFailureReason().hashCode());
         hashCode = prime * hashCode + ((getOutputLocationType() == null) ? 0 : getOutputLocationType().hashCode());
+        hashCode = prime * hashCode + ((getContentRedaction() == null) ? 0 : getContentRedaction().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,8 +41,12 @@ public class CreateClusterRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("encryptionInfo").build();
     private static final MarshallingInfo<String> ENHANCEDMONITORING_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("enhancedMonitoring").build();
+    private static final MarshallingInfo<StructuredPojo> OPENMONITORING_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("openMonitoring").build();
     private static final MarshallingInfo<String> KAFKAVERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("kafkaVersion").build();
+    private static final MarshallingInfo<StructuredPojo> LOGGINGINFO_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("loggingInfo").build();
     private static final MarshallingInfo<Integer> NUMBEROFBROKERNODES_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("numberOfBrokerNodes").build();
     private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
@@ -70,7 +74,9 @@ public class CreateClusterRequestMarshaller {
             protocolMarshaller.marshall(createClusterRequest.getConfigurationInfo(), CONFIGURATIONINFO_BINDING);
             protocolMarshaller.marshall(createClusterRequest.getEncryptionInfo(), ENCRYPTIONINFO_BINDING);
             protocolMarshaller.marshall(createClusterRequest.getEnhancedMonitoring(), ENHANCEDMONITORING_BINDING);
+            protocolMarshaller.marshall(createClusterRequest.getOpenMonitoring(), OPENMONITORING_BINDING);
             protocolMarshaller.marshall(createClusterRequest.getKafkaVersion(), KAFKAVERSION_BINDING);
+            protocolMarshaller.marshall(createClusterRequest.getLoggingInfo(), LOGGINGINFO_BINDING);
             protocolMarshaller.marshall(createClusterRequest.getNumberOfBrokerNodes(), NUMBEROFBROKERNODES_BINDING);
             protocolMarshaller.marshall(createClusterRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {

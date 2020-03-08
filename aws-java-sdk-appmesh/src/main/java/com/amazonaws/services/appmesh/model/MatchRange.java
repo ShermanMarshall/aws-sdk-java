@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,8 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The range of values to match on. The first character of the range is included in the range, though the last character
- * is not. For example, if the range specified were 1-100, only values 1-99 would be matched.
+ * An object that represents the range of values to match on. The first character of the range is included in the range,
+ * though the last character is not. For example, if the range specified were 1-100, only values 1-99 would be matched.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/MatchRange" target="_top">AWS API

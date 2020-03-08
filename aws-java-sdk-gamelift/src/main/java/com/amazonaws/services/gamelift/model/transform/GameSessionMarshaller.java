@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,8 @@ public class GameSessionMarshaller {
             .marshallLocationName("Name").build();
     private static final MarshallingInfo<String> FLEETID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("FleetId").build();
+    private static final MarshallingInfo<String> FLEETARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("FleetArn").build();
     private static final MarshallingInfo<java.util.Date> CREATIONTIME_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CreationTime").timestampFormat("unixTimestamp").build();
     private static final MarshallingInfo<java.util.Date> TERMINATIONTIME_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
@@ -82,6 +84,7 @@ public class GameSessionMarshaller {
             protocolMarshaller.marshall(gameSession.getGameSessionId(), GAMESESSIONID_BINDING);
             protocolMarshaller.marshall(gameSession.getName(), NAME_BINDING);
             protocolMarshaller.marshall(gameSession.getFleetId(), FLEETID_BINDING);
+            protocolMarshaller.marshall(gameSession.getFleetArn(), FLEETARN_BINDING);
             protocolMarshaller.marshall(gameSession.getCreationTime(), CREATIONTIME_BINDING);
             protocolMarshaller.marshall(gameSession.getTerminationTime(), TERMINATIONTIME_BINDING);
             protocolMarshaller.marshall(gameSession.getCurrentPlayerSessionCount(), CURRENTPLAYERSESSIONCOUNT_BINDING);

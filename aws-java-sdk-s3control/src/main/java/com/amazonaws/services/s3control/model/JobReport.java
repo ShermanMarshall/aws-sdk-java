@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class JobReport implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The bucket where specified job-completion report will be stored.
+     * The Amazon Resource Name (ARN) for the bucket where specified job-completion report will be stored.
      * </p>
      */
     private String bucket;
@@ -60,11 +60,11 @@ public class JobReport implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The bucket where specified job-completion report will be stored.
+     * The Amazon Resource Name (ARN) for the bucket where specified job-completion report will be stored.
      * </p>
      * 
      * @param bucket
-     *        The bucket where specified job-completion report will be stored.
+     *        The Amazon Resource Name (ARN) for the bucket where specified job-completion report will be stored.
      */
 
     public void setBucket(String bucket) {
@@ -73,10 +73,10 @@ public class JobReport implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The bucket where specified job-completion report will be stored.
+     * The Amazon Resource Name (ARN) for the bucket where specified job-completion report will be stored.
      * </p>
      * 
-     * @return The bucket where specified job-completion report will be stored.
+     * @return The Amazon Resource Name (ARN) for the bucket where specified job-completion report will be stored.
      */
 
     public String getBucket() {
@@ -85,11 +85,11 @@ public class JobReport implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The bucket where specified job-completion report will be stored.
+     * The Amazon Resource Name (ARN) for the bucket where specified job-completion report will be stored.
      * </p>
      * 
      * @param bucket
-     *        The bucket where specified job-completion report will be stored.
+     *        The Amazon Resource Name (ARN) for the bucket where specified job-completion report will be stored.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

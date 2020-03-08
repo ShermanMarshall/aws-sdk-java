@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ public class CreateSampleFindingsRequest extends com.amazonaws.AmazonWebServiceR
     private String detectorId;
     /**
      * <p>
-     * Types of sample findings that you want to generate.
+     * Types of sample findings to generate.
      * </p>
      */
     private java.util.List<String> findingTypes;
@@ -80,10 +80,10 @@ public class CreateSampleFindingsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Types of sample findings that you want to generate.
+     * Types of sample findings to generate.
      * </p>
      * 
-     * @return Types of sample findings that you want to generate.
+     * @return Types of sample findings to generate.
      */
 
     public java.util.List<String> getFindingTypes() {
@@ -92,11 +92,11 @@ public class CreateSampleFindingsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Types of sample findings that you want to generate.
+     * Types of sample findings to generate.
      * </p>
      * 
      * @param findingTypes
-     *        Types of sample findings that you want to generate.
+     *        Types of sample findings to generate.
      */
 
     public void setFindingTypes(java.util.Collection<String> findingTypes) {
@@ -110,7 +110,7 @@ public class CreateSampleFindingsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Types of sample findings that you want to generate.
+     * Types of sample findings to generate.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -119,7 +119,7 @@ public class CreateSampleFindingsRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param findingTypes
-     *        Types of sample findings that you want to generate.
+     *        Types of sample findings to generate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,11 +135,11 @@ public class CreateSampleFindingsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Types of sample findings that you want to generate.
+     * Types of sample findings to generate.
      * </p>
      * 
      * @param findingTypes
-     *        Types of sample findings that you want to generate.
+     *        Types of sample findings to generate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

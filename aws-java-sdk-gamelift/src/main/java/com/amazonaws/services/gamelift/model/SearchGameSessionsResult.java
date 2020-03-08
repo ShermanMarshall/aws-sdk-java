@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Collection of objects containing game session properties for each session matching the request.
+     * A collection of objects containing game session properties for each session matching the request.
      * </p>
      */
     private java.util.List<GameSession> gameSessions;
@@ -42,10 +42,10 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Collection of objects containing game session properties for each session matching the request.
+     * A collection of objects containing game session properties for each session matching the request.
      * </p>
      * 
-     * @return Collection of objects containing game session properties for each session matching the request.
+     * @return A collection of objects containing game session properties for each session matching the request.
      */
 
     public java.util.List<GameSession> getGameSessions() {
@@ -54,11 +54,11 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Collection of objects containing game session properties for each session matching the request.
+     * A collection of objects containing game session properties for each session matching the request.
      * </p>
      * 
      * @param gameSessions
-     *        Collection of objects containing game session properties for each session matching the request.
+     *        A collection of objects containing game session properties for each session matching the request.
      */
 
     public void setGameSessions(java.util.Collection<GameSession> gameSessions) {
@@ -72,7 +72,7 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Collection of objects containing game session properties for each session matching the request.
+     * A collection of objects containing game session properties for each session matching the request.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -81,7 +81,7 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
      * </p>
      * 
      * @param gameSessions
-     *        Collection of objects containing game session properties for each session matching the request.
+     *        A collection of objects containing game session properties for each session matching the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -97,11 +97,11 @@ public class SearchGameSessionsResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
-     * Collection of objects containing game session properties for each session matching the request.
+     * A collection of objects containing game session properties for each session matching the request.
      * </p>
      * 
      * @param gameSessions
-     *        Collection of objects containing game session properties for each session matching the request.
+     *        A collection of objects containing game session properties for each session matching the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

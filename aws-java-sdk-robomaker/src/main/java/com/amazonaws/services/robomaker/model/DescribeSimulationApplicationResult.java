@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,7 +56,7 @@ public class DescribeSimulationApplicationResult extends com.amazonaws.AmazonWeb
     private SimulationSoftwareSuite simulationSoftwareSuite;
     /**
      * <p>
-     * Information about the robot software suite.
+     * Information about the robot software suite (ROS distribution).
      * </p>
      */
     private RobotSoftwareSuite robotSoftwareSuite;
@@ -317,11 +317,11 @@ public class DescribeSimulationApplicationResult extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Information about the robot software suite.
+     * Information about the robot software suite (ROS distribution).
      * </p>
      * 
      * @param robotSoftwareSuite
-     *        Information about the robot software suite.
+     *        Information about the robot software suite (ROS distribution).
      */
 
     public void setRobotSoftwareSuite(RobotSoftwareSuite robotSoftwareSuite) {
@@ -330,10 +330,10 @@ public class DescribeSimulationApplicationResult extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Information about the robot software suite.
+     * Information about the robot software suite (ROS distribution).
      * </p>
      * 
-     * @return Information about the robot software suite.
+     * @return Information about the robot software suite (ROS distribution).
      */
 
     public RobotSoftwareSuite getRobotSoftwareSuite() {
@@ -342,11 +342,11 @@ public class DescribeSimulationApplicationResult extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Information about the robot software suite.
+     * Information about the robot software suite (ROS distribution).
      * </p>
      * 
      * @param robotSoftwareSuite
-     *        Information about the robot software suite.
+     *        Information about the robot software suite (ROS distribution).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -514,6 +514,13 @@ public class DescribeSimulationApplicationResult extends com.amazonaws.AmazonWeb
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see DescribeSimulationApplicationResult#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public DescribeSimulationApplicationResult addTagsEntry(String key, String value) {
         if (null == this.tags) {

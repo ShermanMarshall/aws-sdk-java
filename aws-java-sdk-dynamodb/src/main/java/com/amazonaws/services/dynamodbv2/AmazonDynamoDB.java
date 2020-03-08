@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -434,6 +434,13 @@ public interface AmazonDynamoDB {
      * Creates a global table from an existing table. A global table creates a replication relationship between two or
      * more DynamoDB tables with the same table name in the provided Regions.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * <p>
      * If you want to add a new replica table to a global table, each of the following conditions must be true:
      * </p>
@@ -794,6 +801,24 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
+     * Returns information about contributor insights, for a given table or global secondary index.
+     * </p>
+     * 
+     * @param describeContributorInsightsRequest
+     * @return Result of the DescribeContributorInsights operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The operation tried to access a nonexistent table or index. The resource might not be specified
+     *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.DescribeContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeContributorInsightsResult describeContributorInsights(DescribeContributorInsightsRequest describeContributorInsightsRequest);
+
+    /**
+     * <p>
      * Returns the regional endpoint information.
      * </p>
      * 
@@ -809,6 +834,13 @@ public interface AmazonDynamoDB {
      * <p>
      * Returns information about the specified global table.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param describeGlobalTableRequest
      * @return Result of the DescribeGlobalTable operation returned by the service.
@@ -826,6 +858,13 @@ public interface AmazonDynamoDB {
      * <p>
      * Describes Region-specific settings for a global table.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param describeGlobalTableSettingsRequest
      * @return Result of the DescribeGlobalTableSettings operation returned by the service.
@@ -980,6 +1019,31 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
+     * Describes auto scaling settings across replicas of the global table at once.
+     * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.
+     * </p>
+     * </note>
+     * 
+     * @param describeTableReplicaAutoScalingRequest
+     * @return Result of the DescribeTableReplicaAutoScaling operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The operation tried to access a nonexistent table or index. The resource might not be specified
+     *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.DescribeTableReplicaAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/DescribeTableReplicaAutoScaling"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeTableReplicaAutoScalingResult describeTableReplicaAutoScaling(DescribeTableReplicaAutoScalingRequest describeTableReplicaAutoScalingRequest);
+
+    /**
+     * <p>
      * Gives a description of the Time to Live (TTL) status on the specified table.
      * </p>
      * 
@@ -1071,8 +1135,33 @@ public interface AmazonDynamoDB {
 
     /**
      * <p>
+     * Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes.
+     * </p>
+     * 
+     * @param listContributorInsightsRequest
+     * @return Result of the ListContributorInsights operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The operation tried to access a nonexistent table or index. The resource might not be specified
+     *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.ListContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ListContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListContributorInsightsResult listContributorInsights(ListContributorInsightsRequest listContributorInsightsRequest);
+
+    /**
+     * <p>
      * Lists all global tables that have a replica in the specified Region.
      * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version
+     * 2017.11.29</a> of global tables.
+     * </p>
+     * </note>
      * 
      * @param listGlobalTablesRequest
      * @return Result of the ListGlobalTables operation returned by the service.
@@ -1695,27 +1784,6 @@ public interface AmazonDynamoDB {
      * cannot retrieve items from tables in more than one AWS account or Region. The aggregate size of the items in the
      * transaction cannot exceed 4 MB.
      * </p>
-     * <note>
-     * <p>
-     * All AWS Regions and AWS GovCloud (US) support up to 25 items per transaction with up to 4 MB of data, except the
-     * following AWS Regions:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * China (Beijing)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * China (Ningxia)
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The China (Beijing) and China (Ningxia) Regions support up to 10 items per transaction with up to 4 MB of data.
-     * </p>
-     * </note>
      * <p>
      * DynamoDB rejects the entire <code>TransactGetItems</code> request if any of the following is true:
      * </p>
@@ -1781,11 +1849,6 @@ public interface AmazonDynamoDB {
      *         </li>
      *         <li>
      *         <p>
-     *         The aggregate size of the items in the transaction exceeds 4 MBs.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         There is a user error, such as an invalid data format.
      *         </p>
      *         </li>
@@ -1810,11 +1873,6 @@ public interface AmazonDynamoDB {
      *         <li>
      *         <p>
      *         There is insufficient provisioned capacity for the transaction to be completed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         The aggregate size of the items in the transaction exceeds 4 MBs.
      *         </p>
      *         </li>
      *         <li>
@@ -2060,6 +2118,9 @@ public interface AmazonDynamoDB {
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
      *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.TransactGetItems
@@ -2075,27 +2136,6 @@ public interface AmazonDynamoDB {
      * can target the same item. For example, you cannot both <code>ConditionCheck</code> and <code>Update</code> the
      * same item. The aggregate size of the items in the transaction cannot exceed 4 MB.
      * </p>
-     * <note>
-     * <p>
-     * All AWS Regions and AWS GovCloud (US) support up to 25 items per transaction with up to 4 MB of data, except the
-     * following AWS Regions:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * China (Beijing)
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * China (Ningxia)
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * The China (Beijing) and China (Ningxia) Regions support up to 10 items per transaction with up to 4 MB of data.
-     * </p>
-     * </note>
      * <p>
      * The actions are completed atomically so that either all of them succeed, or all of them fail. They are defined by
      * the following objects:
@@ -2211,11 +2251,6 @@ public interface AmazonDynamoDB {
      *         </li>
      *         <li>
      *         <p>
-     *         The aggregate size of the items in the transaction exceeds 4 MBs.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
      *         There is a user error, such as an invalid data format.
      *         </p>
      *         </li>
@@ -2240,11 +2275,6 @@ public interface AmazonDynamoDB {
      *         <li>
      *         <p>
      *         There is insufficient provisioned capacity for the transaction to be completed.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         The aggregate size of the items in the transaction exceeds 4 MBs.
      *         </p>
      *         </li>
      *         <li>
@@ -2495,6 +2525,9 @@ public interface AmazonDynamoDB {
      *         the frequency of requests and use exponential backoff. For more information, go to <a href=
      *         "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff"
      *         >Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.
+     * @throws RequestLimitExceededException
+     *         Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <a
+     *         href="https://aws.amazon.com/support">AWS Support</a> to request a limit increase.
      * @throws InternalServerErrorException
      *         An error occurred on the server side.
      * @sample AmazonDynamoDB.TransactWriteItems
@@ -2575,6 +2608,24 @@ public interface AmazonDynamoDB {
      *      target="_top">AWS API Documentation</a>
      */
     UpdateContinuousBackupsResult updateContinuousBackups(UpdateContinuousBackupsRequest updateContinuousBackupsRequest);
+
+    /**
+     * <p>
+     * Updates the status for contributor insights for a specific table or index.
+     * </p>
+     * 
+     * @param updateContributorInsightsRequest
+     * @return Result of the UpdateContributorInsights operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The operation tried to access a nonexistent table or index. The resource might not be specified
+     *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.UpdateContributorInsights
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateContributorInsights"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateContributorInsightsResult updateContributorInsights(UpdateContributorInsightsRequest updateContributorInsightsRequest);
 
     /**
      * <p>
@@ -2800,6 +2851,49 @@ public interface AmazonDynamoDB {
      * @see #updateTable(UpdateTableRequest)
      */
     UpdateTableResult updateTable(String tableName, ProvisionedThroughput provisionedThroughput);
+
+    /**
+     * <p>
+     * Updates auto scaling settings on your global tables at once.
+     * </p>
+     * <note>
+     * <p>
+     * This method only applies to <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html">Version
+     * 2019.11.21</a> of global tables.
+     * </p>
+     * </note>
+     * 
+     * @param updateTableReplicaAutoScalingRequest
+     * @return Result of the UpdateTableReplicaAutoScaling operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The operation tried to access a nonexistent table or index. The resource might not be specified
+     *         correctly, or its status might not be <code>ACTIVE</code>.
+     * @throws ResourceInUseException
+     *         The operation conflicts with the resource's availability. For example, you attempted to recreate an
+     *         existing table, or tried to delete a table currently in the <code>CREATING</code> state.
+     * @throws LimitExceededException
+     *         There is no limit to the number of daily on-demand backups that can be taken. </p>
+     *         <p>
+     *         Up to 50 simultaneous table operations are allowed per account. These operations include
+     *         <code>CreateTable</code>, <code>UpdateTable</code>, <code>DeleteTable</code>,
+     *         <code>UpdateTimeToLive</code>, <code>RestoreTableFromBackup</code>, and
+     *         <code>RestoreTableToPointInTime</code>.
+     *         </p>
+     *         <p>
+     *         The only exception is when you are creating a table with one or more secondary indexes. You can have up
+     *         to 25 such requests running at a time; however, if the table or index specifications are complex,
+     *         DynamoDB might temporarily reduce the number of concurrent operations.
+     *         </p>
+     *         <p>
+     *         There is a soft account limit of 256 tables.
+     * @throws InternalServerErrorException
+     *         An error occurred on the server side.
+     * @sample AmazonDynamoDB.UpdateTableReplicaAutoScaling
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/UpdateTableReplicaAutoScaling"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateTableReplicaAutoScalingResult updateTableReplicaAutoScaling(UpdateTableReplicaAutoScalingRequest updateTableReplicaAutoScalingRequest);
 
     /**
      * <p>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,7 +35,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <a>CreateAccount</a> request to create the account.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string requires
      * "car-" followed by from 8 to 32 lower-case letters or digits.
      * </p>
      */
@@ -100,6 +100,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -111,7 +117,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <li>
      * <p>
      * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     * problem persists, contact Customer Support.
+     * problem persists, contact AWS Support.
      * </p>
      * </li>
      * </ul>
@@ -124,7 +130,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <a>CreateAccount</a> request to create the account.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string requires
      * "car-" followed by from 8 to 32 lower-case letters or digits.
      * </p>
      * 
@@ -132,7 +138,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        The unique identifier (ID) that references this request. You get this value from the response of the
      *        initial <a>CreateAccount</a> request to create the account.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
      *        requires "car-" followed by from 8 to 32 lower-case letters or digits.
      */
 
@@ -146,14 +152,14 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <a>CreateAccount</a> request to create the account.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string requires
      * "car-" followed by from 8 to 32 lower-case letters or digits.
      * </p>
      * 
      * @return The unique identifier (ID) that references this request. You get this value from the response of the
      *         initial <a>CreateAccount</a> request to create the account.</p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string
+     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
      *         requires "car-" followed by from 8 to 32 lower-case letters or digits.
      */
 
@@ -167,7 +173,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <a>CreateAccount</a> request to create the account.
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string requires
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string requires
      * "car-" followed by from 8 to 32 lower-case letters or digits.
      * </p>
      * 
@@ -175,7 +181,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        The unique identifier (ID) that references this request. You get this value from the response of the
      *        initial <a>CreateAccount</a> request to create the account.</p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an create account request ID string
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
      *        requires "car-" followed by from 8 to 32 lower-case letters or digits.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -504,6 +510,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -515,7 +527,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <li>
      * <p>
      * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     * problem persists, contact Customer Support.
+     * problem persists, contact AWS Support.
      * </p>
      * </li>
      * </ul>
@@ -537,6 +549,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        </li>
      *        <li>
      *        <p>
+     *        GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *        this Region already includes an account with that email address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      *        </p>
      *        </li>
@@ -548,7 +566,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        <li>
      *        <p>
      *        INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     *        problem persists, contact Customer Support.
+     *        problem persists, contact AWS Support.
      *        </p>
      *        </li>
      * @see CreateAccountFailureReason
@@ -577,6 +595,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -588,7 +612,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <li>
      * <p>
      * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     * problem persists, contact Customer Support.
+     * problem persists, contact AWS Support.
      * </p>
      * </li>
      * </ul>
@@ -609,6 +633,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *         </li>
      *         <li>
      *         <p>
+     *         GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *         this Region already includes an account with that email address.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      *         </p>
      *         </li>
@@ -620,7 +650,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *         <li>
      *         <p>
      *         INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If
-     *         the problem persists, contact Customer Support.
+     *         the problem persists, contact AWS Support.
      *         </p>
      *         </li>
      * @see CreateAccountFailureReason
@@ -649,6 +679,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -660,7 +696,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <li>
      * <p>
      * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     * problem persists, contact Customer Support.
+     * problem persists, contact AWS Support.
      * </p>
      * </li>
      * </ul>
@@ -682,6 +718,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        </li>
      *        <li>
      *        <p>
+     *        GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *        this Region already includes an account with that email address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      *        </p>
      *        </li>
@@ -693,7 +735,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        <li>
      *        <p>
      *        INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     *        problem persists, contact Customer Support.
+     *        problem persists, contact AWS Support.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -724,6 +766,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -735,7 +783,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <li>
      * <p>
      * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     * problem persists, contact Customer Support.
+     * problem persists, contact AWS Support.
      * </p>
      * </li>
      * </ul>
@@ -757,6 +805,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        </li>
      *        <li>
      *        <p>
+     *        GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *        this Region already includes an account with that email address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      *        </p>
      *        </li>
@@ -768,7 +822,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        <li>
      *        <p>
      *        INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     *        problem persists, contact Customer Support.
+     *        problem persists, contact AWS Support.
      *        </p>
      *        </li>
      * @see CreateAccountFailureReason
@@ -797,6 +851,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -808,7 +868,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <li>
      * <p>
      * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     * problem persists, contact Customer Support.
+     * problem persists, contact AWS Support.
      * </p>
      * </li>
      * </ul>
@@ -830,6 +890,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        </li>
      *        <li>
      *        <p>
+     *        GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *        this Region already includes an account with that email address.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      *        </p>
      *        </li>
@@ -841,7 +907,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        <li>
      *        <p>
      *        INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the
-     *        problem persists, contact Customer Support.
+     *        problem persists, contact AWS Support.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

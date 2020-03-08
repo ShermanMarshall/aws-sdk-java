@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,6 +48,10 @@ public class HlsOutputSettingsJsonUnmarshaller implements Unmarshaller<HlsOutput
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("h265PackagingType", targetDepth)) {
+                    context.nextToken();
+                    hlsOutputSettings.setH265PackagingType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("hlsSettings", targetDepth)) {
                     context.nextToken();
                     hlsOutputSettings.setHlsSettings(HlsSettingsJsonUnmarshaller.getInstance().unmarshall(context));

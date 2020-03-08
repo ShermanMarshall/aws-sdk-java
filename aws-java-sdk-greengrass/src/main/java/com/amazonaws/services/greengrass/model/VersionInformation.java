@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,9 +30,9 @@ public class VersionInformation implements Serializable, Cloneable, StructuredPo
     private String arn;
     /** The time, in milliseconds since the epoch, when the version was created. */
     private String creationTimestamp;
-    /** The ID of the version. */
+    /** The ID of the parent definition that the version is associated with. */
     private String id;
-    /** The unique ID of the version. */
+    /** The ID of the version. */
     private String version;
 
     /**
@@ -104,10 +104,10 @@ public class VersionInformation implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * The ID of the version.
+     * The ID of the parent definition that the version is associated with.
      * 
      * @param id
-     *        The ID of the version.
+     *        The ID of the parent definition that the version is associated with.
      */
 
     public void setId(String id) {
@@ -115,9 +115,9 @@ public class VersionInformation implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * The ID of the version.
+     * The ID of the parent definition that the version is associated with.
      * 
-     * @return The ID of the version.
+     * @return The ID of the parent definition that the version is associated with.
      */
 
     public String getId() {
@@ -125,10 +125,10 @@ public class VersionInformation implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * The ID of the version.
+     * The ID of the parent definition that the version is associated with.
      * 
      * @param id
-     *        The ID of the version.
+     *        The ID of the parent definition that the version is associated with.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -138,10 +138,10 @@ public class VersionInformation implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * The unique ID of the version.
+     * The ID of the version.
      * 
      * @param version
-     *        The unique ID of the version.
+     *        The ID of the version.
      */
 
     public void setVersion(String version) {
@@ -149,9 +149,9 @@ public class VersionInformation implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * The unique ID of the version.
+     * The ID of the version.
      * 
-     * @return The unique ID of the version.
+     * @return The ID of the version.
      */
 
     public String getVersion() {
@@ -159,10 +159,10 @@ public class VersionInformation implements Serializable, Cloneable, StructuredPo
     }
 
     /**
-     * The unique ID of the version.
+     * The ID of the version.
      * 
      * @param version
-     *        The unique ID of the version.
+     *        The ID of the version.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,6 +30,12 @@ public class CreateServerRequestMarshaller {
 
     private static final MarshallingInfo<Boolean> ASSOCIATEPUBLICIPADDRESS_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AssociatePublicIpAddress").build();
+    private static final MarshallingInfo<String> CUSTOMDOMAIN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CustomDomain").build();
+    private static final MarshallingInfo<String> CUSTOMCERTIFICATE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CustomCertificate").build();
+    private static final MarshallingInfo<String> CUSTOMPRIVATEKEY_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CustomPrivateKey").build();
     private static final MarshallingInfo<Boolean> DISABLEAUTOMATEDBACKUP_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DisableAutomatedBackup").build();
     private static final MarshallingInfo<String> ENGINE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -60,6 +66,8 @@ public class CreateServerRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ServiceRoleArn").build();
     private static final MarshallingInfo<List> SUBNETIDS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("SubnetIds").build();
+    private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Tags").build();
     private static final MarshallingInfo<String> BACKUPID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("BackupId").build();
 
@@ -80,6 +88,9 @@ public class CreateServerRequestMarshaller {
 
         try {
             protocolMarshaller.marshall(createServerRequest.getAssociatePublicIpAddress(), ASSOCIATEPUBLICIPADDRESS_BINDING);
+            protocolMarshaller.marshall(createServerRequest.getCustomDomain(), CUSTOMDOMAIN_BINDING);
+            protocolMarshaller.marshall(createServerRequest.getCustomCertificate(), CUSTOMCERTIFICATE_BINDING);
+            protocolMarshaller.marshall(createServerRequest.getCustomPrivateKey(), CUSTOMPRIVATEKEY_BINDING);
             protocolMarshaller.marshall(createServerRequest.getDisableAutomatedBackup(), DISABLEAUTOMATEDBACKUP_BINDING);
             protocolMarshaller.marshall(createServerRequest.getEngine(), ENGINE_BINDING);
             protocolMarshaller.marshall(createServerRequest.getEngineModel(), ENGINEMODEL_BINDING);
@@ -95,6 +106,7 @@ public class CreateServerRequestMarshaller {
             protocolMarshaller.marshall(createServerRequest.getSecurityGroupIds(), SECURITYGROUPIDS_BINDING);
             protocolMarshaller.marshall(createServerRequest.getServiceRoleArn(), SERVICEROLEARN_BINDING);
             protocolMarshaller.marshall(createServerRequest.getSubnetIds(), SUBNETIDS_BINDING);
+            protocolMarshaller.marshall(createServerRequest.getTags(), TAGS_BINDING);
             protocolMarshaller.marshall(createServerRequest.getBackupId(), BACKUPID_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

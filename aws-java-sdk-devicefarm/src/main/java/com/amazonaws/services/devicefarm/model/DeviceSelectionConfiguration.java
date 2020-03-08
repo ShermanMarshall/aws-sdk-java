@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,8 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents the device filters used in a test run as well as the maximum number of devices to be included in the run.
- * It is passed in as the <code>deviceSelectionConfiguration</code> request parameter in <a>ScheduleRun</a>.
+ * Represents the device filters used in a test run and the maximum number of devices to be included in the run. It is
+ * passed in as the <code>deviceSelectionConfiguration</code> request parameter in <a>ScheduleRun</a>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/devicefarm-2015-06-23/DeviceSelectionConfiguration"
@@ -48,49 +48,51 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this filter is ignored.
      * </p>
      * </li>
      * <li>
@@ -105,7 +107,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -170,22 +172,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     * The PLATFORM attribute can be set to ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     * The FORM_FACTOR attribute can be set to PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -219,49 +221,51 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this filter is ignored.
      * </p>
      * </li>
      * <li>
@@ -276,7 +280,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -341,22 +345,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     * The PLATFORM attribute can be set to ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     * The FORM_FACTOR attribute can be set to PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -379,51 +383,52 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *         <ul>
      *         <li>
      *         <p>
-     *         ARN: The Amazon Resource Name (ARN) of the device. For example,
-     *         "arn:aws:devicefarm:us-west-2::device:12345Example".
+     *         ARN: The Amazon Resource Name (ARN) of the device (for example,
+     *         <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     *         PLATFORM: The device platform. Valid values are ANDROID or IOS.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         OS_VERSION: The operating system version. For example, "10.3.2".
+     *         OS_VERSION: The operating system version (for example, 10.3.2).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         MODEL: The device model. For example, "iPad 5th Gen".
+     *         MODEL: The device model (for example, iPad 5th Gen).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE",
-     *         "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     *         AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *         or TEMPORARY_NOT_AVAILABLE.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     *         FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         MANUFACTURER: The device manufacturer. For example, "Apple".
+     *         MANUFACTURER: The device manufacturer (for example, Apple).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or
-     *         "FALSE".
+     *         REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or
-     *         "FALSE".
+     *         REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE.
+     *         Because remote debugging is <a
+     *         href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer supported</a>,
+     *         this filter is ignored.
      *         </p>
      *         </li>
      *         <li>
@@ -438,7 +443,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *         </li>
      *         <li>
      *         <p>
-     *         FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     *         FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      *         </p>
      *         </li>
      *         </ul>
@@ -503,23 +508,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *         <ul>
      *         <li>
      *         <p>
-     *         The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     *         The PLATFORM attribute can be set to ANDROID or IOS.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     *         "TEMPORARY_NOT_AVAILABLE".
+     *         The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     *         The FORM_FACTOR attribute can be set to PHONE or TABLET.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     *         The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      *         </p>
      *         </li>
      *         </ul>
@@ -549,49 +553,51 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this filter is ignored.
      * </p>
      * </li>
      * <li>
@@ -606,7 +612,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -671,22 +677,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     * The PLATFORM attribute can be set to ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     * The FORM_FACTOR attribute can be set to PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -710,51 +716,52 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        <ul>
      *        <li>
      *        <p>
-     *        ARN: The Amazon Resource Name (ARN) of the device. For example,
-     *        "arn:aws:devicefarm:us-west-2::device:12345Example".
+     *        ARN: The Amazon Resource Name (ARN) of the device (for example,
+     *        <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     *        PLATFORM: The device platform. Valid values are ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        OS_VERSION: The operating system version. For example, "10.3.2".
+     *        OS_VERSION: The operating system version (for example, 10.3.2).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MODEL: The device model. For example, "iPad 5th Gen".
+     *        MODEL: The device model (for example, iPad 5th Gen).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE",
-     *        "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     *        AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *        or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     *        FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MANUFACTURER: The device manufacturer. For example, "Apple".
+     *        MANUFACTURER: The device manufacturer (for example, Apple).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE.
+     *        Because remote debugging is <a
+     *        href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer supported</a>,
+     *        this filter is ignored.
      *        </p>
      *        </li>
      *        <li>
@@ -769,7 +776,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        </li>
      *        <li>
      *        <p>
-     *        FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     *        FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>
@@ -834,23 +841,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        <ul>
      *        <li>
      *        <p>
-     *        The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     *        The PLATFORM attribute can be set to ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     *        "TEMPORARY_NOT_AVAILABLE".
+     *        The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     *        The FORM_FACTOR attribute can be set to PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     *        The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>
@@ -885,49 +891,51 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this filter is ignored.
      * </p>
      * </li>
      * <li>
@@ -942,7 +950,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -1007,22 +1015,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     * The PLATFORM attribute can be set to ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     * The FORM_FACTOR attribute can be set to PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -1051,51 +1059,52 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        <ul>
      *        <li>
      *        <p>
-     *        ARN: The Amazon Resource Name (ARN) of the device. For example,
-     *        "arn:aws:devicefarm:us-west-2::device:12345Example".
+     *        ARN: The Amazon Resource Name (ARN) of the device (for example,
+     *        <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     *        PLATFORM: The device platform. Valid values are ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        OS_VERSION: The operating system version. For example, "10.3.2".
+     *        OS_VERSION: The operating system version (for example, 10.3.2).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MODEL: The device model. For example, "iPad 5th Gen".
+     *        MODEL: The device model (for example, iPad 5th Gen).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE",
-     *        "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     *        AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *        or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     *        FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MANUFACTURER: The device manufacturer. For example, "Apple".
+     *        MANUFACTURER: The device manufacturer (for example, Apple).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE.
+     *        Because remote debugging is <a
+     *        href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer supported</a>,
+     *        this filter is ignored.
      *        </p>
      *        </li>
      *        <li>
@@ -1110,7 +1119,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        </li>
      *        <li>
      *        <p>
-     *        FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     *        FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>
@@ -1175,23 +1184,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        <ul>
      *        <li>
      *        <p>
-     *        The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     *        The PLATFORM attribute can be set to ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     *        "TEMPORARY_NOT_AVAILABLE".
+     *        The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     *        The FORM_FACTOR attribute can be set to PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     *        The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>
@@ -1228,49 +1236,51 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this filter is ignored.
      * </p>
      * </li>
      * <li>
@@ -1285,7 +1295,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -1350,22 +1360,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      * <ul>
      * <li>
      * <p>
-     * The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     * The PLATFORM attribute can be set to ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     * The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     * The FORM_FACTOR attribute can be set to PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     * The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -1389,51 +1399,52 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        <ul>
      *        <li>
      *        <p>
-     *        ARN: The Amazon Resource Name (ARN) of the device. For example,
-     *        "arn:aws:devicefarm:us-west-2::device:12345Example".
+     *        ARN: The Amazon Resource Name (ARN) of the device (for example,
+     *        <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     *        PLATFORM: The device platform. Valid values are ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        OS_VERSION: The operating system version. For example, "10.3.2".
+     *        OS_VERSION: The operating system version (for example, 10.3.2).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MODEL: The device model. For example, "iPad 5th Gen".
+     *        MODEL: The device model (for example, iPad 5th Gen).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE",
-     *        "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     *        AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *        or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     *        FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MANUFACTURER: The device manufacturer. For example, "Apple".
+     *        MANUFACTURER: The device manufacturer (for example, Apple).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE.
+     *        Because remote debugging is <a
+     *        href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer supported</a>,
+     *        this filter is ignored.
      *        </p>
      *        </li>
      *        <li>
@@ -1448,7 +1459,7 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        </li>
      *        <li>
      *        <p>
-     *        FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     *        FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>
@@ -1513,23 +1524,22 @@ public class DeviceSelectionConfiguration implements Serializable, Cloneable, St
      *        <ul>
      *        <li>
      *        <p>
-     *        The PLATFORM attribute can be set to "ANDROID" or "IOS".
+     *        The PLATFORM attribute can be set to ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The AVAILABILITY attribute can be set to "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     *        "TEMPORARY_NOT_AVAILABLE".
+     *        The AVAILABILITY attribute can be set to AVAILABLE, HIGHLY_AVAILABLE, BUSY, or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The FORM_FACTOR attribute can be set to "PHONE" or "TABLET".
+     *        The FORM_FACTOR attribute can be set to PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The FLEET_TYPE attribute can be set to "PUBLIC" or "PRIVATE".
+     *        The FLEET_TYPE attribute can be set to PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>

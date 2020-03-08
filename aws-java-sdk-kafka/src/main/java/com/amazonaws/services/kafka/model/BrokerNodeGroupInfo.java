@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,7 +31,13 @@ public class BrokerNodeGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The distribution of broker nodes across Availability Zones.
+     * The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't specify
+     * it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value DEFAULT. No
+     * other values are currently allowed.
+     * </p>
+     * <p>
+     * Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the subnets you
+     * provide when you create the cluster.
      * </p>
      */
     private String brokerAZDistribution;
@@ -67,12 +73,24 @@ public class BrokerNodeGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The distribution of broker nodes across Availability Zones.
+     * The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't specify
+     * it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value DEFAULT. No
+     * other values are currently allowed.
+     * </p>
+     * <p>
+     * Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the subnets you
+     * provide when you create the cluster.
      * </p>
      * 
      * @param brokerAZDistribution
      *        <p>
-     *        The distribution of broker nodes across Availability Zones.
+     *        The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't
+     *        specify it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value
+     *        DEFAULT. No other values are currently allowed.
+     *        </p>
+     *        <p>
+     *        Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the
+     *        subnets you provide when you create the cluster.
      *        </p>
      * @see BrokerAZDistribution
      */
@@ -83,11 +101,23 @@ public class BrokerNodeGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The distribution of broker nodes across Availability Zones.
+     * The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't specify
+     * it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value DEFAULT. No
+     * other values are currently allowed.
+     * </p>
+     * <p>
+     * Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the subnets you
+     * provide when you create the cluster.
      * </p>
      * 
      * @return <p>
-     *         The distribution of broker nodes across Availability Zones.
+     *         The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't
+     *         specify it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the
+     *         value DEFAULT. No other values are currently allowed.
+     *         </p>
+     *         <p>
+     *         Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the
+     *         subnets you provide when you create the cluster.
      *         </p>
      * @see BrokerAZDistribution
      */
@@ -98,12 +128,24 @@ public class BrokerNodeGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The distribution of broker nodes across Availability Zones.
+     * The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't specify
+     * it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value DEFAULT. No
+     * other values are currently allowed.
+     * </p>
+     * <p>
+     * Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the subnets you
+     * provide when you create the cluster.
      * </p>
      * 
      * @param brokerAZDistribution
      *        <p>
-     *        The distribution of broker nodes across Availability Zones.
+     *        The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't
+     *        specify it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value
+     *        DEFAULT. No other values are currently allowed.
+     *        </p>
+     *        <p>
+     *        Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the
+     *        subnets you provide when you create the cluster.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see BrokerAZDistribution
@@ -116,12 +158,24 @@ public class BrokerNodeGroupInfo implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * The distribution of broker nodes across Availability Zones.
+     * The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't specify
+     * it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value DEFAULT. No
+     * other values are currently allowed.
+     * </p>
+     * <p>
+     * Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the subnets you
+     * provide when you create the cluster.
      * </p>
      * 
      * @param brokerAZDistribution
      *        <p>
-     *        The distribution of broker nodes across Availability Zones.
+     *        The distribution of broker nodes across Availability Zones. This is an optional parameter. If you don't
+     *        specify it, Amazon MSK gives it the value DEFAULT. You can also explicitly set this parameter to the value
+     *        DEFAULT. No other values are currently allowed.
+     *        </p>
+     *        <p>
+     *        Amazon MSK distributes the broker nodes evenly across the Availability Zones that correspond to the
+     *        subnets you provide when you create the cluster.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see BrokerAZDistribution

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -460,6 +460,39 @@ public class AWSKafkaAsyncClient extends AWSKafkaClient implements AWSKafkaAsync
     }
 
     @Override
+    public java.util.concurrent.Future<ListKafkaVersionsResult> listKafkaVersionsAsync(ListKafkaVersionsRequest request) {
+
+        return listKafkaVersionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListKafkaVersionsResult> listKafkaVersionsAsync(final ListKafkaVersionsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListKafkaVersionsRequest, ListKafkaVersionsResult> asyncHandler) {
+        final ListKafkaVersionsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListKafkaVersionsResult>() {
+            @Override
+            public ListKafkaVersionsResult call() throws Exception {
+                ListKafkaVersionsResult result = null;
+
+                try {
+                    result = executeListKafkaVersions(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ListNodesResult> listNodesAsync(ListNodesRequest request) {
 
         return listNodesAsync(request, null);
@@ -592,6 +625,39 @@ public class AWSKafkaAsyncClient extends AWSKafkaClient implements AWSKafkaAsync
     }
 
     @Override
+    public java.util.concurrent.Future<UpdateBrokerCountResult> updateBrokerCountAsync(UpdateBrokerCountRequest request) {
+
+        return updateBrokerCountAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateBrokerCountResult> updateBrokerCountAsync(final UpdateBrokerCountRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateBrokerCountRequest, UpdateBrokerCountResult> asyncHandler) {
+        final UpdateBrokerCountRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateBrokerCountResult>() {
+            @Override
+            public UpdateBrokerCountResult call() throws Exception {
+                UpdateBrokerCountResult result = null;
+
+                try {
+                    result = executeUpdateBrokerCount(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<UpdateBrokerStorageResult> updateBrokerStorageAsync(UpdateBrokerStorageRequest request) {
 
         return updateBrokerStorageAsync(request, null);
@@ -642,6 +708,39 @@ public class AWSKafkaAsyncClient extends AWSKafkaClient implements AWSKafkaAsync
 
                 try {
                     result = executeUpdateClusterConfiguration(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMonitoringResult> updateMonitoringAsync(UpdateMonitoringRequest request) {
+
+        return updateMonitoringAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMonitoringResult> updateMonitoringAsync(final UpdateMonitoringRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateMonitoringRequest, UpdateMonitoringResult> asyncHandler) {
+        final UpdateMonitoringRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateMonitoringResult>() {
+            @Override
+            public UpdateMonitoringResult call() throws Exception {
+                UpdateMonitoringResult result = null;
+
+                try {
+                    result = executeUpdateMonitoring(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

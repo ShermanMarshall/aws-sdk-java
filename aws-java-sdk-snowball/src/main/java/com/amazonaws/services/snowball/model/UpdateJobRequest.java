@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,7 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the
-     * <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and
+     * <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and
      * Access Management (IAM) API action.
      * </p>
      */
@@ -129,14 +129,15 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the
-     * <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and
+     * <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and
      * Access Management (IAM) API action.
      * </p>
      * 
      * @param roleARN
      *        The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN,
-     *        use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS
-     *        Identity and Access Management (IAM) API action.
+     *        use the <a
+     *        href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity
+     *        and Access Management (IAM) API action.
      */
 
     public void setRoleARN(String roleARN) {
@@ -146,13 +147,13 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the
-     * <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and
+     * <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and
      * Access Management (IAM) API action.
      * </p>
      * 
      * @return The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN,
      *         use the <a
-     *         href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity
+     *         href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity
      *         and Access Management (IAM) API action.
      */
 
@@ -163,14 +164,15 @@ public class UpdateJobRequest extends com.amazonaws.AmazonWebServiceRequest impl
     /**
      * <p>
      * The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the
-     * <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and
+     * <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity and
      * Access Management (IAM) API action.
      * </p>
      * 
      * @param roleARN
      *        The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN,
-     *        use the <a href="http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS
-     *        Identity and Access Management (IAM) API action.
+     *        use the <a
+     *        href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html">CreateRole</a>AWS Identity
+     *        and Access Management (IAM) API action.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

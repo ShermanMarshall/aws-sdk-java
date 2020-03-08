@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,9 +44,14 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
      */
     private String engineVersion;
+    /**
+     * The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     */
+    private String hostInstanceType;
     /** Enables Amazon CloudWatch logging for brokers. */
     private Logs logs;
-    /** The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers. */
+    /** The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers. */
     private java.util.List<String> securityGroups;
 
     /**
@@ -222,6 +227,46 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     * 
+     * @param hostInstanceType
+     *        The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     *        https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     */
+
+    public void setHostInstanceType(String hostInstanceType) {
+        this.hostInstanceType = hostInstanceType;
+    }
+
+    /**
+     * The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     * 
+     * @return The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     *         https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     */
+
+    public String getHostInstanceType() {
+        return this.hostInstanceType;
+    }
+
+    /**
+     * The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     * https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     * 
+     * @param hostInstanceType
+     *        The host instance type of the broker to upgrade to. For a list of supported instance types, see
+     *        https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateBrokerRequest withHostInstanceType(String hostInstanceType) {
+        setHostInstanceType(hostInstanceType);
+        return this;
+    }
+
+    /**
      * Enables Amazon CloudWatch logging for brokers.
      * 
      * @param logs
@@ -256,9 +301,9 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * 
-     * @return The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * @return The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      */
 
     public java.util.List<String> getSecurityGroups() {
@@ -266,10 +311,10 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * 
      * @param securityGroups
-     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      */
 
     public void setSecurityGroups(java.util.Collection<String> securityGroups) {
@@ -282,7 +327,7 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setSecurityGroups(java.util.Collection)} or {@link #withSecurityGroups(java.util.Collection)} if you want
@@ -290,7 +335,7 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * 
      * @param securityGroups
-     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -305,10 +350,10 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
-     * The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     * The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * 
      * @param securityGroups
-     *        The list of security groups (1 minimum, 5 maximum) that authorize connections to brokers.
+     *        The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -337,6 +382,8 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
             sb.append("Configuration: ").append(getConfiguration()).append(",");
         if (getEngineVersion() != null)
             sb.append("EngineVersion: ").append(getEngineVersion()).append(",");
+        if (getHostInstanceType() != null)
+            sb.append("HostInstanceType: ").append(getHostInstanceType()).append(",");
         if (getLogs() != null)
             sb.append("Logs: ").append(getLogs()).append(",");
         if (getSecurityGroups() != null)
@@ -371,6 +418,10 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
             return false;
         if (other.getEngineVersion() != null && other.getEngineVersion().equals(this.getEngineVersion()) == false)
             return false;
+        if (other.getHostInstanceType() == null ^ this.getHostInstanceType() == null)
+            return false;
+        if (other.getHostInstanceType() != null && other.getHostInstanceType().equals(this.getHostInstanceType()) == false)
+            return false;
         if (other.getLogs() == null ^ this.getLogs() == null)
             return false;
         if (other.getLogs() != null && other.getLogs().equals(this.getLogs()) == false)
@@ -391,6 +442,7 @@ public class UpdateBrokerRequest extends com.amazonaws.AmazonWebServiceRequest i
         hashCode = prime * hashCode + ((getBrokerId() == null) ? 0 : getBrokerId().hashCode());
         hashCode = prime * hashCode + ((getConfiguration() == null) ? 0 : getConfiguration().hashCode());
         hashCode = prime * hashCode + ((getEngineVersion() == null) ? 0 : getEngineVersion().hashCode());
+        hashCode = prime * hashCode + ((getHostInstanceType() == null) ? 0 : getHostInstanceType().hashCode());
         hashCode = prime * hashCode + ((getLogs() == null) ? 0 : getLogs().hashCode());
         hashCode = prime * hashCode + ((getSecurityGroups() == null) ? 0 : getSecurityGroups().hashCode());
         return hashCode;

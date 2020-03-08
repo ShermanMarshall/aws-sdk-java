@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class ContainerSettingsMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> CMFCSETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("cmfcSettings").build();
     private static final MarshallingInfo<String> CONTAINER_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("container").build();
     private static final MarshallingInfo<StructuredPojo> F4VSETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -39,6 +41,8 @@ public class ContainerSettingsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("movSettings").build();
     private static final MarshallingInfo<StructuredPojo> MP4SETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("mp4Settings").build();
+    private static final MarshallingInfo<StructuredPojo> MPDSETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("mpdSettings").build();
 
     private static final ContainerSettingsMarshaller instance = new ContainerSettingsMarshaller();
 
@@ -56,12 +60,14 @@ public class ContainerSettingsMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(containerSettings.getCmfcSettings(), CMFCSETTINGS_BINDING);
             protocolMarshaller.marshall(containerSettings.getContainer(), CONTAINER_BINDING);
             protocolMarshaller.marshall(containerSettings.getF4vSettings(), F4VSETTINGS_BINDING);
             protocolMarshaller.marshall(containerSettings.getM2tsSettings(), M2TSSETTINGS_BINDING);
             protocolMarshaller.marshall(containerSettings.getM3u8Settings(), M3U8SETTINGS_BINDING);
             protocolMarshaller.marshall(containerSettings.getMovSettings(), MOVSETTINGS_BINDING);
             protocolMarshaller.marshall(containerSettings.getMp4Settings(), MP4SETTINGS_BINDING);
+            protocolMarshaller.marshall(containerSettings.getMpdSettings(), MPDSETTINGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

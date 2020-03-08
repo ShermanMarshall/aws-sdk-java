@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class VoiceConnectorMarshaller {
 
     private static final MarshallingInfo<String> VOICECONNECTORID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VoiceConnectorId").build();
+    private static final MarshallingInfo<String> AWSREGION_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("AwsRegion").build();
     private static final MarshallingInfo<String> NAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Name").build();
     private static final MarshallingInfo<String> OUTBOUNDHOSTNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -57,6 +59,7 @@ public class VoiceConnectorMarshaller {
 
         try {
             protocolMarshaller.marshall(voiceConnector.getVoiceConnectorId(), VOICECONNECTORID_BINDING);
+            protocolMarshaller.marshall(voiceConnector.getAwsRegion(), AWSREGION_BINDING);
             protocolMarshaller.marshall(voiceConnector.getName(), NAME_BINDING);
             protocolMarshaller.marshall(voiceConnector.getOutboundHostName(), OUTBOUNDHOSTNAME_BINDING);
             protocolMarshaller.marshall(voiceConnector.getRequireEncryption(), REQUIREENCRYPTION_BINDING);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -15,7 +15,9 @@ package com.amazonaws.services.codecommit.model;
 import javax.annotation.Generated;
 
 /**
- * 
+ * <p>
+ * A list of commit IDs is required, but was either not specified or the list was empty.
+ * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CommitIdsListRequiredException extends com.amazonaws.services.codecommit.model.AWSCodeCommitException {

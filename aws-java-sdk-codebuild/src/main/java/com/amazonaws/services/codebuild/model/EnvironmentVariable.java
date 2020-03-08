@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,9 +40,11 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </p>
      * <important>
      * <p>
-     * We strongly discourage the use of environment variables to store sensitive values, especially AWS secret key IDs
-     * and secret access keys. Environment variables can be displayed in plain text using the AWS CodeBuild console and
-     * the AWS Command Line Interface (AWS CLI).
+     * We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values,
+     * especially AWS secret key IDs and secret access keys. <code>PLAINTEXT</code> environment variables can be
+     * displayed in plain text using the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI). For
+     * sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or
+     * <code>SECRETS_MANAGER</code>.
      * </p>
      * </important>
      */
@@ -59,7 +61,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
-     * <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     * <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      * </p>
      * </li>
      * </ul>
@@ -112,18 +119,22 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </p>
      * <important>
      * <p>
-     * We strongly discourage the use of environment variables to store sensitive values, especially AWS secret key IDs
-     * and secret access keys. Environment variables can be displayed in plain text using the AWS CodeBuild console and
-     * the AWS Command Line Interface (AWS CLI).
+     * We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values,
+     * especially AWS secret key IDs and secret access keys. <code>PLAINTEXT</code> environment variables can be
+     * displayed in plain text using the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI). For
+     * sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or
+     * <code>SECRETS_MANAGER</code>.
      * </p>
      * </important>
      * 
      * @param value
      *        The value of the environment variable.</p> <important>
      *        <p>
-     *        We strongly discourage the use of environment variables to store sensitive values, especially AWS secret
-     *        key IDs and secret access keys. Environment variables can be displayed in plain text using the AWS
-     *        CodeBuild console and the AWS Command Line Interface (AWS CLI).
+     *        We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values,
+     *        especially AWS secret key IDs and secret access keys. <code>PLAINTEXT</code> environment variables can be
+     *        displayed in plain text using the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI). For
+     *        sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or
+     *        <code>SECRETS_MANAGER</code>.
      *        </p>
      */
 
@@ -137,17 +148,21 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </p>
      * <important>
      * <p>
-     * We strongly discourage the use of environment variables to store sensitive values, especially AWS secret key IDs
-     * and secret access keys. Environment variables can be displayed in plain text using the AWS CodeBuild console and
-     * the AWS Command Line Interface (AWS CLI).
+     * We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values,
+     * especially AWS secret key IDs and secret access keys. <code>PLAINTEXT</code> environment variables can be
+     * displayed in plain text using the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI). For
+     * sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or
+     * <code>SECRETS_MANAGER</code>.
      * </p>
      * </important>
      * 
      * @return The value of the environment variable.</p> <important>
      *         <p>
-     *         We strongly discourage the use of environment variables to store sensitive values, especially AWS secret
-     *         key IDs and secret access keys. Environment variables can be displayed in plain text using the AWS
-     *         CodeBuild console and the AWS Command Line Interface (AWS CLI).
+     *         We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values,
+     *         especially AWS secret key IDs and secret access keys. <code>PLAINTEXT</code> environment variables can be
+     *         displayed in plain text using the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI). For
+     *         sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or
+     *         <code>SECRETS_MANAGER</code>.
      *         </p>
      */
 
@@ -161,18 +176,22 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </p>
      * <important>
      * <p>
-     * We strongly discourage the use of environment variables to store sensitive values, especially AWS secret key IDs
-     * and secret access keys. Environment variables can be displayed in plain text using the AWS CodeBuild console and
-     * the AWS Command Line Interface (AWS CLI).
+     * We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values,
+     * especially AWS secret key IDs and secret access keys. <code>PLAINTEXT</code> environment variables can be
+     * displayed in plain text using the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI). For
+     * sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or
+     * <code>SECRETS_MANAGER</code>.
      * </p>
      * </important>
      * 
      * @param value
      *        The value of the environment variable.</p> <important>
      *        <p>
-     *        We strongly discourage the use of environment variables to store sensitive values, especially AWS secret
-     *        key IDs and secret access keys. Environment variables can be displayed in plain text using the AWS
-     *        CodeBuild console and the AWS Command Line Interface (AWS CLI).
+     *        We strongly discourage the use of <code>PLAINTEXT</code> environment variables to store sensitive values,
+     *        especially AWS secret key IDs and secret access keys. <code>PLAINTEXT</code> environment variables can be
+     *        displayed in plain text using the AWS CodeBuild console and the AWS Command Line Interface (AWS CLI). For
+     *        sensitive values, we recommend you use an environment variable of type <code>PARAMETER_STORE</code> or
+     *        <code>SECRETS_MANAGER</code>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -194,7 +213,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
-     * <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     * <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      * </p>
      * </li>
      * </ul>
@@ -210,7 +234,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      *        </li>
      *        <li>
      *        <p>
-     *        <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     *        <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      *        </p>
      *        </li>
      * @see EnvironmentVariableType
@@ -232,7 +261,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
-     * <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     * <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      * </p>
      * </li>
      * </ul>
@@ -247,7 +281,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      *         </li>
      *         <li>
      *         <p>
-     *         <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     *         <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      *         </p>
      *         </li>
      * @see EnvironmentVariableType
@@ -269,7 +308,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
-     * <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     * <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      * </p>
      * </li>
      * </ul>
@@ -285,7 +329,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      *        </li>
      *        <li>
      *        <p>
-     *        <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     *        <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -309,7 +358,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
-     * <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     * <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      * </p>
      * </li>
      * </ul>
@@ -325,7 +379,12 @@ public class EnvironmentVariable implements Serializable, Cloneable, StructuredP
      *        </li>
      *        <li>
      *        <p>
-     *        <code>PLAINTEXT</code>: An environment variable in plaintext format.
+     *        <code>PLAINTEXT</code>: An environment variable in plain text format. This is the default value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>SECRETS_MANAGER</code>: An environment variable stored in AWS Secrets Manager.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

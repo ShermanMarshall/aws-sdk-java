@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,6 +50,14 @@ public class AllocateAddressRequestMarshaller implements Marshaller<Request<Allo
 
         if (allocateAddressRequest.getPublicIpv4Pool() != null) {
             request.addParameter("PublicIpv4Pool", StringUtils.fromString(allocateAddressRequest.getPublicIpv4Pool()));
+        }
+
+        if (allocateAddressRequest.getNetworkBorderGroup() != null) {
+            request.addParameter("NetworkBorderGroup", StringUtils.fromString(allocateAddressRequest.getNetworkBorderGroup()));
+        }
+
+        if (allocateAddressRequest.getCustomerOwnedIpv4Pool() != null) {
+            request.addParameter("CustomerOwnedIpv4Pool", StringUtils.fromString(allocateAddressRequest.getCustomerOwnedIpv4Pool()));
         }
 
         return request;

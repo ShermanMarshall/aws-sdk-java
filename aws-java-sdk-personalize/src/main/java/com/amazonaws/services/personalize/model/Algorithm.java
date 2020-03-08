@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -250,6 +250,13 @@ public class Algorithm implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single DefaultHyperParameters entry
+     *
+     * @see Algorithm#withDefaultHyperParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public Algorithm addDefaultHyperParametersEntry(String key, String value) {
         if (null == this.defaultHyperParameters) {
             this.defaultHyperParameters = new java.util.HashMap<String, String>();
@@ -356,6 +363,13 @@ public class Algorithm implements Serializable, Cloneable, StructuredPojo {
         setDefaultResourceConfig(defaultResourceConfig);
         return this;
     }
+
+    /**
+     * Add a single DefaultResourceConfig entry
+     *
+     * @see Algorithm#withDefaultResourceConfig
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public Algorithm addDefaultResourceConfigEntry(String key, String value) {
         if (null == this.defaultResourceConfig) {

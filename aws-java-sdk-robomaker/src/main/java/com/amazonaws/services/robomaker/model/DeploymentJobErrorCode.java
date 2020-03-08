@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,14 +28,17 @@ public enum DeploymentJobErrorCode {
     RobotDeploymentNoResponse("RobotDeploymentNoResponse"),
     RobotAgentConnectionTimeout("RobotAgentConnectionTimeout"),
     GreengrassDeploymentFailed("GreengrassDeploymentFailed"),
+    InvalidGreengrassGroup("InvalidGreengrassGroup"),
     MissingRobotArchitecture("MissingRobotArchitecture"),
     MissingRobotApplicationArchitecture("MissingRobotApplicationArchitecture"),
     MissingRobotDeploymentResource("MissingRobotDeploymentResource"),
     GreengrassGroupVersionDoesNotExist("GreengrassGroupVersionDoesNotExist"),
+    LambdaDeleted("LambdaDeleted"),
     ExtractingBundleFailure("ExtractingBundleFailure"),
     PreLaunchFileFailure("PreLaunchFileFailure"),
     PostLaunchFileFailure("PostLaunchFileFailure"),
     BadPermissionError("BadPermissionError"),
+    DownloadConditionFailed("DownloadConditionFailed"),
     InternalServerError("InternalServerError");
 
     private String value;

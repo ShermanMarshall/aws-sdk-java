@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,8 @@ public class CreateHyperParameterTuningJobRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("HyperParameterTuningJobConfig").build();
     private static final MarshallingInfo<StructuredPojo> TRAININGJOBDEFINITION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TrainingJobDefinition").build();
+    private static final MarshallingInfo<List> TRAININGJOBDEFINITIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TrainingJobDefinitions").build();
     private static final MarshallingInfo<StructuredPojo> WARMSTARTCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("WarmStartConfig").build();
     private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
@@ -58,6 +60,7 @@ public class CreateHyperParameterTuningJobRequestMarshaller {
             protocolMarshaller.marshall(createHyperParameterTuningJobRequest.getHyperParameterTuningJobName(), HYPERPARAMETERTUNINGJOBNAME_BINDING);
             protocolMarshaller.marshall(createHyperParameterTuningJobRequest.getHyperParameterTuningJobConfig(), HYPERPARAMETERTUNINGJOBCONFIG_BINDING);
             protocolMarshaller.marshall(createHyperParameterTuningJobRequest.getTrainingJobDefinition(), TRAININGJOBDEFINITION_BINDING);
+            protocolMarshaller.marshall(createHyperParameterTuningJobRequest.getTrainingJobDefinitions(), TRAININGJOBDEFINITIONS_BINDING);
             protocolMarshaller.marshall(createHyperParameterTuningJobRequest.getWarmStartConfig(), WARMSTARTCONFIG_BINDING);
             protocolMarshaller.marshall(createHyperParameterTuningJobRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {

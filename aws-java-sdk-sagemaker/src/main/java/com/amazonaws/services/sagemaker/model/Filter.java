@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * A conditional statement for a search expression that includes a Boolean operator, a resource property, and a value.
+ * A conditional statement for a search expression that includes a resource property, a Boolean operator, and a value.
  * </p>
  * <p>
  * If you don't specify an <code>Operator</code> and a <code>Value</code>, the filter searches for only the specified
@@ -155,7 +155,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      * <dd>
      * <p>
      * Only supported for text-based properties. The word-list of the property contains the specified <code>Value</code>
-     * .
+     * . A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      * </p>
      * </dd>
      * </dl>
@@ -276,7 +276,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      * <dd>
      * <p>
      * Only supported for text-based properties. The word-list of the property contains the specified <code>Value</code>
-     * .
+     * . A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      * </p>
      * </dd>
      * </dl>
@@ -332,7 +332,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      *        <dd>
      *        <p>
      *        Only supported for text-based properties. The word-list of the property contains the specified
-     *        <code>Value</code>.
+     *        <code>Value</code>. A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      *        </p>
      *        </dd>
      *        </dl>
@@ -395,7 +395,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      * <dd>
      * <p>
      * Only supported for text-based properties. The word-list of the property contains the specified <code>Value</code>
-     * .
+     * . A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      * </p>
      * </dd>
      * </dl>
@@ -450,7 +450,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      *         <dd>
      *         <p>
      *         Only supported for text-based properties. The word-list of the property contains the specified
-     *         <code>Value</code>.
+     *         <code>Value</code>. A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      *         </p>
      *         </dd>
      *         </dl>
@@ -513,7 +513,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      * <dd>
      * <p>
      * Only supported for text-based properties. The word-list of the property contains the specified <code>Value</code>
-     * .
+     * . A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      * </p>
      * </dd>
      * </dl>
@@ -569,7 +569,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      *        <dd>
      *        <p>
      *        Only supported for text-based properties. The word-list of the property contains the specified
-     *        <code>Value</code>.
+     *        <code>Value</code>. A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      *        </p>
      *        </dd>
      *        </dl>
@@ -634,7 +634,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      * <dd>
      * <p>
      * Only supported for text-based properties. The word-list of the property contains the specified <code>Value</code>
-     * .
+     * . A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      * </p>
      * </dd>
      * </dl>
@@ -690,7 +690,7 @@ public class Filter implements Serializable, Cloneable, StructuredPojo {
      *        <dd>
      *        <p>
      *        Only supported for text-based properties. The word-list of the property contains the specified
-     *        <code>Value</code>.
+     *        <code>Value</code>. A <code>SearchExpression</code> can include only one <code>Contains</code> operator.
      *        </p>
      *        </dd>
      *        </dl>

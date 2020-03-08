@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,8 @@ public class StartAutomationExecutionRequestMarshaller {
             .marshallLocationName("MaxErrors").build();
     private static final MarshallingInfo<List> TARGETLOCATIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TargetLocations").build();
+    private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Tags").build();
 
     private static final StartAutomationExecutionRequestMarshaller instance = new StartAutomationExecutionRequestMarshaller();
 
@@ -79,6 +81,7 @@ public class StartAutomationExecutionRequestMarshaller {
             protocolMarshaller.marshall(startAutomationExecutionRequest.getMaxConcurrency(), MAXCONCURRENCY_BINDING);
             protocolMarshaller.marshall(startAutomationExecutionRequest.getMaxErrors(), MAXERRORS_BINDING);
             protocolMarshaller.marshall(startAutomationExecutionRequest.getTargetLocations(), TARGETLOCATIONS_BINDING);
+            protocolMarshaller.marshall(startAutomationExecutionRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

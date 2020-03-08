@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Specifies the actions performed and the next state entered when a <code>"condition"</code> evaluates to TRUE.
+ * Specifies the actions performed and the next state entered when a <code>condition</code> evaluates to TRUE.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/iotevents-2018-07-27/TransitionEvent" target="_top">AWS API
@@ -36,8 +36,8 @@ public class TransitionEvent implements Serializable, Cloneable, StructuredPojo 
     private String eventName;
     /**
      * <p>
-     * [Required] A Boolean expression that when TRUE causes the actions to be performed and the
-     * <code>"nextState"</code> to be entered.
+     * Required. A Boolean expression that when TRUE causes the actions to be performed and the <code>nextState</code>
+     * to be entered.
      * </p>
      */
     private String condition;
@@ -96,13 +96,13 @@ public class TransitionEvent implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * [Required] A Boolean expression that when TRUE causes the actions to be performed and the
-     * <code>"nextState"</code> to be entered.
+     * Required. A Boolean expression that when TRUE causes the actions to be performed and the <code>nextState</code>
+     * to be entered.
      * </p>
      * 
      * @param condition
-     *        [Required] A Boolean expression that when TRUE causes the actions to be performed and the
-     *        <code>"nextState"</code> to be entered.
+     *        Required. A Boolean expression that when TRUE causes the actions to be performed and the
+     *        <code>nextState</code> to be entered.
      */
 
     public void setCondition(String condition) {
@@ -111,12 +111,12 @@ public class TransitionEvent implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * [Required] A Boolean expression that when TRUE causes the actions to be performed and the
-     * <code>"nextState"</code> to be entered.
+     * Required. A Boolean expression that when TRUE causes the actions to be performed and the <code>nextState</code>
+     * to be entered.
      * </p>
      * 
-     * @return [Required] A Boolean expression that when TRUE causes the actions to be performed and the
-     *         <code>"nextState"</code> to be entered.
+     * @return Required. A Boolean expression that when TRUE causes the actions to be performed and the
+     *         <code>nextState</code> to be entered.
      */
 
     public String getCondition() {
@@ -125,13 +125,13 @@ public class TransitionEvent implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * [Required] A Boolean expression that when TRUE causes the actions to be performed and the
-     * <code>"nextState"</code> to be entered.
+     * Required. A Boolean expression that when TRUE causes the actions to be performed and the <code>nextState</code>
+     * to be entered.
      * </p>
      * 
      * @param condition
-     *        [Required] A Boolean expression that when TRUE causes the actions to be performed and the
-     *        <code>"nextState"</code> to be entered.
+     *        Required. A Boolean expression that when TRUE causes the actions to be performed and the
+     *        <code>nextState</code> to be entered.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

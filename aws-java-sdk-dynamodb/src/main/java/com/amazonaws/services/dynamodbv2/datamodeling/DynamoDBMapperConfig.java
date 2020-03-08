@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -459,15 +459,17 @@ public class DynamoDBMapperConfig {
         UPDATE_SKIP_NULL_ATTRIBUTES,
 
         /**
-         * CLOBBER will clear and replace all attributes, including unmodeled
-         * ones, on save. Versioned field constraints will
-         * also be disregarded. If versioning is required use {@link #PUT}.
+         * CLOBBER will clear and replace all attributes on save, including unmodeled
+         * ones, and will also disregard versioned field constraints on conditional writes
+         * as well as overwriting auto-generated values regardless of existing values.
+         * If versioning is required, use {@link #PUT}.
          */
         CLOBBER,
 
         /**
-         * PUT will clear and replace all attributes, including unmodeled
-         * ones, on save.
+         * PUT will clear and replace all attributes on save, including unmodeled
+         * ones, but fails if values do not match what is persisted on conditional writes
+         * and does not overwrite auto-generated values.
          */
         PUT,
 
@@ -481,9 +483,8 @@ public class DynamoDBMapperConfig {
          */
         APPEND_SET;
 
-        private final DynamoDBMapperConfig config = builder().withSaveBehavior(this).build();
         public final DynamoDBMapperConfig config() {
-            return this.config;
+            return builder().withSaveBehavior(this).build();
         }
     };
 
@@ -500,9 +501,8 @@ public class DynamoDBMapperConfig {
         CONSISTENT,
         EVENTUAL;
 
-        private final DynamoDBMapperConfig config = builder().withConsistentReads(this).build();
         public final DynamoDBMapperConfig config() {
-            return this.config;
+            return builder().withConsistentReads(this).build();
         }
     };
 
@@ -540,9 +540,8 @@ public class DynamoDBMapperConfig {
          */
         EAGER_LOADING;
 
-        private final DynamoDBMapperConfig config = builder().withPaginationLoadingStrategy(this).build();
         public final DynamoDBMapperConfig config() {
-            return this.config;
+            return builder().withPaginationLoadingStrategy(this).build();
         }
     }
 
@@ -607,9 +606,8 @@ public class DynamoDBMapperConfig {
             return tableNamePrefix;
         }
 
-        private final DynamoDBMapperConfig config = builder().withTableNameOverride(this).build();
         public final DynamoDBMapperConfig config() {
-            return this.config;
+            return builder().withTableNameOverride(this).build();
         }
     }
 
@@ -687,9 +685,8 @@ public class DynamoDBMapperConfig {
             return prefix == null ? beans.properties().tableName() : prefix + beans.properties().tableName();
         }
 
-        private final DynamoDBMapperConfig config = builder().withTableNameResolver(this).build();
         public final DynamoDBMapperConfig config() {
-            return this.config;
+            return builder().withTableNameResolver(this).build();
         }
     }
 
@@ -789,9 +786,8 @@ public class DynamoDBMapperConfig {
             return -1;
         }
 
-        private final DynamoDBMapperConfig config = builder().withBatchLoadRetryStrategy(this).build();
         public final DynamoDBMapperConfig config() {
-            return this.config;
+            return builder().withBatchLoadRetryStrategy(this).build();
         }
     }
 
@@ -834,9 +830,8 @@ public class DynamoDBMapperConfig {
             return (unprocessedKeys != null && unprocessedKeys.size() > 0 && batchLoadContext.getRetriesAttempted() < MAX_RETRIES);
         }
 
-        private final DynamoDBMapperConfig config = builder().withBatchLoadRetryStrategy(this).build();
         public final DynamoDBMapperConfig config() {
-            return this.config;
+            return builder().withBatchLoadRetryStrategy(this).build();
         }
     }
 
@@ -885,9 +880,8 @@ public class DynamoDBMapperConfig {
             return Math.min(delay, MAX_BACKOFF_IN_MILLISECONDS);
         }
 
-        private final DynamoDBMapperConfig config = builder().withBatchWriteRetryStrategy(this).build();
         public final DynamoDBMapperConfig config() {
-            return this.config;
+            return builder().withBatchWriteRetryStrategy(this).build();
         }
     }
 

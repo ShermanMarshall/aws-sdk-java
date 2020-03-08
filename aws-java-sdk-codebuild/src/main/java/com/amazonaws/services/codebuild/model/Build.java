@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,6 +40,14 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String arn;
+    /**
+     * <p>
+     * The number of the build. For each project, the <code>buildNumber</code> of its first build is <code>1</code>. The
+     * <code>buildNumber</code> of each subsequent build is incremented by <code>1</code>. If a build is deleted, the
+     * <code>buildNumber</code> of other builds does not change.
+     * </p>
+     */
+    private Long buildNumber;
     /**
      * <p>
      * When the build process started, expressed in Unix time format.
@@ -163,7 +171,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -301,6 +309,27 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String encryptionKey;
+    /**
+     * <p>
+     * A list of exported environment variables for this build.
+     * </p>
+     */
+    private java.util.List<ExportedEnvironmentVariable> exportedEnvironmentVariables;
+    /**
+     * <p>
+     * An array of the ARNs associated with this build's reports.
+     * </p>
+     */
+    private java.util.List<String> reportArns;
+    /**
+     * <p>
+     * An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     * <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>,
+     * <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using Amazon
+     * Elastic File System.
+     * </p>
+     */
+    private java.util.List<ProjectFileSystemLocation> fileSystemLocations;
 
     /**
      * <p>
@@ -379,6 +408,58 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
 
     public Build withArn(String arn) {
         setArn(arn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The number of the build. For each project, the <code>buildNumber</code> of its first build is <code>1</code>. The
+     * <code>buildNumber</code> of each subsequent build is incremented by <code>1</code>. If a build is deleted, the
+     * <code>buildNumber</code> of other builds does not change.
+     * </p>
+     * 
+     * @param buildNumber
+     *        The number of the build. For each project, the <code>buildNumber</code> of its first build is
+     *        <code>1</code>. The <code>buildNumber</code> of each subsequent build is incremented by <code>1</code>. If
+     *        a build is deleted, the <code>buildNumber</code> of other builds does not change.
+     */
+
+    public void setBuildNumber(Long buildNumber) {
+        this.buildNumber = buildNumber;
+    }
+
+    /**
+     * <p>
+     * The number of the build. For each project, the <code>buildNumber</code> of its first build is <code>1</code>. The
+     * <code>buildNumber</code> of each subsequent build is incremented by <code>1</code>. If a build is deleted, the
+     * <code>buildNumber</code> of other builds does not change.
+     * </p>
+     * 
+     * @return The number of the build. For each project, the <code>buildNumber</code> of its first build is
+     *         <code>1</code>. The <code>buildNumber</code> of each subsequent build is incremented by <code>1</code>.
+     *         If a build is deleted, the <code>buildNumber</code> of other builds does not change.
+     */
+
+    public Long getBuildNumber() {
+        return this.buildNumber;
+    }
+
+    /**
+     * <p>
+     * The number of the build. For each project, the <code>buildNumber</code> of its first build is <code>1</code>. The
+     * <code>buildNumber</code> of each subsequent build is incremented by <code>1</code>. If a build is deleted, the
+     * <code>buildNumber</code> of other builds does not change.
+     * </p>
+     * 
+     * @param buildNumber
+     *        The number of the build. For each project, the <code>buildNumber</code> of its first build is
+     *        <code>1</code>. The <code>buildNumber</code> of each subsequent build is incremented by <code>1</code>. If
+     *        a build is deleted, the <code>buildNumber</code> of other builds does not change.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Build withBuildNumber(Long buildNumber) {
+        setBuildNumber(buildNumber);
         return this;
     }
 
@@ -1340,7 +1421,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -1371,7 +1452,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      *         <ul>
      *         <li>
      *         <p>
-     *         For AWS CodeCommit: the commit ID to use.
+     *         For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      *         </p>
      *         </li>
      *         <li>
@@ -1408,7 +1489,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -1440,7 +1521,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        For AWS CodeCommit: the commit ID to use.
+     *        For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      *        </p>
      *        </li>
      *        <li>
@@ -1482,7 +1563,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -1519,7 +1600,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        For AWS CodeCommit: the commit ID to use.
+     *        For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      *        </p>
      *        </li>
      *        <li>
@@ -1563,7 +1644,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * For AWS CodeCommit: the commit ID to use.
+     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      * </p>
      * </li>
      * <li>
@@ -1595,7 +1676,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        For AWS CodeCommit: the commit ID to use.
+     *        For AWS CodeCommit: the commit ID, branch, or Git tag to use.
      *        </p>
      *        </li>
      *        <li>
@@ -2382,6 +2463,240 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * A list of exported environment variables for this build.
+     * </p>
+     * 
+     * @return A list of exported environment variables for this build.
+     */
+
+    public java.util.List<ExportedEnvironmentVariable> getExportedEnvironmentVariables() {
+        return exportedEnvironmentVariables;
+    }
+
+    /**
+     * <p>
+     * A list of exported environment variables for this build.
+     * </p>
+     * 
+     * @param exportedEnvironmentVariables
+     *        A list of exported environment variables for this build.
+     */
+
+    public void setExportedEnvironmentVariables(java.util.Collection<ExportedEnvironmentVariable> exportedEnvironmentVariables) {
+        if (exportedEnvironmentVariables == null) {
+            this.exportedEnvironmentVariables = null;
+            return;
+        }
+
+        this.exportedEnvironmentVariables = new java.util.ArrayList<ExportedEnvironmentVariable>(exportedEnvironmentVariables);
+    }
+
+    /**
+     * <p>
+     * A list of exported environment variables for this build.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setExportedEnvironmentVariables(java.util.Collection)} or
+     * {@link #withExportedEnvironmentVariables(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param exportedEnvironmentVariables
+     *        A list of exported environment variables for this build.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Build withExportedEnvironmentVariables(ExportedEnvironmentVariable... exportedEnvironmentVariables) {
+        if (this.exportedEnvironmentVariables == null) {
+            setExportedEnvironmentVariables(new java.util.ArrayList<ExportedEnvironmentVariable>(exportedEnvironmentVariables.length));
+        }
+        for (ExportedEnvironmentVariable ele : exportedEnvironmentVariables) {
+            this.exportedEnvironmentVariables.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of exported environment variables for this build.
+     * </p>
+     * 
+     * @param exportedEnvironmentVariables
+     *        A list of exported environment variables for this build.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Build withExportedEnvironmentVariables(java.util.Collection<ExportedEnvironmentVariable> exportedEnvironmentVariables) {
+        setExportedEnvironmentVariables(exportedEnvironmentVariables);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of the ARNs associated with this build's reports.
+     * </p>
+     * 
+     * @return An array of the ARNs associated with this build's reports.
+     */
+
+    public java.util.List<String> getReportArns() {
+        return reportArns;
+    }
+
+    /**
+     * <p>
+     * An array of the ARNs associated with this build's reports.
+     * </p>
+     * 
+     * @param reportArns
+     *        An array of the ARNs associated with this build's reports.
+     */
+
+    public void setReportArns(java.util.Collection<String> reportArns) {
+        if (reportArns == null) {
+            this.reportArns = null;
+            return;
+        }
+
+        this.reportArns = new java.util.ArrayList<String>(reportArns);
+    }
+
+    /**
+     * <p>
+     * An array of the ARNs associated with this build's reports.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setReportArns(java.util.Collection)} or {@link #withReportArns(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param reportArns
+     *        An array of the ARNs associated with this build's reports.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Build withReportArns(String... reportArns) {
+        if (this.reportArns == null) {
+            setReportArns(new java.util.ArrayList<String>(reportArns.length));
+        }
+        for (String ele : reportArns) {
+            this.reportArns.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of the ARNs associated with this build's reports.
+     * </p>
+     * 
+     * @param reportArns
+     *        An array of the ARNs associated with this build's reports.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Build withReportArns(java.util.Collection<String> reportArns) {
+        setReportArns(reportArns);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     * <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>,
+     * <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using Amazon
+     * Elastic File System.
+     * </p>
+     * 
+     * @return An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     *         <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>,
+     *         <code>location</code>, <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a
+     *         file system created using Amazon Elastic File System.
+     */
+
+    public java.util.List<ProjectFileSystemLocation> getFileSystemLocations() {
+        return fileSystemLocations;
+    }
+
+    /**
+     * <p>
+     * An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     * <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>,
+     * <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using Amazon
+     * Elastic File System.
+     * </p>
+     * 
+     * @param fileSystemLocations
+     *        An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     *        <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>
+     *        , <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using
+     *        Amazon Elastic File System.
+     */
+
+    public void setFileSystemLocations(java.util.Collection<ProjectFileSystemLocation> fileSystemLocations) {
+        if (fileSystemLocations == null) {
+            this.fileSystemLocations = null;
+            return;
+        }
+
+        this.fileSystemLocations = new java.util.ArrayList<ProjectFileSystemLocation>(fileSystemLocations);
+    }
+
+    /**
+     * <p>
+     * An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     * <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>,
+     * <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using Amazon
+     * Elastic File System.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setFileSystemLocations(java.util.Collection)} or {@link #withFileSystemLocations(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param fileSystemLocations
+     *        An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     *        <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>
+     *        , <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using
+     *        Amazon Elastic File System.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Build withFileSystemLocations(ProjectFileSystemLocation... fileSystemLocations) {
+        if (this.fileSystemLocations == null) {
+            setFileSystemLocations(new java.util.ArrayList<ProjectFileSystemLocation>(fileSystemLocations.length));
+        }
+        for (ProjectFileSystemLocation ele : fileSystemLocations) {
+            this.fileSystemLocations.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     * <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>,
+     * <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using Amazon
+     * Elastic File System.
+     * </p>
+     * 
+     * @param fileSystemLocations
+     *        An array of <code>ProjectFileSystemLocation</code> objects for a CodeBuild build project. A
+     *        <code>ProjectFileSystemLocation</code> object specifies the <code>identifier</code>, <code>location</code>
+     *        , <code>mountOptions</code>, <code>mountPoint</code>, and <code>type</code> of a file system created using
+     *        Amazon Elastic File System.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Build withFileSystemLocations(java.util.Collection<ProjectFileSystemLocation> fileSystemLocations) {
+        setFileSystemLocations(fileSystemLocations);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -2397,6 +2712,8 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
             sb.append("Id: ").append(getId()).append(",");
         if (getArn() != null)
             sb.append("Arn: ").append(getArn()).append(",");
+        if (getBuildNumber() != null)
+            sb.append("BuildNumber: ").append(getBuildNumber()).append(",");
         if (getStartTime() != null)
             sb.append("StartTime: ").append(getStartTime()).append(",");
         if (getEndTime() != null)
@@ -2444,7 +2761,13 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
         if (getNetworkInterface() != null)
             sb.append("NetworkInterface: ").append(getNetworkInterface()).append(",");
         if (getEncryptionKey() != null)
-            sb.append("EncryptionKey: ").append(getEncryptionKey());
+            sb.append("EncryptionKey: ").append(getEncryptionKey()).append(",");
+        if (getExportedEnvironmentVariables() != null)
+            sb.append("ExportedEnvironmentVariables: ").append(getExportedEnvironmentVariables()).append(",");
+        if (getReportArns() != null)
+            sb.append("ReportArns: ").append(getReportArns()).append(",");
+        if (getFileSystemLocations() != null)
+            sb.append("FileSystemLocations: ").append(getFileSystemLocations());
         sb.append("}");
         return sb.toString();
     }
@@ -2466,6 +2789,10 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
         if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
+            return false;
+        if (other.getBuildNumber() == null ^ this.getBuildNumber() == null)
+            return false;
+        if (other.getBuildNumber() != null && other.getBuildNumber().equals(this.getBuildNumber()) == false)
             return false;
         if (other.getStartTime() == null ^ this.getStartTime() == null)
             return false;
@@ -2563,6 +2890,18 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getEncryptionKey() != null && other.getEncryptionKey().equals(this.getEncryptionKey()) == false)
             return false;
+        if (other.getExportedEnvironmentVariables() == null ^ this.getExportedEnvironmentVariables() == null)
+            return false;
+        if (other.getExportedEnvironmentVariables() != null && other.getExportedEnvironmentVariables().equals(this.getExportedEnvironmentVariables()) == false)
+            return false;
+        if (other.getReportArns() == null ^ this.getReportArns() == null)
+            return false;
+        if (other.getReportArns() != null && other.getReportArns().equals(this.getReportArns()) == false)
+            return false;
+        if (other.getFileSystemLocations() == null ^ this.getFileSystemLocations() == null)
+            return false;
+        if (other.getFileSystemLocations() != null && other.getFileSystemLocations().equals(this.getFileSystemLocations()) == false)
+            return false;
         return true;
     }
 
@@ -2573,6 +2912,7 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
         hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getBuildNumber() == null) ? 0 : getBuildNumber().hashCode());
         hashCode = prime * hashCode + ((getStartTime() == null) ? 0 : getStartTime().hashCode());
         hashCode = prime * hashCode + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
         hashCode = prime * hashCode + ((getCurrentPhase() == null) ? 0 : getCurrentPhase().hashCode());
@@ -2597,6 +2937,9 @@ public class Build implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
         hashCode = prime * hashCode + ((getNetworkInterface() == null) ? 0 : getNetworkInterface().hashCode());
         hashCode = prime * hashCode + ((getEncryptionKey() == null) ? 0 : getEncryptionKey().hashCode());
+        hashCode = prime * hashCode + ((getExportedEnvironmentVariables() == null) ? 0 : getExportedEnvironmentVariables().hashCode());
+        hashCode = prime * hashCode + ((getReportArns() == null) ? 0 : getReportArns().hashCode());
+        hashCode = prime * hashCode + ((getFileSystemLocations() == null) ? 0 : getFileSystemLocations().hashCode());
         return hashCode;
     }
 

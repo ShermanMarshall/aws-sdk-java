@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -450,6 +450,13 @@ public class DefaultPushNotificationMessage implements Serializable, Cloneable, 
         return this;
     }
 
+    /**
+     * Add a single Data entry
+     *
+     * @see DefaultPushNotificationMessage#withData
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public DefaultPushNotificationMessage addDataEntry(String key, String value) {
         if (null == this.data) {
             this.data = new java.util.HashMap<String, String>();
@@ -584,6 +591,13 @@ public class DefaultPushNotificationMessage implements Serializable, Cloneable, 
         setSubstitutions(substitutions);
         return this;
     }
+
+    /**
+     * Add a single Substitutions entry
+     *
+     * @see DefaultPushNotificationMessage#withSubstitutions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public DefaultPushNotificationMessage addSubstitutionsEntry(String key, java.util.List<String> value) {
         if (null == this.substitutions) {

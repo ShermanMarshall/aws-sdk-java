@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -2647,6 +2647,11 @@ public class AWSServiceCatalogClient extends AmazonWebServiceClient implements A
     }
 
     /**
+     * <p>
+     * Finds the default parameters for a specific self-service action on a specific provisioned product and returns a
+     * map of the results to the user.
+     * </p>
+     * 
      * @param describeServiceActionExecutionParametersRequest
      * @return Result of the DescribeServiceActionExecutionParameters operation returned by the service.
      * @throws InvalidParametersException
@@ -3690,6 +3695,8 @@ public class AWSServiceCatalogClient extends AmazonWebServiceClient implements A
      * @return Result of the ListPortfolioAccess operation returned by the service.
      * @throws ResourceNotFoundException
      *         The specified resource was not found.
+     * @throws InvalidParametersException
+     *         One or more parameters provided to the operation are not valid.
      * @sample AWSServiceCatalog.ListPortfolioAccess
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10/ListPortfolioAccess"
      *      target="_top">AWS API Documentation</a>

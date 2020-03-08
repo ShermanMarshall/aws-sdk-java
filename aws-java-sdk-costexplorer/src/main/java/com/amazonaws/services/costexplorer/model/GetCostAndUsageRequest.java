@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,13 +36,9 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
     private DateInterval timePeriod;
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
-     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
-     * <code>DAILY</code>.
-     * </p>
-     * <p>
-     * The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and <code>MONTHLY</code>
-     * granularities.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     * <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>, either
+     * <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * </p>
      */
     private String granularity;
@@ -91,7 +87,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     * <code>USAGE_TYPE</code>.
      * </p>
      */
     private java.util.List<GroupDefinition> groupBy;
@@ -163,22 +160,15 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
-     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
-     * <code>DAILY</code>.
-     * </p>
-     * <p>
-     * The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and <code>MONTHLY</code>
-     * granularities.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     * <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>, either
+     * <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * </p>
      * 
      * @param granularity
-     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code>
-     *        isn't set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code>
-     *        or <code>DAILY</code>. </p>
-     *        <p>
-     *        The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and
-     *        <code>MONTHLY</code> granularities.
+     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     *        <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>,
+     *        either <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * @see Granularity
      */
 
@@ -188,21 +178,14 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
-     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
-     * <code>DAILY</code>.
-     * </p>
-     * <p>
-     * The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and <code>MONTHLY</code>
-     * granularities.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     * <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>, either
+     * <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * </p>
      * 
-     * @return Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code>
-     *         isn't set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code>
-     *         or <code>DAILY</code>. </p>
-     *         <p>
-     *         The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and
-     *         <code>MONTHLY</code> granularities.
+     * @return Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     *         <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>,
+     *         either <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * @see Granularity
      */
 
@@ -212,22 +195,15 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
-     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
-     * <code>DAILY</code>.
-     * </p>
-     * <p>
-     * The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and <code>MONTHLY</code>
-     * granularities.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     * <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>, either
+     * <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * </p>
      * 
      * @param granularity
-     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code>
-     *        isn't set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code>
-     *        or <code>DAILY</code>. </p>
-     *        <p>
-     *        The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and
-     *        <code>MONTHLY</code> granularities.
+     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     *        <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>,
+     *        either <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Granularity
      */
@@ -239,22 +215,15 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
 
     /**
      * <p>
-     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code> isn't
-     * set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or
-     * <code>DAILY</code>.
-     * </p>
-     * <p>
-     * The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and <code>MONTHLY</code>
-     * granularities.
+     * Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     * <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>, either
+     * <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * </p>
      * 
      * @param granularity
-     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>. If <code>Granularity</code>
-     *        isn't set, the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code>
-     *        or <code>DAILY</code>. </p>
-     *        <p>
-     *        The <code>GetCostAndUsageRequest</code> operation supports only <code>DAILY</code> and
-     *        <code>MONTHLY</code> granularities.
+     *        Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If
+     *        <code>Granularity</code> isn't set, the response object doesn't include the <code>Granularity</code>,
+     *        either <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Granularity
      */
@@ -559,7 +528,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     * <code>USAGE_TYPE</code>.
      * </p>
      * 
      * @return You can group AWS costs using up to two different groups, either dimensions, tag keys, or both.</p>
@@ -569,7 +539,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *         <p>
      *         Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      *         <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     *         <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     *         <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     *         <code>USAGE_TYPE</code>.
      */
 
     public java.util.List<GroupDefinition> getGroupBy() {
@@ -586,7 +557,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     * <code>USAGE_TYPE</code>.
      * </p>
      * 
      * @param groupBy
@@ -597,7 +569,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        <p>
      *        Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      *        <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     *        <code>USAGE_TYPE</code>.
      */
 
     public void setGroupBy(java.util.Collection<GroupDefinition> groupBy) {
@@ -619,7 +592,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     * <code>USAGE_TYPE</code>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -635,7 +609,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        <p>
      *        Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      *        <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     *        <code>USAGE_TYPE</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -659,7 +634,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      * <p>
      * Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      * <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     * <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     * <code>USAGE_TYPE</code>.
      * </p>
      * 
      * @param groupBy
@@ -670,7 +646,8 @@ public class GetCostAndUsageRequest extends com.amazonaws.AmazonWebServiceReques
      *        <p>
      *        Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>,
      *        <code>LINKED_ACCOUNT</code>, <code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>,
-     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, and <code>USAGE_TYPE</code>.
+     *        <code>SERVICE</code>, <code>TAGS</code>, <code>TENANCY</code>, <code>RECORD_TYPE</code>, and
+     *        <code>USAGE_TYPE</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,9 @@ public class CreateDeliveryStreamRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DeliveryStreamType").build();
     private static final MarshallingInfo<StructuredPojo> KINESISSTREAMSOURCECONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("KinesisStreamSourceConfiguration").build();
+    private static final MarshallingInfo<StructuredPojo> DELIVERYSTREAMENCRYPTIONCONFIGURATIONINPUT_BINDING = MarshallingInfo
+            .builder(MarshallingType.STRUCTURED).marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DeliveryStreamEncryptionConfigurationInput")
+            .build();
     private static final MarshallingInfo<StructuredPojo> S3DESTINATIONCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("S3DestinationConfiguration").build();
     private static final MarshallingInfo<StructuredPojo> EXTENDEDS3DESTINATIONCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -66,6 +69,8 @@ public class CreateDeliveryStreamRequestMarshaller {
             protocolMarshaller.marshall(createDeliveryStreamRequest.getDeliveryStreamName(), DELIVERYSTREAMNAME_BINDING);
             protocolMarshaller.marshall(createDeliveryStreamRequest.getDeliveryStreamType(), DELIVERYSTREAMTYPE_BINDING);
             protocolMarshaller.marshall(createDeliveryStreamRequest.getKinesisStreamSourceConfiguration(), KINESISSTREAMSOURCECONFIGURATION_BINDING);
+            protocolMarshaller.marshall(createDeliveryStreamRequest.getDeliveryStreamEncryptionConfigurationInput(),
+                    DELIVERYSTREAMENCRYPTIONCONFIGURATIONINPUT_BINDING);
             protocolMarshaller.marshall(createDeliveryStreamRequest.getS3DestinationConfiguration(), S3DESTINATIONCONFIGURATION_BINDING);
             protocolMarshaller.marshall(createDeliveryStreamRequest.getExtendedS3DestinationConfiguration(), EXTENDEDS3DESTINATIONCONFIGURATION_BINDING);
             protocolMarshaller.marshall(createDeliveryStreamRequest.getRedshiftDestinationConfiguration(), REDSHIFTDESTINATIONCONFIGURATION_BINDING);

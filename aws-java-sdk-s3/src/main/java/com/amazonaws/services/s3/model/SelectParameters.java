@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -37,6 +37,11 @@ public class SelectParameters implements Serializable, Cloneable {
      * The expression that is used to query the object.
      */
     private String expression;
+
+    /**
+     * The byte range on which to query the object.
+     */
+    private ScanRange scanRange;
 
     /**
      * Describes how the results of the Select job are serialized.
@@ -132,6 +137,33 @@ public class SelectParameters implements Serializable, Cloneable {
      */
     public SelectParameters withExpression(String expression) {
         setExpression(expression);
+        return this;
+    }
+
+    /**
+     * @return The range on which the query is to be executed.
+     */
+    public ScanRange getScanRange() {
+        return scanRange;
+    }
+
+    /**
+     * Sets the byte range on which to execute the query.
+     *
+     * @param scanRange The new byte range value.
+     */
+    public void setScanRange(ScanRange scanRange) {
+        this.scanRange = scanRange;
+    }
+
+    /**
+     * Sets the scan range
+     *
+     * @param scanRange The new range value.
+     * @return This object for method chaining.
+     */
+    public SelectParameters withRange(ScanRange scanRange) {
+        setScanRange(scanRange);
         return this;
     }
 

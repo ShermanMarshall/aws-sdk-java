@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public class ResourceMarshaller {
             .marshallLocationName("type").build();
     private static final MarshallingInfo<String> RESOURCESHAREARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("resourceShareArn").build();
+    private static final MarshallingInfo<String> RESOURCEGROUPARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("resourceGroupArn").build();
     private static final MarshallingInfo<String> STATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("status").build();
     private static final MarshallingInfo<String> STATUSMESSAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -61,6 +63,7 @@ public class ResourceMarshaller {
             protocolMarshaller.marshall(resource.getArn(), ARN_BINDING);
             protocolMarshaller.marshall(resource.getType(), TYPE_BINDING);
             protocolMarshaller.marshall(resource.getResourceShareArn(), RESOURCESHAREARN_BINDING);
+            protocolMarshaller.marshall(resource.getResourceGroupArn(), RESOURCEGROUPARN_BINDING);
             protocolMarshaller.marshall(resource.getStatus(), STATUS_BINDING);
             protocolMarshaller.marshall(resource.getStatusMessage(), STATUSMESSAGE_BINDING);
             protocolMarshaller.marshall(resource.getCreationTime(), CREATIONTIME_BINDING);

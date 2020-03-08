@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -320,7 +320,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     private InstanceMarketOptionsRequest instanceMarketOptions;
     /**
      * <p>
-     * The credit option for CPU usage of the T2 or T3 instance. Valid values are <code>standard</code> and
+     * The credit option for CPU usage of the burstable performance instance. Valid values are <code>standard</code> and
      * <code>unlimited</code>. To change this attribute after launch, use <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html">
      * ModifyInstanceCreditSpecification</a>. For more information, see <a
@@ -328,7 +328,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
-     * Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3 instances)
+     * Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3/T3a instances)
      * </p>
      */
     private CreditSpecificationRequest creditSpecification;
@@ -362,6 +362,14 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<LicenseConfigurationRequest> licenseSpecifications;
+    /**
+     * <p>
+     * The metadata options for the instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata and User
+     * Data</a>.
+     * </p>
+     */
+    private InstanceMetadataOptionsRequest metadataOptions;
 
     /**
      * Default constructor for RunInstancesRequest object. Callers should use the setter or fluent setter (with...)
@@ -2714,7 +2722,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The credit option for CPU usage of the T2 or T3 instance. Valid values are <code>standard</code> and
+     * The credit option for CPU usage of the burstable performance instance. Valid values are <code>standard</code> and
      * <code>unlimited</code>. To change this attribute after launch, use <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html">
      * ModifyInstanceCreditSpecification</a>. For more information, see <a
@@ -2722,18 +2730,18 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
-     * Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3 instances)
+     * Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3/T3a instances)
      * </p>
      * 
      * @param creditSpecification
-     *        The credit option for CPU usage of the T2 or T3 instance. Valid values are <code>standard</code> and
-     *        <code>unlimited</code>. To change this attribute after launch, use <a
+     *        The credit option for CPU usage of the burstable performance instance. Valid values are
+     *        <code>standard</code> and <code>unlimited</code>. To change this attribute after launch, use <a
      *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html">
      *        ModifyInstanceCreditSpecification</a>. For more information, see <a
      *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html">Burstable
      *        Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      *        <p>
-     *        Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3 instances)
+     *        Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3/T3a instances)
      */
 
     public void setCreditSpecification(CreditSpecificationRequest creditSpecification) {
@@ -2742,7 +2750,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The credit option for CPU usage of the T2 or T3 instance. Valid values are <code>standard</code> and
+     * The credit option for CPU usage of the burstable performance instance. Valid values are <code>standard</code> and
      * <code>unlimited</code>. To change this attribute after launch, use <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html">
      * ModifyInstanceCreditSpecification</a>. For more information, see <a
@@ -2750,17 +2758,17 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
-     * Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3 instances)
+     * Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3/T3a instances)
      * </p>
      * 
-     * @return The credit option for CPU usage of the T2 or T3 instance. Valid values are <code>standard</code> and
-     *         <code>unlimited</code>. To change this attribute after launch, use <a
+     * @return The credit option for CPU usage of the burstable performance instance. Valid values are
+     *         <code>standard</code> and <code>unlimited</code>. To change this attribute after launch, use <a
      *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html">
      *         ModifyInstanceCreditSpecification</a>. For more information, see <a
      *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html">Burstable
      *         Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      *         <p>
-     *         Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3 instances)
+     *         Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3/T3a instances)
      */
 
     public CreditSpecificationRequest getCreditSpecification() {
@@ -2769,7 +2777,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The credit option for CPU usage of the T2 or T3 instance. Valid values are <code>standard</code> and
+     * The credit option for CPU usage of the burstable performance instance. Valid values are <code>standard</code> and
      * <code>unlimited</code>. To change this attribute after launch, use <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html">
      * ModifyInstanceCreditSpecification</a>. For more information, see <a
@@ -2777,18 +2785,18 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
      * Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
      * </p>
      * <p>
-     * Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3 instances)
+     * Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3/T3a instances)
      * </p>
      * 
      * @param creditSpecification
-     *        The credit option for CPU usage of the T2 or T3 instance. Valid values are <code>standard</code> and
-     *        <code>unlimited</code>. To change this attribute after launch, use <a
+     *        The credit option for CPU usage of the burstable performance instance. Valid values are
+     *        <code>standard</code> and <code>unlimited</code>. To change this attribute after launch, use <a
      *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html">
      *        ModifyInstanceCreditSpecification</a>. For more information, see <a
      *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html">Burstable
      *        Performance Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
      *        <p>
-     *        Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3 instances)
+     *        Default: <code>standard</code> (T2 instances) or <code>unlimited</code> (T3/T3a instances)
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3027,6 +3035,58 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
     }
 
     /**
+     * <p>
+     * The metadata options for the instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata and User
+     * Data</a>.
+     * </p>
+     * 
+     * @param metadataOptions
+     *        The metadata options for the instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata
+     *        and User Data</a>.
+     */
+
+    public void setMetadataOptions(InstanceMetadataOptionsRequest metadataOptions) {
+        this.metadataOptions = metadataOptions;
+    }
+
+    /**
+     * <p>
+     * The metadata options for the instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata and User
+     * Data</a>.
+     * </p>
+     * 
+     * @return The metadata options for the instance. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata
+     *         and User Data</a>.
+     */
+
+    public InstanceMetadataOptionsRequest getMetadataOptions() {
+        return this.metadataOptions;
+    }
+
+    /**
+     * <p>
+     * The metadata options for the instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata and User
+     * Data</a>.
+     * </p>
+     * 
+     * @param metadataOptions
+     *        The metadata options for the instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance Metadata
+     *        and User Data</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RunInstancesRequest withMetadataOptions(InstanceMetadataOptionsRequest metadataOptions) {
+        setMetadataOptions(metadataOptions);
+        return this;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -3116,7 +3176,9 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
         if (getHibernationOptions() != null)
             sb.append("HibernationOptions: ").append(getHibernationOptions()).append(",");
         if (getLicenseSpecifications() != null)
-            sb.append("LicenseSpecifications: ").append(getLicenseSpecifications());
+            sb.append("LicenseSpecifications: ").append(getLicenseSpecifications()).append(",");
+        if (getMetadataOptions() != null)
+            sb.append("MetadataOptions: ").append(getMetadataOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -3269,6 +3331,10 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
             return false;
         if (other.getLicenseSpecifications() != null && other.getLicenseSpecifications().equals(this.getLicenseSpecifications()) == false)
             return false;
+        if (other.getMetadataOptions() == null ^ this.getMetadataOptions() == null)
+            return false;
+        if (other.getMetadataOptions() != null && other.getMetadataOptions().equals(this.getMetadataOptions()) == false)
+            return false;
         return true;
     }
 
@@ -3311,6 +3377,7 @@ public class RunInstancesRequest extends AmazonWebServiceRequest implements Seri
         hashCode = prime * hashCode + ((getCapacityReservationSpecification() == null) ? 0 : getCapacityReservationSpecification().hashCode());
         hashCode = prime * hashCode + ((getHibernationOptions() == null) ? 0 : getHibernationOptions().hashCode());
         hashCode = prime * hashCode + ((getLicenseSpecifications() == null) ? 0 : getLicenseSpecifications().hashCode());
+        hashCode = prime * hashCode + ((getMetadataOptions() == null) ? 0 : getMetadataOptions().hashCode());
         return hashCode;
     }
 

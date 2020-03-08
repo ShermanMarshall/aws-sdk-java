@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -128,9 +128,107 @@ public interface AmazonEKS {
 
     /**
      * <p>
+     * Creates an AWS Fargate profile for your Amazon EKS cluster. You must have at least one Fargate profile in a
+     * cluster to be able to run pods on Fargate.
+     * </p>
+     * <p>
+     * The Fargate profile allows an administrator to declare which pods run on Fargate and specify which pods run on
+     * which Fargate profile. This declaration is done through the profile’s selectors. Each profile can have up to five
+     * selectors that contain a namespace and labels. A namespace is required for every selector. The label field
+     * consists of multiple optional key-value pairs. Pods that match the selectors are scheduled on Fargate. If a
+     * to-be-scheduled pod matches any of the selectors in the Fargate profile, then that pod is run on Fargate.
+     * </p>
+     * <p>
+     * When you create a Fargate profile, you must specify a pod execution role to use with the pods that are scheduled
+     * with the profile. This role is added to the cluster's Kubernetes <a
+     * href="https://kubernetes.io/docs/admin/authorization/rbac/">Role Based Access Control</a> (RBAC) for
+     * authorization so that the <code>kubelet</code> that is running on the Fargate infrastructure can register with
+     * your Amazon EKS cluster so that it can appear in your cluster as a node. The pod execution role also provides IAM
+     * permissions to the Fargate infrastructure to allow read access to Amazon ECR image repositories. For more
+     * information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">Pod Execution
+     * Role</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * <p>
+     * Fargate profiles are immutable. However, you can create a new updated profile to replace an existing profile and
+     * then delete the original after the updated profile has finished creating.
+     * </p>
+     * <p>
+     * If any Fargate profiles in a cluster are in the <code>DELETING</code> status, you must wait for that Fargate
+     * profile to finish deleting before you can create any other profiles in that cluster.
+     * </p>
+     * <p>
+     * For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html">AWS
+     * Fargate Profile</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * 
+     * @param createFargateProfileRequest
+     * @return Result of the CreateFargateProfile operation returned by the service.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws InvalidRequestException
+     *         The request is invalid given the state of the cluster. Check the state of the cluster and the associated
+     *         operations.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ResourceLimitExceededException
+     *         You have encountered a service limit on the specified resource.
+     * @throws UnsupportedAvailabilityZoneException
+     *         At least one of your specified cluster subnets is in an Availability Zone that does not support Amazon
+     *         EKS. The exception output specifies the supported Availability Zones for your account, from which you can
+     *         choose subnets for your cluster.
+     * @sample AmazonEKS.CreateFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/CreateFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateFargateProfileResult createFargateProfile(CreateFargateProfileRequest createFargateProfileRequest);
+
+    /**
+     * <p>
+     * Creates a managed worker node group for an Amazon EKS cluster. You can only create a node group for your cluster
+     * that is equal to the current Kubernetes version for the cluster. All node groups are created with the latest AMI
+     * release version for the respective minor Kubernetes version of the cluster.
+     * </p>
+     * <p>
+     * An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and associated Amazon EC2 instances that are
+     * managed by AWS for an Amazon EKS cluster. Each node group uses a version of the Amazon EKS-optimized Amazon Linux
+     * 2 AMI. For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">Managed Node Groups</a> in the
+     * <i>Amazon EKS User Guide</i>.
+     * </p>
+     * 
+     * @param createNodegroupRequest
+     * @return Result of the CreateNodegroup operation returned by the service.
+     * @throws ResourceInUseException
+     *         The specified resource is in use.
+     * @throws ResourceLimitExceededException
+     *         You have encountered a service limit on the specified resource.
+     * @throws InvalidRequestException
+     *         The request is invalid given the state of the cluster. Check the state of the cluster and the associated
+     *         operations.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ServiceUnavailableException
+     *         The service is unavailable. Back off and retry the operation.
+     * @sample AmazonEKS.CreateNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/CreateNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateNodegroupResult createNodegroup(CreateNodegroupRequest createNodegroupRequest);
+
+    /**
+     * <p>
      * Deletes the Amazon EKS cluster control plane.
      * </p>
-     * <note>
      * <p>
      * If you have active services in your cluster that are associated with a load balancer, you must delete those
      * services before deleting the cluster so that the load balancers are deleted properly. Otherwise, you can have
@@ -138,7 +236,10 @@ public interface AmazonEKS {
      * href="https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Deleting a Cluster</a> in the
      * <i>Amazon EKS User Guide</i>.
      * </p>
-     * </note>
+     * <p>
+     * If you have managed node groups or Fargate profiles attached to the cluster, you must delete them first. For more
+     * information, see <a>DeleteNodegroup</a> and<a>DeleteFargateProfile</a>.
+     * </p>
      * 
      * @param deleteClusterRequest
      * @return Result of the DeleteCluster operation returned by the service.
@@ -146,7 +247,8 @@ public interface AmazonEKS {
      *         The specified resource is in use.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
-     *         Amazon EKS clusters are Region-specific.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
      * @throws ClientException
      *         These errors are usually caused by a client action. Actions can include using an action or resource on
      *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
@@ -160,6 +262,69 @@ public interface AmazonEKS {
      *      Documentation</a>
      */
     DeleteClusterResult deleteCluster(DeleteClusterRequest deleteClusterRequest);
+
+    /**
+     * <p>
+     * Deletes an AWS Fargate profile.
+     * </p>
+     * <p>
+     * When you delete a Fargate profile, any pods running on Fargate that were created with the profile are deleted. If
+     * those pods match another Fargate profile, then they are scheduled on Fargate with that profile. If they no longer
+     * match any Fargate profiles, then they are not scheduled on Fargate and they may remain in a pending state.
+     * </p>
+     * <p>
+     * Only one Fargate profile in a cluster can be in the <code>DELETING</code> status at a time. You must wait for a
+     * Fargate profile to finish deleting before you can delete any other profiles in that cluster.
+     * </p>
+     * 
+     * @param deleteFargateProfileRequest
+     * @return Result of the DeleteFargateProfile operation returned by the service.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ResourceNotFoundException
+     *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
+     * @sample AmazonEKS.DeleteFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DeleteFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteFargateProfileResult deleteFargateProfile(DeleteFargateProfileRequest deleteFargateProfileRequest);
+
+    /**
+     * <p>
+     * Deletes an Amazon EKS node group for a cluster.
+     * </p>
+     * 
+     * @param deleteNodegroupRequest
+     * @return Result of the DeleteNodegroup operation returned by the service.
+     * @throws ResourceInUseException
+     *         The specified resource is in use.
+     * @throws ResourceNotFoundException
+     *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ServiceUnavailableException
+     *         The service is unavailable. Back off and retry the operation.
+     * @sample AmazonEKS.DeleteNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DeleteNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteNodegroupResult deleteNodegroup(DeleteNodegroupRequest deleteNodegroupRequest);
 
     /**
      * <p>
@@ -182,7 +347,8 @@ public interface AmazonEKS {
      * @return Result of the DescribeCluster operation returned by the service.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
-     *         Amazon EKS clusters are Region-specific.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
      * @throws ClientException
      *         These errors are usually caused by a client action. Actions can include using an action or resource on
      *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
@@ -199,7 +365,59 @@ public interface AmazonEKS {
 
     /**
      * <p>
-     * Returns descriptive information about an update against your Amazon EKS cluster.
+     * Returns descriptive information about an AWS Fargate profile.
+     * </p>
+     * 
+     * @param describeFargateProfileRequest
+     * @return Result of the DescribeFargateProfile operation returned by the service.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ResourceNotFoundException
+     *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
+     * @sample AmazonEKS.DescribeFargateProfile
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeFargateProfile" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeFargateProfileResult describeFargateProfile(DescribeFargateProfileRequest describeFargateProfileRequest);
+
+    /**
+     * <p>
+     * Returns descriptive information about an Amazon EKS node group.
+     * </p>
+     * 
+     * @param describeNodegroupRequest
+     * @return Result of the DescribeNodegroup operation returned by the service.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ResourceNotFoundException
+     *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ServiceUnavailableException
+     *         The service is unavailable. Back off and retry the operation.
+     * @sample AmazonEKS.DescribeNodegroup
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeNodegroup" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeNodegroupResult describeNodegroup(DescribeNodegroupRequest describeNodegroupRequest);
+
+    /**
+     * <p>
+     * Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group.
      * </p>
      * <p>
      * When the status of the update is <code>Succeeded</code>, the update is complete. If an update fails, the status
@@ -218,7 +436,8 @@ public interface AmazonEKS {
      *         These errors are usually caused by a server-side issue.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
-     *         Amazon EKS clusters are Region-specific.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
      * @sample AmazonEKS.DescribeUpdate
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeUpdate" target="_top">AWS API
      *      Documentation</a>
@@ -250,7 +469,80 @@ public interface AmazonEKS {
 
     /**
      * <p>
-     * Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region.
+     * Lists the AWS Fargate profiles associated with the specified cluster in your AWS account in the specified Region.
+     * </p>
+     * 
+     * @param listFargateProfilesRequest
+     * @return Result of the ListFargateProfiles operation returned by the service.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ResourceNotFoundException
+     *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @sample AmazonEKS.ListFargateProfiles
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListFargateProfiles" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListFargateProfilesResult listFargateProfiles(ListFargateProfilesRequest listFargateProfilesRequest);
+
+    /**
+     * <p>
+     * Lists the Amazon EKS node groups associated with the specified cluster in your AWS account in the specified
+     * Region.
+     * </p>
+     * 
+     * @param listNodegroupsRequest
+     * @return Result of the ListNodegroups operation returned by the service.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ServiceUnavailableException
+     *         The service is unavailable. Back off and retry the operation.
+     * @throws ResourceNotFoundException
+     *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
+     * @sample AmazonEKS.ListNodegroups
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListNodegroups" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListNodegroupsResult listNodegroups(ListNodegroupsRequest listNodegroupsRequest);
+
+    /**
+     * <p>
+     * List the tags for an Amazon EKS resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws BadRequestException
+     *         This exception is thrown if the request contains a semantic error. The precise meaning will depend on the
+     *         API, and will be documented in the error message.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @sample AmazonEKS.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account, in the
+     * specified Region.
      * </p>
      * 
      * @param listUpdatesRequest
@@ -265,12 +557,55 @@ public interface AmazonEKS {
      *         These errors are usually caused by a server-side issue.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
-     *         Amazon EKS clusters are Region-specific.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
      * @sample AmazonEKS.ListUpdates
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListUpdates" target="_top">AWS API
      *      Documentation</a>
      */
     ListUpdatesResult listUpdates(ListUpdatesRequest listUpdatesRequest);
+
+    /**
+     * <p>
+     * Associates the specified tags to a resource with the specified <code>resourceArn</code>. If existing tags on a
+     * resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags
+     * associated with that resource are deleted as well. Tags that you create for Amazon EKS resources do not propagate
+     * to any other resources associated with the cluster. For example, if you tag a cluster with this operation, that
+     * tag does not automatically propagate to the subnets and worker nodes associated with the cluster.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws BadRequestException
+     *         This exception is thrown if the request contains a semantic error. The precise meaning will depend on the
+     *         API, and will be documented in the error message.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @sample AmazonEKS.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Deletes specified tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws BadRequestException
+     *         This exception is thrown if the request contains a semantic error. The precise meaning will depend on the
+     *         API, and will be documented in the error message.
+     * @throws NotFoundException
+     *         A service resource associated with the request could not be found. Clients should not retry such
+     *         requests.
+     * @sample AmazonEKS.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
 
     /**
      * <p>
@@ -322,7 +657,8 @@ public interface AmazonEKS {
      *         The specified resource is in use.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
-     *         Amazon EKS clusters are Region-specific.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
      * @throws InvalidRequestException
      *         The request is invalid given the state of the cluster. Check the state of the cluster and the associated
      *         operations.
@@ -344,6 +680,10 @@ public interface AmazonEKS {
      * complete (either <code>Failed</code> or <code>Successful</code>), the cluster status moves to <code>Active</code>
      * .
      * </p>
+     * <p>
+     * If your cluster has managed node groups attached to it, all of your node groups’ Kubernetes versions must match
+     * the cluster’s Kubernetes version in order to update the cluster to a new Kubernetes version.
+     * </p>
      * 
      * @param updateClusterVersionRequest
      * @return Result of the UpdateClusterVersion operation returned by the service.
@@ -359,7 +699,8 @@ public interface AmazonEKS {
      *         The specified resource is in use.
      * @throws ResourceNotFoundException
      *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
-     *         Amazon EKS clusters are Region-specific.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
      * @throws InvalidRequestException
      *         The request is invalid given the state of the cluster. Check the state of the cluster and the associated
      *         operations.
@@ -368,6 +709,85 @@ public interface AmazonEKS {
      *      Documentation</a>
      */
     UpdateClusterVersionResult updateClusterVersion(UpdateClusterVersionRequest updateClusterVersionRequest);
+
+    /**
+     * <p>
+     * Updates an Amazon EKS managed node group configuration. Your node group continues to function during the update.
+     * The response output includes an update ID that you can use to track the status of your node group update with the
+     * <a>DescribeUpdate</a> API operation. Currently you can update the Kubernetes labels for a node group or the
+     * scaling configuration.
+     * </p>
+     * 
+     * @param updateNodegroupConfigRequest
+     * @return Result of the UpdateNodegroupConfig operation returned by the service.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ResourceInUseException
+     *         The specified resource is in use.
+     * @throws ResourceNotFoundException
+     *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
+     * @throws InvalidRequestException
+     *         The request is invalid given the state of the cluster. Check the state of the cluster and the associated
+     *         operations.
+     * @sample AmazonEKS.UpdateNodegroupConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupConfig" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateNodegroupConfigResult updateNodegroupConfig(UpdateNodegroupConfigRequest updateNodegroupConfigRequest);
+
+    /**
+     * <p>
+     * Updates the Kubernetes version or AMI version of an Amazon EKS managed node group.
+     * </p>
+     * <p>
+     * You can update to the latest available AMI version of a node group's current Kubernetes version by not specifying
+     * a Kubernetes version in the request. You can update to the latest AMI version of your cluster's current
+     * Kubernetes version by specifying your cluster's Kubernetes version in the request. For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">Amazon EKS-Optimized Linux
+     * AMI Versions</a> in the <i>Amazon EKS User Guide</i>.
+     * </p>
+     * <p>
+     * You cannot roll back a node group to an earlier Kubernetes version or AMI version.
+     * </p>
+     * <p>
+     * When a node in a managed node group is terminated due to a scaling action or update, the pods in that node are
+     * drained first. Amazon EKS attempts to drain the nodes gracefully and will fail if it is unable to do so. You can
+     * <code>force</code> the update if Amazon EKS is unable to drain the nodes as a result of a pod disruption budget
+     * issue.
+     * </p>
+     * 
+     * @param updateNodegroupVersionRequest
+     * @return Result of the UpdateNodegroupVersion operation returned by the service.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws ClientException
+     *         These errors are usually caused by a client action. Actions can include using an action or resource on
+     *         behalf of a user that doesn't have permissions to use the action or resource or specifying an identifier
+     *         that is not valid.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws ResourceInUseException
+     *         The specified resource is in use.
+     * @throws ResourceNotFoundException
+     *         The specified resource could not be found. You can view your available clusters with <a>ListClusters</a>.
+     *         You can view your available managed node groups with <a>ListNodegroups</a>. Amazon EKS clusters and node
+     *         groups are Region-specific.
+     * @throws InvalidRequestException
+     *         The request is invalid given the state of the cluster. Check the state of the cluster and the associated
+     *         operations.
+     * @sample AmazonEKS.UpdateNodegroupVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupVersion" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateNodegroupVersionResult updateNodegroupVersion(UpdateNodegroupVersionRequest updateNodegroupVersionRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

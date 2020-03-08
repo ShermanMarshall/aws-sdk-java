@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -79,6 +79,11 @@ public class AbstractAWSBackup implements AWSBackup {
 
     @Override
     public DescribeBackupVaultResult describeBackupVault(DescribeBackupVaultRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeCopyJobResult describeCopyJob(DescribeCopyJobRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -173,6 +178,11 @@ public class AbstractAWSBackup implements AWSBackup {
     }
 
     @Override
+    public ListCopyJobsResult listCopyJobs(ListCopyJobsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListProtectedResourcesResult listProtectedResources(ListProtectedResourcesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -209,6 +219,11 @@ public class AbstractAWSBackup implements AWSBackup {
 
     @Override
     public StartBackupJobResult startBackupJob(StartBackupJobRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public StartCopyJobResult startCopyJob(StartCopyJobRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

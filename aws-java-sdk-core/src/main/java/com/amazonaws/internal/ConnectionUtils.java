@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,24 +25,22 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class ConnectionUtils {
 
-    private static ConnectionUtils instance;
-
     private ConnectionUtils() {
-
     }
 
     public static ConnectionUtils getInstance() {
-        if (instance == null) {
-            instance = new ConnectionUtils();
-        }
-        return instance;
+        return ConnectionUtilsSingletonHolder.INSTANCE;
     }
 
     public HttpURLConnection connectToEndpoint(URI endpoint, Map<String, String> headers) throws IOException {
+        return connectToEndpoint(endpoint, headers, "GET");
+    }
+
+    public HttpURLConnection connectToEndpoint(URI endpoint, Map<String, String> headers, String method) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) endpoint.toURL().openConnection(Proxy.NO_PROXY);
-        connection.setConnectTimeout(1000 * 2);
-        connection.setReadTimeout(1000 * 5);
-        connection.setRequestMethod("GET");
+        connection.setConnectTimeout(1000);
+        connection.setReadTimeout(1000);
+        connection.setRequestMethod(method);
         connection.setDoOutput(true);
 
         for (Map.Entry<String, String> header : headers.entrySet()) {
@@ -56,4 +54,7 @@ public class ConnectionUtils {
         return connection;
     }
 
+    private static final class ConnectionUtilsSingletonHolder {
+        private static final ConnectionUtils INSTANCE = new ConnectionUtils();
+    }
 }

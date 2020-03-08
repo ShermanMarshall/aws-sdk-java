@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -71,8 +71,16 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>routing.http.drop_invalid_header_fields.enabled</code> - Indicates whether HTTP headers with invalid header
+     * fields are removed by the load balancer (<code>true</code>) or routed to targets (<code>false</code>). The
+     * default is <code>false</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>routing.http2.enabled</code> - Indicates whether HTTP/2 is enabled. The value is <code>true</code> or
-     * <code>false</code>. The default is <code>true</code>.
+     * <code>false</code>. The default is <code>true</code>. Elastic Load Balancing requires that message header names
+     * contain only alphanumeric characters and hyphens.
      * </p>
      * </li>
      * </ul>
@@ -141,8 +149,16 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>routing.http.drop_invalid_header_fields.enabled</code> - Indicates whether HTTP headers with invalid header
+     * fields are removed by the load balancer (<code>true</code>) or routed to targets (<code>false</code>). The
+     * default is <code>false</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>routing.http2.enabled</code> - Indicates whether HTTP/2 is enabled. The value is <code>true</code> or
-     * <code>false</code>. The default is <code>true</code>.
+     * <code>false</code>. The default is <code>true</code>. Elastic Load Balancing requires that message header names
+     * contain only alphanumeric characters and hyphens.
      * </p>
      * </li>
      * </ul>
@@ -201,8 +217,16 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
+     *        <code>routing.http.drop_invalid_header_fields.enabled</code> - Indicates whether HTTP headers with invalid
+     *        header fields are removed by the load balancer (<code>true</code>) or routed to targets (
+     *        <code>false</code>). The default is <code>false</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        <code>routing.http2.enabled</code> - Indicates whether HTTP/2 is enabled. The value is <code>true</code>
-     *        or <code>false</code>. The default is <code>true</code>.
+     *        or <code>false</code>. The default is <code>true</code>. Elastic Load Balancing requires that message
+     *        header names contain only alphanumeric characters and hyphens.
      *        </p>
      *        </li>
      *        </ul>
@@ -267,8 +291,16 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>routing.http.drop_invalid_header_fields.enabled</code> - Indicates whether HTTP headers with invalid header
+     * fields are removed by the load balancer (<code>true</code>) or routed to targets (<code>false</code>). The
+     * default is <code>false</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>routing.http2.enabled</code> - Indicates whether HTTP/2 is enabled. The value is <code>true</code> or
-     * <code>false</code>. The default is <code>true</code>.
+     * <code>false</code>. The default is <code>true</code>. Elastic Load Balancing requires that message header names
+     * contain only alphanumeric characters and hyphens.
      * </p>
      * </li>
      * </ul>
@@ -326,8 +358,16 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
+     *         <code>routing.http.drop_invalid_header_fields.enabled</code> - Indicates whether HTTP headers with
+     *         invalid header fields are removed by the load balancer (<code>true</code>) or routed to targets (
+     *         <code>false</code>). The default is <code>false</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         <code>routing.http2.enabled</code> - Indicates whether HTTP/2 is enabled. The value is <code>true</code>
-     *         or <code>false</code>. The default is <code>true</code>.
+     *         or <code>false</code>. The default is <code>true</code>. Elastic Load Balancing requires that message
+     *         header names contain only alphanumeric characters and hyphens.
      *         </p>
      *         </li>
      *         </ul>
@@ -392,8 +432,16 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
+     * <code>routing.http.drop_invalid_header_fields.enabled</code> - Indicates whether HTTP headers with invalid header
+     * fields are removed by the load balancer (<code>true</code>) or routed to targets (<code>false</code>). The
+     * default is <code>false</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>routing.http2.enabled</code> - Indicates whether HTTP/2 is enabled. The value is <code>true</code> or
-     * <code>false</code>. The default is <code>true</code>.
+     * <code>false</code>. The default is <code>true</code>. Elastic Load Balancing requires that message header names
+     * contain only alphanumeric characters and hyphens.
      * </p>
      * </li>
      * </ul>
@@ -452,8 +500,16 @@ public class LoadBalancerAttribute implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
+     *        <code>routing.http.drop_invalid_header_fields.enabled</code> - Indicates whether HTTP headers with invalid
+     *        header fields are removed by the load balancer (<code>true</code>) or routed to targets (
+     *        <code>false</code>). The default is <code>false</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        <code>routing.http2.enabled</code> - Indicates whether HTTP/2 is enabled. The value is <code>true</code>
-     *        or <code>false</code>. The default is <code>true</code>.
+     *        or <code>false</code>. The default is <code>true</code>. Elastic Load Balancing requires that message
+     *        header names contain only alphanumeric characters and hyphens.
      *        </p>
      *        </li>
      *        </ul>

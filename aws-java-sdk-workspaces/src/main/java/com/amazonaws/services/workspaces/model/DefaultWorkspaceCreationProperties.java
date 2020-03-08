@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Describes the default values used to create a WorkSpace.
+ * Describes the default values that are used to create WorkSpaces. For more information, see <a
+ * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html">Update Directory
+ * Details for Your WorkSpaces</a>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DefaultWorkspaceCreationProperties"
@@ -36,7 +38,14 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
     private Boolean enableWorkDocs;
     /**
      * <p>
-     * The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     * Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     * default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces when
+     * you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're using a
+     * Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your WorkSpaces are
+     * in public subnets and you manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
+     * information, see <a href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
+     * Configure a VPC for Amazon WorkSpaces</a>.
      * </p>
      */
     private Boolean enableInternetAccess;
@@ -54,10 +63,18 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
     private String customSecurityGroupId;
     /**
      * <p>
-     * Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     * Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      * </p>
      */
     private Boolean userEnabledAsLocalAdministrator;
+    /**
+     * <p>
+     * Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.
+     * </p>
+     */
+    private Boolean enableMaintenanceMode;
 
     /**
      * <p>
@@ -113,11 +130,26 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
 
     /**
      * <p>
-     * The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     * Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     * default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces when
+     * you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're using a
+     * Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your WorkSpaces are
+     * in public subnets and you manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
+     * information, see <a href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
+     * Configure a VPC for Amazon WorkSpaces</a>.
      * </p>
      * 
      * @param enableInternetAccess
-     *        The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     *        Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     *        default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces
+     *        when you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're
+     *        using a Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your
+     *        WorkSpaces are in public subnets and you manually assign them Elastic IP addresses, you should disable
+     *        this setting. This setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you
+     *        rebuild. For more information, see <a
+     *        href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html"> Configure a
+     *        VPC for Amazon WorkSpaces</a>.
      */
 
     public void setEnableInternetAccess(Boolean enableInternetAccess) {
@@ -126,10 +158,25 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
 
     /**
      * <p>
-     * The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     * Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     * default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces when
+     * you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're using a
+     * Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your WorkSpaces are
+     * in public subnets and you manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
+     * information, see <a href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
+     * Configure a VPC for Amazon WorkSpaces</a>.
      * </p>
      * 
-     * @return The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     * @return Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     *         default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces
+     *         when you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're
+     *         using a Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your
+     *         WorkSpaces are in public subnets and you manually assign them Elastic IP addresses, you should disable
+     *         this setting. This setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you
+     *         rebuild. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html"> Configure a
+     *         VPC for Amazon WorkSpaces</a>.
      */
 
     public Boolean getEnableInternetAccess() {
@@ -138,11 +185,26 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
 
     /**
      * <p>
-     * The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     * Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     * default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces when
+     * you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're using a
+     * Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your WorkSpaces are
+     * in public subnets and you manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
+     * information, see <a href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
+     * Configure a VPC for Amazon WorkSpaces</a>.
      * </p>
      * 
      * @param enableInternetAccess
-     *        The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     *        Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     *        default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces
+     *        when you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're
+     *        using a Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your
+     *        WorkSpaces are in public subnets and you manually assign them Elastic IP addresses, you should disable
+     *        this setting. This setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you
+     *        rebuild. For more information, see <a
+     *        href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html"> Configure a
+     *        VPC for Amazon WorkSpaces</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -153,10 +215,25 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
 
     /**
      * <p>
-     * The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     * Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     * default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces when
+     * you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're using a
+     * Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your WorkSpaces are
+     * in public subnets and you manually assign them Elastic IP addresses, you should disable this setting. This
+     * setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you rebuild. For more
+     * information, see <a href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html">
+     * Configure a VPC for Amazon WorkSpaces</a>.
      * </p>
      * 
-     * @return The public IP address to attach to all WorkSpaces that are created or rebuilt.
+     * @return Specifies whether to automatically assign an Elastic public IP address to WorkSpaces in this directory by
+     *         default. If enabled, the Elastic public IP address allows outbound internet access from your WorkSpaces
+     *         when you’re using an internet gateway in the Amazon VPC in which your WorkSpaces are located. If you're
+     *         using a Network Address Translation (NAT) gateway for outbound internet access from your VPC, or if your
+     *         WorkSpaces are in public subnets and you manually assign them Elastic IP addresses, you should disable
+     *         this setting. This setting applies to new WorkSpaces that you launch or to existing WorkSpaces that you
+     *         rebuild. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html"> Configure a
+     *         VPC for Amazon WorkSpaces</a>.
      */
 
     public Boolean isEnableInternetAccess() {
@@ -245,11 +322,11 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
 
     /**
      * <p>
-     * Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     * Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      * </p>
      * 
      * @param userEnabledAsLocalAdministrator
-     *        Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     *        Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      */
 
     public void setUserEnabledAsLocalAdministrator(Boolean userEnabledAsLocalAdministrator) {
@@ -258,10 +335,10 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
 
     /**
      * <p>
-     * Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     * Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      * </p>
      * 
-     * @return Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     * @return Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      */
 
     public Boolean getUserEnabledAsLocalAdministrator() {
@@ -270,11 +347,11 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
 
     /**
      * <p>
-     * Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     * Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      * </p>
      * 
      * @param userEnabledAsLocalAdministrator
-     *        Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     *        Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -285,14 +362,82 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
 
     /**
      * <p>
-     * Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     * Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      * </p>
      * 
-     * @return Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+     * @return Specifies whether WorkSpace users are local administrators on their WorkSpaces.
      */
 
     public Boolean isUserEnabledAsLocalAdministrator() {
         return this.userEnabledAsLocalAdministrator;
+    }
+
+    /**
+     * <p>
+     * Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.
+     * </p>
+     * 
+     * @param enableMaintenanceMode
+     *        Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     *        href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     *        Maintenance</a>.
+     */
+
+    public void setEnableMaintenanceMode(Boolean enableMaintenanceMode) {
+        this.enableMaintenanceMode = enableMaintenanceMode;
+    }
+
+    /**
+     * <p>
+     * Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.
+     * </p>
+     * 
+     * @return Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     *         Maintenance</a>.
+     */
+
+    public Boolean getEnableMaintenanceMode() {
+        return this.enableMaintenanceMode;
+    }
+
+    /**
+     * <p>
+     * Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.
+     * </p>
+     * 
+     * @param enableMaintenanceMode
+     *        Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     *        href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     *        Maintenance</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DefaultWorkspaceCreationProperties withEnableMaintenanceMode(Boolean enableMaintenanceMode) {
+        setEnableMaintenanceMode(enableMaintenanceMode);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     * href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     * Maintenance</a>.
+     * </p>
+     * 
+     * @return Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see <a
+     *         href="https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html">WorkSpace
+     *         Maintenance</a>.
+     */
+
+    public Boolean isEnableMaintenanceMode() {
+        return this.enableMaintenanceMode;
     }
 
     /**
@@ -316,7 +461,9 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
         if (getCustomSecurityGroupId() != null)
             sb.append("CustomSecurityGroupId: ").append(getCustomSecurityGroupId()).append(",");
         if (getUserEnabledAsLocalAdministrator() != null)
-            sb.append("UserEnabledAsLocalAdministrator: ").append(getUserEnabledAsLocalAdministrator());
+            sb.append("UserEnabledAsLocalAdministrator: ").append(getUserEnabledAsLocalAdministrator()).append(",");
+        if (getEnableMaintenanceMode() != null)
+            sb.append("EnableMaintenanceMode: ").append(getEnableMaintenanceMode());
         sb.append("}");
         return sb.toString();
     }
@@ -352,6 +499,10 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
         if (other.getUserEnabledAsLocalAdministrator() != null
                 && other.getUserEnabledAsLocalAdministrator().equals(this.getUserEnabledAsLocalAdministrator()) == false)
             return false;
+        if (other.getEnableMaintenanceMode() == null ^ this.getEnableMaintenanceMode() == null)
+            return false;
+        if (other.getEnableMaintenanceMode() != null && other.getEnableMaintenanceMode().equals(this.getEnableMaintenanceMode()) == false)
+            return false;
         return true;
     }
 
@@ -365,6 +516,7 @@ public class DefaultWorkspaceCreationProperties implements Serializable, Cloneab
         hashCode = prime * hashCode + ((getDefaultOu() == null) ? 0 : getDefaultOu().hashCode());
         hashCode = prime * hashCode + ((getCustomSecurityGroupId() == null) ? 0 : getCustomSecurityGroupId().hashCode());
         hashCode = prime * hashCode + ((getUserEnabledAsLocalAdministrator() == null) ? 0 : getUserEnabledAsLocalAdministrator().hashCode());
+        hashCode = prime * hashCode + ((getEnableMaintenanceMode() == null) ? 0 : getEnableMaintenanceMode().hashCode());
         return hashCode;
     }
 

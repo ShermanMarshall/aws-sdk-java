@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Specifies the tags (keys and values) for an application, campaign, or segment.
+ * Specifies the tags (keys and values) for an application, campaign, message template, or segment.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/TagsModel" target="_top">AWS API
@@ -30,8 +30,8 @@ public class TagsModel implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A string-to-string map of key-value pairs that defines the tags for an application, campaign, or segment. A
-     * project, campaign, or segment can have a maximum of 50 tags.
+     * A string-to-string map of key-value pairs that defines the tags for an application, campaign, message template,
+     * or segment. Each of these resources can have a maximum of 50 tags.
      * </p>
      * <p>
      * Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is 128
@@ -42,16 +42,16 @@ public class TagsModel implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A string-to-string map of key-value pairs that defines the tags for an application, campaign, or segment. A
-     * project, campaign, or segment can have a maximum of 50 tags.
+     * A string-to-string map of key-value pairs that defines the tags for an application, campaign, message template,
+     * or segment. Each of these resources can have a maximum of 50 tags.
      * </p>
      * <p>
      * Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is 128
      * characters. The maximum length of a tag value is 256 characters.
      * </p>
      * 
-     * @return A string-to-string map of key-value pairs that defines the tags for an application, campaign, or segment.
-     *         A project, campaign, or segment can have a maximum of 50 tags.</p>
+     * @return A string-to-string map of key-value pairs that defines the tags for an application, campaign, message
+     *         template, or segment. Each of these resources can have a maximum of 50 tags.</p>
      *         <p>
      *         Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is
      *         128 characters. The maximum length of a tag value is 256 characters.
@@ -63,8 +63,8 @@ public class TagsModel implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A string-to-string map of key-value pairs that defines the tags for an application, campaign, or segment. A
-     * project, campaign, or segment can have a maximum of 50 tags.
+     * A string-to-string map of key-value pairs that defines the tags for an application, campaign, message template,
+     * or segment. Each of these resources can have a maximum of 50 tags.
      * </p>
      * <p>
      * Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is 128
@@ -72,8 +72,8 @@ public class TagsModel implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param tags
-     *        A string-to-string map of key-value pairs that defines the tags for an application, campaign, or segment.
-     *        A project, campaign, or segment can have a maximum of 50 tags.</p>
+     *        A string-to-string map of key-value pairs that defines the tags for an application, campaign, message
+     *        template, or segment. Each of these resources can have a maximum of 50 tags.</p>
      *        <p>
      *        Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is
      *        128 characters. The maximum length of a tag value is 256 characters.
@@ -85,8 +85,8 @@ public class TagsModel implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A string-to-string map of key-value pairs that defines the tags for an application, campaign, or segment. A
-     * project, campaign, or segment can have a maximum of 50 tags.
+     * A string-to-string map of key-value pairs that defines the tags for an application, campaign, message template,
+     * or segment. Each of these resources can have a maximum of 50 tags.
      * </p>
      * <p>
      * Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is 128
@@ -94,8 +94,8 @@ public class TagsModel implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param tags
-     *        A string-to-string map of key-value pairs that defines the tags for an application, campaign, or segment.
-     *        A project, campaign, or segment can have a maximum of 50 tags.</p>
+     *        A string-to-string map of key-value pairs that defines the tags for an application, campaign, message
+     *        template, or segment. Each of these resources can have a maximum of 50 tags.</p>
      *        <p>
      *        Each tag consists of a required tag key and an associated tag value. The maximum length of a tag key is
      *        128 characters. The maximum length of a tag value is 256 characters.
@@ -106,6 +106,13 @@ public class TagsModel implements Serializable, Cloneable, StructuredPojo {
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see TagsModel#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public TagsModel addTagsEntry(String key, String value) {
         if (null == this.tags) {

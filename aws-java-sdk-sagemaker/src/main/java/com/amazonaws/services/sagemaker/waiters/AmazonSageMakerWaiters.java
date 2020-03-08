@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -109,6 +109,21 @@ public class AmazonSageMakerWaiters {
                 .withSdkFunction(new DescribeNotebookInstanceFunction(client))
                 .withAcceptors(new NotebookInstanceInService.IsInServiceMatcher(), new NotebookInstanceInService.IsFailedMatcher())
                 .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(60), new FixedDelayStrategy(30)))
+                .withExecutorService(executorService).build();
+    }
+
+    /**
+     * Builds a ProcessingJobCompletedOrStopped waiter by using custom parameters waiterParameters and other parameters
+     * defined in the waiters specification, and then polls until it determines whether the resource entered the desired
+     * state or not, where polling criteria is bound by either default polling strategy or custom polling strategy.
+     */
+    public Waiter<DescribeProcessingJobRequest> processingJobCompletedOrStopped() {
+
+        return new WaiterBuilder<DescribeProcessingJobRequest, DescribeProcessingJobResult>()
+                .withSdkFunction(new DescribeProcessingJobFunction(client))
+                .withAcceptors(new ProcessingJobCompletedOrStopped.IsCompletedMatcher(), new ProcessingJobCompletedOrStopped.IsStoppedMatcher(),
+                        new ProcessingJobCompletedOrStopped.IsFailedMatcher(), new ProcessingJobCompletedOrStopped.IsValidationExceptionMatcher())
+                .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(60), new FixedDelayStrategy(60)))
                 .withExecutorService(executorService).build();
     }
 

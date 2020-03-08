@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class UpdateRuntimeConfigurationResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The run-time configuration currently in force. If the update was successful, this object matches the one in the
+     * The runtime configuration currently in force. If the update was successful, this object matches the one in the
      * request.
      * </p>
      */
@@ -36,13 +36,13 @@ public class UpdateRuntimeConfigurationResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The run-time configuration currently in force. If the update was successful, this object matches the one in the
+     * The runtime configuration currently in force. If the update was successful, this object matches the one in the
      * request.
      * </p>
      * 
      * @param runtimeConfiguration
-     *        The run-time configuration currently in force. If the update was successful, this object matches the one
-     *        in the request.
+     *        The runtime configuration currently in force. If the update was successful, this object matches the one in
+     *        the request.
      */
 
     public void setRuntimeConfiguration(RuntimeConfiguration runtimeConfiguration) {
@@ -51,11 +51,11 @@ public class UpdateRuntimeConfigurationResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The run-time configuration currently in force. If the update was successful, this object matches the one in the
+     * The runtime configuration currently in force. If the update was successful, this object matches the one in the
      * request.
      * </p>
      * 
-     * @return The run-time configuration currently in force. If the update was successful, this object matches the one
+     * @return The runtime configuration currently in force. If the update was successful, this object matches the one
      *         in the request.
      */
 
@@ -65,13 +65,13 @@ public class UpdateRuntimeConfigurationResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * The run-time configuration currently in force. If the update was successful, this object matches the one in the
+     * The runtime configuration currently in force. If the update was successful, this object matches the one in the
      * request.
      * </p>
      * 
      * @param runtimeConfiguration
-     *        The run-time configuration currently in force. If the update was successful, this object matches the one
-     *        in the request.
+     *        The runtime configuration currently in force. If the update was successful, this object matches the one in
+     *        the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

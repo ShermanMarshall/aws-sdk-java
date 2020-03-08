@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class BuildMarshaller {
 
     private static final MarshallingInfo<String> BUILDID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("BuildId").build();
+    private static final MarshallingInfo<String> BUILDARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("BuildArn").build();
     private static final MarshallingInfo<String> NAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Name").build();
     private static final MarshallingInfo<String> VERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -59,6 +61,7 @@ public class BuildMarshaller {
 
         try {
             protocolMarshaller.marshall(build.getBuildId(), BUILDID_BINDING);
+            protocolMarshaller.marshall(build.getBuildArn(), BUILDARN_BINDING);
             protocolMarshaller.marshall(build.getName(), NAME_BINDING);
             protocolMarshaller.marshall(build.getVersion(), VERSION_BINDING);
             protocolMarshaller.marshall(build.getStatus(), STATUS_BINDING);

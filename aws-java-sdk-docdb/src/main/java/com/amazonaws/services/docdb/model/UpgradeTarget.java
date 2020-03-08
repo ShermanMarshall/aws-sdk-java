@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The version of the database engine that a DB instance can be upgraded to.
+ * The version of the database engine that an instance can be upgraded to.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/docdb-2014-10-31/UpgradeTarget" target="_top">AWS API
@@ -40,7 +40,7 @@ public class UpgradeTarget implements Serializable, Cloneable {
     private String engineVersion;
     /**
      * <p>
-     * The version of the database engine that a DB instance can be upgraded to.
+     * The version of the database engine that an instance can be upgraded to.
      * </p>
      */
     private String description;
@@ -140,11 +140,11 @@ public class UpgradeTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version of the database engine that a DB instance can be upgraded to.
+     * The version of the database engine that an instance can be upgraded to.
      * </p>
      * 
      * @param description
-     *        The version of the database engine that a DB instance can be upgraded to.
+     *        The version of the database engine that an instance can be upgraded to.
      */
 
     public void setDescription(String description) {
@@ -153,10 +153,10 @@ public class UpgradeTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version of the database engine that a DB instance can be upgraded to.
+     * The version of the database engine that an instance can be upgraded to.
      * </p>
      * 
-     * @return The version of the database engine that a DB instance can be upgraded to.
+     * @return The version of the database engine that an instance can be upgraded to.
      */
 
     public String getDescription() {
@@ -165,11 +165,11 @@ public class UpgradeTarget implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The version of the database engine that a DB instance can be upgraded to.
+     * The version of the database engine that an instance can be upgraded to.
      * </p>
      * 
      * @param description
-     *        The version of the database engine that a DB instance can be upgraded to.
+     *        The version of the database engine that an instance can be upgraded to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,7 +49,7 @@ public class UpdateRobotApplicationResult extends com.amazonaws.AmazonWebService
     private java.util.List<Source> sources;
     /**
      * <p>
-     * The robot software suite used by the robot application.
+     * The robot software suite (ROS distribution) used by the robot application.
      * </p>
      */
     private RobotSoftwareSuite robotSoftwareSuite;
@@ -258,11 +258,11 @@ public class UpdateRobotApplicationResult extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The robot software suite used by the robot application.
+     * The robot software suite (ROS distribution) used by the robot application.
      * </p>
      * 
      * @param robotSoftwareSuite
-     *        The robot software suite used by the robot application.
+     *        The robot software suite (ROS distribution) used by the robot application.
      */
 
     public void setRobotSoftwareSuite(RobotSoftwareSuite robotSoftwareSuite) {
@@ -271,10 +271,10 @@ public class UpdateRobotApplicationResult extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The robot software suite used by the robot application.
+     * The robot software suite (ROS distribution) used by the robot application.
      * </p>
      * 
-     * @return The robot software suite used by the robot application.
+     * @return The robot software suite (ROS distribution) used by the robot application.
      */
 
     public RobotSoftwareSuite getRobotSoftwareSuite() {
@@ -283,11 +283,11 @@ public class UpdateRobotApplicationResult extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The robot software suite used by the robot application.
+     * The robot software suite (ROS distribution) used by the robot application.
      * </p>
      * 
      * @param robotSoftwareSuite
-     *        The robot software suite used by the robot application.
+     *        The robot software suite (ROS distribution) used by the robot application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

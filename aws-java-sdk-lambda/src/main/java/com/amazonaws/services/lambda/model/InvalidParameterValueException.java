@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,9 +16,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in
- * the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that AWS Lambda is unable to
- * assume you will get this exception.
+ * One of the parameters in the request is invalid.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

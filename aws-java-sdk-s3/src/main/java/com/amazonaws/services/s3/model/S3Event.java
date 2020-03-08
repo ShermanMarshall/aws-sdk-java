@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -39,11 +39,21 @@ public enum S3Event {
 
     ObjectRestorePost("s3:ObjectRestore:Post"),
 
-    ObjectRestoreCompleted("s3:ObjectRestore:Completed")
+    ObjectRestoreCompleted("s3:ObjectRestore:Completed"),
 
+    Replication("s3:Replication:*"),
+
+    ReplicationOperationFailed("s3:Replication:OperationFailedReplication"),
+
+    ReplicationOperationNotTracked("s3:Replication:OperationNotTracked"),
+
+    ReplicationOperationMissedThreshold("s3:Replication:OperationMissedThreshold"),
+
+    ReplicationOperationReplicatedAfterThreshold("s3:Replication:OperationReplicationAfterThreshold")
     ;
 
     private final String event;
+    private static final String S3_PREFIX = "s3:";
 
     private S3Event(String event) {
         this.event = event;
@@ -52,5 +62,28 @@ public enum S3Event {
     @Override
     public String toString() {
         return this.event;
+    }
+
+    /**
+     *
+     * @param value
+     *        real value
+     * @return S3Event corresponding to the value
+     *
+     * @throws IllegalArgumentException
+     *         If the specified value does not map to one of the known values in this enum.
+     */
+    public static S3Event fromValue(String value) {
+        if (value == null || "".equals(value)) {
+            throw new IllegalArgumentException("Value cannot be null or empty!");
+        }
+
+        for (S3Event enumEntry : S3Event.values()) {
+            if (enumEntry.toString().equals(value) || enumEntry.toString().equals(S3_PREFIX.concat(value))) {
+                return enumEntry;
+            }
+        }
+
+        throw new IllegalArgumentException("Cannot create enum from " + value + " value!");
     }
 }

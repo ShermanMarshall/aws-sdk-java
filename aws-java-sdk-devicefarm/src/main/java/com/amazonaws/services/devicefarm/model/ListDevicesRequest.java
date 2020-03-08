@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,49 +56,51 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this attribute is ignored.
      * </p>
      * </li>
      * <li>
@@ -113,7 +115,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -164,8 +166,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     * "TEMPORARY_NOT_AVAILABLE" as values.
+     * In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * </ul>
@@ -275,49 +277,51 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this attribute is ignored.
      * </p>
      * </li>
      * <li>
@@ -332,7 +336,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -383,8 +387,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     * "TEMPORARY_NOT_AVAILABLE" as values.
+     * In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * </ul>
@@ -405,51 +409,52 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         <ul>
      *         <li>
      *         <p>
-     *         ARN: The Amazon Resource Name (ARN) of the device. For example,
-     *         "arn:aws:devicefarm:us-west-2::device:12345Example".
+     *         ARN: The Amazon Resource Name (ARN) of the device (for example,
+     *         <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     *         PLATFORM: The device platform. Valid values are ANDROID or IOS.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         OS_VERSION: The operating system version. For example, "10.3.2".
+     *         OS_VERSION: The operating system version (for example, 10.3.2).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         MODEL: The device model. For example, "iPad 5th Gen".
+     *         MODEL: The device model (for example, iPad 5th Gen).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE",
-     *         "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     *         AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *         or TEMPORARY_NOT_AVAILABLE.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     *         FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         MANUFACTURER: The device manufacturer. For example, "Apple".
+     *         MANUFACTURER: The device manufacturer (for example, Apple).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or
-     *         "FALSE".
+     *         REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or
-     *         "FALSE".
+     *         REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE.
+     *         Because remote debugging is <a
+     *         href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer supported</a>,
+     *         this attribute is ignored.
      *         </p>
      *         </li>
      *         <li>
@@ -464,7 +469,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         <li>
      *         <p>
-     *         FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     *         FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      *         </p>
      *         </li>
      *         </ul>
@@ -515,8 +520,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         <li>
      *         <p>
-     *         In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     *         "TEMPORARY_NOT_AVAILABLE" as values.
+     *         In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *         or TEMPORARY_NOT_AVAILABLE.
      *         </p>
      *         </li>
      *         </ul>
@@ -542,49 +547,51 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this attribute is ignored.
      * </p>
      * </li>
      * <li>
@@ -599,7 +606,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -650,8 +657,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     * "TEMPORARY_NOT_AVAILABLE" as values.
+     * In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * </ul>
@@ -673,51 +680,52 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        ARN: The Amazon Resource Name (ARN) of the device. For example,
-     *        "arn:aws:devicefarm:us-west-2::device:12345Example".
+     *        ARN: The Amazon Resource Name (ARN) of the device (for example,
+     *        <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     *        PLATFORM: The device platform. Valid values are ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        OS_VERSION: The operating system version. For example, "10.3.2".
+     *        OS_VERSION: The operating system version (for example, 10.3.2).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MODEL: The device model. For example, "iPad 5th Gen".
+     *        MODEL: The device model (for example, iPad 5th Gen).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE",
-     *        "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     *        AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *        or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     *        FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MANUFACTURER: The device manufacturer. For example, "Apple".
+     *        MANUFACTURER: The device manufacturer (for example, Apple).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE.
+     *        Because remote debugging is <a
+     *        href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer supported</a>,
+     *        this attribute is ignored.
      *        </p>
      *        </li>
      *        <li>
@@ -732,7 +740,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     *        FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>
@@ -783,8 +791,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     *        "TEMPORARY_NOT_AVAILABLE" as values.
+     *        In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     *        TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        </ul>
@@ -815,49 +823,51 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this attribute is ignored.
      * </p>
      * </li>
      * <li>
@@ -872,7 +882,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -923,8 +933,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     * "TEMPORARY_NOT_AVAILABLE" as values.
+     * In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * </ul>
@@ -951,51 +961,52 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        ARN: The Amazon Resource Name (ARN) of the device. For example,
-     *        "arn:aws:devicefarm:us-west-2::device:12345Example".
+     *        ARN: The Amazon Resource Name (ARN) of the device (for example,
+     *        <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     *        PLATFORM: The device platform. Valid values are ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        OS_VERSION: The operating system version. For example, "10.3.2".
+     *        OS_VERSION: The operating system version (for example, 10.3.2).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MODEL: The device model. For example, "iPad 5th Gen".
+     *        MODEL: The device model (for example, iPad 5th Gen).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE",
-     *        "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     *        AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *        or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     *        FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MANUFACTURER: The device manufacturer. For example, "Apple".
+     *        MANUFACTURER: The device manufacturer (for example, Apple).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE.
+     *        Because remote debugging is <a
+     *        href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer supported</a>,
+     *        this attribute is ignored.
      *        </p>
      *        </li>
      *        <li>
@@ -1010,7 +1021,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     *        FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>
@@ -1061,8 +1072,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     *        "TEMPORARY_NOT_AVAILABLE" as values.
+     *        In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     *        TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        </ul>
@@ -1095,49 +1106,51 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <ul>
      * <li>
      * <p>
-     * ARN: The Amazon Resource Name (ARN) of the device. For example,
-     * "arn:aws:devicefarm:us-west-2::device:12345Example".
+     * ARN: The Amazon Resource Name (ARN) of the device (for example,
+     * <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      * </p>
      * </li>
      * <li>
      * <p>
-     * PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     * PLATFORM: The device platform. Valid values are ANDROID or IOS.
      * </p>
      * </li>
      * <li>
      * <p>
-     * OS_VERSION: The operating system version. For example, "10.3.2".
+     * OS_VERSION: The operating system version (for example, 10.3.2).
      * </p>
      * </li>
      * <li>
      * <p>
-     * MODEL: The device model. For example, "iPad 5th Gen".
+     * MODEL: The device model (for example, iPad 5th Gen).
      * </p>
      * </li>
      * <li>
      * <p>
-     * AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY",
-     * or "TEMPORARY_NOT_AVAILABLE".
+     * AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     * FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      * </p>
      * </li>
      * <li>
      * <p>
-     * MANUFACTURER: The device manufacturer. For example, "Apple".
+     * MANUFACTURER: The device manufacturer (for example, Apple).
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or "FALSE".
+     * REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      * </p>
      * </li>
      * <li>
      * <p>
-     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or "FALSE".
+     * REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE. Because
+     * remote debugging is <a href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer
+     * supported</a>, this attribute is ignored.
      * </p>
      * </li>
      * <li>
@@ -1152,7 +1165,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     * FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      * </p>
      * </li>
      * </ul>
@@ -1203,8 +1216,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     * "TEMPORARY_NOT_AVAILABLE" as values.
+     * In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     * TEMPORARY_NOT_AVAILABLE.
      * </p>
      * </li>
      * </ul>
@@ -1226,51 +1239,52 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        <ul>
      *        <li>
      *        <p>
-     *        ARN: The Amazon Resource Name (ARN) of the device. For example,
-     *        "arn:aws:devicefarm:us-west-2::device:12345Example".
+     *        ARN: The Amazon Resource Name (ARN) of the device (for example,
+     *        <code>arn:aws:devicefarm:us-west-2::device:12345Example</code>).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PLATFORM: The device platform. Valid values are "ANDROID" or "IOS".
+     *        PLATFORM: The device platform. Valid values are ANDROID or IOS.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        OS_VERSION: The operating system version. For example, "10.3.2".
+     *        OS_VERSION: The operating system version (for example, 10.3.2).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MODEL: The device model. For example, "iPad 5th Gen".
+     *        MODEL: The device model (for example, iPad 5th Gen).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        AVAILABILITY: The current availability of the device. Valid values are "AVAILABLE", "HIGHLY_AVAILABLE",
-     *        "BUSY", or "TEMPORARY_NOT_AVAILABLE".
+     *        AVAILABILITY: The current availability of the device. Valid values are AVAILABLE, HIGHLY_AVAILABLE, BUSY,
+     *        or TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FORM_FACTOR: The device form factor. Valid values are "PHONE" or "TABLET".
+     *        FORM_FACTOR: The device form factor. Valid values are PHONE or TABLET.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        MANUFACTURER: The device manufacturer. For example, "Apple".
+     *        MANUFACTURER: The device manufacturer (for example, Apple).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access. Valid values are TRUE or FALSE.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are "TRUE" or
-     *        "FALSE".
+     *        REMOTE_DEBUG_ENABLED: Whether the device is enabled for remote debugging. Valid values are TRUE or FALSE.
+     *        Because remote debugging is <a
+     *        href="https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html">no longer supported</a>,
+     *        this attribute is ignored.
      *        </p>
      *        </li>
      *        <li>
@@ -1285,7 +1299,7 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        FLEET_TYPE: The fleet type. Valid values are "PUBLIC" or "PRIVATE".
+     *        FLEET_TYPE: The fleet type. Valid values are PUBLIC or PRIVATE.
      *        </p>
      *        </li>
      *        </ul>
@@ -1336,8 +1350,8 @@ public class ListDevicesRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        In a request, the AVAILABILITY attribute takes "AVAILABLE", "HIGHLY_AVAILABLE", "BUSY", or
-     *        "TEMPORARY_NOT_AVAILABLE" as values.
+     *        In a request, the AVAILABILITY attribute takes the following values: AVAILABLE, HIGHLY_AVAILABLE, BUSY, or
+     *        TEMPORARY_NOT_AVAILABLE.
      *        </p>
      *        </li>
      *        </ul>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -83,7 +83,7 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
     private String attachmentState;
     /**
      * <p>
-     * The interface type.
+     * The type of attachment.
      * </p>
      */
     private String attachmentType;
@@ -503,11 +503,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The interface type.
+     * The type of attachment.
      * </p>
      * 
      * @param attachmentType
-     *        The interface type.
+     *        The type of attachment.
      * @see DirectConnectGatewayAttachmentType
      */
 
@@ -517,10 +517,10 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The interface type.
+     * The type of attachment.
      * </p>
      * 
-     * @return The interface type.
+     * @return The type of attachment.
      * @see DirectConnectGatewayAttachmentType
      */
 
@@ -530,11 +530,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The interface type.
+     * The type of attachment.
      * </p>
      * 
      * @param attachmentType
-     *        The interface type.
+     *        The type of attachment.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectConnectGatewayAttachmentType
      */
@@ -546,11 +546,11 @@ public class DirectConnectGatewayAttachment implements Serializable, Cloneable, 
 
     /**
      * <p>
-     * The interface type.
+     * The type of attachment.
      * </p>
      * 
      * @param attachmentType
-     *        The interface type.
+     *        The type of attachment.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DirectConnectGatewayAttachmentType
      */

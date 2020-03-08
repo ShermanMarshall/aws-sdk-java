@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,6 +17,11 @@ import javax.annotation.Generated;
 
 import com.amazonaws.AmazonWebServiceRequest;
 
+/**
+ * <p>
+ * Updates a Stage.
+ * </p>
+ */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
@@ -34,6 +39,12 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String apiId;
     /**
      * <p>
+     * Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     * </p>
+     */
+    private Boolean autoDeploy;
+    /**
+     * <p>
      * The identifier of a client certificate for a Stage.
      * </p>
      */
@@ -46,7 +57,7 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
     private RouteSettings defaultRouteSettings;
     /**
      * <p>
-     * The deployment identifier for the API stage.
+     * The deployment identifier for the API stage. Can't be updated if autoDeploy is enabled.
      * </p>
      */
     private String deploymentId;
@@ -64,14 +75,15 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
     private java.util.Map<String, RouteSettings> routeSettings;
     /**
      * <p>
-     * The stage name.
+     * The stage name. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is
+     * 128 characters.
      * </p>
      */
     private String stageName;
     /**
      * <p>
      * A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore
-     * characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
+     * characters, and the values must match [A-Za-z0-9-._~:/?#&amp;=,]+. Supported only for WebSocket APIs.
      * </p>
      */
     private java.util.Map<String, String> stageVariables;
@@ -158,6 +170,58 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
+     * Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     * </p>
+     * 
+     * @param autoDeploy
+     *        Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     */
+
+    public void setAutoDeploy(Boolean autoDeploy) {
+        this.autoDeploy = autoDeploy;
+    }
+
+    /**
+     * <p>
+     * Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     * </p>
+     * 
+     * @return Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     */
+
+    public Boolean getAutoDeploy() {
+        return this.autoDeploy;
+    }
+
+    /**
+     * <p>
+     * Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     * </p>
+     * 
+     * @param autoDeploy
+     *        Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateStageRequest withAutoDeploy(Boolean autoDeploy) {
+        setAutoDeploy(autoDeploy);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     * </p>
+     * 
+     * @return Specifies whether updates to an API automatically trigger a new deployment. The default value is false.
+     */
+
+    public Boolean isAutoDeploy() {
+        return this.autoDeploy;
+    }
+
+    /**
+     * <p>
      * The identifier of a client certificate for a Stage.
      * </p>
      * 
@@ -238,11 +302,11 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The deployment identifier for the API stage.
+     * The deployment identifier for the API stage. Can't be updated if autoDeploy is enabled.
      * </p>
      * 
      * @param deploymentId
-     *        The deployment identifier for the API stage.
+     *        The deployment identifier for the API stage. Can't be updated if autoDeploy is enabled.
      */
 
     public void setDeploymentId(String deploymentId) {
@@ -251,10 +315,10 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The deployment identifier for the API stage.
+     * The deployment identifier for the API stage. Can't be updated if autoDeploy is enabled.
      * </p>
      * 
-     * @return The deployment identifier for the API stage.
+     * @return The deployment identifier for the API stage. Can't be updated if autoDeploy is enabled.
      */
 
     public String getDeploymentId() {
@@ -263,11 +327,11 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The deployment identifier for the API stage.
+     * The deployment identifier for the API stage. Can't be updated if autoDeploy is enabled.
      * </p>
      * 
      * @param deploymentId
-     *        The deployment identifier for the API stage.
+     *        The deployment identifier for the API stage. Can't be updated if autoDeploy is enabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -356,6 +420,13 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
         return this;
     }
 
+    /**
+     * Add a single RouteSettings entry
+     *
+     * @see UpdateStageRequest#withRouteSettings
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public UpdateStageRequest addRouteSettingsEntry(String key, RouteSettings value) {
         if (null == this.routeSettings) {
             this.routeSettings = new java.util.HashMap<String, RouteSettings>();
@@ -379,11 +450,13 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stage name.
+     * The stage name. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is
+     * 128 characters.
      * </p>
      * 
      * @param stageName
-     *        The stage name.
+     *        The stage name. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum
+     *        length is 128 characters.
      */
 
     public void setStageName(String stageName) {
@@ -392,10 +465,12 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stage name.
+     * The stage name. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is
+     * 128 characters.
      * </p>
      * 
-     * @return The stage name.
+     * @return The stage name. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum
+     *         length is 128 characters.
      */
 
     public String getStageName() {
@@ -404,11 +479,13 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The stage name.
+     * The stage name. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum length is
+     * 128 characters.
      * </p>
      * 
      * @param stageName
-     *        The stage name.
+     *        The stage name. Stage names can only contain alphanumeric characters, hyphens, and underscores. Maximum
+     *        length is 128 characters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -420,11 +497,11 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore
-     * characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
+     * characters, and the values must match [A-Za-z0-9-._~:/?#&amp;=,]+. Supported only for WebSocket APIs.
      * </p>
      * 
      * @return A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore
-     *         characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
+     *         characters, and the values must match [A-Za-z0-9-._~:/?#&amp;=,]+. Supported only for WebSocket APIs.
      */
 
     public java.util.Map<String, String> getStageVariables() {
@@ -434,12 +511,12 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore
-     * characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
+     * characters, and the values must match [A-Za-z0-9-._~:/?#&amp;=,]+. Supported only for WebSocket APIs.
      * </p>
      * 
      * @param stageVariables
      *        A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore
-     *        characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
+     *        characters, and the values must match [A-Za-z0-9-._~:/?#&amp;=,]+. Supported only for WebSocket APIs.
      */
 
     public void setStageVariables(java.util.Map<String, String> stageVariables) {
@@ -449,12 +526,12 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore
-     * characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
+     * characters, and the values must match [A-Za-z0-9-._~:/?#&amp;=,]+. Supported only for WebSocket APIs.
      * </p>
      * 
      * @param stageVariables
      *        A map that defines the stage variables for a Stage. Variable names can have alphanumeric and underscore
-     *        characters, and the values must match [A-Za-z0-9-._~:/?#&=,]+.
+     *        characters, and the values must match [A-Za-z0-9-._~:/?#&amp;=,]+. Supported only for WebSocket APIs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -462,6 +539,13 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
         setStageVariables(stageVariables);
         return this;
     }
+
+    /**
+     * Add a single StageVariables entry
+     *
+     * @see UpdateStageRequest#withStageVariables
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public UpdateStageRequest addStageVariablesEntry(String key, String value) {
         if (null == this.stageVariables) {
@@ -500,6 +584,8 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
             sb.append("AccessLogSettings: ").append(getAccessLogSettings()).append(",");
         if (getApiId() != null)
             sb.append("ApiId: ").append(getApiId()).append(",");
+        if (getAutoDeploy() != null)
+            sb.append("AutoDeploy: ").append(getAutoDeploy()).append(",");
         if (getClientCertificateId() != null)
             sb.append("ClientCertificateId: ").append(getClientCertificateId()).append(",");
         if (getDefaultRouteSettings() != null)
@@ -535,6 +621,10 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
         if (other.getApiId() == null ^ this.getApiId() == null)
             return false;
         if (other.getApiId() != null && other.getApiId().equals(this.getApiId()) == false)
+            return false;
+        if (other.getAutoDeploy() == null ^ this.getAutoDeploy() == null)
+            return false;
+        if (other.getAutoDeploy() != null && other.getAutoDeploy().equals(this.getAutoDeploy()) == false)
             return false;
         if (other.getClientCertificateId() == null ^ this.getClientCertificateId() == null)
             return false;
@@ -574,6 +664,7 @@ public class UpdateStageRequest extends com.amazonaws.AmazonWebServiceRequest im
 
         hashCode = prime * hashCode + ((getAccessLogSettings() == null) ? 0 : getAccessLogSettings().hashCode());
         hashCode = prime * hashCode + ((getApiId() == null) ? 0 : getApiId().hashCode());
+        hashCode = prime * hashCode + ((getAutoDeploy() == null) ? 0 : getAutoDeploy().hashCode());
         hashCode = prime * hashCode + ((getClientCertificateId() == null) ? 0 : getClientCertificateId().hashCode());
         hashCode = prime * hashCode + ((getDefaultRouteSettings() == null) ? 0 : getDefaultRouteSettings().hashCode());
         hashCode = prime * hashCode + ((getDeploymentId() == null) ? 0 : getDeploymentId().hashCode());

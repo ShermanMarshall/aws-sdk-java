@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,12 +30,16 @@ public class TaskOverrideMarshaller {
 
     private static final MarshallingInfo<List> CONTAINEROVERRIDES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("containerOverrides").build();
+    private static final MarshallingInfo<String> CPU_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("cpu").build();
     private static final MarshallingInfo<List> INFERENCEACCELERATOROVERRIDES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("inferenceAcceleratorOverrides").build();
-    private static final MarshallingInfo<String> TASKROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("taskRoleArn").build();
     private static final MarshallingInfo<String> EXECUTIONROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("executionRoleArn").build();
+    private static final MarshallingInfo<String> MEMORY_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("memory").build();
+    private static final MarshallingInfo<String> TASKROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("taskRoleArn").build();
 
     private static final TaskOverrideMarshaller instance = new TaskOverrideMarshaller();
 
@@ -54,9 +58,11 @@ public class TaskOverrideMarshaller {
 
         try {
             protocolMarshaller.marshall(taskOverride.getContainerOverrides(), CONTAINEROVERRIDES_BINDING);
+            protocolMarshaller.marshall(taskOverride.getCpu(), CPU_BINDING);
             protocolMarshaller.marshall(taskOverride.getInferenceAcceleratorOverrides(), INFERENCEACCELERATOROVERRIDES_BINDING);
-            protocolMarshaller.marshall(taskOverride.getTaskRoleArn(), TASKROLEARN_BINDING);
             protocolMarshaller.marshall(taskOverride.getExecutionRoleArn(), EXECUTIONROLEARN_BINDING);
+            protocolMarshaller.marshall(taskOverride.getMemory(), MEMORY_BINDING);
+            protocolMarshaller.marshall(taskOverride.getTaskRoleArn(), TASKROLEARN_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

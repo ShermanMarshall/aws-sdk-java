@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,7 +25,9 @@ public enum ResourceType {
     IOT_POLICY("IOT_POLICY"),
     COGNITO_IDENTITY_POOL("COGNITO_IDENTITY_POOL"),
     CLIENT_ID("CLIENT_ID"),
-    ACCOUNT_SETTINGS("ACCOUNT_SETTINGS");
+    ACCOUNT_SETTINGS("ACCOUNT_SETTINGS"),
+    ROLE_ALIAS("ROLE_ALIAS"),
+    IAM_ROLE("IAM_ROLE");
 
     private String value;
 

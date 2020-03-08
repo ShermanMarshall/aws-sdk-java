@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -168,6 +168,13 @@ public class TransactWriteItemsResult extends com.amazonaws.AmazonWebServiceResu
         setItemCollectionMetrics(itemCollectionMetrics);
         return this;
     }
+
+    /**
+     * Add a single ItemCollectionMetrics entry
+     *
+     * @see TransactWriteItemsResult#withItemCollectionMetrics
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public TransactWriteItemsResult addItemCollectionMetricsEntry(String key, java.util.List<ItemCollectionMetrics> value) {
         if (null == this.itemCollectionMetrics) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,7 @@ public class UpdateCommentRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String commentId;
     /**
      * <p>
-     * The updated content with which you want to replace the existing content of the comment.
+     * The updated content to replace the existing content of the comment.
      * </p>
      */
     private String content;
@@ -87,11 +87,11 @@ public class UpdateCommentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The updated content with which you want to replace the existing content of the comment.
+     * The updated content to replace the existing content of the comment.
      * </p>
      * 
      * @param content
-     *        The updated content with which you want to replace the existing content of the comment.
+     *        The updated content to replace the existing content of the comment.
      */
 
     public void setContent(String content) {
@@ -100,10 +100,10 @@ public class UpdateCommentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The updated content with which you want to replace the existing content of the comment.
+     * The updated content to replace the existing content of the comment.
      * </p>
      * 
-     * @return The updated content with which you want to replace the existing content of the comment.
+     * @return The updated content to replace the existing content of the comment.
      */
 
     public String getContent() {
@@ -112,11 +112,11 @@ public class UpdateCommentRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The updated content with which you want to replace the existing content of the comment.
+     * The updated content to replace the existing content of the comment.
      * </p>
      * 
      * @param content
-     *        The updated content with which you want to replace the existing content of the comment.
+     *        The updated content to replace the existing content of the comment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

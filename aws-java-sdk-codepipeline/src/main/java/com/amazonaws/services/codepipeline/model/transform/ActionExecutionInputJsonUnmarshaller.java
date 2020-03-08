@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -57,6 +57,11 @@ public class ActionExecutionInputJsonUnmarshaller implements Unmarshaller<Action
                     actionExecutionInput.setConfiguration(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context
                             .getUnmarshaller(String.class)).unmarshall(context));
                 }
+                if (context.testExpression("resolvedConfiguration", targetDepth)) {
+                    context.nextToken();
+                    actionExecutionInput.setResolvedConfiguration(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context
+                            .getUnmarshaller(String.class)).unmarshall(context));
+                }
                 if (context.testExpression("roleArn", targetDepth)) {
                     context.nextToken();
                     actionExecutionInput.setRoleArn(context.getUnmarshaller(String.class).unmarshall(context));
@@ -69,6 +74,10 @@ public class ActionExecutionInputJsonUnmarshaller implements Unmarshaller<Action
                     context.nextToken();
                     actionExecutionInput.setInputArtifacts(new ListUnmarshaller<ArtifactDetail>(ArtifactDetailJsonUnmarshaller.getInstance())
                             .unmarshall(context));
+                }
+                if (context.testExpression("namespace", targetDepth)) {
+                    context.nextToken();
+                    actionExecutionInput.setNamespace(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

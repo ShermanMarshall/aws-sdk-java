@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,8 +36,8 @@ public class ActionRevision implements Serializable, Cloneable, StructuredPojo {
     private String revisionId;
     /**
      * <p>
-     * The unique identifier of the change that set the state to this revision, for example a deployment ID or
-     * timestamp.
+     * The unique identifier of the change that set the state to this revision (for example, a deployment ID or
+     * timestamp).
      * </p>
      */
     private String revisionChangeId;
@@ -90,13 +90,13 @@ public class ActionRevision implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique identifier of the change that set the state to this revision, for example a deployment ID or
-     * timestamp.
+     * The unique identifier of the change that set the state to this revision (for example, a deployment ID or
+     * timestamp).
      * </p>
      * 
      * @param revisionChangeId
-     *        The unique identifier of the change that set the state to this revision, for example a deployment ID or
-     *        timestamp.
+     *        The unique identifier of the change that set the state to this revision (for example, a deployment ID or
+     *        timestamp).
      */
 
     public void setRevisionChangeId(String revisionChangeId) {
@@ -105,12 +105,12 @@ public class ActionRevision implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique identifier of the change that set the state to this revision, for example a deployment ID or
-     * timestamp.
+     * The unique identifier of the change that set the state to this revision (for example, a deployment ID or
+     * timestamp).
      * </p>
      * 
-     * @return The unique identifier of the change that set the state to this revision, for example a deployment ID or
-     *         timestamp.
+     * @return The unique identifier of the change that set the state to this revision (for example, a deployment ID or
+     *         timestamp).
      */
 
     public String getRevisionChangeId() {
@@ -119,13 +119,13 @@ public class ActionRevision implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The unique identifier of the change that set the state to this revision, for example a deployment ID or
-     * timestamp.
+     * The unique identifier of the change that set the state to this revision (for example, a deployment ID or
+     * timestamp).
      * </p>
      * 
      * @param revisionChangeId
-     *        The unique identifier of the change that set the state to this revision, for example a deployment ID or
-     *        timestamp.
+     *        The unique identifier of the change that set the state to this revision (for example, a deployment ID or
+     *        timestamp).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

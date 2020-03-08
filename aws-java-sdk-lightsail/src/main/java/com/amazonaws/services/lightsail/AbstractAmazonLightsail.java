@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -78,6 +78,11 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
     }
 
     @Override
+    public CreateContactMethodResult createContactMethod(CreateContactMethodRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateDiskResult createDisk(CreateDiskRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -144,6 +149,21 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
 
     @Override
     public CreateRelationalDatabaseSnapshotResult createRelationalDatabaseSnapshot(CreateRelationalDatabaseSnapshotRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteAlarmResult deleteAlarm(DeleteAlarmRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteAutoSnapshotResult deleteAutoSnapshot(DeleteAutoSnapshotRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteContactMethodResult deleteContactMethod(DeleteContactMethodRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -223,7 +243,17 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
     }
 
     @Override
+    public DisableAddOnResult disableAddOn(DisableAddOnRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DownloadDefaultKeyPairResult downloadDefaultKeyPair(DownloadDefaultKeyPairRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public EnableAddOnResult enableAddOn(EnableAddOnRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -234,6 +264,16 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
 
     @Override
     public GetActiveNamesResult getActiveNames(GetActiveNamesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetAlarmsResult getAlarms(GetAlarmsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetAutoSnapshotsResult getAutoSnapshots(GetAutoSnapshotsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -249,6 +289,11 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
 
     @Override
     public GetCloudFormationStackRecordsResult getCloudFormationStackRecords(GetCloudFormationStackRecordsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetContactMethodsResult getContactMethods(GetContactMethodsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -468,6 +513,11 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
     }
 
     @Override
+    public PutAlarmResult putAlarm(PutAlarmRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public PutInstancePublicPortsResult putInstancePublicPorts(PutInstancePublicPortsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -484,6 +534,11 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
 
     @Override
     public ReleaseStaticIpResult releaseStaticIp(ReleaseStaticIpRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public SendContactMethodVerificationResult sendContactMethodVerification(SendContactMethodVerificationRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -509,6 +564,11 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
 
     @Override
     public TagResourceResult tagResource(TagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public TestAlarmResult testAlarm(TestAlarmRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

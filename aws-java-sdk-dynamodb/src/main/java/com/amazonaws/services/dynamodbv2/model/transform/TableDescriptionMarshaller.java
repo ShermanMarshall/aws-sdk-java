@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -60,10 +60,16 @@ public class TableDescriptionMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LatestStreamLabel").build();
     private static final MarshallingInfo<String> LATESTSTREAMARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LatestStreamArn").build();
+    private static final MarshallingInfo<String> GLOBALTABLEVERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("GlobalTableVersion").build();
+    private static final MarshallingInfo<List> REPLICAS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Replicas").build();
     private static final MarshallingInfo<StructuredPojo> RESTORESUMMARY_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RestoreSummary").build();
     private static final MarshallingInfo<StructuredPojo> SSEDESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SSEDescription").build();
+    private static final MarshallingInfo<StructuredPojo> ARCHIVALSUMMARY_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ArchivalSummary").build();
 
     private static final TableDescriptionMarshaller instance = new TableDescriptionMarshaller();
 
@@ -97,8 +103,11 @@ public class TableDescriptionMarshaller {
             protocolMarshaller.marshall(tableDescription.getStreamSpecification(), STREAMSPECIFICATION_BINDING);
             protocolMarshaller.marshall(tableDescription.getLatestStreamLabel(), LATESTSTREAMLABEL_BINDING);
             protocolMarshaller.marshall(tableDescription.getLatestStreamArn(), LATESTSTREAMARN_BINDING);
+            protocolMarshaller.marshall(tableDescription.getGlobalTableVersion(), GLOBALTABLEVERSION_BINDING);
+            protocolMarshaller.marshall(tableDescription.getReplicas(), REPLICAS_BINDING);
             protocolMarshaller.marshall(tableDescription.getRestoreSummary(), RESTORESUMMARY_BINDING);
             protocolMarshaller.marshall(tableDescription.getSSEDescription(), SSEDESCRIPTION_BINDING);
+            protocolMarshaller.marshall(tableDescription.getArchivalSummary(), ARCHIVALSUMMARY_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

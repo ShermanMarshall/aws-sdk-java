@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,20 +27,20 @@ public class AdvertiseByoipCidrRequest extends AmazonWebServiceRequest implement
 
     /**
      * <p>
-     * The IPv4 address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise
-     * only a portion of the provisioned range.
+     * The address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise only
+     * a portion of the provisioned range.
      * </p>
      */
     private String cidr;
 
     /**
      * <p>
-     * The IPv4 address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise
-     * only a portion of the provisioned range.
+     * The address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise only
+     * a portion of the provisioned range.
      * </p>
      * 
      * @param cidr
-     *        The IPv4 address range, in CIDR notation. This must be the exact range that you provisioned. You can't
+     *        The address range, in CIDR notation. This must be the exact range that you provisioned. You can't
      *        advertise only a portion of the provisioned range.
      */
 
@@ -50,11 +50,11 @@ public class AdvertiseByoipCidrRequest extends AmazonWebServiceRequest implement
 
     /**
      * <p>
-     * The IPv4 address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise
-     * only a portion of the provisioned range.
+     * The address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise only
+     * a portion of the provisioned range.
      * </p>
      * 
-     * @return The IPv4 address range, in CIDR notation. This must be the exact range that you provisioned. You can't
+     * @return The address range, in CIDR notation. This must be the exact range that you provisioned. You can't
      *         advertise only a portion of the provisioned range.
      */
 
@@ -64,12 +64,12 @@ public class AdvertiseByoipCidrRequest extends AmazonWebServiceRequest implement
 
     /**
      * <p>
-     * The IPv4 address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise
-     * only a portion of the provisioned range.
+     * The address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise only
+     * a portion of the provisioned range.
      * </p>
      * 
      * @param cidr
-     *        The IPv4 address range, in CIDR notation. This must be the exact range that you provisioned. You can't
+     *        The address range, in CIDR notation. This must be the exact range that you provisioned. You can't
      *        advertise only a portion of the provisioned range.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

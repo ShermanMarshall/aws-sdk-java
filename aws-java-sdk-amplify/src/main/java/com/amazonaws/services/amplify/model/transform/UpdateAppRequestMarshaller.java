@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -57,6 +57,12 @@ public class UpdateAppRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("autoBranchCreationPatterns").build();
     private static final MarshallingInfo<StructuredPojo> AUTOBRANCHCREATIONCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("autoBranchCreationConfig").build();
+    private static final MarshallingInfo<String> REPOSITORY_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("repository").build();
+    private static final MarshallingInfo<String> OAUTHTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("oauthToken").build();
+    private static final MarshallingInfo<String> ACCESSTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("accessToken").build();
 
     private static final UpdateAppRequestMarshaller instance = new UpdateAppRequestMarshaller();
 
@@ -88,6 +94,9 @@ public class UpdateAppRequestMarshaller {
             protocolMarshaller.marshall(updateAppRequest.getEnableAutoBranchCreation(), ENABLEAUTOBRANCHCREATION_BINDING);
             protocolMarshaller.marshall(updateAppRequest.getAutoBranchCreationPatterns(), AUTOBRANCHCREATIONPATTERNS_BINDING);
             protocolMarshaller.marshall(updateAppRequest.getAutoBranchCreationConfig(), AUTOBRANCHCREATIONCONFIG_BINDING);
+            protocolMarshaller.marshall(updateAppRequest.getRepository(), REPOSITORY_BINDING);
+            protocolMarshaller.marshall(updateAppRequest.getOauthToken(), OAUTHTOKEN_BINDING);
+            protocolMarshaller.marshall(updateAppRequest.getAccessToken(), ACCESSTOKEN_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

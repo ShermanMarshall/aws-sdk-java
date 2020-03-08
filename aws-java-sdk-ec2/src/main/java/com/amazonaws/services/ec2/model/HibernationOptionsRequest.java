@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * <p>
  * Indicates whether your instance is configured for hibernation. This parameter is valid only if the instance meets the
  * <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites">hibernation
- * prerequisites</a>. Hibernation is currently supported only for Amazon Linux. For more information, see <a
+ * prerequisites</a>. For more information, see <a
  * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html">Hibernate Your Instance</a> in the
  * <i>Amazon Elastic Compute Cloud User Guide</i>.
  * </p>

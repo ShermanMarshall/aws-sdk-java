@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,7 +59,7 @@ public interface AmazonTranscribe {
      * @throws InternalFailureException
      *         There was an internal error. Check the error message and try your request again.
      * @throws ConflictException
-     *         When you are using the <code>StartTranscriptionJob</code> operation, the <code>JobName</code> field is a
+     *         When you are using the <code>CreateVocabulary</code> operation, the <code>JobName</code> field is a
      *         duplicate of a previously entered job name. Resend your request with a different name.</p>
      *         <p>
      *         When you are using the <code>UpdateVocabulary</code> operation, there are two jobs running at the same
@@ -69,6 +69,35 @@ public interface AmazonTranscribe {
      *      API Documentation</a>
      */
     CreateVocabularyResult createVocabulary(CreateVocabularyRequest createVocabularyRequest);
+
+    /**
+     * <p>
+     * Creates a new vocabulary filter that you can use to filter words, such as profane words, from the output of a
+     * transcription job.
+     * </p>
+     * 
+     * @param createVocabularyFilterRequest
+     * @return Result of the CreateVocabularyFilter operation returned by the service.
+     * @throws BadRequestException
+     *         Your request didn't pass one or more validation tests. For example, if the transcription you're trying to
+     *         delete doesn't exist or if it is in a non-terminal state (for example, it's "in progress"). See the
+     *         exception <code>Message</code> field for more information.
+     * @throws LimitExceededException
+     *         Either you have sent too many requests or your input file is too long. Wait before you resend your
+     *         request, or use a smaller file and resend the request.
+     * @throws InternalFailureException
+     *         There was an internal error. Check the error message and try your request again.
+     * @throws ConflictException
+     *         When you are using the <code>CreateVocabulary</code> operation, the <code>JobName</code> field is a
+     *         duplicate of a previously entered job name. Resend your request with a different name.</p>
+     *         <p>
+     *         When you are using the <code>UpdateVocabulary</code> operation, there are two jobs running at the same
+     *         time. Resend the second request later.
+     * @sample AmazonTranscribe.CreateVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/CreateVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateVocabularyFilterResult createVocabularyFilter(CreateVocabularyFilterRequest createVocabularyFilterRequest);
 
     /**
      * <p>
@@ -119,9 +148,34 @@ public interface AmazonTranscribe {
 
     /**
      * <p>
+     * Removes a vocabulary filter.
+     * </p>
+     * 
+     * @param deleteVocabularyFilterRequest
+     * @return Result of the DeleteVocabularyFilter operation returned by the service.
+     * @throws NotFoundException
+     *         We can't find the requested resource. Check the name and try your request again.
+     * @throws LimitExceededException
+     *         Either you have sent too many requests or your input file is too long. Wait before you resend your
+     *         request, or use a smaller file and resend the request.
+     * @throws BadRequestException
+     *         Your request didn't pass one or more validation tests. For example, if the transcription you're trying to
+     *         delete doesn't exist or if it is in a non-terminal state (for example, it's "in progress"). See the
+     *         exception <code>Message</code> field for more information.
+     * @throws InternalFailureException
+     *         There was an internal error. Check the error message and try your request again.
+     * @sample AmazonTranscribe.DeleteVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/DeleteVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteVocabularyFilterResult deleteVocabularyFilter(DeleteVocabularyFilterRequest deleteVocabularyFilterRequest);
+
+    /**
+     * <p>
      * Returns information about a transcription job. To see the status of the job, check the
      * <code>TranscriptionJobStatus</code> field. If the status is <code>COMPLETED</code>, the job is finished and you
-     * can find the results at the location specified in the <code>TranscriptionFileUri</code> field.
+     * can find the results at the location specified in the <code>TranscriptFileUri</code> field. If you enable content
+     * redaction, the redacted transcript appears in <code>RedactedTranscriptFileUri</code>.
      * </p>
      * 
      * @param getTranscriptionJobRequest
@@ -166,6 +220,30 @@ public interface AmazonTranscribe {
      *      Documentation</a>
      */
     GetVocabularyResult getVocabulary(GetVocabularyRequest getVocabularyRequest);
+
+    /**
+     * <p>
+     * Returns information about a vocabulary filter.
+     * </p>
+     * 
+     * @param getVocabularyFilterRequest
+     * @return Result of the GetVocabularyFilter operation returned by the service.
+     * @throws NotFoundException
+     *         We can't find the requested resource. Check the name and try your request again.
+     * @throws LimitExceededException
+     *         Either you have sent too many requests or your input file is too long. Wait before you resend your
+     *         request, or use a smaller file and resend the request.
+     * @throws InternalFailureException
+     *         There was an internal error. Check the error message and try your request again.
+     * @throws BadRequestException
+     *         Your request didn't pass one or more validation tests. For example, if the transcription you're trying to
+     *         delete doesn't exist or if it is in a non-terminal state (for example, it's "in progress"). See the
+     *         exception <code>Message</code> field for more information.
+     * @sample AmazonTranscribe.GetVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/GetVocabularyFilter" target="_top">AWS
+     *      API Documentation</a>
+     */
+    GetVocabularyFilterResult getVocabularyFilter(GetVocabularyFilterRequest getVocabularyFilterRequest);
 
     /**
      * <p>
@@ -214,6 +292,28 @@ public interface AmazonTranscribe {
 
     /**
      * <p>
+     * Gets information about vocabulary filters.
+     * </p>
+     * 
+     * @param listVocabularyFiltersRequest
+     * @return Result of the ListVocabularyFilters operation returned by the service.
+     * @throws BadRequestException
+     *         Your request didn't pass one or more validation tests. For example, if the transcription you're trying to
+     *         delete doesn't exist or if it is in a non-terminal state (for example, it's "in progress"). See the
+     *         exception <code>Message</code> field for more information.
+     * @throws LimitExceededException
+     *         Either you have sent too many requests or your input file is too long. Wait before you resend your
+     *         request, or use a smaller file and resend the request.
+     * @throws InternalFailureException
+     *         There was an internal error. Check the error message and try your request again.
+     * @sample AmazonTranscribe.ListVocabularyFilters
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/ListVocabularyFilters"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListVocabularyFiltersResult listVocabularyFilters(ListVocabularyFiltersRequest listVocabularyFiltersRequest);
+
+    /**
+     * <p>
      * Starts an asynchronous job to transcribe speech to text.
      * </p>
      * 
@@ -229,7 +329,7 @@ public interface AmazonTranscribe {
      * @throws InternalFailureException
      *         There was an internal error. Check the error message and try your request again.
      * @throws ConflictException
-     *         When you are using the <code>StartTranscriptionJob</code> operation, the <code>JobName</code> field is a
+     *         When you are using the <code>CreateVocabulary</code> operation, the <code>JobName</code> field is a
      *         duplicate of a previously entered job name. Resend your request with a different name.</p>
      *         <p>
      *         When you are using the <code>UpdateVocabulary</code> operation, there are two jobs running at the same
@@ -260,7 +360,7 @@ public interface AmazonTranscribe {
      * @throws NotFoundException
      *         We can't find the requested resource. Check the name and try your request again.
      * @throws ConflictException
-     *         When you are using the <code>StartTranscriptionJob</code> operation, the <code>JobName</code> field is a
+     *         When you are using the <code>CreateVocabulary</code> operation, the <code>JobName</code> field is a
      *         duplicate of a previously entered job name. Resend your request with a different name.</p>
      *         <p>
      *         When you are using the <code>UpdateVocabulary</code> operation, there are two jobs running at the same
@@ -270,6 +370,30 @@ public interface AmazonTranscribe {
      *      API Documentation</a>
      */
     UpdateVocabularyResult updateVocabulary(UpdateVocabularyRequest updateVocabularyRequest);
+
+    /**
+     * <p>
+     * Updates a vocabulary filter with a new list of filtered words.
+     * </p>
+     * 
+     * @param updateVocabularyFilterRequest
+     * @return Result of the UpdateVocabularyFilter operation returned by the service.
+     * @throws BadRequestException
+     *         Your request didn't pass one or more validation tests. For example, if the transcription you're trying to
+     *         delete doesn't exist or if it is in a non-terminal state (for example, it's "in progress"). See the
+     *         exception <code>Message</code> field for more information.
+     * @throws LimitExceededException
+     *         Either you have sent too many requests or your input file is too long. Wait before you resend your
+     *         request, or use a smaller file and resend the request.
+     * @throws InternalFailureException
+     *         There was an internal error. Check the error message and try your request again.
+     * @throws NotFoundException
+     *         We can't find the requested resource. Check the name and try your request again.
+     * @sample AmazonTranscribe.UpdateVocabularyFilter
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transcribe-2017-10-26/UpdateVocabularyFilter"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateVocabularyFilterResult updateVocabularyFilter(UpdateVocabularyFilterRequest updateVocabularyFilterRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

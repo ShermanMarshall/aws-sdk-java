@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -104,6 +104,13 @@ public class SegmentDimensions implements Serializable, Cloneable, StructuredPoj
         setAttributes(attributes);
         return this;
     }
+
+    /**
+     * Add a single Attributes entry
+     *
+     * @see SegmentDimensions#withAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public SegmentDimensions addAttributesEntry(String key, AttributeDimension value) {
         if (null == this.attributes) {
@@ -286,6 +293,13 @@ public class SegmentDimensions implements Serializable, Cloneable, StructuredPoj
         return this;
     }
 
+    /**
+     * Add a single Metrics entry
+     *
+     * @see SegmentDimensions#withMetrics
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public SegmentDimensions addMetricsEntry(String key, MetricDimension value) {
         if (null == this.metrics) {
             this.metrics = new java.util.HashMap<String, MetricDimension>();
@@ -346,6 +360,13 @@ public class SegmentDimensions implements Serializable, Cloneable, StructuredPoj
         setUserAttributes(userAttributes);
         return this;
     }
+
+    /**
+     * Add a single UserAttributes entry
+     *
+     * @see SegmentDimensions#withUserAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public SegmentDimensions addUserAttributesEntry(String key, AttributeDimension value) {
         if (null == this.userAttributes) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,7 +41,11 @@ public class CaptionSelector implements Serializable, Cloneable, StructuredPojo 
      * (and PID field); there is no way to extract a specific language with pass-through captions.
      */
     private String languageCode;
-    /** Source settings (SourceSettings) contains the group of settings for captions in the input. */
+    /**
+     * If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input
+     * captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead of
+     * FileSoureSettings.
+     */
     private CaptionSourceSettings sourceSettings;
 
     /**
@@ -182,10 +186,14 @@ public class CaptionSelector implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Source settings (SourceSettings) contains the group of settings for captions in the input.
+     * If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input
+     * captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead of
+     * FileSoureSettings.
      * 
      * @param sourceSettings
-     *        Source settings (SourceSettings) contains the group of settings for captions in the input.
+     *        If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input
+     *        captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead
+     *        of FileSoureSettings.
      */
 
     public void setSourceSettings(CaptionSourceSettings sourceSettings) {
@@ -193,9 +201,13 @@ public class CaptionSelector implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Source settings (SourceSettings) contains the group of settings for captions in the input.
+     * If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input
+     * captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead of
+     * FileSoureSettings.
      * 
-     * @return Source settings (SourceSettings) contains the group of settings for captions in the input.
+     * @return If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input
+     *         captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead
+     *         of FileSoureSettings.
      */
 
     public CaptionSourceSettings getSourceSettings() {
@@ -203,10 +215,14 @@ public class CaptionSelector implements Serializable, Cloneable, StructuredPojo 
     }
 
     /**
-     * Source settings (SourceSettings) contains the group of settings for captions in the input.
+     * If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input
+     * captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead of
+     * FileSoureSettings.
      * 
      * @param sourceSettings
-     *        Source settings (SourceSettings) contains the group of settings for captions in the input.
+     *        If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input
+     *        captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead
+     *        of FileSoureSettings.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

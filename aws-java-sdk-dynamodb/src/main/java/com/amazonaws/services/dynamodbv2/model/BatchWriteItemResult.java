@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -445,6 +445,13 @@ public class BatchWriteItemResult extends com.amazonaws.AmazonWebServiceResult<c
         return this;
     }
 
+    /**
+     * Add a single UnprocessedItems entry
+     *
+     * @see BatchWriteItemResult#withUnprocessedItems
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public BatchWriteItemResult addUnprocessedItemsEntry(String key, java.util.List<WriteRequest> value) {
         if (null == this.unprocessedItems) {
             this.unprocessedItems = new java.util.HashMap<String, java.util.List<WriteRequest>>();
@@ -649,6 +656,13 @@ public class BatchWriteItemResult extends com.amazonaws.AmazonWebServiceResult<c
         setItemCollectionMetrics(itemCollectionMetrics);
         return this;
     }
+
+    /**
+     * Add a single ItemCollectionMetrics entry
+     *
+     * @see BatchWriteItemResult#withItemCollectionMetrics
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public BatchWriteItemResult addItemCollectionMetricsEntry(String key, java.util.List<ItemCollectionMetrics> value) {
         if (null == this.itemCollectionMetrics) {

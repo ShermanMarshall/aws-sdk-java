@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The SMS multi-factor authentication (MFA) settings type.
+ * The type used for enabling SMS MFA at the user level.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/SMSMfaSettingsType" target="_top">AWS API
@@ -36,7 +36,7 @@ public class SMSMfaSettingsType implements Serializable, Cloneable, StructuredPo
     private Boolean enabled;
     /**
      * <p>
-     * The preferred MFA method.
+     * Specifies whether SMS is the preferred MFA method.
      * </p>
      */
     private Boolean preferredMfa;
@@ -95,11 +95,11 @@ public class SMSMfaSettingsType implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The preferred MFA method.
+     * Specifies whether SMS is the preferred MFA method.
      * </p>
      * 
      * @param preferredMfa
-     *        The preferred MFA method.
+     *        Specifies whether SMS is the preferred MFA method.
      */
 
     public void setPreferredMfa(Boolean preferredMfa) {
@@ -108,10 +108,10 @@ public class SMSMfaSettingsType implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The preferred MFA method.
+     * Specifies whether SMS is the preferred MFA method.
      * </p>
      * 
-     * @return The preferred MFA method.
+     * @return Specifies whether SMS is the preferred MFA method.
      */
 
     public Boolean getPreferredMfa() {
@@ -120,11 +120,11 @@ public class SMSMfaSettingsType implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The preferred MFA method.
+     * Specifies whether SMS is the preferred MFA method.
      * </p>
      * 
      * @param preferredMfa
-     *        The preferred MFA method.
+     *        Specifies whether SMS is the preferred MFA method.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,10 +135,10 @@ public class SMSMfaSettingsType implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The preferred MFA method.
+     * Specifies whether SMS is the preferred MFA method.
      * </p>
      * 
-     * @return The preferred MFA method.
+     * @return Specifies whether SMS is the preferred MFA method.
      */
 
     public Boolean isPreferredMfa() {

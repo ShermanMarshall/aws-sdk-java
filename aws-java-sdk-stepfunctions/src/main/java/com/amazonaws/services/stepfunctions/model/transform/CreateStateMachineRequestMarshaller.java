@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,10 @@ public class CreateStateMachineRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("definition").build();
     private static final MarshallingInfo<String> ROLEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("roleArn").build();
+    private static final MarshallingInfo<String> TYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("type").build();
+    private static final MarshallingInfo<StructuredPojo> LOGGINGCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("loggingConfiguration").build();
     private static final MarshallingInfo<List> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("tags").build();
 
@@ -56,6 +60,8 @@ public class CreateStateMachineRequestMarshaller {
             protocolMarshaller.marshall(createStateMachineRequest.getName(), NAME_BINDING);
             protocolMarshaller.marshall(createStateMachineRequest.getDefinition(), DEFINITION_BINDING);
             protocolMarshaller.marshall(createStateMachineRequest.getRoleArn(), ROLEARN_BINDING);
+            protocolMarshaller.marshall(createStateMachineRequest.getType(), TYPE_BINDING);
+            protocolMarshaller.marshall(createStateMachineRequest.getLoggingConfiguration(), LOGGINGCONFIGURATION_BINDING);
             protocolMarshaller.marshall(createStateMachineRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

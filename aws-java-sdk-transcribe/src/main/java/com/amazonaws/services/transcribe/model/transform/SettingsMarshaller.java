@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,14 @@ public class SettingsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("MaxSpeakerLabels").build();
     private static final MarshallingInfo<Boolean> CHANNELIDENTIFICATION_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ChannelIdentification").build();
+    private static final MarshallingInfo<Boolean> SHOWALTERNATIVES_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ShowAlternatives").build();
+    private static final MarshallingInfo<Integer> MAXALTERNATIVES_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("MaxAlternatives").build();
+    private static final MarshallingInfo<String> VOCABULARYFILTERNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VocabularyFilterName").build();
+    private static final MarshallingInfo<String> VOCABULARYFILTERMETHOD_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VocabularyFilterMethod").build();
 
     private static final SettingsMarshaller instance = new SettingsMarshaller();
 
@@ -56,6 +64,10 @@ public class SettingsMarshaller {
             protocolMarshaller.marshall(settings.getShowSpeakerLabels(), SHOWSPEAKERLABELS_BINDING);
             protocolMarshaller.marshall(settings.getMaxSpeakerLabels(), MAXSPEAKERLABELS_BINDING);
             protocolMarshaller.marshall(settings.getChannelIdentification(), CHANNELIDENTIFICATION_BINDING);
+            protocolMarshaller.marshall(settings.getShowAlternatives(), SHOWALTERNATIVES_BINDING);
+            protocolMarshaller.marshall(settings.getMaxAlternatives(), MAXALTERNATIVES_BINDING);
+            protocolMarshaller.marshall(settings.getVocabularyFilterName(), VOCABULARYFILTERNAME_BINDING);
+            protocolMarshaller.marshall(settings.getVocabularyFilterMethod(), VOCABULARYFILTERMETHOD_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

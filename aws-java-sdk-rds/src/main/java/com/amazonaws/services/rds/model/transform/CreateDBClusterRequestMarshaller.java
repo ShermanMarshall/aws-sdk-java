@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -225,6 +225,14 @@ public class CreateDBClusterRequestMarshaller implements Marshaller<Request<Crea
 
         if (createDBClusterRequest.getCopyTagsToSnapshot() != null) {
             request.addParameter("CopyTagsToSnapshot", StringUtils.fromBoolean(createDBClusterRequest.getCopyTagsToSnapshot()));
+        }
+
+        if (createDBClusterRequest.getDomain() != null) {
+            request.addParameter("Domain", StringUtils.fromString(createDBClusterRequest.getDomain()));
+        }
+
+        if (createDBClusterRequest.getDomainIAMRoleName() != null) {
+            request.addParameter("DomainIAMRoleName", StringUtils.fromString(createDBClusterRequest.getDomainIAMRoleName()));
         }
 
         if (createDBClusterRequest.getSourceRegion() != null) {

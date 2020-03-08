@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -112,6 +112,20 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String platformVersion;
+    /**
+     * <p>
+     * The metadata that you apply to the cluster to assist with categorization and organization. Each tag consists of a
+     * key and an optional value, both of which you define. Cluster tags do not propagate to any other resources
+     * associated with the cluster.
+     * </p>
+     */
+    private java.util.Map<String, String> tags;
+    /**
+     * <p>
+     * The encryption configuration for the cluster.
+     * </p>
+     */
+    private java.util.List<EncryptionConfig> encryptionConfig;
 
     /**
      * <p>
@@ -695,6 +709,156 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The metadata that you apply to the cluster to assist with categorization and organization. Each tag consists of a
+     * key and an optional value, both of which you define. Cluster tags do not propagate to any other resources
+     * associated with the cluster.
+     * </p>
+     * 
+     * @return The metadata that you apply to the cluster to assist with categorization and organization. Each tag
+     *         consists of a key and an optional value, both of which you define. Cluster tags do not propagate to any
+     *         other resources associated with the cluster.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The metadata that you apply to the cluster to assist with categorization and organization. Each tag consists of a
+     * key and an optional value, both of which you define. Cluster tags do not propagate to any other resources
+     * associated with the cluster.
+     * </p>
+     * 
+     * @param tags
+     *        The metadata that you apply to the cluster to assist with categorization and organization. Each tag
+     *        consists of a key and an optional value, both of which you define. Cluster tags do not propagate to any
+     *        other resources associated with the cluster.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * <p>
+     * The metadata that you apply to the cluster to assist with categorization and organization. Each tag consists of a
+     * key and an optional value, both of which you define. Cluster tags do not propagate to any other resources
+     * associated with the cluster.
+     * </p>
+     * 
+     * @param tags
+     *        The metadata that you apply to the cluster to assist with categorization and organization. Each tag
+     *        consists of a key and an optional value, both of which you define. Cluster tags do not propagate to any
+     *        other resources associated with the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see Cluster#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster clearTagsEntries() {
+        this.tags = null;
+        return this;
+    }
+
+    /**
+     * <p>
+     * The encryption configuration for the cluster.
+     * </p>
+     * 
+     * @return The encryption configuration for the cluster.
+     */
+
+    public java.util.List<EncryptionConfig> getEncryptionConfig() {
+        return encryptionConfig;
+    }
+
+    /**
+     * <p>
+     * The encryption configuration for the cluster.
+     * </p>
+     * 
+     * @param encryptionConfig
+     *        The encryption configuration for the cluster.
+     */
+
+    public void setEncryptionConfig(java.util.Collection<EncryptionConfig> encryptionConfig) {
+        if (encryptionConfig == null) {
+            this.encryptionConfig = null;
+            return;
+        }
+
+        this.encryptionConfig = new java.util.ArrayList<EncryptionConfig>(encryptionConfig);
+    }
+
+    /**
+     * <p>
+     * The encryption configuration for the cluster.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setEncryptionConfig(java.util.Collection)} or {@link #withEncryptionConfig(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param encryptionConfig
+     *        The encryption configuration for the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster withEncryptionConfig(EncryptionConfig... encryptionConfig) {
+        if (this.encryptionConfig == null) {
+            setEncryptionConfig(new java.util.ArrayList<EncryptionConfig>(encryptionConfig.length));
+        }
+        for (EncryptionConfig ele : encryptionConfig) {
+            this.encryptionConfig.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The encryption configuration for the cluster.
+     * </p>
+     * 
+     * @param encryptionConfig
+     *        The encryption configuration for the cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Cluster withEncryptionConfig(java.util.Collection<EncryptionConfig> encryptionConfig) {
+        setEncryptionConfig(encryptionConfig);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -731,7 +895,11 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
         if (getClientRequestToken() != null)
             sb.append("ClientRequestToken: ").append(getClientRequestToken()).append(",");
         if (getPlatformVersion() != null)
-            sb.append("PlatformVersion: ").append(getPlatformVersion());
+            sb.append("PlatformVersion: ").append(getPlatformVersion()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getEncryptionConfig() != null)
+            sb.append("EncryptionConfig: ").append(getEncryptionConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -798,6 +966,14 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getPlatformVersion() != null && other.getPlatformVersion().equals(this.getPlatformVersion()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getEncryptionConfig() == null ^ this.getEncryptionConfig() == null)
+            return false;
+        if (other.getEncryptionConfig() != null && other.getEncryptionConfig().equals(this.getEncryptionConfig()) == false)
+            return false;
         return true;
     }
 
@@ -819,6 +995,8 @@ public class Cluster implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getCertificateAuthority() == null) ? 0 : getCertificateAuthority().hashCode());
         hashCode = prime * hashCode + ((getClientRequestToken() == null) ? 0 : getClientRequestToken().hashCode());
         hashCode = prime * hashCode + ((getPlatformVersion() == null) ? 0 : getPlatformVersion().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getEncryptionConfig() == null) ? 0 : getEncryptionConfig().hashCode());
         return hashCode;
     }
 

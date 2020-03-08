@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -46,13 +46,13 @@ public class DescribeLocationSmbResult extends com.amazonaws.AmazonWebServiceRes
     private java.util.List<String> agentArns;
     /**
      * <p>
-     * The user who is logged on the SMB server.
+     * The user who can mount the share, has the permissions to access files and folders in the SMB share.
      * </p>
      */
     private String user;
     /**
      * <p>
-     * The name of the domain that the SMB server belongs to.
+     * The name of the Windows domain that the SMB server belongs to.
      * </p>
      */
     private String domain;
@@ -221,11 +221,11 @@ public class DescribeLocationSmbResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The user who is logged on the SMB server.
+     * The user who can mount the share, has the permissions to access files and folders in the SMB share.
      * </p>
      * 
      * @param user
-     *        The user who is logged on the SMB server.
+     *        The user who can mount the share, has the permissions to access files and folders in the SMB share.
      */
 
     public void setUser(String user) {
@@ -234,10 +234,10 @@ public class DescribeLocationSmbResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The user who is logged on the SMB server.
+     * The user who can mount the share, has the permissions to access files and folders in the SMB share.
      * </p>
      * 
-     * @return The user who is logged on the SMB server.
+     * @return The user who can mount the share, has the permissions to access files and folders in the SMB share.
      */
 
     public String getUser() {
@@ -246,11 +246,11 @@ public class DescribeLocationSmbResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The user who is logged on the SMB server.
+     * The user who can mount the share, has the permissions to access files and folders in the SMB share.
      * </p>
      * 
      * @param user
-     *        The user who is logged on the SMB server.
+     *        The user who can mount the share, has the permissions to access files and folders in the SMB share.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -261,11 +261,11 @@ public class DescribeLocationSmbResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The name of the domain that the SMB server belongs to.
+     * The name of the Windows domain that the SMB server belongs to.
      * </p>
      * 
      * @param domain
-     *        The name of the domain that the SMB server belongs to.
+     *        The name of the Windows domain that the SMB server belongs to.
      */
 
     public void setDomain(String domain) {
@@ -274,10 +274,10 @@ public class DescribeLocationSmbResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The name of the domain that the SMB server belongs to.
+     * The name of the Windows domain that the SMB server belongs to.
      * </p>
      * 
-     * @return The name of the domain that the SMB server belongs to.
+     * @return The name of the Windows domain that the SMB server belongs to.
      */
 
     public String getDomain() {
@@ -286,11 +286,11 @@ public class DescribeLocationSmbResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The name of the domain that the SMB server belongs to.
+     * The name of the Windows domain that the SMB server belongs to.
      * </p>
      * 
      * @param domain
-     *        The name of the domain that the SMB server belongs to.
+     *        The name of the Windows domain that the SMB server belongs to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

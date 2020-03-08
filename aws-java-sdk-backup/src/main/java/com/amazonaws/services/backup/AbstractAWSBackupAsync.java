@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -165,6 +165,19 @@ public class AbstractAWSBackupAsync extends AbstractAWSBackup implements AWSBack
     @Override
     public java.util.concurrent.Future<DescribeBackupVaultResult> describeBackupVaultAsync(DescribeBackupVaultRequest request,
             com.amazonaws.handlers.AsyncHandler<DescribeBackupVaultRequest, DescribeBackupVaultResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCopyJobResult> describeCopyJobAsync(DescribeCopyJobRequest request) {
+
+        return describeCopyJobAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCopyJobResult> describeCopyJobAsync(DescribeCopyJobRequest request,
+            com.amazonaws.handlers.AsyncHandler<DescribeCopyJobRequest, DescribeCopyJobResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -406,6 +419,19 @@ public class AbstractAWSBackupAsync extends AbstractAWSBackup implements AWSBack
     }
 
     @Override
+    public java.util.concurrent.Future<ListCopyJobsResult> listCopyJobsAsync(ListCopyJobsRequest request) {
+
+        return listCopyJobsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListCopyJobsResult> listCopyJobsAsync(ListCopyJobsRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListCopyJobsRequest, ListCopyJobsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<ListProtectedResourcesResult> listProtectedResourcesAsync(ListProtectedResourcesRequest request) {
 
         return listProtectedResourcesAsync(request, null);
@@ -507,6 +533,19 @@ public class AbstractAWSBackupAsync extends AbstractAWSBackup implements AWSBack
     @Override
     public java.util.concurrent.Future<StartBackupJobResult> startBackupJobAsync(StartBackupJobRequest request,
             com.amazonaws.handlers.AsyncHandler<StartBackupJobRequest, StartBackupJobResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartCopyJobResult> startCopyJobAsync(StartCopyJobRequest request) {
+
+        return startCopyJobAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartCopyJobResult> startCopyJobAsync(StartCopyJobRequest request,
+            com.amazonaws.handlers.AsyncHandler<StartCopyJobRequest, StartCopyJobResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

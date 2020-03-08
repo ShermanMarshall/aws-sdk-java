@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,7 @@ public class OfferingPromotion implements Serializable, Cloneable, StructuredPoj
     private String id;
     /**
      * <p>
-     * A string describing the offering promotion.
+     * A string that describes the offering promotion.
      * </p>
      */
     private String description;
@@ -83,11 +83,11 @@ public class OfferingPromotion implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * A string describing the offering promotion.
+     * A string that describes the offering promotion.
      * </p>
      * 
      * @param description
-     *        A string describing the offering promotion.
+     *        A string that describes the offering promotion.
      */
 
     public void setDescription(String description) {
@@ -96,10 +96,10 @@ public class OfferingPromotion implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * A string describing the offering promotion.
+     * A string that describes the offering promotion.
      * </p>
      * 
-     * @return A string describing the offering promotion.
+     * @return A string that describes the offering promotion.
      */
 
     public String getDescription() {
@@ -108,11 +108,11 @@ public class OfferingPromotion implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * A string describing the offering promotion.
+     * A string that describes the offering promotion.
      * </p>
      * 
      * @param description
-     *        A string describing the offering promotion.
+     *        A string that describes the offering promotion.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

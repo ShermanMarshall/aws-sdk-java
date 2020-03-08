@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -298,6 +298,39 @@ public class AWSShieldAsyncClient extends AWSShieldClient implements AWSShieldAs
 
                 try {
                     result = executeAssociateDRTRole(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<AssociateHealthCheckResult> associateHealthCheckAsync(AssociateHealthCheckRequest request) {
+
+        return associateHealthCheckAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<AssociateHealthCheckResult> associateHealthCheckAsync(final AssociateHealthCheckRequest request,
+            final com.amazonaws.handlers.AsyncHandler<AssociateHealthCheckRequest, AssociateHealthCheckResult> asyncHandler) {
+        final AssociateHealthCheckRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<AssociateHealthCheckResult>() {
+            @Override
+            public AssociateHealthCheckResult call() throws Exception {
+                AssociateHealthCheckResult result = null;
+
+                try {
+                    result = executeAssociateHealthCheck(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -665,6 +698,39 @@ public class AWSShieldAsyncClient extends AWSShieldClient implements AWSShieldAs
 
                 try {
                     result = executeDisassociateDRTRole(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DisassociateHealthCheckResult> disassociateHealthCheckAsync(DisassociateHealthCheckRequest request) {
+
+        return disassociateHealthCheckAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DisassociateHealthCheckResult> disassociateHealthCheckAsync(final DisassociateHealthCheckRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DisassociateHealthCheckRequest, DisassociateHealthCheckResult> asyncHandler) {
+        final DisassociateHealthCheckRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DisassociateHealthCheckResult>() {
+            @Override
+            public DisassociateHealthCheckResult call() throws Exception {
+                DisassociateHealthCheckResult result = null;
+
+                try {
+                    result = executeDisassociateHealthCheck(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -584,6 +584,13 @@ public class Message implements Serializable, Cloneable {
         return this;
     }
 
+    /**
+     * Add a single Attributes entry
+     *
+     * @see Message#withAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public Message addAttributesEntry(String key, String value) {
         if (null == this.attributes) {
             this.attributes = new com.amazonaws.internal.SdkInternalMap<String, String>();
@@ -717,6 +724,13 @@ public class Message implements Serializable, Cloneable {
         setMessageAttributes(messageAttributes);
         return this;
     }
+
+    /**
+     * Add a single MessageAttributes entry
+     *
+     * @see Message#withMessageAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public Message addMessageAttributesEntry(String key, MessageAttributeValue value) {
         if (null == this.messageAttributes) {

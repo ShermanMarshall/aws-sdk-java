@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -129,6 +129,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<CreateCloudFormationStackResult> createCloudFormationStackAsync(CreateCloudFormationStackRequest request,
             com.amazonaws.handlers.AsyncHandler<CreateCloudFormationStackRequest, CreateCloudFormationStackResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateContactMethodResult> createContactMethodAsync(CreateContactMethodRequest request) {
+
+        return createContactMethodAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateContactMethodResult> createContactMethodAsync(CreateContactMethodRequest request,
+            com.amazonaws.handlers.AsyncHandler<CreateContactMethodRequest, CreateContactMethodResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -317,6 +330,45 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     public java.util.concurrent.Future<CreateRelationalDatabaseSnapshotResult> createRelationalDatabaseSnapshotAsync(
             CreateRelationalDatabaseSnapshotRequest request,
             com.amazonaws.handlers.AsyncHandler<CreateRelationalDatabaseSnapshotRequest, CreateRelationalDatabaseSnapshotResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAlarmResult> deleteAlarmAsync(DeleteAlarmRequest request) {
+
+        return deleteAlarmAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAlarmResult> deleteAlarmAsync(DeleteAlarmRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteAlarmRequest, DeleteAlarmResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAutoSnapshotResult> deleteAutoSnapshotAsync(DeleteAutoSnapshotRequest request) {
+
+        return deleteAutoSnapshotAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAutoSnapshotResult> deleteAutoSnapshotAsync(DeleteAutoSnapshotRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteAutoSnapshotRequest, DeleteAutoSnapshotResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteContactMethodResult> deleteContactMethodAsync(DeleteContactMethodRequest request) {
+
+        return deleteContactMethodAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteContactMethodResult> deleteContactMethodAsync(DeleteContactMethodRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteContactMethodRequest, DeleteContactMethodResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -523,6 +575,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     }
 
     @Override
+    public java.util.concurrent.Future<DisableAddOnResult> disableAddOnAsync(DisableAddOnRequest request) {
+
+        return disableAddOnAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DisableAddOnResult> disableAddOnAsync(DisableAddOnRequest request,
+            com.amazonaws.handlers.AsyncHandler<DisableAddOnRequest, DisableAddOnResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<DownloadDefaultKeyPairResult> downloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest request) {
 
         return downloadDefaultKeyPairAsync(request, null);
@@ -531,6 +596,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<DownloadDefaultKeyPairResult> downloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest request,
             com.amazonaws.handlers.AsyncHandler<DownloadDefaultKeyPairRequest, DownloadDefaultKeyPairResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<EnableAddOnResult> enableAddOnAsync(EnableAddOnRequest request) {
+
+        return enableAddOnAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<EnableAddOnResult> enableAddOnAsync(EnableAddOnRequest request,
+            com.amazonaws.handlers.AsyncHandler<EnableAddOnRequest, EnableAddOnResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -557,6 +635,32 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<GetActiveNamesResult> getActiveNamesAsync(GetActiveNamesRequest request,
             com.amazonaws.handlers.AsyncHandler<GetActiveNamesRequest, GetActiveNamesResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAlarmsResult> getAlarmsAsync(GetAlarmsRequest request) {
+
+        return getAlarmsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAlarmsResult> getAlarmsAsync(GetAlarmsRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetAlarmsRequest, GetAlarmsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAutoSnapshotsResult> getAutoSnapshotsAsync(GetAutoSnapshotsRequest request) {
+
+        return getAutoSnapshotsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAutoSnapshotsResult> getAutoSnapshotsAsync(GetAutoSnapshotsRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetAutoSnapshotsRequest, GetAutoSnapshotsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -596,6 +700,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<GetCloudFormationStackRecordsResult> getCloudFormationStackRecordsAsync(GetCloudFormationStackRecordsRequest request,
             com.amazonaws.handlers.AsyncHandler<GetCloudFormationStackRecordsRequest, GetCloudFormationStackRecordsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetContactMethodsResult> getContactMethodsAsync(GetContactMethodsRequest request) {
+
+        return getContactMethodsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetContactMethodsResult> getContactMethodsAsync(GetContactMethodsRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetContactMethodsRequest, GetContactMethodsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -1170,6 +1287,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     }
 
     @Override
+    public java.util.concurrent.Future<PutAlarmResult> putAlarmAsync(PutAlarmRequest request) {
+
+        return putAlarmAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<PutAlarmResult> putAlarmAsync(PutAlarmRequest request,
+            com.amazonaws.handlers.AsyncHandler<PutAlarmRequest, PutAlarmResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<PutInstancePublicPortsResult> putInstancePublicPortsAsync(PutInstancePublicPortsRequest request) {
 
         return putInstancePublicPortsAsync(request, null);
@@ -1217,6 +1347,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<ReleaseStaticIpResult> releaseStaticIpAsync(ReleaseStaticIpRequest request,
             com.amazonaws.handlers.AsyncHandler<ReleaseStaticIpRequest, ReleaseStaticIpResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<SendContactMethodVerificationResult> sendContactMethodVerificationAsync(SendContactMethodVerificationRequest request) {
+
+        return sendContactMethodVerificationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<SendContactMethodVerificationResult> sendContactMethodVerificationAsync(SendContactMethodVerificationRequest request,
+            com.amazonaws.handlers.AsyncHandler<SendContactMethodVerificationRequest, SendContactMethodVerificationResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -1282,6 +1425,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest request,
             com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<TestAlarmResult> testAlarmAsync(TestAlarmRequest request) {
+
+        return testAlarmAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<TestAlarmResult> testAlarmAsync(TestAlarmRequest request,
+            com.amazonaws.handlers.AsyncHandler<TestAlarmRequest, TestAlarmResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

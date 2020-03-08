@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,6 +49,10 @@ public class PostContentResultJsonUnmarshaller implements Unmarshaller<PostConte
                 postContentResult.setSessionAttributes(context.getUnmarshaller(String.class, JsonUnmarshallerContext.UnmarshallerType.JSON_VALUE).unmarshall(
                         context));
             }
+            if (context.getHeader("x-amz-lex-sentiment") != null) {
+                context.setCurrentHeader("x-amz-lex-sentiment");
+                postContentResult.setSentimentResponse(context.getUnmarshaller(String.class).unmarshall(context));
+            }
             if (context.getHeader("x-amz-lex-message") != null) {
                 context.setCurrentHeader("x-amz-lex-message");
                 postContentResult.setMessage(context.getUnmarshaller(String.class).unmarshall(context));
@@ -68,6 +72,10 @@ public class PostContentResultJsonUnmarshaller implements Unmarshaller<PostConte
             if (context.getHeader("x-amz-lex-input-transcript") != null) {
                 context.setCurrentHeader("x-amz-lex-input-transcript");
                 postContentResult.setInputTranscript(context.getUnmarshaller(String.class).unmarshall(context));
+            }
+            if (context.getHeader("x-amz-lex-session-id") != null) {
+                context.setCurrentHeader("x-amz-lex-session-id");
+                postContentResult.setSessionId(context.getUnmarshaller(String.class).unmarshall(context));
             }
         }
 

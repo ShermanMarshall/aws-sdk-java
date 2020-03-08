@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,11 @@ public class AbstractAWSRAM implements AWSRAM {
     }
 
     @Override
+    public AssociateResourceSharePermissionResult associateResourceSharePermission(AssociateResourceSharePermissionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateResourceShareResult createResourceShare(CreateResourceShareRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -53,7 +58,17 @@ public class AbstractAWSRAM implements AWSRAM {
     }
 
     @Override
+    public DisassociateResourceSharePermissionResult disassociateResourceSharePermission(DisassociateResourceSharePermissionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public EnableSharingWithAwsOrganizationResult enableSharingWithAwsOrganization(EnableSharingWithAwsOrganizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetPermissionResult getPermission(GetPermissionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -78,12 +93,32 @@ public class AbstractAWSRAM implements AWSRAM {
     }
 
     @Override
+    public ListPendingInvitationResourcesResult listPendingInvitationResources(ListPendingInvitationResourcesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListPermissionsResult listPermissions(ListPermissionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListPrincipalsResult listPrincipals(ListPrincipalsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
+    public ListResourceSharePermissionsResult listResourceSharePermissions(ListResourceSharePermissionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListResourcesResult listResources(ListResourcesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public PromoteResourceShareCreatedFromPolicyResult promoteResourceShareCreatedFromPolicy(PromoteResourceShareCreatedFromPolicyRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

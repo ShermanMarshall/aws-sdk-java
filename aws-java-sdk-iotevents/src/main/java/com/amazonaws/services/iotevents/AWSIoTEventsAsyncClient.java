@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,8 +27,8 @@ import java.util.concurrent.ExecutorService;
  * <p>
  * <p>
  * AWS IoT Events monitors your equipment or device fleets for failures or changes in operation, and triggers actions
- * when such events occur. AWS IoT Events API commands enable you to create, read, update and delete inputs and detector
- * models, and to list their versions.
+ * when such events occur. You can use AWS IoT Events API commands to create, read, update, and delete inputs and
+ * detector models, and to list their versions.
  * </p>
  */
 @ThreadSafe

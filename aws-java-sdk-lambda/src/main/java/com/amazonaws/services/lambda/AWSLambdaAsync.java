@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -102,7 +102,7 @@ public interface AWSLambdaAsync extends AWSLambda {
      * account to invoke your Lambda function.
      * </p>
      * <p>
-     * This action adds a statement to a resource-based permission policy for the function. For more information about
+     * This action adds a statement to a resource-based permissions policy for the function. For more information about
      * function policies, see <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html">Lambda Function
      * Policies</a>.
@@ -131,7 +131,7 @@ public interface AWSLambdaAsync extends AWSLambda {
      * account to invoke your Lambda function.
      * </p>
      * <p>
-     * This action adds a statement to a resource-based permission policy for the function. For more information about
+     * This action adds a statement to a resource-based permissions policy for the function. For more information about
      * function policies, see <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html">Lambda Function
      * Policies</a>.
@@ -204,6 +204,11 @@ public interface AWSLambdaAsync extends AWSLambda {
      * <ul>
      * <li>
      * <p>
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">Using AWS Lambda with Amazon DynamoDB</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html">Using AWS Lambda with Amazon Kinesis</a>
      * </p>
      * </li>
@@ -212,9 +217,34 @@ public interface AWSLambdaAsync extends AWSLambda {
      * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html">Using AWS Lambda with Amazon SQS</a>
      * </p>
      * </li>
+     * </ul>
+     * <p>
+     * The following error handling options are only available for stream sources (DynamoDB and Kinesis):
+     * </p>
+     * <ul>
      * <li>
      * <p>
-     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">Using AWS Lambda with Amazon DynamoDB</a>
+     * <code>BisectBatchOnFunctionError</code> - If the function returns an error, split the batch in two and retry.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DestinationConfig</code> - Send discarded records to an Amazon SQS queue or Amazon SNS topic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaximumRecordAgeInSeconds</code> - Discard records older than the specified age.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaximumRetryAttempts</code> - Discard records after the specified number of retries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ParallelizationFactor</code> - Process multiple batches from each shard concurrently.
      * </p>
      * </li>
      * </ul>
@@ -238,6 +268,11 @@ public interface AWSLambdaAsync extends AWSLambda {
      * <ul>
      * <li>
      * <p>
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">Using AWS Lambda with Amazon DynamoDB</a>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html">Using AWS Lambda with Amazon Kinesis</a>
      * </p>
      * </li>
@@ -246,9 +281,34 @@ public interface AWSLambdaAsync extends AWSLambda {
      * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html">Using AWS Lambda with Amazon SQS</a>
      * </p>
      * </li>
+     * </ul>
+     * <p>
+     * The following error handling options are only available for stream sources (DynamoDB and Kinesis):
+     * </p>
+     * <ul>
      * <li>
      * <p>
-     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">Using AWS Lambda with Amazon DynamoDB</a>
+     * <code>BisectBatchOnFunctionError</code> - If the function returns an error, split the batch in two and retry.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DestinationConfig</code> - Send discarded records to an Amazon SQS queue or Amazon SNS topic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaximumRecordAgeInSeconds</code> - Discard records older than the specified age.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaximumRetryAttempts</code> - Discard records after the specified number of retries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ParallelizationFactor</code> - Process multiple batches from each shard concurrently.
      * </p>
      * </li>
      * </ul>
@@ -276,6 +336,14 @@ public interface AWSLambdaAsync extends AWSLambda {
      * tracing.
      * </p>
      * <p>
+     * When you create a function, Lambda provisions an instance of the function and its supporting resources. If your
+     * function connects to a VPC, this process can take a minute or so. During this time, you can't invoke or modify
+     * the function. The <code>State</code>, <code>StateReason</code>, and <code>StateReasonCode</code> fields in the
+     * response from <a>GetFunctionConfiguration</a> indicate when the function is ready to invoke. For more
+     * information, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html">Function
+     * States</a>.
+     * </p>
+     * <p>
      * A function has an unpublished version, and can have published versions and aliases. The unpublished version
      * changes when you update your function's code and configuration. A published version is a snapshot of your
      * function code and configuration that can't be changed. An alias is a named resource that maps to a version, and
@@ -297,7 +365,7 @@ public interface AWSLambdaAsync extends AWSLambda {
      * To invoke your function directly, use <a>Invoke</a>. To invoke your function in response to events in other AWS
      * services, create an event source mapping (<a>CreateEventSourceMapping</a>), or configure a function trigger in
      * the other service. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html">Invoking Functions</a>.
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html">Invoking Functions</a>.
      * </p>
      * 
      * @param createFunctionRequest
@@ -318,6 +386,14 @@ public interface AWSLambdaAsync extends AWSLambda {
      * tracing.
      * </p>
      * <p>
+     * When you create a function, Lambda provisions an instance of the function and its supporting resources. If your
+     * function connects to a VPC, this process can take a minute or so. During this time, you can't invoke or modify
+     * the function. The <code>State</code>, <code>StateReason</code>, and <code>StateReasonCode</code> fields in the
+     * response from <a>GetFunctionConfiguration</a> indicate when the function is ready to invoke. For more
+     * information, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html">Function
+     * States</a>.
+     * </p>
+     * <p>
      * A function has an unpublished version, and can have published versions and aliases. The unpublished version
      * changes when you update your function's code and configuration. A published version is a snapshot of your
      * function code and configuration that can't be changed. An alias is a named resource that maps to a version, and
@@ -339,7 +415,7 @@ public interface AWSLambdaAsync extends AWSLambda {
      * To invoke your function directly, use <a>Invoke</a>. To invoke your function in response to events in other AWS
      * services, create an event source mapping (<a>CreateEventSourceMapping</a>), or configure a function trigger in
      * the other service. For more information, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invoking-lambda-functions.html">Invoking Functions</a>.
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html">Invoking Functions</a>.
      * </p>
      * 
      * @param createFunctionRequest
@@ -393,6 +469,10 @@ public interface AWSLambdaAsync extends AWSLambda {
      * Deletes an <a href="https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html">event source
      * mapping</a>. You can get the identifier of a mapping from the output of <a>ListEventSourceMappings</a>.
      * </p>
+     * <p>
+     * When you delete an event source mapping, it enters a <code>Deleting</code> state and might not be completely
+     * deleted for several seconds.
+     * </p>
      * 
      * @param deleteEventSourceMappingRequest
      * @return A Java Future containing the result of the DeleteEventSourceMapping operation returned by the service.
@@ -406,6 +486,10 @@ public interface AWSLambdaAsync extends AWSLambda {
      * <p>
      * Deletes an <a href="https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html">event source
      * mapping</a>. You can get the identifier of a mapping from the output of <a>ListEventSourceMappings</a>.
+     * </p>
+     * <p>
+     * When you delete an event source mapping, it enters a <code>Deleting</code> state and might not be completely
+     * deleted for several seconds.
      * </p>
      * 
      * @param deleteEventSourceMappingRequest
@@ -499,6 +583,47 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
+     * Deletes the configuration for asynchronous invocation for a function, version, or alias.
+     * </p>
+     * <p>
+     * To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * 
+     * @param deleteFunctionEventInvokeConfigRequest
+     * @return A Java Future containing the result of the DeleteFunctionEventInvokeConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.DeleteFunctionEventInvokeConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteFunctionEventInvokeConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteFunctionEventInvokeConfigResult> deleteFunctionEventInvokeConfigAsync(
+            DeleteFunctionEventInvokeConfigRequest deleteFunctionEventInvokeConfigRequest);
+
+    /**
+     * <p>
+     * Deletes the configuration for asynchronous invocation for a function, version, or alias.
+     * </p>
+     * <p>
+     * To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * 
+     * @param deleteFunctionEventInvokeConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteFunctionEventInvokeConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.DeleteFunctionEventInvokeConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteFunctionEventInvokeConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteFunctionEventInvokeConfigResult> deleteFunctionEventInvokeConfigAsync(
+            DeleteFunctionEventInvokeConfigRequest deleteFunctionEventInvokeConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteFunctionEventInvokeConfigRequest, DeleteFunctionEventInvokeConfigResult> asyncHandler);
+
+    /**
+     * <p>
      * Deletes a version of an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS
      * Lambda layer</a>. Deleted versions can no longer be viewed or added to functions. To avoid breaking functions, a
      * copy of the version remains in Lambda until no functions refer to it.
@@ -531,6 +656,41 @@ public interface AWSLambdaAsync extends AWSLambda {
      */
     java.util.concurrent.Future<DeleteLayerVersionResult> deleteLayerVersionAsync(DeleteLayerVersionRequest deleteLayerVersionRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteLayerVersionRequest, DeleteLayerVersionResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes the provisioned concurrency configuration for a function.
+     * </p>
+     * 
+     * @param deleteProvisionedConcurrencyConfigRequest
+     * @return A Java Future containing the result of the DeleteProvisionedConcurrencyConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.DeleteProvisionedConcurrencyConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteProvisionedConcurrencyConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteProvisionedConcurrencyConfigResult> deleteProvisionedConcurrencyConfigAsync(
+            DeleteProvisionedConcurrencyConfigRequest deleteProvisionedConcurrencyConfigRequest);
+
+    /**
+     * <p>
+     * Deletes the provisioned concurrency configuration for a function.
+     * </p>
+     * 
+     * @param deleteProvisionedConcurrencyConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteProvisionedConcurrencyConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.DeleteProvisionedConcurrencyConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/DeleteProvisionedConcurrencyConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteProvisionedConcurrencyConfigResult> deleteProvisionedConcurrencyConfigAsync(
+            DeleteProvisionedConcurrencyConfigRequest deleteProvisionedConcurrencyConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteProvisionedConcurrencyConfigRequest, DeleteProvisionedConcurrencyConfigResult> asyncHandler);
 
     /**
      * <p>
@@ -668,6 +828,39 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
+     * Returns details about the reserved concurrency configuration for a function. To set a concurrency limit for a
+     * function, use <a>PutFunctionConcurrency</a>.
+     * </p>
+     * 
+     * @param getFunctionConcurrencyRequest
+     * @return A Java Future containing the result of the GetFunctionConcurrency operation returned by the service.
+     * @sample AWSLambdaAsync.GetFunctionConcurrency
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetFunctionConcurrency" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetFunctionConcurrencyResult> getFunctionConcurrencyAsync(GetFunctionConcurrencyRequest getFunctionConcurrencyRequest);
+
+    /**
+     * <p>
+     * Returns details about the reserved concurrency configuration for a function. To set a concurrency limit for a
+     * function, use <a>PutFunctionConcurrency</a>.
+     * </p>
+     * 
+     * @param getFunctionConcurrencyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetFunctionConcurrency operation returned by the service.
+     * @sample AWSLambdaAsyncHandler.GetFunctionConcurrency
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetFunctionConcurrency" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<GetFunctionConcurrencyResult> getFunctionConcurrencyAsync(GetFunctionConcurrencyRequest getFunctionConcurrencyRequest,
+            com.amazonaws.handlers.AsyncHandler<GetFunctionConcurrencyRequest, GetFunctionConcurrencyResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns the version-specific settings of a Lambda function or version. The output includes only options that can
      * vary between versions of a function. To modify these settings, use <a>UpdateFunctionConfiguration</a>.
      * </p>
@@ -704,6 +897,47 @@ public interface AWSLambdaAsync extends AWSLambda {
      */
     java.util.concurrent.Future<GetFunctionConfigurationResult> getFunctionConfigurationAsync(GetFunctionConfigurationRequest getFunctionConfigurationRequest,
             com.amazonaws.handlers.AsyncHandler<GetFunctionConfigurationRequest, GetFunctionConfigurationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Retrieves the configuration for asynchronous invocation for a function, version, or alias.
+     * </p>
+     * <p>
+     * To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * 
+     * @param getFunctionEventInvokeConfigRequest
+     * @return A Java Future containing the result of the GetFunctionEventInvokeConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.GetFunctionEventInvokeConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetFunctionEventInvokeConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetFunctionEventInvokeConfigResult> getFunctionEventInvokeConfigAsync(
+            GetFunctionEventInvokeConfigRequest getFunctionEventInvokeConfigRequest);
+
+    /**
+     * <p>
+     * Retrieves the configuration for asynchronous invocation for a function, version, or alias.
+     * </p>
+     * <p>
+     * To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * 
+     * @param getFunctionEventInvokeConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetFunctionEventInvokeConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.GetFunctionEventInvokeConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetFunctionEventInvokeConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetFunctionEventInvokeConfigResult> getFunctionEventInvokeConfigAsync(
+            GetFunctionEventInvokeConfigRequest getFunctionEventInvokeConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<GetFunctionEventInvokeConfigRequest, GetFunctionEventInvokeConfigResult> asyncHandler);
 
     /**
      * <p>
@@ -847,22 +1081,63 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
+     * Retrieves the provisioned concurrency configuration for a function's alias or version.
+     * </p>
+     * 
+     * @param getProvisionedConcurrencyConfigRequest
+     * @return A Java Future containing the result of the GetProvisionedConcurrencyConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.GetProvisionedConcurrencyConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetProvisionedConcurrencyConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetProvisionedConcurrencyConfigResult> getProvisionedConcurrencyConfigAsync(
+            GetProvisionedConcurrencyConfigRequest getProvisionedConcurrencyConfigRequest);
+
+    /**
+     * <p>
+     * Retrieves the provisioned concurrency configuration for a function's alias or version.
+     * </p>
+     * 
+     * @param getProvisionedConcurrencyConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetProvisionedConcurrencyConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.GetProvisionedConcurrencyConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/GetProvisionedConcurrencyConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetProvisionedConcurrencyConfigResult> getProvisionedConcurrencyConfigAsync(
+            GetProvisionedConcurrencyConfigRequest getProvisionedConcurrencyConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<GetProvisionedConcurrencyConfigRequest, GetProvisionedConcurrencyConfigResult> asyncHandler);
+
+    /**
+     * <p>
      * Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or
      * asynchronously. To invoke a function asynchronously, set <code>InvocationType</code> to <code>Event</code>.
      * </p>
      * <p>
-     * For synchronous invocation, details about the function response, including errors, are included in the response
-     * body and headers. For either invocation type, you can find more information in the <a
+     * For <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html">synchronous invocation</a>,
+     * details about the function response, including errors, are included in the response body and headers. For either
+     * invocation type, you can find more information in the <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html">execution log</a> and <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/dlq.html">trace</a>. To record function errors for
-     * asynchronous invocations, configure your function with a <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/dlq.html">dead letter queue</a>.
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html">trace</a>.
      * </p>
      * <p>
      * When an error occurs, your function may be invoked multiple times. Retry behavior varies by error type, client,
      * event source, and invocation type. For example, if you invoke a function asynchronously and it returns an error,
      * Lambda executes the function up to two more times. For more information, see <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html">Retry Behavior</a>.
+     * </p>
+     * <p>
+     * For <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html">asynchronous invocation</a>,
+     * Lambda adds events to a queue before sending them to your function. If your function does not have enough
+     * capacity to keep up with the queue, events may be lost. Occasionally, your function may receive the same event
+     * multiple times, even if no error occurs. To retain events that were not processed, configure your function with a
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq">dead-letter queue</a>.
      * </p>
      * <p>
      * The status code in the API response doesn't reflect function errors. Error codes are reserved for errors that
@@ -896,18 +1171,24 @@ public interface AWSLambdaAsync extends AWSLambda {
      * asynchronously. To invoke a function asynchronously, set <code>InvocationType</code> to <code>Event</code>.
      * </p>
      * <p>
-     * For synchronous invocation, details about the function response, including errors, are included in the response
-     * body and headers. For either invocation type, you can find more information in the <a
+     * For <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html">synchronous invocation</a>,
+     * details about the function response, including errors, are included in the response body and headers. For either
+     * invocation type, you can find more information in the <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html">execution log</a> and <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/dlq.html">trace</a>. To record function errors for
-     * asynchronous invocations, configure your function with a <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/dlq.html">dead letter queue</a>.
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html">trace</a>.
      * </p>
      * <p>
      * When an error occurs, your function may be invoked multiple times. Retry behavior varies by error type, client,
      * event source, and invocation type. For example, if you invoke a function asynchronously and it returns an error,
      * Lambda executes the function up to two more times. For more information, see <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html">Retry Behavior</a>.
+     * </p>
+     * <p>
+     * For <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html">asynchronous invocation</a>,
+     * Lambda adds events to a queue before sending them to your function. If your function does not have enough
+     * capacity to keep up with the queue, events may be lost. Occasionally, your function may receive the same event
+     * multiple times, even if no error occurs. To retain events that were not processed, configure your function with a
+     * <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq">dead-letter queue</a>.
      * </p>
      * <p>
      * The status code in the API response doesn't reflect function errors. Error codes are reserved for errors that
@@ -1066,7 +1347,49 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns a list of Lambda functions, with the version-specific configuration of each.
+     * Retrieves a list of configurations for asynchronous invocation for a function.
+     * </p>
+     * <p>
+     * To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * 
+     * @param listFunctionEventInvokeConfigsRequest
+     * @return A Java Future containing the result of the ListFunctionEventInvokeConfigs operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.ListFunctionEventInvokeConfigs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListFunctionEventInvokeConfigs"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListFunctionEventInvokeConfigsResult> listFunctionEventInvokeConfigsAsync(
+            ListFunctionEventInvokeConfigsRequest listFunctionEventInvokeConfigsRequest);
+
+    /**
+     * <p>
+     * Retrieves a list of configurations for asynchronous invocation for a function.
+     * </p>
+     * <p>
+     * To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * 
+     * @param listFunctionEventInvokeConfigsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListFunctionEventInvokeConfigs operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.ListFunctionEventInvokeConfigs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListFunctionEventInvokeConfigs"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListFunctionEventInvokeConfigsResult> listFunctionEventInvokeConfigsAsync(
+            ListFunctionEventInvokeConfigsRequest listFunctionEventInvokeConfigsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListFunctionEventInvokeConfigsRequest, ListFunctionEventInvokeConfigsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50
+     * functions per call.
      * </p>
      * <p>
      * Set <code>FunctionVersion</code> to <code>ALL</code> to include all published versions of each function in
@@ -1083,7 +1406,8 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
-     * Returns a list of Lambda functions, with the version-specific configuration of each.
+     * Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50
+     * functions per call.
      * </p>
      * <p>
      * Set <code>FunctionVersion</code> to <code>ALL</code> to include all published versions of each function in
@@ -1194,6 +1518,41 @@ public interface AWSLambdaAsync extends AWSLambda {
 
     /**
      * <p>
+     * Retrieves a list of provisioned concurrency configurations for a function.
+     * </p>
+     * 
+     * @param listProvisionedConcurrencyConfigsRequest
+     * @return A Java Future containing the result of the ListProvisionedConcurrencyConfigs operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.ListProvisionedConcurrencyConfigs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListProvisionedConcurrencyConfigs"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListProvisionedConcurrencyConfigsResult> listProvisionedConcurrencyConfigsAsync(
+            ListProvisionedConcurrencyConfigsRequest listProvisionedConcurrencyConfigsRequest);
+
+    /**
+     * <p>
+     * Retrieves a list of provisioned concurrency configurations for a function.
+     * </p>
+     * 
+     * @param listProvisionedConcurrencyConfigsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListProvisionedConcurrencyConfigs operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.ListProvisionedConcurrencyConfigs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/ListProvisionedConcurrencyConfigs"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListProvisionedConcurrencyConfigsResult> listProvisionedConcurrencyConfigsAsync(
+            ListProvisionedConcurrencyConfigsRequest listProvisionedConcurrencyConfigsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListProvisionedConcurrencyConfigsRequest, ListProvisionedConcurrencyConfigsResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a function's <a href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a>. You can also
      * view tags with <a>GetFunction</a>.
      * </p>
@@ -1228,7 +1587,7 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Returns a list of <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">versions</a>,
-     * with the version-specific configuration of each.
+     * with the version-specific configuration of each. Lambda returns up to 50 versions per call.
      * </p>
      * 
      * @param listVersionsByFunctionRequest
@@ -1242,7 +1601,7 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Returns a list of <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">versions</a>,
-     * with the version-specific configuration of each.
+     * with the version-specific configuration of each. Lambda returns up to 50 versions per call.
      * </p>
      * 
      * @param listVersionsByFunctionRequest
@@ -1261,7 +1620,7 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Creates an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>
-     * from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same version name, a new version
+     * from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same layer name, a new version
      * is created.
      * </p>
      * <p>
@@ -1279,7 +1638,7 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Creates an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda layer</a>
-     * from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same version name, a new version
+     * from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same layer name, a new version
      * is created.
      * </p>
      * <p>
@@ -1362,7 +1721,7 @@ public interface AWSLambdaAsync extends AWSLambda {
      * setting for a function.
      * </p>
      * <p>
-     * Use <a>GetAccountSettings</a> to see your regional concurrency limit. You can reserve concurrency for as many
+     * Use <a>GetAccountSettings</a> to see your Regional concurrency limit. You can reserve concurrency for as many
      * functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that
      * aren't configured with a per-function limit. For more information, see <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.
@@ -1388,7 +1747,7 @@ public interface AWSLambdaAsync extends AWSLambda {
      * setting for a function.
      * </p>
      * <p>
-     * Use <a>GetAccountSettings</a> to see your regional concurrency limit. You can reserve concurrency for as many
+     * Use <a>GetAccountSettings</a> to see your Regional concurrency limit. You can reserve concurrency for as many
      * functions as you like, as long as you leave at least 100 simultaneous executions unreserved for functions that
      * aren't configured with a per-function limit. For more information, see <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.
@@ -1406,6 +1765,108 @@ public interface AWSLambdaAsync extends AWSLambda {
      */
     java.util.concurrent.Future<PutFunctionConcurrencyResult> putFunctionConcurrencyAsync(PutFunctionConcurrencyRequest putFunctionConcurrencyRequest,
             com.amazonaws.handlers.AsyncHandler<PutFunctionConcurrencyRequest, PutFunctionConcurrencyResult> asyncHandler);
+
+    /**
+     * <p>
+     * Configures options for <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html">asynchronous
+     * invocation</a> on a function, version, or alias. If a configuration already exists for a function, version, or
+     * alias, this operation overwrites it. If you exclude any settings, they are removed. To set one option without
+     * affecting existing settings for other options, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * <p>
+     * By default, Lambda retries an asynchronous invocation twice if the function returns an error. It retains events
+     * in a queue for up to six hours. When an event fails all processing attempts or stays in the asynchronous
+     * invocation queue for too long, Lambda discards it. To retain discarded events, configure a dead-letter queue with
+     * <a>UpdateFunctionConfiguration</a>.
+     * </p>
+     * <p>
+     * To send an invocation record to a queue, topic, function, or event bus, specify a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations"
+     * >destination</a>. You can configure separate destinations for successful invocations (on-success) and events that
+     * fail all processing attempts (on-failure). You can configure destinations in addition to or instead of a
+     * dead-letter queue.
+     * </p>
+     * 
+     * @param putFunctionEventInvokeConfigRequest
+     * @return A Java Future containing the result of the PutFunctionEventInvokeConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.PutFunctionEventInvokeConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PutFunctionEventInvokeConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutFunctionEventInvokeConfigResult> putFunctionEventInvokeConfigAsync(
+            PutFunctionEventInvokeConfigRequest putFunctionEventInvokeConfigRequest);
+
+    /**
+     * <p>
+     * Configures options for <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html">asynchronous
+     * invocation</a> on a function, version, or alias. If a configuration already exists for a function, version, or
+     * alias, this operation overwrites it. If you exclude any settings, they are removed. To set one option without
+     * affecting existing settings for other options, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * <p>
+     * By default, Lambda retries an asynchronous invocation twice if the function returns an error. It retains events
+     * in a queue for up to six hours. When an event fails all processing attempts or stays in the asynchronous
+     * invocation queue for too long, Lambda discards it. To retain discarded events, configure a dead-letter queue with
+     * <a>UpdateFunctionConfiguration</a>.
+     * </p>
+     * <p>
+     * To send an invocation record to a queue, topic, function, or event bus, specify a <a
+     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-async-destinations"
+     * >destination</a>. You can configure separate destinations for successful invocations (on-success) and events that
+     * fail all processing attempts (on-failure). You can configure destinations in addition to or instead of a
+     * dead-letter queue.
+     * </p>
+     * 
+     * @param putFunctionEventInvokeConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutFunctionEventInvokeConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.PutFunctionEventInvokeConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PutFunctionEventInvokeConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutFunctionEventInvokeConfigResult> putFunctionEventInvokeConfigAsync(
+            PutFunctionEventInvokeConfigRequest putFunctionEventInvokeConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<PutFunctionEventInvokeConfigRequest, PutFunctionEventInvokeConfigResult> asyncHandler);
+
+    /**
+     * <p>
+     * Adds a provisioned concurrency configuration to a function's alias or version.
+     * </p>
+     * 
+     * @param putProvisionedConcurrencyConfigRequest
+     * @return A Java Future containing the result of the PutProvisionedConcurrencyConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.PutProvisionedConcurrencyConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PutProvisionedConcurrencyConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutProvisionedConcurrencyConfigResult> putProvisionedConcurrencyConfigAsync(
+            PutProvisionedConcurrencyConfigRequest putProvisionedConcurrencyConfigRequest);
+
+    /**
+     * <p>
+     * Adds a provisioned concurrency configuration to a function's alias or version.
+     * </p>
+     * 
+     * @param putProvisionedConcurrencyConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutProvisionedConcurrencyConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.PutProvisionedConcurrencyConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/PutProvisionedConcurrencyConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutProvisionedConcurrencyConfigResult> putProvisionedConcurrencyConfigAsync(
+            PutProvisionedConcurrencyConfigRequest putProvisionedConcurrencyConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<PutProvisionedConcurrencyConfigRequest, PutProvisionedConcurrencyConfigResult> asyncHandler);
 
     /**
      * <p>
@@ -1579,6 +2040,36 @@ public interface AWSLambdaAsync extends AWSLambda {
      * Updates an event source mapping. You can change the function that AWS Lambda invokes, or pause invocation and
      * resume later from the same location.
      * </p>
+     * <p>
+     * The following error handling options are only available for stream sources (DynamoDB and Kinesis):
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>BisectBatchOnFunctionError</code> - If the function returns an error, split the batch in two and retry.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DestinationConfig</code> - Send discarded records to an Amazon SQS queue or Amazon SNS topic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaximumRecordAgeInSeconds</code> - Discard records older than the specified age.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaximumRetryAttempts</code> - Discard records after the specified number of retries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ParallelizationFactor</code> - Process multiple batches from each shard concurrently.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateEventSourceMappingRequest
      * @return A Java Future containing the result of the UpdateEventSourceMapping operation returned by the service.
@@ -1593,6 +2084,36 @@ public interface AWSLambdaAsync extends AWSLambda {
      * Updates an event source mapping. You can change the function that AWS Lambda invokes, or pause invocation and
      * resume later from the same location.
      * </p>
+     * <p>
+     * The following error handling options are only available for stream sources (DynamoDB and Kinesis):
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>BisectBatchOnFunctionError</code> - If the function returns an error, split the batch in two and retry.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>DestinationConfig</code> - Send discarded records to an Amazon SQS queue or Amazon SNS topic.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaximumRecordAgeInSeconds</code> - Discard records older than the specified age.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaximumRetryAttempts</code> - Discard records after the specified number of retries.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ParallelizationFactor</code> - Process multiple batches from each shard concurrently.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param updateEventSourceMappingRequest
      * @param asyncHandler
@@ -1651,6 +2172,14 @@ public interface AWSLambdaAsync extends AWSLambda {
      * Modify the version-specific settings of a Lambda function.
      * </p>
      * <p>
+     * When you update a function, Lambda provisions an instance of the function and its supporting resources. If your
+     * function connects to a VPC, this process can take a minute. During this time, you can't modify the function, but
+     * you can still invoke it. The <code>LastUpdateStatus</code>, <code>LastUpdateStatusReason</code>, and
+     * <code>LastUpdateStatusReasonCode</code> fields in the response from <a>GetFunctionConfiguration</a> indicate when
+     * the update is complete and the function is processing events with the new configuration. For more information,
+     * see <a href="https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html">Function States</a>.
+     * </p>
+     * <p>
      * These settings can vary between versions of a function and are locked when you publish a version. You can't
      * modify the configuration of a published version, only the unpublished version.
      * </p>
@@ -1671,6 +2200,14 @@ public interface AWSLambdaAsync extends AWSLambda {
     /**
      * <p>
      * Modify the version-specific settings of a Lambda function.
+     * </p>
+     * <p>
+     * When you update a function, Lambda provisions an instance of the function and its supporting resources. If your
+     * function connects to a VPC, this process can take a minute. During this time, you can't modify the function, but
+     * you can still invoke it. The <code>LastUpdateStatus</code>, <code>LastUpdateStatusReason</code>, and
+     * <code>LastUpdateStatusReasonCode</code> fields in the response from <a>GetFunctionConfiguration</a> indicate when
+     * the update is complete and the function is processing events with the new configuration. For more information,
+     * see <a href="https://docs.aws.amazon.com/lambda/latest/dg/functions-states.html">Function States</a>.
      * </p>
      * <p>
      * These settings can vary between versions of a function and are locked when you publish a version. You can't
@@ -1694,5 +2231,46 @@ public interface AWSLambdaAsync extends AWSLambda {
     java.util.concurrent.Future<UpdateFunctionConfigurationResult> updateFunctionConfigurationAsync(
             UpdateFunctionConfigurationRequest updateFunctionConfigurationRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateFunctionConfigurationRequest, UpdateFunctionConfigurationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates the configuration for asynchronous invocation for a function, version, or alias.
+     * </p>
+     * <p>
+     * To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * 
+     * @param updateFunctionEventInvokeConfigRequest
+     * @return A Java Future containing the result of the UpdateFunctionEventInvokeConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsync.UpdateFunctionEventInvokeConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionEventInvokeConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateFunctionEventInvokeConfigResult> updateFunctionEventInvokeConfigAsync(
+            UpdateFunctionEventInvokeConfigRequest updateFunctionEventInvokeConfigRequest);
+
+    /**
+     * <p>
+     * Updates the configuration for asynchronous invocation for a function, version, or alias.
+     * </p>
+     * <p>
+     * To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.
+     * </p>
+     * 
+     * @param updateFunctionEventInvokeConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateFunctionEventInvokeConfig operation returned by the
+     *         service.
+     * @sample AWSLambdaAsyncHandler.UpdateFunctionEventInvokeConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31/UpdateFunctionEventInvokeConfig"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateFunctionEventInvokeConfigResult> updateFunctionEventInvokeConfigAsync(
+            UpdateFunctionEventInvokeConfigRequest updateFunctionEventInvokeConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateFunctionEventInvokeConfigRequest, UpdateFunctionEventInvokeConfigResult> asyncHandler);
 
 }

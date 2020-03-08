@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,12 +33,22 @@ public class AbstractAmazonTranscribe implements AmazonTranscribe {
     }
 
     @Override
+    public CreateVocabularyFilterResult createVocabularyFilter(CreateVocabularyFilterRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteTranscriptionJobResult deleteTranscriptionJob(DeleteTranscriptionJobRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public DeleteVocabularyResult deleteVocabulary(DeleteVocabularyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteVocabularyFilterResult deleteVocabularyFilter(DeleteVocabularyFilterRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -53,6 +63,11 @@ public class AbstractAmazonTranscribe implements AmazonTranscribe {
     }
 
     @Override
+    public GetVocabularyFilterResult getVocabularyFilter(GetVocabularyFilterRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListTranscriptionJobsResult listTranscriptionJobs(ListTranscriptionJobsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -63,12 +78,22 @@ public class AbstractAmazonTranscribe implements AmazonTranscribe {
     }
 
     @Override
+    public ListVocabularyFiltersResult listVocabularyFilters(ListVocabularyFiltersRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public StartTranscriptionJobResult startTranscriptionJob(StartTranscriptionJobRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public UpdateVocabularyResult updateVocabulary(UpdateVocabularyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateVocabularyFilterResult updateVocabularyFilter(UpdateVocabularyFilterRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

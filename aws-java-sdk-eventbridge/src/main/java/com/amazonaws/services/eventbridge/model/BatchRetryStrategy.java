@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,8 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * The retry strategy to use for failed jobs if the target is an AWS Batch job. If you specify a retry strategy here, it
- * overrides the retry strategy defined in the job definition.
+ * The retry strategy to use for failed jobs, if the target is an AWS Batch job. If you specify a retry strategy here,
+ * it overrides the retry strategy defined in the job definition.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eventbridge-2015-10-07/BatchRetryStrategy" target="_top">AWS API

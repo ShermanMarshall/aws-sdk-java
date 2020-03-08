@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DetachVolumeRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for DetachVolume.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DetachVolumeRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<DetachVolumeRequest> {
@@ -45,7 +43,7 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest implements Seri
     private Boolean force;
     /**
      * <p>
-     * The ID of the instance.
+     * The ID of the instance. If you are detaching a Multi-Attach enabled volume, you must specify an instance ID.
      * </p>
      */
     private String instanceId;
@@ -200,11 +198,12 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The ID of the instance.
+     * The ID of the instance. If you are detaching a Multi-Attach enabled volume, you must specify an instance ID.
      * </p>
      * 
      * @param instanceId
-     *        The ID of the instance.
+     *        The ID of the instance. If you are detaching a Multi-Attach enabled volume, you must specify an instance
+     *        ID.
      */
 
     public void setInstanceId(String instanceId) {
@@ -213,10 +212,11 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The ID of the instance.
+     * The ID of the instance. If you are detaching a Multi-Attach enabled volume, you must specify an instance ID.
      * </p>
      * 
-     * @return The ID of the instance.
+     * @return The ID of the instance. If you are detaching a Multi-Attach enabled volume, you must specify an instance
+     *         ID.
      */
 
     public String getInstanceId() {
@@ -225,11 +225,12 @@ public class DetachVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The ID of the instance.
+     * The ID of the instance. If you are detaching a Multi-Attach enabled volume, you must specify an instance ID.
      * </p>
      * 
      * @param instanceId
-     *        The ID of the instance.
+     *        The ID of the instance. If you are detaching a Multi-Attach enabled volume, you must specify an instance
+     *        ID.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

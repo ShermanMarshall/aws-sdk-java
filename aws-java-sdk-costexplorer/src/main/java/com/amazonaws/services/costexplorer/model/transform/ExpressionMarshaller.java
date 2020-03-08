@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,8 @@ public class ExpressionMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Dimensions").build();
     private static final MarshallingInfo<StructuredPojo> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Tags").build();
+    private static final MarshallingInfo<StructuredPojo> COSTCATEGORIES_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CostCategories").build();
 
     private static final ExpressionMarshaller instance = new ExpressionMarshaller();
 
@@ -60,6 +62,7 @@ public class ExpressionMarshaller {
             protocolMarshaller.marshall(expression.getNot(), NOT_BINDING);
             protocolMarshaller.marshall(expression.getDimensions(), DIMENSIONS_BINDING);
             protocolMarshaller.marshall(expression.getTags(), TAGS_BINDING);
+            protocolMarshaller.marshall(expression.getCostCategories(), COSTCATEGORIES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

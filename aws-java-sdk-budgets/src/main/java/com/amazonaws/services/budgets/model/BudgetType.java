@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,9 @@ public enum BudgetType {
     USAGE("USAGE"),
     COST("COST"),
     RI_UTILIZATION("RI_UTILIZATION"),
-    RI_COVERAGE("RI_COVERAGE");
+    RI_COVERAGE("RI_COVERAGE"),
+    SAVINGS_PLANS_UTILIZATION("SAVINGS_PLANS_UTILIZATION"),
+    SAVINGS_PLANS_COVERAGE("SAVINGS_PLANS_COVERAGE");
 
     private String value;
 

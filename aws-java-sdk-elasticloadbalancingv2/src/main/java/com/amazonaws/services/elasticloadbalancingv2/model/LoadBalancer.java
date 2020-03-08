@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,8 +64,8 @@ public class LoadBalancer implements Serializable, Cloneable {
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      */
     private String scheme;
@@ -315,8 +315,8 @@ public class LoadBalancer implements Serializable, Cloneable {
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * 
      * @param scheme
@@ -326,7 +326,7 @@ public class LoadBalancer implements Serializable, Cloneable {
      *        <p>
      *        The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *        balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *        balancers can only route requests from clients with access to the VPC for the load balancer.
+     *        balancers can route requests only from clients with access to the VPC for the load balancer.
      * @see LoadBalancerSchemeEnum
      */
 
@@ -342,8 +342,8 @@ public class LoadBalancer implements Serializable, Cloneable {
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * 
      * @return The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an
@@ -352,7 +352,7 @@ public class LoadBalancer implements Serializable, Cloneable {
      *         <p>
      *         The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *         balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *         balancers can only route requests from clients with access to the VPC for the load balancer.
+     *         balancers can route requests only from clients with access to the VPC for the load balancer.
      * @see LoadBalancerSchemeEnum
      */
 
@@ -368,8 +368,8 @@ public class LoadBalancer implements Serializable, Cloneable {
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * 
      * @param scheme
@@ -379,7 +379,7 @@ public class LoadBalancer implements Serializable, Cloneable {
      *        <p>
      *        The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *        balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *        balancers can only route requests from clients with access to the VPC for the load balancer.
+     *        balancers can route requests only from clients with access to the VPC for the load balancer.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LoadBalancerSchemeEnum
      */
@@ -397,8 +397,8 @@ public class LoadBalancer implements Serializable, Cloneable {
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * 
      * @param scheme
@@ -408,7 +408,7 @@ public class LoadBalancer implements Serializable, Cloneable {
      *        <p>
      *        The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *        balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *        balancers can only route requests from clients with access to the VPC for the load balancer.
+     *        balancers can route requests only from clients with access to the VPC for the load balancer.
      * @see LoadBalancerSchemeEnum
      */
 
@@ -424,8 +424,8 @@ public class LoadBalancer implements Serializable, Cloneable {
      * </p>
      * <p>
      * The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer
-     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can only
-     * route requests from clients with access to the VPC for the load balancer.
+     * is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route
+     * requests only from clients with access to the VPC for the load balancer.
      * </p>
      * 
      * @param scheme
@@ -435,7 +435,7 @@ public class LoadBalancer implements Serializable, Cloneable {
      *        <p>
      *        The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load
      *        balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load
-     *        balancers can only route requests from clients with access to the VPC for the load balancer.
+     *        balancers can route requests only from clients with access to the VPC for the load balancer.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LoadBalancerSchemeEnum
      */

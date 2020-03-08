@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,8 +19,8 @@ import javax.annotation.Generated;
  * For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.
  * </p>
  * <p>
- * For all OrganizationConfigRule APIs, AWS Config throws an exception if APIs are called from member accounts. All APIs
- * must be called from organization master account.
+ * For all OrganizationConfigRule and OrganizationConformancePack APIs, AWS Config throws an exception if APIs are
+ * called from member accounts. All APIs must be called from organization master account.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

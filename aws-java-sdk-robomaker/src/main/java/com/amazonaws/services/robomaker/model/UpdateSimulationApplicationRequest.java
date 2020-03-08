@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,7 +45,7 @@ public class UpdateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
     private SimulationSoftwareSuite simulationSoftwareSuite;
     /**
      * <p>
-     * Information about the robot software suite.
+     * Information about the robot software suite (ROS distribution).
      * </p>
      */
     private RobotSoftwareSuite robotSoftwareSuite;
@@ -214,11 +214,11 @@ public class UpdateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Information about the robot software suite.
+     * Information about the robot software suite (ROS distribution).
      * </p>
      * 
      * @param robotSoftwareSuite
-     *        Information about the robot software suite.
+     *        Information about the robot software suite (ROS distribution).
      */
 
     public void setRobotSoftwareSuite(RobotSoftwareSuite robotSoftwareSuite) {
@@ -227,10 +227,10 @@ public class UpdateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Information about the robot software suite.
+     * Information about the robot software suite (ROS distribution).
      * </p>
      * 
-     * @return Information about the robot software suite.
+     * @return Information about the robot software suite (ROS distribution).
      */
 
     public RobotSoftwareSuite getRobotSoftwareSuite() {
@@ -239,11 +239,11 @@ public class UpdateSimulationApplicationRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Information about the robot software suite.
+     * Information about the robot software suite (ROS distribution).
      * </p>
      * 
      * @param robotSoftwareSuite
-     *        Information about the robot software suite.
+     *        Information about the robot software suite (ROS distribution).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

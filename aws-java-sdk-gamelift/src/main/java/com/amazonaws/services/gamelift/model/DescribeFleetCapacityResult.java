@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,8 +28,8 @@ public class DescribeFleetCapacityResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to
-     * retrieve capacity information for all fleets.
+     * A collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty
+     * to retrieve capacity information for all fleets.
      * </p>
      */
     private java.util.List<FleetCapacity> fleetCapacity;
@@ -43,11 +43,11 @@ public class DescribeFleetCapacityResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to
-     * retrieve capacity information for all fleets.
+     * A collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty
+     * to retrieve capacity information for all fleets.
      * </p>
      * 
-     * @return Collection of objects containing capacity information for each requested fleet ID. Leave this parameter
+     * @return A collection of objects containing capacity information for each requested fleet ID. Leave this parameter
      *         empty to retrieve capacity information for all fleets.
      */
 
@@ -57,12 +57,12 @@ public class DescribeFleetCapacityResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to
-     * retrieve capacity information for all fleets.
+     * A collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty
+     * to retrieve capacity information for all fleets.
      * </p>
      * 
      * @param fleetCapacity
-     *        Collection of objects containing capacity information for each requested fleet ID. Leave this parameter
+     *        A collection of objects containing capacity information for each requested fleet ID. Leave this parameter
      *        empty to retrieve capacity information for all fleets.
      */
 
@@ -77,8 +77,8 @@ public class DescribeFleetCapacityResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to
-     * retrieve capacity information for all fleets.
+     * A collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty
+     * to retrieve capacity information for all fleets.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -87,7 +87,7 @@ public class DescribeFleetCapacityResult extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param fleetCapacity
-     *        Collection of objects containing capacity information for each requested fleet ID. Leave this parameter
+     *        A collection of objects containing capacity information for each requested fleet ID. Leave this parameter
      *        empty to retrieve capacity information for all fleets.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -104,12 +104,12 @@ public class DescribeFleetCapacityResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to
-     * retrieve capacity information for all fleets.
+     * A collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty
+     * to retrieve capacity information for all fleets.
      * </p>
      * 
      * @param fleetCapacity
-     *        Collection of objects containing capacity information for each requested fleet ID. Leave this parameter
+     *        A collection of objects containing capacity information for each requested fleet ID. Leave this parameter
      *        empty to retrieve capacity information for all fleets.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

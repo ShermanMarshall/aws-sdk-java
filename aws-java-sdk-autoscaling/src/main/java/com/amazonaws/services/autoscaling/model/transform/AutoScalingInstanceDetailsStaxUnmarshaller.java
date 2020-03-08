@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,6 +48,11 @@ public class AutoScalingInstanceDetailsStaxUnmarshaller implements Unmarshaller<
                     continue;
                 }
 
+                if (context.testExpression("InstanceType", targetDepth)) {
+                    autoScalingInstanceDetails.setInstanceType(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
                 if (context.testExpression("AutoScalingGroupName", targetDepth)) {
                     autoScalingInstanceDetails.setAutoScalingGroupName(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
@@ -80,6 +85,11 @@ public class AutoScalingInstanceDetailsStaxUnmarshaller implements Unmarshaller<
 
                 if (context.testExpression("ProtectedFromScaleIn", targetDepth)) {
                     autoScalingInstanceDetails.setProtectedFromScaleIn(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("WeightedCapacity", targetDepth)) {
+                    autoScalingInstanceDetails.setWeightedCapacity(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

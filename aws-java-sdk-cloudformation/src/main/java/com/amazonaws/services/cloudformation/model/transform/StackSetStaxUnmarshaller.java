@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -114,6 +114,32 @@ public class StackSetStaxUnmarshaller implements Unmarshaller<StackSet, StaxUnma
                     stackSet.setExecutionRoleName(StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
+
+                if (context.testExpression("StackSetDriftDetectionDetails", targetDepth)) {
+                    stackSet.setStackSetDriftDetectionDetails(StackSetDriftDetectionDetailsStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("AutoDeployment", targetDepth)) {
+                    stackSet.setAutoDeployment(AutoDeploymentStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("PermissionModel", targetDepth)) {
+                    stackSet.setPermissionModel(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("OrganizationalUnitIds", targetDepth)) {
+                    stackSet.withOrganizationalUnitIds(new ArrayList<String>());
+                    continue;
+                }
+
+                if (context.testExpression("OrganizationalUnitIds/member", targetDepth)) {
+                    stackSet.withOrganizationalUnitIds(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return stackSet;

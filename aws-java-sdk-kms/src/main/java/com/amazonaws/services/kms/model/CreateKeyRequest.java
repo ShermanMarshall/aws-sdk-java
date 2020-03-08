@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -61,7 +61,7 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * <p>
-     * The key policy size limit is 32 kilobytes (32768 bytes).
+     * The key policy size quota is 32 kilobytes (32768 bytes).
      * </p>
      */
     private String policy;
@@ -76,30 +76,151 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private String description;
     /**
      * <p>
-     * The cryptographic operations for which you can use the CMK. The only valid value is <code>ENCRYPT_DECRYPT</code>,
-     * which means you can use the CMK to encrypt and decrypt data.
+     * Determines the cryptographic operations for which you can use the CMK. The default value is
+     * <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     * <code>KeyUsage</code> value after the CMK is created.
      * </p>
+     * <p>
+     * Select only one valid value.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * </ul>
      */
     private String keyUsage;
     /**
      * <p>
-     * The source of the key material for the CMK. You cannot change the origin after you create the CMK.
+     * Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with a
+     * 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     * Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * <p>
-     * The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
+     * The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an asymmetric key
+     * pair. It also determines the encryption algorithms or signing algorithms that the CMK supports. You can't change
+     * the <code>CustomerMasterKeySpec</code> after the CMK is created. To further restrict the algorithms that can be
+     * used with the CMK, use a condition key in its key policy or IAM policy. For more information, see <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     * >kms:EncryptionAlgorithm</a> or <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     * >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <important>
+     * <p>
+     * <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated with AWS
+     * KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs. For help
+     * determining whether a CMK is symmetric or asymmetric, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric and
+     * Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * </important>
+     * <p>
+     * AWS KMS supports the following key specs for CMKs:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Symmetric key (default)
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric RSA key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>RSA_2048</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_3072</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_4096</code>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric NIST-recommended elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P256</code> (secp256r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P384</code> (secp384r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P521</code> (secp521r1)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Other asymmetric elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     */
+    private String customerMasterKeySpec;
+    /**
+     * <p>
+     * The source of the key material for the CMK. You cannot change the origin after you create the CMK. The default is
+     * <code>AWS_KMS</code>, which means AWS KMS creates the key material.
      * </p>
      * <p>
      * When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you can
      * import key material from your existing key management infrastructure. For more information about importing key
      * material into AWS KMS, see <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in
-     * the <i>AWS Key Management Service Developer Guide</i>.
+     * the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for symmetric CMKs.
      * </p>
      * <p>
      * When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>
      * and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     * <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     * <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for symmetric
+     * CMKs.
      * </p>
      */
     private String origin;
@@ -111,6 +232,9 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * specify the <code>Origin</code> parameter with a value of <code>AWS_CLOUDHSM</code>. The AWS CloudHSM cluster
      * that is associated with the custom key store must have at least two active HSMs, each in a different Availability
      * Zone in the Region.
+     * </p>
+     * <p>
+     * This parameter is valid only for symmetric CMKs. You cannot create an asymmetric CMK in a custom key store.
      * </p>
      * <p>
      * To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.
@@ -152,12 +276,17 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
     private Boolean bypassPolicyLockoutSafetyCheck;
     /**
      * <p>
-     * One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but
-     * tag values can be empty (null) strings.
+     * One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     * required, but the tag value can be an empty (null) string.
      * </p>
      * <p>
-     * Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag
-     * the CMK after it is created using <a>TagResource</a>.
+     * When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs aggregated by
+     * tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     * </p>
+     * <p>
+     * Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the <a>TagResource</a>
+     * operation.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
@@ -198,7 +327,7 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * <p>
-     * The key policy size limit is 32 kilobytes (32768 bytes).
+     * The key policy size quota is 32 kilobytes (32768 bytes).
      * </p>
      * 
      * @param policy
@@ -236,7 +365,7 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      *        Key Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.
      *        </p>
      *        <p>
-     *        The key policy size limit is 32 kilobytes (32768 bytes).
+     *        The key policy size quota is 32 kilobytes (32768 bytes).
      */
 
     public void setPolicy(String policy) {
@@ -279,7 +408,7 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * <p>
-     * The key policy size limit is 32 kilobytes (32768 bytes).
+     * The key policy size quota is 32 kilobytes (32768 bytes).
      * </p>
      * 
      * @return The key policy to attach to the CMK.</p>
@@ -316,7 +445,7 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      *         Key Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.
      *         </p>
      *         <p>
-     *         The key policy size limit is 32 kilobytes (32768 bytes).
+     *         The key policy size quota is 32 kilobytes (32768 bytes).
      */
 
     public String getPolicy() {
@@ -359,7 +488,7 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * <p>
-     * The key policy size limit is 32 kilobytes (32768 bytes).
+     * The key policy size quota is 32 kilobytes (32768 bytes).
      * </p>
      * 
      * @param policy
@@ -397,7 +526,7 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      *        Key Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.
      *        </p>
      *        <p>
-     *        The key policy size limit is 32 kilobytes (32768 bytes).
+     *        The key policy size quota is 32 kilobytes (32768 bytes).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -463,13 +592,55 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The cryptographic operations for which you can use the CMK. The only valid value is <code>ENCRYPT_DECRYPT</code>,
-     * which means you can use the CMK to encrypt and decrypt data.
+     * Determines the cryptographic operations for which you can use the CMK. The default value is
+     * <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     * <code>KeyUsage</code> value after the CMK is created.
      * </p>
+     * <p>
+     * Select only one valid value.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param keyUsage
-     *        The cryptographic operations for which you can use the CMK. The only valid value is
-     *        <code>ENCRYPT_DECRYPT</code>, which means you can use the CMK to encrypt and decrypt data.
+     *        Determines the cryptographic operations for which you can use the CMK. The default value is
+     *        <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     *        <code>KeyUsage</code> value after the CMK is created.</p>
+     *        <p>
+     *        Select only one valid value.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or
+     *        <code>SIGN_VERIFY</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     *        </p>
+     *        </li>
      * @see KeyUsageType
      */
 
@@ -479,12 +650,54 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The cryptographic operations for which you can use the CMK. The only valid value is <code>ENCRYPT_DECRYPT</code>,
-     * which means you can use the CMK to encrypt and decrypt data.
+     * Determines the cryptographic operations for which you can use the CMK. The default value is
+     * <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     * <code>KeyUsage</code> value after the CMK is created.
      * </p>
+     * <p>
+     * Select only one valid value.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The cryptographic operations for which you can use the CMK. The only valid value is
-     *         <code>ENCRYPT_DECRYPT</code>, which means you can use the CMK to encrypt and decrypt data.
+     * @return Determines the cryptographic operations for which you can use the CMK. The default value is
+     *         <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     *         <code>KeyUsage</code> value after the CMK is created.</p>
+     *         <p>
+     *         Select only one valid value.
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or
+     *         <code>SIGN_VERIFY</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     *         </p>
+     *         </li>
      * @see KeyUsageType
      */
 
@@ -494,13 +707,55 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The cryptographic operations for which you can use the CMK. The only valid value is <code>ENCRYPT_DECRYPT</code>,
-     * which means you can use the CMK to encrypt and decrypt data.
+     * Determines the cryptographic operations for which you can use the CMK. The default value is
+     * <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     * <code>KeyUsage</code> value after the CMK is created.
      * </p>
+     * <p>
+     * Select only one valid value.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param keyUsage
-     *        The cryptographic operations for which you can use the CMK. The only valid value is
-     *        <code>ENCRYPT_DECRYPT</code>, which means you can use the CMK to encrypt and decrypt data.
+     *        Determines the cryptographic operations for which you can use the CMK. The default value is
+     *        <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     *        <code>KeyUsage</code> value after the CMK is created.</p>
+     *        <p>
+     *        Select only one valid value.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or
+     *        <code>SIGN_VERIFY</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see KeyUsageType
      */
@@ -512,13 +767,55 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The cryptographic operations for which you can use the CMK. The only valid value is <code>ENCRYPT_DECRYPT</code>,
-     * which means you can use the CMK to encrypt and decrypt data.
+     * Determines the cryptographic operations for which you can use the CMK. The default value is
+     * <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     * <code>KeyUsage</code> value after the CMK is created.
      * </p>
+     * <p>
+     * Select only one valid value.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param keyUsage
-     *        The cryptographic operations for which you can use the CMK. The only valid value is
-     *        <code>ENCRYPT_DECRYPT</code>, which means you can use the CMK to encrypt and decrypt data.
+     *        Determines the cryptographic operations for which you can use the CMK. The default value is
+     *        <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     *        <code>KeyUsage</code> value after the CMK is created.</p>
+     *        <p>
+     *        Select only one valid value.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or
+     *        <code>SIGN_VERIFY</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     *        </p>
+     *        </li>
      * @see KeyUsageType
      */
 
@@ -528,13 +825,55 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The cryptographic operations for which you can use the CMK. The only valid value is <code>ENCRYPT_DECRYPT</code>,
-     * which means you can use the CMK to encrypt and decrypt data.
+     * Determines the cryptographic operations for which you can use the CMK. The default value is
+     * <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     * <code>KeyUsage</code> value after the CMK is created.
      * </p>
+     * <p>
+     * Select only one valid value.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param keyUsage
-     *        The cryptographic operations for which you can use the CMK. The only valid value is
-     *        <code>ENCRYPT_DECRYPT</code>, which means you can use the CMK to encrypt and decrypt data.
+     *        Determines the cryptographic operations for which you can use the CMK. The default value is
+     *        <code>ENCRYPT_DECRYPT</code>. This parameter is required only for asymmetric CMKs. You can't change the
+     *        <code>KeyUsage</code> value after the CMK is created.</p>
+     *        <p>
+     *        Select only one valid value.
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For symmetric CMKs, omit the parameter or specify <code>ENCRYPT_DECRYPT</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For asymmetric CMKs with RSA key material, specify <code>ENCRYPT_DECRYPT</code> or
+     *        <code>SIGN_VERIFY</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For asymmetric CMKs with ECC key material, specify <code>SIGN_VERIFY</code>.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see KeyUsageType
      */
@@ -546,42 +885,1064 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The source of the key material for the CMK. You cannot change the origin after you create the CMK.
+     * Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with a
+     * 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     * Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.
      * </p>
      * <p>
-     * The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
+     * The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an asymmetric key
+     * pair. It also determines the encryption algorithms or signing algorithms that the CMK supports. You can't change
+     * the <code>CustomerMasterKeySpec</code> after the CMK is created. To further restrict the algorithms that can be
+     * used with the CMK, use a condition key in its key policy or IAM policy. For more information, see <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     * >kms:EncryptionAlgorithm</a> or <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     * >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <important>
+     * <p>
+     * <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated with AWS
+     * KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs. For help
+     * determining whether a CMK is symmetric or asymmetric, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric and
+     * Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * </important>
+     * <p>
+     * AWS KMS supports the following key specs for CMKs:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Symmetric key (default)
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric RSA key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>RSA_2048</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_3072</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_4096</code>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric NIST-recommended elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P256</code> (secp256r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P384</code> (secp384r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P521</code> (secp521r1)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Other asymmetric elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * 
+     * @param customerMasterKeySpec
+     *        Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with
+     *        a 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     *        Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+     *        <p>
+     *        The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an
+     *        asymmetric key pair. It also determines the encryption algorithms or signing algorithms that the CMK
+     *        supports. You can't change the <code>CustomerMasterKeySpec</code> after the CMK is created. To further
+     *        restrict the algorithms that can be used with the CMK, use a condition key in its key policy or IAM
+     *        policy. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     *        >kms:EncryptionAlgorithm</a> or <a href=
+     *        "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     *        >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        </p>
+     *        <important>
+     *        <p>
+     *        <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated
+     *        with AWS KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs.
+     *        For help determining whether a CMK is symmetric or asymmetric, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric
+     *        and Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        </p>
+     *        </important>
+     *        <p>
+     *        AWS KMS supports the following key specs for CMKs:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Symmetric key (default)
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Asymmetric RSA key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>RSA_2048</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RSA_3072</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RSA_4096</code>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Asymmetric NIST-recommended elliptic curve key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P256</code> (secp256r1)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P384</code> (secp384r1)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P521</code> (secp521r1)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Other asymmetric elliptic curve key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     * @see CustomerMasterKeySpec
+     */
+
+    public void setCustomerMasterKeySpec(String customerMasterKeySpec) {
+        this.customerMasterKeySpec = customerMasterKeySpec;
+    }
+
+    /**
+     * <p>
+     * Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with a
+     * 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     * Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an asymmetric key
+     * pair. It also determines the encryption algorithms or signing algorithms that the CMK supports. You can't change
+     * the <code>CustomerMasterKeySpec</code> after the CMK is created. To further restrict the algorithms that can be
+     * used with the CMK, use a condition key in its key policy or IAM policy. For more information, see <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     * >kms:EncryptionAlgorithm</a> or <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     * >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <important>
+     * <p>
+     * <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated with AWS
+     * KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs. For help
+     * determining whether a CMK is symmetric or asymmetric, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric and
+     * Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * </important>
+     * <p>
+     * AWS KMS supports the following key specs for CMKs:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Symmetric key (default)
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric RSA key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>RSA_2048</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_3072</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_4096</code>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric NIST-recommended elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P256</code> (secp256r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P384</code> (secp384r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P521</code> (secp521r1)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Other asymmetric elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * 
+     * @return Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK
+     *         with a 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK,
+     *         see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose
+     *         Your CMK Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+     *         <p>
+     *         The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an
+     *         asymmetric key pair. It also determines the encryption algorithms or signing algorithms that the CMK
+     *         supports. You can't change the <code>CustomerMasterKeySpec</code> after the CMK is created. To further
+     *         restrict the algorithms that can be used with the CMK, use a condition key in its key policy or IAM
+     *         policy. For more information, see <a href=
+     *         "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     *         >kms:EncryptionAlgorithm</a> or <a href=
+     *         "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     *         >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *         </p>
+     *         <important>
+     *         <p>
+     *         <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated
+     *         with AWS KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs.
+     *         For help determining whether a CMK is symmetric or asymmetric, see <a
+     *         href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric
+     *         and Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *         </p>
+     *         </important>
+     *         <p>
+     *         AWS KMS supports the following key specs for CMKs:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Symmetric key (default)
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Asymmetric RSA key pairs
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>RSA_2048</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>RSA_3072</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>RSA_4096</code>
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Asymmetric NIST-recommended elliptic curve key pairs
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>ECC_NIST_P256</code> (secp256r1)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ECC_NIST_P384</code> (secp384r1)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ECC_NIST_P521</code> (secp521r1)
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Other asymmetric elliptic curve key pairs
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     * @see CustomerMasterKeySpec
+     */
+
+    public String getCustomerMasterKeySpec() {
+        return this.customerMasterKeySpec;
+    }
+
+    /**
+     * <p>
+     * Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with a
+     * 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     * Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an asymmetric key
+     * pair. It also determines the encryption algorithms or signing algorithms that the CMK supports. You can't change
+     * the <code>CustomerMasterKeySpec</code> after the CMK is created. To further restrict the algorithms that can be
+     * used with the CMK, use a condition key in its key policy or IAM policy. For more information, see <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     * >kms:EncryptionAlgorithm</a> or <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     * >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <important>
+     * <p>
+     * <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated with AWS
+     * KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs. For help
+     * determining whether a CMK is symmetric or asymmetric, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric and
+     * Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * </important>
+     * <p>
+     * AWS KMS supports the following key specs for CMKs:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Symmetric key (default)
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric RSA key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>RSA_2048</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_3072</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_4096</code>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric NIST-recommended elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P256</code> (secp256r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P384</code> (secp384r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P521</code> (secp521r1)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Other asymmetric elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * 
+     * @param customerMasterKeySpec
+     *        Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with
+     *        a 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     *        Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+     *        <p>
+     *        The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an
+     *        asymmetric key pair. It also determines the encryption algorithms or signing algorithms that the CMK
+     *        supports. You can't change the <code>CustomerMasterKeySpec</code> after the CMK is created. To further
+     *        restrict the algorithms that can be used with the CMK, use a condition key in its key policy or IAM
+     *        policy. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     *        >kms:EncryptionAlgorithm</a> or <a href=
+     *        "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     *        >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        </p>
+     *        <important>
+     *        <p>
+     *        <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated
+     *        with AWS KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs.
+     *        For help determining whether a CMK is symmetric or asymmetric, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric
+     *        and Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        </p>
+     *        </important>
+     *        <p>
+     *        AWS KMS supports the following key specs for CMKs:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Symmetric key (default)
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Asymmetric RSA key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>RSA_2048</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RSA_3072</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RSA_4096</code>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Asymmetric NIST-recommended elliptic curve key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P256</code> (secp256r1)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P384</code> (secp384r1)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P521</code> (secp521r1)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Other asymmetric elliptic curve key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see CustomerMasterKeySpec
+     */
+
+    public CreateKeyRequest withCustomerMasterKeySpec(String customerMasterKeySpec) {
+        setCustomerMasterKeySpec(customerMasterKeySpec);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with a
+     * 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     * Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an asymmetric key
+     * pair. It also determines the encryption algorithms or signing algorithms that the CMK supports. You can't change
+     * the <code>CustomerMasterKeySpec</code> after the CMK is created. To further restrict the algorithms that can be
+     * used with the CMK, use a condition key in its key policy or IAM policy. For more information, see <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     * >kms:EncryptionAlgorithm</a> or <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     * >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <important>
+     * <p>
+     * <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated with AWS
+     * KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs. For help
+     * determining whether a CMK is symmetric or asymmetric, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric and
+     * Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * </important>
+     * <p>
+     * AWS KMS supports the following key specs for CMKs:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Symmetric key (default)
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric RSA key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>RSA_2048</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_3072</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_4096</code>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric NIST-recommended elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P256</code> (secp256r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P384</code> (secp384r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P521</code> (secp521r1)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Other asymmetric elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * 
+     * @param customerMasterKeySpec
+     *        Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with
+     *        a 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     *        Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+     *        <p>
+     *        The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an
+     *        asymmetric key pair. It also determines the encryption algorithms or signing algorithms that the CMK
+     *        supports. You can't change the <code>CustomerMasterKeySpec</code> after the CMK is created. To further
+     *        restrict the algorithms that can be used with the CMK, use a condition key in its key policy or IAM
+     *        policy. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     *        >kms:EncryptionAlgorithm</a> or <a href=
+     *        "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     *        >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        </p>
+     *        <important>
+     *        <p>
+     *        <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated
+     *        with AWS KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs.
+     *        For help determining whether a CMK is symmetric or asymmetric, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric
+     *        and Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        </p>
+     *        </important>
+     *        <p>
+     *        AWS KMS supports the following key specs for CMKs:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Symmetric key (default)
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Asymmetric RSA key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>RSA_2048</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RSA_3072</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RSA_4096</code>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Asymmetric NIST-recommended elliptic curve key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P256</code> (secp256r1)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P384</code> (secp384r1)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P521</code> (secp521r1)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Other asymmetric elliptic curve key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     * @see CustomerMasterKeySpec
+     */
+
+    public void setCustomerMasterKeySpec(CustomerMasterKeySpec customerMasterKeySpec) {
+        withCustomerMasterKeySpec(customerMasterKeySpec);
+    }
+
+    /**
+     * <p>
+     * Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with a
+     * 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     * Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <p>
+     * The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an asymmetric key
+     * pair. It also determines the encryption algorithms or signing algorithms that the CMK supports. You can't change
+     * the <code>CustomerMasterKeySpec</code> after the CMK is created. To further restrict the algorithms that can be
+     * used with the CMK, use a condition key in its key policy or IAM policy. For more information, see <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     * >kms:EncryptionAlgorithm</a> or <a href=
+     * "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     * >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * <important>
+     * <p>
+     * <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated with AWS
+     * KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs. For help
+     * determining whether a CMK is symmetric or asymmetric, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric and
+     * Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     * </p>
+     * </important>
+     * <p>
+     * AWS KMS supports the following key specs for CMKs:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Symmetric key (default)
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric RSA key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>RSA_2048</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_3072</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>RSA_4096</code>
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Asymmetric NIST-recommended elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P256</code> (secp256r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P384</code> (secp384r1)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ECC_NIST_P521</code> (secp521r1)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * Other asymmetric elliptic curve key pairs
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * </ul>
+     * 
+     * @param customerMasterKeySpec
+     *        Specifies the type of CMK to create. The default value, <code>SYMMETRIC_DEFAULT</code>, creates a CMK with
+     *        a 256-bit symmetric key for encryption and decryption. For help choosing a key spec for your CMK, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose.html">How to Choose Your CMK
+     *        Configuration</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+     *        <p>
+     *        The <code>CustomerMasterKeySpec</code> determines whether the CMK contains a symmetric key or an
+     *        asymmetric key pair. It also determines the encryption algorithms or signing algorithms that the CMK
+     *        supports. You can't change the <code>CustomerMasterKeySpec</code> after the CMK is created. To further
+     *        restrict the algorithms that can be used with the CMK, use a condition key in its key policy or IAM
+     *        policy. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-encryption-algorithm"
+     *        >kms:EncryptionAlgorithm</a> or <a href=
+     *        "https://docs.aws.amazon.com/kms/latest/developerguide/policy-conditions.html#conditions-kms-signing-algorithm"
+     *        >kms:Signing Algorithm</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        </p>
+     *        <important>
+     *        <p>
+     *        <a href="http://aws.amazon.com/kms/features/#AWS_Service_Integration">AWS services that are integrated
+     *        with AWS KMS</a> use symmetric CMKs to protect your data. These services do not support asymmetric CMKs.
+     *        For help determining whether a CMK is symmetric or asymmetric, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/find-symm-asymm.html">Identifying Symmetric
+     *        and Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        </p>
+     *        </important>
+     *        <p>
+     *        AWS KMS supports the following key specs for CMKs:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Symmetric key (default)
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>SYMMETRIC_DEFAULT</code> (AES-256-GCM)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Asymmetric RSA key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>RSA_2048</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RSA_3072</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>RSA_4096</code>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Asymmetric NIST-recommended elliptic curve key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P256</code> (secp256r1)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P384</code> (secp384r1)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ECC_NIST_P521</code> (secp521r1)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Other asymmetric elliptic curve key pairs
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>ECC_SECG_P256K1</code> (secp256k1), commonly used for cryptocurrencies.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see CustomerMasterKeySpec
+     */
+
+    public CreateKeyRequest withCustomerMasterKeySpec(CustomerMasterKeySpec customerMasterKeySpec) {
+        this.customerMasterKeySpec = customerMasterKeySpec.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The source of the key material for the CMK. You cannot change the origin after you create the CMK. The default is
+     * <code>AWS_KMS</code>, which means AWS KMS creates the key material.
      * </p>
      * <p>
      * When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you can
      * import key material from your existing key management infrastructure. For more information about importing key
      * material into AWS KMS, see <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in
-     * the <i>AWS Key Management Service Developer Guide</i>.
+     * the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for symmetric CMKs.
      * </p>
      * <p>
      * When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>
      * and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     * <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     * <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for symmetric
+     * CMKs.
      * </p>
      * 
      * @param origin
-     *        The source of the key material for the CMK. You cannot change the origin after you create the CMK.</p>
-     *        <p>
-     *        The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
-     *        </p>
+     *        The source of the key material for the CMK. You cannot change the origin after you create the CMK. The
+     *        default is <code>AWS_KMS</code>, which means AWS KMS creates the key material.</p>
      *        <p>
      *        When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you
      *        can import key material from your existing key management infrastructure. For more information about
      *        importing key material into AWS KMS, see <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key
-     *        Material</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        Material</a> in the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for
+     *        symmetric CMKs.
      *        </p>
      *        <p>
      *        When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key
      *        store</a> and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     *        <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     *        <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for
+     *        symmetric CMKs.
      * @see OriginType
      */
 
@@ -591,41 +1952,40 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The source of the key material for the CMK. You cannot change the origin after you create the CMK.
-     * </p>
-     * <p>
-     * The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
+     * The source of the key material for the CMK. You cannot change the origin after you create the CMK. The default is
+     * <code>AWS_KMS</code>, which means AWS KMS creates the key material.
      * </p>
      * <p>
      * When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you can
      * import key material from your existing key management infrastructure. For more information about importing key
      * material into AWS KMS, see <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in
-     * the <i>AWS Key Management Service Developer Guide</i>.
+     * the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for symmetric CMKs.
      * </p>
      * <p>
      * When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>
      * and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     * <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     * <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for symmetric
+     * CMKs.
      * </p>
      * 
-     * @return The source of the key material for the CMK. You cannot change the origin after you create the CMK.</p>
-     *         <p>
-     *         The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
-     *         </p>
+     * @return The source of the key material for the CMK. You cannot change the origin after you create the CMK. The
+     *         default is <code>AWS_KMS</code>, which means AWS KMS creates the key material.</p>
      *         <p>
      *         When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you
      *         can import key material from your existing key management infrastructure. For more information about
      *         importing key material into AWS KMS, see <a
      *         href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key
-     *         Material</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *         Material</a> in the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for
+     *         symmetric CMKs.
      *         </p>
      *         <p>
      *         When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      *         href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key
      *         store</a> and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     *         <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     *         <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for
+     *         symmetric CMKs.
      * @see OriginType
      */
 
@@ -635,42 +1995,41 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The source of the key material for the CMK. You cannot change the origin after you create the CMK.
-     * </p>
-     * <p>
-     * The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
+     * The source of the key material for the CMK. You cannot change the origin after you create the CMK. The default is
+     * <code>AWS_KMS</code>, which means AWS KMS creates the key material.
      * </p>
      * <p>
      * When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you can
      * import key material from your existing key management infrastructure. For more information about importing key
      * material into AWS KMS, see <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in
-     * the <i>AWS Key Management Service Developer Guide</i>.
+     * the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for symmetric CMKs.
      * </p>
      * <p>
      * When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>
      * and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     * <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     * <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for symmetric
+     * CMKs.
      * </p>
      * 
      * @param origin
-     *        The source of the key material for the CMK. You cannot change the origin after you create the CMK.</p>
-     *        <p>
-     *        The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
-     *        </p>
+     *        The source of the key material for the CMK. You cannot change the origin after you create the CMK. The
+     *        default is <code>AWS_KMS</code>, which means AWS KMS creates the key material.</p>
      *        <p>
      *        When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you
      *        can import key material from your existing key management infrastructure. For more information about
      *        importing key material into AWS KMS, see <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key
-     *        Material</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        Material</a> in the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for
+     *        symmetric CMKs.
      *        </p>
      *        <p>
      *        When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key
      *        store</a> and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     *        <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     *        <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for
+     *        symmetric CMKs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OriginType
      */
@@ -682,42 +2041,41 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The source of the key material for the CMK. You cannot change the origin after you create the CMK.
-     * </p>
-     * <p>
-     * The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
+     * The source of the key material for the CMK. You cannot change the origin after you create the CMK. The default is
+     * <code>AWS_KMS</code>, which means AWS KMS creates the key material.
      * </p>
      * <p>
      * When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you can
      * import key material from your existing key management infrastructure. For more information about importing key
      * material into AWS KMS, see <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in
-     * the <i>AWS Key Management Service Developer Guide</i>.
+     * the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for symmetric CMKs.
      * </p>
      * <p>
      * When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>
      * and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     * <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     * <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for symmetric
+     * CMKs.
      * </p>
      * 
      * @param origin
-     *        The source of the key material for the CMK. You cannot change the origin after you create the CMK.</p>
-     *        <p>
-     *        The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
-     *        </p>
+     *        The source of the key material for the CMK. You cannot change the origin after you create the CMK. The
+     *        default is <code>AWS_KMS</code>, which means AWS KMS creates the key material.</p>
      *        <p>
      *        When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you
      *        can import key material from your existing key management infrastructure. For more information about
      *        importing key material into AWS KMS, see <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key
-     *        Material</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        Material</a> in the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for
+     *        symmetric CMKs.
      *        </p>
      *        <p>
      *        When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key
      *        store</a> and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     *        <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     *        <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for
+     *        symmetric CMKs.
      * @see OriginType
      */
 
@@ -727,42 +2085,41 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * The source of the key material for the CMK. You cannot change the origin after you create the CMK.
-     * </p>
-     * <p>
-     * The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
+     * The source of the key material for the CMK. You cannot change the origin after you create the CMK. The default is
+     * <code>AWS_KMS</code>, which means AWS KMS creates the key material.
      * </p>
      * <p>
      * When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you can
      * import key material from your existing key management infrastructure. For more information about importing key
      * material into AWS KMS, see <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key Material</a> in
-     * the <i>AWS Key Management Service Developer Guide</i>.
+     * the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for symmetric CMKs.
      * </p>
      * <p>
      * When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>
      * and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     * <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     * <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for symmetric
+     * CMKs.
      * </p>
      * 
      * @param origin
-     *        The source of the key material for the CMK. You cannot change the origin after you create the CMK.</p>
-     *        <p>
-     *        The default is <code>AWS_KMS</code>, which means AWS KMS creates the key material in its own key store.
-     *        </p>
+     *        The source of the key material for the CMK. You cannot change the origin after you create the CMK. The
+     *        default is <code>AWS_KMS</code>, which means AWS KMS creates the key material.</p>
      *        <p>
      *        When the parameter value is <code>EXTERNAL</code>, AWS KMS creates a CMK without key material so that you
      *        can import key material from your existing key management infrastructure. For more information about
      *        importing key material into AWS KMS, see <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">Importing Key
-     *        Material</a> in the <i>AWS Key Management Service Developer Guide</i>.
+     *        Material</a> in the <i>AWS Key Management Service Developer Guide</i>. This value is valid only for
+     *        symmetric CMKs.
      *        </p>
      *        <p>
      *        When the parameter value is <code>AWS_CLOUDHSM</code>, AWS KMS creates the CMK in an AWS KMS <a
      *        href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key
      *        store</a> and creates its key material in the associated AWS CloudHSM cluster. You must also use the
-     *        <code>CustomKeyStoreId</code> parameter to identify the custom key store.
+     *        <code>CustomKeyStoreId</code> parameter to identify the custom key store. This value is valid only for
+     *        symmetric CMKs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OriginType
      */
@@ -780,6 +2137,9 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * specify the <code>Origin</code> parameter with a value of <code>AWS_CLOUDHSM</code>. The AWS CloudHSM cluster
      * that is associated with the custom key store must have at least two active HSMs, each in a different Availability
      * Zone in the Region.
+     * </p>
+     * <p>
+     * This parameter is valid only for symmetric CMKs. You cannot create an asymmetric CMK in a custom key store.
      * </p>
      * <p>
      * To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.
@@ -801,6 +2161,10 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      *        store, you must also specify the <code>Origin</code> parameter with a value of <code>AWS_CLOUDHSM</code>.
      *        The AWS CloudHSM cluster that is associated with the custom key store must have at least two active HSMs,
      *        each in a different Availability Zone in the Region.</p>
+     *        <p>
+     *        This parameter is valid only for symmetric CMKs. You cannot create an asymmetric CMK in a custom key
+     *        store.
+     *        </p>
      *        <p>
      *        To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.
      *        </p>
@@ -828,6 +2192,9 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * Zone in the Region.
      * </p>
      * <p>
+     * This parameter is valid only for symmetric CMKs. You cannot create an asymmetric CMK in a custom key store.
+     * </p>
+     * <p>
      * To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.
      * </p>
      * <p>
@@ -846,6 +2213,10 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      *         store, you must also specify the <code>Origin</code> parameter with a value of <code>AWS_CLOUDHSM</code>.
      *         The AWS CloudHSM cluster that is associated with the custom key store must have at least two active HSMs,
      *         each in a different Availability Zone in the Region.</p>
+     *         <p>
+     *         This parameter is valid only for symmetric CMKs. You cannot create an asymmetric CMK in a custom key
+     *         store.
+     *         </p>
      *         <p>
      *         To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.
      *         </p>
@@ -873,6 +2244,9 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * Zone in the Region.
      * </p>
      * <p>
+     * This parameter is valid only for symmetric CMKs. You cannot create an asymmetric CMK in a custom key store.
+     * </p>
+     * <p>
      * To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.
      * </p>
      * <p>
@@ -892,6 +2266,10 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      *        store, you must also specify the <code>Origin</code> parameter with a value of <code>AWS_CLOUDHSM</code>.
      *        The AWS CloudHSM cluster that is associated with the custom key store must have at least two active HSMs,
      *        each in a different Availability Zone in the Region.</p>
+     *        <p>
+     *        This parameter is valid only for symmetric CMKs. You cannot create an asymmetric CMK in a custom key
+     *        store.
+     *        </p>
      *        <p>
      *        To find the ID of a custom key store, use the <a>DescribeCustomKeyStores</a> operation.
      *        </p>
@@ -1101,19 +2479,29 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but
-     * tag values can be empty (null) strings.
+     * One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     * required, but the tag value can be an empty (null) string.
      * </p>
      * <p>
-     * Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag
-     * the CMK after it is created using <a>TagResource</a>.
+     * When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs aggregated by
+     * tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     * </p>
+     * <p>
+     * Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the <a>TagResource</a>
+     * operation.
      * </p>
      * 
-     * @return One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both
-     *         required, but tag values can be empty (null) strings.</p>
+     * @return One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     *         required, but the tag value can be an empty (null) string.</p>
      *         <p>
-     *         Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and
-     *         instead tag the CMK after it is created using <a>TagResource</a>.
+     *         When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs
+     *         aggregated by tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     *         href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     *         </p>
+     *         <p>
+     *         Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the
+     *         <a>TagResource</a> operation.
      */
 
     public java.util.List<Tag> getTags() {
@@ -1125,20 +2513,30 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but
-     * tag values can be empty (null) strings.
+     * One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     * required, but the tag value can be an empty (null) string.
      * </p>
      * <p>
-     * Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag
-     * the CMK after it is created using <a>TagResource</a>.
+     * When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs aggregated by
+     * tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     * </p>
+     * <p>
+     * Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the <a>TagResource</a>
+     * operation.
      * </p>
      * 
      * @param tags
-     *        One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both
-     *        required, but tag values can be empty (null) strings.</p>
+     *        One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     *        required, but the tag value can be an empty (null) string.</p>
      *        <p>
-     *        Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead
-     *        tag the CMK after it is created using <a>TagResource</a>.
+     *        When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs
+     *        aggregated by tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     *        </p>
+     *        <p>
+     *        Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the
+     *        <a>TagResource</a> operation.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -1152,12 +2550,17 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but
-     * tag values can be empty (null) strings.
+     * One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     * required, but the tag value can be an empty (null) string.
      * </p>
      * <p>
-     * Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag
-     * the CMK after it is created using <a>TagResource</a>.
+     * When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs aggregated by
+     * tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     * </p>
+     * <p>
+     * Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the <a>TagResource</a>
+     * operation.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1166,11 +2569,16 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
      * </p>
      * 
      * @param tags
-     *        One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both
-     *        required, but tag values can be empty (null) strings.</p>
+     *        One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     *        required, but the tag value can be an empty (null) string.</p>
      *        <p>
-     *        Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead
-     *        tag the CMK after it is created using <a>TagResource</a>.
+     *        When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs
+     *        aggregated by tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     *        </p>
+     *        <p>
+     *        Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the
+     *        <a>TagResource</a> operation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1186,20 +2594,30 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
 
     /**
      * <p>
-     * One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but
-     * tag values can be empty (null) strings.
+     * One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     * required, but the tag value can be an empty (null) string.
      * </p>
      * <p>
-     * Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag
-     * the CMK after it is created using <a>TagResource</a>.
+     * When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs aggregated by
+     * tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     * </p>
+     * <p>
+     * Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the <a>TagResource</a>
+     * operation.
      * </p>
      * 
      * @param tags
-     *        One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both
-     *        required, but tag values can be empty (null) strings.</p>
+     *        One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the tag value are
+     *        required, but the tag value can be an empty (null) string.</p>
      *        <p>
-     *        Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead
-     *        tag the CMK after it is created using <a>TagResource</a>.
+     *        When you add tags to an AWS resource, AWS generates a cost allocation report with usage and costs
+     *        aggregated by tags. For information about adding, changing, deleting and listing tags for CMKs, see <a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.
+     *        </p>
+     *        <p>
+     *        Use this parameter to tag the CMK when it is created. To add tags to an existing CMK, use the
+     *        <a>TagResource</a> operation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1226,6 +2644,8 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
             sb.append("Description: ").append(getDescription()).append(",");
         if (getKeyUsage() != null)
             sb.append("KeyUsage: ").append(getKeyUsage()).append(",");
+        if (getCustomerMasterKeySpec() != null)
+            sb.append("CustomerMasterKeySpec: ").append(getCustomerMasterKeySpec()).append(",");
         if (getOrigin() != null)
             sb.append("Origin: ").append(getOrigin()).append(",");
         if (getCustomKeyStoreId() != null)
@@ -1260,6 +2680,10 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
             return false;
         if (other.getKeyUsage() != null && other.getKeyUsage().equals(this.getKeyUsage()) == false)
             return false;
+        if (other.getCustomerMasterKeySpec() == null ^ this.getCustomerMasterKeySpec() == null)
+            return false;
+        if (other.getCustomerMasterKeySpec() != null && other.getCustomerMasterKeySpec().equals(this.getCustomerMasterKeySpec()) == false)
+            return false;
         if (other.getOrigin() == null ^ this.getOrigin() == null)
             return false;
         if (other.getOrigin() != null && other.getOrigin().equals(this.getOrigin()) == false)
@@ -1288,6 +2712,7 @@ public class CreateKeyRequest extends com.amazonaws.AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getPolicy() == null) ? 0 : getPolicy().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getKeyUsage() == null) ? 0 : getKeyUsage().hashCode());
+        hashCode = prime * hashCode + ((getCustomerMasterKeySpec() == null) ? 0 : getCustomerMasterKeySpec().hashCode());
         hashCode = prime * hashCode + ((getOrigin() == null) ? 0 : getOrigin().hashCode());
         hashCode = prime * hashCode + ((getCustomKeyStoreId() == null) ? 0 : getCustomKeyStoreId().hashCode());
         hashCode = prime * hashCode + ((getBypassPolicyLockoutSafetyCheck() == null) ? 0 : getBypassPolicyLockoutSafetyCheck().hashCode());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,18 +30,18 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Specify the alias you want to delete.
+     * A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
      * </p>
      */
     private String aliasId;
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Specify the alias you want to delete.
+     * A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
      * </p>
      * 
      * @param aliasId
-     *        Unique identifier for a fleet alias. Specify the alias you want to delete.
+     *        A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
      */
 
     public void setAliasId(String aliasId) {
@@ -50,10 +50,10 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Specify the alias you want to delete.
+     * A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
      * </p>
      * 
-     * @return Unique identifier for a fleet alias. Specify the alias you want to delete.
+     * @return A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
      */
 
     public String getAliasId() {
@@ -62,11 +62,11 @@ public class DeleteAliasRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Unique identifier for a fleet alias. Specify the alias you want to delete.
+     * A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
      * </p>
      * 
      * @param aliasId
-     *        Unique identifier for a fleet alias. Specify the alias you want to delete.
+     *        A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

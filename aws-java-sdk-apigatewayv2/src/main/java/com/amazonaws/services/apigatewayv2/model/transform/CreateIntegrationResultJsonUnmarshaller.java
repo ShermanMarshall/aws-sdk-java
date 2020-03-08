@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,6 +48,10 @@ public class CreateIntegrationResultJsonUnmarshaller implements Unmarshaller<Cre
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("apiGatewayManaged", targetDepth)) {
+                    context.nextToken();
+                    createIntegrationResult.setApiGatewayManaged(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
                 if (context.testExpression("connectionId", targetDepth)) {
                     context.nextToken();
                     createIntegrationResult.setConnectionId(context.getUnmarshaller(String.class).unmarshall(context));
@@ -91,6 +95,10 @@ public class CreateIntegrationResultJsonUnmarshaller implements Unmarshaller<Cre
                 if (context.testExpression("passthroughBehavior", targetDepth)) {
                     context.nextToken();
                     createIntegrationResult.setPassthroughBehavior(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("payloadFormatVersion", targetDepth)) {
+                    context.nextToken();
+                    createIntegrationResult.setPayloadFormatVersion(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("requestParameters", targetDepth)) {
                     context.nextToken();

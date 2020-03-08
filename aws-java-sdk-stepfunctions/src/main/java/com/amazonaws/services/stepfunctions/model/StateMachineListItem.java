@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -68,8 +68,13 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+     * </p>
      */
     private String name;
+    /** <p/> */
+    private String type;
     /**
      * <p>
      * The date the state machine is created.
@@ -151,6 +156,9 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+     * </p>
      * 
      * @param name
      *        The name of the state machine.</p>
@@ -183,6 +191,9 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
      *        control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
      *        </p>
      *        </li>
+     *        </ul>
+     *        <p>
+     *        To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
      */
 
     public void setName(String name) {
@@ -223,6 +234,9 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+     * </p>
      * 
      * @return The name of the state machine.</p>
      *         <p>
@@ -254,6 +268,9 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
      *         control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
      *         </p>
      *         </li>
+     *         </ul>
+     *         <p>
+     *         To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
      */
 
     public String getName() {
@@ -294,6 +311,9 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
      * </p>
      * </li>
      * </ul>
+     * <p>
+     * To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+     * </p>
      * 
      * @param name
      *        The name of the state machine.</p>
@@ -326,11 +346,62 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
      *        control characters (<code>U+0000-001F</code>, <code>U+007F-009F</code>)
      *        </p>
      *        </li>
+     *        </ul>
+     *        <p>
+     *        To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public StateMachineListItem withName(String name) {
         setName(name);
+        return this;
+    }
+
+    /**
+     * <p/>
+     * 
+     * @param type
+     * @see StateMachineType
+     */
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * <p/>
+     * 
+     * @return
+     * @see StateMachineType
+     */
+
+    public String getType() {
+        return this.type;
+    }
+
+    /**
+     * <p/>
+     * 
+     * @param type
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StateMachineType
+     */
+
+    public StateMachineListItem withType(String type) {
+        setType(type);
+        return this;
+    }
+
+    /**
+     * <p/>
+     * 
+     * @param type
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StateMachineType
+     */
+
+    public StateMachineListItem withType(StateMachineType type) {
+        this.type = type.toString();
         return this;
     }
 
@@ -390,6 +461,8 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
             sb.append("StateMachineArn: ").append(getStateMachineArn()).append(",");
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
+        if (getType() != null)
+            sb.append("Type: ").append(getType()).append(",");
         if (getCreationDate() != null)
             sb.append("CreationDate: ").append(getCreationDate());
         sb.append("}");
@@ -414,6 +487,10 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getType() == null ^ this.getType() == null)
+            return false;
+        if (other.getType() != null && other.getType().equals(this.getType()) == false)
+            return false;
         if (other.getCreationDate() == null ^ this.getCreationDate() == null)
             return false;
         if (other.getCreationDate() != null && other.getCreationDate().equals(this.getCreationDate()) == false)
@@ -428,6 +505,7 @@ public class StateMachineListItem implements Serializable, Cloneable, Structured
 
         hashCode = prime * hashCode + ((getStateMachineArn() == null) ? 0 : getStateMachineArn().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getType() == null) ? 0 : getType().hashCode());
         hashCode = prime * hashCode + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
         return hashCode;
     }

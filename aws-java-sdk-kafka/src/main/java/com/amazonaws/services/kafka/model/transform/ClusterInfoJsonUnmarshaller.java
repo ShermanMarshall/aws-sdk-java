@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -88,6 +88,14 @@ public class ClusterInfoJsonUnmarshaller implements Unmarshaller<ClusterInfo, Js
                     context.nextToken();
                     clusterInfo.setEnhancedMonitoring(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("openMonitoring", targetDepth)) {
+                    context.nextToken();
+                    clusterInfo.setOpenMonitoring(OpenMonitoringJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("loggingInfo", targetDepth)) {
+                    context.nextToken();
+                    clusterInfo.setLoggingInfo(LoggingInfoJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("numberOfBrokerNodes", targetDepth)) {
                     context.nextToken();
                     clusterInfo.setNumberOfBrokerNodes(context.getUnmarshaller(Integer.class).unmarshall(context));
@@ -95,6 +103,10 @@ public class ClusterInfoJsonUnmarshaller implements Unmarshaller<ClusterInfo, Js
                 if (context.testExpression("state", targetDepth)) {
                     context.nextToken();
                     clusterInfo.setState(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("stateInfo", targetDepth)) {
+                    context.nextToken();
+                    clusterInfo.setStateInfo(StateInfoJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("tags", targetDepth)) {
                     context.nextToken();

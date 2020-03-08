@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -218,6 +218,32 @@ public class AbstractAWSSecurityHubAsync extends AbstractAWSSecurityHub implemen
     @Override
     public java.util.concurrent.Future<DescribeProductsResult> describeProductsAsync(DescribeProductsRequest request,
             com.amazonaws.handlers.AsyncHandler<DescribeProductsRequest, DescribeProductsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeStandardsResult> describeStandardsAsync(DescribeStandardsRequest request) {
+
+        return describeStandardsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeStandardsResult> describeStandardsAsync(DescribeStandardsRequest request,
+            com.amazonaws.handlers.AsyncHandler<DescribeStandardsRequest, DescribeStandardsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeStandardsControlsResult> describeStandardsControlsAsync(DescribeStandardsControlsRequest request) {
+
+        return describeStandardsControlsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeStandardsControlsResult> describeStandardsControlsAsync(DescribeStandardsControlsRequest request,
+            com.amazonaws.handlers.AsyncHandler<DescribeStandardsControlsRequest, DescribeStandardsControlsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -519,6 +545,19 @@ public class AbstractAWSSecurityHubAsync extends AbstractAWSSecurityHub implemen
     @Override
     public java.util.concurrent.Future<UpdateInsightResult> updateInsightAsync(UpdateInsightRequest request,
             com.amazonaws.handlers.AsyncHandler<UpdateInsightRequest, UpdateInsightResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateStandardsControlResult> updateStandardsControlAsync(UpdateStandardsControlRequest request) {
+
+        return updateStandardsControlAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateStandardsControlResult> updateStandardsControlAsync(UpdateStandardsControlRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateStandardsControlRequest, UpdateStandardsControlResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -99,6 +99,12 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
     private String transportProtocol;
     /**
      * <p>
+     * The port number for the Client VPN endpoint.
+     * </p>
+     */
+    private Integer vpnPort;
+    /**
+     * <p>
      * Information about the associated target networks. A target network is a subnet in a VPC.
      * </p>
      */
@@ -128,6 +134,18 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
+    /**
+     * <p>
+     * The IDs of the security groups for the target network.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<String> securityGroupIds;
+    /**
+     * <p>
+     * The ID of the VPC.
+     * </p>
+     */
+    private String vpcId;
 
     /**
      * <p>
@@ -690,6 +708,46 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
 
     /**
      * <p>
+     * The port number for the Client VPN endpoint.
+     * </p>
+     * 
+     * @param vpnPort
+     *        The port number for the Client VPN endpoint.
+     */
+
+    public void setVpnPort(Integer vpnPort) {
+        this.vpnPort = vpnPort;
+    }
+
+    /**
+     * <p>
+     * The port number for the Client VPN endpoint.
+     * </p>
+     * 
+     * @return The port number for the Client VPN endpoint.
+     */
+
+    public Integer getVpnPort() {
+        return this.vpnPort;
+    }
+
+    /**
+     * <p>
+     * The port number for the Client VPN endpoint.
+     * </p>
+     * 
+     * @param vpnPort
+     *        The port number for the Client VPN endpoint.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ClientVpnEndpoint withVpnPort(Integer vpnPort) {
+        setVpnPort(vpnPort);
+        return this;
+    }
+
+    /**
+     * <p>
      * Information about the associated target networks. A target network is a subnet in a VPC.
      * </p>
      * 
@@ -988,6 +1046,119 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The IDs of the security groups for the target network.
+     * </p>
+     * 
+     * @return The IDs of the security groups for the target network.
+     */
+
+    public java.util.List<String> getSecurityGroupIds() {
+        if (securityGroupIds == null) {
+            securityGroupIds = new com.amazonaws.internal.SdkInternalList<String>();
+        }
+        return securityGroupIds;
+    }
+
+    /**
+     * <p>
+     * The IDs of the security groups for the target network.
+     * </p>
+     * 
+     * @param securityGroupIds
+     *        The IDs of the security groups for the target network.
+     */
+
+    public void setSecurityGroupIds(java.util.Collection<String> securityGroupIds) {
+        if (securityGroupIds == null) {
+            this.securityGroupIds = null;
+            return;
+        }
+
+        this.securityGroupIds = new com.amazonaws.internal.SdkInternalList<String>(securityGroupIds);
+    }
+
+    /**
+     * <p>
+     * The IDs of the security groups for the target network.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSecurityGroupIds(java.util.Collection)} or {@link #withSecurityGroupIds(java.util.Collection)} if you
+     * want to override the existing values.
+     * </p>
+     * 
+     * @param securityGroupIds
+     *        The IDs of the security groups for the target network.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ClientVpnEndpoint withSecurityGroupIds(String... securityGroupIds) {
+        if (this.securityGroupIds == null) {
+            setSecurityGroupIds(new com.amazonaws.internal.SdkInternalList<String>(securityGroupIds.length));
+        }
+        for (String ele : securityGroupIds) {
+            this.securityGroupIds.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The IDs of the security groups for the target network.
+     * </p>
+     * 
+     * @param securityGroupIds
+     *        The IDs of the security groups for the target network.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ClientVpnEndpoint withSecurityGroupIds(java.util.Collection<String> securityGroupIds) {
+        setSecurityGroupIds(securityGroupIds);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ID of the VPC.
+     * </p>
+     * 
+     * @param vpcId
+     *        The ID of the VPC.
+     */
+
+    public void setVpcId(String vpcId) {
+        this.vpcId = vpcId;
+    }
+
+    /**
+     * <p>
+     * The ID of the VPC.
+     * </p>
+     * 
+     * @return The ID of the VPC.
+     */
+
+    public String getVpcId() {
+        return this.vpcId;
+    }
+
+    /**
+     * <p>
+     * The ID of the VPC.
+     * </p>
+     * 
+     * @param vpcId
+     *        The ID of the VPC.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ClientVpnEndpoint withVpcId(String vpcId) {
+        setVpcId(vpcId);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1021,6 +1192,8 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
             sb.append("VpnProtocol: ").append(getVpnProtocol()).append(",");
         if (getTransportProtocol() != null)
             sb.append("TransportProtocol: ").append(getTransportProtocol()).append(",");
+        if (getVpnPort() != null)
+            sb.append("VpnPort: ").append(getVpnPort()).append(",");
         if (getAssociatedTargetNetworks() != null)
             sb.append("AssociatedTargetNetworks: ").append(getAssociatedTargetNetworks()).append(",");
         if (getServerCertificateArn() != null)
@@ -1030,7 +1203,11 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
         if (getConnectionLogOptions() != null)
             sb.append("ConnectionLogOptions: ").append(getConnectionLogOptions()).append(",");
         if (getTags() != null)
-            sb.append("Tags: ").append(getTags());
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getSecurityGroupIds() != null)
+            sb.append("SecurityGroupIds: ").append(getSecurityGroupIds()).append(",");
+        if (getVpcId() != null)
+            sb.append("VpcId: ").append(getVpcId());
         sb.append("}");
         return sb.toString();
     }
@@ -1089,6 +1266,10 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
             return false;
         if (other.getTransportProtocol() != null && other.getTransportProtocol().equals(this.getTransportProtocol()) == false)
             return false;
+        if (other.getVpnPort() == null ^ this.getVpnPort() == null)
+            return false;
+        if (other.getVpnPort() != null && other.getVpnPort().equals(this.getVpnPort()) == false)
+            return false;
         if (other.getAssociatedTargetNetworks() == null ^ this.getAssociatedTargetNetworks() == null)
             return false;
         if (other.getAssociatedTargetNetworks() != null && other.getAssociatedTargetNetworks().equals(this.getAssociatedTargetNetworks()) == false)
@@ -1109,6 +1290,14 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
+        if (other.getSecurityGroupIds() == null ^ this.getSecurityGroupIds() == null)
+            return false;
+        if (other.getSecurityGroupIds() != null && other.getSecurityGroupIds().equals(this.getSecurityGroupIds()) == false)
+            return false;
+        if (other.getVpcId() == null ^ this.getVpcId() == null)
+            return false;
+        if (other.getVpcId() != null && other.getVpcId().equals(this.getVpcId()) == false)
+            return false;
         return true;
     }
 
@@ -1128,11 +1317,14 @@ public class ClientVpnEndpoint implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getSplitTunnel() == null) ? 0 : getSplitTunnel().hashCode());
         hashCode = prime * hashCode + ((getVpnProtocol() == null) ? 0 : getVpnProtocol().hashCode());
         hashCode = prime * hashCode + ((getTransportProtocol() == null) ? 0 : getTransportProtocol().hashCode());
+        hashCode = prime * hashCode + ((getVpnPort() == null) ? 0 : getVpnPort().hashCode());
         hashCode = prime * hashCode + ((getAssociatedTargetNetworks() == null) ? 0 : getAssociatedTargetNetworks().hashCode());
         hashCode = prime * hashCode + ((getServerCertificateArn() == null) ? 0 : getServerCertificateArn().hashCode());
         hashCode = prime * hashCode + ((getAuthenticationOptions() == null) ? 0 : getAuthenticationOptions().hashCode());
         hashCode = prime * hashCode + ((getConnectionLogOptions() == null) ? 0 : getConnectionLogOptions().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getSecurityGroupIds() == null) ? 0 : getSecurityGroupIds().hashCode());
+        hashCode = prime * hashCode + ((getVpcId() == null) ? 0 : getVpcId().hashCode());
         return hashCode;
     }
 

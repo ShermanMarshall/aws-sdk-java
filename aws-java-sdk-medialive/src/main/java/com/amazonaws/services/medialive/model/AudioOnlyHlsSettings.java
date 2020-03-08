@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,11 +29,11 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
     /** Specifies the group to which the audio Rendition belongs. */
     private String audioGroupId;
     /**
-     * For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the
-     * cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The
-     * iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this
-     * image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file
-     * size} * {segment count} * {user count.}.
+     * Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend a low
+     * bit-size file because the image increases the output audio bandwidth.
+     * 
+     * The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the
+     * "ID3 tag version 2.4.0 - Native Frames" standard.
      */
     private InputLocation audioOnlyImage;
     /**
@@ -52,6 +52,8 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
      * Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=NO
      */
     private String audioTrackType;
+    /** Specifies the segment type. */
+    private String segmentType;
 
     /**
      * Specifies the group to which the audio Rendition belongs.
@@ -88,18 +90,18 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the
-     * cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The
-     * iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this
-     * image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file
-     * size} * {segment count} * {user count.}.
+     * Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend a low
+     * bit-size file because the image increases the output audio bandwidth.
+     * 
+     * The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the
+     * "ID3 tag version 2.4.0 - Native Frames" standard.
      * 
      * @param audioOnlyImage
-     *        For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the
-     *        cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons.
-     *        The iPhone does not resize the image, it crops a centered image on the top/bottom and left/right.
-     *        Additionally, this image file gets saved bit-for-bit into every 10-second segment file, so will increase
-     *        bandwidth by {image file size} * {segment count} * {user count.}.
+     *        Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend
+     *        a low bit-size file because the image increases the output audio bandwidth.
+     * 
+     *        The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the
+     *        "ID3 tag version 2.4.0 - Native Frames" standard.
      */
 
     public void setAudioOnlyImage(InputLocation audioOnlyImage) {
@@ -107,17 +109,17 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the
-     * cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The
-     * iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this
-     * image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file
-     * size} * {segment count} * {user count.}.
+     * Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend a low
+     * bit-size file because the image increases the output audio bandwidth.
      * 
-     * @return For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the
-     *         cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two
-     *         reasons. The iPhone does not resize the image, it crops a centered image on the top/bottom and
-     *         left/right. Additionally, this image file gets saved bit-for-bit into every 10-second segment file, so
-     *         will increase bandwidth by {image file size} * {segment count} * {user count.}.
+     * The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the
+     * "ID3 tag version 2.4.0 - Native Frames" standard.
+     * 
+     * @return Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend
+     *         a low bit-size file because the image increases the output audio bandwidth.
+     * 
+     *         The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the
+     *         "ID3 tag version 2.4.0 - Native Frames" standard.
      */
 
     public InputLocation getAudioOnlyImage() {
@@ -125,18 +127,18 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the
-     * cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The
-     * iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this
-     * image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file
-     * size} * {segment count} * {user count.}.
+     * Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend a low
+     * bit-size file because the image increases the output audio bandwidth.
+     * 
+     * The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the
+     * "ID3 tag version 2.4.0 - Native Frames" standard.
      * 
      * @param audioOnlyImage
-     *        For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the
-     *        cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons.
-     *        The iPhone does not resize the image, it crops a centered image on the top/bottom and left/right.
-     *        Additionally, this image file gets saved bit-for-bit into every 10-second segment file, so will increase
-     *        bandwidth by {image file size} * {segment count} * {user count.}.
+     *        Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend
+     *        a low bit-size file because the image increases the output audio bandwidth.
+     * 
+     *        The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the
+     *        "ID3 tag version 2.4.0 - Native Frames" standard.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -293,6 +295,57 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
     }
 
     /**
+     * Specifies the segment type.
+     * 
+     * @param segmentType
+     *        Specifies the segment type.
+     * @see AudioOnlyHlsSegmentType
+     */
+
+    public void setSegmentType(String segmentType) {
+        this.segmentType = segmentType;
+    }
+
+    /**
+     * Specifies the segment type.
+     * 
+     * @return Specifies the segment type.
+     * @see AudioOnlyHlsSegmentType
+     */
+
+    public String getSegmentType() {
+        return this.segmentType;
+    }
+
+    /**
+     * Specifies the segment type.
+     * 
+     * @param segmentType
+     *        Specifies the segment type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AudioOnlyHlsSegmentType
+     */
+
+    public AudioOnlyHlsSettings withSegmentType(String segmentType) {
+        setSegmentType(segmentType);
+        return this;
+    }
+
+    /**
+     * Specifies the segment type.
+     * 
+     * @param segmentType
+     *        Specifies the segment type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AudioOnlyHlsSegmentType
+     */
+
+    public AudioOnlyHlsSettings withSegmentType(AudioOnlyHlsSegmentType segmentType) {
+        this.segmentType = segmentType.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -309,7 +362,9 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
         if (getAudioOnlyImage() != null)
             sb.append("AudioOnlyImage: ").append(getAudioOnlyImage()).append(",");
         if (getAudioTrackType() != null)
-            sb.append("AudioTrackType: ").append(getAudioTrackType());
+            sb.append("AudioTrackType: ").append(getAudioTrackType()).append(",");
+        if (getSegmentType() != null)
+            sb.append("SegmentType: ").append(getSegmentType());
         sb.append("}");
         return sb.toString();
     }
@@ -336,6 +391,10 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
             return false;
         if (other.getAudioTrackType() != null && other.getAudioTrackType().equals(this.getAudioTrackType()) == false)
             return false;
+        if (other.getSegmentType() == null ^ this.getSegmentType() == null)
+            return false;
+        if (other.getSegmentType() != null && other.getSegmentType().equals(this.getSegmentType()) == false)
+            return false;
         return true;
     }
 
@@ -347,6 +406,7 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
         hashCode = prime * hashCode + ((getAudioGroupId() == null) ? 0 : getAudioGroupId().hashCode());
         hashCode = prime * hashCode + ((getAudioOnlyImage() == null) ? 0 : getAudioOnlyImage().hashCode());
         hashCode = prime * hashCode + ((getAudioTrackType() == null) ? 0 : getAudioTrackType().hashCode());
+        hashCode = prime * hashCode + ((getSegmentType() == null) ? 0 : getSegmentType().hashCode());
         return hashCode;
     }
 

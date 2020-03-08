@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,7 +47,13 @@ public enum EntitySubType {
     SYSTEM_ORGAN_SITE("SYSTEM_ORGAN_SITE"),
     DIRECTION("DIRECTION"),
     QUALITY("QUALITY"),
-    QUANTITY("QUANTITY");
+    QUANTITY("QUANTITY"),
+    TIME_EXPRESSION("TIME_EXPRESSION"),
+    TIME_TO_MEDICATION_NAME("TIME_TO_MEDICATION_NAME"),
+    TIME_TO_DX_NAME("TIME_TO_DX_NAME"),
+    TIME_TO_TEST_NAME("TIME_TO_TEST_NAME"),
+    TIME_TO_PROCEDURE_NAME("TIME_TO_PROCEDURE_NAME"),
+    TIME_TO_TREATMENT_NAME("TIME_TO_TREATMENT_NAME");
 
     private String value;
 

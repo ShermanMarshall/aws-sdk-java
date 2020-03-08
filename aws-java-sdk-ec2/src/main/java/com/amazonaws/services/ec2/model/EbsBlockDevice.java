@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,9 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the EBS volume is deleted on instance termination.
+     * Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     * >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User Guide.
      * </p>
      */
     private Boolean deleteOnTermination;
@@ -78,14 +80,29 @@ public class EbsBlockDevice implements Serializable, Cloneable {
     private Integer volumeSize;
     /**
      * <p>
-     * The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     * supports.
+     * The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter. If you
+     * set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you must omit the
+     * <b>Iops</b> parameter.
      * </p>
      * <p>
      * Default: <code>gp2</code>
      * </p>
      */
     private String volumeType;
+    /**
+     * <p>
+     * Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is
+     * encrypted.
+     * </p>
+     * <p>
+     * This parameter is only supported on <code>BlockDeviceMapping</code> objects called by <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html">RunInstances</a>, <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html">RequestSpotFleet</a>, and
+     * <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html">
+     * RequestSpotInstances</a>.
+     * </p>
+     */
+    private String kmsKeyId;
     /**
      * <p>
      * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
@@ -104,30 +121,23 @@ public class EbsBlockDevice implements Serializable, Cloneable {
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
      * >Supported Instance Types</a>.
      * </p>
+     * <p>
+     * This parameter is not returned by .
+     * </p>
      */
     private Boolean encrypted;
-    /**
-     * <p>
-     * Identifier (key ID, key alias, ID ARN, or alias ARN) for a customer managed CMK under which the EBS volume is
-     * encrypted.
-     * </p>
-     * <p>
-     * This parameter is only supported on <code>BlockDeviceMapping</code> objects called by <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html">RunInstances</a>, <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html">RequestSpotFleet</a>, and
-     * <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html">
-     * RequestSpotInstances</a>.
-     * </p>
-     */
-    private String kmsKeyId;
 
     /**
      * <p>
-     * Indicates whether the EBS volume is deleted on instance termination.
+     * Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     * >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User Guide.
      * </p>
      * 
      * @param deleteOnTermination
-     *        Indicates whether the EBS volume is deleted on instance termination.
+     *        Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     *        >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User Guide.
      */
 
     public void setDeleteOnTermination(Boolean deleteOnTermination) {
@@ -136,10 +146,15 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the EBS volume is deleted on instance termination.
+     * Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     * >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User Guide.
      * </p>
      * 
-     * @return Indicates whether the EBS volume is deleted on instance termination.
+     * @return Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     *         >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User
+     *         Guide.
      */
 
     public Boolean getDeleteOnTermination() {
@@ -148,11 +163,15 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the EBS volume is deleted on instance termination.
+     * Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     * >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User Guide.
      * </p>
      * 
      * @param deleteOnTermination
-     *        Indicates whether the EBS volume is deleted on instance termination.
+     *        Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     *        >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User Guide.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -163,10 +182,15 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates whether the EBS volume is deleted on instance termination.
+     * Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     * "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     * >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User Guide.
      * </p>
      * 
-     * @return Indicates whether the EBS volume is deleted on instance termination.
+     * @return Indicates whether the EBS volume is deleted on instance termination. For more information, see <a href=
+     *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html#preserving-volumes-on-termination"
+     *         >Preserving Amazon EBS Volumes on Instance Termination</a> in the Amazon Elastic Compute Cloud User
+     *         Guide.
      */
 
     public Boolean isDeleteOnTermination() {
@@ -449,16 +473,18 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     * supports.
+     * The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter. If you
+     * set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you must omit the
+     * <b>Iops</b> parameter.
      * </p>
      * <p>
      * Default: <code>gp2</code>
      * </p>
      * 
      * @param volumeType
-     *        The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     *        supports.</p>
+     *        The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter.
+     *        If you set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you
+     *        must omit the <b>Iops</b> parameter.</p>
      *        <p>
      *        Default: <code>gp2</code>
      * @see VolumeType
@@ -470,15 +496,17 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     * supports.
+     * The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter. If you
+     * set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you must omit the
+     * <b>Iops</b> parameter.
      * </p>
      * <p>
      * Default: <code>gp2</code>
      * </p>
      * 
-     * @return The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     *         supports.</p>
+     * @return The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b>
+     *         parameter. If you set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or
+     *         <code>standard</code>, you must omit the <b>Iops</b> parameter.</p>
      *         <p>
      *         Default: <code>gp2</code>
      * @see VolumeType
@@ -490,16 +518,18 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     * supports.
+     * The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter. If you
+     * set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you must omit the
+     * <b>Iops</b> parameter.
      * </p>
      * <p>
      * Default: <code>gp2</code>
      * </p>
      * 
      * @param volumeType
-     *        The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     *        supports.</p>
+     *        The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter.
+     *        If you set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you
+     *        must omit the <b>Iops</b> parameter.</p>
      *        <p>
      *        Default: <code>gp2</code>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -513,16 +543,18 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     * supports.
+     * The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter. If you
+     * set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you must omit the
+     * <b>Iops</b> parameter.
      * </p>
      * <p>
      * Default: <code>gp2</code>
      * </p>
      * 
      * @param volumeType
-     *        The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     *        supports.</p>
+     *        The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter.
+     *        If you set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you
+     *        must omit the <b>Iops</b> parameter.</p>
      *        <p>
      *        Default: <code>gp2</code>
      * @see VolumeType
@@ -534,16 +566,18 @@ public class EbsBlockDevice implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     * supports.
+     * The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter. If you
+     * set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you must omit the
+     * <b>Iops</b> parameter.
      * </p>
      * <p>
      * Default: <code>gp2</code>
      * </p>
      * 
      * @param volumeType
-     *        The volume type. If you set the type to <code>io1</code>, you must also specify the IOPS that the volume
-     *        supports.</p>
+     *        The volume type. If you set the type to <code>io1</code>, you must also specify the <b>Iops</b> parameter.
+     *        If you set the type to <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code>, you
+     *        must omit the <b>Iops</b> parameter.</p>
      *        <p>
      *        Default: <code>gp2</code>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -553,166 +587,6 @@ public class EbsBlockDevice implements Serializable, Cloneable {
     public EbsBlockDevice withVolumeType(VolumeType volumeType) {
         this.volumeType = volumeType.toString();
         return this;
-    }
-
-    /**
-     * <p>
-     * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
-     * The effect of setting the encryption state to <code>true</code> depends on the volume origin (new or from a
-     * snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * In no case can you remove encryption from an encrypted volume.
-     * </p>
-     * <p>
-     * Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
-     * >Supported Instance Types</a>.
-     * </p>
-     * 
-     * @param encrypted
-     *        Indicates whether the encryption state of an EBS volume is changed while being restored from a backing
-     *        snapshot. The effect of setting the encryption state to <code>true</code> depends on the volume origin
-     *        (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is
-     *        enabled. For more information, see <a
-     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon
-     *        EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     *        <p>
-     *        In no case can you remove encryption from an encrypted volume.
-     *        </p>
-     *        <p>
-     *        Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more
-     *        information, see <a href=
-     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
-     *        >Supported Instance Types</a>.
-     */
-
-    public void setEncrypted(Boolean encrypted) {
-        this.encrypted = encrypted;
-    }
-
-    /**
-     * <p>
-     * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
-     * The effect of setting the encryption state to <code>true</code> depends on the volume origin (new or from a
-     * snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * In no case can you remove encryption from an encrypted volume.
-     * </p>
-     * <p>
-     * Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
-     * >Supported Instance Types</a>.
-     * </p>
-     * 
-     * @return Indicates whether the encryption state of an EBS volume is changed while being restored from a backing
-     *         snapshot. The effect of setting the encryption state to <code>true</code> depends on the volume origin
-     *         (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is
-     *         enabled. For more information, see <a
-     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters"
-     *         >Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     *         <p>
-     *         In no case can you remove encryption from an encrypted volume.
-     *         </p>
-     *         <p>
-     *         Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more
-     *         information, see <a href=
-     *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
-     *         >Supported Instance Types</a>.
-     */
-
-    public Boolean getEncrypted() {
-        return this.encrypted;
-    }
-
-    /**
-     * <p>
-     * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
-     * The effect of setting the encryption state to <code>true</code> depends on the volume origin (new or from a
-     * snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * In no case can you remove encryption from an encrypted volume.
-     * </p>
-     * <p>
-     * Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
-     * >Supported Instance Types</a>.
-     * </p>
-     * 
-     * @param encrypted
-     *        Indicates whether the encryption state of an EBS volume is changed while being restored from a backing
-     *        snapshot. The effect of setting the encryption state to <code>true</code> depends on the volume origin
-     *        (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is
-     *        enabled. For more information, see <a
-     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon
-     *        EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     *        <p>
-     *        In no case can you remove encryption from an encrypted volume.
-     *        </p>
-     *        <p>
-     *        Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more
-     *        information, see <a href=
-     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
-     *        >Supported Instance Types</a>.
-     * @return Returns a reference to this object so that method calls can be chained together.
-     */
-
-    public EbsBlockDevice withEncrypted(Boolean encrypted) {
-        setEncrypted(encrypted);
-        return this;
-    }
-
-    /**
-     * <p>
-     * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
-     * The effect of setting the encryption state to <code>true</code> depends on the volume origin (new or from a
-     * snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS
-     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
-     * </p>
-     * <p>
-     * In no case can you remove encryption from an encrypted volume.
-     * </p>
-     * <p>
-     * Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
-     * >Supported Instance Types</a>.
-     * </p>
-     * 
-     * @return Indicates whether the encryption state of an EBS volume is changed while being restored from a backing
-     *         snapshot. The effect of setting the encryption state to <code>true</code> depends on the volume origin
-     *         (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is
-     *         enabled. For more information, see <a
-     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters"
-     *         >Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     *         <p>
-     *         In no case can you remove encryption from an encrypted volume.
-     *         </p>
-     *         <p>
-     *         Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more
-     *         information, see <a href=
-     *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
-     *         >Supported Instance Types</a>.
-     */
-
-    public Boolean isEncrypted() {
-        return this.encrypted;
     }
 
     /**
@@ -804,6 +678,190 @@ public class EbsBlockDevice implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
+     * The effect of setting the encryption state to <code>true</code> depends on the volume origin (new or from a
+     * snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS
+     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * <p>
+     * In no case can you remove encryption from an encrypted volume.
+     * </p>
+     * <p>
+     * Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see
+     * <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
+     * >Supported Instance Types</a>.
+     * </p>
+     * <p>
+     * This parameter is not returned by .
+     * </p>
+     * 
+     * @param encrypted
+     *        Indicates whether the encryption state of an EBS volume is changed while being restored from a backing
+     *        snapshot. The effect of setting the encryption state to <code>true</code> depends on the volume origin
+     *        (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is
+     *        enabled. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon
+     *        EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     *        <p>
+     *        In no case can you remove encryption from an encrypted volume.
+     *        </p>
+     *        <p>
+     *        Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more
+     *        information, see <a href=
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
+     *        >Supported Instance Types</a>.
+     *        </p>
+     *        <p>
+     *        This parameter is not returned by .
+     */
+
+    public void setEncrypted(Boolean encrypted) {
+        this.encrypted = encrypted;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
+     * The effect of setting the encryption state to <code>true</code> depends on the volume origin (new or from a
+     * snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS
+     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * <p>
+     * In no case can you remove encryption from an encrypted volume.
+     * </p>
+     * <p>
+     * Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see
+     * <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
+     * >Supported Instance Types</a>.
+     * </p>
+     * <p>
+     * This parameter is not returned by .
+     * </p>
+     * 
+     * @return Indicates whether the encryption state of an EBS volume is changed while being restored from a backing
+     *         snapshot. The effect of setting the encryption state to <code>true</code> depends on the volume origin
+     *         (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is
+     *         enabled. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters"
+     *         >Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     *         <p>
+     *         In no case can you remove encryption from an encrypted volume.
+     *         </p>
+     *         <p>
+     *         Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more
+     *         information, see <a href=
+     *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
+     *         >Supported Instance Types</a>.
+     *         </p>
+     *         <p>
+     *         This parameter is not returned by .
+     */
+
+    public Boolean getEncrypted() {
+        return this.encrypted;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
+     * The effect of setting the encryption state to <code>true</code> depends on the volume origin (new or from a
+     * snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS
+     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * <p>
+     * In no case can you remove encryption from an encrypted volume.
+     * </p>
+     * <p>
+     * Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see
+     * <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
+     * >Supported Instance Types</a>.
+     * </p>
+     * <p>
+     * This parameter is not returned by .
+     * </p>
+     * 
+     * @param encrypted
+     *        Indicates whether the encryption state of an EBS volume is changed while being restored from a backing
+     *        snapshot. The effect of setting the encryption state to <code>true</code> depends on the volume origin
+     *        (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is
+     *        enabled. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon
+     *        EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     *        <p>
+     *        In no case can you remove encryption from an encrypted volume.
+     *        </p>
+     *        <p>
+     *        Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more
+     *        information, see <a href=
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
+     *        >Supported Instance Types</a>.
+     *        </p>
+     *        <p>
+     *        This parameter is not returned by .
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EbsBlockDevice withEncrypted(Boolean encrypted) {
+        setEncrypted(encrypted);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the encryption state of an EBS volume is changed while being restored from a backing snapshot.
+     * The effect of setting the encryption state to <code>true</code> depends on the volume origin (new or from a
+     * snapshot), starting encryption state, ownership, and whether encryption by default is enabled. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters">Amazon EBS
+     * Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * <p>
+     * In no case can you remove encryption from an encrypted volume.
+     * </p>
+     * <p>
+     * Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more information, see
+     * <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
+     * >Supported Instance Types</a>.
+     * </p>
+     * <p>
+     * This parameter is not returned by .
+     * </p>
+     * 
+     * @return Indicates whether the encryption state of an EBS volume is changed while being restored from a backing
+     *         snapshot. The effect of setting the encryption state to <code>true</code> depends on the volume origin
+     *         (new or from a snapshot), starting encryption state, ownership, and whether encryption by default is
+     *         enabled. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-parameters"
+     *         >Amazon EBS Encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+     *         <p>
+     *         In no case can you remove encryption from an encrypted volume.
+     *         </p>
+     *         <p>
+     *         Encrypted volumes can only be attached to instances that support Amazon EBS encryption. For more
+     *         information, see <a href=
+     *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances"
+     *         >Supported Instance Types</a>.
+     *         </p>
+     *         <p>
+     *         This parameter is not returned by .
+     */
+
+    public Boolean isEncrypted() {
+        return this.encrypted;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -825,10 +883,10 @@ public class EbsBlockDevice implements Serializable, Cloneable {
             sb.append("VolumeSize: ").append(getVolumeSize()).append(",");
         if (getVolumeType() != null)
             sb.append("VolumeType: ").append(getVolumeType()).append(",");
-        if (getEncrypted() != null)
-            sb.append("Encrypted: ").append(getEncrypted()).append(",");
         if (getKmsKeyId() != null)
-            sb.append("KmsKeyId: ").append(getKmsKeyId());
+            sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
+        if (getEncrypted() != null)
+            sb.append("Encrypted: ").append(getEncrypted());
         sb.append("}");
         return sb.toString();
     }
@@ -863,13 +921,13 @@ public class EbsBlockDevice implements Serializable, Cloneable {
             return false;
         if (other.getVolumeType() != null && other.getVolumeType().equals(this.getVolumeType()) == false)
             return false;
-        if (other.getEncrypted() == null ^ this.getEncrypted() == null)
-            return false;
-        if (other.getEncrypted() != null && other.getEncrypted().equals(this.getEncrypted()) == false)
-            return false;
         if (other.getKmsKeyId() == null ^ this.getKmsKeyId() == null)
             return false;
         if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
+            return false;
+        if (other.getEncrypted() == null ^ this.getEncrypted() == null)
+            return false;
+        if (other.getEncrypted() != null && other.getEncrypted().equals(this.getEncrypted()) == false)
             return false;
         return true;
     }
@@ -884,8 +942,8 @@ public class EbsBlockDevice implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
         hashCode = prime * hashCode + ((getVolumeSize() == null) ? 0 : getVolumeSize().hashCode());
         hashCode = prime * hashCode + ((getVolumeType() == null) ? 0 : getVolumeType().hashCode());
-        hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
         hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
         return hashCode;
     }
 

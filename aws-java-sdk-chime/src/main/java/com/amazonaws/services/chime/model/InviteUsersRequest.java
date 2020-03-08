@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,10 +33,16 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String accountId;
     /**
      * <p>
-     * The user email addresses to which to send the invite.
+     * The user email addresses to which to send the email invitation.
      * </p>
      */
     private java.util.List<String> userEmailList;
+    /**
+     * <p>
+     * The user type.
+     * </p>
+     */
+    private String userType;
 
     /**
      * <p>
@@ -80,10 +86,10 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The user email addresses to which to send the invite.
+     * The user email addresses to which to send the email invitation.
      * </p>
      * 
-     * @return The user email addresses to which to send the invite.
+     * @return The user email addresses to which to send the email invitation.
      */
 
     public java.util.List<String> getUserEmailList() {
@@ -92,11 +98,11 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The user email addresses to which to send the invite.
+     * The user email addresses to which to send the email invitation.
      * </p>
      * 
      * @param userEmailList
-     *        The user email addresses to which to send the invite.
+     *        The user email addresses to which to send the email invitation.
      */
 
     public void setUserEmailList(java.util.Collection<String> userEmailList) {
@@ -110,7 +116,7 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The user email addresses to which to send the invite.
+     * The user email addresses to which to send the email invitation.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -119,7 +125,7 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param userEmailList
-     *        The user email addresses to which to send the invite.
+     *        The user email addresses to which to send the email invitation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -135,16 +141,75 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * The user email addresses to which to send the invite.
+     * The user email addresses to which to send the email invitation.
      * </p>
      * 
      * @param userEmailList
-     *        The user email addresses to which to send the invite.
+     *        The user email addresses to which to send the email invitation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public InviteUsersRequest withUserEmailList(java.util.Collection<String> userEmailList) {
         setUserEmailList(userEmailList);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The user type.
+     * </p>
+     * 
+     * @param userType
+     *        The user type.
+     * @see UserType
+     */
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    /**
+     * <p>
+     * The user type.
+     * </p>
+     * 
+     * @return The user type.
+     * @see UserType
+     */
+
+    public String getUserType() {
+        return this.userType;
+    }
+
+    /**
+     * <p>
+     * The user type.
+     * </p>
+     * 
+     * @param userType
+     *        The user type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see UserType
+     */
+
+    public InviteUsersRequest withUserType(String userType) {
+        setUserType(userType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The user type.
+     * </p>
+     * 
+     * @param userType
+     *        The user type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see UserType
+     */
+
+    public InviteUsersRequest withUserType(UserType userType) {
+        this.userType = userType.toString();
         return this;
     }
 
@@ -163,7 +228,9 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
         if (getAccountId() != null)
             sb.append("AccountId: ").append(getAccountId()).append(",");
         if (getUserEmailList() != null)
-            sb.append("UserEmailList: ").append("***Sensitive Data Redacted***");
+            sb.append("UserEmailList: ").append("***Sensitive Data Redacted***").append(",");
+        if (getUserType() != null)
+            sb.append("UserType: ").append(getUserType());
         sb.append("}");
         return sb.toString();
     }
@@ -186,6 +253,10 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
             return false;
         if (other.getUserEmailList() != null && other.getUserEmailList().equals(this.getUserEmailList()) == false)
             return false;
+        if (other.getUserType() == null ^ this.getUserType() == null)
+            return false;
+        if (other.getUserType() != null && other.getUserType().equals(this.getUserType()) == false)
+            return false;
         return true;
     }
 
@@ -196,6 +267,7 @@ public class InviteUsersRequest extends com.amazonaws.AmazonWebServiceRequest im
 
         hashCode = prime * hashCode + ((getAccountId() == null) ? 0 : getAccountId().hashCode());
         hashCode = prime * hashCode + ((getUserEmailList() == null) ? 0 : getUserEmailList().hashCode());
+        hashCode = prime * hashCode + ((getUserType() == null) ? 0 : getUserType().hashCode());
         return hashCode;
     }
 

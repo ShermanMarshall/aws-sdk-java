@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,7 +25,7 @@ public class ListResourceInventoryResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The detailed list of resources.
+     * Information about the resources.
      * </p>
      */
     private java.util.List<ResourceInventory> resourceInventoryList;
@@ -38,10 +38,10 @@ public class ListResourceInventoryResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The detailed list of resources.
+     * Information about the resources.
      * </p>
      * 
-     * @return The detailed list of resources.
+     * @return Information about the resources.
      */
 
     public java.util.List<ResourceInventory> getResourceInventoryList() {
@@ -50,11 +50,11 @@ public class ListResourceInventoryResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The detailed list of resources.
+     * Information about the resources.
      * </p>
      * 
      * @param resourceInventoryList
-     *        The detailed list of resources.
+     *        Information about the resources.
      */
 
     public void setResourceInventoryList(java.util.Collection<ResourceInventory> resourceInventoryList) {
@@ -68,7 +68,7 @@ public class ListResourceInventoryResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The detailed list of resources.
+     * Information about the resources.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -77,7 +77,7 @@ public class ListResourceInventoryResult extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param resourceInventoryList
-     *        The detailed list of resources.
+     *        Information about the resources.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -93,11 +93,11 @@ public class ListResourceInventoryResult extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The detailed list of resources.
+     * Information about the resources.
      * </p>
      * 
      * @param resourceInventoryList
-     *        The detailed list of resources.
+     *        Information about the resources.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

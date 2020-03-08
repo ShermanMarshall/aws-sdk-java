@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -136,6 +136,25 @@ public class CreateStackSetRequestMarshaller implements Marshaller<Request<Creat
 
         if (createStackSetRequest.getExecutionRoleName() != null) {
             request.addParameter("ExecutionRoleName", StringUtils.fromString(createStackSetRequest.getExecutionRoleName()));
+        }
+
+        if (createStackSetRequest.getPermissionModel() != null) {
+            request.addParameter("PermissionModel", StringUtils.fromString(createStackSetRequest.getPermissionModel()));
+        }
+
+        {
+            AutoDeployment autoDeployment = createStackSetRequest.getAutoDeployment();
+            if (autoDeployment != null) {
+
+                if (autoDeployment.getEnabled() != null) {
+                    request.addParameter("AutoDeployment.Enabled", StringUtils.fromBoolean(autoDeployment.getEnabled()));
+                }
+
+                if (autoDeployment.getRetainStacksOnAccountRemoval() != null) {
+                    request.addParameter("AutoDeployment.RetainStacksOnAccountRemoval",
+                            StringUtils.fromBoolean(autoDeployment.getRetainStacksOnAccountRemoval()));
+                }
+            }
         }
 
         request.addParameter("ClientRequestToken", IdempotentUtils.resolveString(createStackSetRequest.getClientRequestToken()));

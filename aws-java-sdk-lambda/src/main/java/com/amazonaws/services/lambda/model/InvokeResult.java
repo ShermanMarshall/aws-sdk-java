@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,19 +36,6 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * If present, indicates that an error occurred during function execution. Details about the error are included in
      * the response payload.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>Handled</code> - The runtime caught an error thrown by the function and formatted it into a JSON document.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>Unhandled</code> - The runtime didn't handle the error. For example, the function ran out of memory or
-     * timed out.
-     * </p>
-     * </li>
-     * </ul>
      */
     private String functionError;
     /**
@@ -128,36 +115,10 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * If present, indicates that an error occurred during function execution. Details about the error are included in
      * the response payload.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>Handled</code> - The runtime caught an error thrown by the function and formatted it into a JSON document.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>Unhandled</code> - The runtime didn't handle the error. For example, the function ran out of memory or
-     * timed out.
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param functionError
      *        If present, indicates that an error occurred during function execution. Details about the error are
-     *        included in the response payload.</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>Handled</code> - The runtime caught an error thrown by the function and formatted it into a JSON
-     *        document.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>Unhandled</code> - The runtime didn't handle the error. For example, the function ran out of memory
-     *        or timed out.
-     *        </p>
-     *        </li>
+     *        included in the response payload.
      */
 
     public void setFunctionError(String functionError) {
@@ -169,35 +130,9 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * If present, indicates that an error occurred during function execution. Details about the error are included in
      * the response payload.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>Handled</code> - The runtime caught an error thrown by the function and formatted it into a JSON document.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>Unhandled</code> - The runtime didn't handle the error. For example, the function ran out of memory or
-     * timed out.
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @return If present, indicates that an error occurred during function execution. Details about the error are
-     *         included in the response payload.</p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>Handled</code> - The runtime caught an error thrown by the function and formatted it into a JSON
-     *         document.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>Unhandled</code> - The runtime didn't handle the error. For example, the function ran out of memory
-     *         or timed out.
-     *         </p>
-     *         </li>
+     *         included in the response payload.
      */
 
     public String getFunctionError() {
@@ -209,36 +144,10 @@ public class InvokeResult extends com.amazonaws.AmazonWebServiceResult<com.amazo
      * If present, indicates that an error occurred during function execution. Details about the error are included in
      * the response payload.
      * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>Handled</code> - The runtime caught an error thrown by the function and formatted it into a JSON document.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>Unhandled</code> - The runtime didn't handle the error. For example, the function ran out of memory or
-     * timed out.
-     * </p>
-     * </li>
-     * </ul>
      * 
      * @param functionError
      *        If present, indicates that an error occurred during function execution. Details about the error are
-     *        included in the response payload.</p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>Handled</code> - The runtime caught an error thrown by the function and formatted it into a JSON
-     *        document.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>Unhandled</code> - The runtime didn't handle the error. For example, the function ran out of memory
-     *        or timed out.
-     *        </p>
-     *        </li>
+     *        included in the response payload.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

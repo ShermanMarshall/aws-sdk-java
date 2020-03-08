@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public class EmbeddedSourceSettingsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("source608ChannelNumber").build();
     private static final MarshallingInfo<Integer> SOURCE608TRACKNUMBER_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("source608TrackNumber").build();
+    private static final MarshallingInfo<String> TERMINATECAPTIONS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("terminateCaptions").build();
 
     private static final EmbeddedSourceSettingsMarshaller instance = new EmbeddedSourceSettingsMarshaller();
 
@@ -53,6 +55,7 @@ public class EmbeddedSourceSettingsMarshaller {
             protocolMarshaller.marshall(embeddedSourceSettings.getConvert608To708(), CONVERT608TO708_BINDING);
             protocolMarshaller.marshall(embeddedSourceSettings.getSource608ChannelNumber(), SOURCE608CHANNELNUMBER_BINDING);
             protocolMarshaller.marshall(embeddedSourceSettings.getSource608TrackNumber(), SOURCE608TRACKNUMBER_BINDING);
+            protocolMarshaller.marshall(embeddedSourceSettings.getTerminateCaptions(), TERMINATECAPTIONS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,11 +27,9 @@ public class ListIPSetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of
-     * <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list
-     * another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the
-     * value of <code>NextMarker</code> from the previous response to get information about another batch of
-     * <code>IPSets</code>.
+     * AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of
+     * <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of
+     * <code>NextMarker</code> from the previous response to get information about another batch of <code>IPSets</code>.
      * </p>
      */
     private String nextMarker;
@@ -46,19 +44,16 @@ public class ListIPSetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of
-     * <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list
-     * another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the
-     * value of <code>NextMarker</code> from the previous response to get information about another batch of
-     * <code>IPSets</code>.
+     * AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of
+     * <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of
+     * <code>NextMarker</code> from the previous response to get information about another batch of <code>IPSets</code>.
      * </p>
      * 
      * @param nextMarker
-     *        If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of
-     *        <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to
-     *        list another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests,
-     *        specify the value of <code>NextMarker</code> from the previous response to get information about another
-     *        batch of <code>IPSets</code>.
+     *        AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of
+     *        <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of
+     *        <code>NextMarker</code> from the previous response to get information about another batch of
+     *        <code>IPSets</code>.
      */
 
     public void setNextMarker(String nextMarker) {
@@ -67,18 +62,15 @@ public class ListIPSetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of
-     * <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list
-     * another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the
-     * value of <code>NextMarker</code> from the previous response to get information about another batch of
-     * <code>IPSets</code>.
+     * AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of
+     * <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of
+     * <code>NextMarker</code> from the previous response to get information about another batch of <code>IPSets</code>.
      * </p>
      * 
-     * @return If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of
-     *         <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to
-     *         list another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code>
-     *         requests, specify the value of <code>NextMarker</code> from the previous response to get information
-     *         about another batch of <code>IPSets</code>.
+     * @return AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of
+     *         <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of
+     *         <code>NextMarker</code> from the previous response to get information about another batch of
+     *         <code>IPSets</code>.
      */
 
     public String getNextMarker() {
@@ -87,19 +79,16 @@ public class ListIPSetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of
-     * <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list
-     * another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the
-     * value of <code>NextMarker</code> from the previous response to get information about another batch of
-     * <code>IPSets</code>.
+     * AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of
+     * <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of
+     * <code>NextMarker</code> from the previous response to get information about another batch of <code>IPSets</code>.
      * </p>
      * 
      * @param nextMarker
-     *        If you specify a value for <code>Limit</code> and you have more <code>IPSets</code> than the value of
-     *        <code>Limit</code>, AWS WAF returns a <code>NextMarker</code> value in the response that allows you to
-     *        list another group of <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests,
-     *        specify the value of <code>NextMarker</code> from the previous response to get information about another
-     *        batch of <code>IPSets</code>.
+     *        AWS WAF returns a <code>NextMarker</code> value in the response that allows you to list another group of
+     *        <code>IPSets</code>. For the second and subsequent <code>ListIPSets</code> requests, specify the value of
+     *        <code>NextMarker</code> from the previous response to get information about another batch of
+     *        <code>IPSets</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

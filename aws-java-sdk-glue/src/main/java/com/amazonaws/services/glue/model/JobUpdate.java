@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -79,6 +79,12 @@ public class JobUpdate implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private java.util.Map<String, String> defaultArguments;
+    /**
+     * <p>
+     * Non-overridable arguments for this job, specified as name-value pairs.
+     * </p>
+     */
+    private java.util.Map<String, String> nonOverridableArguments;
     /**
      * <p>
      * The connections used for this job.
@@ -520,6 +526,13 @@ public class JobUpdate implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single DefaultArguments entry
+     *
+     * @see JobUpdate#withDefaultArguments
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public JobUpdate addDefaultArgumentsEntry(String key, String value) {
         if (null == this.defaultArguments) {
             this.defaultArguments = new java.util.HashMap<String, String>();
@@ -538,6 +551,74 @@ public class JobUpdate implements Serializable, Cloneable, StructuredPojo {
 
     public JobUpdate clearDefaultArgumentsEntries() {
         this.defaultArguments = null;
+        return this;
+    }
+
+    /**
+     * <p>
+     * Non-overridable arguments for this job, specified as name-value pairs.
+     * </p>
+     * 
+     * @return Non-overridable arguments for this job, specified as name-value pairs.
+     */
+
+    public java.util.Map<String, String> getNonOverridableArguments() {
+        return nonOverridableArguments;
+    }
+
+    /**
+     * <p>
+     * Non-overridable arguments for this job, specified as name-value pairs.
+     * </p>
+     * 
+     * @param nonOverridableArguments
+     *        Non-overridable arguments for this job, specified as name-value pairs.
+     */
+
+    public void setNonOverridableArguments(java.util.Map<String, String> nonOverridableArguments) {
+        this.nonOverridableArguments = nonOverridableArguments;
+    }
+
+    /**
+     * <p>
+     * Non-overridable arguments for this job, specified as name-value pairs.
+     * </p>
+     * 
+     * @param nonOverridableArguments
+     *        Non-overridable arguments for this job, specified as name-value pairs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobUpdate withNonOverridableArguments(java.util.Map<String, String> nonOverridableArguments) {
+        setNonOverridableArguments(nonOverridableArguments);
+        return this;
+    }
+
+    /**
+     * Add a single NonOverridableArguments entry
+     *
+     * @see JobUpdate#withNonOverridableArguments
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobUpdate addNonOverridableArgumentsEntry(String key, String value) {
+        if (null == this.nonOverridableArguments) {
+            this.nonOverridableArguments = new java.util.HashMap<String, String>();
+        }
+        if (this.nonOverridableArguments.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.nonOverridableArguments.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into NonOverridableArguments.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public JobUpdate clearNonOverridableArgumentsEntries() {
+        this.nonOverridableArguments = null;
         return this;
     }
 
@@ -1364,6 +1445,8 @@ public class JobUpdate implements Serializable, Cloneable, StructuredPojo {
             sb.append("Command: ").append(getCommand()).append(",");
         if (getDefaultArguments() != null)
             sb.append("DefaultArguments: ").append(getDefaultArguments()).append(",");
+        if (getNonOverridableArguments() != null)
+            sb.append("NonOverridableArguments: ").append(getNonOverridableArguments()).append(",");
         if (getConnections() != null)
             sb.append("Connections: ").append(getConnections()).append(",");
         if (getMaxRetries() != null)
@@ -1422,6 +1505,10 @@ public class JobUpdate implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getDefaultArguments() != null && other.getDefaultArguments().equals(this.getDefaultArguments()) == false)
             return false;
+        if (other.getNonOverridableArguments() == null ^ this.getNonOverridableArguments() == null)
+            return false;
+        if (other.getNonOverridableArguments() != null && other.getNonOverridableArguments().equals(this.getNonOverridableArguments()) == false)
+            return false;
         if (other.getConnections() == null ^ this.getConnections() == null)
             return false;
         if (other.getConnections() != null && other.getConnections().equals(this.getConnections()) == false)
@@ -1476,6 +1563,7 @@ public class JobUpdate implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getExecutionProperty() == null) ? 0 : getExecutionProperty().hashCode());
         hashCode = prime * hashCode + ((getCommand() == null) ? 0 : getCommand().hashCode());
         hashCode = prime * hashCode + ((getDefaultArguments() == null) ? 0 : getDefaultArguments().hashCode());
+        hashCode = prime * hashCode + ((getNonOverridableArguments() == null) ? 0 : getNonOverridableArguments().hashCode());
         hashCode = prime * hashCode + ((getConnections() == null) ? 0 : getConnections().hashCode());
         hashCode = prime * hashCode + ((getMaxRetries() == null) ? 0 : getMaxRetries().hashCode());
         hashCode = prime * hashCode + ((getAllocatedCapacity() == null) ? 0 : getAllocatedCapacity().hashCode());

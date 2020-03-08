@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,10 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class RouteSpecMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> GRPCROUTE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("grpcRoute").build();
+    private static final MarshallingInfo<StructuredPojo> HTTP2ROUTE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("http2Route").build();
     private static final MarshallingInfo<StructuredPojo> HTTPROUTE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("httpRoute").build();
     private static final MarshallingInfo<Integer> PRIORITY_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -50,6 +54,8 @@ public class RouteSpecMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(routeSpec.getGrpcRoute(), GRPCROUTE_BINDING);
+            protocolMarshaller.marshall(routeSpec.getHttp2Route(), HTTP2ROUTE_BINDING);
             protocolMarshaller.marshall(routeSpec.getHttpRoute(), HTTPROUTE_BINDING);
             protocolMarshaller.marshall(routeSpec.getPriority(), PRIORITY_BINDING);
             protocolMarshaller.marshall(routeSpec.getTcpRoute(), TCPROUTE_BINDING);

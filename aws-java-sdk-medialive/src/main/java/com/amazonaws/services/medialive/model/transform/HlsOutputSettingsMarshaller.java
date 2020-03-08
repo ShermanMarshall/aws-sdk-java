@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class HlsOutputSettingsMarshaller {
 
+    private static final MarshallingInfo<String> H265PACKAGINGTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("h265PackagingType").build();
     private static final MarshallingInfo<StructuredPojo> HLSSETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("hlsSettings").build();
     private static final MarshallingInfo<String> NAMEMODIFIER_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -50,6 +52,7 @@ public class HlsOutputSettingsMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(hlsOutputSettings.getH265PackagingType(), H265PACKAGINGTYPE_BINDING);
             protocolMarshaller.marshall(hlsOutputSettings.getHlsSettings(), HLSSETTINGS_BINDING);
             protocolMarshaller.marshall(hlsOutputSettings.getNameModifier(), NAMEMODIFIER_BINDING);
             protocolMarshaller.marshall(hlsOutputSettings.getSegmentModifier(), SEGMENTMODIFIER_BINDING);

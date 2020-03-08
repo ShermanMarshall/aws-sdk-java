@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,12 +30,16 @@ public class TagSpecification implements Serializable, Cloneable {
      * <p>
      * The type of resource to tag. Currently, the resource types that support tagging on creation are:
      * <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     * <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     * <code>transit-gateway</code> | <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code>
-     * | <code>volume</code>.
+     * <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     * <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     * <code>traffic-mirror-target</code> | <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
+     * <code>transit-gateway-route-table</code> | <code>vpc-endpoint</code> (for interface VPC endpoints)|
+     * <code>vpc-endpoint-service</code> (for gateway VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.
      * </p>
      * <p>
-     * To tag a resource after it has been created, see <a>CreateTags</a>.
+     * To tag a resource after it has been created, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      */
     private String resourceType;
@@ -50,22 +54,31 @@ public class TagSpecification implements Serializable, Cloneable {
      * <p>
      * The type of resource to tag. Currently, the resource types that support tagging on creation are:
      * <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     * <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     * <code>transit-gateway</code> | <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code>
-     * | <code>volume</code>.
+     * <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     * <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     * <code>traffic-mirror-target</code> | <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
+     * <code>transit-gateway-route-table</code> | <code>vpc-endpoint</code> (for interface VPC endpoints)|
+     * <code>vpc-endpoint-service</code> (for gateway VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.
      * </p>
      * <p>
-     * To tag a resource after it has been created, see <a>CreateTags</a>.
+     * To tag a resource after it has been created, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * 
      * @param resourceType
      *        The type of resource to tag. Currently, the resource types that support tagging on creation are:
      *        <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     *        <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     *        <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
-     *        <code>transit-gateway-route-table</code> | <code>volume</code>.</p>
+     *        <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     *        <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     *        <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     *        <code>traffic-mirror-target</code> | <code>transit-gateway</code> |
+     *        <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code> |
+     *        <code>vpc-endpoint</code> (for interface VPC endpoints)| <code>vpc-endpoint-service</code> (for gateway
+     *        VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.</p>
      *        <p>
-     *        To tag a resource after it has been created, see <a>CreateTags</a>.
+     *        To tag a resource after it has been created, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * @see ResourceType
      */
 
@@ -77,21 +90,30 @@ public class TagSpecification implements Serializable, Cloneable {
      * <p>
      * The type of resource to tag. Currently, the resource types that support tagging on creation are:
      * <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     * <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     * <code>transit-gateway</code> | <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code>
-     * | <code>volume</code>.
+     * <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     * <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     * <code>traffic-mirror-target</code> | <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
+     * <code>transit-gateway-route-table</code> | <code>vpc-endpoint</code> (for interface VPC endpoints)|
+     * <code>vpc-endpoint-service</code> (for gateway VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.
      * </p>
      * <p>
-     * To tag a resource after it has been created, see <a>CreateTags</a>.
+     * To tag a resource after it has been created, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * 
      * @return The type of resource to tag. Currently, the resource types that support tagging on creation are:
      *         <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     *         <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     *         <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
-     *         <code>transit-gateway-route-table</code> | <code>volume</code>.</p>
+     *         <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     *         <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     *         <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     *         <code>traffic-mirror-target</code> | <code>transit-gateway</code> |
+     *         <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code> |
+     *         <code>vpc-endpoint</code> (for interface VPC endpoints)| <code>vpc-endpoint-service</code> (for gateway
+     *         VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.</p>
      *         <p>
-     *         To tag a resource after it has been created, see <a>CreateTags</a>.
+     *         To tag a resource after it has been created, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * @see ResourceType
      */
 
@@ -103,22 +125,31 @@ public class TagSpecification implements Serializable, Cloneable {
      * <p>
      * The type of resource to tag. Currently, the resource types that support tagging on creation are:
      * <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     * <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     * <code>transit-gateway</code> | <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code>
-     * | <code>volume</code>.
+     * <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     * <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     * <code>traffic-mirror-target</code> | <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
+     * <code>transit-gateway-route-table</code> | <code>vpc-endpoint</code> (for interface VPC endpoints)|
+     * <code>vpc-endpoint-service</code> (for gateway VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.
      * </p>
      * <p>
-     * To tag a resource after it has been created, see <a>CreateTags</a>.
+     * To tag a resource after it has been created, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * 
      * @param resourceType
      *        The type of resource to tag. Currently, the resource types that support tagging on creation are:
      *        <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     *        <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     *        <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
-     *        <code>transit-gateway-route-table</code> | <code>volume</code>.</p>
+     *        <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     *        <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     *        <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     *        <code>traffic-mirror-target</code> | <code>transit-gateway</code> |
+     *        <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code> |
+     *        <code>vpc-endpoint</code> (for interface VPC endpoints)| <code>vpc-endpoint-service</code> (for gateway
+     *        VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.</p>
      *        <p>
-     *        To tag a resource after it has been created, see <a>CreateTags</a>.
+     *        To tag a resource after it has been created, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ResourceType
      */
@@ -132,22 +163,31 @@ public class TagSpecification implements Serializable, Cloneable {
      * <p>
      * The type of resource to tag. Currently, the resource types that support tagging on creation are:
      * <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     * <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     * <code>transit-gateway</code> | <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code>
-     * | <code>volume</code>.
+     * <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     * <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     * <code>traffic-mirror-target</code> | <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
+     * <code>transit-gateway-route-table</code> | <code>vpc-endpoint</code> (for interface VPC endpoints)|
+     * <code>vpc-endpoint-service</code> (for gateway VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.
      * </p>
      * <p>
-     * To tag a resource after it has been created, see <a>CreateTags</a>.
+     * To tag a resource after it has been created, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * 
      * @param resourceType
      *        The type of resource to tag. Currently, the resource types that support tagging on creation are:
      *        <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     *        <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     *        <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
-     *        <code>transit-gateway-route-table</code> | <code>volume</code>.</p>
+     *        <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     *        <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     *        <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     *        <code>traffic-mirror-target</code> | <code>transit-gateway</code> |
+     *        <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code> |
+     *        <code>vpc-endpoint</code> (for interface VPC endpoints)| <code>vpc-endpoint-service</code> (for gateway
+     *        VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.</p>
      *        <p>
-     *        To tag a resource after it has been created, see <a>CreateTags</a>.
+     *        To tag a resource after it has been created, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * @see ResourceType
      */
 
@@ -159,22 +199,31 @@ public class TagSpecification implements Serializable, Cloneable {
      * <p>
      * The type of resource to tag. Currently, the resource types that support tagging on creation are:
      * <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     * <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     * <code>transit-gateway</code> | <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code>
-     * | <code>volume</code>.
+     * <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     * <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     * <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     * <code>traffic-mirror-target</code> | <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
+     * <code>transit-gateway-route-table</code> | <code>vpc-endpoint</code> (for interface VPC endpoints)|
+     * <code>vpc-endpoint-service</code> (for gateway VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.
      * </p>
      * <p>
-     * To tag a resource after it has been created, see <a>CreateTags</a>.
+     * To tag a resource after it has been created, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * </p>
      * 
      * @param resourceType
      *        The type of resource to tag. Currently, the resource types that support tagging on creation are:
      *        <code>capacity-reservation</code> | <code>client-vpn-endpoint</code> | <code>dedicated-host</code> |
-     *        <code>fleet</code> | <code>instance</code> | <code>launch-template</code> | <code>snapshot</code> |
-     *        <code>transit-gateway</code> | <code>transit-gateway-attachment</code> |
-     *        <code>transit-gateway-route-table</code> | <code>volume</code>.</p>
+     *        <code>fleet</code> | <code>fpga-image</code> | <code>instance</code> | <code>key-pair</code> |
+     *        <code>launch-template</code> | <code>spot-fleet-request</code> | <code>placement-group</code> |
+     *        <code>snapshot</code> | <code>traffic-mirror-filter</code> | <code>traffic-mirror-session</code> |
+     *        <code>traffic-mirror-target</code> | <code>transit-gateway</code> |
+     *        <code>transit-gateway-attachment</code> | <code>transit-gateway-route-table</code> |
+     *        <code>vpc-endpoint</code> (for interface VPC endpoints)| <code>vpc-endpoint-service</code> (for gateway
+     *        VPC endpoints) | <code>volume</code> | <code>vpc-flow-log</code>.</p>
      *        <p>
-     *        To tag a resource after it has been created, see <a>CreateTags</a>.
+     *        To tag a resource after it has been created, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ResourceType
      */

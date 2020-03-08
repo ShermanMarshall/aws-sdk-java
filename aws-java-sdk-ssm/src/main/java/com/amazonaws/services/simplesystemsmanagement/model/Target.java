@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -75,11 +75,26 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <p>
  * (Maintenance window targets only) <code>Key=resource-groups:Name,Values=ProductionResourceGroup</code>
  * </p>
+ * <p>
+ * This example demonstrates how to target all resources in the resource group <b>ProductionResourceGroup</b> in your
+ * maintenance window.
+ * </p>
  * </li>
  * <li>
  * <p>
  * (Maintenance window targets only)
  * <code>Key=resource-groups:ResourceTypeFilters,Values=<i>AWS::EC2::INSTANCE</i>,<i>AWS::EC2::VPC</i> </code>
+ * </p>
+ * <p>
+ * This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance window.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * (State Manager association targets only) <code>Key=InstanceIds,Values=<i>*</i> </code>
+ * </p>
+ * <p>
+ * This example demonstrates how to target all managed instances in the AWS Region where the association was created.
  * </p>
  * </li>
  * </ul>

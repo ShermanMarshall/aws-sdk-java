@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.mediaconvert.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -27,6 +28,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class DashIsoGroupSettingsMarshaller {
 
+    private static final MarshallingInfo<List> ADDITIONALMANIFESTS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("additionalManifests").build();
     private static final MarshallingInfo<String> BASEURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("baseUrl").build();
     private static final MarshallingInfo<String> DESTINATION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -41,6 +44,8 @@ public class DashIsoGroupSettingsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("hbbtvCompliance").build();
     private static final MarshallingInfo<Integer> MINBUFFERTIME_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("minBufferTime").build();
+    private static final MarshallingInfo<String> MPDPROFILE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("mpdProfile").build();
     private static final MarshallingInfo<String> SEGMENTCONTROL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("segmentControl").build();
     private static final MarshallingInfo<Integer> SEGMENTLENGTH_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -64,6 +69,7 @@ public class DashIsoGroupSettingsMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(dashIsoGroupSettings.getAdditionalManifests(), ADDITIONALMANIFESTS_BINDING);
             protocolMarshaller.marshall(dashIsoGroupSettings.getBaseUrl(), BASEURL_BINDING);
             protocolMarshaller.marshall(dashIsoGroupSettings.getDestination(), DESTINATION_BINDING);
             protocolMarshaller.marshall(dashIsoGroupSettings.getDestinationSettings(), DESTINATIONSETTINGS_BINDING);
@@ -71,6 +77,7 @@ public class DashIsoGroupSettingsMarshaller {
             protocolMarshaller.marshall(dashIsoGroupSettings.getFragmentLength(), FRAGMENTLENGTH_BINDING);
             protocolMarshaller.marshall(dashIsoGroupSettings.getHbbtvCompliance(), HBBTVCOMPLIANCE_BINDING);
             protocolMarshaller.marshall(dashIsoGroupSettings.getMinBufferTime(), MINBUFFERTIME_BINDING);
+            protocolMarshaller.marshall(dashIsoGroupSettings.getMpdProfile(), MPDPROFILE_BINDING);
             protocolMarshaller.marshall(dashIsoGroupSettings.getSegmentControl(), SEGMENTCONTROL_BINDING);
             protocolMarshaller.marshall(dashIsoGroupSettings.getSegmentLength(), SEGMENTLENGTH_BINDING);
             protocolMarshaller.marshall(dashIsoGroupSettings.getWriteSegmentTimelineInRepresentation(), WRITESEGMENTTIMELINEINREPRESENTATION_BINDING);

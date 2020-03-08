@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -97,6 +97,18 @@ public class ElasticsearchDomainConfig implements Serializable, Cloneable, Struc
      * </p>
      */
     private LogPublishingOptionsStatus logPublishingOptions;
+    /**
+     * <p>
+     * Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
+     * </p>
+     */
+    private DomainEndpointOptionsStatus domainEndpointOptions;
+    /**
+     * <p>
+     * Specifies <code>AdvancedSecurityOptions</code> for the domain.
+     * </p>
+     */
+    private AdvancedSecurityOptionsStatus advancedSecurityOptions;
 
     /**
      * <p>
@@ -575,6 +587,86 @@ public class ElasticsearchDomainConfig implements Serializable, Cloneable, Struc
     }
 
     /**
+     * <p>
+     * Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
+     * </p>
+     * 
+     * @param domainEndpointOptions
+     *        Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
+     */
+
+    public void setDomainEndpointOptions(DomainEndpointOptionsStatus domainEndpointOptions) {
+        this.domainEndpointOptions = domainEndpointOptions;
+    }
+
+    /**
+     * <p>
+     * Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
+     * </p>
+     * 
+     * @return Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
+     */
+
+    public DomainEndpointOptionsStatus getDomainEndpointOptions() {
+        return this.domainEndpointOptions;
+    }
+
+    /**
+     * <p>
+     * Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
+     * </p>
+     * 
+     * @param domainEndpointOptions
+     *        Specifies the <code>DomainEndpointOptions</code> for the Elasticsearch domain.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ElasticsearchDomainConfig withDomainEndpointOptions(DomainEndpointOptionsStatus domainEndpointOptions) {
+        setDomainEndpointOptions(domainEndpointOptions);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies <code>AdvancedSecurityOptions</code> for the domain.
+     * </p>
+     * 
+     * @param advancedSecurityOptions
+     *        Specifies <code>AdvancedSecurityOptions</code> for the domain.
+     */
+
+    public void setAdvancedSecurityOptions(AdvancedSecurityOptionsStatus advancedSecurityOptions) {
+        this.advancedSecurityOptions = advancedSecurityOptions;
+    }
+
+    /**
+     * <p>
+     * Specifies <code>AdvancedSecurityOptions</code> for the domain.
+     * </p>
+     * 
+     * @return Specifies <code>AdvancedSecurityOptions</code> for the domain.
+     */
+
+    public AdvancedSecurityOptionsStatus getAdvancedSecurityOptions() {
+        return this.advancedSecurityOptions;
+    }
+
+    /**
+     * <p>
+     * Specifies <code>AdvancedSecurityOptions</code> for the domain.
+     * </p>
+     * 
+     * @param advancedSecurityOptions
+     *        Specifies <code>AdvancedSecurityOptions</code> for the domain.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ElasticsearchDomainConfig withAdvancedSecurityOptions(AdvancedSecurityOptionsStatus advancedSecurityOptions) {
+        setAdvancedSecurityOptions(advancedSecurityOptions);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -607,7 +699,11 @@ public class ElasticsearchDomainConfig implements Serializable, Cloneable, Struc
         if (getAdvancedOptions() != null)
             sb.append("AdvancedOptions: ").append(getAdvancedOptions()).append(",");
         if (getLogPublishingOptions() != null)
-            sb.append("LogPublishingOptions: ").append(getLogPublishingOptions());
+            sb.append("LogPublishingOptions: ").append(getLogPublishingOptions()).append(",");
+        if (getDomainEndpointOptions() != null)
+            sb.append("DomainEndpointOptions: ").append(getDomainEndpointOptions()).append(",");
+        if (getAdvancedSecurityOptions() != null)
+            sb.append("AdvancedSecurityOptions: ").append(getAdvancedSecurityOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -666,6 +762,14 @@ public class ElasticsearchDomainConfig implements Serializable, Cloneable, Struc
             return false;
         if (other.getLogPublishingOptions() != null && other.getLogPublishingOptions().equals(this.getLogPublishingOptions()) == false)
             return false;
+        if (other.getDomainEndpointOptions() == null ^ this.getDomainEndpointOptions() == null)
+            return false;
+        if (other.getDomainEndpointOptions() != null && other.getDomainEndpointOptions().equals(this.getDomainEndpointOptions()) == false)
+            return false;
+        if (other.getAdvancedSecurityOptions() == null ^ this.getAdvancedSecurityOptions() == null)
+            return false;
+        if (other.getAdvancedSecurityOptions() != null && other.getAdvancedSecurityOptions().equals(this.getAdvancedSecurityOptions()) == false)
+            return false;
         return true;
     }
 
@@ -685,6 +789,8 @@ public class ElasticsearchDomainConfig implements Serializable, Cloneable, Struc
         hashCode = prime * hashCode + ((getNodeToNodeEncryptionOptions() == null) ? 0 : getNodeToNodeEncryptionOptions().hashCode());
         hashCode = prime * hashCode + ((getAdvancedOptions() == null) ? 0 : getAdvancedOptions().hashCode());
         hashCode = prime * hashCode + ((getLogPublishingOptions() == null) ? 0 : getLogPublishingOptions().hashCode());
+        hashCode = prime * hashCode + ((getDomainEndpointOptions() == null) ? 0 : getDomainEndpointOptions().hashCode());
+        hashCode = prime * hashCode + ((getAdvancedSecurityOptions() == null) ? 0 : getAdvancedSecurityOptions().hashCode());
         return hashCode;
     }
 

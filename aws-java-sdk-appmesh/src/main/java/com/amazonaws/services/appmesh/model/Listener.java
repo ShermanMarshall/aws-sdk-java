@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing a listener for a virtual node.
+ * An object that represents a listener for a virtual node.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/Listener" target="_top">AWS API
@@ -40,6 +40,12 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private PortMapping portMapping;
+    /**
+     * <p>
+     * A reference to an object that represents the Transport Layer Security (TLS) properties for a listener.
+     * </p>
+     */
+    private ListenerTls tls;
 
     /**
      * <p>
@@ -122,6 +128,46 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * A reference to an object that represents the Transport Layer Security (TLS) properties for a listener.
+     * </p>
+     * 
+     * @param tls
+     *        A reference to an object that represents the Transport Layer Security (TLS) properties for a listener.
+     */
+
+    public void setTls(ListenerTls tls) {
+        this.tls = tls;
+    }
+
+    /**
+     * <p>
+     * A reference to an object that represents the Transport Layer Security (TLS) properties for a listener.
+     * </p>
+     * 
+     * @return A reference to an object that represents the Transport Layer Security (TLS) properties for a listener.
+     */
+
+    public ListenerTls getTls() {
+        return this.tls;
+    }
+
+    /**
+     * <p>
+     * A reference to an object that represents the Transport Layer Security (TLS) properties for a listener.
+     * </p>
+     * 
+     * @param tls
+     *        A reference to an object that represents the Transport Layer Security (TLS) properties for a listener.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Listener withTls(ListenerTls tls) {
+        setTls(tls);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -136,7 +182,9 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
         if (getHealthCheck() != null)
             sb.append("HealthCheck: ").append(getHealthCheck()).append(",");
         if (getPortMapping() != null)
-            sb.append("PortMapping: ").append(getPortMapping());
+            sb.append("PortMapping: ").append(getPortMapping()).append(",");
+        if (getTls() != null)
+            sb.append("Tls: ").append(getTls());
         sb.append("}");
         return sb.toString();
     }
@@ -159,6 +207,10 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getPortMapping() != null && other.getPortMapping().equals(this.getPortMapping()) == false)
             return false;
+        if (other.getTls() == null ^ this.getTls() == null)
+            return false;
+        if (other.getTls() != null && other.getTls().equals(this.getTls()) == false)
+            return false;
         return true;
     }
 
@@ -169,6 +221,7 @@ public class Listener implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getHealthCheck() == null) ? 0 : getHealthCheck().hashCode());
         hashCode = prime * hashCode + ((getPortMapping() == null) ? 0 : getPortMapping().hashCode());
+        hashCode = prime * hashCode + ((getTls() == null) ? 0 : getTls().hashCode());
         return hashCode;
     }
 

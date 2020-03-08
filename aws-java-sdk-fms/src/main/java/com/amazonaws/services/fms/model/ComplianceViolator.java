@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,7 @@ public class ComplianceViolator implements Serializable, Cloneable, StructuredPo
     private String violationReason;
     /**
      * <p>
-     * The resource type. This is in the format shown in <a
+     * The resource type. This is in the format shown in the <a
      * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">AWS
      * Resource Types Reference</a>. For example: <code>AWS::ElasticLoadBalancingV2::LoadBalancer</code> or
      * <code>AWS::CloudFront::Distribution</code>.
@@ -151,14 +151,14 @@ public class ComplianceViolator implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The resource type. This is in the format shown in <a
+     * The resource type. This is in the format shown in the <a
      * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">AWS
      * Resource Types Reference</a>. For example: <code>AWS::ElasticLoadBalancingV2::LoadBalancer</code> or
      * <code>AWS::CloudFront::Distribution</code>.
      * </p>
      * 
      * @param resourceType
-     *        The resource type. This is in the format shown in <a href=
+     *        The resource type. This is in the format shown in the <a href=
      *        "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">AWS
      *        Resource Types Reference</a>. For example: <code>AWS::ElasticLoadBalancingV2::LoadBalancer</code> or
      *        <code>AWS::CloudFront::Distribution</code>.
@@ -170,13 +170,13 @@ public class ComplianceViolator implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The resource type. This is in the format shown in <a
+     * The resource type. This is in the format shown in the <a
      * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">AWS
      * Resource Types Reference</a>. For example: <code>AWS::ElasticLoadBalancingV2::LoadBalancer</code> or
      * <code>AWS::CloudFront::Distribution</code>.
      * </p>
      * 
-     * @return The resource type. This is in the format shown in <a
+     * @return The resource type. This is in the format shown in the <a
      *         href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html"
      *         >AWS Resource Types Reference</a>. For example: <code>AWS::ElasticLoadBalancingV2::LoadBalancer</code> or
      *         <code>AWS::CloudFront::Distribution</code>.
@@ -188,14 +188,14 @@ public class ComplianceViolator implements Serializable, Cloneable, StructuredPo
 
     /**
      * <p>
-     * The resource type. This is in the format shown in <a
+     * The resource type. This is in the format shown in the <a
      * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">AWS
      * Resource Types Reference</a>. For example: <code>AWS::ElasticLoadBalancingV2::LoadBalancer</code> or
      * <code>AWS::CloudFront::Distribution</code>.
      * </p>
      * 
      * @param resourceType
-     *        The resource type. This is in the format shown in <a href=
+     *        The resource type. This is in the format shown in the <a href=
      *        "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">AWS
      *        Resource Types Reference</a>. For example: <code>AWS::ElasticLoadBalancingV2::LoadBalancer</code> or
      *        <code>AWS::CloudFront::Distribution</code>.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -1095,8 +1095,9 @@ public interface AWSGreengrass {
     StopBulkDeploymentResult stopBulkDeployment(StopBulkDeploymentRequest stopBulkDeploymentRequest);
 
     /**
-     * Add resource tags to a Greengrass Resource. Valid resources are Group, Connector, Core, Device, Function, Logger,
-     * Subscription, and Resource Defintions, and also BulkDeploymentIds.
+     * Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition',
+     * 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition', 'ResourceDefinition', and
+     * 'BulkDeployment'.
      * 
      * @param tagResourceRequest
      *        A map of the key-value pairs for the resource tag.

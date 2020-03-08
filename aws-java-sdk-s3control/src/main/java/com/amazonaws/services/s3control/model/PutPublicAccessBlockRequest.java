@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,15 +25,30 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class PutPublicAccessBlockRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** <p/> */
+    /**
+     * <p>
+     * The <code>PublicAccessBlock</code> configuration that you want to apply to the specified Amazon Web Services
+     * account.
+     * </p>
+     */
     private PublicAccessBlockConfiguration publicAccessBlockConfiguration;
-    /** <p/> */
+    /**
+     * <p>
+     * The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you want to
+     * set.
+     * </p>
+     */
     private String accountId;
 
     /**
-     * <p/>
+     * <p>
+     * The <code>PublicAccessBlock</code> configuration that you want to apply to the specified Amazon Web Services
+     * account.
+     * </p>
      * 
      * @param publicAccessBlockConfiguration
+     *        The <code>PublicAccessBlock</code> configuration that you want to apply to the specified Amazon Web
+     *        Services account.
      */
 
     public void setPublicAccessBlockConfiguration(PublicAccessBlockConfiguration publicAccessBlockConfiguration) {
@@ -41,9 +56,13 @@ public class PutPublicAccessBlockRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * <p/>
+     * <p>
+     * The <code>PublicAccessBlock</code> configuration that you want to apply to the specified Amazon Web Services
+     * account.
+     * </p>
      * 
-     * @return
+     * @return The <code>PublicAccessBlock</code> configuration that you want to apply to the specified Amazon Web
+     *         Services account.
      */
 
     public PublicAccessBlockConfiguration getPublicAccessBlockConfiguration() {
@@ -51,9 +70,14 @@ public class PutPublicAccessBlockRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * <p/>
+     * <p>
+     * The <code>PublicAccessBlock</code> configuration that you want to apply to the specified Amazon Web Services
+     * account.
+     * </p>
      * 
      * @param publicAccessBlockConfiguration
+     *        The <code>PublicAccessBlock</code> configuration that you want to apply to the specified Amazon Web
+     *        Services account.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -63,9 +87,14 @@ public class PutPublicAccessBlockRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * <p/>
+     * <p>
+     * The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you want to
+     * set.
+     * </p>
      * 
      * @param accountId
+     *        The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you
+     *        want to set.
      */
 
     public void setAccountId(String accountId) {
@@ -73,9 +102,13 @@ public class PutPublicAccessBlockRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * <p/>
+     * <p>
+     * The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you want to
+     * set.
+     * </p>
      * 
-     * @return
+     * @return The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you
+     *         want to set.
      */
 
     public String getAccountId() {
@@ -83,9 +116,14 @@ public class PutPublicAccessBlockRequest extends com.amazonaws.AmazonWebServiceR
     }
 
     /**
-     * <p/>
+     * <p>
+     * The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you want to
+     * set.
+     * </p>
      * 
      * @param accountId
+     *        The account ID for the Amazon Web Services account whose <code>PublicAccessBlock</code> configuration you
+     *        want to set.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

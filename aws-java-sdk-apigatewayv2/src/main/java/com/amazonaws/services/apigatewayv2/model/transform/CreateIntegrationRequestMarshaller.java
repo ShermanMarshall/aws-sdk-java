@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,6 +49,8 @@ public class CreateIntegrationRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("integrationUri").build();
     private static final MarshallingInfo<String> PASSTHROUGHBEHAVIOR_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("passthroughBehavior").build();
+    private static final MarshallingInfo<String> PAYLOADFORMATVERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("payloadFormatVersion").build();
     private static final MarshallingInfo<Map> REQUESTPARAMETERS_BINDING = MarshallingInfo.builder(MarshallingType.MAP)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("requestParameters").build();
     private static final MarshallingInfo<Map> REQUESTTEMPLATES_BINDING = MarshallingInfo.builder(MarshallingType.MAP)
@@ -84,6 +86,7 @@ public class CreateIntegrationRequestMarshaller {
             protocolMarshaller.marshall(createIntegrationRequest.getIntegrationType(), INTEGRATIONTYPE_BINDING);
             protocolMarshaller.marshall(createIntegrationRequest.getIntegrationUri(), INTEGRATIONURI_BINDING);
             protocolMarshaller.marshall(createIntegrationRequest.getPassthroughBehavior(), PASSTHROUGHBEHAVIOR_BINDING);
+            protocolMarshaller.marshall(createIntegrationRequest.getPayloadFormatVersion(), PAYLOADFORMATVERSION_BINDING);
             protocolMarshaller.marshall(createIntegrationRequest.getRequestParameters(), REQUESTPARAMETERS_BINDING);
             protocolMarshaller.marshall(createIntegrationRequest.getRequestTemplates(), REQUESTTEMPLATES_BINDING);
             protocolMarshaller.marshall(createIntegrationRequest.getTemplateSelectionExpression(), TEMPLATESELECTIONEXPRESSION_BINDING);

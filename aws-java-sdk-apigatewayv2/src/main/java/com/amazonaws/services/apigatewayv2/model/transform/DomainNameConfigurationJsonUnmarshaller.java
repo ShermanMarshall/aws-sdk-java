@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,6 +64,14 @@ public class DomainNameConfigurationJsonUnmarshaller implements Unmarshaller<Dom
                     context.nextToken();
                     domainNameConfiguration.setCertificateUploadDate(DateJsonUnmarshallerFactory.getInstance("iso8601").unmarshall(context));
                 }
+                if (context.testExpression("domainNameStatus", targetDepth)) {
+                    context.nextToken();
+                    domainNameConfiguration.setDomainNameStatus(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("domainNameStatusMessage", targetDepth)) {
+                    context.nextToken();
+                    domainNameConfiguration.setDomainNameStatusMessage(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("endpointType", targetDepth)) {
                     context.nextToken();
                     domainNameConfiguration.setEndpointType(context.getUnmarshaller(String.class).unmarshall(context));
@@ -75,14 +83,6 @@ public class DomainNameConfigurationJsonUnmarshaller implements Unmarshaller<Dom
                 if (context.testExpression("securityPolicy", targetDepth)) {
                     context.nextToken();
                     domainNameConfiguration.setSecurityPolicy(context.getUnmarshaller(String.class).unmarshall(context));
-                }
-                if (context.testExpression("domainNameStatus", targetDepth)) {
-                    context.nextToken();
-                    domainNameConfiguration.setDomainNameStatus(context.getUnmarshaller(String.class).unmarshall(context));
-                }
-                if (context.testExpression("domainNameStatusMessage", targetDepth)) {
-                    context.nextToken();
-                    domainNameConfiguration.setDomainNameStatusMessage(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

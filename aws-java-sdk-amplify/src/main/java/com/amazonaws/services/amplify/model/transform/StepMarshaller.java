@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,6 +41,10 @@ public class StepMarshaller {
             .marshallLocationName("logUrl").build();
     private static final MarshallingInfo<String> ARTIFACTSURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("artifactsUrl").build();
+    private static final MarshallingInfo<String> TESTARTIFACTSURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("testArtifactsUrl").build();
+    private static final MarshallingInfo<String> TESTCONFIGURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("testConfigUrl").build();
     private static final MarshallingInfo<Map> SCREENSHOTS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("screenshots").build();
     private static final MarshallingInfo<String> STATUSREASON_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -70,6 +74,8 @@ public class StepMarshaller {
             protocolMarshaller.marshall(step.getEndTime(), ENDTIME_BINDING);
             protocolMarshaller.marshall(step.getLogUrl(), LOGURL_BINDING);
             protocolMarshaller.marshall(step.getArtifactsUrl(), ARTIFACTSURL_BINDING);
+            protocolMarshaller.marshall(step.getTestArtifactsUrl(), TESTARTIFACTSURL_BINDING);
+            protocolMarshaller.marshall(step.getTestConfigUrl(), TESTCONFIGURL_BINDING);
             protocolMarshaller.marshall(step.getScreenshots(), SCREENSHOTS_BINDING);
             protocolMarshaller.marshall(step.getStatusReason(), STATUSREASON_BINDING);
             protocolMarshaller.marshall(step.getContext(), CONTEXT_BINDING);

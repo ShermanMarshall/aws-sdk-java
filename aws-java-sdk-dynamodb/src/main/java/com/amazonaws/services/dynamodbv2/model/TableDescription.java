@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -127,6 +127,23 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in inaccessible.
+     * Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the table archival
+     * process when a table's AWS KMS key remains inaccessible for more than seven days.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is complete.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
+     * </p>
+     * </li>
      * </ul>
      */
     private String tableStatus;
@@ -214,7 +231,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -261,9 +278,15 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
-     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * when a new global secondary index is added to the table. It is the process by which DynamoDB populates the new
      * index with data from the table. (This attribute does not appear for indexes that were created during a
      * <code>CreateTable</code> operation.)
+     * </p>
+     * <p>
+     * You can delete an index that is being created during the <code>Backfilling</code> phase when
+     * <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the index that
+     * is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is false. (This
+     * attribute does not appear for indexes that were created during a <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
@@ -336,7 +359,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -386,17 +409,17 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <ul>
      * <li>
      * <p>
-     * the AWS customer ID.
+     * AWS customer ID
      * </p>
      * </li>
      * <li>
      * <p>
-     * the table name.
+     * Table name
      * </p>
      * </li>
      * <li>
      * <p>
-     * the <code>StreamLabel</code>.
+     * <code>StreamLabel</code>
      * </p>
      * </li>
      * </ul>
@@ -410,6 +433,20 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
     private String latestStreamArn;
     /**
      * <p>
+     * Represents the version of <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">global tables</a> in
+     * use, if the table is replicated across AWS Regions.
+     * </p>
+     */
+    private String globalTableVersion;
+    /**
+     * <p>
+     * Represents replicas of the table.
+     * </p>
+     */
+    private java.util.List<ReplicaDescription> replicas;
+    /**
+     * <p>
      * Contains details for the restore.
      * </p>
      */
@@ -420,6 +457,12 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * </p>
      */
     private SSEDescription sSEDescription;
+    /**
+     * <p>
+     * Contains information about the table archive.
+     * </p>
+     */
+    private ArchivalSummary archivalSummary;
 
     /**
      * <p>
@@ -1066,6 +1109,23 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in inaccessible.
+     * Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the table archival
+     * process when a table's AWS KMS key remains inaccessible for more than seven days.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is complete.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param tableStatus
@@ -1089,6 +1149,24 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>ACTIVE</code> - The table is ready for use.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in
+     *        inaccessible. Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the
+     *        table archival process when a table's AWS KMS key remains inaccessible for more than seven days.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is
+     *        complete.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
      *        </p>
      *        </li>
      * @see TableStatus
@@ -1123,6 +1201,23 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in inaccessible.
+     * Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the table archival
+     * process when a table's AWS KMS key remains inaccessible for more than seven days.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is complete.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The current state of the table:</p>
@@ -1145,6 +1240,24 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *         <li>
      *         <p>
      *         <code>ACTIVE</code> - The table is ready for use.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in
+     *         inaccessible. Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the
+     *         table archival process when a table's AWS KMS key remains inaccessible for more than seven days.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is
+     *         complete.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
      *         </p>
      *         </li>
      * @see TableStatus
@@ -1179,6 +1292,23 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in inaccessible.
+     * Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the table archival
+     * process when a table's AWS KMS key remains inaccessible for more than seven days.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is complete.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param tableStatus
@@ -1202,6 +1332,24 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>ACTIVE</code> - The table is ready for use.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in
+     *        inaccessible. Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the
+     *        table archival process when a table's AWS KMS key remains inaccessible for more than seven days.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is
+     *        complete.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1238,6 +1386,23 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in inaccessible.
+     * Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the table archival
+     * process when a table's AWS KMS key remains inaccessible for more than seven days.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is complete.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param tableStatus
@@ -1261,6 +1426,24 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>ACTIVE</code> - The table is ready for use.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in
+     *        inaccessible. Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the
+     *        table archival process when a table's AWS KMS key remains inaccessible for more than seven days.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is
+     *        complete.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
      *        </p>
      *        </li>
      * @see TableStatus
@@ -1295,6 +1478,23 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <code>ACTIVE</code> - The table is ready for use.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in inaccessible.
+     * Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the table archival
+     * process when a table's AWS KMS key remains inaccessible for more than seven days.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is complete.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param tableStatus
@@ -1318,6 +1518,24 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>ACTIVE</code> - The table is ready for use.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS</code> - The AWS KMS key used to encrypt the table in
+     *        inaccessible. Table operations may fail due to failure to use the AWS KMS key. DynamoDB will initiate the
+     *        table archival process when a table's AWS KMS key remains inaccessible for more than seven days.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ARCHIVING</code> - The table is being archived. Operations are not allowed until archival is
+     *        complete.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ARCHIVED</code> - The table has been archived. See the ArchivalReason for more information.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1671,7 +1889,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1745,7 +1963,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *         <li>
      *         <p>
      *         <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *         projected attributes are in <code>NonKeyAttributes</code>.
+     *         projected attributes is in <code>NonKeyAttributes</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -1824,7 +2042,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -1898,7 +2116,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <code>NonKeyAttributes</code>.
+     *        projected attributes is in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -1982,7 +2200,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2061,7 +2279,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <code>NonKeyAttributes</code>.
+     *        projected attributes is in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -2147,7 +2365,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2221,7 +2439,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <code>NonKeyAttributes</code>.
+     *        projected attributes is in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -2273,9 +2491,15 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
-     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * when a new global secondary index is added to the table. It is the process by which DynamoDB populates the new
      * index with data from the table. (This attribute does not appear for indexes that were created during a
      * <code>CreateTable</code> operation.)
+     * </p>
+     * <p>
+     * You can delete an index that is being created during the <code>Backfilling</code> phase when
+     * <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the index that
+     * is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is false. (This
+     * attribute does not appear for indexes that were created during a <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
@@ -2348,7 +2572,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2385,9 +2609,16 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *         <li>
      *         <p>
      *         <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling
-     *         occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB
+     *         occurs only when a new global secondary index is added to the table. It is the process by which DynamoDB
      *         populates the new index with data from the table. (This attribute does not appear for indexes that were
      *         created during a <code>CreateTable</code> operation.)
+     *         </p>
+     *         <p>
+     *         You can delete an index that is being created during the <code>Backfilling</code> phase when
+     *         <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the
+     *         index that is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code>
+     *         is false. (This attribute does not appear for indexes that were created during a <code>CreateTable</code>
+     *         operation.)
      *         </p>
      *         </li>
      *         <li>
@@ -2461,7 +2692,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *         <li>
      *         <p>
      *         <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *         projected attributes are in <code>NonKeyAttributes</code>.
+     *         projected attributes is in <code>NonKeyAttributes</code>.
      *         </p>
      *         </li>
      *         <li>
@@ -2505,9 +2736,15 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
-     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * when a new global secondary index is added to the table. It is the process by which DynamoDB populates the new
      * index with data from the table. (This attribute does not appear for indexes that were created during a
      * <code>CreateTable</code> operation.)
+     * </p>
+     * <p>
+     * You can delete an index that is being created during the <code>Backfilling</code> phase when
+     * <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the index that
+     * is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is false. (This
+     * attribute does not appear for indexes that were created during a <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
@@ -2580,7 +2817,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2618,9 +2855,16 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling
-     *        occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB
+     *        occurs only when a new global secondary index is added to the table. It is the process by which DynamoDB
      *        populates the new index with data from the table. (This attribute does not appear for indexes that were
      *        created during a <code>CreateTable</code> operation.)
+     *        </p>
+     *        <p>
+     *        You can delete an index that is being created during the <code>Backfilling</code> phase when
+     *        <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the
+     *        index that is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code>
+     *        is false. (This attribute does not appear for indexes that were created during a <code>CreateTable</code>
+     *        operation.)
      *        </p>
      *        </li>
      *        <li>
@@ -2694,7 +2938,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <code>NonKeyAttributes</code>.
+     *        projected attributes is in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -2743,9 +2987,15 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
-     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * when a new global secondary index is added to the table. It is the process by which DynamoDB populates the new
      * index with data from the table. (This attribute does not appear for indexes that were created during a
      * <code>CreateTable</code> operation.)
+     * </p>
+     * <p>
+     * You can delete an index that is being created during the <code>Backfilling</code> phase when
+     * <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the index that
+     * is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is false. (This
+     * attribute does not appear for indexes that were created during a <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
@@ -2818,7 +3068,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -2861,9 +3111,16 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling
-     *        occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB
+     *        occurs only when a new global secondary index is added to the table. It is the process by which DynamoDB
      *        populates the new index with data from the table. (This attribute does not appear for indexes that were
      *        created during a <code>CreateTable</code> operation.)
+     *        </p>
+     *        <p>
+     *        You can delete an index that is being created during the <code>Backfilling</code> phase when
+     *        <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the
+     *        index that is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code>
+     *        is false. (This attribute does not appear for indexes that were created during a <code>CreateTable</code>
+     *        operation.)
      *        </p>
      *        </li>
      *        <li>
@@ -2937,7 +3194,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <code>NonKeyAttributes</code>.
+     *        projected attributes is in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -2988,9 +3245,15 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling occurs only
-     * when a new global secondary index is added to the table; it is the process by which DynamoDB populates the new
+     * when a new global secondary index is added to the table. It is the process by which DynamoDB populates the new
      * index with data from the table. (This attribute does not appear for indexes that were created during a
      * <code>CreateTable</code> operation.)
+     * </p>
+     * <p>
+     * You can delete an index that is being created during the <code>Backfilling</code> phase when
+     * <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the index that
+     * is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is false. (This
+     * attribute does not appear for indexes that were created during a <code>CreateTable</code> operation.)
      * </p>
      * </li>
      * <li>
@@ -3063,7 +3326,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <li>
      * <p>
      * <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of projected
-     * attributes are in <code>NonKeyAttributes</code>.
+     * attributes is in <code>NonKeyAttributes</code>.
      * </p>
      * </li>
      * <li>
@@ -3101,9 +3364,16 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>Backfilling</code> - If true, then the index is currently in the backfilling phase. Backfilling
-     *        occurs only when a new global secondary index is added to the table; it is the process by which DynamoDB
+     *        occurs only when a new global secondary index is added to the table. It is the process by which DynamoDB
      *        populates the new index with data from the table. (This attribute does not appear for indexes that were
      *        created during a <code>CreateTable</code> operation.)
+     *        </p>
+     *        <p>
+     *        You can delete an index that is being created during the <code>Backfilling</code> phase when
+     *        <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code> is true. You can't delete the
+     *        index that is being created when <code>IndexStatus</code> is set to CREATING and <code>Backfilling</code>
+     *        is false. (This attribute does not appear for indexes that were created during a <code>CreateTable</code>
+     *        operation.)
      *        </p>
      *        </li>
      *        <li>
@@ -3177,7 +3447,7 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <li>
      *        <p>
      *        <code>INCLUDE</code> - Only the specified table attributes are projected into the index. The list of
-     *        projected attributes are in <code>NonKeyAttributes</code>.
+     *        projected attributes is in <code>NonKeyAttributes</code>.
      *        </p>
      *        </li>
      *        <li>
@@ -3266,17 +3536,17 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <ul>
      * <li>
      * <p>
-     * the AWS customer ID.
+     * AWS customer ID
      * </p>
      * </li>
      * <li>
      * <p>
-     * the table name.
+     * Table name
      * </p>
      * </li>
      * <li>
      * <p>
-     * the <code>StreamLabel</code>.
+     * <code>StreamLabel</code>
      * </p>
      * </li>
      * </ul>
@@ -3291,17 +3561,17 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <ul>
      *        <li>
      *        <p>
-     *        the AWS customer ID.
+     *        AWS customer ID
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        the table name.
+     *        Table name
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        the <code>StreamLabel</code>.
+     *        <code>StreamLabel</code>
      *        </p>
      *        </li>
      */
@@ -3322,17 +3592,17 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <ul>
      * <li>
      * <p>
-     * the AWS customer ID.
+     * AWS customer ID
      * </p>
      * </li>
      * <li>
      * <p>
-     * the table name.
+     * Table name
      * </p>
      * </li>
      * <li>
      * <p>
-     * the <code>StreamLabel</code>.
+     * <code>StreamLabel</code>
      * </p>
      * </li>
      * </ul>
@@ -3346,17 +3616,17 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *         <ul>
      *         <li>
      *         <p>
-     *         the AWS customer ID.
+     *         AWS customer ID
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         the table name.
+     *         Table name
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         the <code>StreamLabel</code>.
+     *         <code>StreamLabel</code>
      *         </p>
      *         </li>
      */
@@ -3377,17 +3647,17 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      * <ul>
      * <li>
      * <p>
-     * the AWS customer ID.
+     * AWS customer ID
      * </p>
      * </li>
      * <li>
      * <p>
-     * the table name.
+     * Table name
      * </p>
      * </li>
      * <li>
      * <p>
-     * the <code>StreamLabel</code>.
+     * <code>StreamLabel</code>
      * </p>
      * </li>
      * </ul>
@@ -3402,17 +3672,17 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
      *        <ul>
      *        <li>
      *        <p>
-     *        the AWS customer ID.
+     *        AWS customer ID
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        the table name.
+     *        Table name
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        the <code>StreamLabel</code>.
+     *        <code>StreamLabel</code>
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -3460,6 +3730,128 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
 
     public TableDescription withLatestStreamArn(String latestStreamArn) {
         setLatestStreamArn(latestStreamArn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Represents the version of <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">global tables</a> in
+     * use, if the table is replicated across AWS Regions.
+     * </p>
+     * 
+     * @param globalTableVersion
+     *        Represents the version of <a
+     *        href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">global
+     *        tables</a> in use, if the table is replicated across AWS Regions.
+     */
+
+    public void setGlobalTableVersion(String globalTableVersion) {
+        this.globalTableVersion = globalTableVersion;
+    }
+
+    /**
+     * <p>
+     * Represents the version of <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">global tables</a> in
+     * use, if the table is replicated across AWS Regions.
+     * </p>
+     * 
+     * @return Represents the version of <a
+     *         href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">global
+     *         tables</a> in use, if the table is replicated across AWS Regions.
+     */
+
+    public String getGlobalTableVersion() {
+        return this.globalTableVersion;
+    }
+
+    /**
+     * <p>
+     * Represents the version of <a
+     * href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">global tables</a> in
+     * use, if the table is replicated across AWS Regions.
+     * </p>
+     * 
+     * @param globalTableVersion
+     *        Represents the version of <a
+     *        href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">global
+     *        tables</a> in use, if the table is replicated across AWS Regions.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TableDescription withGlobalTableVersion(String globalTableVersion) {
+        setGlobalTableVersion(globalTableVersion);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Represents replicas of the table.
+     * </p>
+     * 
+     * @return Represents replicas of the table.
+     */
+
+    public java.util.List<ReplicaDescription> getReplicas() {
+        return replicas;
+    }
+
+    /**
+     * <p>
+     * Represents replicas of the table.
+     * </p>
+     * 
+     * @param replicas
+     *        Represents replicas of the table.
+     */
+
+    public void setReplicas(java.util.Collection<ReplicaDescription> replicas) {
+        if (replicas == null) {
+            this.replicas = null;
+            return;
+        }
+
+        this.replicas = new java.util.ArrayList<ReplicaDescription>(replicas);
+    }
+
+    /**
+     * <p>
+     * Represents replicas of the table.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setReplicas(java.util.Collection)} or {@link #withReplicas(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param replicas
+     *        Represents replicas of the table.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TableDescription withReplicas(ReplicaDescription... replicas) {
+        if (this.replicas == null) {
+            setReplicas(new java.util.ArrayList<ReplicaDescription>(replicas.length));
+        }
+        for (ReplicaDescription ele : replicas) {
+            this.replicas.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * Represents replicas of the table.
+     * </p>
+     * 
+     * @param replicas
+     *        Represents replicas of the table.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TableDescription withReplicas(java.util.Collection<ReplicaDescription> replicas) {
+        setReplicas(replicas);
         return this;
     }
 
@@ -3544,6 +3936,46 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * <p>
+     * Contains information about the table archive.
+     * </p>
+     * 
+     * @param archivalSummary
+     *        Contains information about the table archive.
+     */
+
+    public void setArchivalSummary(ArchivalSummary archivalSummary) {
+        this.archivalSummary = archivalSummary;
+    }
+
+    /**
+     * <p>
+     * Contains information about the table archive.
+     * </p>
+     * 
+     * @return Contains information about the table archive.
+     */
+
+    public ArchivalSummary getArchivalSummary() {
+        return this.archivalSummary;
+    }
+
+    /**
+     * <p>
+     * Contains information about the table archive.
+     * </p>
+     * 
+     * @param archivalSummary
+     *        Contains information about the table archive.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TableDescription withArchivalSummary(ArchivalSummary archivalSummary) {
+        setArchivalSummary(archivalSummary);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -3587,10 +4019,16 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
             sb.append("LatestStreamLabel: ").append(getLatestStreamLabel()).append(",");
         if (getLatestStreamArn() != null)
             sb.append("LatestStreamArn: ").append(getLatestStreamArn()).append(",");
+        if (getGlobalTableVersion() != null)
+            sb.append("GlobalTableVersion: ").append(getGlobalTableVersion()).append(",");
+        if (getReplicas() != null)
+            sb.append("Replicas: ").append(getReplicas()).append(",");
         if (getRestoreSummary() != null)
             sb.append("RestoreSummary: ").append(getRestoreSummary()).append(",");
         if (getSSEDescription() != null)
-            sb.append("SSEDescription: ").append(getSSEDescription());
+            sb.append("SSEDescription: ").append(getSSEDescription()).append(",");
+        if (getArchivalSummary() != null)
+            sb.append("ArchivalSummary: ").append(getArchivalSummary());
         sb.append("}");
         return sb.toString();
     }
@@ -3669,6 +4107,14 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
             return false;
         if (other.getLatestStreamArn() != null && other.getLatestStreamArn().equals(this.getLatestStreamArn()) == false)
             return false;
+        if (other.getGlobalTableVersion() == null ^ this.getGlobalTableVersion() == null)
+            return false;
+        if (other.getGlobalTableVersion() != null && other.getGlobalTableVersion().equals(this.getGlobalTableVersion()) == false)
+            return false;
+        if (other.getReplicas() == null ^ this.getReplicas() == null)
+            return false;
+        if (other.getReplicas() != null && other.getReplicas().equals(this.getReplicas()) == false)
+            return false;
         if (other.getRestoreSummary() == null ^ this.getRestoreSummary() == null)
             return false;
         if (other.getRestoreSummary() != null && other.getRestoreSummary().equals(this.getRestoreSummary()) == false)
@@ -3676,6 +4122,10 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
         if (other.getSSEDescription() == null ^ this.getSSEDescription() == null)
             return false;
         if (other.getSSEDescription() != null && other.getSSEDescription().equals(this.getSSEDescription()) == false)
+            return false;
+        if (other.getArchivalSummary() == null ^ this.getArchivalSummary() == null)
+            return false;
+        if (other.getArchivalSummary() != null && other.getArchivalSummary().equals(this.getArchivalSummary()) == false)
             return false;
         return true;
     }
@@ -3701,8 +4151,11 @@ public class TableDescription implements Serializable, Cloneable, StructuredPojo
         hashCode = prime * hashCode + ((getStreamSpecification() == null) ? 0 : getStreamSpecification().hashCode());
         hashCode = prime * hashCode + ((getLatestStreamLabel() == null) ? 0 : getLatestStreamLabel().hashCode());
         hashCode = prime * hashCode + ((getLatestStreamArn() == null) ? 0 : getLatestStreamArn().hashCode());
+        hashCode = prime * hashCode + ((getGlobalTableVersion() == null) ? 0 : getGlobalTableVersion().hashCode());
+        hashCode = prime * hashCode + ((getReplicas() == null) ? 0 : getReplicas().hashCode());
         hashCode = prime * hashCode + ((getRestoreSummary() == null) ? 0 : getRestoreSummary().hashCode());
         hashCode = prime * hashCode + ((getSSEDescription() == null) ? 0 : getSSEDescription().hashCode());
+        hashCode = prime * hashCode + ((getArchivalSummary() == null) ? 0 : getArchivalSummary().hashCode());
         return hashCode;
     }
 

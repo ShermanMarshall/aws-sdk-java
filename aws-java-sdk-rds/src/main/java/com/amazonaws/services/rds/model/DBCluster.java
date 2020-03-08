@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,7 @@ public class DBCluster implements Serializable, Cloneable {
      * <p>
      * For all database engines except Amazon Aurora, <code>AllocatedStorage</code> specifies the allocated storage size
      * in gibibytes (GiB). For Aurora, <code>AllocatedStorage</code> always returns 1, because Aurora DB cluster storage
-     * size is not fixed, but instead automatically adjusts as needed.
+     * size isn't fixed, but instead automatically adjusts as needed.
      * </p>
      */
     private Integer allocatedStorage;
@@ -372,18 +372,24 @@ public class DBCluster implements Serializable, Cloneable {
      * </p>
      */
     private Boolean crossAccountClone;
+    /**
+     * <p>
+     * The Active Directory Domain membership records associated with the DB cluster.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<DomainMembership> domainMemberships;
 
     /**
      * <p>
      * For all database engines except Amazon Aurora, <code>AllocatedStorage</code> specifies the allocated storage size
      * in gibibytes (GiB). For Aurora, <code>AllocatedStorage</code> always returns 1, because Aurora DB cluster storage
-     * size is not fixed, but instead automatically adjusts as needed.
+     * size isn't fixed, but instead automatically adjusts as needed.
      * </p>
      * 
      * @param allocatedStorage
      *        For all database engines except Amazon Aurora, <code>AllocatedStorage</code> specifies the allocated
      *        storage size in gibibytes (GiB). For Aurora, <code>AllocatedStorage</code> always returns 1, because
-     *        Aurora DB cluster storage size is not fixed, but instead automatically adjusts as needed.
+     *        Aurora DB cluster storage size isn't fixed, but instead automatically adjusts as needed.
      */
 
     public void setAllocatedStorage(Integer allocatedStorage) {
@@ -394,12 +400,12 @@ public class DBCluster implements Serializable, Cloneable {
      * <p>
      * For all database engines except Amazon Aurora, <code>AllocatedStorage</code> specifies the allocated storage size
      * in gibibytes (GiB). For Aurora, <code>AllocatedStorage</code> always returns 1, because Aurora DB cluster storage
-     * size is not fixed, but instead automatically adjusts as needed.
+     * size isn't fixed, but instead automatically adjusts as needed.
      * </p>
      * 
      * @return For all database engines except Amazon Aurora, <code>AllocatedStorage</code> specifies the allocated
      *         storage size in gibibytes (GiB). For Aurora, <code>AllocatedStorage</code> always returns 1, because
-     *         Aurora DB cluster storage size is not fixed, but instead automatically adjusts as needed.
+     *         Aurora DB cluster storage size isn't fixed, but instead automatically adjusts as needed.
      */
 
     public Integer getAllocatedStorage() {
@@ -410,13 +416,13 @@ public class DBCluster implements Serializable, Cloneable {
      * <p>
      * For all database engines except Amazon Aurora, <code>AllocatedStorage</code> specifies the allocated storage size
      * in gibibytes (GiB). For Aurora, <code>AllocatedStorage</code> always returns 1, because Aurora DB cluster storage
-     * size is not fixed, but instead automatically adjusts as needed.
+     * size isn't fixed, but instead automatically adjusts as needed.
      * </p>
      * 
      * @param allocatedStorage
      *        For all database engines except Amazon Aurora, <code>AllocatedStorage</code> specifies the allocated
      *        storage size in gibibytes (GiB). For Aurora, <code>AllocatedStorage</code> always returns 1, because
-     *        Aurora DB cluster storage size is not fixed, but instead automatically adjusts as needed.
+     *        Aurora DB cluster storage size isn't fixed, but instead automatically adjusts as needed.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -3066,6 +3072,79 @@ public class DBCluster implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The Active Directory Domain membership records associated with the DB cluster.
+     * </p>
+     * 
+     * @return The Active Directory Domain membership records associated with the DB cluster.
+     */
+
+    public java.util.List<DomainMembership> getDomainMemberships() {
+        if (domainMemberships == null) {
+            domainMemberships = new com.amazonaws.internal.SdkInternalList<DomainMembership>();
+        }
+        return domainMemberships;
+    }
+
+    /**
+     * <p>
+     * The Active Directory Domain membership records associated with the DB cluster.
+     * </p>
+     * 
+     * @param domainMemberships
+     *        The Active Directory Domain membership records associated with the DB cluster.
+     */
+
+    public void setDomainMemberships(java.util.Collection<DomainMembership> domainMemberships) {
+        if (domainMemberships == null) {
+            this.domainMemberships = null;
+            return;
+        }
+
+        this.domainMemberships = new com.amazonaws.internal.SdkInternalList<DomainMembership>(domainMemberships);
+    }
+
+    /**
+     * <p>
+     * The Active Directory Domain membership records associated with the DB cluster.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDomainMemberships(java.util.Collection)} or {@link #withDomainMemberships(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param domainMemberships
+     *        The Active Directory Domain membership records associated with the DB cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBCluster withDomainMemberships(DomainMembership... domainMemberships) {
+        if (this.domainMemberships == null) {
+            setDomainMemberships(new com.amazonaws.internal.SdkInternalList<DomainMembership>(domainMemberships.length));
+        }
+        for (DomainMembership ele : domainMemberships) {
+            this.domainMemberships.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Active Directory Domain membership records associated with the DB cluster.
+     * </p>
+     * 
+     * @param domainMemberships
+     *        The Active Directory Domain membership records associated with the DB cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBCluster withDomainMemberships(java.util.Collection<DomainMembership> domainMemberships) {
+        setDomainMemberships(domainMemberships);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -3178,7 +3257,9 @@ public class DBCluster implements Serializable, Cloneable {
         if (getCopyTagsToSnapshot() != null)
             sb.append("CopyTagsToSnapshot: ").append(getCopyTagsToSnapshot()).append(",");
         if (getCrossAccountClone() != null)
-            sb.append("CrossAccountClone: ").append(getCrossAccountClone());
+            sb.append("CrossAccountClone: ").append(getCrossAccountClone()).append(",");
+        if (getDomainMemberships() != null)
+            sb.append("DomainMemberships: ").append(getDomainMemberships());
         sb.append("}");
         return sb.toString();
     }
@@ -3401,6 +3482,10 @@ public class DBCluster implements Serializable, Cloneable {
             return false;
         if (other.getCrossAccountClone() != null && other.getCrossAccountClone().equals(this.getCrossAccountClone()) == false)
             return false;
+        if (other.getDomainMemberships() == null ^ this.getDomainMemberships() == null)
+            return false;
+        if (other.getDomainMemberships() != null && other.getDomainMemberships().equals(this.getDomainMemberships()) == false)
+            return false;
         return true;
     }
 
@@ -3460,6 +3545,7 @@ public class DBCluster implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getActivityStreamKinesisStreamName() == null) ? 0 : getActivityStreamKinesisStreamName().hashCode());
         hashCode = prime * hashCode + ((getCopyTagsToSnapshot() == null) ? 0 : getCopyTagsToSnapshot().hashCode());
         hashCode = prime * hashCode + ((getCrossAccountClone() == null) ? 0 : getCrossAccountClone().hashCode());
+        hashCode = prime * hashCode + ((getDomainMemberships() == null) ? 0 : getDomainMemberships().hashCode());
         return hashCode;
     }
 

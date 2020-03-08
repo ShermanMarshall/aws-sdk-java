@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -297,6 +297,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
         exceptionUnmarshallers.add(new InvalidHsmConfigurationStateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SnapshotScheduleAlreadyExistsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SnapshotScheduleQuotaExceededExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new ScheduledActionNotFoundExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SubscriptionEventIdNotFoundExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidSubscriptionStateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidClusterSnapshotScheduleStateExceptionUnmarshaller());
@@ -312,6 +313,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
         exceptionUnmarshallers.add(new DependentServiceRequestThrottlingExceptionUnmarshaller());
         exceptionUnmarshallers.add(new BucketNotFoundExceptionUnmarshaller());
         exceptionUnmarshallers.add(new LimitExceededExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new ScheduledActionQuotaExceededExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidTableRestoreArgumentExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SnapshotCopyGrantAlreadyExistsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SnapshotCopyGrantQuotaExceededExceptionUnmarshaller());
@@ -328,6 +330,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
         exceptionUnmarshallers.add(new SnapshotCopyAlreadyEnabledExceptionUnmarshaller());
         exceptionUnmarshallers.add(new HsmConfigurationAlreadyExistsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SubscriptionNotFoundExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new ScheduledActionAlreadyExistsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidClusterStateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidReservedNodeStateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SubnetAlreadyInUseExceptionUnmarshaller());
@@ -369,6 +372,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
         exceptionUnmarshallers.add(new InvalidVPCNetworkStateExceptionUnmarshaller());
         exceptionUnmarshallers.add(new SNSTopicArnNotFoundExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ReservedNodeQuotaExceededExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new ScheduledActionTypeUnsupportedExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ClusterParameterGroupQuotaExceededExceptionUnmarshaller());
         exceptionUnmarshallers.add(new UnauthorizedOperationExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidClusterSubnetStateExceptionUnmarshaller());
@@ -376,6 +380,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
         exceptionUnmarshallers.add(new SubscriptionAlreadyExistExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ReservedNodeAlreadyExistsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ReservedNodeNotFoundExceptionUnmarshaller());
+        exceptionUnmarshallers.add(new InvalidScheduledActionExceptionUnmarshaller());
         exceptionUnmarshallers.add(new IncompatibleOrderableOptionsExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidS3BucketNameExceptionUnmarshaller());
         exceptionUnmarshallers.add(new UnsupportedOptionExceptionUnmarshaller());
@@ -685,7 +690,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Modifies the settings for a list of snapshots.
+     * Modifies the settings for a set of cluster snapshots.
      * </p>
      * 
      * @param batchModifyClusterSnapshotsRequest
@@ -744,7 +749,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Cancels a resize operation.
+     * Cancels a resize operation for a cluster.
      * </p>
      * 
      * @param cancelResizeRequest
@@ -881,7 +886,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Creates a new cluster.
+     * Creates a new cluster with the specified parameters.
      * </p>
      * <p>
      * To create a cluster in Virtual Private Cloud (VPC), you must provide a cluster subnet group name. The cluster
@@ -1529,6 +1534,72 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
+     * Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action. For
+     * example, you can create a schedule of when to run the <code>ResizeCluster</code> API operation.
+     * </p>
+     * 
+     * @param createScheduledActionRequest
+     * @return Result of the CreateScheduledAction operation returned by the service.
+     * @throws ScheduledActionAlreadyExistsException
+     *         The scheduled action already exists.
+     * @throws ScheduledActionQuotaExceededException
+     *         The quota for scheduled actions exceeded.
+     * @throws ScheduledActionTypeUnsupportedException
+     *         The action type specified for a scheduled action is not supported.
+     * @throws InvalidScheduleException
+     *         The schedule you submitted isn't valid.
+     * @throws InvalidScheduledActionException
+     *         The scheduled action is not valid.
+     * @throws UnauthorizedOperationException
+     *         Your account is not authorized to perform the requested operation.
+     * @sample AmazonRedshift.CreateScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public CreateScheduledActionResult createScheduledAction(CreateScheduledActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateScheduledAction(request);
+    }
+
+    @SdkInternalApi
+    final CreateScheduledActionResult executeCreateScheduledAction(CreateScheduledActionRequest createScheduledActionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createScheduledActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateScheduledActionRequest> request = null;
+        Response<CreateScheduledActionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateScheduledActionRequestMarshaller().marshall(super.beforeMarshalling(createScheduledActionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Redshift");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateScheduledAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreateScheduledActionResult> responseHandler = new StaxResponseHandler<CreateScheduledActionResult>(
+                    new CreateScheduledActionResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Creates a snapshot copy grant that permits Amazon Redshift to use a customer master key (CMK) from AWS Key
      * Management Service (AWS KMS) to encrypt copied snapshots in a destination region.
      * </p>
@@ -1601,7 +1672,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Creates a new snapshot schedule.
+     * Creates a snapshot schedule with the rate of every 12 hours.
      * </p>
      * 
      * @param createSnapshotScheduleRequest
@@ -1664,7 +1735,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Adds one or more tags to a specified resource.
+     * Adds tags to a cluster.
      * </p>
      * <p>
      * A resource can have up to 50 tags. If you try to create more than 50 tags for a resource, you will receive an
@@ -1731,9 +1802,10 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Deletes a previously provisioned cluster. A successful response from the web service indicates that the request
-     * was received correctly. Use <a>DescribeClusters</a> to monitor the status of the deletion. The delete operation
-     * cannot be canceled or reverted once submitted. For more information about managing clusters, go to <a
+     * Deletes a previously provisioned cluster without its final snapshot being created. A successful response from the
+     * web service indicates that the request was received correctly. Use <a>DescribeClusters</a> to monitor the status
+     * of the deletion. The delete operation cannot be canceled or reverted once submitted. For more information about
+     * managing clusters, go to <a
      * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
      * in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
@@ -2239,6 +2311,63 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
+     * Deletes a scheduled action.
+     * </p>
+     * 
+     * @param deleteScheduledActionRequest
+     * @return Result of the DeleteScheduledAction operation returned by the service.
+     * @throws ScheduledActionNotFoundException
+     *         The scheduled action cannot be found.
+     * @throws UnauthorizedOperationException
+     *         Your account is not authorized to perform the requested operation.
+     * @sample AmazonRedshift.DeleteScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DeleteScheduledActionResult deleteScheduledAction(DeleteScheduledActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteScheduledAction(request);
+    }
+
+    @SdkInternalApi
+    final DeleteScheduledActionResult executeDeleteScheduledAction(DeleteScheduledActionRequest deleteScheduledActionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteScheduledActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteScheduledActionRequest> request = null;
+        Response<DeleteScheduledActionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteScheduledActionRequestMarshaller().marshall(super.beforeMarshalling(deleteScheduledActionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Redshift");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteScheduledAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteScheduledActionResult> responseHandler = new StaxResponseHandler<DeleteScheduledActionResult>(
+                    new DeleteScheduledActionResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Deletes the specified snapshot copy grant.
      * </p>
      * 
@@ -2355,8 +2484,8 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Deletes a tag or tags from a resource. You must provide the ARN of the resource from which you want to delete the
-     * tag or tags.
+     * Deletes tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or
+     * tags.
      * </p>
      * 
      * @param deleteTagsRequest
@@ -3546,6 +3675,70 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
+     * Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the
+     * specified action type.
+     * </p>
+     * 
+     * @param describeNodeConfigurationOptionsRequest
+     * @return Result of the DescribeNodeConfigurationOptions operation returned by the service.
+     * @throws ClusterSnapshotNotFoundException
+     *         The snapshot identifier does not refer to an existing cluster snapshot.
+     * @throws InvalidClusterSnapshotStateException
+     *         The specified cluster snapshot is not in the <code>available</code> state, or other accounts are
+     *         authorized to access the snapshot.
+     * @throws ClusterNotFoundException
+     *         The <code>ClusterIdentifier</code> parameter does not refer to an existing cluster.
+     * @throws AccessToSnapshotDeniedException
+     *         The owner of the specified snapshot has not authorized your account to access the snapshot.
+     * @sample AmazonRedshift.DescribeNodeConfigurationOptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeNodeConfigurationOptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeNodeConfigurationOptionsResult describeNodeConfigurationOptions(DescribeNodeConfigurationOptionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeNodeConfigurationOptions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeNodeConfigurationOptionsResult executeDescribeNodeConfigurationOptions(
+            DescribeNodeConfigurationOptionsRequest describeNodeConfigurationOptionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeNodeConfigurationOptionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeNodeConfigurationOptionsRequest> request = null;
+        Response<DescribeNodeConfigurationOptionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeNodeConfigurationOptionsRequestMarshaller().marshall(super.beforeMarshalling(describeNodeConfigurationOptionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Redshift");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeNodeConfigurationOptions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeNodeConfigurationOptionsResult> responseHandler = new StaxResponseHandler<DescribeNodeConfigurationOptionsResult>(
+                    new DescribeNodeConfigurationOptionsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Returns a list of orderable cluster options. Before you create a new cluster you can use this operation to find
      * what options are available, such as the EC2 Availability Zones (AZ) in the specific AWS Region that you can
      * specify, and the node types you can request. The node types differ by available storage, memory, CPU and price.
@@ -3811,6 +4004,63 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
+     * Describes properties of scheduled actions.
+     * </p>
+     * 
+     * @param describeScheduledActionsRequest
+     * @return Result of the DescribeScheduledActions operation returned by the service.
+     * @throws ScheduledActionNotFoundException
+     *         The scheduled action cannot be found.
+     * @throws UnauthorizedOperationException
+     *         Your account is not authorized to perform the requested operation.
+     * @sample AmazonRedshift.DescribeScheduledActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeScheduledActions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeScheduledActionsResult describeScheduledActions(DescribeScheduledActionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeScheduledActions(request);
+    }
+
+    @SdkInternalApi
+    final DescribeScheduledActionsResult executeDescribeScheduledActions(DescribeScheduledActionsRequest describeScheduledActionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeScheduledActionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeScheduledActionsRequest> request = null;
+        Response<DescribeScheduledActionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeScheduledActionsRequestMarshaller().marshall(super.beforeMarshalling(describeScheduledActionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Redshift");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeScheduledActions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeScheduledActionsResult> responseHandler = new StaxResponseHandler<DescribeScheduledActionsResult>(
+                    new DescribeScheduledActionsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Returns a list of snapshot copy grants owned by the AWS account in the destination region.
      * </p>
      * <p>
@@ -3933,7 +4183,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Returns the total amount of snapshot usage and provisioned storage in megabytes.
+     * Returns account level backups storage size and provisional storage.
      * </p>
      * 
      * @param describeStorageRequest
@@ -4559,16 +4809,18 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Modifies the settings for a cluster. For example, you can add another security or parameter group, update the
-     * preferred maintenance window, or change the master user password. Resetting a cluster password or modifying the
-     * security groups associated with a cluster do not need a reboot. However, modifying a parameter group requires a
-     * reboot for parameters to take effect. For more information about managing clusters, go to <a
-     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
-     * in the <i>Amazon Redshift Cluster Management Guide</i>.
+     * Modifies the settings for a cluster.
      * </p>
      * <p>
      * You can also change node type and the number of nodes to scale up or down the cluster. When resizing a cluster,
      * you must specify both the number of nodes and the node type even if one of the parameters does not change.
+     * </p>
+     * <p>
+     * You can add another security or parameter group, or change the master user password. Resetting a cluster password
+     * or modifying the security groups associated with a cluster do not need a reboot. However, modifying a parameter
+     * group requires a reboot for parameters to take effect. For more information about managing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
+     * in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * 
      * @param modifyClusterRequest
@@ -4783,8 +5035,7 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
 
     /**
      * <p>
-     * Modifies the maintenance settings of a cluster. For example, you can defer a maintenance window. You can also
-     * update or cancel a deferment.
+     * Modifies the maintenance settings of a cluster.
      * </p>
      * 
      * @param modifyClusterMaintenanceRequest
@@ -4902,6 +5153,9 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
     /**
      * <p>
      * Modifies the settings for a snapshot.
+     * </p>
+     * <p>
+     * This exanmple modifies the manual retention period setting for a cluster snapshot.
      * </p>
      * 
      * @param modifyClusterSnapshotRequest
@@ -5152,6 +5406,69 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
             }
 
             StaxResponseHandler<EventSubscription> responseHandler = new StaxResponseHandler<EventSubscription>(new EventSubscriptionStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Modifies a scheduled action.
+     * </p>
+     * 
+     * @param modifyScheduledActionRequest
+     * @return Result of the ModifyScheduledAction operation returned by the service.
+     * @throws ScheduledActionNotFoundException
+     *         The scheduled action cannot be found.
+     * @throws ScheduledActionTypeUnsupportedException
+     *         The action type specified for a scheduled action is not supported.
+     * @throws InvalidScheduleException
+     *         The schedule you submitted isn't valid.
+     * @throws InvalidScheduledActionException
+     *         The scheduled action is not valid.
+     * @throws UnauthorizedOperationException
+     *         Your account is not authorized to perform the requested operation.
+     * @sample AmazonRedshift.ModifyScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public ModifyScheduledActionResult modifyScheduledAction(ModifyScheduledActionRequest request) {
+        request = beforeClientExecution(request);
+        return executeModifyScheduledAction(request);
+    }
+
+    @SdkInternalApi
+    final ModifyScheduledActionResult executeModifyScheduledAction(ModifyScheduledActionRequest modifyScheduledActionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(modifyScheduledActionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyScheduledActionRequest> request = null;
+        Response<ModifyScheduledActionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyScheduledActionRequestMarshaller().marshall(super.beforeMarshalling(modifyScheduledActionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Redshift");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ModifyScheduledAction");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ModifyScheduledActionResult> responseHandler = new StaxResponseHandler<ModifyScheduledActionResult>(
+                    new ModifyScheduledActionResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -5513,6 +5830,11 @@ public class AmazonRedshiftClient extends AmazonWebServiceClient implements Amaz
      * <li>
      * <p>
      * ds2.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ra3.16xlarge
      * </p>
      * </li>
      * </ul>

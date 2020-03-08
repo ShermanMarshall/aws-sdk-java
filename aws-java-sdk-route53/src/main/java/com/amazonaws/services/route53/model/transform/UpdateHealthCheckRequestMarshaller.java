@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -129,18 +129,20 @@ public class UpdateHealthCheckRequestMarshaller implements Marshaller<Request<Up
                     xmlWriter.endElement();
                 }
 
-                AlarmIdentifier alarmIdentifier = updateHealthCheckRequest.getAlarmIdentifier();
-                if (alarmIdentifier != null) {
-                    xmlWriter.startElement("AlarmIdentifier");
+                {
+                    AlarmIdentifier alarmIdentifier = updateHealthCheckRequest.getAlarmIdentifier();
+                    if (alarmIdentifier != null) {
+                        xmlWriter.startElement("AlarmIdentifier");
 
-                    if (alarmIdentifier.getRegion() != null) {
-                        xmlWriter.startElement("Region").value(alarmIdentifier.getRegion()).endElement();
-                    }
+                        if (alarmIdentifier.getRegion() != null) {
+                            xmlWriter.startElement("Region").value(alarmIdentifier.getRegion()).endElement();
+                        }
 
-                    if (alarmIdentifier.getName() != null) {
-                        xmlWriter.startElement("Name").value(alarmIdentifier.getName()).endElement();
+                        if (alarmIdentifier.getName() != null) {
+                            xmlWriter.startElement("Name").value(alarmIdentifier.getName()).endElement();
+                        }
+                        xmlWriter.endElement();
                     }
-                    xmlWriter.endElement();
                 }
 
                 if (updateHealthCheckRequest.getInsufficientDataHealthStatus() != null) {

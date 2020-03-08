@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,6 +26,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ContainerSettings implements Serializable, Cloneable, StructuredPojo {
 
+    /** Settings for MP4 segments in CMAF */
+    private CmfcSettings cmfcSettings;
     /**
      * Container for this output. Some containers require a container settings object. If not specified, the default
      * object will be created.
@@ -49,6 +51,42 @@ public class ContainerSettings implements Serializable, Cloneable, StructuredPoj
     private MovSettings movSettings;
     /** Settings for MP4 container. You can create audio-only AAC outputs with this container. */
     private Mp4Settings mp4Settings;
+    /** Settings for MP4 segments in DASH */
+    private MpdSettings mpdSettings;
+
+    /**
+     * Settings for MP4 segments in CMAF
+     * 
+     * @param cmfcSettings
+     *        Settings for MP4 segments in CMAF
+     */
+
+    public void setCmfcSettings(CmfcSettings cmfcSettings) {
+        this.cmfcSettings = cmfcSettings;
+    }
+
+    /**
+     * Settings for MP4 segments in CMAF
+     * 
+     * @return Settings for MP4 segments in CMAF
+     */
+
+    public CmfcSettings getCmfcSettings() {
+        return this.cmfcSettings;
+    }
+
+    /**
+     * Settings for MP4 segments in CMAF
+     * 
+     * @param cmfcSettings
+     *        Settings for MP4 segments in CMAF
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerSettings withCmfcSettings(CmfcSettings cmfcSettings) {
+        setCmfcSettings(cmfcSettings);
+        return this;
+    }
 
     /**
      * Container for this output. Some containers require a container settings object. If not specified, the default
@@ -316,6 +354,40 @@ public class ContainerSettings implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * Settings for MP4 segments in DASH
+     * 
+     * @param mpdSettings
+     *        Settings for MP4 segments in DASH
+     */
+
+    public void setMpdSettings(MpdSettings mpdSettings) {
+        this.mpdSettings = mpdSettings;
+    }
+
+    /**
+     * Settings for MP4 segments in DASH
+     * 
+     * @return Settings for MP4 segments in DASH
+     */
+
+    public MpdSettings getMpdSettings() {
+        return this.mpdSettings;
+    }
+
+    /**
+     * Settings for MP4 segments in DASH
+     * 
+     * @param mpdSettings
+     *        Settings for MP4 segments in DASH
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerSettings withMpdSettings(MpdSettings mpdSettings) {
+        setMpdSettings(mpdSettings);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -327,6 +399,8 @@ public class ContainerSettings implements Serializable, Cloneable, StructuredPoj
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getCmfcSettings() != null)
+            sb.append("CmfcSettings: ").append(getCmfcSettings()).append(",");
         if (getContainer() != null)
             sb.append("Container: ").append(getContainer()).append(",");
         if (getF4vSettings() != null)
@@ -338,7 +412,9 @@ public class ContainerSettings implements Serializable, Cloneable, StructuredPoj
         if (getMovSettings() != null)
             sb.append("MovSettings: ").append(getMovSettings()).append(",");
         if (getMp4Settings() != null)
-            sb.append("Mp4Settings: ").append(getMp4Settings());
+            sb.append("Mp4Settings: ").append(getMp4Settings()).append(",");
+        if (getMpdSettings() != null)
+            sb.append("MpdSettings: ").append(getMpdSettings());
         sb.append("}");
         return sb.toString();
     }
@@ -353,6 +429,10 @@ public class ContainerSettings implements Serializable, Cloneable, StructuredPoj
         if (obj instanceof ContainerSettings == false)
             return false;
         ContainerSettings other = (ContainerSettings) obj;
+        if (other.getCmfcSettings() == null ^ this.getCmfcSettings() == null)
+            return false;
+        if (other.getCmfcSettings() != null && other.getCmfcSettings().equals(this.getCmfcSettings()) == false)
+            return false;
         if (other.getContainer() == null ^ this.getContainer() == null)
             return false;
         if (other.getContainer() != null && other.getContainer().equals(this.getContainer()) == false)
@@ -377,6 +457,10 @@ public class ContainerSettings implements Serializable, Cloneable, StructuredPoj
             return false;
         if (other.getMp4Settings() != null && other.getMp4Settings().equals(this.getMp4Settings()) == false)
             return false;
+        if (other.getMpdSettings() == null ^ this.getMpdSettings() == null)
+            return false;
+        if (other.getMpdSettings() != null && other.getMpdSettings().equals(this.getMpdSettings()) == false)
+            return false;
         return true;
     }
 
@@ -385,12 +469,14 @@ public class ContainerSettings implements Serializable, Cloneable, StructuredPoj
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getCmfcSettings() == null) ? 0 : getCmfcSettings().hashCode());
         hashCode = prime * hashCode + ((getContainer() == null) ? 0 : getContainer().hashCode());
         hashCode = prime * hashCode + ((getF4vSettings() == null) ? 0 : getF4vSettings().hashCode());
         hashCode = prime * hashCode + ((getM2tsSettings() == null) ? 0 : getM2tsSettings().hashCode());
         hashCode = prime * hashCode + ((getM3u8Settings() == null) ? 0 : getM3u8Settings().hashCode());
         hashCode = prime * hashCode + ((getMovSettings() == null) ? 0 : getMovSettings().hashCode());
         hashCode = prime * hashCode + ((getMp4Settings() == null) ? 0 : getMp4Settings().hashCode());
+        hashCode = prime * hashCode + ((getMpdSettings() == null) ? 0 : getMpdSettings().hashCode());
         return hashCode;
     }
 

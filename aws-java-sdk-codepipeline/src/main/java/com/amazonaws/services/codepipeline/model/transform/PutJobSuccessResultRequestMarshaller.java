@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 package com.amazonaws.services.codepipeline.model.transform;
+
+import java.util.Map;
 
 import javax.annotation.Generated;
 
@@ -35,6 +37,8 @@ public class PutJobSuccessResultRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("continuationToken").build();
     private static final MarshallingInfo<StructuredPojo> EXECUTIONDETAILS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("executionDetails").build();
+    private static final MarshallingInfo<Map> OUTPUTVARIABLES_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("outputVariables").build();
 
     private static final PutJobSuccessResultRequestMarshaller instance = new PutJobSuccessResultRequestMarshaller();
 
@@ -56,6 +60,7 @@ public class PutJobSuccessResultRequestMarshaller {
             protocolMarshaller.marshall(putJobSuccessResultRequest.getCurrentRevision(), CURRENTREVISION_BINDING);
             protocolMarshaller.marshall(putJobSuccessResultRequest.getContinuationToken(), CONTINUATIONTOKEN_BINDING);
             protocolMarshaller.marshall(putJobSuccessResultRequest.getExecutionDetails(), EXECUTIONDETAILS_BINDING);
+            protocolMarshaller.marshall(putJobSuccessResultRequest.getOutputVariables(), OUTPUTVARIABLES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

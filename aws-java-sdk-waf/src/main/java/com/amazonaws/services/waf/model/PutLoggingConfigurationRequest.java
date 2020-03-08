@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,6 +30,12 @@ public class PutLoggingConfigurationRequest extends com.amazonaws.AmazonWebServi
      * The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields details,
      * and the Amazon Resource Name (ARN) of the web ACL to monitor.
      * </p>
+     * <note>
+     * <p>
+     * When specifying <code>Type</code> in <code>RedactedFields</code>, you must use one of the following values:
+     * <code>URI</code>, <code>QUERY_STRING</code>, <code>HEADER</code>, or <code>METHOD</code>.
+     * </p>
+     * </note>
      */
     private LoggingConfiguration loggingConfiguration;
 
@@ -38,10 +44,20 @@ public class PutLoggingConfigurationRequest extends com.amazonaws.AmazonWebServi
      * The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields details,
      * and the Amazon Resource Name (ARN) of the web ACL to monitor.
      * </p>
+     * <note>
+     * <p>
+     * When specifying <code>Type</code> in <code>RedactedFields</code>, you must use one of the following values:
+     * <code>URI</code>, <code>QUERY_STRING</code>, <code>HEADER</code>, or <code>METHOD</code>.
+     * </p>
+     * </note>
      * 
      * @param loggingConfiguration
      *        The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields
-     *        details, and the Amazon Resource Name (ARN) of the web ACL to monitor.
+     *        details, and the Amazon Resource Name (ARN) of the web ACL to monitor.</p> <note>
+     *        <p>
+     *        When specifying <code>Type</code> in <code>RedactedFields</code>, you must use one of the following
+     *        values: <code>URI</code>, <code>QUERY_STRING</code>, <code>HEADER</code>, or <code>METHOD</code>.
+     *        </p>
      */
 
     public void setLoggingConfiguration(LoggingConfiguration loggingConfiguration) {
@@ -53,9 +69,19 @@ public class PutLoggingConfigurationRequest extends com.amazonaws.AmazonWebServi
      * The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields details,
      * and the Amazon Resource Name (ARN) of the web ACL to monitor.
      * </p>
+     * <note>
+     * <p>
+     * When specifying <code>Type</code> in <code>RedactedFields</code>, you must use one of the following values:
+     * <code>URI</code>, <code>QUERY_STRING</code>, <code>HEADER</code>, or <code>METHOD</code>.
+     * </p>
+     * </note>
      * 
      * @return The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields
-     *         details, and the Amazon Resource Name (ARN) of the web ACL to monitor.
+     *         details, and the Amazon Resource Name (ARN) of the web ACL to monitor.</p> <note>
+     *         <p>
+     *         When specifying <code>Type</code> in <code>RedactedFields</code>, you must use one of the following
+     *         values: <code>URI</code>, <code>QUERY_STRING</code>, <code>HEADER</code>, or <code>METHOD</code>.
+     *         </p>
      */
 
     public LoggingConfiguration getLoggingConfiguration() {
@@ -67,10 +93,20 @@ public class PutLoggingConfigurationRequest extends com.amazonaws.AmazonWebServi
      * The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields details,
      * and the Amazon Resource Name (ARN) of the web ACL to monitor.
      * </p>
+     * <note>
+     * <p>
+     * When specifying <code>Type</code> in <code>RedactedFields</code>, you must use one of the following values:
+     * <code>URI</code>, <code>QUERY_STRING</code>, <code>HEADER</code>, or <code>METHOD</code>.
+     * </p>
+     * </note>
      * 
      * @param loggingConfiguration
      *        The Amazon Kinesis Data Firehose that contains the inspected traffic information, the redacted fields
-     *        details, and the Amazon Resource Name (ARN) of the web ACL to monitor.
+     *        details, and the Amazon Resource Name (ARN) of the web ACL to monitor.</p> <note>
+     *        <p>
+     *        When specifying <code>Type</code> in <code>RedactedFields</code>, you must use one of the following
+     *        values: <code>URI</code>, <code>QUERY_STRING</code>, <code>HEADER</code>, or <code>METHOD</code>.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,14 +37,13 @@ public class Location implements Serializable, Cloneable, StructuredPojo {
     private String filePath;
     /**
      * <p>
-     * The position of a change within a compared file, in line number format.
+     * The position of a change in a compared file, in line number format.
      * </p>
      */
     private Long filePosition;
     /**
      * <p>
-     * In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
-     * comparison.
+     * In a comparison of commits or a pull request, whether the change is in the before or after of that comparison.
      * </p>
      */
     private String relativeFileVersion;
@@ -91,11 +90,11 @@ public class Location implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The position of a change within a compared file, in line number format.
+     * The position of a change in a compared file, in line number format.
      * </p>
      * 
      * @param filePosition
-     *        The position of a change within a compared file, in line number format.
+     *        The position of a change in a compared file, in line number format.
      */
 
     public void setFilePosition(Long filePosition) {
@@ -104,10 +103,10 @@ public class Location implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The position of a change within a compared file, in line number format.
+     * The position of a change in a compared file, in line number format.
      * </p>
      * 
-     * @return The position of a change within a compared file, in line number format.
+     * @return The position of a change in a compared file, in line number format.
      */
 
     public Long getFilePosition() {
@@ -116,11 +115,11 @@ public class Location implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The position of a change within a compared file, in line number format.
+     * The position of a change in a compared file, in line number format.
      * </p>
      * 
      * @param filePosition
-     *        The position of a change within a compared file, in line number format.
+     *        The position of a change in a compared file, in line number format.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -131,12 +130,11 @@ public class Location implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
-     * comparison.
+     * In a comparison of commits or a pull request, whether the change is in the before or after of that comparison.
      * </p>
      * 
      * @param relativeFileVersion
-     *        In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
+     *        In a comparison of commits or a pull request, whether the change is in the before or after of that
      *        comparison.
      * @see RelativeFileVersionEnum
      */
@@ -147,11 +145,10 @@ public class Location implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
-     * comparison.
+     * In a comparison of commits or a pull request, whether the change is in the before or after of that comparison.
      * </p>
      * 
-     * @return In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
+     * @return In a comparison of commits or a pull request, whether the change is in the before or after of that
      *         comparison.
      * @see RelativeFileVersionEnum
      */
@@ -162,12 +159,11 @@ public class Location implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
-     * comparison.
+     * In a comparison of commits or a pull request, whether the change is in the before or after of that comparison.
      * </p>
      * 
      * @param relativeFileVersion
-     *        In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
+     *        In a comparison of commits or a pull request, whether the change is in the before or after of that
      *        comparison.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RelativeFileVersionEnum
@@ -180,12 +176,11 @@ public class Location implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
-     * comparison.
+     * In a comparison of commits or a pull request, whether the change is in the before or after of that comparison.
      * </p>
      * 
      * @param relativeFileVersion
-     *        In a comparison of commits or a pull request, whether the change is in the 'before' or 'after' of that
+     *        In a comparison of commits or a pull request, whether the change is in the before or after of that
      *        comparison.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see RelativeFileVersionEnum

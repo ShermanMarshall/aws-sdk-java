@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,10 @@ public class BuildJsonUnmarshaller implements Unmarshaller<Build, JsonUnmarshall
                 if (context.testExpression("arn", targetDepth)) {
                     context.nextToken();
                     build.setArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("buildNumber", targetDepth)) {
+                    context.nextToken();
+                    build.setBuildNumber(context.getUnmarshaller(Long.class).unmarshall(context));
                 }
                 if (context.testExpression("startTime", targetDepth)) {
                     context.nextToken();
@@ -152,6 +156,20 @@ public class BuildJsonUnmarshaller implements Unmarshaller<Build, JsonUnmarshall
                 if (context.testExpression("encryptionKey", targetDepth)) {
                     context.nextToken();
                     build.setEncryptionKey(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("exportedEnvironmentVariables", targetDepth)) {
+                    context.nextToken();
+                    build.setExportedEnvironmentVariables(new ListUnmarshaller<ExportedEnvironmentVariable>(ExportedEnvironmentVariableJsonUnmarshaller
+                            .getInstance()).unmarshall(context));
+                }
+                if (context.testExpression("reportArns", targetDepth)) {
+                    context.nextToken();
+                    build.setReportArns(new ListUnmarshaller<String>(context.getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("fileSystemLocations", targetDepth)) {
+                    context.nextToken();
+                    build.setFileSystemLocations(new ListUnmarshaller<ProjectFileSystemLocation>(ProjectFileSystemLocationJsonUnmarshaller.getInstance())
+                            .unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

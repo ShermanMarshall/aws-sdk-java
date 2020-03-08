@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,14 +32,14 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Map of JSON paths to be extracted from the event. You can then insert these in the template in
-     * <code>InputTemplate</code> to produce the output to be sent to the target.
+     * <code>InputTemplate</code> to produce the output you want to be sent to the target.
      * </p>
      * <p>
      * <code>InputPathsMap</code> is an array key-value pairs, where each value is a valid JSON path. You can have as
      * many as 10 key-value pairs. You must use JSON dot notation, not bracket notation.
      * </p>
      * <p>
-     * The keys can't start with <code>"AWS"</code>.
+     * The keys cannot start with "AWS."
      * </p>
      */
     private java.util.Map<String, String> inputPathsMap;
@@ -47,7 +47,7 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * <p>
      * Input template where you specify placeholders that will be filled with the values of the keys from
      * <code>InputPathsMap</code> to customize the data sent to the target. Enclose each <code>InputPathsMaps</code>
-     * value in brackets: &lt;<i>value</i>&gt;. The InputTemplate must be valid JSON.
+     * value in brackets: &lt;<i>value</i>&gt; The InputTemplate must be valid JSON.
      * </p>
      * <p>
      * If <code>InputTemplate</code> is a JSON object (surrounded by curly braces), the following restrictions apply:
@@ -55,12 +55,12 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * <ul>
      * <li>
      * <p>
-     * The placeholder can't be used as an object key
+     * The placeholder cannot be used as an object key.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Object values can't include quote marks
+     * Object values cannot include quote marks.
      * </p>
      * </li>
      * </ul>
@@ -107,24 +107,24 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Map of JSON paths to be extracted from the event. You can then insert these in the template in
-     * <code>InputTemplate</code> to produce the output to be sent to the target.
+     * <code>InputTemplate</code> to produce the output you want to be sent to the target.
      * </p>
      * <p>
      * <code>InputPathsMap</code> is an array key-value pairs, where each value is a valid JSON path. You can have as
      * many as 10 key-value pairs. You must use JSON dot notation, not bracket notation.
      * </p>
      * <p>
-     * The keys can't start with <code>"AWS"</code>.
+     * The keys cannot start with "AWS."
      * </p>
      * 
      * @return Map of JSON paths to be extracted from the event. You can then insert these in the template in
-     *         <code>InputTemplate</code> to produce the output to be sent to the target.</p>
+     *         <code>InputTemplate</code> to produce the output you want to be sent to the target.</p>
      *         <p>
      *         <code>InputPathsMap</code> is an array key-value pairs, where each value is a valid JSON path. You can
      *         have as many as 10 key-value pairs. You must use JSON dot notation, not bracket notation.
      *         </p>
      *         <p>
-     *         The keys can't start with <code>"AWS"</code>.
+     *         The keys cannot start with "AWS."
      */
 
     public java.util.Map<String, String> getInputPathsMap() {
@@ -134,25 +134,25 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Map of JSON paths to be extracted from the event. You can then insert these in the template in
-     * <code>InputTemplate</code> to produce the output to be sent to the target.
+     * <code>InputTemplate</code> to produce the output you want to be sent to the target.
      * </p>
      * <p>
      * <code>InputPathsMap</code> is an array key-value pairs, where each value is a valid JSON path. You can have as
      * many as 10 key-value pairs. You must use JSON dot notation, not bracket notation.
      * </p>
      * <p>
-     * The keys can't start with <code>"AWS"</code>.
+     * The keys cannot start with "AWS."
      * </p>
      * 
      * @param inputPathsMap
      *        Map of JSON paths to be extracted from the event. You can then insert these in the template in
-     *        <code>InputTemplate</code> to produce the output to be sent to the target.</p>
+     *        <code>InputTemplate</code> to produce the output you want to be sent to the target.</p>
      *        <p>
      *        <code>InputPathsMap</code> is an array key-value pairs, where each value is a valid JSON path. You can
      *        have as many as 10 key-value pairs. You must use JSON dot notation, not bracket notation.
      *        </p>
      *        <p>
-     *        The keys can't start with <code>"AWS"</code>.
+     *        The keys cannot start with "AWS."
      */
 
     public void setInputPathsMap(java.util.Map<String, String> inputPathsMap) {
@@ -162,25 +162,25 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * Map of JSON paths to be extracted from the event. You can then insert these in the template in
-     * <code>InputTemplate</code> to produce the output to be sent to the target.
+     * <code>InputTemplate</code> to produce the output you want to be sent to the target.
      * </p>
      * <p>
      * <code>InputPathsMap</code> is an array key-value pairs, where each value is a valid JSON path. You can have as
      * many as 10 key-value pairs. You must use JSON dot notation, not bracket notation.
      * </p>
      * <p>
-     * The keys can't start with <code>"AWS"</code>.
+     * The keys cannot start with "AWS."
      * </p>
      * 
      * @param inputPathsMap
      *        Map of JSON paths to be extracted from the event. You can then insert these in the template in
-     *        <code>InputTemplate</code> to produce the output to be sent to the target.</p>
+     *        <code>InputTemplate</code> to produce the output you want to be sent to the target.</p>
      *        <p>
      *        <code>InputPathsMap</code> is an array key-value pairs, where each value is a valid JSON path. You can
      *        have as many as 10 key-value pairs. You must use JSON dot notation, not bracket notation.
      *        </p>
      *        <p>
-     *        The keys can't start with <code>"AWS"</code>.
+     *        The keys cannot start with "AWS."
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -188,6 +188,13 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
         setInputPathsMap(inputPathsMap);
         return this;
     }
+
+    /**
+     * Add a single InputPathsMap entry
+     *
+     * @see InputTransformer#withInputPathsMap
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public InputTransformer addInputPathsMapEntry(String key, String value) {
         if (null == this.inputPathsMap) {
@@ -214,7 +221,7 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * <p>
      * Input template where you specify placeholders that will be filled with the values of the keys from
      * <code>InputPathsMap</code> to customize the data sent to the target. Enclose each <code>InputPathsMaps</code>
-     * value in brackets: &lt;<i>value</i>&gt;. The InputTemplate must be valid JSON.
+     * value in brackets: &lt;<i>value</i>&gt; The InputTemplate must be valid JSON.
      * </p>
      * <p>
      * If <code>InputTemplate</code> is a JSON object (surrounded by curly braces), the following restrictions apply:
@@ -222,12 +229,12 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * <ul>
      * <li>
      * <p>
-     * The placeholder can't be used as an object key
+     * The placeholder cannot be used as an object key.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Object values can't include quote marks
+     * Object values cannot include quote marks.
      * </p>
      * </li>
      * </ul>
@@ -272,7 +279,7 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * @param inputTemplate
      *        Input template where you specify placeholders that will be filled with the values of the keys from
      *        <code>InputPathsMap</code> to customize the data sent to the target. Enclose each
-     *        <code>InputPathsMaps</code> value in brackets: &lt;<i>value</i>&gt;. The InputTemplate must be valid
+     *        <code>InputPathsMaps</code> value in brackets: &lt;<i>value</i>&gt; The InputTemplate must be valid
      *        JSON.</p>
      *        <p>
      *        If <code>InputTemplate</code> is a JSON object (surrounded by curly braces), the following restrictions
@@ -281,12 +288,12 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      *        <ul>
      *        <li>
      *        <p>
-     *        The placeholder can't be used as an object key
+     *        The placeholder cannot be used as an object key.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Object values can't include quote marks
+     *        Object values cannot include quote marks.
      *        </p>
      *        </li>
      *        </ul>
@@ -337,7 +344,7 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * <p>
      * Input template where you specify placeholders that will be filled with the values of the keys from
      * <code>InputPathsMap</code> to customize the data sent to the target. Enclose each <code>InputPathsMaps</code>
-     * value in brackets: &lt;<i>value</i>&gt;. The InputTemplate must be valid JSON.
+     * value in brackets: &lt;<i>value</i>&gt; The InputTemplate must be valid JSON.
      * </p>
      * <p>
      * If <code>InputTemplate</code> is a JSON object (surrounded by curly braces), the following restrictions apply:
@@ -345,12 +352,12 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * <ul>
      * <li>
      * <p>
-     * The placeholder can't be used as an object key
+     * The placeholder cannot be used as an object key.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Object values can't include quote marks
+     * Object values cannot include quote marks.
      * </p>
      * </li>
      * </ul>
@@ -394,7 +401,7 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * 
      * @return Input template where you specify placeholders that will be filled with the values of the keys from
      *         <code>InputPathsMap</code> to customize the data sent to the target. Enclose each
-     *         <code>InputPathsMaps</code> value in brackets: &lt;<i>value</i>&gt;. The InputTemplate must be valid
+     *         <code>InputPathsMaps</code> value in brackets: &lt;<i>value</i>&gt; The InputTemplate must be valid
      *         JSON.</p>
      *         <p>
      *         If <code>InputTemplate</code> is a JSON object (surrounded by curly braces), the following restrictions
@@ -403,12 +410,12 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      *         <ul>
      *         <li>
      *         <p>
-     *         The placeholder can't be used as an object key
+     *         The placeholder cannot be used as an object key.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Object values can't include quote marks
+     *         Object values cannot include quote marks.
      *         </p>
      *         </li>
      *         </ul>
@@ -459,7 +466,7 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * <p>
      * Input template where you specify placeholders that will be filled with the values of the keys from
      * <code>InputPathsMap</code> to customize the data sent to the target. Enclose each <code>InputPathsMaps</code>
-     * value in brackets: &lt;<i>value</i>&gt;. The InputTemplate must be valid JSON.
+     * value in brackets: &lt;<i>value</i>&gt; The InputTemplate must be valid JSON.
      * </p>
      * <p>
      * If <code>InputTemplate</code> is a JSON object (surrounded by curly braces), the following restrictions apply:
@@ -467,12 +474,12 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * <ul>
      * <li>
      * <p>
-     * The placeholder can't be used as an object key
+     * The placeholder cannot be used as an object key.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Object values can't include quote marks
+     * Object values cannot include quote marks.
      * </p>
      * </li>
      * </ul>
@@ -517,7 +524,7 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      * @param inputTemplate
      *        Input template where you specify placeholders that will be filled with the values of the keys from
      *        <code>InputPathsMap</code> to customize the data sent to the target. Enclose each
-     *        <code>InputPathsMaps</code> value in brackets: &lt;<i>value</i>&gt;. The InputTemplate must be valid
+     *        <code>InputPathsMaps</code> value in brackets: &lt;<i>value</i>&gt; The InputTemplate must be valid
      *        JSON.</p>
      *        <p>
      *        If <code>InputTemplate</code> is a JSON object (surrounded by curly braces), the following restrictions
@@ -526,12 +533,12 @@ public class InputTransformer implements Serializable, Cloneable, StructuredPojo
      *        <ul>
      *        <li>
      *        <p>
-     *        The placeholder can't be used as an object key
+     *        The placeholder cannot be used as an object key.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Object values can't include quote marks
+     *        Object values cannot include quote marks.
      *        </p>
      *        </li>
      *        </ul>

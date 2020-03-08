@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,7 +38,7 @@ public class GetPipelineStateResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * <note>
      * <p>
-     * A newly-created pipeline is always assigned a version number of <code>1</code>.
+     * A newly created pipeline is always assigned a version number of <code>1</code>.
      * </p>
      * </note>
      */
@@ -109,14 +109,14 @@ public class GetPipelineStateResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * <note>
      * <p>
-     * A newly-created pipeline is always assigned a version number of <code>1</code>.
+     * A newly created pipeline is always assigned a version number of <code>1</code>.
      * </p>
      * </note>
      * 
      * @param pipelineVersion
      *        The version number of the pipeline.</p> <note>
      *        <p>
-     *        A newly-created pipeline is always assigned a version number of <code>1</code>.
+     *        A newly created pipeline is always assigned a version number of <code>1</code>.
      *        </p>
      */
 
@@ -130,13 +130,13 @@ public class GetPipelineStateResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * <note>
      * <p>
-     * A newly-created pipeline is always assigned a version number of <code>1</code>.
+     * A newly created pipeline is always assigned a version number of <code>1</code>.
      * </p>
      * </note>
      * 
      * @return The version number of the pipeline.</p> <note>
      *         <p>
-     *         A newly-created pipeline is always assigned a version number of <code>1</code>.
+     *         A newly created pipeline is always assigned a version number of <code>1</code>.
      *         </p>
      */
 
@@ -150,14 +150,14 @@ public class GetPipelineStateResult extends com.amazonaws.AmazonWebServiceResult
      * </p>
      * <note>
      * <p>
-     * A newly-created pipeline is always assigned a version number of <code>1</code>.
+     * A newly created pipeline is always assigned a version number of <code>1</code>.
      * </p>
      * </note>
      * 
      * @param pipelineVersion
      *        The version number of the pipeline.</p> <note>
      *        <p>
-     *        A newly-created pipeline is always assigned a version number of <code>1</code>.
+     *        A newly created pipeline is always assigned a version number of <code>1</code>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */

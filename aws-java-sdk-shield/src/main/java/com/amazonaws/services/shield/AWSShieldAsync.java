@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -175,6 +175,55 @@ public interface AWSShieldAsync extends AWSShield {
      */
     java.util.concurrent.Future<AssociateDRTRoleResult> associateDRTRoleAsync(AssociateDRTRoleRequest associateDRTRoleRequest,
             com.amazonaws.handlers.AsyncHandler<AssociateDRTRoleRequest, AssociateDRTRoleResult> asyncHandler);
+
+    /**
+     * <p>
+     * Adds health-based detection to the Shield Advanced protection for a resource. Shield Advanced health-based
+     * detection uses the health of your AWS resource to improve responsiveness and accuracy in attack detection and
+     * mitigation.
+     * </p>
+     * <p>
+     * You define the health check in Route 53 and then associate it with your Shield Advanced protection. For more
+     * information, see <a href=
+     * "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option"
+     * >Shield Advanced Health-Based Detection</a> in the <a
+     * href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF and AWS Shield Developer Guide</a>.
+     * </p>
+     * 
+     * @param associateHealthCheckRequest
+     * @return A Java Future containing the result of the AssociateHealthCheck operation returned by the service.
+     * @sample AWSShieldAsync.AssociateHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/shield-2016-06-02/AssociateHealthCheck" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<AssociateHealthCheckResult> associateHealthCheckAsync(AssociateHealthCheckRequest associateHealthCheckRequest);
+
+    /**
+     * <p>
+     * Adds health-based detection to the Shield Advanced protection for a resource. Shield Advanced health-based
+     * detection uses the health of your AWS resource to improve responsiveness and accuracy in attack detection and
+     * mitigation.
+     * </p>
+     * <p>
+     * You define the health check in Route 53 and then associate it with your Shield Advanced protection. For more
+     * information, see <a href=
+     * "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option"
+     * >Shield Advanced Health-Based Detection</a> in the <a
+     * href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF and AWS Shield Developer Guide</a>.
+     * </p>
+     * 
+     * @param associateHealthCheckRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AssociateHealthCheck operation returned by the service.
+     * @sample AWSShieldAsyncHandler.AssociateHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/shield-2016-06-02/AssociateHealthCheck" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<AssociateHealthCheckResult> associateHealthCheckAsync(AssociateHealthCheckRequest associateHealthCheckRequest,
+            com.amazonaws.handlers.AsyncHandler<AssociateHealthCheckRequest, AssociateHealthCheckResult> asyncHandler);
 
     /**
      * <p>
@@ -606,6 +655,55 @@ public interface AWSShieldAsync extends AWSShield {
      */
     java.util.concurrent.Future<DisassociateDRTRoleResult> disassociateDRTRoleAsync(DisassociateDRTRoleRequest disassociateDRTRoleRequest,
             com.amazonaws.handlers.AsyncHandler<DisassociateDRTRoleRequest, DisassociateDRTRoleResult> asyncHandler);
+
+    /**
+     * <p>
+     * Removes health-based detection from the Shield Advanced protection for a resource. Shield Advanced health-based
+     * detection uses the health of your AWS resource to improve responsiveness and accuracy in attack detection and
+     * mitigation.
+     * </p>
+     * <p>
+     * You define the health check in Route 53 and then associate or disassociate it with your Shield Advanced
+     * protection. For more information, see <a href=
+     * "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option"
+     * >Shield Advanced Health-Based Detection</a> in the <a
+     * href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF and AWS Shield Developer Guide</a>.
+     * </p>
+     * 
+     * @param disassociateHealthCheckRequest
+     * @return A Java Future containing the result of the DisassociateHealthCheck operation returned by the service.
+     * @sample AWSShieldAsync.DisassociateHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/shield-2016-06-02/DisassociateHealthCheck" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DisassociateHealthCheckResult> disassociateHealthCheckAsync(DisassociateHealthCheckRequest disassociateHealthCheckRequest);
+
+    /**
+     * <p>
+     * Removes health-based detection from the Shield Advanced protection for a resource. Shield Advanced health-based
+     * detection uses the health of your AWS resource to improve responsiveness and accuracy in attack detection and
+     * mitigation.
+     * </p>
+     * <p>
+     * You define the health check in Route 53 and then associate or disassociate it with your Shield Advanced
+     * protection. For more information, see <a href=
+     * "https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html#ddos-advanced-health-check-option"
+     * >Shield Advanced Health-Based Detection</a> in the <a
+     * href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF and AWS Shield Developer Guide</a>.
+     * </p>
+     * 
+     * @param disassociateHealthCheckRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DisassociateHealthCheck operation returned by the service.
+     * @sample AWSShieldAsyncHandler.DisassociateHealthCheck
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/shield-2016-06-02/DisassociateHealthCheck" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DisassociateHealthCheckResult> disassociateHealthCheckAsync(DisassociateHealthCheckRequest disassociateHealthCheckRequest,
+            com.amazonaws.handlers.AsyncHandler<DisassociateHealthCheckRequest, DisassociateHealthCheckResult> asyncHandler);
 
     /**
      * <p>

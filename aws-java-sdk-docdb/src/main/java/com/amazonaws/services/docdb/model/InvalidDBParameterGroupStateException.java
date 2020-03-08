@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,7 +16,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The DB parameter group is in use, or it is in a state that is not valid. If you are trying to delete the parameter
+ * The parameter group is in use, or it is in a state that is not valid. If you are trying to delete the parameter
  * group, you can't delete it when the parameter group is in this state.
  * </p>
  */

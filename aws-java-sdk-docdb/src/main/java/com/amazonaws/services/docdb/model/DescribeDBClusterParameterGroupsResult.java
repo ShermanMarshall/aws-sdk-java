@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,7 @@ public class DescribeDBClusterParameterGroupsResult extends com.amazonaws.Amazon
     private String marker;
     /**
      * <p>
-     * A list of DB cluster parameter groups.
+     * A list of cluster parameter groups.
      * </p>
      */
     private java.util.List<DBClusterParameterGroup> dBClusterParameterGroups;
@@ -89,10 +89,10 @@ public class DescribeDBClusterParameterGroupsResult extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * A list of DB cluster parameter groups.
+     * A list of cluster parameter groups.
      * </p>
      * 
-     * @return A list of DB cluster parameter groups.
+     * @return A list of cluster parameter groups.
      */
 
     public java.util.List<DBClusterParameterGroup> getDBClusterParameterGroups() {
@@ -101,11 +101,11 @@ public class DescribeDBClusterParameterGroupsResult extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * A list of DB cluster parameter groups.
+     * A list of cluster parameter groups.
      * </p>
      * 
      * @param dBClusterParameterGroups
-     *        A list of DB cluster parameter groups.
+     *        A list of cluster parameter groups.
      */
 
     public void setDBClusterParameterGroups(java.util.Collection<DBClusterParameterGroup> dBClusterParameterGroups) {
@@ -119,7 +119,7 @@ public class DescribeDBClusterParameterGroupsResult extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * A list of DB cluster parameter groups.
+     * A list of cluster parameter groups.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -128,7 +128,7 @@ public class DescribeDBClusterParameterGroupsResult extends com.amazonaws.Amazon
      * </p>
      * 
      * @param dBClusterParameterGroups
-     *        A list of DB cluster parameter groups.
+     *        A list of cluster parameter groups.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -144,11 +144,11 @@ public class DescribeDBClusterParameterGroupsResult extends com.amazonaws.Amazon
 
     /**
      * <p>
-     * A list of DB cluster parameter groups.
+     * A list of cluster parameter groups.
      * </p>
      * 
      * @param dBClusterParameterGroups
-     *        A list of DB cluster parameter groups.
+     *        A list of cluster parameter groups.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

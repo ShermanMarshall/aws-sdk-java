@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,13 +49,19 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     private Integer sizePercent;
     /**
      * <p>
-     * The custom description of the treatment.
+     * The message template to use for the treatment.
+     * </p>
+     */
+    private TemplateConfiguration templateConfiguration;
+    /**
+     * <p>
+     * A custom description of the treatment.
      * </p>
      */
     private String treatmentDescription;
     /**
      * <p>
-     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
      * campaign.
      * </p>
      */
@@ -183,11 +189,51 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom description of the treatment.
+     * The message template to use for the treatment.
+     * </p>
+     * 
+     * @param templateConfiguration
+     *        The message template to use for the treatment.
+     */
+
+    public void setTemplateConfiguration(TemplateConfiguration templateConfiguration) {
+        this.templateConfiguration = templateConfiguration;
+    }
+
+    /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
+     * @return The message template to use for the treatment.
+     */
+
+    public TemplateConfiguration getTemplateConfiguration() {
+        return this.templateConfiguration;
+    }
+
+    /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
+     * @param templateConfiguration
+     *        The message template to use for the treatment.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public WriteTreatmentResource withTemplateConfiguration(TemplateConfiguration templateConfiguration) {
+        setTemplateConfiguration(templateConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A custom description of the treatment.
      * </p>
      * 
      * @param treatmentDescription
-     *        The custom description of the treatment.
+     *        A custom description of the treatment.
      */
 
     public void setTreatmentDescription(String treatmentDescription) {
@@ -196,10 +242,10 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom description of the treatment.
+     * A custom description of the treatment.
      * </p>
      * 
-     * @return The custom description of the treatment.
+     * @return A custom description of the treatment.
      */
 
     public String getTreatmentDescription() {
@@ -208,11 +254,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom description of the treatment.
+     * A custom description of the treatment.
      * </p>
      * 
      * @param treatmentDescription
-     *        The custom description of the treatment.
+     *        A custom description of the treatment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -223,13 +269,13 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
      * campaign.
      * </p>
      * 
      * @param treatmentName
-     *        The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
-     *        a campaign.
+     *        A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     *        campaign.
      */
 
     public void setTreatmentName(String treatmentName) {
@@ -238,11 +284,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
      * campaign.
      * </p>
      * 
-     * @return The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
+     * @return A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of
      *         a campaign.
      */
 
@@ -252,13 +298,13 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
      * campaign.
      * </p>
      * 
      * @param treatmentName
-     *        The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
-     *        a campaign.
+     *        A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     *        campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -285,6 +331,8 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
             sb.append("Schedule: ").append(getSchedule()).append(",");
         if (getSizePercent() != null)
             sb.append("SizePercent: ").append(getSizePercent()).append(",");
+        if (getTemplateConfiguration() != null)
+            sb.append("TemplateConfiguration: ").append(getTemplateConfiguration()).append(",");
         if (getTreatmentDescription() != null)
             sb.append("TreatmentDescription: ").append(getTreatmentDescription()).append(",");
         if (getTreatmentName() != null)
@@ -315,6 +363,10 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
             return false;
         if (other.getSizePercent() != null && other.getSizePercent().equals(this.getSizePercent()) == false)
             return false;
+        if (other.getTemplateConfiguration() == null ^ this.getTemplateConfiguration() == null)
+            return false;
+        if (other.getTemplateConfiguration() != null && other.getTemplateConfiguration().equals(this.getTemplateConfiguration()) == false)
+            return false;
         if (other.getTreatmentDescription() == null ^ this.getTreatmentDescription() == null)
             return false;
         if (other.getTreatmentDescription() != null && other.getTreatmentDescription().equals(this.getTreatmentDescription()) == false)
@@ -334,6 +386,7 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
         hashCode = prime * hashCode + ((getMessageConfiguration() == null) ? 0 : getMessageConfiguration().hashCode());
         hashCode = prime * hashCode + ((getSchedule() == null) ? 0 : getSchedule().hashCode());
         hashCode = prime * hashCode + ((getSizePercent() == null) ? 0 : getSizePercent().hashCode());
+        hashCode = prime * hashCode + ((getTemplateConfiguration() == null) ? 0 : getTemplateConfiguration().hashCode());
         hashCode = prime * hashCode + ((getTreatmentDescription() == null) ? 0 : getTreatmentDescription().hashCode());
         hashCode = prime * hashCode + ((getTreatmentName() == null) ? 0 : getTreatmentName().hashCode());
         return hashCode;

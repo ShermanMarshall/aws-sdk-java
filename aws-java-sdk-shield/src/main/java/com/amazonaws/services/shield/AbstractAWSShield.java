@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,6 +44,11 @@ public class AbstractAWSShield implements AWSShield {
 
     @Override
     public AssociateDRTRoleResult associateDRTRole(AssociateDRTRoleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public AssociateHealthCheckResult associateHealthCheck(AssociateHealthCheckRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -100,6 +105,11 @@ public class AbstractAWSShield implements AWSShield {
 
     @Override
     public DisassociateDRTRoleResult disassociateDRTRole(DisassociateDRTRoleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DisassociateHealthCheckResult disassociateHealthCheck(DisassociateHealthCheckRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

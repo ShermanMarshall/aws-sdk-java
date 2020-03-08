@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,8 @@ public class ProductMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Description").build();
     private static final MarshallingInfo<List> CATEGORIES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Categories").build();
+    private static final MarshallingInfo<List> INTEGRATIONTYPES_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IntegrationTypes").build();
     private static final MarshallingInfo<String> MARKETPLACEURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("MarketplaceUrl").build();
     private static final MarshallingInfo<String> ACTIVATIONURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -66,6 +68,7 @@ public class ProductMarshaller {
             protocolMarshaller.marshall(product.getCompanyName(), COMPANYNAME_BINDING);
             protocolMarshaller.marshall(product.getDescription(), DESCRIPTION_BINDING);
             protocolMarshaller.marshall(product.getCategories(), CATEGORIES_BINDING);
+            protocolMarshaller.marshall(product.getIntegrationTypes(), INTEGRATIONTYPES_BINDING);
             protocolMarshaller.marshall(product.getMarketplaceUrl(), MARKETPLACEURL_BINDING);
             protocolMarshaller.marshall(product.getActivationUrl(), ACTIVATIONURL_BINDING);
             protocolMarshaller.marshall(product.getProductSubscriptionResourcePolicy(), PRODUCTSUBSCRIPTIONRESOURCEPOLICY_BINDING);

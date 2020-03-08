@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,18 +28,18 @@ public class PutScalingPolicyResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
+     * A descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      */
     private String name;
 
     /**
      * <p>
-     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
+     * A descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
+     *        A descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      */
 
     public void setName(String name) {
@@ -48,10 +48,10 @@ public class PutScalingPolicyResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
+     * A descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
-     * @return Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
+     * @return A descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      */
 
     public String getName() {
@@ -60,11 +60,11 @@ public class PutScalingPolicyResult extends com.amazonaws.AmazonWebServiceResult
 
     /**
      * <p>
-     * Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
+     * A descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * </p>
      * 
      * @param name
-     *        Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
+     *        A descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

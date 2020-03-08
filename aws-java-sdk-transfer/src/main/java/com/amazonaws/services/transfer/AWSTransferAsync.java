@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -240,7 +240,8 @@ public interface AWSTransferAsync extends AWSTransfer {
      * Describes the server that you specify by passing the <code>ServerId</code> parameter.
      * </p>
      * <p>
-     * The response contains a description of the server's properties.
+     * The response contains a description of the server's properties. When you set <code>EndpointType</code> to VPC,
+     * the response will contain the <code>EndpointDetails</code>.
      * </p>
      * 
      * @param describeServerRequest
@@ -256,7 +257,8 @@ public interface AWSTransferAsync extends AWSTransfer {
      * Describes the server that you specify by passing the <code>ServerId</code> parameter.
      * </p>
      * <p>
-     * The response contains a description of the server's properties.
+     * The response contains a description of the server's properties. When you set <code>EndpointType</code> to VPC,
+     * the response will contain the <code>EndpointDetails</code>.
      * </p>
      * 
      * @param describeServerRequest

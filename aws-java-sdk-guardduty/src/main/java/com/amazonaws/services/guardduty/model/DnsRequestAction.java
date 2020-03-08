@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains information about the DNS request.
+ * Contains information about the DNS_REQUEST action described in this finding.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DnsRequestAction" target="_top">AWS API
@@ -30,18 +30,18 @@ public class DnsRequestAction implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Domain information for the DNS request.
+     * Domain information for the API request.
      * </p>
      */
     private String domain;
 
     /**
      * <p>
-     * Domain information for the DNS request.
+     * Domain information for the API request.
      * </p>
      * 
      * @param domain
-     *        Domain information for the DNS request.
+     *        Domain information for the API request.
      */
 
     public void setDomain(String domain) {
@@ -50,10 +50,10 @@ public class DnsRequestAction implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Domain information for the DNS request.
+     * Domain information for the API request.
      * </p>
      * 
-     * @return Domain information for the DNS request.
+     * @return Domain information for the API request.
      */
 
     public String getDomain() {
@@ -62,11 +62,11 @@ public class DnsRequestAction implements Serializable, Cloneable, StructuredPojo
 
     /**
      * <p>
-     * Domain information for the DNS request.
+     * Domain information for the API request.
      * </p>
      * 
      * @param domain
-     *        Domain information for the DNS request.
+     *        Domain information for the API request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

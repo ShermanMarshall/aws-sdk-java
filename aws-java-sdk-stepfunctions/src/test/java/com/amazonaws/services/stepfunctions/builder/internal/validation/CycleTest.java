@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -19,12 +19,14 @@ import com.amazonaws.services.stepfunctions.builder.StateMachine;
 import org.junit.Test;
 
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.branch;
+import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.iterator;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.choice;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.choiceState;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.end;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.eq;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.next;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.parallelState;
+import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.mapState;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.passState;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.stateMachine;
 import static com.amazonaws.services.stepfunctions.builder.StepFunctionBuilder.succeedState;
@@ -221,6 +223,77 @@ public class CycleTest {
                         .state("Terminal", passState().transition(end()))
                         .state("NonTerminal", passState().transition(next("Cyclic")))
                         .state("Cyclic", passState().transition(next("NonTerminal"))));
+    }
+
+    @Test
+    public void mapState_NoCycles() {
+        assertNoCycle(stateMachine()
+                .startAt("Initial")
+                .state("Initial", mapState()
+                        .iterator(iterator()
+                                .startAt("BranchTwoStart")
+                                .state("BranchTwoStart", passState()
+                                        .transition(next("NextState")))
+                                .state("NextState", succeedState()))
+                        .transition(end())));
+    }
+
+    @Test(expected = ValidationException.class)
+    public void mapState_WithCycles_IsNotValid() {
+        assertCycle(stateMachine()
+                .startAt("Map")
+                .state("Map", mapState()
+                        .iterator(iterator()
+                                .startAt("BranchOneInitial")
+                                .state("BranchOneInitial", passState()
+                                        .transition(next("CyclicState")))
+                                .state("CyclicState", passState()
+                                        .transition(next("BranchOneInitial"))))
+                        .transition(end())));
+    }
+
+    @Test(expected = ValidationException.class)
+    public void mapState_WithChoiceThatHasNoTerminalPath_IsNotValid() {
+        assertDoesNotHaveTerminalPath(
+                stateMachine()
+                        .startAt("Map")
+                        .state("Map", mapState()
+                                .transition(end())
+                                .iterator(iterator()
+                                        .startAt("Initial")
+                                        .state("Initial", passState()
+                                                .transition(next("Choice")))
+                                        .state("Choice", choiceState()
+                                                .defaultStateName("Default")
+                                                .choice(choice()
+                                                        .transition(next("Initial"))
+                                                        .condition(eq("$.foo", "bar")))
+                                                .choice(choice()
+                                                        .transition(next("Default"))
+                                                        .condition(eq("$.foo", "bar"))))
+                                        .state("Default", passState().transition(next("Choice"))))));
+    }
+
+    @Test
+    public void mapState_ChoiceStateWithTerminalPath_IsValid() {
+        assertHasPathToTerminal(
+                stateMachine()
+                        .startAt("Map")
+                        .state("Map", mapState()
+                                .transition(end())
+                                .iterator(iterator()
+                                        .startAt("Initial")
+                                        .state("Initial", passState()
+                                                .transition(next("Choice")))
+                                        .state("Choice", choiceState()
+                                                .defaultStateName("Default")
+                                                .choice(choice()
+                                                        .transition(next("Initial"))
+                                                        .condition(eq("$.foo", "bar")))
+                                                .choice(choice()
+                                                        .transition(next("Default"))
+                                                        .condition(eq("$.foo", "bar"))))
+                                        .state("Default", passState().transition(end())))));
     }
 
     private void assertCycle(StateMachine.Builder stateMachineBuilder) {

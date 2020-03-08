@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,69 +27,61 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * AWS account ID that contains the dashboard you are embedding.
+     * The ID for the AWS account that contains the dashboard that you're embedding.
      * </p>
      */
     private String awsAccountId;
     /**
      * <p>
-     * The ID for the dashboard, also added to IAM policy
+     * The ID for the dashboard, also added to the IAM policy.
      * </p>
      */
     private String dashboardId;
     /**
      * <p>
-     * The authentication method the user uses to sign in (IAM only).
+     * The authentication method that the user uses to sign in.
      * </p>
      */
     private String identityType;
     /**
      * <p>
-     * How many minutes the session is valid. The session lifetime must be between 15 and 600 minutes.
+     * How many minutes the session is valid. The session lifetime must be 15-600 minutes.
      * </p>
      */
     private Long sessionLifetimeInMinutes;
     /**
      * <p>
-     * Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo button.
+     * Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo button.
      * </p>
      */
     private Boolean undoRedoDisabled;
     /**
      * <p>
-     * Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     * Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      * </p>
      */
     private Boolean resetDisabled;
     /**
      * <p>
-     * The Amazon QuickSight user's ARN, for use with <code>QUICKSIGHT</code> identity type. You can use this for any of
-     * the following:
+     * The Amazon QuickSight user's Amazon Resource Name (ARN), for use with <code>QUICKSIGHT</code> identity type. You
+     * can use this for any Amazon QuickSight users in your account (readers, authors, or admins) authenticated as one
+     * of the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Amazon QuickSight users in your account (readers, authors, or admins)
+     * Active Directory (AD) users or group members
      * </p>
      * </li>
      * <li>
      * <p>
-     * AD users
+     * Invited nonfederated users
      * </p>
      * </li>
      * <li>
      * <p>
-     * Invited non-federated users
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Federated IAM users
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Federated IAM role-based sessions
+     * IAM users and IAM role-based sessions authenticated through Federated Single Sign-On using SAML, OpenID Connect,
+     * or IAM federation.
      * </p>
      * </li>
      * </ul>
@@ -98,11 +90,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * AWS account ID that contains the dashboard you are embedding.
+     * The ID for the AWS account that contains the dashboard that you're embedding.
      * </p>
      * 
      * @param awsAccountId
-     *        AWS account ID that contains the dashboard you are embedding.
+     *        The ID for the AWS account that contains the dashboard that you're embedding.
      */
 
     public void setAwsAccountId(String awsAccountId) {
@@ -111,10 +103,10 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * AWS account ID that contains the dashboard you are embedding.
+     * The ID for the AWS account that contains the dashboard that you're embedding.
      * </p>
      * 
-     * @return AWS account ID that contains the dashboard you are embedding.
+     * @return The ID for the AWS account that contains the dashboard that you're embedding.
      */
 
     public String getAwsAccountId() {
@@ -123,11 +115,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * AWS account ID that contains the dashboard you are embedding.
+     * The ID for the AWS account that contains the dashboard that you're embedding.
      * </p>
      * 
      * @param awsAccountId
-     *        AWS account ID that contains the dashboard you are embedding.
+     *        The ID for the AWS account that contains the dashboard that you're embedding.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -138,11 +130,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The ID for the dashboard, also added to IAM policy
+     * The ID for the dashboard, also added to the IAM policy.
      * </p>
      * 
      * @param dashboardId
-     *        The ID for the dashboard, also added to IAM policy
+     *        The ID for the dashboard, also added to the IAM policy.
      */
 
     public void setDashboardId(String dashboardId) {
@@ -151,10 +143,10 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The ID for the dashboard, also added to IAM policy
+     * The ID for the dashboard, also added to the IAM policy.
      * </p>
      * 
-     * @return The ID for the dashboard, also added to IAM policy
+     * @return The ID for the dashboard, also added to the IAM policy.
      */
 
     public String getDashboardId() {
@@ -163,11 +155,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The ID for the dashboard, also added to IAM policy
+     * The ID for the dashboard, also added to the IAM policy.
      * </p>
      * 
      * @param dashboardId
-     *        The ID for the dashboard, also added to IAM policy
+     *        The ID for the dashboard, also added to the IAM policy.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -178,11 +170,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The authentication method the user uses to sign in (IAM only).
+     * The authentication method that the user uses to sign in.
      * </p>
      * 
      * @param identityType
-     *        The authentication method the user uses to sign in (IAM only).
+     *        The authentication method that the user uses to sign in.
      * @see IdentityType
      */
 
@@ -192,10 +184,10 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The authentication method the user uses to sign in (IAM only).
+     * The authentication method that the user uses to sign in.
      * </p>
      * 
-     * @return The authentication method the user uses to sign in (IAM only).
+     * @return The authentication method that the user uses to sign in.
      * @see IdentityType
      */
 
@@ -205,11 +197,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The authentication method the user uses to sign in (IAM only).
+     * The authentication method that the user uses to sign in.
      * </p>
      * 
      * @param identityType
-     *        The authentication method the user uses to sign in (IAM only).
+     *        The authentication method that the user uses to sign in.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see IdentityType
      */
@@ -221,11 +213,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The authentication method the user uses to sign in (IAM only).
+     * The authentication method that the user uses to sign in.
      * </p>
      * 
      * @param identityType
-     *        The authentication method the user uses to sign in (IAM only).
+     *        The authentication method that the user uses to sign in.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see IdentityType
      */
@@ -237,11 +229,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * How many minutes the session is valid. The session lifetime must be between 15 and 600 minutes.
+     * How many minutes the session is valid. The session lifetime must be 15-600 minutes.
      * </p>
      * 
      * @param sessionLifetimeInMinutes
-     *        How many minutes the session is valid. The session lifetime must be between 15 and 600 minutes.
+     *        How many minutes the session is valid. The session lifetime must be 15-600 minutes.
      */
 
     public void setSessionLifetimeInMinutes(Long sessionLifetimeInMinutes) {
@@ -250,10 +242,10 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * How many minutes the session is valid. The session lifetime must be between 15 and 600 minutes.
+     * How many minutes the session is valid. The session lifetime must be 15-600 minutes.
      * </p>
      * 
-     * @return How many minutes the session is valid. The session lifetime must be between 15 and 600 minutes.
+     * @return How many minutes the session is valid. The session lifetime must be 15-600 minutes.
      */
 
     public Long getSessionLifetimeInMinutes() {
@@ -262,11 +254,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * How many minutes the session is valid. The session lifetime must be between 15 and 600 minutes.
+     * How many minutes the session is valid. The session lifetime must be 15-600 minutes.
      * </p>
      * 
      * @param sessionLifetimeInMinutes
-     *        How many minutes the session is valid. The session lifetime must be between 15 and 600 minutes.
+     *        How many minutes the session is valid. The session lifetime must be 15-600 minutes.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -277,11 +269,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo button.
+     * Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo button.
      * </p>
      * 
      * @param undoRedoDisabled
-     *        Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo
+     *        Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo
      *        button.
      */
 
@@ -291,10 +283,10 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo button.
+     * Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo button.
      * </p>
      * 
-     * @return Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo
+     * @return Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo
      *         button.
      */
 
@@ -304,11 +296,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo button.
+     * Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo button.
      * </p>
      * 
      * @param undoRedoDisabled
-     *        Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo
+     *        Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo
      *        button.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -320,10 +312,10 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo button.
+     * Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo button.
      * </p>
      * 
-     * @return Remove the undo/redo button on embedded dashboard. The default is FALSE, which enables the undo/redo
+     * @return Remove the undo/redo button on the embedded dashboard. The default is FALSE, which enables the undo/redo
      *         button.
      */
 
@@ -333,11 +325,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     * Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      * </p>
      * 
      * @param resetDisabled
-     *        Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     *        Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      */
 
     public void setResetDisabled(Boolean resetDisabled) {
@@ -346,10 +338,10 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     * Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      * </p>
      * 
-     * @return Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     * @return Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      */
 
     public Boolean getResetDisabled() {
@@ -358,11 +350,11 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     * Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      * </p>
      * 
      * @param resetDisabled
-     *        Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     *        Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -373,10 +365,10 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     * Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      * </p>
      * 
-     * @return Remove the reset button on embedded dashboard. The default is FALSE, which allows the reset button.
+     * @return Remove the reset button on the embedded dashboard. The default is FALSE, which enables the reset button.
      */
 
     public Boolean isResetDisabled() {
@@ -385,64 +377,48 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The Amazon QuickSight user's ARN, for use with <code>QUICKSIGHT</code> identity type. You can use this for any of
-     * the following:
+     * The Amazon QuickSight user's Amazon Resource Name (ARN), for use with <code>QUICKSIGHT</code> identity type. You
+     * can use this for any Amazon QuickSight users in your account (readers, authors, or admins) authenticated as one
+     * of the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Amazon QuickSight users in your account (readers, authors, or admins)
+     * Active Directory (AD) users or group members
      * </p>
      * </li>
      * <li>
      * <p>
-     * AD users
+     * Invited nonfederated users
      * </p>
      * </li>
      * <li>
      * <p>
-     * Invited non-federated users
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Federated IAM users
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Federated IAM role-based sessions
+     * IAM users and IAM role-based sessions authenticated through Federated Single Sign-On using SAML, OpenID Connect,
+     * or IAM federation.
      * </p>
      * </li>
      * </ul>
      * 
      * @param userArn
-     *        The Amazon QuickSight user's ARN, for use with <code>QUICKSIGHT</code> identity type. You can use this for
-     *        any of the following:</p>
+     *        The Amazon QuickSight user's Amazon Resource Name (ARN), for use with <code>QUICKSIGHT</code> identity
+     *        type. You can use this for any Amazon QuickSight users in your account (readers, authors, or admins)
+     *        authenticated as one of the following:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Amazon QuickSight users in your account (readers, authors, or admins)
+     *        Active Directory (AD) users or group members
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        AD users
+     *        Invited nonfederated users
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Invited non-federated users
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Federated IAM users
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Federated IAM role-based sessions
+     *        IAM users and IAM role-based sessions authenticated through Federated Single Sign-On using SAML, OpenID
+     *        Connect, or IAM federation.
      *        </p>
      *        </li>
      */
@@ -453,63 +429,47 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The Amazon QuickSight user's ARN, for use with <code>QUICKSIGHT</code> identity type. You can use this for any of
-     * the following:
+     * The Amazon QuickSight user's Amazon Resource Name (ARN), for use with <code>QUICKSIGHT</code> identity type. You
+     * can use this for any Amazon QuickSight users in your account (readers, authors, or admins) authenticated as one
+     * of the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Amazon QuickSight users in your account (readers, authors, or admins)
+     * Active Directory (AD) users or group members
      * </p>
      * </li>
      * <li>
      * <p>
-     * AD users
+     * Invited nonfederated users
      * </p>
      * </li>
      * <li>
      * <p>
-     * Invited non-federated users
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Federated IAM users
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Federated IAM role-based sessions
+     * IAM users and IAM role-based sessions authenticated through Federated Single Sign-On using SAML, OpenID Connect,
+     * or IAM federation.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The Amazon QuickSight user's ARN, for use with <code>QUICKSIGHT</code> identity type. You can use this
-     *         for any of the following:</p>
+     * @return The Amazon QuickSight user's Amazon Resource Name (ARN), for use with <code>QUICKSIGHT</code> identity
+     *         type. You can use this for any Amazon QuickSight users in your account (readers, authors, or admins)
+     *         authenticated as one of the following:</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         Amazon QuickSight users in your account (readers, authors, or admins)
+     *         Active Directory (AD) users or group members
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         AD users
+     *         Invited nonfederated users
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Invited non-federated users
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         Federated IAM users
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         Federated IAM role-based sessions
+     *         IAM users and IAM role-based sessions authenticated through Federated Single Sign-On using SAML, OpenID
+     *         Connect, or IAM federation.
      *         </p>
      *         </li>
      */
@@ -520,64 +480,48 @@ public class GetDashboardEmbedUrlRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The Amazon QuickSight user's ARN, for use with <code>QUICKSIGHT</code> identity type. You can use this for any of
-     * the following:
+     * The Amazon QuickSight user's Amazon Resource Name (ARN), for use with <code>QUICKSIGHT</code> identity type. You
+     * can use this for any Amazon QuickSight users in your account (readers, authors, or admins) authenticated as one
+     * of the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Amazon QuickSight users in your account (readers, authors, or admins)
+     * Active Directory (AD) users or group members
      * </p>
      * </li>
      * <li>
      * <p>
-     * AD users
+     * Invited nonfederated users
      * </p>
      * </li>
      * <li>
      * <p>
-     * Invited non-federated users
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Federated IAM users
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * Federated IAM role-based sessions
+     * IAM users and IAM role-based sessions authenticated through Federated Single Sign-On using SAML, OpenID Connect,
+     * or IAM federation.
      * </p>
      * </li>
      * </ul>
      * 
      * @param userArn
-     *        The Amazon QuickSight user's ARN, for use with <code>QUICKSIGHT</code> identity type. You can use this for
-     *        any of the following:</p>
+     *        The Amazon QuickSight user's Amazon Resource Name (ARN), for use with <code>QUICKSIGHT</code> identity
+     *        type. You can use this for any Amazon QuickSight users in your account (readers, authors, or admins)
+     *        authenticated as one of the following:</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Amazon QuickSight users in your account (readers, authors, or admins)
+     *        Active Directory (AD) users or group members
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        AD users
+     *        Invited nonfederated users
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Invited non-federated users
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Federated IAM users
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        Federated IAM role-based sessions
+     *        IAM users and IAM role-based sessions authenticated through Federated Single Sign-On using SAML, OpenID
+     *        Connect, or IAM federation.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

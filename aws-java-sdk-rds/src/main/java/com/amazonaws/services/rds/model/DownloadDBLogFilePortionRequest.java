@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -73,8 +73,8 @@ public class DownloadDBLogFilePortionRequest extends com.amazonaws.AmazonWebServ
      * </li>
      * <li>
      * <p>
-     * If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the log
-     * file are returned.
+     * If NumberOfLines is specified and Marker isn't specified, then the most recent lines from the end of the log file
+     * are returned.
      * </p>
      * </li>
      * <li>
@@ -296,8 +296,8 @@ public class DownloadDBLogFilePortionRequest extends com.amazonaws.AmazonWebServ
      * </li>
      * <li>
      * <p>
-     * If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the log
-     * file are returned.
+     * If NumberOfLines is specified and Marker isn't specified, then the most recent lines from the end of the log file
+     * are returned.
      * </p>
      * </li>
      * <li>
@@ -332,7 +332,7 @@ public class DownloadDBLogFilePortionRequest extends com.amazonaws.AmazonWebServ
      *        </li>
      *        <li>
      *        <p>
-     *        If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the
+     *        If NumberOfLines is specified and Marker isn't specified, then the most recent lines from the end of the
      *        log file are returned.
      *        </p>
      *        </li>
@@ -374,8 +374,8 @@ public class DownloadDBLogFilePortionRequest extends com.amazonaws.AmazonWebServ
      * </li>
      * <li>
      * <p>
-     * If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the log
-     * file are returned.
+     * If NumberOfLines is specified and Marker isn't specified, then the most recent lines from the end of the log file
+     * are returned.
      * </p>
      * </li>
      * <li>
@@ -409,7 +409,7 @@ public class DownloadDBLogFilePortionRequest extends com.amazonaws.AmazonWebServ
      *         </li>
      *         <li>
      *         <p>
-     *         If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the
+     *         If NumberOfLines is specified and Marker isn't specified, then the most recent lines from the end of the
      *         log file are returned.
      *         </p>
      *         </li>
@@ -451,8 +451,8 @@ public class DownloadDBLogFilePortionRequest extends com.amazonaws.AmazonWebServ
      * </li>
      * <li>
      * <p>
-     * If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the log
-     * file are returned.
+     * If NumberOfLines is specified and Marker isn't specified, then the most recent lines from the end of the log file
+     * are returned.
      * </p>
      * </li>
      * <li>
@@ -487,7 +487,7 @@ public class DownloadDBLogFilePortionRequest extends com.amazonaws.AmazonWebServ
      *        </li>
      *        <li>
      *        <p>
-     *        If NumberOfLines is specified and Marker is not specified, then the most recent lines from the end of the
+     *        If NumberOfLines is specified and Marker isn't specified, then the most recent lines from the end of the
      *        log file are returned.
      *        </p>
      *        </li>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -106,6 +106,11 @@ public class UpdateAutoScalingGroupRequestMarshaller implements Marshaller<Reque
                                 if (overridesListValue.getInstanceType() != null) {
                                     request.addParameter("MixedInstancesPolicy.LaunchTemplate.Overrides.member." + overridesListIndex + ".InstanceType",
                                             StringUtils.fromString(overridesListValue.getInstanceType()));
+                                }
+
+                                if (overridesListValue.getWeightedCapacity() != null) {
+                                    request.addParameter("MixedInstancesPolicy.LaunchTemplate.Overrides.member." + overridesListIndex + ".WeightedCapacity",
+                                            StringUtils.fromString(overridesListValue.getWeightedCapacity()));
                                 }
                                 overridesListIndex++;
                             }
@@ -218,6 +223,10 @@ public class UpdateAutoScalingGroupRequestMarshaller implements Marshaller<Reque
 
         if (updateAutoScalingGroupRequest.getServiceLinkedRoleARN() != null) {
             request.addParameter("ServiceLinkedRoleARN", StringUtils.fromString(updateAutoScalingGroupRequest.getServiceLinkedRoleARN()));
+        }
+
+        if (updateAutoScalingGroupRequest.getMaxInstanceLifetime() != null) {
+            request.addParameter("MaxInstanceLifetime", StringUtils.fromInteger(updateAutoScalingGroupRequest.getMaxInstanceLifetime()));
         }
 
         return request;

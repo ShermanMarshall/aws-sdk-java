@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,7 +43,7 @@ public class GlobalTableGlobalSecondaryIndexSettingsUpdate implements Serializab
     private Long provisionedWriteCapacityUnits;
     /**
      * <p>
-     * AutoScaling settings for managing a global secondary index's write capacity units.
+     * Auto scaling settings for managing a global secondary index's write capacity units.
      * </p>
      */
     private AutoScalingSettingsUpdate provisionedWriteCapacityAutoScalingSettingsUpdate;
@@ -133,11 +133,11 @@ public class GlobalTableGlobalSecondaryIndexSettingsUpdate implements Serializab
 
     /**
      * <p>
-     * AutoScaling settings for managing a global secondary index's write capacity units.
+     * Auto scaling settings for managing a global secondary index's write capacity units.
      * </p>
      * 
      * @param provisionedWriteCapacityAutoScalingSettingsUpdate
-     *        AutoScaling settings for managing a global secondary index's write capacity units.
+     *        Auto scaling settings for managing a global secondary index's write capacity units.
      */
 
     public void setProvisionedWriteCapacityAutoScalingSettingsUpdate(AutoScalingSettingsUpdate provisionedWriteCapacityAutoScalingSettingsUpdate) {
@@ -146,10 +146,10 @@ public class GlobalTableGlobalSecondaryIndexSettingsUpdate implements Serializab
 
     /**
      * <p>
-     * AutoScaling settings for managing a global secondary index's write capacity units.
+     * Auto scaling settings for managing a global secondary index's write capacity units.
      * </p>
      * 
-     * @return AutoScaling settings for managing a global secondary index's write capacity units.
+     * @return Auto scaling settings for managing a global secondary index's write capacity units.
      */
 
     public AutoScalingSettingsUpdate getProvisionedWriteCapacityAutoScalingSettingsUpdate() {
@@ -158,11 +158,11 @@ public class GlobalTableGlobalSecondaryIndexSettingsUpdate implements Serializab
 
     /**
      * <p>
-     * AutoScaling settings for managing a global secondary index's write capacity units.
+     * Auto scaling settings for managing a global secondary index's write capacity units.
      * </p>
      * 
      * @param provisionedWriteCapacityAutoScalingSettingsUpdate
-     *        AutoScaling settings for managing a global secondary index's write capacity units.
+     *        Auto scaling settings for managing a global secondary index's write capacity units.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

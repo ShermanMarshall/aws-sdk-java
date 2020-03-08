@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -50,6 +50,8 @@ public class PutBotRequestMarshaller {
             .marshallLocationName("locale").build();
     private static final MarshallingInfo<Boolean> CHILDDIRECTED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("childDirected").build();
+    private static final MarshallingInfo<Boolean> DETECTSENTIMENT_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("detectSentiment").build();
     private static final MarshallingInfo<Boolean> CREATEVERSION_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("createVersion").build();
 
@@ -80,6 +82,7 @@ public class PutBotRequestMarshaller {
             protocolMarshaller.marshall(putBotRequest.getProcessBehavior(), PROCESSBEHAVIOR_BINDING);
             protocolMarshaller.marshall(putBotRequest.getLocale(), LOCALE_BINDING);
             protocolMarshaller.marshall(putBotRequest.getChildDirected(), CHILDDIRECTED_BINDING);
+            protocolMarshaller.marshall(putBotRequest.getDetectSentiment(), DETECTSENTIMENT_BINDING);
             protocolMarshaller.marshall(putBotRequest.getCreateVersion(), CREATEVERSION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

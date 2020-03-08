@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,18 +26,18 @@ public class MergePullRequestByFastForwardResult extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Information about the specified pull request, including information about the merge.
+     * Information about the specified pull request, including the merge.
      * </p>
      */
     private PullRequest pullRequest;
 
     /**
      * <p>
-     * Information about the specified pull request, including information about the merge.
+     * Information about the specified pull request, including the merge.
      * </p>
      * 
      * @param pullRequest
-     *        Information about the specified pull request, including information about the merge.
+     *        Information about the specified pull request, including the merge.
      */
 
     public void setPullRequest(PullRequest pullRequest) {
@@ -46,10 +46,10 @@ public class MergePullRequestByFastForwardResult extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Information about the specified pull request, including information about the merge.
+     * Information about the specified pull request, including the merge.
      * </p>
      * 
-     * @return Information about the specified pull request, including information about the merge.
+     * @return Information about the specified pull request, including the merge.
      */
 
     public PullRequest getPullRequest() {
@@ -58,11 +58,11 @@ public class MergePullRequestByFastForwardResult extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Information about the specified pull request, including information about the merge.
+     * Information about the specified pull request, including the merge.
      * </p>
      * 
      * @param pullRequest
-     *        Information about the specified pull request, including information about the merge.
+     *        Information about the specified pull request, including the merge.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

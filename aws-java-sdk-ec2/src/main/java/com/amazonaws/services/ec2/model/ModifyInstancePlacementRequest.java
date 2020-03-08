@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -67,6 +67,12 @@ public class ModifyInstancePlacementRequest extends AmazonWebServiceRequest impl
      * </p>
      */
     private Integer partitionNumber;
+    /**
+     * <p>
+     * The ARN of the host resource group in which to place the instance.
+     * </p>
+     */
+    private String hostResourceGroupArn;
 
     /**
      * <p>
@@ -402,6 +408,46 @@ public class ModifyInstancePlacementRequest extends AmazonWebServiceRequest impl
     }
 
     /**
+     * <p>
+     * The ARN of the host resource group in which to place the instance.
+     * </p>
+     * 
+     * @param hostResourceGroupArn
+     *        The ARN of the host resource group in which to place the instance.
+     */
+
+    public void setHostResourceGroupArn(String hostResourceGroupArn) {
+        this.hostResourceGroupArn = hostResourceGroupArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the host resource group in which to place the instance.
+     * </p>
+     * 
+     * @return The ARN of the host resource group in which to place the instance.
+     */
+
+    public String getHostResourceGroupArn() {
+        return this.hostResourceGroupArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the host resource group in which to place the instance.
+     * </p>
+     * 
+     * @param hostResourceGroupArn
+     *        The ARN of the host resource group in which to place the instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyInstancePlacementRequest withHostResourceGroupArn(String hostResourceGroupArn) {
+        setHostResourceGroupArn(hostResourceGroupArn);
+        return this;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -435,7 +481,9 @@ public class ModifyInstancePlacementRequest extends AmazonWebServiceRequest impl
         if (getTenancy() != null)
             sb.append("Tenancy: ").append(getTenancy()).append(",");
         if (getPartitionNumber() != null)
-            sb.append("PartitionNumber: ").append(getPartitionNumber());
+            sb.append("PartitionNumber: ").append(getPartitionNumber()).append(",");
+        if (getHostResourceGroupArn() != null)
+            sb.append("HostResourceGroupArn: ").append(getHostResourceGroupArn());
         sb.append("}");
         return sb.toString();
     }
@@ -474,6 +522,10 @@ public class ModifyInstancePlacementRequest extends AmazonWebServiceRequest impl
             return false;
         if (other.getPartitionNumber() != null && other.getPartitionNumber().equals(this.getPartitionNumber()) == false)
             return false;
+        if (other.getHostResourceGroupArn() == null ^ this.getHostResourceGroupArn() == null)
+            return false;
+        if (other.getHostResourceGroupArn() != null && other.getHostResourceGroupArn().equals(this.getHostResourceGroupArn()) == false)
+            return false;
         return true;
     }
 
@@ -488,6 +540,7 @@ public class ModifyInstancePlacementRequest extends AmazonWebServiceRequest impl
         hashCode = prime * hashCode + ((getInstanceId() == null) ? 0 : getInstanceId().hashCode());
         hashCode = prime * hashCode + ((getTenancy() == null) ? 0 : getTenancy().hashCode());
         hashCode = prime * hashCode + ((getPartitionNumber() == null) ? 0 : getPartitionNumber().hashCode());
+        hashCode = prime * hashCode + ((getHostResourceGroupArn() == null) ? 0 : getHostResourceGroupArn().hashCode());
         return hashCode;
     }
 

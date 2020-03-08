@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,8 +34,8 @@ public class ListPipelinesResult extends com.amazonaws.AmazonWebServiceResult<co
     private java.util.List<PipelineSummary> pipelines;
     /**
      * <p>
-     * If the amount of returned information is significantly large, an identifier is also returned which can be used in
-     * a subsequent list pipelines call to return the next set of pipelines in the list.
+     * If the amount of returned information is significantly large, an identifier is also returned. It can be used in a
+     * subsequent list pipelines call to return the next set of pipelines in the list.
      * </p>
      */
     private String nextToken;
@@ -112,12 +112,12 @@ public class ListPipelinesResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * If the amount of returned information is significantly large, an identifier is also returned which can be used in
-     * a subsequent list pipelines call to return the next set of pipelines in the list.
+     * If the amount of returned information is significantly large, an identifier is also returned. It can be used in a
+     * subsequent list pipelines call to return the next set of pipelines in the list.
      * </p>
      * 
      * @param nextToken
-     *        If the amount of returned information is significantly large, an identifier is also returned which can be
+     *        If the amount of returned information is significantly large, an identifier is also returned. It can be
      *        used in a subsequent list pipelines call to return the next set of pipelines in the list.
      */
 
@@ -127,11 +127,11 @@ public class ListPipelinesResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * If the amount of returned information is significantly large, an identifier is also returned which can be used in
-     * a subsequent list pipelines call to return the next set of pipelines in the list.
+     * If the amount of returned information is significantly large, an identifier is also returned. It can be used in a
+     * subsequent list pipelines call to return the next set of pipelines in the list.
      * </p>
      * 
-     * @return If the amount of returned information is significantly large, an identifier is also returned which can be
+     * @return If the amount of returned information is significantly large, an identifier is also returned. It can be
      *         used in a subsequent list pipelines call to return the next set of pipelines in the list.
      */
 
@@ -141,12 +141,12 @@ public class ListPipelinesResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * If the amount of returned information is significantly large, an identifier is also returned which can be used in
-     * a subsequent list pipelines call to return the next set of pipelines in the list.
+     * If the amount of returned information is significantly large, an identifier is also returned. It can be used in a
+     * subsequent list pipelines call to return the next set of pipelines in the list.
      * </p>
      * 
      * @param nextToken
-     *        If the amount of returned information is significantly large, an identifier is also returned which can be
+     *        If the amount of returned information is significantly large, an identifier is also returned. It can be
      *        used in a subsequent list pipelines call to return the next set of pipelines in the list.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

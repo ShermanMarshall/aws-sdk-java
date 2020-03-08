@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,6 +34,8 @@ public class AttributeMarshaller {
             .marshallLocationName("Score").build();
     private static final MarshallingInfo<Float> RELATIONSHIPSCORE_BINDING = MarshallingInfo.builder(MarshallingType.FLOAT)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RelationshipScore").build();
+    private static final MarshallingInfo<String> RELATIONSHIPTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RelationshipType").build();
     private static final MarshallingInfo<Integer> ID_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Id").build();
     private static final MarshallingInfo<Integer> BEGINOFFSET_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -42,6 +44,8 @@ public class AttributeMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("EndOffset").build();
     private static final MarshallingInfo<String> TEXT_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Text").build();
+    private static final MarshallingInfo<String> CATEGORY_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Category").build();
     private static final MarshallingInfo<List> TRAITS_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Traits").build();
 
@@ -64,10 +68,12 @@ public class AttributeMarshaller {
             protocolMarshaller.marshall(attribute.getType(), TYPE_BINDING);
             protocolMarshaller.marshall(attribute.getScore(), SCORE_BINDING);
             protocolMarshaller.marshall(attribute.getRelationshipScore(), RELATIONSHIPSCORE_BINDING);
+            protocolMarshaller.marshall(attribute.getRelationshipType(), RELATIONSHIPTYPE_BINDING);
             protocolMarshaller.marshall(attribute.getId(), ID_BINDING);
             protocolMarshaller.marshall(attribute.getBeginOffset(), BEGINOFFSET_BINDING);
             protocolMarshaller.marshall(attribute.getEndOffset(), ENDOFFSET_BINDING);
             protocolMarshaller.marshall(attribute.getText(), TEXT_BINDING);
+            protocolMarshaller.marshall(attribute.getCategory(), CATEGORY_BINDING);
             protocolMarshaller.marshall(attribute.getTraits(), TRAITS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

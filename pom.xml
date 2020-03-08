@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-pom</artifactId>
-  <version>1.11.631-SNAPSHOT</version>
+  <version>1.11.740-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>AWS SDK for Java</name>
   <description>The Amazon Web Services SDK for Java provides Java APIs
@@ -33,6 +33,35 @@
   </developers>
   <!-- The module section in pom.xml is auto generated. No manual changes are allowed -->
   <modules>
+    <module>aws-java-sdk-codestarconnections</module>
+    <module>aws-java-sdk-detective</module>
+    <module>aws-java-sdk-kinesisvideosignalingchannels</module>
+    <module>aws-java-sdk-ebs</module>
+    <module>aws-java-sdk-augmentedairuntime</module>
+    <module>aws-java-sdk-outposts</module>
+    <module>aws-java-sdk-codeguruprofiler</module>
+    <module>aws-java-sdk-codegurureviewer</module>
+    <module>aws-java-sdk-frauddetector</module>
+    <module>aws-java-sdk-kendra</module>
+    <module>aws-java-sdk-networkmanager</module>
+    <module>aws-java-sdk-computeoptimizer</module>
+    <module>aws-java-sdk-accessanalyzer</module>
+    <module>aws-java-sdk-schemas</module>
+    <module>aws-java-sdk-imagebuilder</module>
+    <module>aws-java-sdk-elasticinference</module>
+    <module>aws-java-sdk-iotsecuretunneling</module>
+    <module>aws-java-sdk-appconfig</module>
+    <module>aws-java-sdk-wafv2</module>
+    <module>aws-java-sdk-connectparticipant</module>
+    <module>aws-java-sdk-migrationhubconfig</module>
+    <module>aws-java-sdk-dataexchange</module>
+    <module>aws-java-sdk-sesv2</module>
+    <module>aws-java-sdk-marketplacecatalog</module>
+    <module>aws-java-sdk-ssooidc</module>
+    <module>aws-java-sdk-sso</module>
+    <module>aws-java-sdk-savingsplans</module>
+    <module>aws-java-sdk-codestarnotifications</module>
+    <module>aws-java-sdk-workmailmessageflow</module>
     <module>aws-java-sdk-qldbsession</module>
     <module>aws-java-sdk-qldb</module>
     <module>aws-java-sdk-forecastquery</module>
@@ -236,7 +265,7 @@
       <awsjavasdk.version>${project.version}</awsjavasdk.version>
       <!-- The SDK requires Jackson 2.6 to support Java 6 customers. Feel free to override in your own application -->
       <jackson.version>2.6.7</jackson.version>
-      <jackson.databind.version>2.6.7.2</jackson.databind.version>
+      <jackson.databind.version>2.6.7.3</jackson.databind.version>
       <ion.java.version>1.0.2</ion.java.version>
       <junit.version>4.12</junit.version>
       <easymock.version>3.2</easymock.version>
@@ -265,7 +294,7 @@
       <cucumber.guice.version>4.0</cucumber.guice.version>
       <unitils.version>3.3</unitils.version>
       <!-- Netty is used by Kinesis Video -->
-      <netty.version>4.1.17.Final</netty.version>
+      <netty.version>4.1.44.Final</netty.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -350,7 +379,7 @@
             <extensions>true</extensions>
             <configuration>
               <serverId>sonatype-nexus-staging</serverId>
-              <nexusUrl>https://oss.sonatype.org</nexusUrl>
+              <nexusUrl>https://aws.oss.sonatype.org</nexusUrl>
             </configuration>
           </plugin>
         </plugins>

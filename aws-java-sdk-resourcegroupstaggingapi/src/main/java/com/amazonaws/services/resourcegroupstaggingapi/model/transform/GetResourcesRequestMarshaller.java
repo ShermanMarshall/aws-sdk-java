@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,10 @@ public class GetResourcesRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TagsPerPage").build();
     private static final MarshallingInfo<List> RESOURCETYPEFILTERS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ResourceTypeFilters").build();
+    private static final MarshallingInfo<Boolean> INCLUDECOMPLIANCEDETAILS_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("IncludeComplianceDetails").build();
+    private static final MarshallingInfo<Boolean> EXCLUDECOMPLIANTRESOURCES_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ExcludeCompliantResources").build();
 
     private static final GetResourcesRequestMarshaller instance = new GetResourcesRequestMarshaller();
 
@@ -60,6 +64,8 @@ public class GetResourcesRequestMarshaller {
             protocolMarshaller.marshall(getResourcesRequest.getResourcesPerPage(), RESOURCESPERPAGE_BINDING);
             protocolMarshaller.marshall(getResourcesRequest.getTagsPerPage(), TAGSPERPAGE_BINDING);
             protocolMarshaller.marshall(getResourcesRequest.getResourceTypeFilters(), RESOURCETYPEFILTERS_BINDING);
+            protocolMarshaller.marshall(getResourcesRequest.getIncludeComplianceDetails(), INCLUDECOMPLIANCEDETAILS_BINDING);
+            protocolMarshaller.marshall(getResourcesRequest.getExcludeCompliantResources(), EXCLUDECOMPLIANTRESOURCES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

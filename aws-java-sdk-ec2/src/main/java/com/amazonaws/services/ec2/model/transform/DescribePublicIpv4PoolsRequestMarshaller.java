@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,6 +59,34 @@ public class DescribePublicIpv4PoolsRequestMarshaller implements Marshaller<Requ
 
         if (describePublicIpv4PoolsRequest.getMaxResults() != null) {
             request.addParameter("MaxResults", StringUtils.fromInteger(describePublicIpv4PoolsRequest.getMaxResults()));
+        }
+
+        com.amazonaws.internal.SdkInternalList<Filter> describePublicIpv4PoolsRequestFiltersList = (com.amazonaws.internal.SdkInternalList<Filter>) describePublicIpv4PoolsRequest
+                .getFilters();
+        if (!describePublicIpv4PoolsRequestFiltersList.isEmpty() || !describePublicIpv4PoolsRequestFiltersList.isAutoConstruct()) {
+            int filtersListIndex = 1;
+
+            for (Filter describePublicIpv4PoolsRequestFiltersListValue : describePublicIpv4PoolsRequestFiltersList) {
+
+                if (describePublicIpv4PoolsRequestFiltersListValue.getName() != null) {
+                    request.addParameter("Filter." + filtersListIndex + ".Name",
+                            StringUtils.fromString(describePublicIpv4PoolsRequestFiltersListValue.getName()));
+                }
+
+                com.amazonaws.internal.SdkInternalList<String> filterValuesList = (com.amazonaws.internal.SdkInternalList<String>) describePublicIpv4PoolsRequestFiltersListValue
+                        .getValues();
+                if (!filterValuesList.isEmpty() || !filterValuesList.isAutoConstruct()) {
+                    int valuesListIndex = 1;
+
+                    for (String filterValuesListValue : filterValuesList) {
+                        if (filterValuesListValue != null) {
+                            request.addParameter("Filter." + filtersListIndex + ".Value." + valuesListIndex, StringUtils.fromString(filterValuesListValue));
+                        }
+                        valuesListIndex++;
+                    }
+                }
+                filtersListIndex++;
+            }
         }
 
         return request;

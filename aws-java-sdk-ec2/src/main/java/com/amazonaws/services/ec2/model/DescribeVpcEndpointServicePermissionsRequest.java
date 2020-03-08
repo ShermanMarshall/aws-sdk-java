@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,7 +55,8 @@ public class DescribeVpcEndpointServicePermissionsRequest extends AmazonWebServi
      * <p>
      * The maximum number of results to return for the request in a single page. The remaining results of the initial
      * request can be seen by sending another request with the returned <code>NextToken</code> value. This value can be
-     * between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are returned.
+     * between 5 and 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only 1,000 results are
+     * returned.
      * </p>
      */
     private Integer maxResults;
@@ -283,14 +284,15 @@ public class DescribeVpcEndpointServicePermissionsRequest extends AmazonWebServi
      * <p>
      * The maximum number of results to return for the request in a single page. The remaining results of the initial
      * request can be seen by sending another request with the returned <code>NextToken</code> value. This value can be
-     * between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are returned.
+     * between 5 and 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only 1,000 results are
+     * returned.
      * </p>
      * 
      * @param maxResults
      *        The maximum number of results to return for the request in a single page. The remaining results of the
      *        initial request can be seen by sending another request with the returned <code>NextToken</code> value.
-     *        This value can be between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only
-     *        1000 results are returned.
+     *        This value can be between 5 and 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only
+     *        1,000 results are returned.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -301,13 +303,14 @@ public class DescribeVpcEndpointServicePermissionsRequest extends AmazonWebServi
      * <p>
      * The maximum number of results to return for the request in a single page. The remaining results of the initial
      * request can be seen by sending another request with the returned <code>NextToken</code> value. This value can be
-     * between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are returned.
+     * between 5 and 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only 1,000 results are
+     * returned.
      * </p>
      * 
      * @return The maximum number of results to return for the request in a single page. The remaining results of the
      *         initial request can be seen by sending another request with the returned <code>NextToken</code> value.
-     *         This value can be between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only
-     *         1000 results are returned.
+     *         This value can be between 5 and 1,000; if <code>MaxResults</code> is given a value larger than 1,000,
+     *         only 1,000 results are returned.
      */
 
     public Integer getMaxResults() {
@@ -318,14 +321,15 @@ public class DescribeVpcEndpointServicePermissionsRequest extends AmazonWebServi
      * <p>
      * The maximum number of results to return for the request in a single page. The remaining results of the initial
      * request can be seen by sending another request with the returned <code>NextToken</code> value. This value can be
-     * between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are returned.
+     * between 5 and 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only 1,000 results are
+     * returned.
      * </p>
      * 
      * @param maxResults
      *        The maximum number of results to return for the request in a single page. The remaining results of the
      *        initial request can be seen by sending another request with the returned <code>NextToken</code> value.
-     *        This value can be between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only
-     *        1000 results are returned.
+     *        This value can be between 5 and 1,000; if <code>MaxResults</code> is given a value larger than 1,000, only
+     *        1,000 results are returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

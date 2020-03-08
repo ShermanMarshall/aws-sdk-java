@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,13 +33,13 @@ public class DisassociateDiscoveredResourceRequest extends com.amazonaws.AmazonW
     private String progressUpdateStream;
     /**
      * <p>
-     * The identifier given to the MigrationTask.
+     * The identifier given to the MigrationTask. <i>Do not store personal data in this field.</i>
      * </p>
      */
     private String migrationTaskName;
     /**
      * <p>
-     * ConfigurationId of the ADS resource to be disassociated.
+     * ConfigurationId of the Application Discovery Service resource to be disassociated.
      * </p>
      */
     private String configurationId;
@@ -93,11 +93,11 @@ public class DisassociateDiscoveredResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The identifier given to the MigrationTask.
+     * The identifier given to the MigrationTask. <i>Do not store personal data in this field.</i>
      * </p>
      * 
      * @param migrationTaskName
-     *        The identifier given to the MigrationTask.
+     *        The identifier given to the MigrationTask. <i>Do not store personal data in this field.</i>
      */
 
     public void setMigrationTaskName(String migrationTaskName) {
@@ -106,10 +106,10 @@ public class DisassociateDiscoveredResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The identifier given to the MigrationTask.
+     * The identifier given to the MigrationTask. <i>Do not store personal data in this field.</i>
      * </p>
      * 
-     * @return The identifier given to the MigrationTask.
+     * @return The identifier given to the MigrationTask. <i>Do not store personal data in this field.</i>
      */
 
     public String getMigrationTaskName() {
@@ -118,11 +118,11 @@ public class DisassociateDiscoveredResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The identifier given to the MigrationTask.
+     * The identifier given to the MigrationTask. <i>Do not store personal data in this field.</i>
      * </p>
      * 
      * @param migrationTaskName
-     *        The identifier given to the MigrationTask.
+     *        The identifier given to the MigrationTask. <i>Do not store personal data in this field.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -133,11 +133,11 @@ public class DisassociateDiscoveredResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * ConfigurationId of the ADS resource to be disassociated.
+     * ConfigurationId of the Application Discovery Service resource to be disassociated.
      * </p>
      * 
      * @param configurationId
-     *        ConfigurationId of the ADS resource to be disassociated.
+     *        ConfigurationId of the Application Discovery Service resource to be disassociated.
      */
 
     public void setConfigurationId(String configurationId) {
@@ -146,10 +146,10 @@ public class DisassociateDiscoveredResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * ConfigurationId of the ADS resource to be disassociated.
+     * ConfigurationId of the Application Discovery Service resource to be disassociated.
      * </p>
      * 
-     * @return ConfigurationId of the ADS resource to be disassociated.
+     * @return ConfigurationId of the Application Discovery Service resource to be disassociated.
      */
 
     public String getConfigurationId() {
@@ -158,11 +158,11 @@ public class DisassociateDiscoveredResourceRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * ConfigurationId of the ADS resource to be disassociated.
+     * ConfigurationId of the Application Discovery Service resource to be disassociated.
      * </p>
      * 
      * @param configurationId
-     *        ConfigurationId of the ADS resource to be disassociated.
+     *        ConfigurationId of the Application Discovery Service resource to be disassociated.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

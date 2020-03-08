@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,6 +28,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class RunConfigurationMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> FLINKRUNCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("FlinkRunConfiguration").build();
     private static final MarshallingInfo<List> SQLRUNCONFIGURATIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SqlRunConfigurations").build();
     private static final MarshallingInfo<StructuredPojo> APPLICATIONRESTORECONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -49,6 +51,7 @@ public class RunConfigurationMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(runConfiguration.getFlinkRunConfiguration(), FLINKRUNCONFIGURATION_BINDING);
             protocolMarshaller.marshall(runConfiguration.getSqlRunConfigurations(), SQLRUNCONFIGURATIONS_BINDING);
             protocolMarshaller.marshall(runConfiguration.getApplicationRestoreConfiguration(), APPLICATIONRESTORECONFIGURATION_BINDING);
         } catch (Exception e) {

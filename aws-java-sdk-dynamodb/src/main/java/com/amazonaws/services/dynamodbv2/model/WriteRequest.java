@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -21,7 +21,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * <p>
  * Represents an operation to perform - either <code>DeleteItem</code> or <code>PutItem</code>. You can only request one
  * of these operations, not both, in a single <code>WriteRequest</code>. If you do need to perform both of these
- * operations, you will need to provide two separate <code>WriteRequest</code> objects.
+ * operations, you need to provide two separate <code>WriteRequest</code> objects.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/WriteRequest" target="_top">AWS API

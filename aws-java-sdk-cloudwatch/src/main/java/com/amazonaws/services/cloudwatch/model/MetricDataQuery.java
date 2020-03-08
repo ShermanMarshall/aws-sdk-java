@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,7 +23,7 @@ import javax.annotation.Generated;
  * <p>
  * When used in <code>GetMetricData</code>, it indicates the metric data to return, and whether this call is just
  * retrieving a batch set of data for one metric, or is performing a math expression on metric data. A single
- * <code>GetMetricData</code> call can include up to 100 <code>MetricDataQuery</code> structures.
+ * <code>GetMetricData</code> call can include up to 500 <code>MetricDataQuery</code> structures.
  * </p>
  * <p>
  * When used in <code>PutMetricAlarm</code>, it enables you to create an alarm based on a metric math expression. Each
@@ -109,6 +109,16 @@ public class MetricDataQuery implements Serializable, Cloneable {
      * </p>
      */
     private Boolean returnData;
+    /**
+     * <p>
+     * The granularity, in seconds, of the returned data points. For metrics with regular resolution, a period can be as
+     * short as one minute (60 seconds) and must be a multiple of 60. For high-resolution metrics that are collected at
+     * intervals of less than one minute, the period can be 1, 5, 10, 30, 60, or any multiple of 60. High-resolution
+     * metrics are those metrics stored by a <code>PutMetricData</code> operation that includes a
+     * <code>StorageResolution of 1 second</code>.
+     * </p>
+     */
+    private Integer period;
 
     /**
      * <p>
@@ -487,6 +497,70 @@ public class MetricDataQuery implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The granularity, in seconds, of the returned data points. For metrics with regular resolution, a period can be as
+     * short as one minute (60 seconds) and must be a multiple of 60. For high-resolution metrics that are collected at
+     * intervals of less than one minute, the period can be 1, 5, 10, 30, 60, or any multiple of 60. High-resolution
+     * metrics are those metrics stored by a <code>PutMetricData</code> operation that includes a
+     * <code>StorageResolution of 1 second</code>.
+     * </p>
+     * 
+     * @param period
+     *        The granularity, in seconds, of the returned data points. For metrics with regular resolution, a period
+     *        can be as short as one minute (60 seconds) and must be a multiple of 60. For high-resolution metrics that
+     *        are collected at intervals of less than one minute, the period can be 1, 5, 10, 30, 60, or any multiple of
+     *        60. High-resolution metrics are those metrics stored by a <code>PutMetricData</code> operation that
+     *        includes a <code>StorageResolution of 1 second</code>.
+     */
+
+    public void setPeriod(Integer period) {
+        this.period = period;
+    }
+
+    /**
+     * <p>
+     * The granularity, in seconds, of the returned data points. For metrics with regular resolution, a period can be as
+     * short as one minute (60 seconds) and must be a multiple of 60. For high-resolution metrics that are collected at
+     * intervals of less than one minute, the period can be 1, 5, 10, 30, 60, or any multiple of 60. High-resolution
+     * metrics are those metrics stored by a <code>PutMetricData</code> operation that includes a
+     * <code>StorageResolution of 1 second</code>.
+     * </p>
+     * 
+     * @return The granularity, in seconds, of the returned data points. For metrics with regular resolution, a period
+     *         can be as short as one minute (60 seconds) and must be a multiple of 60. For high-resolution metrics that
+     *         are collected at intervals of less than one minute, the period can be 1, 5, 10, 30, 60, or any multiple
+     *         of 60. High-resolution metrics are those metrics stored by a <code>PutMetricData</code> operation that
+     *         includes a <code>StorageResolution of 1 second</code>.
+     */
+
+    public Integer getPeriod() {
+        return this.period;
+    }
+
+    /**
+     * <p>
+     * The granularity, in seconds, of the returned data points. For metrics with regular resolution, a period can be as
+     * short as one minute (60 seconds) and must be a multiple of 60. For high-resolution metrics that are collected at
+     * intervals of less than one minute, the period can be 1, 5, 10, 30, 60, or any multiple of 60. High-resolution
+     * metrics are those metrics stored by a <code>PutMetricData</code> operation that includes a
+     * <code>StorageResolution of 1 second</code>.
+     * </p>
+     * 
+     * @param period
+     *        The granularity, in seconds, of the returned data points. For metrics with regular resolution, a period
+     *        can be as short as one minute (60 seconds) and must be a multiple of 60. For high-resolution metrics that
+     *        are collected at intervals of less than one minute, the period can be 1, 5, 10, 30, 60, or any multiple of
+     *        60. High-resolution metrics are those metrics stored by a <code>PutMetricData</code> operation that
+     *        includes a <code>StorageResolution of 1 second</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public MetricDataQuery withPeriod(Integer period) {
+        setPeriod(period);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -507,7 +581,9 @@ public class MetricDataQuery implements Serializable, Cloneable {
         if (getLabel() != null)
             sb.append("Label: ").append(getLabel()).append(",");
         if (getReturnData() != null)
-            sb.append("ReturnData: ").append(getReturnData());
+            sb.append("ReturnData: ").append(getReturnData()).append(",");
+        if (getPeriod() != null)
+            sb.append("Period: ").append(getPeriod());
         sb.append("}");
         return sb.toString();
     }
@@ -542,6 +618,10 @@ public class MetricDataQuery implements Serializable, Cloneable {
             return false;
         if (other.getReturnData() != null && other.getReturnData().equals(this.getReturnData()) == false)
             return false;
+        if (other.getPeriod() == null ^ this.getPeriod() == null)
+            return false;
+        if (other.getPeriod() != null && other.getPeriod().equals(this.getPeriod()) == false)
+            return false;
         return true;
     }
 
@@ -555,6 +635,7 @@ public class MetricDataQuery implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getExpression() == null) ? 0 : getExpression().hashCode());
         hashCode = prime * hashCode + ((getLabel() == null) ? 0 : getLabel().hashCode());
         hashCode = prime * hashCode + ((getReturnData() == null) ? 0 : getReturnData().hashCode());
+        hashCode = prime * hashCode + ((getPeriod() == null) ? 0 : getPeriod().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,7 +52,7 @@ public class VpcEndpointConnection implements Serializable, Cloneable {
     private String vpcEndpointState;
     /**
      * <p>
-     * The date and time the VPC endpoint was created.
+     * The date and time that the VPC endpoint was created.
      * </p>
      */
     private java.util.Date creationTimestamp;
@@ -250,11 +250,11 @@ public class VpcEndpointConnection implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time the VPC endpoint was created.
+     * The date and time that the VPC endpoint was created.
      * </p>
      * 
      * @param creationTimestamp
-     *        The date and time the VPC endpoint was created.
+     *        The date and time that the VPC endpoint was created.
      */
 
     public void setCreationTimestamp(java.util.Date creationTimestamp) {
@@ -263,10 +263,10 @@ public class VpcEndpointConnection implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time the VPC endpoint was created.
+     * The date and time that the VPC endpoint was created.
      * </p>
      * 
-     * @return The date and time the VPC endpoint was created.
+     * @return The date and time that the VPC endpoint was created.
      */
 
     public java.util.Date getCreationTimestamp() {
@@ -275,11 +275,11 @@ public class VpcEndpointConnection implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The date and time the VPC endpoint was created.
+     * The date and time that the VPC endpoint was created.
      * </p>
      * 
      * @param creationTimestamp
-     *        The date and time the VPC endpoint was created.
+     *        The date and time that the VPC endpoint was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

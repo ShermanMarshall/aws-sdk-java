@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,6 +28,8 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     /** The Amazon Resource Name (ARN) assigned to the OriginEndpoint. */
     private String arn;
+
+    private Authorization authorization;
     /** The ID of the Channel the OriginEndpoint is associated with. */
     private String channelId;
 
@@ -44,6 +46,12 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
     private String manifestName;
 
     private MssPackage mssPackage;
+    /**
+     * Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may
+     * by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+     * requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
+     */
+    private String origination;
     /**
      * Maximum duration (seconds) of content to retain for startover playback. If not specified, startover playback will
      * be disabled for the OriginEndpoint.
@@ -92,6 +100,32 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
 
     public OriginEndpoint withArn(String arn) {
         setArn(arn);
+        return this;
+    }
+
+    /**
+     * @param authorization
+     */
+
+    public void setAuthorization(Authorization authorization) {
+        this.authorization = authorization;
+    }
+
+    /**
+     * @return
+     */
+
+    public Authorization getAuthorization() {
+        return this.authorization;
+    }
+
+    /**
+     * @param authorization
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public OriginEndpoint withAuthorization(Authorization authorization) {
+        setAuthorization(authorization);
         return this;
     }
 
@@ -336,6 +370,77 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may
+     * by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+     * requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
+     * 
+     * @param origination
+     *        Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the
+     *        OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the
+     *        OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily
+     *        disabling origination
+     * @see Origination
+     */
+
+    public void setOrigination(String origination) {
+        this.origination = origination;
+    }
+
+    /**
+     * Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may
+     * by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+     * requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
+     * 
+     * @return Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the
+     *         OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the
+     *         OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily
+     *         disabling origination
+     * @see Origination
+     */
+
+    public String getOrigination() {
+        return this.origination;
+    }
+
+    /**
+     * Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may
+     * by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+     * requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
+     * 
+     * @param origination
+     *        Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the
+     *        OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the
+     *        OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily
+     *        disabling origination
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Origination
+     */
+
+    public OriginEndpoint withOrigination(String origination) {
+        setOrigination(origination);
+        return this;
+    }
+
+    /**
+     * Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may
+     * by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be
+     * requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
+     * 
+     * @param origination
+     *        Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the
+     *        OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the
+     *        OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily
+     *        disabling origination
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see Origination
+     */
+
+    public OriginEndpoint withOrigination(Origination origination) {
+        this.origination = origination.toString();
+        return this;
+    }
+
+    /**
      * Maximum duration (seconds) of content to retain for startover playback. If not specified, startover playback will
      * be disabled for the OriginEndpoint.
      * 
@@ -400,6 +505,13 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see OriginEndpoint#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public OriginEndpoint addTagsEntry(String key, String value) {
         if (null == this.tags) {
@@ -572,6 +684,8 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
         sb.append("{");
         if (getArn() != null)
             sb.append("Arn: ").append(getArn()).append(",");
+        if (getAuthorization() != null)
+            sb.append("Authorization: ").append(getAuthorization()).append(",");
         if (getChannelId() != null)
             sb.append("ChannelId: ").append(getChannelId()).append(",");
         if (getCmafPackage() != null)
@@ -588,6 +702,8 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
             sb.append("ManifestName: ").append(getManifestName()).append(",");
         if (getMssPackage() != null)
             sb.append("MssPackage: ").append(getMssPackage()).append(",");
+        if (getOrigination() != null)
+            sb.append("Origination: ").append(getOrigination()).append(",");
         if (getStartoverWindowSeconds() != null)
             sb.append("StartoverWindowSeconds: ").append(getStartoverWindowSeconds()).append(",");
         if (getTags() != null)
@@ -615,6 +731,10 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
         if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
+            return false;
+        if (other.getAuthorization() == null ^ this.getAuthorization() == null)
+            return false;
+        if (other.getAuthorization() != null && other.getAuthorization().equals(this.getAuthorization()) == false)
             return false;
         if (other.getChannelId() == null ^ this.getChannelId() == null)
             return false;
@@ -648,6 +768,10 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getMssPackage() != null && other.getMssPackage().equals(this.getMssPackage()) == false)
             return false;
+        if (other.getOrigination() == null ^ this.getOrigination() == null)
+            return false;
+        if (other.getOrigination() != null && other.getOrigination().equals(this.getOrigination()) == false)
+            return false;
         if (other.getStartoverWindowSeconds() == null ^ this.getStartoverWindowSeconds() == null)
             return false;
         if (other.getStartoverWindowSeconds() != null && other.getStartoverWindowSeconds().equals(this.getStartoverWindowSeconds()) == false)
@@ -677,6 +801,7 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getAuthorization() == null) ? 0 : getAuthorization().hashCode());
         hashCode = prime * hashCode + ((getChannelId() == null) ? 0 : getChannelId().hashCode());
         hashCode = prime * hashCode + ((getCmafPackage() == null) ? 0 : getCmafPackage().hashCode());
         hashCode = prime * hashCode + ((getDashPackage() == null) ? 0 : getDashPackage().hashCode());
@@ -685,6 +810,7 @@ public class OriginEndpoint implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getId() == null) ? 0 : getId().hashCode());
         hashCode = prime * hashCode + ((getManifestName() == null) ? 0 : getManifestName().hashCode());
         hashCode = prime * hashCode + ((getMssPackage() == null) ? 0 : getMssPackage().hashCode());
+        hashCode = prime * hashCode + ((getOrigination() == null) ? 0 : getOrigination().hashCode());
         hashCode = prime * hashCode + ((getStartoverWindowSeconds() == null) ? 0 : getStartoverWindowSeconds().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getTimeDelaySeconds() == null) ? 0 : getTimeDelaySeconds().hashCode());

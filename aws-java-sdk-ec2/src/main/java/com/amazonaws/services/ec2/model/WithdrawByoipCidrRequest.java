@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,18 +27,18 @@ public class WithdrawByoipCidrRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The public IPv4 address range, in CIDR notation.
+     * The address range, in CIDR notation.
      * </p>
      */
     private String cidr;
 
     /**
      * <p>
-     * The public IPv4 address range, in CIDR notation.
+     * The address range, in CIDR notation.
      * </p>
      * 
      * @param cidr
-     *        The public IPv4 address range, in CIDR notation.
+     *        The address range, in CIDR notation.
      */
 
     public void setCidr(String cidr) {
@@ -47,10 +47,10 @@ public class WithdrawByoipCidrRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The public IPv4 address range, in CIDR notation.
+     * The address range, in CIDR notation.
      * </p>
      * 
-     * @return The public IPv4 address range, in CIDR notation.
+     * @return The address range, in CIDR notation.
      */
 
     public String getCidr() {
@@ -59,11 +59,11 @@ public class WithdrawByoipCidrRequest extends AmazonWebServiceRequest implements
 
     /**
      * <p>
-     * The public IPv4 address range, in CIDR notation.
+     * The address range, in CIDR notation.
      * </p>
      * 
      * @param cidr
-     *        The public IPv4 address range, in CIDR notation.
+     *        The address range, in CIDR notation.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

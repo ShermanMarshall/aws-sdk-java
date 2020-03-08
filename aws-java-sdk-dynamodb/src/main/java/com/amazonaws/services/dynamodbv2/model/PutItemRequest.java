@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -579,6 +579,13 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
         return this;
     }
 
+    /**
+     * Add a single Item entry
+     *
+     * @see PutItemRequest#withItem
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public PutItemRequest addItemEntry(String key, AttributeValue value) {
         if (null == this.item) {
             this.item = new java.util.HashMap<String, AttributeValue>();
@@ -654,6 +661,13 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
         setExpected(expected);
         return this;
     }
+
+    /**
+     * Add a single Expected entry
+     *
+     * @see PutItemRequest#withExpected
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public PutItemRequest addExpectedEntry(String key, ExpectedAttributeValue value) {
         if (null == this.expected) {
@@ -1826,6 +1840,13 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
         return this;
     }
 
+    /**
+     * Add a single ExpressionAttributeNames entry
+     *
+     * @see PutItemRequest#withExpressionAttributeNames
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public PutItemRequest addExpressionAttributeNamesEntry(String key, String value) {
         if (null == this.expressionAttributeNames) {
             this.expressionAttributeNames = new java.util.HashMap<String, String>();
@@ -2030,6 +2051,13 @@ public class PutItemRequest extends com.amazonaws.AmazonWebServiceRequest implem
         setExpressionAttributeValues(expressionAttributeValues);
         return this;
     }
+
+    /**
+     * Add a single ExpressionAttributeValues entry
+     *
+     * @see PutItemRequest#withExpressionAttributeValues
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public PutItemRequest addExpressionAttributeValuesEntry(String key, AttributeValue value) {
         if (null == this.expressionAttributeValues) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,20 @@ public class BatchStopUpdateActionRequestMarshaller implements Marshaller<Reques
                     request.addParameter("ReplicationGroupIds.member." + replicationGroupIdsListIndex, StringUtils.fromString(replicationGroupIdsListValue));
                 }
                 replicationGroupIdsListIndex++;
+            }
+        }
+
+        if (!batchStopUpdateActionRequest.getCacheClusterIds().isEmpty()
+                || !((com.amazonaws.internal.SdkInternalList<String>) batchStopUpdateActionRequest.getCacheClusterIds()).isAutoConstruct()) {
+            com.amazonaws.internal.SdkInternalList<String> cacheClusterIdsList = (com.amazonaws.internal.SdkInternalList<String>) batchStopUpdateActionRequest
+                    .getCacheClusterIds();
+            int cacheClusterIdsListIndex = 1;
+
+            for (String cacheClusterIdsListValue : cacheClusterIdsList) {
+                if (cacheClusterIdsListValue != null) {
+                    request.addParameter("CacheClusterIds.member." + cacheClusterIdsListIndex, StringUtils.fromString(cacheClusterIdsListValue));
+                }
+                cacheClusterIdsListIndex++;
             }
         }
 

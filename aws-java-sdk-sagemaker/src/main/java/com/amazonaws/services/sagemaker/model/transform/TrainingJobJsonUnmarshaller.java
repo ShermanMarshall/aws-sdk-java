@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -63,6 +63,10 @@ public class TrainingJobJsonUnmarshaller implements Unmarshaller<TrainingJob, Js
                 if (context.testExpression("LabelingJobArn", targetDepth)) {
                     context.nextToken();
                     trainingJob.setLabelingJobArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("AutoMLJobArn", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setAutoMLJobArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("ModelArtifacts", targetDepth)) {
                     context.nextToken();
@@ -145,6 +149,44 @@ public class TrainingJobJsonUnmarshaller implements Unmarshaller<TrainingJob, Js
                 if (context.testExpression("EnableInterContainerTrafficEncryption", targetDepth)) {
                     context.nextToken();
                     trainingJob.setEnableInterContainerTrafficEncryption(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("EnableManagedSpotTraining", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setEnableManagedSpotTraining(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("CheckpointConfig", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setCheckpointConfig(CheckpointConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("TrainingTimeInSeconds", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setTrainingTimeInSeconds(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("BillableTimeInSeconds", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setBillableTimeInSeconds(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("DebugHookConfig", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setDebugHookConfig(DebugHookConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("ExperimentConfig", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setExperimentConfig(ExperimentConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("DebugRuleConfigurations", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setDebugRuleConfigurations(new ListUnmarshaller<DebugRuleConfiguration>(DebugRuleConfigurationJsonUnmarshaller.getInstance())
+                            .unmarshall(context));
+                }
+                if (context.testExpression("TensorBoardOutputConfig", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setTensorBoardOutputConfig(TensorBoardOutputConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("DebugRuleEvaluationStatuses", targetDepth)) {
+                    context.nextToken();
+                    trainingJob.setDebugRuleEvaluationStatuses(new ListUnmarshaller<DebugRuleEvaluationStatus>(DebugRuleEvaluationStatusJsonUnmarshaller
+                            .getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("Tags", targetDepth)) {
                     context.nextToken();

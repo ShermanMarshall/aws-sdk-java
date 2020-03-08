@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -115,6 +115,10 @@ public class CreateClientVpnEndpointRequestMarshaller implements Marshaller<Requ
             request.addParameter("TransportProtocol", StringUtils.fromString(createClientVpnEndpointRequest.getTransportProtocol()));
         }
 
+        if (createClientVpnEndpointRequest.getVpnPort() != null) {
+            request.addParameter("VpnPort", StringUtils.fromInteger(createClientVpnEndpointRequest.getVpnPort()));
+        }
+
         if (createClientVpnEndpointRequest.getDescription() != null) {
             request.addParameter("Description", StringUtils.fromString(createClientVpnEndpointRequest.getDescription()));
         }
@@ -158,6 +162,24 @@ public class CreateClientVpnEndpointRequestMarshaller implements Marshaller<Requ
                 }
                 tagSpecificationsListIndex++;
             }
+        }
+
+        com.amazonaws.internal.SdkInternalList<String> createClientVpnEndpointRequestSecurityGroupIdsList = (com.amazonaws.internal.SdkInternalList<String>) createClientVpnEndpointRequest
+                .getSecurityGroupIds();
+        if (!createClientVpnEndpointRequestSecurityGroupIdsList.isEmpty() || !createClientVpnEndpointRequestSecurityGroupIdsList.isAutoConstruct()) {
+            int securityGroupIdsListIndex = 1;
+
+            for (String createClientVpnEndpointRequestSecurityGroupIdsListValue : createClientVpnEndpointRequestSecurityGroupIdsList) {
+                if (createClientVpnEndpointRequestSecurityGroupIdsListValue != null) {
+                    request.addParameter("SecurityGroupId." + securityGroupIdsListIndex,
+                            StringUtils.fromString(createClientVpnEndpointRequestSecurityGroupIdsListValue));
+                }
+                securityGroupIdsListIndex++;
+            }
+        }
+
+        if (createClientVpnEndpointRequest.getVpcId() != null) {
+            request.addParameter("VpcId", StringUtils.fromString(createClientVpnEndpointRequest.getVpcId()));
         }
 
         return request;

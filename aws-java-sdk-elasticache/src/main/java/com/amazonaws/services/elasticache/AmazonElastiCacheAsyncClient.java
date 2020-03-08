@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -372,6 +372,39 @@ public class AmazonElastiCacheAsyncClient extends AmazonElastiCacheClient implem
 
                 try {
                     result = executeBatchStopUpdateAction(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ReplicationGroup> completeMigrationAsync(CompleteMigrationRequest request) {
+
+        return completeMigrationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ReplicationGroup> completeMigrationAsync(final CompleteMigrationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CompleteMigrationRequest, ReplicationGroup> asyncHandler) {
+        final CompleteMigrationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ReplicationGroup>() {
+            @Override
+            public ReplicationGroup call() throws Exception {
+                ReplicationGroup result = null;
+
+                try {
+                    result = executeCompleteMigration(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1985,6 +2018,39 @@ public class AmazonElastiCacheAsyncClient extends AmazonElastiCacheClient implem
 
                 try {
                     result = executeRevokeCacheSecurityGroupIngress(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ReplicationGroup> startMigrationAsync(StartMigrationRequest request) {
+
+        return startMigrationAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ReplicationGroup> startMigrationAsync(final StartMigrationRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartMigrationRequest, ReplicationGroup> asyncHandler) {
+        final StartMigrationRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ReplicationGroup>() {
+            @Override
+            public ReplicationGroup call() throws Exception {
+                ReplicationGroup result = null;
+
+                try {
+                    result = executeStartMigration(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

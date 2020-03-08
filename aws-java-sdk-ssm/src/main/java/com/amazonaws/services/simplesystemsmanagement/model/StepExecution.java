@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -74,8 +74,7 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
     private java.util.Date executionEndTime;
     /**
      * <p>
-     * The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and
-     * TimedOut.
+     * The execution status for this step.
      * </p>
      */
     private String stepStatus;
@@ -460,13 +459,11 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and
-     * TimedOut.
+     * The execution status for this step.
      * </p>
      * 
      * @param stepStatus
-     *        The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed,
-     *        and TimedOut.
+     *        The execution status for this step.
      * @see AutomationExecutionStatus
      */
 
@@ -476,12 +473,10 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and
-     * TimedOut.
+     * The execution status for this step.
      * </p>
      * 
-     * @return The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled,
-     *         Failed, and TimedOut.
+     * @return The execution status for this step.
      * @see AutomationExecutionStatus
      */
 
@@ -491,13 +486,11 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and
-     * TimedOut.
+     * The execution status for this step.
      * </p>
      * 
      * @param stepStatus
-     *        The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed,
-     *        and TimedOut.
+     *        The execution status for this step.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AutomationExecutionStatus
      */
@@ -509,13 +502,11 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and
-     * TimedOut.
+     * The execution status for this step.
      * </p>
      * 
      * @param stepStatus
-     *        The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed,
-     *        and TimedOut.
+     *        The execution status for this step.
      * @see AutomationExecutionStatus
      */
 
@@ -525,13 +516,11 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and
-     * TimedOut.
+     * The execution status for this step.
      * </p>
      * 
      * @param stepStatus
-     *        The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed,
-     *        and TimedOut.
+     *        The execution status for this step.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AutomationExecutionStatus
      */
@@ -621,6 +610,13 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single Inputs entry
+     *
+     * @see StepExecution#withInputs
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public StepExecution addInputsEntry(String key, String value) {
         if (null == this.inputs) {
             this.inputs = new java.util.HashMap<String, String>();
@@ -681,6 +677,13 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
         setOutputs(outputs);
         return this;
     }
+
+    /**
+     * Add a single Outputs entry
+     *
+     * @see StepExecution#withOutputs
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public StepExecution addOutputsEntry(String key, java.util.List<String> value) {
         if (null == this.outputs) {
@@ -902,6 +905,13 @@ public class StepExecution implements Serializable, Cloneable, StructuredPojo {
         setOverriddenParameters(overriddenParameters);
         return this;
     }
+
+    /**
+     * Add a single OverriddenParameters entry
+     *
+     * @see StepExecution#withOverriddenParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public StepExecution addOverriddenParametersEntry(String key, java.util.List<String> value) {
         if (null == this.overriddenParameters) {

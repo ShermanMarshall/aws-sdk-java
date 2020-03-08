@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,8 @@ public enum CloudWatchActions implements Action {
     DeleteAnomalyDetector("cloudwatch:DeleteAnomalyDetector"),
     /** Action for the DeleteDashboards operation. */
     DeleteDashboards("cloudwatch:DeleteDashboards"),
+    /** Action for the DeleteInsightRules operation. */
+    DeleteInsightRules("cloudwatch:DeleteInsightRules"),
     /** Action for the DescribeAlarmHistory operation. */
     DescribeAlarmHistory("cloudwatch:DescribeAlarmHistory"),
     /** Action for the DescribeAlarms operation. */
@@ -39,12 +41,20 @@ public enum CloudWatchActions implements Action {
     DescribeAlarmsForMetric("cloudwatch:DescribeAlarmsForMetric"),
     /** Action for the DescribeAnomalyDetectors operation. */
     DescribeAnomalyDetectors("cloudwatch:DescribeAnomalyDetectors"),
+    /** Action for the DescribeInsightRules operation. */
+    DescribeInsightRules("cloudwatch:DescribeInsightRules"),
     /** Action for the DisableAlarmActions operation. */
     DisableAlarmActions("cloudwatch:DisableAlarmActions"),
+    /** Action for the DisableInsightRules operation. */
+    DisableInsightRules("cloudwatch:DisableInsightRules"),
     /** Action for the EnableAlarmActions operation. */
     EnableAlarmActions("cloudwatch:EnableAlarmActions"),
+    /** Action for the EnableInsightRules operation. */
+    EnableInsightRules("cloudwatch:EnableInsightRules"),
     /** Action for the GetDashboard operation. */
     GetDashboard("cloudwatch:GetDashboard"),
+    /** Action for the GetInsightRuleReport operation. */
+    GetInsightRuleReport("cloudwatch:GetInsightRuleReport"),
     /** Action for the GetMetricData operation. */
     GetMetricData("cloudwatch:GetMetricData"),
     /** Action for the GetMetricStatistics operation. */
@@ -59,8 +69,12 @@ public enum CloudWatchActions implements Action {
     ListTagsForResource("cloudwatch:ListTagsForResource"),
     /** Action for the PutAnomalyDetector operation. */
     PutAnomalyDetector("cloudwatch:PutAnomalyDetector"),
+    /** Action for the PutCompositeAlarm operation. */
+    PutCompositeAlarm("cloudwatch:PutCompositeAlarm"),
     /** Action for the PutDashboard operation. */
     PutDashboard("cloudwatch:PutDashboard"),
+    /** Action for the PutInsightRule operation. */
+    PutInsightRule("cloudwatch:PutInsightRule"),
     /** Action for the PutMetricAlarm operation. */
     PutMetricAlarm("cloudwatch:PutMetricAlarm"),
     /** Action for the PutMetricData operation. */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class DescribeGameSessionDetailsResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Collection of objects containing game session properties and the protection policy currently in force for each
+     * A collection of objects containing game session properties and the protection policy currently in force for each
      * session matching the request.
      * </p>
      */
@@ -43,12 +43,12 @@ public class DescribeGameSessionDetailsResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Collection of objects containing game session properties and the protection policy currently in force for each
+     * A collection of objects containing game session properties and the protection policy currently in force for each
      * session matching the request.
      * </p>
      * 
-     * @return Collection of objects containing game session properties and the protection policy currently in force for
-     *         each session matching the request.
+     * @return A collection of objects containing game session properties and the protection policy currently in force
+     *         for each session matching the request.
      */
 
     public java.util.List<GameSessionDetail> getGameSessionDetails() {
@@ -57,13 +57,13 @@ public class DescribeGameSessionDetailsResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Collection of objects containing game session properties and the protection policy currently in force for each
+     * A collection of objects containing game session properties and the protection policy currently in force for each
      * session matching the request.
      * </p>
      * 
      * @param gameSessionDetails
-     *        Collection of objects containing game session properties and the protection policy currently in force for
-     *        each session matching the request.
+     *        A collection of objects containing game session properties and the protection policy currently in force
+     *        for each session matching the request.
      */
 
     public void setGameSessionDetails(java.util.Collection<GameSessionDetail> gameSessionDetails) {
@@ -77,7 +77,7 @@ public class DescribeGameSessionDetailsResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Collection of objects containing game session properties and the protection policy currently in force for each
+     * A collection of objects containing game session properties and the protection policy currently in force for each
      * session matching the request.
      * </p>
      * <p>
@@ -87,8 +87,8 @@ public class DescribeGameSessionDetailsResult extends com.amazonaws.AmazonWebSer
      * </p>
      * 
      * @param gameSessionDetails
-     *        Collection of objects containing game session properties and the protection policy currently in force for
-     *        each session matching the request.
+     *        A collection of objects containing game session properties and the protection policy currently in force
+     *        for each session matching the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -104,13 +104,13 @@ public class DescribeGameSessionDetailsResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Collection of objects containing game session properties and the protection policy currently in force for each
+     * A collection of objects containing game session properties and the protection policy currently in force for each
      * session matching the request.
      * </p>
      * 
      * @param gameSessionDetails
-     *        Collection of objects containing game session properties and the protection policy currently in force for
-     *        each session matching the request.
+     *        A collection of objects containing game session properties and the protection policy currently in force
+     *        for each session matching the request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

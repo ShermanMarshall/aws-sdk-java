@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -71,6 +71,26 @@ public class ReplicationTaskStatsJsonUnmarshaller implements Unmarshaller<Replic
                 if (context.testExpression("TablesErrored", targetDepth)) {
                     context.nextToken();
                     replicationTaskStats.setTablesErrored(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("FreshStartDate", targetDepth)) {
+                    context.nextToken();
+                    replicationTaskStats.setFreshStartDate(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
+                if (context.testExpression("StartDate", targetDepth)) {
+                    context.nextToken();
+                    replicationTaskStats.setStartDate(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
+                if (context.testExpression("StopDate", targetDepth)) {
+                    context.nextToken();
+                    replicationTaskStats.setStopDate(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
+                if (context.testExpression("FullLoadStartDate", targetDepth)) {
+                    context.nextToken();
+                    replicationTaskStats.setFullLoadStartDate(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
+                if (context.testExpression("FullLoadFinishDate", targetDepth)) {
+                    context.nextToken();
+                    replicationTaskStats.setFullLoadFinishDate(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

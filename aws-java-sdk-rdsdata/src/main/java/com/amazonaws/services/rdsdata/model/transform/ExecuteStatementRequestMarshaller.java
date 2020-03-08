@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,8 @@ public class ExecuteStatementRequestMarshaller {
             .marshallLocationName("parameters").build();
     private static final MarshallingInfo<String> RESOURCEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("resourceArn").build();
+    private static final MarshallingInfo<StructuredPojo> RESULTSETOPTIONS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("resultSetOptions").build();
     private static final MarshallingInfo<String> SCHEMA_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("schema").build();
     private static final MarshallingInfo<String> SECRETARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -68,6 +70,7 @@ public class ExecuteStatementRequestMarshaller {
             protocolMarshaller.marshall(executeStatementRequest.getIncludeResultMetadata(), INCLUDERESULTMETADATA_BINDING);
             protocolMarshaller.marshall(executeStatementRequest.getParameters(), PARAMETERS_BINDING);
             protocolMarshaller.marshall(executeStatementRequest.getResourceArn(), RESOURCEARN_BINDING);
+            protocolMarshaller.marshall(executeStatementRequest.getResultSetOptions(), RESULTSETOPTIONS_BINDING);
             protocolMarshaller.marshall(executeStatementRequest.getSchema(), SCHEMA_BINDING);
             protocolMarshaller.marshall(executeStatementRequest.getSecretArn(), SECRETARN_BINDING);
             protocolMarshaller.marshall(executeStatementRequest.getSql(), SQL_BINDING);

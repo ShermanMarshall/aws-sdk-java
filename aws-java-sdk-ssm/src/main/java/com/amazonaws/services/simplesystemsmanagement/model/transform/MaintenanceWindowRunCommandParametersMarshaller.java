@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,10 +31,14 @@ public class MaintenanceWindowRunCommandParametersMarshaller {
 
     private static final MarshallingInfo<String> COMMENT_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Comment").build();
+    private static final MarshallingInfo<StructuredPojo> CLOUDWATCHOUTPUTCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CloudWatchOutputConfig").build();
     private static final MarshallingInfo<String> DOCUMENTHASH_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DocumentHash").build();
     private static final MarshallingInfo<String> DOCUMENTHASHTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DocumentHashType").build();
+    private static final MarshallingInfo<String> DOCUMENTVERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DocumentVersion").build();
     private static final MarshallingInfo<StructuredPojo> NOTIFICATIONCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("NotificationConfig").build();
     private static final MarshallingInfo<String> OUTPUTS3BUCKETNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -65,8 +69,10 @@ public class MaintenanceWindowRunCommandParametersMarshaller {
 
         try {
             protocolMarshaller.marshall(maintenanceWindowRunCommandParameters.getComment(), COMMENT_BINDING);
+            protocolMarshaller.marshall(maintenanceWindowRunCommandParameters.getCloudWatchOutputConfig(), CLOUDWATCHOUTPUTCONFIG_BINDING);
             protocolMarshaller.marshall(maintenanceWindowRunCommandParameters.getDocumentHash(), DOCUMENTHASH_BINDING);
             protocolMarshaller.marshall(maintenanceWindowRunCommandParameters.getDocumentHashType(), DOCUMENTHASHTYPE_BINDING);
+            protocolMarshaller.marshall(maintenanceWindowRunCommandParameters.getDocumentVersion(), DOCUMENTVERSION_BINDING);
             protocolMarshaller.marshall(maintenanceWindowRunCommandParameters.getNotificationConfig(), NOTIFICATIONCONFIG_BINDING);
             protocolMarshaller.marshall(maintenanceWindowRunCommandParameters.getOutputS3BucketName(), OUTPUTS3BUCKETNAME_BINDING);
             protocolMarshaller.marshall(maintenanceWindowRunCommandParameters.getOutputS3KeyPrefix(), OUTPUTS3KEYPREFIX_BINDING);

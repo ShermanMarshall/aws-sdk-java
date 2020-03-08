@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -98,6 +98,11 @@ public class AbstractAmazonApiGatewayV2 implements AmazonApiGatewayV2 {
     }
 
     @Override
+    public DeleteCorsConfigurationResult deleteCorsConfiguration(DeleteCorsConfigurationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteDeploymentResult deleteDeployment(DeleteDeploymentRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -129,6 +134,11 @@ public class AbstractAmazonApiGatewayV2 implements AmazonApiGatewayV2 {
 
     @Override
     public DeleteRouteResponseResult deleteRouteResponse(DeleteRouteResponseRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteRouteSettingsResult deleteRouteSettings(DeleteRouteSettingsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -254,6 +264,16 @@ public class AbstractAmazonApiGatewayV2 implements AmazonApiGatewayV2 {
 
     @Override
     public GetTagsResult getTags(GetTagsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ImportApiResult importApi(ImportApiRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ReimportApiResult reimportApi(ReimportApiRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

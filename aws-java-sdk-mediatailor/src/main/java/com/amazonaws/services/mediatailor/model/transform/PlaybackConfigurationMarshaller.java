@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,6 +51,8 @@ public class PlaybackConfigurationMarshaller {
             .marshallLocationName("tags").build();
     private static final MarshallingInfo<String> TRANSCODEPROFILENAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TranscodeProfileName").build();
+    private static final MarshallingInfo<Integer> PERSONALIZATIONTHRESHOLDSECONDS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PersonalizationThresholdSeconds").build();
     private static final MarshallingInfo<String> VIDEOCONTENTSOURCEURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VideoContentSourceUrl").build();
 
@@ -81,6 +83,7 @@ public class PlaybackConfigurationMarshaller {
             protocolMarshaller.marshall(playbackConfiguration.getSlateAdUrl(), SLATEADURL_BINDING);
             protocolMarshaller.marshall(playbackConfiguration.getTags(), TAGS_BINDING);
             protocolMarshaller.marshall(playbackConfiguration.getTranscodeProfileName(), TRANSCODEPROFILENAME_BINDING);
+            protocolMarshaller.marshall(playbackConfiguration.getPersonalizationThresholdSeconds(), PERSONALIZATIONTHRESHOLDSECONDS_BINDING);
             protocolMarshaller.marshall(playbackConfiguration.getVideoContentSourceUrl(), VIDEOCONTENTSOURCEURL_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,18 +25,18 @@ public class UpdateVoiceConnectorResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon Chime Voice Connector details.
+     * The updated Amazon Chime Voice Connector details.
      * </p>
      */
     private VoiceConnector voiceConnector;
 
     /**
      * <p>
-     * The Amazon Chime Voice Connector details.
+     * The updated Amazon Chime Voice Connector details.
      * </p>
      * 
      * @param voiceConnector
-     *        The Amazon Chime Voice Connector details.
+     *        The updated Amazon Chime Voice Connector details.
      */
 
     public void setVoiceConnector(VoiceConnector voiceConnector) {
@@ -45,10 +45,10 @@ public class UpdateVoiceConnectorResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon Chime Voice Connector details.
+     * The updated Amazon Chime Voice Connector details.
      * </p>
      * 
-     * @return The Amazon Chime Voice Connector details.
+     * @return The updated Amazon Chime Voice Connector details.
      */
 
     public VoiceConnector getVoiceConnector() {
@@ -57,11 +57,11 @@ public class UpdateVoiceConnectorResult extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * The Amazon Chime Voice Connector details.
+     * The updated Amazon Chime Voice Connector details.
      * </p>
      * 
      * @param voiceConnector
-     *        The Amazon Chime Voice Connector details.
+     *        The updated Amazon Chime Voice Connector details.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

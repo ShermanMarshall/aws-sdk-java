@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.kinesisanalyticsv2.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -37,6 +38,8 @@ public class ApplicationConfigurationMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ApplicationCodeConfiguration").build();
     private static final MarshallingInfo<StructuredPojo> APPLICATIONSNAPSHOTCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ApplicationSnapshotConfiguration").build();
+    private static final MarshallingInfo<List> VPCCONFIGURATIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("VpcConfigurations").build();
 
     private static final ApplicationConfigurationMarshaller instance = new ApplicationConfigurationMarshaller();
 
@@ -59,6 +62,7 @@ public class ApplicationConfigurationMarshaller {
             protocolMarshaller.marshall(applicationConfiguration.getEnvironmentProperties(), ENVIRONMENTPROPERTIES_BINDING);
             protocolMarshaller.marshall(applicationConfiguration.getApplicationCodeConfiguration(), APPLICATIONCODECONFIGURATION_BINDING);
             protocolMarshaller.marshall(applicationConfiguration.getApplicationSnapshotConfiguration(), APPLICATIONSNAPSHOTCONFIGURATION_BINDING);
+            protocolMarshaller.marshall(applicationConfiguration.getVpcConfigurations(), VPCCONFIGURATIONS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

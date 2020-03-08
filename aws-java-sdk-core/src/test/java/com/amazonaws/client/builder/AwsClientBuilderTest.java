@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -285,6 +285,16 @@ public class AwsClientBuilderTest {
         when(mockRegionProvider.getRegion()).thenReturn("ap-southeast-2");
         final URI actualUri = new ConcreteAsyncBuilder(mockRegionProvider).build().getEndpoint();
         assertEquals(URI.create("https://mockprefix.ap-southeast-2.amazonaws.com"), actualUri);
+    }
+
+    @Test
+    public void customRegionUrlEncodesString() {
+        AmazonConcreteClient client = new ConcreteSyncBuilder()
+            .withRegion("http://my-host.com/?")
+            .build();
+
+        assertEquals(URI.create("https://mockprefix.http%3A%2F%2Fmy-host.com%2F%3F.amazonaws.com"),
+                     client.getEndpoint());
     }
 
     @Test

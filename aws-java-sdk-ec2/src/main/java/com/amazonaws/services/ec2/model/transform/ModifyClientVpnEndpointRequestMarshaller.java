@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -86,12 +86,34 @@ public class ModifyClientVpnEndpointRequestMarshaller implements Marshaller<Requ
             }
         }
 
+        if (modifyClientVpnEndpointRequest.getVpnPort() != null) {
+            request.addParameter("VpnPort", StringUtils.fromInteger(modifyClientVpnEndpointRequest.getVpnPort()));
+        }
+
         if (modifyClientVpnEndpointRequest.getDescription() != null) {
             request.addParameter("Description", StringUtils.fromString(modifyClientVpnEndpointRequest.getDescription()));
         }
 
         if (modifyClientVpnEndpointRequest.getSplitTunnel() != null) {
             request.addParameter("SplitTunnel", StringUtils.fromBoolean(modifyClientVpnEndpointRequest.getSplitTunnel()));
+        }
+
+        com.amazonaws.internal.SdkInternalList<String> modifyClientVpnEndpointRequestSecurityGroupIdsList = (com.amazonaws.internal.SdkInternalList<String>) modifyClientVpnEndpointRequest
+                .getSecurityGroupIds();
+        if (!modifyClientVpnEndpointRequestSecurityGroupIdsList.isEmpty() || !modifyClientVpnEndpointRequestSecurityGroupIdsList.isAutoConstruct()) {
+            int securityGroupIdsListIndex = 1;
+
+            for (String modifyClientVpnEndpointRequestSecurityGroupIdsListValue : modifyClientVpnEndpointRequestSecurityGroupIdsList) {
+                if (modifyClientVpnEndpointRequestSecurityGroupIdsListValue != null) {
+                    request.addParameter("SecurityGroupId." + securityGroupIdsListIndex,
+                            StringUtils.fromString(modifyClientVpnEndpointRequestSecurityGroupIdsListValue));
+                }
+                securityGroupIdsListIndex++;
+            }
+        }
+
+        if (modifyClientVpnEndpointRequest.getVpcId() != null) {
+            request.addParameter("VpcId", StringUtils.fromString(modifyClientVpnEndpointRequest.getVpcId()));
         }
 
         return request;

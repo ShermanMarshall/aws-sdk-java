@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -128,6 +128,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for last 14
+     * days for EC2-Compute Service.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -184,6 +190,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * <li>
      * <p>
      * TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * REGION - The AWS Region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The
+     * value field contains the AWS ID of the member account.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      * </p>
      * </li>
      * </ul>
@@ -443,6 +485,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for last 14
+     * days for EC2-Compute Service.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -499,6 +547,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * <li>
      * <p>
      * TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * REGION - The AWS Region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The
+     * value field contains the AWS ID of the member account.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      * </p>
      * </li>
      * </ul>
@@ -582,6 +666,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      *        RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      *        </p>
      *        </li>
+     *        <li>
+     *        <p>
+     *        RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for
+     *        last 14 days for EC2-Compute Service.
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
      *        If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -638,6 +728,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      *        <li>
      *        <p>
      *        TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        REGION - The AWS Region.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account.
+     *        The value field contains the AWS ID of the member account.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      *        </p>
      *        </li>
      * @see Context
@@ -728,6 +854,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for last 14
+     * days for EC2-Compute Service.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -784,6 +916,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * <li>
      * <p>
      * TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * REGION - The AWS Region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The
+     * value field contains the AWS ID of the member account.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      * </p>
      * </li>
      * </ul>
@@ -869,6 +1037,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      *         RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      *         </p>
      *         </li>
+     *         <li>
+     *         <p>
+     *         RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for
+     *         last 14 days for EC2-Compute Service.
+     *         </p>
+     *         </li>
      *         </ul>
      *         <p>
      *         If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -925,6 +1099,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      *         <li>
      *         <p>
      *         TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         REGION - The AWS Region.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account.
+     *         The value field contains the AWS ID of the member account.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      *         </p>
      *         </li>
      * @see Context
@@ -1015,6 +1225,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for last 14
+     * days for EC2-Compute Service.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -1071,6 +1287,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * <li>
      * <p>
      * TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * REGION - The AWS Region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The
+     * value field contains the AWS ID of the member account.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      * </p>
      * </li>
      * </ul>
@@ -1154,6 +1406,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      *        RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      *        </p>
      *        </li>
+     *        <li>
+     *        <p>
+     *        RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for
+     *        last 14 days for EC2-Compute Service.
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
      *        If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -1210,6 +1468,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      *        <li>
      *        <p>
      *        TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        REGION - The AWS Region.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account.
+     *        The value field contains the AWS ID of the member account.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1302,6 +1596,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for last 14
+     * days for EC2-Compute Service.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -1358,6 +1658,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      * <li>
      * <p>
      * TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * REGION - The AWS Region.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The
+     * value field contains the AWS ID of the member account.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      * </p>
      * </li>
      * </ul>
@@ -1441,6 +1777,12 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      *        RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.
      *        </p>
      *        </li>
+     *        <li>
+     *        <p>
+     *        RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for
+     *        last 14 days for EC2-Compute Service.
+     *        </p>
+     *        </li>
      *        </ul>
      *        <p>
      *        If you set the context to <code>RESERVATIONS</code>, you can use the following dimensions for searching:
@@ -1497,6 +1839,42 @@ public class GetDimensionValuesRequest extends com.amazonaws.AmazonWebServiceReq
      *        <li>
      *        <p>
      *        TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        REGION - The AWS Region.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account.
+     *        The value field contains the AWS ID of the member account.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

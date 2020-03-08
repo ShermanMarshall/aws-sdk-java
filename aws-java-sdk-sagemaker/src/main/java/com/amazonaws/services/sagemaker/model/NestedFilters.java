@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -54,7 +54,7 @@ public class NestedFilters implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The name of the property to use in the nested filters. The value must match a listed property name, such as
-     * <code>InputDataConfig</code> .
+     * <code>InputDataConfig</code>.
      * </p>
      */
     private String nestedPropertyName;
@@ -70,12 +70,12 @@ public class NestedFilters implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The name of the property to use in the nested filters. The value must match a listed property name, such as
-     * <code>InputDataConfig</code> .
+     * <code>InputDataConfig</code>.
      * </p>
      * 
      * @param nestedPropertyName
      *        The name of the property to use in the nested filters. The value must match a listed property name, such
-     *        as <code>InputDataConfig</code> .
+     *        as <code>InputDataConfig</code>.
      */
 
     public void setNestedPropertyName(String nestedPropertyName) {
@@ -85,11 +85,11 @@ public class NestedFilters implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The name of the property to use in the nested filters. The value must match a listed property name, such as
-     * <code>InputDataConfig</code> .
+     * <code>InputDataConfig</code>.
      * </p>
      * 
      * @return The name of the property to use in the nested filters. The value must match a listed property name, such
-     *         as <code>InputDataConfig</code> .
+     *         as <code>InputDataConfig</code>.
      */
 
     public String getNestedPropertyName() {
@@ -99,12 +99,12 @@ public class NestedFilters implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The name of the property to use in the nested filters. The value must match a listed property name, such as
-     * <code>InputDataConfig</code> .
+     * <code>InputDataConfig</code>.
      * </p>
      * 
      * @param nestedPropertyName
      *        The name of the property to use in the nested filters. The value must match a listed property name, such
-     *        as <code>InputDataConfig</code> .
+     *        as <code>InputDataConfig</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

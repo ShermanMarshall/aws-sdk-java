@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -68,6 +68,16 @@ public class AbstractAWSCloudTrail implements AWSCloudTrail {
     }
 
     @Override
+    public GetInsightSelectorsResult getInsightSelectors(GetInsightSelectorsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetTrailResult getTrail(GetTrailRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetTrailStatusResult getTrailStatus(GetTrailStatusRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -88,6 +98,11 @@ public class AbstractAWSCloudTrail implements AWSCloudTrail {
     }
 
     @Override
+    public ListTrailsResult listTrails(ListTrailsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public LookupEventsResult lookupEvents(LookupEventsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -99,6 +114,11 @@ public class AbstractAWSCloudTrail implements AWSCloudTrail {
 
     @Override
     public PutEventSelectorsResult putEventSelectors(PutEventSelectorsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public PutInsightSelectorsResult putInsightSelectors(PutInsightSelectorsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

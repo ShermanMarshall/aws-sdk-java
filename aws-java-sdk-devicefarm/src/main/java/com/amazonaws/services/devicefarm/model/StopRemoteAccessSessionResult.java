@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,18 +29,19 @@ public class StopRemoteAccessSessionResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A container representing the metadata from the service about the remote access session you are stopping.
+     * A container that represents the metadata from the service about the remote access session you are stopping.
      * </p>
      */
     private RemoteAccessSession remoteAccessSession;
 
     /**
      * <p>
-     * A container representing the metadata from the service about the remote access session you are stopping.
+     * A container that represents the metadata from the service about the remote access session you are stopping.
      * </p>
      * 
      * @param remoteAccessSession
-     *        A container representing the metadata from the service about the remote access session you are stopping.
+     *        A container that represents the metadata from the service about the remote access session you are
+     *        stopping.
      */
 
     public void setRemoteAccessSession(RemoteAccessSession remoteAccessSession) {
@@ -49,10 +50,11 @@ public class StopRemoteAccessSessionResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A container representing the metadata from the service about the remote access session you are stopping.
+     * A container that represents the metadata from the service about the remote access session you are stopping.
      * </p>
      * 
-     * @return A container representing the metadata from the service about the remote access session you are stopping.
+     * @return A container that represents the metadata from the service about the remote access session you are
+     *         stopping.
      */
 
     public RemoteAccessSession getRemoteAccessSession() {
@@ -61,11 +63,12 @@ public class StopRemoteAccessSessionResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A container representing the metadata from the service about the remote access session you are stopping.
+     * A container that represents the metadata from the service about the remote access session you are stopping.
      * </p>
      * 
      * @param remoteAccessSession
-     *        A container representing the metadata from the service about the remote access session you are stopping.
+     *        A container that represents the metadata from the service about the remote access session you are
+     *        stopping.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -149,6 +149,14 @@ public class ModifyDBClusterRequestMarshaller implements Marshaller<Request<Modi
 
         if (modifyDBClusterRequest.getDBInstanceParameterGroupName() != null) {
             request.addParameter("DBInstanceParameterGroupName", StringUtils.fromString(modifyDBClusterRequest.getDBInstanceParameterGroupName()));
+        }
+
+        if (modifyDBClusterRequest.getDomain() != null) {
+            request.addParameter("Domain", StringUtils.fromString(modifyDBClusterRequest.getDomain()));
+        }
+
+        if (modifyDBClusterRequest.getDomainIAMRoleName() != null) {
+            request.addParameter("DomainIAMRoleName", StringUtils.fromString(modifyDBClusterRequest.getDomainIAMRoleName()));
         }
 
         {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -458,6 +458,13 @@ public class DeleteItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         return this;
     }
 
+    /**
+     * Add a single Key entry
+     *
+     * @see DeleteItemRequest#withKey
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public DeleteItemRequest addKeyEntry(String key, AttributeValue value) {
         if (null == this.key) {
             this.key = new java.util.HashMap<String, AttributeValue>();
@@ -533,6 +540,13 @@ public class DeleteItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         setExpected(expected);
         return this;
     }
+
+    /**
+     * Add a single Expected entry
+     *
+     * @see DeleteItemRequest#withExpected
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public DeleteItemRequest addExpectedEntry(String key, ExpectedAttributeValue value) {
         if (null == this.expected) {
@@ -1697,6 +1711,13 @@ public class DeleteItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         return this;
     }
 
+    /**
+     * Add a single ExpressionAttributeNames entry
+     *
+     * @see DeleteItemRequest#withExpressionAttributeNames
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public DeleteItemRequest addExpressionAttributeNamesEntry(String key, String value) {
         if (null == this.expressionAttributeNames) {
             this.expressionAttributeNames = new java.util.HashMap<String, String>();
@@ -1901,6 +1922,13 @@ public class DeleteItemRequest extends com.amazonaws.AmazonWebServiceRequest imp
         setExpressionAttributeValues(expressionAttributeValues);
         return this;
     }
+
+    /**
+     * Add a single ExpressionAttributeValues entry
+     *
+     * @see DeleteItemRequest#withExpressionAttributeValues
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public DeleteItemRequest addExpressionAttributeValuesEntry(String key, AttributeValue value) {
         if (null == this.expressionAttributeValues) {

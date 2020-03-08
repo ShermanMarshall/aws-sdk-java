@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,8 +27,7 @@ public class GetSearchSuggestionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     * <code>TrainingJob</code>.
+     * The name of the Amazon SageMaker resource to Search for.
      * </p>
      */
     private String resource;
@@ -41,13 +40,11 @@ public class GetSearchSuggestionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     * <code>TrainingJob</code>.
+     * The name of the Amazon SageMaker resource to Search for.
      * </p>
      * 
      * @param resource
-     *        The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     *        <code>TrainingJob</code>.
+     *        The name of the Amazon SageMaker resource to Search for.
      * @see ResourceType
      */
 
@@ -57,12 +54,10 @@ public class GetSearchSuggestionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     * <code>TrainingJob</code>.
+     * The name of the Amazon SageMaker resource to Search for.
      * </p>
      * 
-     * @return The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     *         <code>TrainingJob</code>.
+     * @return The name of the Amazon SageMaker resource to Search for.
      * @see ResourceType
      */
 
@@ -72,13 +67,11 @@ public class GetSearchSuggestionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     * <code>TrainingJob</code>.
+     * The name of the Amazon SageMaker resource to Search for.
      * </p>
      * 
      * @param resource
-     *        The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     *        <code>TrainingJob</code>.
+     *        The name of the Amazon SageMaker resource to Search for.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ResourceType
      */
@@ -90,13 +83,11 @@ public class GetSearchSuggestionsRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     * <code>TrainingJob</code>.
+     * The name of the Amazon SageMaker resource to Search for.
      * </p>
      * 
      * @param resource
-     *        The name of the Amazon SageMaker resource to Search for. The only valid <code>Resource</code> value is
-     *        <code>TrainingJob</code>.
+     *        The name of the Amazon SageMaker resource to Search for.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ResourceType
      */

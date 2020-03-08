@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,8 +38,8 @@ public class CloudWatchAlarmDefinition implements Serializable, Cloneable, Struc
     private String comparisonOperator;
     /**
      * <p>
-     * The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition must
-     * exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.
+     * The number of periods, in five-minute increments, during which the alarm condition must exist before the alarm
+     * triggers automatic scaling activity. The default value is <code>1</code>.
      * </p>
      */
     private Integer evaluationPeriods;
@@ -173,13 +173,13 @@ public class CloudWatchAlarmDefinition implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition must
-     * exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.
+     * The number of periods, in five-minute increments, during which the alarm condition must exist before the alarm
+     * triggers automatic scaling activity. The default value is <code>1</code>.
      * </p>
      * 
      * @param evaluationPeriods
-     *        The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition
-     *        must exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.
+     *        The number of periods, in five-minute increments, during which the alarm condition must exist before the
+     *        alarm triggers automatic scaling activity. The default value is <code>1</code>.
      */
 
     public void setEvaluationPeriods(Integer evaluationPeriods) {
@@ -188,12 +188,12 @@ public class CloudWatchAlarmDefinition implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition must
-     * exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.
+     * The number of periods, in five-minute increments, during which the alarm condition must exist before the alarm
+     * triggers automatic scaling activity. The default value is <code>1</code>.
      * </p>
      * 
-     * @return The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition
-     *         must exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.
+     * @return The number of periods, in five-minute increments, during which the alarm condition must exist before the
+     *         alarm triggers automatic scaling activity. The default value is <code>1</code>.
      */
 
     public Integer getEvaluationPeriods() {
@@ -202,13 +202,13 @@ public class CloudWatchAlarmDefinition implements Serializable, Cloneable, Struc
 
     /**
      * <p>
-     * The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition must
-     * exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.
+     * The number of periods, in five-minute increments, during which the alarm condition must exist before the alarm
+     * triggers automatic scaling activity. The default value is <code>1</code>.
      * </p>
      * 
      * @param evaluationPeriods
-     *        The number of periods, expressed in seconds using <code>Period</code>, during which the alarm condition
-     *        must exist before the alarm triggers automatic scaling activity. The default value is <code>1</code>.
+     *        The number of periods, in five-minute increments, during which the alarm condition must exist before the
+     *        alarm triggers automatic scaling activity. The default value is <code>1</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

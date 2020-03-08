@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class DescribeBrokerInstanceOptionsRequestMarshaller {
             .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("maxResults").build();
     private static final MarshallingInfo<String> NEXTTOKEN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("nextToken").build();
+    private static final MarshallingInfo<String> STORAGETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("storageType").build();
 
     private static final DescribeBrokerInstanceOptionsRequestMarshaller instance = new DescribeBrokerInstanceOptionsRequestMarshaller();
 
@@ -56,6 +58,7 @@ public class DescribeBrokerInstanceOptionsRequestMarshaller {
             protocolMarshaller.marshall(describeBrokerInstanceOptionsRequest.getHostInstanceType(), HOSTINSTANCETYPE_BINDING);
             protocolMarshaller.marshall(describeBrokerInstanceOptionsRequest.getMaxResults(), MAXRESULTS_BINDING);
             protocolMarshaller.marshall(describeBrokerInstanceOptionsRequest.getNextToken(), NEXTTOKEN_BINDING);
+            protocolMarshaller.marshall(describeBrokerInstanceOptionsRequest.getStorageType(), STORAGETYPE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

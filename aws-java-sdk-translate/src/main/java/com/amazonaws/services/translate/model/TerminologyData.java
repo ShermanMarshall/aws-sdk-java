@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,9 @@ public class TerminologyData implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The file containing the custom terminology data.
+     * The file containing the custom terminology data. Your version of the AWS SDK performs a Base64-encoding on this
+     * field before sending a request to the AWS service. Users of the SDK should not perform Base64-encoding
+     * themselves.
      * </p>
      */
     private java.nio.ByteBuffer file;
@@ -43,7 +45,9 @@ public class TerminologyData implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The file containing the custom terminology data.
+     * The file containing the custom terminology data. Your version of the AWS SDK performs a Base64-encoding on this
+     * field before sending a request to the AWS service. Users of the SDK should not perform Base64-encoding
+     * themselves.
      * </p>
      * <p>
      * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
@@ -57,7 +61,9 @@ public class TerminologyData implements Serializable, Cloneable, StructuredPojo 
      * </p>
      * 
      * @param file
-     *        The file containing the custom terminology data.
+     *        The file containing the custom terminology data. Your version of the AWS SDK performs a Base64-encoding on
+     *        this field before sending a request to the AWS service. Users of the SDK should not perform
+     *        Base64-encoding themselves.
      */
 
     public void setFile(java.nio.ByteBuffer file) {
@@ -66,7 +72,9 @@ public class TerminologyData implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The file containing the custom terminology data.
+     * The file containing the custom terminology data. Your version of the AWS SDK performs a Base64-encoding on this
+     * field before sending a request to the AWS service. Users of the SDK should not perform Base64-encoding
+     * themselves.
      * </p>
      * <p>
      * {@code ByteBuffer}s are stateful. Calling their {@code get} methods changes their {@code position}. We recommend
@@ -76,7 +84,9 @@ public class TerminologyData implements Serializable, Cloneable, StructuredPojo 
      * {@code position}.
      * </p>
      * 
-     * @return The file containing the custom terminology data.
+     * @return The file containing the custom terminology data. Your version of the AWS SDK performs a Base64-encoding
+     *         on this field before sending a request to the AWS service. Users of the SDK should not perform
+     *         Base64-encoding themselves.
      */
 
     public java.nio.ByteBuffer getFile() {
@@ -85,7 +95,9 @@ public class TerminologyData implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The file containing the custom terminology data.
+     * The file containing the custom terminology data. Your version of the AWS SDK performs a Base64-encoding on this
+     * field before sending a request to the AWS service. Users of the SDK should not perform Base64-encoding
+     * themselves.
      * </p>
      * <p>
      * The AWS SDK for Java performs a Base64 encoding on this field before sending this request to the AWS service.
@@ -99,7 +111,9 @@ public class TerminologyData implements Serializable, Cloneable, StructuredPojo 
      * </p>
      * 
      * @param file
-     *        The file containing the custom terminology data.
+     *        The file containing the custom terminology data. Your version of the AWS SDK performs a Base64-encoding on
+     *        this field before sending a request to the AWS service. Users of the SDK should not perform
+     *        Base64-encoding themselves.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

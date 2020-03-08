@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -11,6 +11,8 @@
  * and limitations under the License.
  */
 package com.amazonaws.services.cognitoidp.model.transform;
+
+import java.util.Map;
 
 import javax.annotation.Generated;
 
@@ -37,6 +39,8 @@ public class ForgotPasswordRequestMarshaller {
             .marshallLocationName("Username").build();
     private static final MarshallingInfo<StructuredPojo> ANALYTICSMETADATA_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AnalyticsMetadata").build();
+    private static final MarshallingInfo<Map> CLIENTMETADATA_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("ClientMetadata").build();
 
     private static final ForgotPasswordRequestMarshaller instance = new ForgotPasswordRequestMarshaller();
 
@@ -59,6 +63,7 @@ public class ForgotPasswordRequestMarshaller {
             protocolMarshaller.marshall(forgotPasswordRequest.getUserContextData(), USERCONTEXTDATA_BINDING);
             protocolMarshaller.marshall(forgotPasswordRequest.getUsername(), USERNAME_BINDING);
             protocolMarshaller.marshall(forgotPasswordRequest.getAnalyticsMetadata(), ANALYTICSMETADATA_BINDING);
+            protocolMarshaller.marshall(forgotPasswordRequest.getClientMetadata(), CLIENTMETADATA_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

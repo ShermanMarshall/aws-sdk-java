@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,8 +56,21 @@ public class ApplicationInfo implements Serializable, Cloneable, StructuredPojo 
     private Boolean opsCenterEnabled;
     /**
      * <p>
-     * The issues on the user side that block Application Insights from successfully monitoring an application.
+     * The issues on the user side that block Application Insights from successfully monitoring an application. Example
+     * remarks include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * “Configuring application, detected 1 Errors, 3 Warnings”
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * “Configuring application, detected 1 Unconfigured Components”
+     * </p>
+     * </li>
+     * </ul>
      */
     private String remarks;
 
@@ -249,11 +262,36 @@ public class ApplicationInfo implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The issues on the user side that block Application Insights from successfully monitoring an application.
+     * The issues on the user side that block Application Insights from successfully monitoring an application. Example
+     * remarks include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * “Configuring application, detected 1 Errors, 3 Warnings”
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * “Configuring application, detected 1 Unconfigured Components”
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param remarks
      *        The issues on the user side that block Application Insights from successfully monitoring an application.
+     *        Example remarks include:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        “Configuring application, detected 1 Errors, 3 Warnings”
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        “Configuring application, detected 1 Unconfigured Components”
+     *        </p>
+     *        </li>
      */
 
     public void setRemarks(String remarks) {
@@ -262,10 +300,35 @@ public class ApplicationInfo implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The issues on the user side that block Application Insights from successfully monitoring an application.
+     * The issues on the user side that block Application Insights from successfully monitoring an application. Example
+     * remarks include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * “Configuring application, detected 1 Errors, 3 Warnings”
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * “Configuring application, detected 1 Unconfigured Components”
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return The issues on the user side that block Application Insights from successfully monitoring an application.
+     *         Example remarks include:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         “Configuring application, detected 1 Errors, 3 Warnings”
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         “Configuring application, detected 1 Unconfigured Components”
+     *         </p>
+     *         </li>
      */
 
     public String getRemarks() {
@@ -274,11 +337,36 @@ public class ApplicationInfo implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The issues on the user side that block Application Insights from successfully monitoring an application.
+     * The issues on the user side that block Application Insights from successfully monitoring an application. Example
+     * remarks include:
      * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * “Configuring application, detected 1 Errors, 3 Warnings”
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * “Configuring application, detected 1 Unconfigured Components”
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param remarks
      *        The issues on the user side that block Application Insights from successfully monitoring an application.
+     *        Example remarks include:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        “Configuring application, detected 1 Errors, 3 Warnings”
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        “Configuring application, detected 1 Unconfigured Components”
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

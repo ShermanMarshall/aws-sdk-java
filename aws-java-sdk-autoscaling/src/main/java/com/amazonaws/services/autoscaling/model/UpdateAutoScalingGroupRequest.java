@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,14 +36,6 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
      * The name of the launch configuration. If you specify <code>LaunchConfigurationName</code> in your update request,
      * you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.
      * </p>
-     * <important>
-     * <p>
-     * To update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code> set to
-     * <code>false</code>, you must first disable the collection of group metrics. Otherwise, you get an error. If you
-     * have previously enabled the collection of group metrics, you can disable it using
-     * <a>DisableMetricsCollection</a>.
-     * </p>
-     * </important>
      */
     private String launchConfigurationName;
     /**
@@ -190,6 +182,20 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
      * </p>
      */
     private String serviceLinkedRoleARN;
+    /**
+     * <p>
+     * The maximum amount of time, in seconds, that an instance can be in service.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html">Replacing Auto
+     * Scaling Instances Based on Maximum Instance Lifetime</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.
+     * </p>
+     * <p>
+     * Valid Range: Minimum value of 604800.
+     * </p>
+     */
+    private Integer maxInstanceLifetime;
 
     /**
      * <p>
@@ -236,25 +242,10 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
      * The name of the launch configuration. If you specify <code>LaunchConfigurationName</code> in your update request,
      * you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.
      * </p>
-     * <important>
-     * <p>
-     * To update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code> set to
-     * <code>false</code>, you must first disable the collection of group metrics. Otherwise, you get an error. If you
-     * have previously enabled the collection of group metrics, you can disable it using
-     * <a>DisableMetricsCollection</a>.
-     * </p>
-     * </important>
      * 
      * @param launchConfigurationName
      *        The name of the launch configuration. If you specify <code>LaunchConfigurationName</code> in your update
-     *        request, you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.</p>
-     *        <important>
-     *        <p>
-     *        To update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code> set to
-     *        <code>false</code>, you must first disable the collection of group metrics. Otherwise, you get an error.
-     *        If you have previously enabled the collection of group metrics, you can disable it using
-     *        <a>DisableMetricsCollection</a>.
-     *        </p>
+     *        request, you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.
      */
 
     public void setLaunchConfigurationName(String launchConfigurationName) {
@@ -266,24 +257,9 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
      * The name of the launch configuration. If you specify <code>LaunchConfigurationName</code> in your update request,
      * you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.
      * </p>
-     * <important>
-     * <p>
-     * To update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code> set to
-     * <code>false</code>, you must first disable the collection of group metrics. Otherwise, you get an error. If you
-     * have previously enabled the collection of group metrics, you can disable it using
-     * <a>DisableMetricsCollection</a>.
-     * </p>
-     * </important>
      * 
      * @return The name of the launch configuration. If you specify <code>LaunchConfigurationName</code> in your update
-     *         request, you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.</p>
-     *         <important>
-     *         <p>
-     *         To update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code> set to
-     *         <code>false</code>, you must first disable the collection of group metrics. Otherwise, you get an error.
-     *         If you have previously enabled the collection of group metrics, you can disable it using
-     *         <a>DisableMetricsCollection</a>.
-     *         </p>
+     *         request, you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.
      */
 
     public String getLaunchConfigurationName() {
@@ -295,25 +271,10 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
      * The name of the launch configuration. If you specify <code>LaunchConfigurationName</code> in your update request,
      * you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.
      * </p>
-     * <important>
-     * <p>
-     * To update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code> set to
-     * <code>false</code>, you must first disable the collection of group metrics. Otherwise, you get an error. If you
-     * have previously enabled the collection of group metrics, you can disable it using
-     * <a>DisableMetricsCollection</a>.
-     * </p>
-     * </important>
      * 
      * @param launchConfigurationName
      *        The name of the launch configuration. If you specify <code>LaunchConfigurationName</code> in your update
-     *        request, you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.</p>
-     *        <important>
-     *        <p>
-     *        To update an Auto Scaling group with a launch configuration with <code>InstanceMonitoring</code> set to
-     *        <code>false</code>, you must first disable the collection of group metrics. Otherwise, you get an error.
-     *        If you have previously enabled the collection of group metrics, you can disable it using
-     *        <a>DisableMetricsCollection</a>.
-     *        </p>
+     *        request, you can't specify <code>LaunchTemplate</code> or <code>MixedInstancesPolicy</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1330,6 +1291,92 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
     }
 
     /**
+     * <p>
+     * The maximum amount of time, in seconds, that an instance can be in service.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html">Replacing Auto
+     * Scaling Instances Based on Maximum Instance Lifetime</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.
+     * </p>
+     * <p>
+     * Valid Range: Minimum value of 604800.
+     * </p>
+     * 
+     * @param maxInstanceLifetime
+     *        The maximum amount of time, in seconds, that an instance can be in service.</p>
+     *        <p>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html">Replacing Auto
+     *        Scaling Instances Based on Maximum Instance Lifetime</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.
+     *        </p>
+     *        <p>
+     *        Valid Range: Minimum value of 604800.
+     */
+
+    public void setMaxInstanceLifetime(Integer maxInstanceLifetime) {
+        this.maxInstanceLifetime = maxInstanceLifetime;
+    }
+
+    /**
+     * <p>
+     * The maximum amount of time, in seconds, that an instance can be in service.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html">Replacing Auto
+     * Scaling Instances Based on Maximum Instance Lifetime</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.
+     * </p>
+     * <p>
+     * Valid Range: Minimum value of 604800.
+     * </p>
+     * 
+     * @return The maximum amount of time, in seconds, that an instance can be in service.</p>
+     *         <p>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html">Replacing
+     *         Auto Scaling Instances Based on Maximum Instance Lifetime</a> in the <i>Amazon EC2 Auto Scaling User
+     *         Guide</i>.
+     *         </p>
+     *         <p>
+     *         Valid Range: Minimum value of 604800.
+     */
+
+    public Integer getMaxInstanceLifetime() {
+        return this.maxInstanceLifetime;
+    }
+
+    /**
+     * <p>
+     * The maximum amount of time, in seconds, that an instance can be in service.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html">Replacing Auto
+     * Scaling Instances Based on Maximum Instance Lifetime</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.
+     * </p>
+     * <p>
+     * Valid Range: Minimum value of 604800.
+     * </p>
+     * 
+     * @param maxInstanceLifetime
+     *        The maximum amount of time, in seconds, that an instance can be in service.</p>
+     *        <p>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html">Replacing Auto
+     *        Scaling Instances Based on Maximum Instance Lifetime</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.
+     *        </p>
+     *        <p>
+     *        Valid Range: Minimum value of 604800.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateAutoScalingGroupRequest withMaxInstanceLifetime(Integer maxInstanceLifetime) {
+        setMaxInstanceLifetime(maxInstanceLifetime);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1372,7 +1419,9 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
         if (getNewInstancesProtectedFromScaleIn() != null)
             sb.append("NewInstancesProtectedFromScaleIn: ").append(getNewInstancesProtectedFromScaleIn()).append(",");
         if (getServiceLinkedRoleARN() != null)
-            sb.append("ServiceLinkedRoleARN: ").append(getServiceLinkedRoleARN());
+            sb.append("ServiceLinkedRoleARN: ").append(getServiceLinkedRoleARN()).append(",");
+        if (getMaxInstanceLifetime() != null)
+            sb.append("MaxInstanceLifetime: ").append(getMaxInstanceLifetime());
         sb.append("}");
         return sb.toString();
     }
@@ -1452,6 +1501,10 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
             return false;
         if (other.getServiceLinkedRoleARN() != null && other.getServiceLinkedRoleARN().equals(this.getServiceLinkedRoleARN()) == false)
             return false;
+        if (other.getMaxInstanceLifetime() == null ^ this.getMaxInstanceLifetime() == null)
+            return false;
+        if (other.getMaxInstanceLifetime() != null && other.getMaxInstanceLifetime().equals(this.getMaxInstanceLifetime()) == false)
+            return false;
         return true;
     }
 
@@ -1476,6 +1529,7 @@ public class UpdateAutoScalingGroupRequest extends com.amazonaws.AmazonWebServic
         hashCode = prime * hashCode + ((getTerminationPolicies() == null) ? 0 : getTerminationPolicies().hashCode());
         hashCode = prime * hashCode + ((getNewInstancesProtectedFromScaleIn() == null) ? 0 : getNewInstancesProtectedFromScaleIn().hashCode());
         hashCode = prime * hashCode + ((getServiceLinkedRoleARN() == null) ? 0 : getServiceLinkedRoleARN().hashCode());
+        hashCode = prime * hashCode + ((getMaxInstanceLifetime() == null) ? 0 : getMaxInstanceLifetime().hashCode());
         return hashCode;
     }
 

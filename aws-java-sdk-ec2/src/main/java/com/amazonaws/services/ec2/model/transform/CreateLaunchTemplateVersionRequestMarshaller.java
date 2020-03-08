@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -311,6 +311,14 @@ public class CreateLaunchTemplateVersionRequestMarshaller implements
                 if (placement.getSpreadDomain() != null) {
                     request.addParameter("LaunchTemplateData.Placement.SpreadDomain", StringUtils.fromString(placement.getSpreadDomain()));
                 }
+
+                if (placement.getHostResourceGroupArn() != null) {
+                    request.addParameter("LaunchTemplateData.Placement.HostResourceGroupArn", StringUtils.fromString(placement.getHostResourceGroupArn()));
+                }
+
+                if (placement.getPartitionNumber() != null) {
+                    request.addParameter("LaunchTemplateData.Placement.PartitionNumber", StringUtils.fromInteger(placement.getPartitionNumber()));
+                }
             }
 
             if (launchTemplateData.getRamDiskId() != null) {
@@ -391,6 +399,11 @@ public class CreateLaunchTemplateVersionRequestMarshaller implements
                     if (requestLaunchTemplateDataElasticInferenceAcceleratorsListValue.getType() != null) {
                         request.addParameter("LaunchTemplateData.ElasticInferenceAccelerator." + elasticInferenceAcceleratorsListIndex + ".Type",
                                 StringUtils.fromString(requestLaunchTemplateDataElasticInferenceAcceleratorsListValue.getType()));
+                    }
+
+                    if (requestLaunchTemplateDataElasticInferenceAcceleratorsListValue.getCount() != null) {
+                        request.addParameter("LaunchTemplateData.ElasticInferenceAccelerator." + elasticInferenceAcceleratorsListIndex + ".Count",
+                                StringUtils.fromInteger(requestLaunchTemplateDataElasticInferenceAcceleratorsListValue.getCount()));
                     }
                     elasticInferenceAcceleratorsListIndex++;
                 }
@@ -518,6 +531,23 @@ public class CreateLaunchTemplateVersionRequestMarshaller implements
 
                 if (hibernationOptions.getConfigured() != null) {
                     request.addParameter("LaunchTemplateData.HibernationOptions.Configured", StringUtils.fromBoolean(hibernationOptions.getConfigured()));
+                }
+            }
+
+            LaunchTemplateInstanceMetadataOptionsRequest metadataOptions = launchTemplateData.getMetadataOptions();
+            if (metadataOptions != null) {
+
+                if (metadataOptions.getHttpTokens() != null) {
+                    request.addParameter("LaunchTemplateData.MetadataOptions.HttpTokens", StringUtils.fromString(metadataOptions.getHttpTokens()));
+                }
+
+                if (metadataOptions.getHttpPutResponseHopLimit() != null) {
+                    request.addParameter("LaunchTemplateData.MetadataOptions.HttpPutResponseHopLimit",
+                            StringUtils.fromInteger(metadataOptions.getHttpPutResponseHopLimit()));
+                }
+
+                if (metadataOptions.getHttpEndpoint() != null) {
+                    request.addParameter("LaunchTemplateData.MetadataOptions.HttpEndpoint", StringUtils.fromString(metadataOptions.getHttpEndpoint()));
                 }
             }
         }

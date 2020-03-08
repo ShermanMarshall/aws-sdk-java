@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,15 +32,15 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
      * Fleet.
      * </p>
      * <p>
-     * If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot Instance pools
-     * with the lowest price. This is the default allocation strategy.
+     * If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
      * </p>
      * <p>
-     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot Instance
-     * pools that you specify.
+     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
+     * Instance pools that you specify.
      * </p>
      * <p>
-     * If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot Instance
+     * If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot Instance
      * pools with optimal capacity for the number of instances that are launching.
      * </p>
      */
@@ -61,13 +61,15 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
     private Integer instancePoolsToUseCount;
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported only
+     * for fleets of type <code>instant</code>.
      * </p>
      */
     private Boolean singleInstanceType;
     /**
      * <p>
-     * Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     * Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for fleets
+     * of type <code>instant</code>.
      * </p>
      */
     private Boolean singleAvailabilityZone;
@@ -91,15 +93,15 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
      * Fleet.
      * </p>
      * <p>
-     * If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot Instance pools
-     * with the lowest price. This is the default allocation strategy.
+     * If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
      * </p>
      * <p>
-     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot Instance
-     * pools that you specify.
+     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
+     * Instance pools that you specify.
      * </p>
      * <p>
-     * If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot Instance
+     * If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot Instance
      * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
@@ -107,15 +109,15 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
      *        Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
      *        the EC2 Fleet.</p>
      *        <p>
-     *        If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot
+     *        If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot
      *        Instance pools with the lowest price. This is the default allocation strategy.
      *        </p>
      *        <p>
-     *        If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot
+     *        If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
      *        Instance pools that you specify.
      *        </p>
      *        <p>
-     *        If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot
+     *        If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot
      *        Instance pools with optimal capacity for the number of instances that are launching.
      * @see SpotAllocationStrategy
      */
@@ -130,30 +132,30 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
      * Fleet.
      * </p>
      * <p>
-     * If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot Instance pools
-     * with the lowest price. This is the default allocation strategy.
+     * If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
      * </p>
      * <p>
-     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot Instance
-     * pools that you specify.
+     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
+     * Instance pools that you specify.
      * </p>
      * <p>
-     * If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot Instance
+     * If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot Instance
      * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
      * @return Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
      *         the EC2 Fleet.</p>
      *         <p>
-     *         If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot
+     *         If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot
      *         Instance pools with the lowest price. This is the default allocation strategy.
      *         </p>
      *         <p>
-     *         If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot
+     *         If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
      *         Instance pools that you specify.
      *         </p>
      *         <p>
-     *         If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot
+     *         If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot
      *         Instance pools with optimal capacity for the number of instances that are launching.
      * @see SpotAllocationStrategy
      */
@@ -168,15 +170,15 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
      * Fleet.
      * </p>
      * <p>
-     * If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot Instance pools
-     * with the lowest price. This is the default allocation strategy.
+     * If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
      * </p>
      * <p>
-     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot Instance
-     * pools that you specify.
+     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
+     * Instance pools that you specify.
      * </p>
      * <p>
-     * If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot Instance
+     * If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot Instance
      * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
@@ -184,15 +186,15 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
      *        Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
      *        the EC2 Fleet.</p>
      *        <p>
-     *        If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot
+     *        If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot
      *        Instance pools with the lowest price. This is the default allocation strategy.
      *        </p>
      *        <p>
-     *        If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot
+     *        If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
      *        Instance pools that you specify.
      *        </p>
      *        <p>
-     *        If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot
+     *        If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot
      *        Instance pools with optimal capacity for the number of instances that are launching.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SpotAllocationStrategy
@@ -209,15 +211,15 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
      * Fleet.
      * </p>
      * <p>
-     * If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot Instance pools
-     * with the lowest price. This is the default allocation strategy.
+     * If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot Instance
+     * pools with the lowest price. This is the default allocation strategy.
      * </p>
      * <p>
-     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot Instance
-     * pools that you specify.
+     * If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
+     * Instance pools that you specify.
      * </p>
      * <p>
-     * If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot Instance
+     * If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot Instance
      * pools with optimal capacity for the number of instances that are launching.
      * </p>
      * 
@@ -225,15 +227,15 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
      *        Indicates how to allocate the target Spot Instance capacity across the Spot Instance pools specified by
      *        the EC2 Fleet.</p>
      *        <p>
-     *        If the allocation strategy is <code>lowestPrice</code>, EC2 Fleet launches instances from the Spot
+     *        If the allocation strategy is <code>lowest-price</code>, EC2 Fleet launches instances from the Spot
      *        Instance pools with the lowest price. This is the default allocation strategy.
      *        </p>
      *        <p>
-     *        If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all the Spot
+     *        If the allocation strategy is <code>diversified</code>, EC2 Fleet launches instances from all of the Spot
      *        Instance pools that you specify.
      *        </p>
      *        <p>
-     *        If the allocation strategy is <code>capacityOptimized</code>, EC2 Fleet launches instances from Spot
+     *        If the allocation strategy is <code>capacity-optimized</code>, EC2 Fleet launches instances from Spot
      *        Instance pools with optimal capacity for the number of instances that are launching.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SpotAllocationStrategy
@@ -357,11 +359,13 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported only
+     * for fleets of type <code>instant</code>.
      * </p>
      * 
      * @param singleInstanceType
-     *        Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     *        Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported
+     *        only for fleets of type <code>instant</code>.
      */
 
     public void setSingleInstanceType(Boolean singleInstanceType) {
@@ -370,10 +374,12 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported only
+     * for fleets of type <code>instant</code>.
      * </p>
      * 
-     * @return Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     * @return Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported
+     *         only for fleets of type <code>instant</code>.
      */
 
     public Boolean getSingleInstanceType() {
@@ -382,11 +388,13 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported only
+     * for fleets of type <code>instant</code>.
      * </p>
      * 
      * @param singleInstanceType
-     *        Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     *        Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported
+     *        only for fleets of type <code>instant</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -397,10 +405,12 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     * Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported only
+     * for fleets of type <code>instant</code>.
      * </p>
      * 
-     * @return Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet.
+     * @return Indicates that the fleet uses a single instance type to launch all Spot Instances in the fleet. Supported
+     *         only for fleets of type <code>instant</code>.
      */
 
     public Boolean isSingleInstanceType() {
@@ -409,11 +419,13 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     * Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for fleets
+     * of type <code>instant</code>.
      * </p>
      * 
      * @param singleAvailabilityZone
-     *        Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     *        Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for
+     *        fleets of type <code>instant</code>.
      */
 
     public void setSingleAvailabilityZone(Boolean singleAvailabilityZone) {
@@ -422,10 +434,12 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     * Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for fleets
+     * of type <code>instant</code>.
      * </p>
      * 
-     * @return Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     * @return Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for
+     *         fleets of type <code>instant</code>.
      */
 
     public Boolean getSingleAvailabilityZone() {
@@ -434,11 +448,13 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     * Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for fleets
+     * of type <code>instant</code>.
      * </p>
      * 
      * @param singleAvailabilityZone
-     *        Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     *        Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for
+     *        fleets of type <code>instant</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -449,10 +465,12 @@ public class SpotOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     * Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for fleets
+     * of type <code>instant</code>.
      * </p>
      * 
-     * @return Indicates that the fleet launches all Spot Instances into a single Availability Zone.
+     * @return Indicates that the fleet launches all Spot Instances into a single Availability Zone. Supported only for
+     *         fleets of type <code>instant</code>.
      */
 
     public Boolean isSingleAvailabilityZone() {

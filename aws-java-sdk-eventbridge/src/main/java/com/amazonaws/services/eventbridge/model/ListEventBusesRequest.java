@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,8 +39,8 @@ public class ListEventBusesRequest extends com.amazonaws.AmazonWebServiceRequest
     private String nextToken;
     /**
      * <p>
-     * Specifying this limits the number of results returned by this operation. The operation also returns a
-     * <code>NextToken</code> that you can use in a subsequent operation to retrieve the next set of results.
+     * Specifying this limits the number of results returned by this operation. The operation also returns a NextToken
+     * which you can use in a subsequent operation to retrieve the next set of results.
      * </p>
      */
     private Integer limit;
@@ -130,13 +130,13 @@ public class ListEventBusesRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specifying this limits the number of results returned by this operation. The operation also returns a
-     * <code>NextToken</code> that you can use in a subsequent operation to retrieve the next set of results.
+     * Specifying this limits the number of results returned by this operation. The operation also returns a NextToken
+     * which you can use in a subsequent operation to retrieve the next set of results.
      * </p>
      * 
      * @param limit
      *        Specifying this limits the number of results returned by this operation. The operation also returns a
-     *        <code>NextToken</code> that you can use in a subsequent operation to retrieve the next set of results.
+     *        NextToken which you can use in a subsequent operation to retrieve the next set of results.
      */
 
     public void setLimit(Integer limit) {
@@ -145,12 +145,12 @@ public class ListEventBusesRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specifying this limits the number of results returned by this operation. The operation also returns a
-     * <code>NextToken</code> that you can use in a subsequent operation to retrieve the next set of results.
+     * Specifying this limits the number of results returned by this operation. The operation also returns a NextToken
+     * which you can use in a subsequent operation to retrieve the next set of results.
      * </p>
      * 
      * @return Specifying this limits the number of results returned by this operation. The operation also returns a
-     *         <code>NextToken</code> that you can use in a subsequent operation to retrieve the next set of results.
+     *         NextToken which you can use in a subsequent operation to retrieve the next set of results.
      */
 
     public Integer getLimit() {
@@ -159,13 +159,13 @@ public class ListEventBusesRequest extends com.amazonaws.AmazonWebServiceRequest
 
     /**
      * <p>
-     * Specifying this limits the number of results returned by this operation. The operation also returns a
-     * <code>NextToken</code> that you can use in a subsequent operation to retrieve the next set of results.
+     * Specifying this limits the number of results returned by this operation. The operation also returns a NextToken
+     * which you can use in a subsequent operation to retrieve the next set of results.
      * </p>
      * 
      * @param limit
      *        Specifying this limits the number of results returned by this operation. The operation also returns a
-     *        <code>NextToken</code> that you can use in a subsequent operation to retrieve the next set of results.
+     *        NextToken which you can use in a subsequent operation to retrieve the next set of results.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

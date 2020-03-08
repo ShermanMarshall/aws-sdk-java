@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,7 +52,7 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
     private java.util.List<Tag> tags;
     /**
      * <p>
-     * Indicates whether principals outside your organization can be associated with a resource share.
+     * Indicates whether principals outside your AWS organization can be associated with a resource share.
      * </p>
      */
     private Boolean allowExternalPrincipals;
@@ -62,6 +62,13 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
      * </p>
      */
     private String clientToken;
+    /**
+     * <p>
+     * The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     * permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     * </p>
+     */
+    private java.util.List<String> permissionArns;
 
     /**
      * <p>
@@ -323,11 +330,11 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Indicates whether principals outside your organization can be associated with a resource share.
+     * Indicates whether principals outside your AWS organization can be associated with a resource share.
      * </p>
      * 
      * @param allowExternalPrincipals
-     *        Indicates whether principals outside your organization can be associated with a resource share.
+     *        Indicates whether principals outside your AWS organization can be associated with a resource share.
      */
 
     public void setAllowExternalPrincipals(Boolean allowExternalPrincipals) {
@@ -336,10 +343,10 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Indicates whether principals outside your organization can be associated with a resource share.
+     * Indicates whether principals outside your AWS organization can be associated with a resource share.
      * </p>
      * 
-     * @return Indicates whether principals outside your organization can be associated with a resource share.
+     * @return Indicates whether principals outside your AWS organization can be associated with a resource share.
      */
 
     public Boolean getAllowExternalPrincipals() {
@@ -348,11 +355,11 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Indicates whether principals outside your organization can be associated with a resource share.
+     * Indicates whether principals outside your AWS organization can be associated with a resource share.
      * </p>
      * 
      * @param allowExternalPrincipals
-     *        Indicates whether principals outside your organization can be associated with a resource share.
+     *        Indicates whether principals outside your AWS organization can be associated with a resource share.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -363,10 +370,10 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Indicates whether principals outside your organization can be associated with a resource share.
+     * Indicates whether principals outside your AWS organization can be associated with a resource share.
      * </p>
      * 
-     * @return Indicates whether principals outside your organization can be associated with a resource share.
+     * @return Indicates whether principals outside your AWS organization can be associated with a resource share.
      */
 
     public Boolean isAllowExternalPrincipals() {
@@ -414,6 +421,84 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
     }
 
     /**
+     * <p>
+     * The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     * permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     * </p>
+     * 
+     * @return The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     *         permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     */
+
+    public java.util.List<String> getPermissionArns() {
+        return permissionArns;
+    }
+
+    /**
+     * <p>
+     * The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     * permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     * </p>
+     * 
+     * @param permissionArns
+     *        The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     *        permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     */
+
+    public void setPermissionArns(java.util.Collection<String> permissionArns) {
+        if (permissionArns == null) {
+            this.permissionArns = null;
+            return;
+        }
+
+        this.permissionArns = new java.util.ArrayList<String>(permissionArns);
+    }
+
+    /**
+     * <p>
+     * The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     * permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setPermissionArns(java.util.Collection)} or {@link #withPermissionArns(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param permissionArns
+     *        The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     *        permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateResourceShareRequest withPermissionArns(String... permissionArns) {
+        if (this.permissionArns == null) {
+            setPermissionArns(new java.util.ArrayList<String>(permissionArns.length));
+        }
+        for (String ele : permissionArns) {
+            this.permissionArns.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     * permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     * </p>
+     * 
+     * @param permissionArns
+     *        The ARNs of the permissions to associate with the resource share. If you do not specify an ARN for the
+     *        permission, AWS RAM automatically attaches the default version of the permission for each resource type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateResourceShareRequest withPermissionArns(java.util.Collection<String> permissionArns) {
+        setPermissionArns(permissionArns);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -436,7 +521,9 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
         if (getAllowExternalPrincipals() != null)
             sb.append("AllowExternalPrincipals: ").append(getAllowExternalPrincipals()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: ").append(getClientToken());
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
+        if (getPermissionArns() != null)
+            sb.append("PermissionArns: ").append(getPermissionArns());
         sb.append("}");
         return sb.toString();
     }
@@ -475,6 +562,10 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
             return false;
         if (other.getClientToken() != null && other.getClientToken().equals(this.getClientToken()) == false)
             return false;
+        if (other.getPermissionArns() == null ^ this.getPermissionArns() == null)
+            return false;
+        if (other.getPermissionArns() != null && other.getPermissionArns().equals(this.getPermissionArns()) == false)
+            return false;
         return true;
     }
 
@@ -489,6 +580,7 @@ public class CreateResourceShareRequest extends com.amazonaws.AmazonWebServiceRe
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getAllowExternalPrincipals() == null) ? 0 : getAllowExternalPrincipals().hashCode());
         hashCode = prime * hashCode + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
+        hashCode = prime * hashCode + ((getPermissionArns() == null) ? 0 : getPermissionArns().hashCode());
         return hashCode;
     }
 

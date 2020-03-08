@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,18 +29,18 @@ public class UpdateMatchmakingConfigurationResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * Object that describes the updated matchmaking configuration.
+     * The updated matchmaking configuration.
      * </p>
      */
     private MatchmakingConfiguration configuration;
 
     /**
      * <p>
-     * Object that describes the updated matchmaking configuration.
+     * The updated matchmaking configuration.
      * </p>
      * 
      * @param configuration
-     *        Object that describes the updated matchmaking configuration.
+     *        The updated matchmaking configuration.
      */
 
     public void setConfiguration(MatchmakingConfiguration configuration) {
@@ -49,10 +49,10 @@ public class UpdateMatchmakingConfigurationResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * Object that describes the updated matchmaking configuration.
+     * The updated matchmaking configuration.
      * </p>
      * 
-     * @return Object that describes the updated matchmaking configuration.
+     * @return The updated matchmaking configuration.
      */
 
     public MatchmakingConfiguration getConfiguration() {
@@ -61,11 +61,11 @@ public class UpdateMatchmakingConfigurationResult extends com.amazonaws.AmazonWe
 
     /**
      * <p>
-     * Object that describes the updated matchmaking configuration.
+     * The updated matchmaking configuration.
      * </p>
      * 
      * @param configuration
-     *        Object that describes the updated matchmaking configuration.
+     *        The updated matchmaking configuration.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

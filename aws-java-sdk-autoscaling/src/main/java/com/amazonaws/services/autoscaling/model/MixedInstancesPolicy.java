@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -49,7 +49,8 @@ public class MixedInstancesPolicy implements Serializable, Cloneable {
      * The instances distribution to use.
      * </p>
      * <p>
-     * If you leave this parameter unspecified when creating a mixed instances policy, the default values are used.
+     * If you leave this parameter unspecified, the value for each parameter in <code>InstancesDistribution</code> uses
+     * a default value.
      * </p>
      */
     private InstancesDistribution instancesDistribution;
@@ -114,14 +115,15 @@ public class MixedInstancesPolicy implements Serializable, Cloneable {
      * The instances distribution to use.
      * </p>
      * <p>
-     * If you leave this parameter unspecified when creating a mixed instances policy, the default values are used.
+     * If you leave this parameter unspecified, the value for each parameter in <code>InstancesDistribution</code> uses
+     * a default value.
      * </p>
      * 
      * @param instancesDistribution
      *        The instances distribution to use.</p>
      *        <p>
-     *        If you leave this parameter unspecified when creating a mixed instances policy, the default values are
-     *        used.
+     *        If you leave this parameter unspecified, the value for each parameter in
+     *        <code>InstancesDistribution</code> uses a default value.
      */
 
     public void setInstancesDistribution(InstancesDistribution instancesDistribution) {
@@ -133,13 +135,14 @@ public class MixedInstancesPolicy implements Serializable, Cloneable {
      * The instances distribution to use.
      * </p>
      * <p>
-     * If you leave this parameter unspecified when creating a mixed instances policy, the default values are used.
+     * If you leave this parameter unspecified, the value for each parameter in <code>InstancesDistribution</code> uses
+     * a default value.
      * </p>
      * 
      * @return The instances distribution to use.</p>
      *         <p>
-     *         If you leave this parameter unspecified when creating a mixed instances policy, the default values are
-     *         used.
+     *         If you leave this parameter unspecified, the value for each parameter in
+     *         <code>InstancesDistribution</code> uses a default value.
      */
 
     public InstancesDistribution getInstancesDistribution() {
@@ -151,14 +154,15 @@ public class MixedInstancesPolicy implements Serializable, Cloneable {
      * The instances distribution to use.
      * </p>
      * <p>
-     * If you leave this parameter unspecified when creating a mixed instances policy, the default values are used.
+     * If you leave this parameter unspecified, the value for each parameter in <code>InstancesDistribution</code> uses
+     * a default value.
      * </p>
      * 
      * @param instancesDistribution
      *        The instances distribution to use.</p>
      *        <p>
-     *        If you leave this parameter unspecified when creating a mixed instances policy, the default values are
-     *        used.
+     *        If you leave this parameter unspecified, the value for each parameter in
+     *        <code>InstancesDistribution</code> uses a default value.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

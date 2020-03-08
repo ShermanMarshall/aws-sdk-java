@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,24 @@ public class DescribeUpdateActionsRequestMarshaller implements Marshaller<Reques
                 }
                 replicationGroupIdsListIndex++;
             }
+        }
+
+        if (!describeUpdateActionsRequest.getCacheClusterIds().isEmpty()
+                || !((com.amazonaws.internal.SdkInternalList<String>) describeUpdateActionsRequest.getCacheClusterIds()).isAutoConstruct()) {
+            com.amazonaws.internal.SdkInternalList<String> cacheClusterIdsList = (com.amazonaws.internal.SdkInternalList<String>) describeUpdateActionsRequest
+                    .getCacheClusterIds();
+            int cacheClusterIdsListIndex = 1;
+
+            for (String cacheClusterIdsListValue : cacheClusterIdsList) {
+                if (cacheClusterIdsListValue != null) {
+                    request.addParameter("CacheClusterIds.member." + cacheClusterIdsListIndex, StringUtils.fromString(cacheClusterIdsListValue));
+                }
+                cacheClusterIdsListIndex++;
+            }
+        }
+
+        if (describeUpdateActionsRequest.getEngine() != null) {
+            request.addParameter("Engine", StringUtils.fromString(describeUpdateActionsRequest.getEngine()));
         }
 
         if (!describeUpdateActionsRequest.getServiceUpdateStatus().isEmpty()

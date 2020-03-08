@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,18 +28,18 @@ public class ValidateMatchmakingRuleSetResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Response indicating whether the rule set is valid.
+     * A response indicating whether the rule set is valid.
      * </p>
      */
     private Boolean valid;
 
     /**
      * <p>
-     * Response indicating whether the rule set is valid.
+     * A response indicating whether the rule set is valid.
      * </p>
      * 
      * @param valid
-     *        Response indicating whether the rule set is valid.
+     *        A response indicating whether the rule set is valid.
      */
 
     public void setValid(Boolean valid) {
@@ -48,10 +48,10 @@ public class ValidateMatchmakingRuleSetResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Response indicating whether the rule set is valid.
+     * A response indicating whether the rule set is valid.
      * </p>
      * 
-     * @return Response indicating whether the rule set is valid.
+     * @return A response indicating whether the rule set is valid.
      */
 
     public Boolean getValid() {
@@ -60,11 +60,11 @@ public class ValidateMatchmakingRuleSetResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Response indicating whether the rule set is valid.
+     * A response indicating whether the rule set is valid.
      * </p>
      * 
      * @param valid
-     *        Response indicating whether the rule set is valid.
+     *        A response indicating whether the rule set is valid.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -75,10 +75,10 @@ public class ValidateMatchmakingRuleSetResult extends com.amazonaws.AmazonWebSer
 
     /**
      * <p>
-     * Response indicating whether the rule set is valid.
+     * A response indicating whether the rule set is valid.
      * </p>
      * 
-     * @return Response indicating whether the rule set is valid.
+     * @return A response indicating whether the rule set is valid.
      */
 
     public Boolean isValid() {

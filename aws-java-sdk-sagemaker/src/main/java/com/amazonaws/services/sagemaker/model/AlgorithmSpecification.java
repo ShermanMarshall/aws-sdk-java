@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -83,6 +83,49 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
      * </p>
      */
     private java.util.List<MetricDefinition> metricDefinitions;
+    /**
+     * <p>
+     * To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     * <code>false</code> and time-series metrics aren't generated except in the following cases:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You use one of the Amazon SageMaker built-in algorithms
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You use one of the following <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     * >Prebuilt Amazon SageMaker Docker Images</a>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Tensorflow (version &gt;= 1.15)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MXNet (version &gt;= 1.6)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PyTorch (version &gt;= 1.3)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * You specify at least one <a>MetricDefinition</a>
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private Boolean enableSageMakerMetricsTimeSeries;
 
     /**
      * <p>
@@ -477,6 +520,350 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
     }
 
     /**
+     * <p>
+     * To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     * <code>false</code> and time-series metrics aren't generated except in the following cases:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You use one of the Amazon SageMaker built-in algorithms
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You use one of the following <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     * >Prebuilt Amazon SageMaker Docker Images</a>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Tensorflow (version &gt;= 1.15)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MXNet (version &gt;= 1.6)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PyTorch (version &gt;= 1.3)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * You specify at least one <a>MetricDefinition</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param enableSageMakerMetricsTimeSeries
+     *        To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     *        <code>false</code> and time-series metrics aren't generated except in the following cases:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        You use one of the Amazon SageMaker built-in algorithms
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        You use one of the following <a href=
+     *        "https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     *        >Prebuilt Amazon SageMaker Docker Images</a>:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Tensorflow (version &gt;= 1.15)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        MXNet (version &gt;= 1.6)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PyTorch (version &gt;= 1.3)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        You specify at least one <a>MetricDefinition</a>
+     *        </p>
+     *        </li>
+     */
+
+    public void setEnableSageMakerMetricsTimeSeries(Boolean enableSageMakerMetricsTimeSeries) {
+        this.enableSageMakerMetricsTimeSeries = enableSageMakerMetricsTimeSeries;
+    }
+
+    /**
+     * <p>
+     * To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     * <code>false</code> and time-series metrics aren't generated except in the following cases:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You use one of the Amazon SageMaker built-in algorithms
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You use one of the following <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     * >Prebuilt Amazon SageMaker Docker Images</a>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Tensorflow (version &gt;= 1.15)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MXNet (version &gt;= 1.6)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PyTorch (version &gt;= 1.3)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * You specify at least one <a>MetricDefinition</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     *         <code>false</code> and time-series metrics aren't generated except in the following cases:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         You use one of the Amazon SageMaker built-in algorithms
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You use one of the following <a href=
+     *         "https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     *         >Prebuilt Amazon SageMaker Docker Images</a>:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Tensorflow (version &gt;= 1.15)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MXNet (version &gt;= 1.6)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         PyTorch (version &gt;= 1.3)
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You specify at least one <a>MetricDefinition</a>
+     *         </p>
+     *         </li>
+     */
+
+    public Boolean getEnableSageMakerMetricsTimeSeries() {
+        return this.enableSageMakerMetricsTimeSeries;
+    }
+
+    /**
+     * <p>
+     * To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     * <code>false</code> and time-series metrics aren't generated except in the following cases:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You use one of the Amazon SageMaker built-in algorithms
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You use one of the following <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     * >Prebuilt Amazon SageMaker Docker Images</a>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Tensorflow (version &gt;= 1.15)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MXNet (version &gt;= 1.6)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PyTorch (version &gt;= 1.3)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * You specify at least one <a>MetricDefinition</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param enableSageMakerMetricsTimeSeries
+     *        To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     *        <code>false</code> and time-series metrics aren't generated except in the following cases:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        You use one of the Amazon SageMaker built-in algorithms
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        You use one of the following <a href=
+     *        "https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     *        >Prebuilt Amazon SageMaker Docker Images</a>:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Tensorflow (version &gt;= 1.15)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        MXNet (version &gt;= 1.6)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        PyTorch (version &gt;= 1.3)
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        You specify at least one <a>MetricDefinition</a>
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AlgorithmSpecification withEnableSageMakerMetricsTimeSeries(Boolean enableSageMakerMetricsTimeSeries) {
+        setEnableSageMakerMetricsTimeSeries(enableSageMakerMetricsTimeSeries);
+        return this;
+    }
+
+    /**
+     * <p>
+     * To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     * <code>false</code> and time-series metrics aren't generated except in the following cases:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You use one of the Amazon SageMaker built-in algorithms
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You use one of the following <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     * >Prebuilt Amazon SageMaker Docker Images</a>:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Tensorflow (version &gt;= 1.15)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * MXNet (version &gt;= 1.6)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * PyTorch (version &gt;= 1.3)
+     * </p>
+     * </li>
+     * </ul>
+     * </li>
+     * <li>
+     * <p>
+     * You specify at least one <a>MetricDefinition</a>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return To generate and save time-series metrics during training, set to <code>true</code>. The default is
+     *         <code>false</code> and time-series metrics aren't generated except in the following cases:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         You use one of the Amazon SageMaker built-in algorithms
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You use one of the following <a href=
+     *         "https://docs.aws.amazon.com/sagemaker/latest/dg/pre-built-containers-frameworks-deep-learning.html"
+     *         >Prebuilt Amazon SageMaker Docker Images</a>:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Tensorflow (version &gt;= 1.15)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MXNet (version &gt;= 1.6)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         PyTorch (version &gt;= 1.3)
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         You specify at least one <a>MetricDefinition</a>
+     *         </p>
+     *         </li>
+     */
+
+    public Boolean isEnableSageMakerMetricsTimeSeries() {
+        return this.enableSageMakerMetricsTimeSeries;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -495,7 +882,9 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
         if (getTrainingInputMode() != null)
             sb.append("TrainingInputMode: ").append(getTrainingInputMode()).append(",");
         if (getMetricDefinitions() != null)
-            sb.append("MetricDefinitions: ").append(getMetricDefinitions());
+            sb.append("MetricDefinitions: ").append(getMetricDefinitions()).append(",");
+        if (getEnableSageMakerMetricsTimeSeries() != null)
+            sb.append("EnableSageMakerMetricsTimeSeries: ").append(getEnableSageMakerMetricsTimeSeries());
         sb.append("}");
         return sb.toString();
     }
@@ -526,6 +915,11 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
             return false;
         if (other.getMetricDefinitions() != null && other.getMetricDefinitions().equals(this.getMetricDefinitions()) == false)
             return false;
+        if (other.getEnableSageMakerMetricsTimeSeries() == null ^ this.getEnableSageMakerMetricsTimeSeries() == null)
+            return false;
+        if (other.getEnableSageMakerMetricsTimeSeries() != null
+                && other.getEnableSageMakerMetricsTimeSeries().equals(this.getEnableSageMakerMetricsTimeSeries()) == false)
+            return false;
         return true;
     }
 
@@ -538,6 +932,7 @@ public class AlgorithmSpecification implements Serializable, Cloneable, Structur
         hashCode = prime * hashCode + ((getAlgorithmName() == null) ? 0 : getAlgorithmName().hashCode());
         hashCode = prime * hashCode + ((getTrainingInputMode() == null) ? 0 : getTrainingInputMode().hashCode());
         hashCode = prime * hashCode + ((getMetricDefinitions() == null) ? 0 : getMetricDefinitions().hashCode());
+        hashCode = prime * hashCode + ((getEnableSageMakerMetricsTimeSeries() == null) ? 0 : getEnableSageMakerMetricsTimeSeries().hashCode());
         return hashCode;
     }
 

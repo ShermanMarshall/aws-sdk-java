@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2011-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -18,8 +18,10 @@ import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonWebServiceRequest;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.annotation.SdkInternalApi;
+import com.amazonaws.retry.internal.MaxAttemptsResolver;
 import com.amazonaws.retry.v2.RetryPolicyContext;
 
+import static com.amazonaws.retry.PredefinedRetryPolicies.DEFAULT_MAX_ERROR_RETRY_STANDARD_MODE;
 import static com.amazonaws.util.ValidationUtils.assertNotNull;
 
 /**
@@ -28,13 +30,15 @@ import static com.amazonaws.util.ValidationUtils.assertNotNull;
  */
 @SdkInternalApi
 public class RetryPolicyAdapter implements com.amazonaws.retry.v2.RetryPolicy {
-
     private final RetryPolicy legacyRetryPolicy;
     private final ClientConfiguration clientConfiguration;
+    private final int maxErrorRetry;
 
     public RetryPolicyAdapter(RetryPolicy legacyRetryPolicy, ClientConfiguration clientConfiguration) {
         this.legacyRetryPolicy = assertNotNull(legacyRetryPolicy, "legacyRetryPolicy");
         this.clientConfiguration = assertNotNull(clientConfiguration, "clientConfiguration");
+
+        this.maxErrorRetry = getMaxErrorRetry();
     }
 
     @Override
@@ -65,10 +69,33 @@ public class RetryPolicyAdapter implements com.amazonaws.retry.v2.RetryPolicy {
         if(legacyRetryPolicy.isMaxErrorRetryInClientConfigHonored() && clientConfiguration.getMaxErrorRetry() >= 0) {
             return clientConfiguration.getMaxErrorRetry();
         }
+
+        Integer resolvedMaxAttempts = new MaxAttemptsResolver().maxAttempts();
+
+        if (resolvedMaxAttempts != null) {
+            return resolvedMaxAttempts - 1;
+        }
+
+        if (shouldUseStandardModeDefaultMaxRetry()) {
+            return DEFAULT_MAX_ERROR_RETRY_STANDARD_MODE;
+        }
+
+        // default to use legacyRetryPolicy.getMaxErrorRetry() because it's always present
         return legacyRetryPolicy.getMaxErrorRetry();
     }
 
+    /**
+     * We should use the default standard maxErrorRetry for standard mode if the maxErrorRetry is not from sdk
+     * default predefined retry policies.
+     */
+    private boolean shouldUseStandardModeDefaultMaxRetry() {
+        RetryMode retryMode = clientConfiguration.getRetryMode() == null ? legacyRetryPolicy.getRetryMode()
+                                                                         : clientConfiguration.getRetryMode();
+
+        return retryMode.equals(RetryMode.STANDARD) && legacyRetryPolicy.isDefaultMaxErrorRetryInRetryModeHonored();
+    }
+
     public boolean maxRetriesExceeded(RetryPolicyContext context) {
-        return context.retriesAttempted() >= getMaxErrorRetry();
+        return context.retriesAttempted() >= maxErrorRetry;
     }
 }

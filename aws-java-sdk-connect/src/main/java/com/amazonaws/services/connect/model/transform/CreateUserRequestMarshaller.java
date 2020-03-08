@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.connect.model.transform;
 
+import java.util.Map;
 import java.util.List;
 import javax.annotation.Generated;
 
@@ -46,6 +47,8 @@ public class CreateUserRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("HierarchyGroupId").build();
     private static final MarshallingInfo<String> INSTANCEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
             .marshallLocationName("InstanceId").build();
+    private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Tags").build();
 
     private static final CreateUserRequestMarshaller instance = new CreateUserRequestMarshaller();
 
@@ -72,6 +75,7 @@ public class CreateUserRequestMarshaller {
             protocolMarshaller.marshall(createUserRequest.getRoutingProfileId(), ROUTINGPROFILEID_BINDING);
             protocolMarshaller.marshall(createUserRequest.getHierarchyGroupId(), HIERARCHYGROUPID_BINDING);
             protocolMarshaller.marshall(createUserRequest.getInstanceId(), INSTANCEID_BINDING);
+            protocolMarshaller.marshall(createUserRequest.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

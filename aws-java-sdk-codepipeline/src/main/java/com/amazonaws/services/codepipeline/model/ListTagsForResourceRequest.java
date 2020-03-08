@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,7 @@ public class ListTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The token that was returned from the previous API call, which would be used to return the next page of the list.
-     * However, the ListTagsforResource call lists all available tags in one call and does not use pagination.
+     * The ListTagsforResource call lists all available tags in one call and does not use pagination.
      * </p>
      */
     private String nextToken;
@@ -88,13 +88,12 @@ public class ListTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The token that was returned from the previous API call, which would be used to return the next page of the list.
-     * However, the ListTagsforResource call lists all available tags in one call and does not use pagination.
+     * The ListTagsforResource call lists all available tags in one call and does not use pagination.
      * </p>
      * 
      * @param nextToken
      *        The token that was returned from the previous API call, which would be used to return the next page of the
-     *        list. However, the ListTagsforResource call lists all available tags in one call and does not use
-     *        pagination.
+     *        list. The ListTagsforResource call lists all available tags in one call and does not use pagination.
      */
 
     public void setNextToken(String nextToken) {
@@ -104,12 +103,11 @@ public class ListTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The token that was returned from the previous API call, which would be used to return the next page of the list.
-     * However, the ListTagsforResource call lists all available tags in one call and does not use pagination.
+     * The ListTagsforResource call lists all available tags in one call and does not use pagination.
      * </p>
      * 
      * @return The token that was returned from the previous API call, which would be used to return the next page of
-     *         the list. However, the ListTagsforResource call lists all available tags in one call and does not use
-     *         pagination.
+     *         the list. The ListTagsforResource call lists all available tags in one call and does not use pagination.
      */
 
     public String getNextToken() {
@@ -119,13 +117,12 @@ public class ListTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRe
     /**
      * <p>
      * The token that was returned from the previous API call, which would be used to return the next page of the list.
-     * However, the ListTagsforResource call lists all available tags in one call and does not use pagination.
+     * The ListTagsforResource call lists all available tags in one call and does not use pagination.
      * </p>
      * 
      * @param nextToken
      *        The token that was returned from the previous API call, which would be used to return the next page of the
-     *        list. However, the ListTagsforResource call lists all available tags in one call and does not use
-     *        pagination.
+     *        list. The ListTagsforResource call lists all available tags in one call and does not use pagination.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

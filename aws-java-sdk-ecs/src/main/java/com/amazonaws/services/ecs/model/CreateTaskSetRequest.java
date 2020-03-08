@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -74,8 +74,41 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
+     * <p>
+     * If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be omitted.
+     * </p>
      */
     private String launchType;
+    /**
+     * <p>
+     * The capacity provider strategy to use for the task set.
+     * </p>
+     * <p>
+     * A capacity provider strategy consists of one or more capacity providers along with the <code>base</code> and
+     * <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be used in a
+     * capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a capacity provider
+     * with a cluster. Only capacity providers with an <code>ACTIVE</code> or <code>UPDATING</code> status can be used.
+     * </p>
+     * <p>
+     * If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be omitted.
+     * If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     * <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     * </p>
+     * <p>
+     * If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be created.
+     * New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     * </p>
+     * <p>
+     * To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or <code>FARGATE_SPOT</code>
+     * capacity providers. The AWS Fargate capacity providers are available to all accounts and only need to be
+     * associated with a cluster to be used.
+     * </p>
+     * <p>
+     * The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity providers
+     * for a cluster after the cluster is created.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<CapacityProviderStrategyItem> capacityProviderStrategy;
     /**
      * <p>
      * The platform version that the tasks in the task set should use. A platform version is specified only for tasks
@@ -93,6 +126,57 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      */
     private String clientToken;
+    /**
+     * <p>
+     * The metadata that you apply to the task set to help you categorize and organize them. Each tag consists of a key
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
+     * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
     /**
      * <p>
@@ -470,11 +554,17 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
+     * <p>
+     * If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be omitted.
+     * </p>
      * 
      * @param launchType
      *        The launch type that new tasks in the task set will use. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
-     *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
+     *        <p>
+     *        If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be
+     *        omitted.
      * @see LaunchType
      */
 
@@ -488,10 +578,16 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
+     * <p>
+     * If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be omitted.
+     * </p>
      * 
      * @return The launch type that new tasks in the task set will use. For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
-     *         Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
+     *         <p>
+     *         If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be
+     *         omitted.
      * @see LaunchType
      */
 
@@ -505,11 +601,17 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
+     * <p>
+     * If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be omitted.
+     * </p>
      * 
      * @param launchType
      *        The launch type that new tasks in the task set will use. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
-     *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
+     *        <p>
+     *        If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be
+     *        omitted.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
      */
@@ -525,17 +627,288 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch Types</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
+     * <p>
+     * If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be omitted.
+     * </p>
      * 
      * @param launchType
      *        The launch type that new tasks in the task set will use. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
-     *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        Types</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
+     *        <p>
+     *        If a <code>launchType</code> is specified, the <code>capacityProviderStrategy</code> parameter must be
+     *        omitted.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
      */
 
     public CreateTaskSetRequest withLaunchType(LaunchType launchType) {
         this.launchType = launchType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The capacity provider strategy to use for the task set.
+     * </p>
+     * <p>
+     * A capacity provider strategy consists of one or more capacity providers along with the <code>base</code> and
+     * <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be used in a
+     * capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a capacity provider
+     * with a cluster. Only capacity providers with an <code>ACTIVE</code> or <code>UPDATING</code> status can be used.
+     * </p>
+     * <p>
+     * If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be omitted.
+     * If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     * <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     * </p>
+     * <p>
+     * If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be created.
+     * New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     * </p>
+     * <p>
+     * To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or <code>FARGATE_SPOT</code>
+     * capacity providers. The AWS Fargate capacity providers are available to all accounts and only need to be
+     * associated with a cluster to be used.
+     * </p>
+     * <p>
+     * The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity providers
+     * for a cluster after the cluster is created.
+     * </p>
+     * 
+     * @return The capacity provider strategy to use for the task set.</p>
+     *         <p>
+     *         A capacity provider strategy consists of one or more capacity providers along with the <code>base</code>
+     *         and <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be
+     *         used in a capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a
+     *         capacity provider with a cluster. Only capacity providers with an <code>ACTIVE</code> or
+     *         <code>UPDATING</code> status can be used.
+     *         </p>
+     *         <p>
+     *         If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be
+     *         omitted. If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     *         <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     *         </p>
+     *         <p>
+     *         If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be
+     *         created. New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     *         </p>
+     *         <p>
+     *         To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or
+     *         <code>FARGATE_SPOT</code> capacity providers. The AWS Fargate capacity providers are available to all
+     *         accounts and only need to be associated with a cluster to be used.
+     *         </p>
+     *         <p>
+     *         The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity
+     *         providers for a cluster after the cluster is created.
+     */
+
+    public java.util.List<CapacityProviderStrategyItem> getCapacityProviderStrategy() {
+        if (capacityProviderStrategy == null) {
+            capacityProviderStrategy = new com.amazonaws.internal.SdkInternalList<CapacityProviderStrategyItem>();
+        }
+        return capacityProviderStrategy;
+    }
+
+    /**
+     * <p>
+     * The capacity provider strategy to use for the task set.
+     * </p>
+     * <p>
+     * A capacity provider strategy consists of one or more capacity providers along with the <code>base</code> and
+     * <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be used in a
+     * capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a capacity provider
+     * with a cluster. Only capacity providers with an <code>ACTIVE</code> or <code>UPDATING</code> status can be used.
+     * </p>
+     * <p>
+     * If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be omitted.
+     * If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     * <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     * </p>
+     * <p>
+     * If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be created.
+     * New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     * </p>
+     * <p>
+     * To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or <code>FARGATE_SPOT</code>
+     * capacity providers. The AWS Fargate capacity providers are available to all accounts and only need to be
+     * associated with a cluster to be used.
+     * </p>
+     * <p>
+     * The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity providers
+     * for a cluster after the cluster is created.
+     * </p>
+     * 
+     * @param capacityProviderStrategy
+     *        The capacity provider strategy to use for the task set.</p>
+     *        <p>
+     *        A capacity provider strategy consists of one or more capacity providers along with the <code>base</code>
+     *        and <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be
+     *        used in a capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a
+     *        capacity provider with a cluster. Only capacity providers with an <code>ACTIVE</code> or
+     *        <code>UPDATING</code> status can be used.
+     *        </p>
+     *        <p>
+     *        If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be
+     *        omitted. If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     *        <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     *        </p>
+     *        <p>
+     *        If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be
+     *        created. New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     *        </p>
+     *        <p>
+     *        To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or
+     *        <code>FARGATE_SPOT</code> capacity providers. The AWS Fargate capacity providers are available to all
+     *        accounts and only need to be associated with a cluster to be used.
+     *        </p>
+     *        <p>
+     *        The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity
+     *        providers for a cluster after the cluster is created.
+     */
+
+    public void setCapacityProviderStrategy(java.util.Collection<CapacityProviderStrategyItem> capacityProviderStrategy) {
+        if (capacityProviderStrategy == null) {
+            this.capacityProviderStrategy = null;
+            return;
+        }
+
+        this.capacityProviderStrategy = new com.amazonaws.internal.SdkInternalList<CapacityProviderStrategyItem>(capacityProviderStrategy);
+    }
+
+    /**
+     * <p>
+     * The capacity provider strategy to use for the task set.
+     * </p>
+     * <p>
+     * A capacity provider strategy consists of one or more capacity providers along with the <code>base</code> and
+     * <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be used in a
+     * capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a capacity provider
+     * with a cluster. Only capacity providers with an <code>ACTIVE</code> or <code>UPDATING</code> status can be used.
+     * </p>
+     * <p>
+     * If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be omitted.
+     * If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     * <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     * </p>
+     * <p>
+     * If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be created.
+     * New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     * </p>
+     * <p>
+     * To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or <code>FARGATE_SPOT</code>
+     * capacity providers. The AWS Fargate capacity providers are available to all accounts and only need to be
+     * associated with a cluster to be used.
+     * </p>
+     * <p>
+     * The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity providers
+     * for a cluster after the cluster is created.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setCapacityProviderStrategy(java.util.Collection)} or
+     * {@link #withCapacityProviderStrategy(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param capacityProviderStrategy
+     *        The capacity provider strategy to use for the task set.</p>
+     *        <p>
+     *        A capacity provider strategy consists of one or more capacity providers along with the <code>base</code>
+     *        and <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be
+     *        used in a capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a
+     *        capacity provider with a cluster. Only capacity providers with an <code>ACTIVE</code> or
+     *        <code>UPDATING</code> status can be used.
+     *        </p>
+     *        <p>
+     *        If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be
+     *        omitted. If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     *        <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     *        </p>
+     *        <p>
+     *        If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be
+     *        created. New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     *        </p>
+     *        <p>
+     *        To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or
+     *        <code>FARGATE_SPOT</code> capacity providers. The AWS Fargate capacity providers are available to all
+     *        accounts and only need to be associated with a cluster to be used.
+     *        </p>
+     *        <p>
+     *        The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity
+     *        providers for a cluster after the cluster is created.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTaskSetRequest withCapacityProviderStrategy(CapacityProviderStrategyItem... capacityProviderStrategy) {
+        if (this.capacityProviderStrategy == null) {
+            setCapacityProviderStrategy(new com.amazonaws.internal.SdkInternalList<CapacityProviderStrategyItem>(capacityProviderStrategy.length));
+        }
+        for (CapacityProviderStrategyItem ele : capacityProviderStrategy) {
+            this.capacityProviderStrategy.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The capacity provider strategy to use for the task set.
+     * </p>
+     * <p>
+     * A capacity provider strategy consists of one or more capacity providers along with the <code>base</code> and
+     * <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be used in a
+     * capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a capacity provider
+     * with a cluster. Only capacity providers with an <code>ACTIVE</code> or <code>UPDATING</code> status can be used.
+     * </p>
+     * <p>
+     * If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be omitted.
+     * If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     * <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     * </p>
+     * <p>
+     * If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be created.
+     * New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     * </p>
+     * <p>
+     * To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or <code>FARGATE_SPOT</code>
+     * capacity providers. The AWS Fargate capacity providers are available to all accounts and only need to be
+     * associated with a cluster to be used.
+     * </p>
+     * <p>
+     * The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity providers
+     * for a cluster after the cluster is created.
+     * </p>
+     * 
+     * @param capacityProviderStrategy
+     *        The capacity provider strategy to use for the task set.</p>
+     *        <p>
+     *        A capacity provider strategy consists of one or more capacity providers along with the <code>base</code>
+     *        and <code>weight</code> to assign to them. A capacity provider must be associated with the cluster to be
+     *        used in a capacity provider strategy. The <a>PutClusterCapacityProviders</a> API is used to associate a
+     *        capacity provider with a cluster. Only capacity providers with an <code>ACTIVE</code> or
+     *        <code>UPDATING</code> status can be used.
+     *        </p>
+     *        <p>
+     *        If a <code>capacityProviderStrategy</code> is specified, the <code>launchType</code> parameter must be
+     *        omitted. If no <code>capacityProviderStrategy</code> or <code>launchType</code> is specified, the
+     *        <code>defaultCapacityProviderStrategy</code> for the cluster is used.
+     *        </p>
+     *        <p>
+     *        If specifying a capacity provider that uses an Auto Scaling group, the capacity provider must already be
+     *        created. New capacity providers can be created with the <a>CreateCapacityProvider</a> API operation.
+     *        </p>
+     *        <p>
+     *        To use a AWS Fargate capacity provider, specify either the <code>FARGATE</code> or
+     *        <code>FARGATE_SPOT</code> capacity providers. The AWS Fargate capacity providers are available to all
+     *        accounts and only need to be associated with a cluster to be used.
+     *        </p>
+     *        <p>
+     *        The <a>PutClusterCapacityProviders</a> API operation is used to update the list of available capacity
+     *        providers for a cluster after the cluster is created.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTaskSetRequest withCapacityProviderStrategy(java.util.Collection<CapacityProviderStrategyItem> capacityProviderStrategy) {
+        setCapacityProviderStrategy(capacityProviderStrategy);
         return this;
     }
 
@@ -664,6 +1037,439 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
+     * The metadata that you apply to the task set to help you categorize and organize them. Each tag consists of a key
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
+     * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return The metadata that you apply to the task set to help you categorize and organize them. Each tag consists
+     *         of a key and an optional value, both of which you define. When a service is deleted, the tags are deleted
+     *         as well.</p>
+     *         <p>
+     *         The following basic restrictions apply to tags:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Maximum number of tags per resource - 50
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For each resource, each tag key must be unique, and each tag key can have only one value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum key length - 128 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum value length - 256 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If your tagging schema is used across multiple services and resources, remember that other services may
+     *         have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *         representable in UTF-8, and the following characters: + - = . _ : / @.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Tag keys and values are case-sensitive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a
+     *         prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or
+     *         values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *         </p>
+     *         </li>
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The metadata that you apply to the task set to help you categorize and organize them. Each tag consists of a key
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
+     * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param tags
+     *        The metadata that you apply to the task set to help you categorize and organize them. Each tag consists of
+     *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The metadata that you apply to the task set to help you categorize and organize them. Each tag consists of a key
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
+     * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The metadata that you apply to the task set to help you categorize and organize them. Each tag consists of
+     *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTaskSetRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The metadata that you apply to the task set to help you categorize and organize them. Each tag consists of a key
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
+     * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param tags
+     *        The metadata that you apply to the task set to help you categorize and organize them. Each tag consists of
+     *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateTaskSetRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -691,12 +1497,16 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
             sb.append("ServiceRegistries: ").append(getServiceRegistries()).append(",");
         if (getLaunchType() != null)
             sb.append("LaunchType: ").append(getLaunchType()).append(",");
+        if (getCapacityProviderStrategy() != null)
+            sb.append("CapacityProviderStrategy: ").append(getCapacityProviderStrategy()).append(",");
         if (getPlatformVersion() != null)
             sb.append("PlatformVersion: ").append(getPlatformVersion()).append(",");
         if (getScale() != null)
             sb.append("Scale: ").append(getScale()).append(",");
         if (getClientToken() != null)
-            sb.append("ClientToken: ").append(getClientToken());
+            sb.append("ClientToken: ").append(getClientToken()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -743,6 +1553,10 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getLaunchType() != null && other.getLaunchType().equals(this.getLaunchType()) == false)
             return false;
+        if (other.getCapacityProviderStrategy() == null ^ this.getCapacityProviderStrategy() == null)
+            return false;
+        if (other.getCapacityProviderStrategy() != null && other.getCapacityProviderStrategy().equals(this.getCapacityProviderStrategy()) == false)
+            return false;
         if (other.getPlatformVersion() == null ^ this.getPlatformVersion() == null)
             return false;
         if (other.getPlatformVersion() != null && other.getPlatformVersion().equals(this.getPlatformVersion()) == false)
@@ -754,6 +1568,10 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (other.getClientToken() == null ^ this.getClientToken() == null)
             return false;
         if (other.getClientToken() != null && other.getClientToken().equals(this.getClientToken()) == false)
+            return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
         return true;
     }
@@ -771,9 +1589,11 @@ public class CreateTaskSetRequest extends com.amazonaws.AmazonWebServiceRequest 
         hashCode = prime * hashCode + ((getLoadBalancers() == null) ? 0 : getLoadBalancers().hashCode());
         hashCode = prime * hashCode + ((getServiceRegistries() == null) ? 0 : getServiceRegistries().hashCode());
         hashCode = prime * hashCode + ((getLaunchType() == null) ? 0 : getLaunchType().hashCode());
+        hashCode = prime * hashCode + ((getCapacityProviderStrategy() == null) ? 0 : getCapacityProviderStrategy().hashCode());
         hashCode = prime * hashCode + ((getPlatformVersion() == null) ? 0 : getPlatformVersion().hashCode());
         hashCode = prime * hashCode + ((getScale() == null) ? 0 : getScale().hashCode());
         hashCode = prime * hashCode + ((getClientToken() == null) ? 0 : getClientToken().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,7 +51,11 @@ public class AffectedEntity implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String entityValue;
-
+    /**
+     * <p>
+     * The URL of the affected entity.
+     * </p>
+     */
     private String entityUrl;
     /**
      * <p>
@@ -230,7 +234,12 @@ public class AffectedEntity implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The URL of the affected entity.
+     * </p>
+     * 
      * @param entityUrl
+     *        The URL of the affected entity.
      */
 
     public void setEntityUrl(String entityUrl) {
@@ -238,7 +247,11 @@ public class AffectedEntity implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * <p>
+     * The URL of the affected entity.
+     * </p>
+     * 
+     * @return The URL of the affected entity.
      */
 
     public String getEntityUrl() {
@@ -246,7 +259,12 @@ public class AffectedEntity implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The URL of the affected entity.
+     * </p>
+     * 
      * @param entityUrl
+     *        The URL of the affected entity.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -457,6 +475,13 @@ public class AffectedEntity implements Serializable, Cloneable, StructuredPojo {
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see AffectedEntity#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public AffectedEntity addTagsEntry(String key, String value) {
         if (null == this.tags) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -44,6 +44,14 @@ public class CreateIdentityPoolResult extends com.amazonaws.AmazonWebServiceResu
      * </p>
      */
     private Boolean allowUnauthenticatedIdentities;
+    /**
+     * <p>
+     * Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     * (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     * </p>
+     */
+    private Boolean allowClassicFlow;
     /**
      * <p>
      * Optional key:value pairs mapping provider names to provider app IDs.
@@ -216,6 +224,74 @@ public class CreateIdentityPoolResult extends com.amazonaws.AmazonWebServiceResu
 
     /**
      * <p>
+     * Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     * (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     * </p>
+     * 
+     * @param allowClassicFlow
+     *        Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     *        href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     *        (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     */
+
+    public void setAllowClassicFlow(Boolean allowClassicFlow) {
+        this.allowClassicFlow = allowClassicFlow;
+    }
+
+    /**
+     * <p>
+     * Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     * (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     * </p>
+     * 
+     * @return Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     *         href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     *         (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     */
+
+    public Boolean getAllowClassicFlow() {
+        return this.allowClassicFlow;
+    }
+
+    /**
+     * <p>
+     * Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     * (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     * </p>
+     * 
+     * @param allowClassicFlow
+     *        Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     *        href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     *        (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateIdentityPoolResult withAllowClassicFlow(Boolean allowClassicFlow) {
+        setAllowClassicFlow(allowClassicFlow);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     * (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     * </p>
+     * 
+     * @return Enables or disables the Basic (Classic) authentication flow. For more information, see <a
+     *         href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html">Identity Pools
+     *         (Federated Identities) Authentication Flow</a> in the <i>Amazon Cognito Developer Guide</i>.
+     */
+
+    public Boolean isAllowClassicFlow() {
+        return this.allowClassicFlow;
+    }
+
+    /**
+     * <p>
      * Optional key:value pairs mapping provider names to provider app IDs.
      * </p>
      * 
@@ -253,6 +329,13 @@ public class CreateIdentityPoolResult extends com.amazonaws.AmazonWebServiceResu
         setSupportedLoginProviders(supportedLoginProviders);
         return this;
     }
+
+    /**
+     * Add a single SupportedLoginProviders entry
+     *
+     * @see CreateIdentityPoolResult#withSupportedLoginProviders
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreateIdentityPoolResult addSupportedLoginProvidersEntry(String key, String value) {
         if (null == this.supportedLoginProviders) {
@@ -571,6 +654,13 @@ public class CreateIdentityPoolResult extends com.amazonaws.AmazonWebServiceResu
         return this;
     }
 
+    /**
+     * Add a single IdentityPoolTags entry
+     *
+     * @see CreateIdentityPoolResult#withIdentityPoolTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public CreateIdentityPoolResult addIdentityPoolTagsEntry(String key, String value) {
         if (null == this.identityPoolTags) {
             this.identityPoolTags = new java.util.HashMap<String, String>();
@@ -610,6 +700,8 @@ public class CreateIdentityPoolResult extends com.amazonaws.AmazonWebServiceResu
             sb.append("IdentityPoolName: ").append(getIdentityPoolName()).append(",");
         if (getAllowUnauthenticatedIdentities() != null)
             sb.append("AllowUnauthenticatedIdentities: ").append(getAllowUnauthenticatedIdentities()).append(",");
+        if (getAllowClassicFlow() != null)
+            sb.append("AllowClassicFlow: ").append(getAllowClassicFlow()).append(",");
         if (getSupportedLoginProviders() != null)
             sb.append("SupportedLoginProviders: ").append(getSupportedLoginProviders()).append(",");
         if (getDeveloperProviderName() != null)
@@ -649,6 +741,10 @@ public class CreateIdentityPoolResult extends com.amazonaws.AmazonWebServiceResu
         if (other.getAllowUnauthenticatedIdentities() != null
                 && other.getAllowUnauthenticatedIdentities().equals(this.getAllowUnauthenticatedIdentities()) == false)
             return false;
+        if (other.getAllowClassicFlow() == null ^ this.getAllowClassicFlow() == null)
+            return false;
+        if (other.getAllowClassicFlow() != null && other.getAllowClassicFlow().equals(this.getAllowClassicFlow()) == false)
+            return false;
         if (other.getSupportedLoginProviders() == null ^ this.getSupportedLoginProviders() == null)
             return false;
         if (other.getSupportedLoginProviders() != null && other.getSupportedLoginProviders().equals(this.getSupportedLoginProviders()) == false)
@@ -684,6 +780,7 @@ public class CreateIdentityPoolResult extends com.amazonaws.AmazonWebServiceResu
         hashCode = prime * hashCode + ((getIdentityPoolId() == null) ? 0 : getIdentityPoolId().hashCode());
         hashCode = prime * hashCode + ((getIdentityPoolName() == null) ? 0 : getIdentityPoolName().hashCode());
         hashCode = prime * hashCode + ((getAllowUnauthenticatedIdentities() == null) ? 0 : getAllowUnauthenticatedIdentities().hashCode());
+        hashCode = prime * hashCode + ((getAllowClassicFlow() == null) ? 0 : getAllowClassicFlow().hashCode());
         hashCode = prime * hashCode + ((getSupportedLoginProviders() == null) ? 0 : getSupportedLoginProviders().hashCode());
         hashCode = prime * hashCode + ((getDeveloperProviderName() == null) ? 0 : getDeveloperProviderName().hashCode());
         hashCode = prime * hashCode + ((getOpenIdConnectProviderARNs() == null) ? 0 : getOpenIdConnectProviderARNs().hashCode());

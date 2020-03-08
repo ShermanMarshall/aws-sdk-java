@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,12 +48,12 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be performed.
      * </p>
      * <p>
-     * If the action type is <code>forward</code>, you specify a target group. The protocol of the target group must be
-     * HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS, UDP, or
-     * TCP_UDP for a Network Load Balancer.
+     * If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the target
+     * group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS,
+     * UDP, or TCP_UDP for a Network Load Balancer.
      * </p>
      * <p>
      * [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an
@@ -247,12 +247,12 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be performed.
      * </p>
      * <p>
-     * If the action type is <code>forward</code>, you specify a target group. The protocol of the target group must be
-     * HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS, UDP, or
-     * TCP_UDP for a Network Load Balancer.
+     * If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the target
+     * group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS,
+     * UDP, or TCP_UDP for a Network Load Balancer.
      * </p>
      * <p>
      * [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an
@@ -272,11 +272,12 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * 
      * @return The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     *         <code>fixed-response</code>, or <code>redirect</code>.</p>
+     *         <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be
+     *         performed.</p>
      *         <p>
-     *         If the action type is <code>forward</code>, you specify a target group. The protocol of the target group
-     *         must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP,
-     *         TLS, UDP, or TCP_UDP for a Network Load Balancer.
+     *         If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the
+     *         target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group
+     *         must be TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
      *         </p>
      *         <p>
      *         [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an
@@ -302,12 +303,12 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be performed.
      * </p>
      * <p>
-     * If the action type is <code>forward</code>, you specify a target group. The protocol of the target group must be
-     * HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS, UDP, or
-     * TCP_UDP for a Network Load Balancer.
+     * If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the target
+     * group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS,
+     * UDP, or TCP_UDP for a Network Load Balancer.
      * </p>
      * <p>
      * [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an
@@ -328,11 +329,11 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * 
      * @param actions
      *        The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     *        <code>fixed-response</code>, or <code>redirect</code>.</p>
+     *        <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be performed.</p>
      *        <p>
-     *        If the action type is <code>forward</code>, you specify a target group. The protocol of the target group
-     *        must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS,
-     *        UDP, or TCP_UDP for a Network Load Balancer.
+     *        If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the
+     *        target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must
+     *        be TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
      *        </p>
      *        <p>
      *        [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an
@@ -363,12 +364,12 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be performed.
      * </p>
      * <p>
-     * If the action type is <code>forward</code>, you specify a target group. The protocol of the target group must be
-     * HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS, UDP, or
-     * TCP_UDP for a Network Load Balancer.
+     * If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the target
+     * group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS,
+     * UDP, or TCP_UDP for a Network Load Balancer.
      * </p>
      * <p>
      * [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an
@@ -394,11 +395,11 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * 
      * @param actions
      *        The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     *        <code>fixed-response</code>, or <code>redirect</code>.</p>
+     *        <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be performed.</p>
      *        <p>
-     *        If the action type is <code>forward</code>, you specify a target group. The protocol of the target group
-     *        must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS,
-     *        UDP, or TCP_UDP for a Network Load Balancer.
+     *        If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the
+     *        target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must
+     *        be TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
      *        </p>
      *        <p>
      *        [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an
@@ -431,12 +432,12 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     * <code>fixed-response</code>, or <code>redirect</code>.
+     * <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be performed.
      * </p>
      * <p>
-     * If the action type is <code>forward</code>, you specify a target group. The protocol of the target group must be
-     * HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS, UDP, or
-     * TCP_UDP for a Network Load Balancer.
+     * If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the target
+     * group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS,
+     * UDP, or TCP_UDP for a Network Load Balancer.
      * </p>
      * <p>
      * [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an
@@ -457,11 +458,11 @@ public class CreateRuleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * 
      * @param actions
      *        The actions. Each rule must include exactly one of the following types of actions: <code>forward</code>,
-     *        <code>fixed-response</code>, or <code>redirect</code>.</p>
+     *        <code>fixed-response</code>, or <code>redirect</code>, and it must be the last action to be performed.</p>
      *        <p>
-     *        If the action type is <code>forward</code>, you specify a target group. The protocol of the target group
-     *        must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must be TCP, TLS,
-     *        UDP, or TCP_UDP for a Network Load Balancer.
+     *        If the action type is <code>forward</code>, you specify one or more target groups. The protocol of the
+     *        target group must be HTTP or HTTPS for an Application Load Balancer. The protocol of the target group must
+     *        be TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
      *        </p>
      *        <p>
      *        [HTTPS listeners] If the action type is <code>authenticate-oidc</code>, you authenticate users through an

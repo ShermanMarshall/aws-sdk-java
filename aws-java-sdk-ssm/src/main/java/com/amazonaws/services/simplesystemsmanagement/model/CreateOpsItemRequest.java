@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -111,6 +111,18 @@ public class CreateOpsItemRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </note>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
+    /**
+     * <p>
+     * Specify a category to assign to an OpsItem.
+     * </p>
+     */
+    private String category;
+    /**
+     * <p>
+     * Specify a severity to assign to an OpsItem.
+     * </p>
+     */
+    private String severity;
 
     /**
      * <p>
@@ -320,6 +332,13 @@ public class CreateOpsItemRequest extends com.amazonaws.AmazonWebServiceRequest 
         setOperationalData(operationalData);
         return this;
     }
+
+    /**
+     * Add a single OperationalData entry
+     *
+     * @see CreateOpsItemRequest#withOperationalData
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public CreateOpsItemRequest addOperationalDataEntry(String key, OpsItemDataValue value) {
         if (null == this.operationalData) {
@@ -810,6 +829,86 @@ public class CreateOpsItemRequest extends com.amazonaws.AmazonWebServiceRequest 
     }
 
     /**
+     * <p>
+     * Specify a category to assign to an OpsItem.
+     * </p>
+     * 
+     * @param category
+     *        Specify a category to assign to an OpsItem.
+     */
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     * <p>
+     * Specify a category to assign to an OpsItem.
+     * </p>
+     * 
+     * @return Specify a category to assign to an OpsItem.
+     */
+
+    public String getCategory() {
+        return this.category;
+    }
+
+    /**
+     * <p>
+     * Specify a category to assign to an OpsItem.
+     * </p>
+     * 
+     * @param category
+     *        Specify a category to assign to an OpsItem.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateOpsItemRequest withCategory(String category) {
+        setCategory(category);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specify a severity to assign to an OpsItem.
+     * </p>
+     * 
+     * @param severity
+     *        Specify a severity to assign to an OpsItem.
+     */
+
+    public void setSeverity(String severity) {
+        this.severity = severity;
+    }
+
+    /**
+     * <p>
+     * Specify a severity to assign to an OpsItem.
+     * </p>
+     * 
+     * @return Specify a severity to assign to an OpsItem.
+     */
+
+    public String getSeverity() {
+        return this.severity;
+    }
+
+    /**
+     * <p>
+     * Specify a severity to assign to an OpsItem.
+     * </p>
+     * 
+     * @param severity
+     *        Specify a severity to assign to an OpsItem.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateOpsItemRequest withSeverity(String severity) {
+        setSeverity(severity);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -836,7 +935,11 @@ public class CreateOpsItemRequest extends com.amazonaws.AmazonWebServiceRequest 
         if (getTitle() != null)
             sb.append("Title: ").append(getTitle()).append(",");
         if (getTags() != null)
-            sb.append("Tags: ").append(getTags());
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getCategory() != null)
+            sb.append("Category: ").append(getCategory()).append(",");
+        if (getSeverity() != null)
+            sb.append("Severity: ").append(getSeverity());
         sb.append("}");
         return sb.toString();
     }
@@ -883,6 +986,14 @@ public class CreateOpsItemRequest extends com.amazonaws.AmazonWebServiceRequest 
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
+        if (other.getCategory() == null ^ this.getCategory() == null)
+            return false;
+        if (other.getCategory() != null && other.getCategory().equals(this.getCategory()) == false)
+            return false;
+        if (other.getSeverity() == null ^ this.getSeverity() == null)
+            return false;
+        if (other.getSeverity() != null && other.getSeverity().equals(this.getSeverity()) == false)
+            return false;
         return true;
     }
 
@@ -899,6 +1010,8 @@ public class CreateOpsItemRequest extends com.amazonaws.AmazonWebServiceRequest 
         hashCode = prime * hashCode + ((getSource() == null) ? 0 : getSource().hashCode());
         hashCode = prime * hashCode + ((getTitle() == null) ? 0 : getTitle().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getCategory() == null) ? 0 : getCategory().hashCode());
+        hashCode = prime * hashCode + ((getSeverity() == null) ? 0 : getSeverity().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,12 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 public class DashIsoGroupSettings implements Serializable, Cloneable, StructuredPojo {
 
     /**
+     * By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This default
+     * manifest references every output in the output group. To create additional DASH manifests that reference a subset
+     * of the outputs in the output group, specify a list of them here.
+     */
+    private java.util.List<DashAdditionalManifest> additionalManifests;
+    /**
      * A partial URI prefix that will be put in the manifest (.mpd) file at the top level BaseURL element. Can be used
      * if streams are delivered from a different URL than the manifest file.
      */
@@ -53,6 +59,14 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
     /** Minimum time of initially buffered media that is needed to ensure smooth playout. */
     private Integer minBufferTime;
     /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     */
+    private String mpdProfile;
+    /**
      * When set to SINGLE_FILE, a single output file is generated, which is internally segmented using the Fragment
      * Length and Segment Length. When set to SEGMENTED_FILES, separate segment files will be created.
      */
@@ -64,13 +78,91 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
      */
     private Integer segmentLength;
     /**
-     * When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH manifest
-     * shows precise segment durations. The segment duration information appears inside the SegmentTimeline element,
-     * inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment durations in your
-     * DASH manifest are approximate. The segment duration information appears in the duration attribute of the
-     * SegmentTemplate element.
+     * If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and run your
+     * transcoding job again. When you enable this setting, the service writes precise segment durations in the DASH
+     * manifest. The segment duration information appears inside the SegmentTimeline element, inside SegmentTemplate at
+     * the Representation level. When you don't enable this setting, the service writes approximate segment durations in
+     * your DASH manifest.
      */
     private String writeSegmentTimelineInRepresentation;
+
+    /**
+     * By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This default
+     * manifest references every output in the output group. To create additional DASH manifests that reference a subset
+     * of the outputs in the output group, specify a list of them here.
+     * 
+     * @return By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This
+     *         default manifest references every output in the output group. To create additional DASH manifests that
+     *         reference a subset of the outputs in the output group, specify a list of them here.
+     */
+
+    public java.util.List<DashAdditionalManifest> getAdditionalManifests() {
+        return additionalManifests;
+    }
+
+    /**
+     * By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This default
+     * manifest references every output in the output group. To create additional DASH manifests that reference a subset
+     * of the outputs in the output group, specify a list of them here.
+     * 
+     * @param additionalManifests
+     *        By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This
+     *        default manifest references every output in the output group. To create additional DASH manifests that
+     *        reference a subset of the outputs in the output group, specify a list of them here.
+     */
+
+    public void setAdditionalManifests(java.util.Collection<DashAdditionalManifest> additionalManifests) {
+        if (additionalManifests == null) {
+            this.additionalManifests = null;
+            return;
+        }
+
+        this.additionalManifests = new java.util.ArrayList<DashAdditionalManifest>(additionalManifests);
+    }
+
+    /**
+     * By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This default
+     * manifest references every output in the output group. To create additional DASH manifests that reference a subset
+     * of the outputs in the output group, specify a list of them here.
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAdditionalManifests(java.util.Collection)} or {@link #withAdditionalManifests(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param additionalManifests
+     *        By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This
+     *        default manifest references every output in the output group. To create additional DASH manifests that
+     *        reference a subset of the outputs in the output group, specify a list of them here.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DashIsoGroupSettings withAdditionalManifests(DashAdditionalManifest... additionalManifests) {
+        if (this.additionalManifests == null) {
+            setAdditionalManifests(new java.util.ArrayList<DashAdditionalManifest>(additionalManifests.length));
+        }
+        for (DashAdditionalManifest ele : additionalManifests) {
+            this.additionalManifests.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This default
+     * manifest references every output in the output group. To create additional DASH manifests that reference a subset
+     * of the outputs in the output group, specify a list of them here.
+     * 
+     * @param additionalManifests
+     *        By default, the service creates one .mpd DASH manifest for each DASH ISO output group in your job. This
+     *        default manifest references every output in the output group. To create additional DASH manifests that
+     *        reference a subset of the outputs in the output group, specify a list of them here.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DashIsoGroupSettings withAdditionalManifests(java.util.Collection<DashAdditionalManifest> additionalManifests) {
+        setAdditionalManifests(additionalManifests);
+        return this;
+    }
 
     /**
      * A partial URI prefix that will be put in the manifest (.mpd) file at the top level BaseURL element. Can be used
@@ -367,6 +459,89 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
     }
 
     /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     * 
+     * @param mpdProfile
+     *        Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the
+     *        service signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose
+     *        On-demand (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your
+     *        .mpd. When you choose On-demand, you must also set the output group setting Segment control
+     *        (SegmentControl) to Single file (SINGLE_FILE).
+     * @see DashIsoMpdProfile
+     */
+
+    public void setMpdProfile(String mpdProfile) {
+        this.mpdProfile = mpdProfile;
+    }
+
+    /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     * 
+     * @return Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the
+     *         service signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose
+     *         On-demand (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your
+     *         .mpd. When you choose On-demand, you must also set the output group setting Segment control
+     *         (SegmentControl) to Single file (SINGLE_FILE).
+     * @see DashIsoMpdProfile
+     */
+
+    public String getMpdProfile() {
+        return this.mpdProfile;
+    }
+
+    /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     * 
+     * @param mpdProfile
+     *        Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the
+     *        service signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose
+     *        On-demand (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your
+     *        .mpd. When you choose On-demand, you must also set the output group setting Segment control
+     *        (SegmentControl) to Single file (SINGLE_FILE).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DashIsoMpdProfile
+     */
+
+    public DashIsoGroupSettings withMpdProfile(String mpdProfile) {
+        setMpdProfile(mpdProfile);
+        return this;
+    }
+
+    /**
+     * Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the service
+     * signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose On-demand
+     * (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your .mpd. When you choose
+     * On-demand, you must also set the output group setting Segment control (SegmentControl) to Single file
+     * (SINGLE_FILE).
+     * 
+     * @param mpdProfile
+     *        Specify whether your DASH profile is on-demand or main. When you choose Main profile (MAIN_PROFILE), the
+     *        service signals urn:mpeg:dash:profile:isoff-main:2011 in your .mpd DASH manifest. When you choose
+     *        On-demand (ON_DEMAND_PROFILE), the service signals urn:mpeg:dash:profile:isoff-on-demand:2011 in your
+     *        .mpd. When you choose On-demand, you must also set the output group setting Segment control
+     *        (SegmentControl) to Single file (SINGLE_FILE).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see DashIsoMpdProfile
+     */
+
+    public DashIsoGroupSettings withMpdProfile(DashIsoMpdProfile mpdProfile) {
+        this.mpdProfile = mpdProfile.toString();
+        return this;
+    }
+
+    /**
      * When set to SINGLE_FILE, a single output file is generated, which is internally segmented using the Fragment
      * Length and Segment Length. When set to SEGMENTED_FILES, separate segment files will be created.
      * 
@@ -475,18 +650,18 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH manifest
-     * shows precise segment durations. The segment duration information appears inside the SegmentTimeline element,
-     * inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment durations in your
-     * DASH manifest are approximate. The segment duration information appears in the duration attribute of the
-     * SegmentTemplate element.
+     * If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and run your
+     * transcoding job again. When you enable this setting, the service writes precise segment durations in the DASH
+     * manifest. The segment duration information appears inside the SegmentTimeline element, inside SegmentTemplate at
+     * the Representation level. When you don't enable this setting, the service writes approximate segment durations in
+     * your DASH manifest.
      * 
      * @param writeSegmentTimelineInRepresentation
-     *        When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH
-     *        manifest shows precise segment durations. The segment duration information appears inside the
-     *        SegmentTimeline element, inside SegmentTemplate at the Representation level. When this feature isn't
-     *        enabled, the segment durations in your DASH manifest are approximate. The segment duration information
-     *        appears in the duration attribute of the SegmentTemplate element.
+     *        If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and run
+     *        your transcoding job again. When you enable this setting, the service writes precise segment durations in
+     *        the DASH manifest. The segment duration information appears inside the SegmentTimeline element, inside
+     *        SegmentTemplate at the Representation level. When you don't enable this setting, the service writes
+     *        approximate segment durations in your DASH manifest.
      * @see DashIsoWriteSegmentTimelineInRepresentation
      */
 
@@ -495,17 +670,17 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH manifest
-     * shows precise segment durations. The segment duration information appears inside the SegmentTimeline element,
-     * inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment durations in your
-     * DASH manifest are approximate. The segment duration information appears in the duration attribute of the
-     * SegmentTemplate element.
+     * If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and run your
+     * transcoding job again. When you enable this setting, the service writes precise segment durations in the DASH
+     * manifest. The segment duration information appears inside the SegmentTimeline element, inside SegmentTemplate at
+     * the Representation level. When you don't enable this setting, the service writes approximate segment durations in
+     * your DASH manifest.
      * 
-     * @return When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH
-     *         manifest shows precise segment durations. The segment duration information appears inside the
-     *         SegmentTimeline element, inside SegmentTemplate at the Representation level. When this feature isn't
-     *         enabled, the segment durations in your DASH manifest are approximate. The segment duration information
-     *         appears in the duration attribute of the SegmentTemplate element.
+     * @return If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and
+     *         run your transcoding job again. When you enable this setting, the service writes precise segment
+     *         durations in the DASH manifest. The segment duration information appears inside the SegmentTimeline
+     *         element, inside SegmentTemplate at the Representation level. When you don't enable this setting, the
+     *         service writes approximate segment durations in your DASH manifest.
      * @see DashIsoWriteSegmentTimelineInRepresentation
      */
 
@@ -514,18 +689,18 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH manifest
-     * shows precise segment durations. The segment duration information appears inside the SegmentTimeline element,
-     * inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment durations in your
-     * DASH manifest are approximate. The segment duration information appears in the duration attribute of the
-     * SegmentTemplate element.
+     * If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and run your
+     * transcoding job again. When you enable this setting, the service writes precise segment durations in the DASH
+     * manifest. The segment duration information appears inside the SegmentTimeline element, inside SegmentTemplate at
+     * the Representation level. When you don't enable this setting, the service writes approximate segment durations in
+     * your DASH manifest.
      * 
      * @param writeSegmentTimelineInRepresentation
-     *        When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH
-     *        manifest shows precise segment durations. The segment duration information appears inside the
-     *        SegmentTimeline element, inside SegmentTemplate at the Representation level. When this feature isn't
-     *        enabled, the segment durations in your DASH manifest are approximate. The segment duration information
-     *        appears in the duration attribute of the SegmentTemplate element.
+     *        If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and run
+     *        your transcoding job again. When you enable this setting, the service writes precise segment durations in
+     *        the DASH manifest. The segment duration information appears inside the SegmentTimeline element, inside
+     *        SegmentTemplate at the Representation level. When you don't enable this setting, the service writes
+     *        approximate segment durations in your DASH manifest.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DashIsoWriteSegmentTimelineInRepresentation
      */
@@ -536,18 +711,18 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
     }
 
     /**
-     * When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH manifest
-     * shows precise segment durations. The segment duration information appears inside the SegmentTimeline element,
-     * inside SegmentTemplate at the Representation level. When this feature isn't enabled, the segment durations in your
-     * DASH manifest are approximate. The segment duration information appears in the duration attribute of the
-     * SegmentTemplate element.
+     * If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and run your
+     * transcoding job again. When you enable this setting, the service writes precise segment durations in the DASH
+     * manifest. The segment duration information appears inside the SegmentTimeline element, inside SegmentTemplate at
+     * the Representation level. When you don't enable this setting, the service writes approximate segment durations in
+     * your DASH manifest.
      * 
      * @param writeSegmentTimelineInRepresentation
-     *        When you enable Precise segment duration in manifests (writeSegmentTimelineInRepresentation), your DASH
-     *        manifest shows precise segment durations. The segment duration information appears inside the
-     *        SegmentTimeline element, inside SegmentTemplate at the Representation level. When this feature isn't
-     *        enabled, the segment durations in your DASH manifest are approximate. The segment duration information
-     *        appears in the duration attribute of the SegmentTemplate element.
+     *        If you get an HTTP error in the 400 range when you play back your DASH output, enable this setting and run
+     *        your transcoding job again. When you enable this setting, the service writes precise segment durations in
+     *        the DASH manifest. The segment duration information appears inside the SegmentTimeline element, inside
+     *        SegmentTemplate at the Representation level. When you don't enable this setting, the service writes
+     *        approximate segment durations in your DASH manifest.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DashIsoWriteSegmentTimelineInRepresentation
      */
@@ -569,6 +744,8 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getAdditionalManifests() != null)
+            sb.append("AdditionalManifests: ").append(getAdditionalManifests()).append(",");
         if (getBaseUrl() != null)
             sb.append("BaseUrl: ").append(getBaseUrl()).append(",");
         if (getDestination() != null)
@@ -583,6 +760,8 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
             sb.append("HbbtvCompliance: ").append(getHbbtvCompliance()).append(",");
         if (getMinBufferTime() != null)
             sb.append("MinBufferTime: ").append(getMinBufferTime()).append(",");
+        if (getMpdProfile() != null)
+            sb.append("MpdProfile: ").append(getMpdProfile()).append(",");
         if (getSegmentControl() != null)
             sb.append("SegmentControl: ").append(getSegmentControl()).append(",");
         if (getSegmentLength() != null)
@@ -603,6 +782,10 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
         if (obj instanceof DashIsoGroupSettings == false)
             return false;
         DashIsoGroupSettings other = (DashIsoGroupSettings) obj;
+        if (other.getAdditionalManifests() == null ^ this.getAdditionalManifests() == null)
+            return false;
+        if (other.getAdditionalManifests() != null && other.getAdditionalManifests().equals(this.getAdditionalManifests()) == false)
+            return false;
         if (other.getBaseUrl() == null ^ this.getBaseUrl() == null)
             return false;
         if (other.getBaseUrl() != null && other.getBaseUrl().equals(this.getBaseUrl()) == false)
@@ -631,6 +814,10 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
             return false;
         if (other.getMinBufferTime() != null && other.getMinBufferTime().equals(this.getMinBufferTime()) == false)
             return false;
+        if (other.getMpdProfile() == null ^ this.getMpdProfile() == null)
+            return false;
+        if (other.getMpdProfile() != null && other.getMpdProfile().equals(this.getMpdProfile()) == false)
+            return false;
         if (other.getSegmentControl() == null ^ this.getSegmentControl() == null)
             return false;
         if (other.getSegmentControl() != null && other.getSegmentControl().equals(this.getSegmentControl()) == false)
@@ -652,6 +839,7 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getAdditionalManifests() == null) ? 0 : getAdditionalManifests().hashCode());
         hashCode = prime * hashCode + ((getBaseUrl() == null) ? 0 : getBaseUrl().hashCode());
         hashCode = prime * hashCode + ((getDestination() == null) ? 0 : getDestination().hashCode());
         hashCode = prime * hashCode + ((getDestinationSettings() == null) ? 0 : getDestinationSettings().hashCode());
@@ -659,6 +847,7 @@ public class DashIsoGroupSettings implements Serializable, Cloneable, Structured
         hashCode = prime * hashCode + ((getFragmentLength() == null) ? 0 : getFragmentLength().hashCode());
         hashCode = prime * hashCode + ((getHbbtvCompliance() == null) ? 0 : getHbbtvCompliance().hashCode());
         hashCode = prime * hashCode + ((getMinBufferTime() == null) ? 0 : getMinBufferTime().hashCode());
+        hashCode = prime * hashCode + ((getMpdProfile() == null) ? 0 : getMpdProfile().hashCode());
         hashCode = prime * hashCode + ((getSegmentControl() == null) ? 0 : getSegmentControl().hashCode());
         hashCode = prime * hashCode + ((getSegmentLength() == null) ? 0 : getSegmentLength().hashCode());
         hashCode = prime * hashCode + ((getWriteSegmentTimelineInRepresentation() == null) ? 0 : getWriteSegmentTimelineInRepresentation().hashCode());

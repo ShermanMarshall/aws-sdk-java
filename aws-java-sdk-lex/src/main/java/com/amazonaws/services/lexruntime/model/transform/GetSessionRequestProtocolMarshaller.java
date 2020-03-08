@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,7 +33,7 @@ import com.amazonaws.annotation.SdkInternalApi;
 public class GetSessionRequestProtocolMarshaller implements Marshaller<Request<GetSessionRequest>, GetSessionRequest> {
 
     private static final OperationInfo SDK_OPERATION_BINDING = OperationInfo.builder().protocol(Protocol.REST_JSON)
-            .requestUri("/bot/{botName}/alias/{botAlias}/user/{userId}/session").httpMethodName(HttpMethodName.GET).hasExplicitPayloadMember(false)
+            .requestUri("/bot/{botName}/alias/{botAlias}/user/{userId}/session/").httpMethodName(HttpMethodName.GET).hasExplicitPayloadMember(false)
             .hasPayloadMembers(false).serviceName("AmazonLexRuntime").build();
 
     private final com.amazonaws.protocol.json.SdkJsonProtocolFactory protocolFactory;

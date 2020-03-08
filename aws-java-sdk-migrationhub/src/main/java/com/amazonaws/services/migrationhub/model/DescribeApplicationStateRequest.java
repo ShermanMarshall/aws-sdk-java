@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,18 +27,18 @@ public class DescribeApplicationStateRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The configurationId in ADS that uniquely identifies the grouped application.
+     * The configurationId in Application Discovery Service that uniquely identifies the grouped application.
      * </p>
      */
     private String applicationId;
 
     /**
      * <p>
-     * The configurationId in ADS that uniquely identifies the grouped application.
+     * The configurationId in Application Discovery Service that uniquely identifies the grouped application.
      * </p>
      * 
      * @param applicationId
-     *        The configurationId in ADS that uniquely identifies the grouped application.
+     *        The configurationId in Application Discovery Service that uniquely identifies the grouped application.
      */
 
     public void setApplicationId(String applicationId) {
@@ -47,10 +47,10 @@ public class DescribeApplicationStateRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The configurationId in ADS that uniquely identifies the grouped application.
+     * The configurationId in Application Discovery Service that uniquely identifies the grouped application.
      * </p>
      * 
-     * @return The configurationId in ADS that uniquely identifies the grouped application.
+     * @return The configurationId in Application Discovery Service that uniquely identifies the grouped application.
      */
 
     public String getApplicationId() {
@@ -59,11 +59,11 @@ public class DescribeApplicationStateRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The configurationId in ADS that uniquely identifies the grouped application.
+     * The configurationId in Application Discovery Service that uniquely identifies the grouped application.
      * </p>
      * 
      * @param applicationId
-     *        The configurationId in ADS that uniquely identifies the grouped application.
+     *        The configurationId in Application Discovery Service that uniquely identifies the grouped application.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,12 @@ public class Volume implements Serializable, Cloneable {
      * </p>
      */
     private String kmsKeyId;
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the Outpost.
+     * </p>
+     */
+    private String outpostArn;
     /**
      * <p>
      * The size of the volume, in GiBs.
@@ -115,6 +121,18 @@ public class Volume implements Serializable, Cloneable {
      * </p>
      */
     private String volumeType;
+    /**
+     * <p>
+     * Indicates whether the volume was created using fast snapshot restore.
+     * </p>
+     */
+    private Boolean fastRestored;
+    /**
+     * <p>
+     * Indicates whether Amazon EBS Multi-Attach is enabled.
+     * </p>
+     */
+    private Boolean multiAttachEnabled;
 
     /**
      * <p>
@@ -364,6 +382,46 @@ public class Volume implements Serializable, Cloneable {
 
     public Volume withKmsKeyId(String kmsKeyId) {
         setKmsKeyId(kmsKeyId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the Outpost.
+     * </p>
+     * 
+     * @param outpostArn
+     *        The Amazon Resource Name (ARN) of the Outpost.
+     */
+
+    public void setOutpostArn(String outpostArn) {
+        this.outpostArn = outpostArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the Outpost.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the Outpost.
+     */
+
+    public String getOutpostArn() {
+        return this.outpostArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the Outpost.
+     * </p>
+     * 
+     * @param outpostArn
+     *        The Amazon Resource Name (ARN) of the Outpost.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Volume withOutpostArn(String outpostArn) {
+        setOutpostArn(outpostArn);
         return this;
     }
 
@@ -858,6 +916,110 @@ public class Volume implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Indicates whether the volume was created using fast snapshot restore.
+     * </p>
+     * 
+     * @param fastRestored
+     *        Indicates whether the volume was created using fast snapshot restore.
+     */
+
+    public void setFastRestored(Boolean fastRestored) {
+        this.fastRestored = fastRestored;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the volume was created using fast snapshot restore.
+     * </p>
+     * 
+     * @return Indicates whether the volume was created using fast snapshot restore.
+     */
+
+    public Boolean getFastRestored() {
+        return this.fastRestored;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the volume was created using fast snapshot restore.
+     * </p>
+     * 
+     * @param fastRestored
+     *        Indicates whether the volume was created using fast snapshot restore.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Volume withFastRestored(Boolean fastRestored) {
+        setFastRestored(fastRestored);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether the volume was created using fast snapshot restore.
+     * </p>
+     * 
+     * @return Indicates whether the volume was created using fast snapshot restore.
+     */
+
+    public Boolean isFastRestored() {
+        return this.fastRestored;
+    }
+
+    /**
+     * <p>
+     * Indicates whether Amazon EBS Multi-Attach is enabled.
+     * </p>
+     * 
+     * @param multiAttachEnabled
+     *        Indicates whether Amazon EBS Multi-Attach is enabled.
+     */
+
+    public void setMultiAttachEnabled(Boolean multiAttachEnabled) {
+        this.multiAttachEnabled = multiAttachEnabled;
+    }
+
+    /**
+     * <p>
+     * Indicates whether Amazon EBS Multi-Attach is enabled.
+     * </p>
+     * 
+     * @return Indicates whether Amazon EBS Multi-Attach is enabled.
+     */
+
+    public Boolean getMultiAttachEnabled() {
+        return this.multiAttachEnabled;
+    }
+
+    /**
+     * <p>
+     * Indicates whether Amazon EBS Multi-Attach is enabled.
+     * </p>
+     * 
+     * @param multiAttachEnabled
+     *        Indicates whether Amazon EBS Multi-Attach is enabled.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Volume withMultiAttachEnabled(Boolean multiAttachEnabled) {
+        setMultiAttachEnabled(multiAttachEnabled);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates whether Amazon EBS Multi-Attach is enabled.
+     * </p>
+     * 
+     * @return Indicates whether Amazon EBS Multi-Attach is enabled.
+     */
+
+    public Boolean isMultiAttachEnabled() {
+        return this.multiAttachEnabled;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -879,6 +1041,8 @@ public class Volume implements Serializable, Cloneable {
             sb.append("Encrypted: ").append(getEncrypted()).append(",");
         if (getKmsKeyId() != null)
             sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
+        if (getOutpostArn() != null)
+            sb.append("OutpostArn: ").append(getOutpostArn()).append(",");
         if (getSize() != null)
             sb.append("Size: ").append(getSize()).append(",");
         if (getSnapshotId() != null)
@@ -892,7 +1056,11 @@ public class Volume implements Serializable, Cloneable {
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getVolumeType() != null)
-            sb.append("VolumeType: ").append(getVolumeType());
+            sb.append("VolumeType: ").append(getVolumeType()).append(",");
+        if (getFastRestored() != null)
+            sb.append("FastRestored: ").append(getFastRestored()).append(",");
+        if (getMultiAttachEnabled() != null)
+            sb.append("MultiAttachEnabled: ").append(getMultiAttachEnabled());
         sb.append("}");
         return sb.toString();
     }
@@ -927,6 +1095,10 @@ public class Volume implements Serializable, Cloneable {
             return false;
         if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
+        if (other.getOutpostArn() == null ^ this.getOutpostArn() == null)
+            return false;
+        if (other.getOutpostArn() != null && other.getOutpostArn().equals(this.getOutpostArn()) == false)
+            return false;
         if (other.getSize() == null ^ this.getSize() == null)
             return false;
         if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
@@ -955,6 +1127,14 @@ public class Volume implements Serializable, Cloneable {
             return false;
         if (other.getVolumeType() != null && other.getVolumeType().equals(this.getVolumeType()) == false)
             return false;
+        if (other.getFastRestored() == null ^ this.getFastRestored() == null)
+            return false;
+        if (other.getFastRestored() != null && other.getFastRestored().equals(this.getFastRestored()) == false)
+            return false;
+        if (other.getMultiAttachEnabled() == null ^ this.getMultiAttachEnabled() == null)
+            return false;
+        if (other.getMultiAttachEnabled() != null && other.getMultiAttachEnabled().equals(this.getMultiAttachEnabled()) == false)
+            return false;
         return true;
     }
 
@@ -968,6 +1148,7 @@ public class Volume implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
         hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getOutpostArn() == null) ? 0 : getOutpostArn().hashCode());
         hashCode = prime * hashCode + ((getSize() == null) ? 0 : getSize().hashCode());
         hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
@@ -975,6 +1156,8 @@ public class Volume implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getVolumeType() == null) ? 0 : getVolumeType().hashCode());
+        hashCode = prime * hashCode + ((getFastRestored() == null) ? 0 : getFastRestored().hashCode());
+        hashCode = prime * hashCode + ((getMultiAttachEnabled() == null) ? 0 : getMultiAttachEnabled().hashCode());
         return hashCode;
     }
 

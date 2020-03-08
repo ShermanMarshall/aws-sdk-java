@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,9 @@ public enum ScalableDimension {
     DynamodbIndexWriteCapacityUnits("dynamodb:index:WriteCapacityUnits"),
     RdsClusterReadReplicaCount("rds:cluster:ReadReplicaCount"),
     SagemakerVariantDesiredInstanceCount("sagemaker:variant:DesiredInstanceCount"),
-    CustomResourceResourceTypeProperty("custom-resource:ResourceType:Property");
+    CustomResourceResourceTypeProperty("custom-resource:ResourceType:Property"),
+    ComprehendDocumentClassifierEndpointDesiredInferenceUnits("comprehend:document-classifier-endpoint:DesiredInferenceUnits"),
+    LambdaFunctionProvisionedConcurrency("lambda:function:ProvisionedConcurrency");
 
     private String value;
 

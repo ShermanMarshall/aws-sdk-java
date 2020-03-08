@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,7 @@ public class UpdateConfigRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * Parameters for a <code>Config</code>.
+     * Parameters of a <code>Config</code>.
      * </p>
      */
     private ConfigTypeData configData;
@@ -53,11 +53,11 @@ public class UpdateConfigRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * Parameters for a <code>Config</code>.
+     * Parameters of a <code>Config</code>.
      * </p>
      * 
      * @param configData
-     *        Parameters for a <code>Config</code>.
+     *        Parameters of a <code>Config</code>.
      */
 
     public void setConfigData(ConfigTypeData configData) {
@@ -66,10 +66,10 @@ public class UpdateConfigRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * Parameters for a <code>Config</code>.
+     * Parameters of a <code>Config</code>.
      * </p>
      * 
-     * @return Parameters for a <code>Config</code>.
+     * @return Parameters of a <code>Config</code>.
      */
 
     public ConfigTypeData getConfigData() {
@@ -78,11 +78,11 @@ public class UpdateConfigRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * Parameters for a <code>Config</code>.
+     * Parameters of a <code>Config</code>.
      * </p>
      * 
      * @param configData
-     *        Parameters for a <code>Config</code>.
+     *        Parameters of a <code>Config</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

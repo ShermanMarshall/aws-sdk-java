@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,18 +30,18 @@ public class ValidateMatchmakingRuleSetRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Collection of matchmaking rules to validate, formatted as a JSON string.
+     * A collection of matchmaking rules to validate, formatted as a JSON string.
      * </p>
      */
     private String ruleSetBody;
 
     /**
      * <p>
-     * Collection of matchmaking rules to validate, formatted as a JSON string.
+     * A collection of matchmaking rules to validate, formatted as a JSON string.
      * </p>
      * 
      * @param ruleSetBody
-     *        Collection of matchmaking rules to validate, formatted as a JSON string.
+     *        A collection of matchmaking rules to validate, formatted as a JSON string.
      */
 
     public void setRuleSetBody(String ruleSetBody) {
@@ -50,10 +50,10 @@ public class ValidateMatchmakingRuleSetRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Collection of matchmaking rules to validate, formatted as a JSON string.
+     * A collection of matchmaking rules to validate, formatted as a JSON string.
      * </p>
      * 
-     * @return Collection of matchmaking rules to validate, formatted as a JSON string.
+     * @return A collection of matchmaking rules to validate, formatted as a JSON string.
      */
 
     public String getRuleSetBody() {
@@ -62,11 +62,11 @@ public class ValidateMatchmakingRuleSetRequest extends com.amazonaws.AmazonWebSe
 
     /**
      * <p>
-     * Collection of matchmaking rules to validate, formatted as a JSON string.
+     * A collection of matchmaking rules to validate, formatted as a JSON string.
      * </p>
      * 
      * @param ruleSetBody
-     *        Collection of matchmaking rules to validate, formatted as a JSON string.
+     *        A collection of matchmaking rules to validate, formatted as a JSON string.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

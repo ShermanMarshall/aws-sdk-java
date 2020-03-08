@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -62,23 +62,25 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies only
+     * to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.Timeout</code> - The health check requests timed out.
+     * <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out,
-     * the target response was malformed, or the target failed the health check for an unknown reason.
+     * <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a connection to
+     * the target or the target response was malformed.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     * <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to Application
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -99,12 +101,12 @@ public class TargetHealth implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      * </p>
      * </li>
      * </ul>
@@ -125,7 +127,14 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     * Application Load Balancers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to Network
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -242,23 +251,25 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies only
+     * to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.Timeout</code> - The health check requests timed out.
+     * <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out,
-     * the target response was malformed, or the target failed the health check for an unknown reason.
+     * <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a connection to
+     * the target or the target response was malformed.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     * <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to Application
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -279,12 +290,12 @@ public class TargetHealth implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      * </p>
      * </li>
      * </ul>
@@ -305,7 +316,14 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     * Application Load Balancers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to Network
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -338,23 +356,26 @@ public class TargetHealth implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     *        <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies
+     *        only to Application Load Balancers.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.Timeout</code> - The health check requests timed out.
+     *        <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load
+     *        Balancers.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target
-     *        timed out, the target response was malformed, or the target failed the health check for an unknown reason.
+     *        <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a
+     *        connection to the target or the target response was malformed.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     *        <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to
+     *        Application Load Balancers.
      *        </p>
      *        </li>
      *        </ul>
@@ -375,12 +396,12 @@ public class TargetHealth implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     *        <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     *        <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      *        </p>
      *        </li>
      *        </ul>
@@ -401,7 +422,14 @@ public class TargetHealth implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     *        <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     *        Application Load Balancers.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to
+     *        Network Load Balancers.
      *        </p>
      *        </li>
      * @see TargetHealthReasonEnum
@@ -441,23 +469,25 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies only
+     * to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.Timeout</code> - The health check requests timed out.
+     * <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out,
-     * the target response was malformed, or the target failed the health check for an unknown reason.
+     * <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a connection to
+     * the target or the target response was malformed.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     * <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to Application
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -478,12 +508,12 @@ public class TargetHealth implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      * </p>
      * </li>
      * </ul>
@@ -504,7 +534,14 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     * Application Load Balancers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to Network
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -537,23 +574,25 @@ public class TargetHealth implements Serializable, Cloneable {
      *         <li>
      *         <p>
      *         <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     *         Applies only to Application Load Balancers.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>Target.Timeout</code> - The health check requests timed out.
+     *         <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load
+     *         Balancers.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target
-     *         timed out, the target response was malformed, or the target failed the health check for an unknown
-     *         reason.
+     *         <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a
+     *         connection to the target or the target response was malformed.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     *         <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to
+     *         Application Load Balancers.
      *         </p>
      *         </li>
      *         </ul>
@@ -574,12 +613,12 @@ public class TargetHealth implements Serializable, Cloneable {
      *         </li>
      *         <li>
      *         <p>
-     *         <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     *         <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     *         <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      *         </p>
      *         </li>
      *         </ul>
@@ -600,7 +639,14 @@ public class TargetHealth implements Serializable, Cloneable {
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     *         <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only
+     *         to Application Load Balancers.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to
+     *         Network Load Balancers.
      *         </p>
      *         </li>
      * @see TargetHealthReasonEnum
@@ -640,23 +686,25 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies only
+     * to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.Timeout</code> - The health check requests timed out.
+     * <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out,
-     * the target response was malformed, or the target failed the health check for an unknown reason.
+     * <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a connection to
+     * the target or the target response was malformed.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     * <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to Application
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -677,12 +725,12 @@ public class TargetHealth implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      * </p>
      * </li>
      * </ul>
@@ -703,7 +751,14 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     * Application Load Balancers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to Network
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -736,23 +791,26 @@ public class TargetHealth implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     *        <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies
+     *        only to Application Load Balancers.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.Timeout</code> - The health check requests timed out.
+     *        <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load
+     *        Balancers.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target
-     *        timed out, the target response was malformed, or the target failed the health check for an unknown reason.
+     *        <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a
+     *        connection to the target or the target response was malformed.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     *        <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to
+     *        Application Load Balancers.
      *        </p>
      *        </li>
      *        </ul>
@@ -773,12 +831,12 @@ public class TargetHealth implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     *        <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     *        <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      *        </p>
      *        </li>
      *        </ul>
@@ -799,7 +857,14 @@ public class TargetHealth implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     *        <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     *        Application Load Balancers.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to
+     *        Network Load Balancers.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -841,23 +906,25 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies only
+     * to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.Timeout</code> - The health check requests timed out.
+     * <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out,
-     * the target response was malformed, or the target failed the health check for an unknown reason.
+     * <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a connection to
+     * the target or the target response was malformed.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     * <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to Application
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -878,12 +945,12 @@ public class TargetHealth implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      * </p>
      * </li>
      * </ul>
@@ -904,7 +971,14 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     * Application Load Balancers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to Network
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -937,23 +1011,26 @@ public class TargetHealth implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     *        <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies
+     *        only to Application Load Balancers.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.Timeout</code> - The health check requests timed out.
+     *        <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load
+     *        Balancers.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target
-     *        timed out, the target response was malformed, or the target failed the health check for an unknown reason.
+     *        <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a
+     *        connection to the target or the target response was malformed.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     *        <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to
+     *        Application Load Balancers.
      *        </p>
      *        </li>
      *        </ul>
@@ -974,12 +1051,12 @@ public class TargetHealth implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     *        <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     *        <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      *        </p>
      *        </li>
      *        </ul>
@@ -1000,7 +1077,14 @@ public class TargetHealth implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     *        <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     *        Application Load Balancers.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to
+     *        Network Load Balancers.
      *        </p>
      *        </li>
      * @see TargetHealthReasonEnum
@@ -1040,23 +1124,25 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     * <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies only
+     * to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.Timeout</code> - The health check requests timed out.
+     * <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load Balancers.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target timed out,
-     * the target response was malformed, or the target failed the health check for an unknown reason.
+     * <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a connection to
+     * the target or the target response was malformed.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     * <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to Application
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -1077,12 +1163,12 @@ public class TargetHealth implements Serializable, Cloneable {
      * </li>
      * <li>
      * <p>
-     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     * <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      * </p>
      * </li>
      * </ul>
@@ -1103,7 +1189,14 @@ public class TargetHealth implements Serializable, Cloneable {
      * <ul>
      * <li>
      * <p>
-     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     * <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     * Application Load Balancers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to Network
+     * Load Balancers.
      * </p>
      * </li>
      * </ul>
@@ -1136,23 +1229,26 @@ public class TargetHealth implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code.
+     *        <code>Target.ResponseCodeMismatch</code> - The health checks did not return an expected HTTP code. Applies
+     *        only to Application Load Balancers.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.Timeout</code> - The health check requests timed out.
+     *        <code>Target.Timeout</code> - The health check requests timed out. Applies only to Application Load
+     *        Balancers.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.FailedHealthChecks</code> - The health checks failed because the connection to the target
-     *        timed out, the target response was malformed, or the target failed the health check for an unknown reason.
+     *        <code>Target.FailedHealthChecks</code> - The load balancer received an error while establishing a
+     *        connection to the target or the target response was malformed.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Elb.InternalError</code> - The health checks failed due to an internal error.
+     *        <code>Elb.InternalError</code> - The health checks failed due to an internal error. Applies only to
+     *        Application Load Balancers.
      *        </p>
      *        </li>
      *        </ul>
@@ -1173,12 +1269,12 @@ public class TargetHealth implements Serializable, Cloneable {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
+     *        <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>Target.InvalidState</code> - The target is in the stopped or terminated state.
+     *        <code>Target.IpUnusable</code> - The target IP address is reserved for use by a load balancer.
      *        </p>
      *        </li>
      *        </ul>
@@ -1199,7 +1295,14 @@ public class TargetHealth implements Serializable, Cloneable {
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group.
+     *        <code>Target.HealthCheckDisabled</code> - Health checks are disabled for the target group. Applies only to
+     *        Application Load Balancers.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>Elb.InternalError</code> - Target health is unavailable due to an internal error. Applies only to
+     *        Network Load Balancers.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

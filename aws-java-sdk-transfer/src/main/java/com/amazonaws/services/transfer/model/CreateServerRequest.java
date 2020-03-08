@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,15 +27,18 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. This parameter
-     * is required when you specify a value for the <code>EndpointType</code> parameter.
+     * The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC endpoint,
+     * you can restrict access to your SFTP server to resources only within your VPC. To control incoming internet
+     * traffic, you will need to invoke the <code>UpdateServer</code> API and attach an Elastic IP to your server's
+     * endpoint.
      * </p>
      */
     private EndpointDetails endpointDetails;
     /**
      * <p>
-     * The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint, your
-     * SFTP server isn't accessible over the public internet.
+     * The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the public
+     * internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access to your SFTP
+     * server and resources only within your VPC.
      * </p>
      */
     private String endpointType;
@@ -50,8 +53,9 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * For more information, see "https://docs.aws.amazon.com/transfer/latest/userguide/change-host-key" in the <i>AWS
-     * SFTP User Guide.</i>
+     * For more information, see
+     * "https://alpha-docs-aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key" in the
+     * <i>AWS SFTP User Guide.</i>
      * </p>
      */
     private String hostKey;
@@ -90,13 +94,17 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. This parameter
-     * is required when you specify a value for the <code>EndpointType</code> parameter.
+     * The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC endpoint,
+     * you can restrict access to your SFTP server to resources only within your VPC. To control incoming internet
+     * traffic, you will need to invoke the <code>UpdateServer</code> API and attach an Elastic IP to your server's
+     * endpoint.
      * </p>
      * 
      * @param endpointDetails
-     *        The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. This
-     *        parameter is required when you specify a value for the <code>EndpointType</code> parameter.
+     *        The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC
+     *        endpoint, you can restrict access to your SFTP server to resources only within your VPC. To control
+     *        incoming internet traffic, you will need to invoke the <code>UpdateServer</code> API and attach an Elastic
+     *        IP to your server's endpoint.
      */
 
     public void setEndpointDetails(EndpointDetails endpointDetails) {
@@ -105,12 +113,16 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. This parameter
-     * is required when you specify a value for the <code>EndpointType</code> parameter.
+     * The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC endpoint,
+     * you can restrict access to your SFTP server to resources only within your VPC. To control incoming internet
+     * traffic, you will need to invoke the <code>UpdateServer</code> API and attach an Elastic IP to your server's
+     * endpoint.
      * </p>
      * 
-     * @return The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. This
-     *         parameter is required when you specify a value for the <code>EndpointType</code> parameter.
+     * @return The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC
+     *         endpoint, you can restrict access to your SFTP server to resources only within your VPC. To control
+     *         incoming internet traffic, you will need to invoke the <code>UpdateServer</code> API and attach an
+     *         Elastic IP to your server's endpoint.
      */
 
     public EndpointDetails getEndpointDetails() {
@@ -119,13 +131,17 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. This parameter
-     * is required when you specify a value for the <code>EndpointType</code> parameter.
+     * The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC endpoint,
+     * you can restrict access to your SFTP server to resources only within your VPC. To control incoming internet
+     * traffic, you will need to invoke the <code>UpdateServer</code> API and attach an Elastic IP to your server's
+     * endpoint.
      * </p>
      * 
      * @param endpointDetails
-     *        The virtual private cloud (VPC) endpoint settings that you want to configure for your SFTP server. This
-     *        parameter is required when you specify a value for the <code>EndpointType</code> parameter.
+     *        The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC
+     *        endpoint, you can restrict access to your SFTP server to resources only within your VPC. To control
+     *        incoming internet traffic, you will need to invoke the <code>UpdateServer</code> API and attach an Elastic
+     *        IP to your server's endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -136,13 +152,15 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint, your
-     * SFTP server isn't accessible over the public internet.
+     * The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the public
+     * internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access to your SFTP
+     * server and resources only within your VPC.
      * </p>
      * 
      * @param endpointType
-     *        The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint,
-     *        your SFTP server isn't accessible over the public internet.
+     *        The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the
+     *        public internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access to
+     *        your SFTP server and resources only within your VPC.
      * @see EndpointType
      */
 
@@ -152,12 +170,14 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint, your
-     * SFTP server isn't accessible over the public internet.
+     * The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the public
+     * internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access to your SFTP
+     * server and resources only within your VPC.
      * </p>
      * 
-     * @return The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint,
-     *         your SFTP server isn't accessible over the public internet.
+     * @return The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the
+     *         public internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access
+     *         to your SFTP server and resources only within your VPC.
      * @see EndpointType
      */
 
@@ -167,13 +187,15 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint, your
-     * SFTP server isn't accessible over the public internet.
+     * The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the public
+     * internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access to your SFTP
+     * server and resources only within your VPC.
      * </p>
      * 
      * @param endpointType
-     *        The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint,
-     *        your SFTP server isn't accessible over the public internet.
+     *        The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the
+     *        public internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access to
+     *        your SFTP server and resources only within your VPC.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see EndpointType
      */
@@ -185,13 +207,15 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint, your
-     * SFTP server isn't accessible over the public internet.
+     * The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the public
+     * internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access to your SFTP
+     * server and resources only within your VPC.
      * </p>
      * 
      * @param endpointType
-     *        The type of VPC endpoint that you want your SFTP server to connect to. If you connect to a VPC endpoint,
-     *        your SFTP server isn't accessible over the public internet.
+     *        The type of VPC endpoint that you want your SFTP server to connect to. You can choose to connect to the
+     *        public internet or a virtual private cloud (VPC) endpoint. With a VPC endpoint, you can restrict access to
+     *        your SFTP server and resources only within your VPC.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see EndpointType
      */
@@ -212,8 +236,9 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * For more information, see "https://docs.aws.amazon.com/transfer/latest/userguide/change-host-key" in the <i>AWS
-     * SFTP User Guide.</i>
+     * For more information, see
+     * "https://alpha-docs-aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key" in the
+     * <i>AWS SFTP User Guide.</i>
      * </p>
      * 
      * @param hostKey
@@ -225,8 +250,9 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </p>
      *        </important>
      *        <p>
-     *        For more information, see "https://docs.aws.amazon.com/transfer/latest/userguide/change-host-key" in the
-     *        <i>AWS SFTP User Guide.</i>
+     *        For more information, see
+     *        "https://alpha-docs-aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key" in
+     *        the <i>AWS SFTP User Guide.</i>
      */
 
     public void setHostKey(String hostKey) {
@@ -244,8 +270,9 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * For more information, see "https://docs.aws.amazon.com/transfer/latest/userguide/change-host-key" in the <i>AWS
-     * SFTP User Guide.</i>
+     * For more information, see
+     * "https://alpha-docs-aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key" in the
+     * <i>AWS SFTP User Guide.</i>
      * </p>
      * 
      * @return The RSA private key as generated by the <code>ssh-keygen -N "" -f my-new-server-key</code> command.</p>
@@ -256,8 +283,9 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         </p>
      *         </important>
      *         <p>
-     *         For more information, see "https://docs.aws.amazon.com/transfer/latest/userguide/change-host-key" in the
-     *         <i>AWS SFTP User Guide.</i>
+     *         For more information, see
+     *         "https://alpha-docs-aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key" in
+     *         the <i>AWS SFTP User Guide.</i>
      */
 
     public String getHostKey() {
@@ -275,8 +303,9 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      * </important>
      * <p>
-     * For more information, see "https://docs.aws.amazon.com/transfer/latest/userguide/change-host-key" in the <i>AWS
-     * SFTP User Guide.</i>
+     * For more information, see
+     * "https://alpha-docs-aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key" in the
+     * <i>AWS SFTP User Guide.</i>
      * </p>
      * 
      * @param hostKey
@@ -288,8 +317,9 @@ public class CreateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        </p>
      *        </important>
      *        <p>
-     *        For more information, see "https://docs.aws.amazon.com/transfer/latest/userguide/change-host-key" in the
-     *        <i>AWS SFTP User Guide.</i>
+     *        For more information, see
+     *        "https://alpha-docs-aws.amazon.com/transfer/latest/userguide/configuring-servers.html#change-host-key" in
+     *        the <i>AWS SFTP User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

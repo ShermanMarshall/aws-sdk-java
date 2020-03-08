@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,12 +34,18 @@ public class Placement implements Serializable, Cloneable {
      * If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria
      * for the Region.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      */
     private String availabilityZone;
     /**
      * <p>
      * The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the
      * <a>ImportInstance</a> command.
+     * </p>
+     * <p>
+     * This parameter is not supported by .
      * </p>
      */
     private String affinity;
@@ -54,12 +60,18 @@ public class Placement implements Serializable, Cloneable {
      * The number of the partition the instance is in. Valid only if the placement group strategy is set to
      * <code>partition</code>.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      */
     private Integer partitionNumber;
     /**
      * <p>
      * The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      * <a>ImportInstance</a> command.
+     * </p>
+     * <p>
+     * This parameter is not supported by .
      * </p>
      */
     private String hostId;
@@ -69,14 +81,30 @@ public class Placement implements Serializable, Cloneable {
      * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      */
     private String tenancy;
     /**
      * <p>
      * Reserved for future use.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      */
     private String spreadDomain;
+    /**
+     * <p>
+     * The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN,
+     * omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
+     */
+    private String hostResourceGroupArn;
 
     /**
      * Default constructor for Placement object. Callers should use the setter or fluent setter (with...) methods to
@@ -94,6 +122,9 @@ public class Placement implements Serializable, Cloneable {
      *        <p>
      *        If not specified, an Availability Zone will be automatically chosen for you based on the load balancing
      *        criteria for the Region.
+     *        </p>
+     *        <p>
+     *        This parameter is not supported by .
      */
     public Placement(String availabilityZone) {
         setAvailabilityZone(availabilityZone);
@@ -107,12 +138,18 @@ public class Placement implements Serializable, Cloneable {
      * If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria
      * for the Region.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param availabilityZone
      *        The Availability Zone of the instance.</p>
      *        <p>
      *        If not specified, an Availability Zone will be automatically chosen for you based on the load balancing
      *        criteria for the Region.
+     *        </p>
+     *        <p>
+     *        This parameter is not supported by .
      */
 
     public void setAvailabilityZone(String availabilityZone) {
@@ -127,11 +164,17 @@ public class Placement implements Serializable, Cloneable {
      * If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria
      * for the Region.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @return The Availability Zone of the instance.</p>
      *         <p>
      *         If not specified, an Availability Zone will be automatically chosen for you based on the load balancing
      *         criteria for the Region.
+     *         </p>
+     *         <p>
+     *         This parameter is not supported by .
      */
 
     public String getAvailabilityZone() {
@@ -146,12 +189,18 @@ public class Placement implements Serializable, Cloneable {
      * If not specified, an Availability Zone will be automatically chosen for you based on the load balancing criteria
      * for the Region.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param availabilityZone
      *        The Availability Zone of the instance.</p>
      *        <p>
      *        If not specified, an Availability Zone will be automatically chosen for you based on the load balancing
      *        criteria for the Region.
+     *        </p>
+     *        <p>
+     *        This parameter is not supported by .
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -165,10 +214,15 @@ public class Placement implements Serializable, Cloneable {
      * The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param affinity
      *        The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the
-     *        <a>ImportInstance</a> command.
+     *        <a>ImportInstance</a> command.</p>
+     *        <p>
+     *        This parameter is not supported by .
      */
 
     public void setAffinity(String affinity) {
@@ -180,9 +234,14 @@ public class Placement implements Serializable, Cloneable {
      * The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @return The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the
-     *         <a>ImportInstance</a> command.
+     *         <a>ImportInstance</a> command.</p>
+     *         <p>
+     *         This parameter is not supported by .
      */
 
     public String getAffinity() {
@@ -194,10 +253,15 @@ public class Placement implements Serializable, Cloneable {
      * The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param affinity
      *        The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the
-     *        <a>ImportInstance</a> command.
+     *        <a>ImportInstance</a> command.</p>
+     *        <p>
+     *        This parameter is not supported by .
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -251,10 +315,15 @@ public class Placement implements Serializable, Cloneable {
      * The number of the partition the instance is in. Valid only if the placement group strategy is set to
      * <code>partition</code>.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param partitionNumber
      *        The number of the partition the instance is in. Valid only if the placement group strategy is set to
-     *        <code>partition</code>.
+     *        <code>partition</code>.</p>
+     *        <p>
+     *        This parameter is not supported by .
      */
 
     public void setPartitionNumber(Integer partitionNumber) {
@@ -266,9 +335,14 @@ public class Placement implements Serializable, Cloneable {
      * The number of the partition the instance is in. Valid only if the placement group strategy is set to
      * <code>partition</code>.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @return The number of the partition the instance is in. Valid only if the placement group strategy is set to
-     *         <code>partition</code>.
+     *         <code>partition</code>.</p>
+     *         <p>
+     *         This parameter is not supported by .
      */
 
     public Integer getPartitionNumber() {
@@ -280,10 +354,15 @@ public class Placement implements Serializable, Cloneable {
      * The number of the partition the instance is in. Valid only if the placement group strategy is set to
      * <code>partition</code>.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param partitionNumber
      *        The number of the partition the instance is in. Valid only if the placement group strategy is set to
-     *        <code>partition</code>.
+     *        <code>partition</code>.</p>
+     *        <p>
+     *        This parameter is not supported by .
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -297,10 +376,15 @@ public class Placement implements Serializable, Cloneable {
      * The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param hostId
      *        The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
-     *        <a>ImportInstance</a> command.
+     *        <a>ImportInstance</a> command.</p>
+     *        <p>
+     *        This parameter is not supported by .
      */
 
     public void setHostId(String hostId) {
@@ -312,9 +396,14 @@ public class Placement implements Serializable, Cloneable {
      * The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @return The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
-     *         <a>ImportInstance</a> command.
+     *         <a>ImportInstance</a> command.</p>
+     *         <p>
+     *         This parameter is not supported by .
      */
 
     public String getHostId() {
@@ -326,10 +415,15 @@ public class Placement implements Serializable, Cloneable {
      * The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param hostId
      *        The ID of the Dedicated Host on which the instance resides. This parameter is not supported for the
-     *        <a>ImportInstance</a> command.
+     *        <a>ImportInstance</a> command.</p>
+     *        <p>
+     *        This parameter is not supported by .
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -344,11 +438,16 @@ public class Placement implements Serializable, Cloneable {
      * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param tenancy
      *        The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
      *        <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
-     *        the <a>ImportInstance</a> command.
+     *        the <a>ImportInstance</a> command.</p>
+     *        <p>
+     *        This parameter is not supported by .
      * @see Tenancy
      */
 
@@ -362,10 +461,15 @@ public class Placement implements Serializable, Cloneable {
      * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @return The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
      *         <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
-     *         the <a>ImportInstance</a> command.
+     *         the <a>ImportInstance</a> command.</p>
+     *         <p>
+     *         This parameter is not supported by .
      * @see Tenancy
      */
 
@@ -379,11 +483,16 @@ public class Placement implements Serializable, Cloneable {
      * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param tenancy
      *        The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
      *        <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
-     *        the <a>ImportInstance</a> command.
+     *        the <a>ImportInstance</a> command.</p>
+     *        <p>
+     *        This parameter is not supported by .
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Tenancy
      */
@@ -399,11 +508,16 @@ public class Placement implements Serializable, Cloneable {
      * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param tenancy
      *        The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
      *        <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
-     *        the <a>ImportInstance</a> command.
+     *        the <a>ImportInstance</a> command.</p>
+     *        <p>
+     *        This parameter is not supported by .
      * @see Tenancy
      */
 
@@ -417,11 +531,16 @@ public class Placement implements Serializable, Cloneable {
      * <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for the
      * <a>ImportInstance</a> command.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param tenancy
      *        The tenancy of the instance (if the instance is running in a VPC). An instance with a tenancy of
      *        <code>dedicated</code> runs on single-tenant hardware. The <code>host</code> tenancy is not supported for
-     *        the <a>ImportInstance</a> command.
+     *        the <a>ImportInstance</a> command.</p>
+     *        <p>
+     *        This parameter is not supported by .
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Tenancy
      */
@@ -435,9 +554,14 @@ public class Placement implements Serializable, Cloneable {
      * <p>
      * Reserved for future use.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param spreadDomain
-     *        Reserved for future use.
+     *        Reserved for future use.</p>
+     *        <p>
+     *        This parameter is not supported by .
      */
 
     public void setSpreadDomain(String spreadDomain) {
@@ -448,8 +572,13 @@ public class Placement implements Serializable, Cloneable {
      * <p>
      * Reserved for future use.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
-     * @return Reserved for future use.
+     * @return Reserved for future use.</p>
+     *         <p>
+     *         This parameter is not supported by .
      */
 
     public String getSpreadDomain() {
@@ -460,14 +589,80 @@ public class Placement implements Serializable, Cloneable {
      * <p>
      * Reserved for future use.
      * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
      * 
      * @param spreadDomain
-     *        Reserved for future use.
+     *        Reserved for future use.</p>
+     *        <p>
+     *        This parameter is not supported by .
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Placement withSpreadDomain(String spreadDomain) {
         setSpreadDomain(spreadDomain);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN,
+     * omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
+     * 
+     * @param hostResourceGroupArn
+     *        The ARN of the host resource group in which to launch the instances. If you specify a host resource group
+     *        ARN, omit the <b>Tenancy</b> parameter or set it to <code>host</code>.</p>
+     *        <p>
+     *        This parameter is not supported by .
+     */
+
+    public void setHostResourceGroupArn(String hostResourceGroupArn) {
+        this.hostResourceGroupArn = hostResourceGroupArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN,
+     * omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
+     * 
+     * @return The ARN of the host resource group in which to launch the instances. If you specify a host resource group
+     *         ARN, omit the <b>Tenancy</b> parameter or set it to <code>host</code>.</p>
+     *         <p>
+     *         This parameter is not supported by .
+     */
+
+    public String getHostResourceGroupArn() {
+        return this.hostResourceGroupArn;
+    }
+
+    /**
+     * <p>
+     * The ARN of the host resource group in which to launch the instances. If you specify a host resource group ARN,
+     * omit the <b>Tenancy</b> parameter or set it to <code>host</code>.
+     * </p>
+     * <p>
+     * This parameter is not supported by .
+     * </p>
+     * 
+     * @param hostResourceGroupArn
+     *        The ARN of the host resource group in which to launch the instances. If you specify a host resource group
+     *        ARN, omit the <b>Tenancy</b> parameter or set it to <code>host</code>.</p>
+     *        <p>
+     *        This parameter is not supported by .
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Placement withHostResourceGroupArn(String hostResourceGroupArn) {
+        setHostResourceGroupArn(hostResourceGroupArn);
         return this;
     }
 
@@ -496,7 +691,9 @@ public class Placement implements Serializable, Cloneable {
         if (getTenancy() != null)
             sb.append("Tenancy: ").append(getTenancy()).append(",");
         if (getSpreadDomain() != null)
-            sb.append("SpreadDomain: ").append(getSpreadDomain());
+            sb.append("SpreadDomain: ").append(getSpreadDomain()).append(",");
+        if (getHostResourceGroupArn() != null)
+            sb.append("HostResourceGroupArn: ").append(getHostResourceGroupArn());
         sb.append("}");
         return sb.toString();
     }
@@ -539,6 +736,10 @@ public class Placement implements Serializable, Cloneable {
             return false;
         if (other.getSpreadDomain() != null && other.getSpreadDomain().equals(this.getSpreadDomain()) == false)
             return false;
+        if (other.getHostResourceGroupArn() == null ^ this.getHostResourceGroupArn() == null)
+            return false;
+        if (other.getHostResourceGroupArn() != null && other.getHostResourceGroupArn().equals(this.getHostResourceGroupArn()) == false)
+            return false;
         return true;
     }
 
@@ -554,6 +755,7 @@ public class Placement implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getHostId() == null) ? 0 : getHostId().hashCode());
         hashCode = prime * hashCode + ((getTenancy() == null) ? 0 : getTenancy().hashCode());
         hashCode = prime * hashCode + ((getSpreadDomain() == null) ? 0 : getSpreadDomain().hashCode());
+        hashCode = prime * hashCode + ((getHostResourceGroupArn() == null) ? 0 : getHostResourceGroupArn().hashCode());
         return hashCode;
     }
 

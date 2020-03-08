@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.CreateVolumeRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for CreateVolume.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateVolumeRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<CreateVolumeRequest> {
@@ -103,7 +101,13 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
     private String kmsKeyId;
     /**
      * <p>
-     * The size of the volume, in GiBs.
+     * The Amazon Resource Name (ARN) of the Outpost.
+     * </p>
+     */
+    private String outpostArn;
+    /**
+     * <p>
+     * The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.
      * </p>
      * <p>
      * Constraints: 1-16,384 for <code>gp2</code>, 4-16,384 for <code>io1</code>, 500-16,384 for <code>st1</code>,
@@ -114,22 +118,12 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the
      * snapshot size.
      * </p>
-     * <note>
-     * <p>
-     * At least one of Size or SnapshotId is required.
-     * </p>
-     * </note>
      */
     private Integer size;
     /**
      * <p>
-     * The snapshot from which to create the volume.
+     * The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.
      * </p>
-     * <note>
-     * <p>
-     * At least one of Size or SnapshotId are required.
-     * </p>
-     * </note>
      */
     private String snapshotId;
     /**
@@ -149,6 +143,17 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<TagSpecification> tagSpecifications;
+    /**
+     * <p>
+     * Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the volume to up
+     * to 16 <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instances</a> in the same Availability Zone. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS Multi-Attach</a> in
+     * the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     */
+    private Boolean multiAttachEnabled;
 
     /**
      * Default constructor for CreateVolumeRequest object. Callers should use the setter or fluent setter (with...)
@@ -162,7 +167,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * initialize any additional object members.
      * 
      * @param size
-     *        The size of the volume, in GiBs.</p>
+     *        The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.</p>
      *        <p>
      *        Constraints: 1-16,384 for <code>gp2</code>, 4-16,384 for <code>io1</code>, 500-16,384 for <code>st1</code>
      *        , 500-16,384 for <code>sc1</code>, and 1-1,024 for <code>standard</code>. If you specify a snapshot, the
@@ -171,11 +176,6 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      *        <p>
      *        Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the
      *        snapshot size.
-     *        </p>
-     *        <note>
-     *        <p>
-     *        At least one of Size or SnapshotId is required.
-     *        </p>
      * @param availabilityZone
      *        The Availability Zone in which to create the volume.
      */
@@ -189,10 +189,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * initialize any additional object members.
      * 
      * @param snapshotId
-     *        The snapshot from which to create the volume.</p> <note>
-     *        <p>
-     *        At least one of Size or SnapshotId are required.
-     *        </p>
+     *        The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.
      * @param availabilityZone
      *        The Availability Zone in which to create the volume.
      */
@@ -688,7 +685,47 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The size of the volume, in GiBs.
+     * The Amazon Resource Name (ARN) of the Outpost.
+     * </p>
+     * 
+     * @param outpostArn
+     *        The Amazon Resource Name (ARN) of the Outpost.
+     */
+
+    public void setOutpostArn(String outpostArn) {
+        this.outpostArn = outpostArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the Outpost.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the Outpost.
+     */
+
+    public String getOutpostArn() {
+        return this.outpostArn;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the Outpost.
+     * </p>
+     * 
+     * @param outpostArn
+     *        The Amazon Resource Name (ARN) of the Outpost.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateVolumeRequest withOutpostArn(String outpostArn) {
+        setOutpostArn(outpostArn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.
      * </p>
      * <p>
      * Constraints: 1-16,384 for <code>gp2</code>, 4-16,384 for <code>io1</code>, 500-16,384 for <code>st1</code>,
@@ -699,14 +736,9 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the
      * snapshot size.
      * </p>
-     * <note>
-     * <p>
-     * At least one of Size or SnapshotId is required.
-     * </p>
-     * </note>
      * 
      * @param size
-     *        The size of the volume, in GiBs.</p>
+     *        The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.</p>
      *        <p>
      *        Constraints: 1-16,384 for <code>gp2</code>, 4-16,384 for <code>io1</code>, 500-16,384 for <code>st1</code>
      *        , 500-16,384 for <code>sc1</code>, and 1-1,024 for <code>standard</code>. If you specify a snapshot, the
@@ -715,11 +747,6 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      *        <p>
      *        Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the
      *        snapshot size.
-     *        </p>
-     *        <note>
-     *        <p>
-     *        At least one of Size or SnapshotId is required.
-     *        </p>
      */
 
     public void setSize(Integer size) {
@@ -728,7 +755,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The size of the volume, in GiBs.
+     * The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.
      * </p>
      * <p>
      * Constraints: 1-16,384 for <code>gp2</code>, 4-16,384 for <code>io1</code>, 500-16,384 for <code>st1</code>,
@@ -739,13 +766,8 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the
      * snapshot size.
      * </p>
-     * <note>
-     * <p>
-     * At least one of Size or SnapshotId is required.
-     * </p>
-     * </note>
      * 
-     * @return The size of the volume, in GiBs.</p>
+     * @return The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.</p>
      *         <p>
      *         Constraints: 1-16,384 for <code>gp2</code>, 4-16,384 for <code>io1</code>, 500-16,384 for
      *         <code>st1</code>, 500-16,384 for <code>sc1</code>, and 1-1,024 for <code>standard</code>. If you specify
@@ -754,11 +776,6 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      *         <p>
      *         Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is
      *         the snapshot size.
-     *         </p>
-     *         <note>
-     *         <p>
-     *         At least one of Size or SnapshotId is required.
-     *         </p>
      */
 
     public Integer getSize() {
@@ -767,7 +784,7 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The size of the volume, in GiBs.
+     * The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.
      * </p>
      * <p>
      * Constraints: 1-16,384 for <code>gp2</code>, 4-16,384 for <code>io1</code>, 500-16,384 for <code>st1</code>,
@@ -778,14 +795,9 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      * Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the
      * snapshot size.
      * </p>
-     * <note>
-     * <p>
-     * At least one of Size or SnapshotId is required.
-     * </p>
-     * </note>
      * 
      * @param size
-     *        The size of the volume, in GiBs.</p>
+     *        The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size.</p>
      *        <p>
      *        Constraints: 1-16,384 for <code>gp2</code>, 4-16,384 for <code>io1</code>, 500-16,384 for <code>st1</code>
      *        , 500-16,384 for <code>sc1</code>, and 1-1,024 for <code>standard</code>. If you specify a snapshot, the
@@ -794,11 +806,6 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
      *        <p>
      *        Default: If you're creating the volume from a snapshot and don't specify a volume size, the default is the
      *        snapshot size.
-     *        </p>
-     *        <note>
-     *        <p>
-     *        At least one of Size or SnapshotId is required.
-     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -809,19 +816,11 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The snapshot from which to create the volume.
+     * The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.
      * </p>
-     * <note>
-     * <p>
-     * At least one of Size or SnapshotId are required.
-     * </p>
-     * </note>
      * 
      * @param snapshotId
-     *        The snapshot from which to create the volume.</p> <note>
-     *        <p>
-     *        At least one of Size or SnapshotId are required.
-     *        </p>
+     *        The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.
      */
 
     public void setSnapshotId(String snapshotId) {
@@ -830,18 +829,10 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The snapshot from which to create the volume.
+     * The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.
      * </p>
-     * <note>
-     * <p>
-     * At least one of Size or SnapshotId are required.
-     * </p>
-     * </note>
      * 
-     * @return The snapshot from which to create the volume.</p> <note>
-     *         <p>
-     *         At least one of Size or SnapshotId are required.
-     *         </p>
+     * @return The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.
      */
 
     public String getSnapshotId() {
@@ -850,19 +841,11 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
 
     /**
      * <p>
-     * The snapshot from which to create the volume.
+     * The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.
      * </p>
-     * <note>
-     * <p>
-     * At least one of Size or SnapshotId are required.
-     * </p>
-     * </note>
      * 
      * @param snapshotId
-     *        The snapshot from which to create the volume.</p> <note>
-     *        <p>
-     *        At least one of Size or SnapshotId are required.
-     *        </p>
+     *        The snapshot from which to create the volume. You must specify either a snapshot ID or a volume size.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1063,6 +1046,98 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
     }
 
     /**
+     * <p>
+     * Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the volume to up
+     * to 16 <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instances</a> in the same Availability Zone. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS Multi-Attach</a> in
+     * the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param multiAttachEnabled
+     *        Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the volume
+     *        to up to 16 <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
+     *        >Nitro-based instances</a> in the same Availability Zone. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS
+     *        Multi-Attach</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public void setMultiAttachEnabled(Boolean multiAttachEnabled) {
+        this.multiAttachEnabled = multiAttachEnabled;
+    }
+
+    /**
+     * <p>
+     * Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the volume to up
+     * to 16 <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instances</a> in the same Availability Zone. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS Multi-Attach</a> in
+     * the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @return Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the
+     *         volume to up to 16 <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
+     *         >Nitro-based instances</a> in the same Availability Zone. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS
+     *         Multi-Attach</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public Boolean getMultiAttachEnabled() {
+        return this.multiAttachEnabled;
+    }
+
+    /**
+     * <p>
+     * Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the volume to up
+     * to 16 <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instances</a> in the same Availability Zone. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS Multi-Attach</a> in
+     * the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @param multiAttachEnabled
+     *        Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the volume
+     *        to up to 16 <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
+     *        >Nitro-based instances</a> in the same Availability Zone. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS
+     *        Multi-Attach</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateVolumeRequest withMultiAttachEnabled(Boolean multiAttachEnabled) {
+        setMultiAttachEnabled(multiAttachEnabled);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the volume to up
+     * to 16 <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
+     * instances</a> in the same Availability Zone. For more information, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS Multi-Attach</a> in
+     * the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     * </p>
+     * 
+     * @return Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the
+     *         volume to up to 16 <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
+     *         >Nitro-based instances</a> in the same Availability Zone. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html"> Amazon EBS
+     *         Multi-Attach</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.
+     */
+
+    public Boolean isMultiAttachEnabled() {
+        return this.multiAttachEnabled;
+    }
+
+    /**
      * This method is intended for internal use only. Returns the marshaled request configured with additional
      * parameters to enable operation dry-run.
      */
@@ -1093,6 +1168,8 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
             sb.append("Iops: ").append(getIops()).append(",");
         if (getKmsKeyId() != null)
             sb.append("KmsKeyId: ").append(getKmsKeyId()).append(",");
+        if (getOutpostArn() != null)
+            sb.append("OutpostArn: ").append(getOutpostArn()).append(",");
         if (getSize() != null)
             sb.append("Size: ").append(getSize()).append(",");
         if (getSnapshotId() != null)
@@ -1100,7 +1177,9 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         if (getVolumeType() != null)
             sb.append("VolumeType: ").append(getVolumeType()).append(",");
         if (getTagSpecifications() != null)
-            sb.append("TagSpecifications: ").append(getTagSpecifications());
+            sb.append("TagSpecifications: ").append(getTagSpecifications()).append(",");
+        if (getMultiAttachEnabled() != null)
+            sb.append("MultiAttachEnabled: ").append(getMultiAttachEnabled());
         sb.append("}");
         return sb.toString();
     }
@@ -1131,6 +1210,10 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
             return false;
         if (other.getKmsKeyId() != null && other.getKmsKeyId().equals(this.getKmsKeyId()) == false)
             return false;
+        if (other.getOutpostArn() == null ^ this.getOutpostArn() == null)
+            return false;
+        if (other.getOutpostArn() != null && other.getOutpostArn().equals(this.getOutpostArn()) == false)
+            return false;
         if (other.getSize() == null ^ this.getSize() == null)
             return false;
         if (other.getSize() != null && other.getSize().equals(this.getSize()) == false)
@@ -1147,6 +1230,10 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
             return false;
         if (other.getTagSpecifications() != null && other.getTagSpecifications().equals(this.getTagSpecifications()) == false)
             return false;
+        if (other.getMultiAttachEnabled() == null ^ this.getMultiAttachEnabled() == null)
+            return false;
+        if (other.getMultiAttachEnabled() != null && other.getMultiAttachEnabled().equals(this.getMultiAttachEnabled()) == false)
+            return false;
         return true;
     }
 
@@ -1159,10 +1246,12 @@ public class CreateVolumeRequest extends AmazonWebServiceRequest implements Seri
         hashCode = prime * hashCode + ((getEncrypted() == null) ? 0 : getEncrypted().hashCode());
         hashCode = prime * hashCode + ((getIops() == null) ? 0 : getIops().hashCode());
         hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
+        hashCode = prime * hashCode + ((getOutpostArn() == null) ? 0 : getOutpostArn().hashCode());
         hashCode = prime * hashCode + ((getSize() == null) ? 0 : getSize().hashCode());
         hashCode = prime * hashCode + ((getSnapshotId() == null) ? 0 : getSnapshotId().hashCode());
         hashCode = prime * hashCode + ((getVolumeType() == null) ? 0 : getVolumeType().hashCode());
         hashCode = prime * hashCode + ((getTagSpecifications() == null) ? 0 : getTagSpecifications().hashCode());
+        hashCode = prime * hashCode + ((getMultiAttachEnabled() == null) ? 0 : getMultiAttachEnabled().hashCode());
         return hashCode;
     }
 

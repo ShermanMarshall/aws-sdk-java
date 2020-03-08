@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -51,7 +51,7 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
     private Integer endOffset;
     /**
      * <p>
-     * The level of confidence that Comprehend Medical has in the accuracy of the detection.
+     * The level of confidence that Amazon Comprehend Medical has in the accuracy of the detection.
      * </p>
      */
     private Float score;
@@ -75,7 +75,7 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
     private String type;
     /**
      * <p>
-     * Contextual information for the entity
+     * Contextual information for the entity.
      * </p>
      */
     private java.util.List<Trait> traits;
@@ -226,11 +226,11 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The level of confidence that Comprehend Medical has in the accuracy of the detection.
+     * The level of confidence that Amazon Comprehend Medical has in the accuracy of the detection.
      * </p>
      * 
      * @param score
-     *        The level of confidence that Comprehend Medical has in the accuracy of the detection.
+     *        The level of confidence that Amazon Comprehend Medical has in the accuracy of the detection.
      */
 
     public void setScore(Float score) {
@@ -239,10 +239,10 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The level of confidence that Comprehend Medical has in the accuracy of the detection.
+     * The level of confidence that Amazon Comprehend Medical has in the accuracy of the detection.
      * </p>
      * 
-     * @return The level of confidence that Comprehend Medical has in the accuracy of the detection.
+     * @return The level of confidence that Amazon Comprehend Medical has in the accuracy of the detection.
      */
 
     public Float getScore() {
@@ -251,11 +251,11 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The level of confidence that Comprehend Medical has in the accuracy of the detection.
+     * The level of confidence that Amazon Comprehend Medical has in the accuracy of the detection.
      * </p>
      * 
      * @param score
-     *        The level of confidence that Comprehend Medical has in the accuracy of the detection.
+     *        The level of confidence that Amazon Comprehend Medical has in the accuracy of the detection.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -424,10 +424,10 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Contextual information for the entity
+     * Contextual information for the entity.
      * </p>
      * 
-     * @return Contextual information for the entity
+     * @return Contextual information for the entity.
      */
 
     public java.util.List<Trait> getTraits() {
@@ -436,11 +436,11 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Contextual information for the entity
+     * Contextual information for the entity.
      * </p>
      * 
      * @param traits
-     *        Contextual information for the entity
+     *        Contextual information for the entity.
      */
 
     public void setTraits(java.util.Collection<Trait> traits) {
@@ -454,7 +454,7 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Contextual information for the entity
+     * Contextual information for the entity.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -463,7 +463,7 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * 
      * @param traits
-     *        Contextual information for the entity
+     *        Contextual information for the entity.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -479,11 +479,11 @@ public class Entity implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Contextual information for the entity
+     * Contextual information for the entity.
      * </p>
      * 
      * @param traits
-     *        Contextual information for the entity
+     *        Contextual information for the entity.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

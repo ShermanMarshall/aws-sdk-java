@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,8 +37,8 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward
-     * slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F),
-     * including most punctuation characters, digits, and upper and lowercased letters.
+     * slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits, and upper and lowercased letters.
      * </p>
      */
     private String path;
@@ -68,22 +68,24 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <ul>
      * <li>
      * <p>
-     * Any printable ASCII character ranging from the space character ( ) through the end of the ASCII character range
+     * Any printable ASCII character ranging from the space character (<code>\u0020</code>) through the end of the ASCII
+     * character range
      * </p>
      * </li>
      * <li>
      * <p>
-     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)
+     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through <code>\u00FF</code>)
      * </p>
      * </li>
      * <li>
      * <p>
-     * The special characters tab ( ), line feed ( ), and carriage return ( )
+     * The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (<code>\u000D</code>
+     * )
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Upon success, the response includes the same trust policy as a URL-encoded JSON string.
+     * Upon success, the response includes the same trust policy in JSON format.
      * </p>
      */
     private String assumeRolePolicyDocument;
@@ -145,8 +147,8 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward
-     * slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F),
-     * including most punctuation characters, digits, and upper and lowercased letters.
+     * slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits, and upper and lowercased letters.
      * </p>
      * 
      * @param path
@@ -159,8 +161,9 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <p>
      *        This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
      *        of characters consisting of either a forward slash (/) by itself or a string that must begin and end with
-     *        forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL
-     *        character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+     *        forward slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through
+     *        the DEL character (<code>\u007F</code>), including most punctuation characters, digits, and upper and
+     *        lowercased letters.
      */
 
     public void setPath(String path) {
@@ -179,8 +182,8 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward
-     * slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F),
-     * including most punctuation characters, digits, and upper and lowercased letters.
+     * slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits, and upper and lowercased letters.
      * </p>
      * 
      * @return The path to the role. For more information about paths, see <a
@@ -192,8 +195,9 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *         <p>
      *         This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
      *         of characters consisting of either a forward slash (/) by itself or a string that must begin and end with
-     *         forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL
-     *         character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+     *         forward slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through
+     *         the DEL character (<code>\u007F</code>), including most punctuation characters, digits, and upper and
+     *         lowercased letters.
      */
 
     public String getPath() {
@@ -212,8 +216,8 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward
-     * slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F),
-     * including most punctuation characters, digits, and upper and lowercased letters.
+     * slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL
+     * character (<code>\u007F</code>), including most punctuation characters, digits, and upper and lowercased letters.
      * </p>
      * 
      * @param path
@@ -226,8 +230,9 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <p>
      *        This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string
      *        of characters consisting of either a forward slash (/) by itself or a string that must begin and end with
-     *        forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL
-     *        character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+     *        forward slashes. In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through
+     *        the DEL character (<code>\u007F</code>), including most punctuation characters, digits, and upper and
+     *        lowercased letters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -313,22 +318,24 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <ul>
      * <li>
      * <p>
-     * Any printable ASCII character ranging from the space character ( ) through the end of the ASCII character range
+     * Any printable ASCII character ranging from the space character (<code>\u0020</code>) through the end of the ASCII
+     * character range
      * </p>
      * </li>
      * <li>
      * <p>
-     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)
+     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through <code>\u00FF</code>)
      * </p>
      * </li>
      * <li>
      * <p>
-     * The special characters tab ( ), line feed ( ), and carriage return ( )
+     * The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (<code>\u000D</code>
+     * )
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Upon success, the response includes the same trust policy as a URL-encoded JSON string.
+     * Upon success, the response includes the same trust policy in JSON format.
      * </p>
      * 
      * @param assumeRolePolicyDocument
@@ -345,23 +352,25 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <ul>
      *        <li>
      *        <p>
-     *        Any printable ASCII character ranging from the space character ( ) through the end of the ASCII character
-     *        range
+     *        Any printable ASCII character ranging from the space character (<code>\u0020</code>) through the end of
+     *        the ASCII character range
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)
+     *        The printable characters in the Basic Latin and Latin-1 Supplement character set (through
+     *        <code>\u00FF</code>)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The special characters tab ( ), line feed ( ), and carriage return ( )
+     *        The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (
+     *        <code>\u000D</code>)
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        Upon success, the response includes the same trust policy as a URL-encoded JSON string.
+     *        Upon success, the response includes the same trust policy in JSON format.
      */
 
     public void setAssumeRolePolicyDocument(String assumeRolePolicyDocument) {
@@ -384,22 +393,24 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <ul>
      * <li>
      * <p>
-     * Any printable ASCII character ranging from the space character ( ) through the end of the ASCII character range
+     * Any printable ASCII character ranging from the space character (<code>\u0020</code>) through the end of the ASCII
+     * character range
      * </p>
      * </li>
      * <li>
      * <p>
-     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)
+     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through <code>\u00FF</code>)
      * </p>
      * </li>
      * <li>
      * <p>
-     * The special characters tab ( ), line feed ( ), and carriage return ( )
+     * The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (<code>\u000D</code>
+     * )
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Upon success, the response includes the same trust policy as a URL-encoded JSON string.
+     * Upon success, the response includes the same trust policy in JSON format.
      * </p>
      * 
      * @return The trust relationship policy document that grants an entity permission to assume the role.</p>
@@ -415,23 +426,25 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *         <ul>
      *         <li>
      *         <p>
-     *         Any printable ASCII character ranging from the space character ( ) through the end of the ASCII character
-     *         range
+     *         Any printable ASCII character ranging from the space character (<code>\u0020</code>) through the end of
+     *         the ASCII character range
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)
+     *         The printable characters in the Basic Latin and Latin-1 Supplement character set (through
+     *         <code>\u00FF</code>)
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The special characters tab ( ), line feed ( ), and carriage return ( )
+     *         The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (
+     *         <code>\u000D</code>)
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         Upon success, the response includes the same trust policy as a URL-encoded JSON string.
+     *         Upon success, the response includes the same trust policy in JSON format.
      */
 
     public String getAssumeRolePolicyDocument() {
@@ -454,22 +467,24 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <ul>
      * <li>
      * <p>
-     * Any printable ASCII character ranging from the space character ( ) through the end of the ASCII character range
+     * Any printable ASCII character ranging from the space character (<code>\u0020</code>) through the end of the ASCII
+     * character range
      * </p>
      * </li>
      * <li>
      * <p>
-     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)
+     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through <code>\u00FF</code>)
      * </p>
      * </li>
      * <li>
      * <p>
-     * The special characters tab ( ), line feed ( ), and carriage return ( )
+     * The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (<code>\u000D</code>
+     * )
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Upon success, the response includes the same trust policy as a URL-encoded JSON string.
+     * Upon success, the response includes the same trust policy in JSON format.
      * </p>
      * 
      * @param assumeRolePolicyDocument
@@ -486,23 +501,25 @@ public class CreateRoleRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        <ul>
      *        <li>
      *        <p>
-     *        Any printable ASCII character ranging from the space character ( ) through the end of the ASCII character
-     *        range
+     *        Any printable ASCII character ranging from the space character (<code>\u0020</code>) through the end of
+     *        the ASCII character range
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)
+     *        The printable characters in the Basic Latin and Latin-1 Supplement character set (through
+     *        <code>\u00FF</code>)
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The special characters tab ( ), line feed ( ), and carriage return ( )
+     *        The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (
+     *        <code>\u000D</code>)
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        Upon success, the response includes the same trust policy as a URL-encoded JSON string.
+     *        Upon success, the response includes the same trust policy in JSON format.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

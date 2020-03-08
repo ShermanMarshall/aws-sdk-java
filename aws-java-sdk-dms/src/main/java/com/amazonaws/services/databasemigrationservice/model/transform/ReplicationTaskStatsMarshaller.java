@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,6 +39,16 @@ public class ReplicationTaskStatsMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TablesQueued").build();
     private static final MarshallingInfo<Integer> TABLESERRORED_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TablesErrored").build();
+    private static final MarshallingInfo<java.util.Date> FRESHSTARTDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("FreshStartDate").timestampFormat("unixTimestamp").build();
+    private static final MarshallingInfo<java.util.Date> STARTDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StartDate").timestampFormat("unixTimestamp").build();
+    private static final MarshallingInfo<java.util.Date> STOPDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("StopDate").timestampFormat("unixTimestamp").build();
+    private static final MarshallingInfo<java.util.Date> FULLLOADSTARTDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("FullLoadStartDate").timestampFormat("unixTimestamp").build();
+    private static final MarshallingInfo<java.util.Date> FULLLOADFINISHDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("FullLoadFinishDate").timestampFormat("unixTimestamp").build();
 
     private static final ReplicationTaskStatsMarshaller instance = new ReplicationTaskStatsMarshaller();
 
@@ -62,6 +72,11 @@ public class ReplicationTaskStatsMarshaller {
             protocolMarshaller.marshall(replicationTaskStats.getTablesLoading(), TABLESLOADING_BINDING);
             protocolMarshaller.marshall(replicationTaskStats.getTablesQueued(), TABLESQUEUED_BINDING);
             protocolMarshaller.marshall(replicationTaskStats.getTablesErrored(), TABLESERRORED_BINDING);
+            protocolMarshaller.marshall(replicationTaskStats.getFreshStartDate(), FRESHSTARTDATE_BINDING);
+            protocolMarshaller.marshall(replicationTaskStats.getStartDate(), STARTDATE_BINDING);
+            protocolMarshaller.marshall(replicationTaskStats.getStopDate(), STOPDATE_BINDING);
+            protocolMarshaller.marshall(replicationTaskStats.getFullLoadStartDate(), FULLLOADSTARTDATE_BINDING);
+            protocolMarshaller.marshall(replicationTaskStats.getFullLoadFinishDate(), FULLLOADFINISHDATE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

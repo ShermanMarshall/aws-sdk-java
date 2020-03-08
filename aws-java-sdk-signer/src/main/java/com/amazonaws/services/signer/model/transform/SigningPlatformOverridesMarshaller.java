@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class SigningPlatformOverridesMarshaller {
 
     private static final MarshallingInfo<StructuredPojo> SIGNINGCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("signingConfiguration").build();
+    private static final MarshallingInfo<String> SIGNINGIMAGEFORMAT_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("signingImageFormat").build();
 
     private static final SigningPlatformOverridesMarshaller instance = new SigningPlatformOverridesMarshaller();
 
@@ -47,6 +49,7 @@ public class SigningPlatformOverridesMarshaller {
 
         try {
             protocolMarshaller.marshall(signingPlatformOverrides.getSigningConfiguration(), SIGNINGCONFIGURATION_BINDING);
+            protocolMarshaller.marshall(signingPlatformOverrides.getSigningImageFormat(), SIGNINGIMAGEFORMAT_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

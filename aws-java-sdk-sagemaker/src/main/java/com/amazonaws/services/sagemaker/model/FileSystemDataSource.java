@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,7 +37,7 @@ public class FileSystemDataSource implements Serializable, Cloneable, Structured
     /**
      * <p>
      * The access mode of the mount of the directory associated with the channel. A directory can be mounted either in
-     * <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     * <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * </p>
      */
     private String fileSystemAccessMode;
@@ -97,12 +97,12 @@ public class FileSystemDataSource implements Serializable, Cloneable, Structured
     /**
      * <p>
      * The access mode of the mount of the directory associated with the channel. A directory can be mounted either in
-     * <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     * <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * </p>
      * 
      * @param fileSystemAccessMode
      *        The access mode of the mount of the directory associated with the channel. A directory can be mounted
-     *        either in <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     *        either in <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * @see FileSystemAccessMode
      */
 
@@ -113,11 +113,11 @@ public class FileSystemDataSource implements Serializable, Cloneable, Structured
     /**
      * <p>
      * The access mode of the mount of the directory associated with the channel. A directory can be mounted either in
-     * <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     * <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * </p>
      * 
      * @return The access mode of the mount of the directory associated with the channel. A directory can be mounted
-     *         either in <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     *         either in <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * @see FileSystemAccessMode
      */
 
@@ -128,12 +128,12 @@ public class FileSystemDataSource implements Serializable, Cloneable, Structured
     /**
      * <p>
      * The access mode of the mount of the directory associated with the channel. A directory can be mounted either in
-     * <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     * <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * </p>
      * 
      * @param fileSystemAccessMode
      *        The access mode of the mount of the directory associated with the channel. A directory can be mounted
-     *        either in <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     *        either in <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see FileSystemAccessMode
      */
@@ -146,12 +146,12 @@ public class FileSystemDataSource implements Serializable, Cloneable, Structured
     /**
      * <p>
      * The access mode of the mount of the directory associated with the channel. A directory can be mounted either in
-     * <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     * <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * </p>
      * 
      * @param fileSystemAccessMode
      *        The access mode of the mount of the directory associated with the channel. A directory can be mounted
-     *        either in <code>ro</code> (read-only) or <code>rw</code> (read-write).
+     *        either in <code>ro</code> (read-only) or <code>rw</code> (read-write) mode.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see FileSystemAccessMode
      */

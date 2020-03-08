@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -576,6 +576,13 @@ public class SendMessageRequest extends com.amazonaws.AmazonWebServiceRequest im
         return this;
     }
 
+    /**
+     * Add a single MessageAttributes entry
+     *
+     * @see SendMessageRequest#withMessageAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public SendMessageRequest addMessageAttributesEntry(String key, MessageAttributeValue value) {
         if (null == this.messageAttributes) {
             this.messageAttributes = new com.amazonaws.internal.SdkInternalMap<String, MessageAttributeValue>();
@@ -730,6 +737,13 @@ public class SendMessageRequest extends com.amazonaws.AmazonWebServiceRequest im
         setMessageSystemAttributes(messageSystemAttributes);
         return this;
     }
+
+    /**
+     * Add a single MessageSystemAttributes entry
+     *
+     * @see SendMessageRequest#withMessageSystemAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public SendMessageRequest addMessageSystemAttributesEntry(String key, MessageSystemAttributeValue value) {
         if (null == this.messageSystemAttributes) {

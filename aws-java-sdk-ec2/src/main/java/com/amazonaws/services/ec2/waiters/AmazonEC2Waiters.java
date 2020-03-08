@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -283,6 +283,19 @@ public class AmazonEC2Waiters {
         return new WaiterBuilder<DescribeInstancesRequest, DescribeInstancesResult>().withSdkFunction(new DescribeInstancesFunction(client))
                 .withAcceptors(new InstanceExists.IsTrueMatcher(), new InstanceExists.IsInvalidInstanceIDNotFoundMatcher())
                 .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(40), new FixedDelayStrategy(5)))
+                .withExecutorService(executorService).build();
+    }
+
+    /**
+     * Builds a SecurityGroupExists waiter by using custom parameters waiterParameters and other parameters defined in
+     * the waiters specification, and then polls until it determines whether the resource entered the desired state or
+     * not, where polling criteria is bound by either default polling strategy or custom polling strategy.
+     */
+    public Waiter<DescribeSecurityGroupsRequest> securityGroupExists() {
+
+        return new WaiterBuilder<DescribeSecurityGroupsRequest, DescribeSecurityGroupsResult>().withSdkFunction(new DescribeSecurityGroupsFunction(client))
+                .withAcceptors(new SecurityGroupExists.IsTrueMatcher(), new SecurityGroupExists.IsInvalidGroupNotFoundMatcher())
+                .withDefaultPollingStrategy(new PollingStrategy(new MaxAttemptsRetryStrategy(6), new FixedDelayStrategy(5)))
                 .withExecutorService(executorService).build();
     }
 

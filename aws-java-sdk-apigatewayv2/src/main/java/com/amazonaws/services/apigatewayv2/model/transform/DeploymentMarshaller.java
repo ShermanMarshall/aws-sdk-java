@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,6 +27,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class DeploymentMarshaller {
 
+    private static final MarshallingInfo<Boolean> AUTODEPLOYED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("autoDeployed").build();
     private static final MarshallingInfo<java.util.Date> CREATEDDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("createdDate").timestampFormat("iso8601").build();
     private static final MarshallingInfo<String> DEPLOYMENTID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -54,6 +56,7 @@ public class DeploymentMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(deployment.getAutoDeployed(), AUTODEPLOYED_BINDING);
             protocolMarshaller.marshall(deployment.getCreatedDate(), CREATEDDATE_BINDING);
             protocolMarshaller.marshall(deployment.getDeploymentId(), DEPLOYMENTID_BINDING);
             protocolMarshaller.marshall(deployment.getDeploymentStatus(), DEPLOYMENTSTATUS_BINDING);

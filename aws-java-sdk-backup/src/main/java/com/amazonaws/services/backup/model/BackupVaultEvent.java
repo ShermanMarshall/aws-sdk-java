@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -22,8 +22,16 @@ public enum BackupVaultEvent {
 
     BACKUP_JOB_STARTED("BACKUP_JOB_STARTED"),
     BACKUP_JOB_COMPLETED("BACKUP_JOB_COMPLETED"),
+    BACKUP_JOB_SUCCESSFUL("BACKUP_JOB_SUCCESSFUL"),
+    BACKUP_JOB_FAILED("BACKUP_JOB_FAILED"),
+    BACKUP_JOB_EXPIRED("BACKUP_JOB_EXPIRED"),
     RESTORE_JOB_STARTED("RESTORE_JOB_STARTED"),
     RESTORE_JOB_COMPLETED("RESTORE_JOB_COMPLETED"),
+    RESTORE_JOB_SUCCESSFUL("RESTORE_JOB_SUCCESSFUL"),
+    RESTORE_JOB_FAILED("RESTORE_JOB_FAILED"),
+    COPY_JOB_STARTED("COPY_JOB_STARTED"),
+    COPY_JOB_SUCCESSFUL("COPY_JOB_SUCCESSFUL"),
+    COPY_JOB_FAILED("COPY_JOB_FAILED"),
     RECOVERY_POINT_MODIFIED("RECOVERY_POINT_MODIFIED"),
     BACKUP_PLAN_CREATED("BACKUP_PLAN_CREATED"),
     BACKUP_PLAN_MODIFIED("BACKUP_PLAN_MODIFIED");

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -59,6 +59,14 @@ public class DynamodbDataSourceConfigJsonUnmarshaller implements Unmarshaller<Dy
                 if (context.testExpression("useCallerCredentials", targetDepth)) {
                     context.nextToken();
                     dynamodbDataSourceConfig.setUseCallerCredentials(context.getUnmarshaller(Boolean.class).unmarshall(context));
+                }
+                if (context.testExpression("deltaSyncConfig", targetDepth)) {
+                    context.nextToken();
+                    dynamodbDataSourceConfig.setDeltaSyncConfig(DeltaSyncConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("versioned", targetDepth)) {
+                    context.nextToken();
+                    dynamodbDataSourceConfig.setVersioned(context.getUnmarshaller(Boolean.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

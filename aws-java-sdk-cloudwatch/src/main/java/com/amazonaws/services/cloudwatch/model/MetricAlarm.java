@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * Represents an alarm.
+ * The details about a metric alarm.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/MetricAlarm" target="_top">AWS API
@@ -152,7 +152,7 @@ public class MetricAlarm implements Serializable, Cloneable {
     private Integer evaluationPeriods;
     /**
      * <p>
-     * The number of datapoints that must be breaching to trigger the alarm.
+     * The number of data points that must be breaching to trigger the alarm.
      * </p>
      */
     private Integer datapointsToAlarm;
@@ -1279,11 +1279,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of datapoints that must be breaching to trigger the alarm.
+     * The number of data points that must be breaching to trigger the alarm.
      * </p>
      * 
      * @param datapointsToAlarm
-     *        The number of datapoints that must be breaching to trigger the alarm.
+     *        The number of data points that must be breaching to trigger the alarm.
      */
 
     public void setDatapointsToAlarm(Integer datapointsToAlarm) {
@@ -1292,10 +1292,10 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of datapoints that must be breaching to trigger the alarm.
+     * The number of data points that must be breaching to trigger the alarm.
      * </p>
      * 
-     * @return The number of datapoints that must be breaching to trigger the alarm.
+     * @return The number of data points that must be breaching to trigger the alarm.
      */
 
     public Integer getDatapointsToAlarm() {
@@ -1304,11 +1304,11 @@ public class MetricAlarm implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The number of datapoints that must be breaching to trigger the alarm.
+     * The number of data points that must be breaching to trigger the alarm.
      * </p>
      * 
      * @param datapointsToAlarm
-     *        The number of datapoints that must be breaching to trigger the alarm.
+     *        The number of data points that must be breaching to trigger the alarm.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,13 +38,22 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
     private String allocationStrategy;
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     * The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for fleets
+     * of type <code>instant</code>.
+     * </p>
+     */
+    private CapacityReservationOptionsRequest capacityReservationOptions;
+    /**
+     * <p>
+     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet. Supported
+     * only for fleets of type <code>instant</code>.
      * </p>
      */
     private Boolean singleInstanceType;
     /**
      * <p>
-     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for
+     * fleets of type <code>instant</code>.
      * </p>
      */
     private Boolean singleAvailabilityZone;
@@ -155,11 +164,59 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     * The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for fleets
+     * of type <code>instant</code>.
+     * </p>
+     * 
+     * @param capacityReservationOptions
+     *        The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for
+     *        fleets of type <code>instant</code>.
+     */
+
+    public void setCapacityReservationOptions(CapacityReservationOptionsRequest capacityReservationOptions) {
+        this.capacityReservationOptions = capacityReservationOptions;
+    }
+
+    /**
+     * <p>
+     * The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for fleets
+     * of type <code>instant</code>.
+     * </p>
+     * 
+     * @return The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for
+     *         fleets of type <code>instant</code>.
+     */
+
+    public CapacityReservationOptionsRequest getCapacityReservationOptions() {
+        return this.capacityReservationOptions;
+    }
+
+    /**
+     * <p>
+     * The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for fleets
+     * of type <code>instant</code>.
+     * </p>
+     * 
+     * @param capacityReservationOptions
+     *        The strategy for using unused Capacity Reservations for fulfilling On-Demand capacity. Supported only for
+     *        fleets of type <code>instant</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public OnDemandOptionsRequest withCapacityReservationOptions(CapacityReservationOptionsRequest capacityReservationOptions) {
+        setCapacityReservationOptions(capacityReservationOptions);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet. Supported
+     * only for fleets of type <code>instant</code>.
      * </p>
      * 
      * @param singleInstanceType
      *        Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     *        Supported only for fleets of type <code>instant</code>.
      */
 
     public void setSingleInstanceType(Boolean singleInstanceType) {
@@ -168,10 +225,12 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet. Supported
+     * only for fleets of type <code>instant</code>.
      * </p>
      * 
      * @return Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     *         Supported only for fleets of type <code>instant</code>.
      */
 
     public Boolean getSingleInstanceType() {
@@ -180,11 +239,13 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet. Supported
+     * only for fleets of type <code>instant</code>.
      * </p>
      * 
      * @param singleInstanceType
      *        Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     *        Supported only for fleets of type <code>instant</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -195,10 +256,12 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     * Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet. Supported
+     * only for fleets of type <code>instant</code>.
      * </p>
      * 
      * @return Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet.
+     *         Supported only for fleets of type <code>instant</code>.
      */
 
     public Boolean isSingleInstanceType() {
@@ -207,11 +270,13 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for
+     * fleets of type <code>instant</code>.
      * </p>
      * 
      * @param singleAvailabilityZone
-     *        Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     *        Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only
+     *        for fleets of type <code>instant</code>.
      */
 
     public void setSingleAvailabilityZone(Boolean singleAvailabilityZone) {
@@ -220,10 +285,12 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for
+     * fleets of type <code>instant</code>.
      * </p>
      * 
-     * @return Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     * @return Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only
+     *         for fleets of type <code>instant</code>.
      */
 
     public Boolean getSingleAvailabilityZone() {
@@ -232,11 +299,13 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for
+     * fleets of type <code>instant</code>.
      * </p>
      * 
      * @param singleAvailabilityZone
-     *        Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     *        Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only
+     *        for fleets of type <code>instant</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -247,10 +316,12 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     * Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for
+     * fleets of type <code>instant</code>.
      * </p>
      * 
-     * @return Indicates that the fleet launches all On-Demand Instances into a single Availability Zone.
+     * @return Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only
+     *         for fleets of type <code>instant</code>.
      */
 
     public Boolean isSingleAvailabilityZone() {
@@ -357,6 +428,8 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
         sb.append("{");
         if (getAllocationStrategy() != null)
             sb.append("AllocationStrategy: ").append(getAllocationStrategy()).append(",");
+        if (getCapacityReservationOptions() != null)
+            sb.append("CapacityReservationOptions: ").append(getCapacityReservationOptions()).append(",");
         if (getSingleInstanceType() != null)
             sb.append("SingleInstanceType: ").append(getSingleInstanceType()).append(",");
         if (getSingleAvailabilityZone() != null)
@@ -383,6 +456,10 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
             return false;
         if (other.getAllocationStrategy() != null && other.getAllocationStrategy().equals(this.getAllocationStrategy()) == false)
             return false;
+        if (other.getCapacityReservationOptions() == null ^ this.getCapacityReservationOptions() == null)
+            return false;
+        if (other.getCapacityReservationOptions() != null && other.getCapacityReservationOptions().equals(this.getCapacityReservationOptions()) == false)
+            return false;
         if (other.getSingleInstanceType() == null ^ this.getSingleInstanceType() == null)
             return false;
         if (other.getSingleInstanceType() != null && other.getSingleInstanceType().equals(this.getSingleInstanceType()) == false)
@@ -408,6 +485,7 @@ public class OnDemandOptionsRequest implements Serializable, Cloneable {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getAllocationStrategy() == null) ? 0 : getAllocationStrategy().hashCode());
+        hashCode = prime * hashCode + ((getCapacityReservationOptions() == null) ? 0 : getCapacityReservationOptions().hashCode());
         hashCode = prime * hashCode + ((getSingleInstanceType() == null) ? 0 : getSingleInstanceType().hashCode());
         hashCode = prime * hashCode + ((getSingleAvailabilityZone() == null) ? 0 : getSingleAvailabilityZone().hashCode());
         hashCode = prime * hashCode + ((getMinTargetCapacity() == null) ? 0 : getMinTargetCapacity().hashCode());

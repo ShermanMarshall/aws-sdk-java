@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -185,6 +185,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      * <li>
      * <p>
      * <code>launch-time</code> - The time when the instance was launched.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-tokens</code> - The metadata request authorization state (<code>optional</code> |
+     * <code>required</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop limit
+     * (integer, possible values <code>1</code> to <code>64</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     * <code>enabled</code> | <code>disabled</code>)
      * </p>
      * </li>
      * <li>
@@ -689,6 +707,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
+     * <code>metadata-options.http-tokens</code> - The metadata request authorization state (<code>optional</code> |
+     * <code>required</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop limit
+     * (integer, possible values <code>1</code> to <code>64</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     * <code>enabled</code> | <code>disabled</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>monitoring-state</code> - Indicates whether detailed monitoring is enabled (<code>disabled</code> |
      * <code>enabled</code>).
      * </p>
@@ -1159,6 +1195,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      *         <li>
      *         <p>
      *         <code>launch-time</code> - The time when the instance was launched.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>metadata-options.http-tokens</code> - The metadata request authorization state (
+     *         <code>optional</code> | <code>required</code>)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop
+     *         limit (integer, possible values <code>1</code> to <code>64</code>)
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     *         <code>enabled</code> | <code>disabled</code>)
      *         </p>
      *         </li>
      *         <li>
@@ -1651,6 +1705,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
+     * <code>metadata-options.http-tokens</code> - The metadata request authorization state (<code>optional</code> |
+     * <code>required</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop limit
+     * (integer, possible values <code>1</code> to <code>64</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     * <code>enabled</code> | <code>disabled</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>monitoring-state</code> - Indicates whether detailed monitoring is enabled (<code>disabled</code> |
      * <code>enabled</code>).
      * </p>
@@ -2122,6 +2194,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      *        <li>
      *        <p>
      *        <code>launch-time</code> - The time when the instance was launched.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-tokens</code> - The metadata request authorization state (
+     *        <code>optional</code> | <code>required</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop
+     *        limit (integer, possible values <code>1</code> to <code>64</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     *        <code>enabled</code> | <code>disabled</code>)
      *        </p>
      *        </li>
      *        <li>
@@ -2615,6 +2705,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
+     * <code>metadata-options.http-tokens</code> - The metadata request authorization state (<code>optional</code> |
+     * <code>required</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop limit
+     * (integer, possible values <code>1</code> to <code>64</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     * <code>enabled</code> | <code>disabled</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>monitoring-state</code> - Indicates whether detailed monitoring is enabled (<code>disabled</code> |
      * <code>enabled</code>).
      * </p>
@@ -3091,6 +3199,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      *        <li>
      *        <p>
      *        <code>launch-time</code> - The time when the instance was launched.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-tokens</code> - The metadata request authorization state (
+     *        <code>optional</code> | <code>required</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop
+     *        limit (integer, possible values <code>1</code> to <code>64</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     *        <code>enabled</code> | <code>disabled</code>)
      *        </p>
      *        </li>
      *        <li>
@@ -3586,6 +3712,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      * </li>
      * <li>
      * <p>
+     * <code>metadata-options.http-tokens</code> - The metadata request authorization state (<code>optional</code> |
+     * <code>required</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop limit
+     * (integer, possible values <code>1</code> to <code>64</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     * <code>enabled</code> | <code>disabled</code>)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>monitoring-state</code> - Indicates whether detailed monitoring is enabled (<code>disabled</code> |
      * <code>enabled</code>).
      * </p>
@@ -4057,6 +4201,24 @@ public class DescribeInstancesRequest extends AmazonWebServiceRequest implements
      *        <li>
      *        <p>
      *        <code>launch-time</code> - The time when the instance was launched.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-tokens</code> - The metadata request authorization state (
+     *        <code>optional</code> | <code>required</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-put-response-hop-limit</code> - The http metadata request put response hop
+     *        limit (integer, possible values <code>1</code> to <code>64</code>)
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>metadata-options.http-endpoint</code> - Enable or disable metadata access on http endpoint (
+     *        <code>enabled</code> | <code>disabled</code>)
      *        </p>
      *        </li>
      *        <li>

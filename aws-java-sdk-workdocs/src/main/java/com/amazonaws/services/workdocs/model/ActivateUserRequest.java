@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,8 +33,7 @@ public class ActivateUserRequest extends com.amazonaws.AmazonWebServiceRequest i
     private String userId;
     /**
      * <p>
-     * Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in
-     * accessing the API using AWS credentials.
+     * Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
      * </p>
      */
     private String authenticationToken;
@@ -81,13 +80,12 @@ public class ActivateUserRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in
-     * accessing the API using AWS credentials.
+     * Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
      * </p>
      * 
      * @param authenticationToken
-     *        Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in
-     *        accessing the API using AWS credentials.
+     *        Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the
+     *        API.
      */
 
     public void setAuthenticationToken(String authenticationToken) {
@@ -96,12 +94,11 @@ public class ActivateUserRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in
-     * accessing the API using AWS credentials.
+     * Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
      * </p>
      * 
-     * @return Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in
-     *         accessing the API using AWS credentials.
+     * @return Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the
+     *         API.
      */
 
     public String getAuthenticationToken() {
@@ -110,13 +107,12 @@ public class ActivateUserRequest extends com.amazonaws.AmazonWebServiceRequest i
 
     /**
      * <p>
-     * Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in
-     * accessing the API using AWS credentials.
+     * Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
      * </p>
      * 
      * @param authenticationToken
-     *        Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in
-     *        accessing the API using AWS credentials.
+     *        Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the
+     *        API.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -61,6 +61,85 @@ public interface AWSCostExplorer {
     String ENDPOINT_PREFIX = "ce";
 
     /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Creates a new Cost Category with the requested name and rules.
+     * </p>
+     * 
+     * @param createCostCategoryDefinitionRequest
+     * @return Result of the CreateCostCategoryDefinition operation returned by the service.
+     * @throws ServiceQuotaExceededException
+     *         You've reached the limit on the number of resources you can create, or exceeded the size of an individual
+     *         resources.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @sample AWSCostExplorer.CreateCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/CreateCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateCostCategoryDefinitionResult createCostCategoryDefinition(CreateCostCategoryDefinitionRequest createCostCategoryDefinitionRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Deletes a Cost Category. Expenses from this month going forward will no longer be categorized with this Cost
+     * Category.
+     * </p>
+     * 
+     * @param deleteCostCategoryDefinitionRequest
+     * @return Result of the DeleteCostCategoryDefinition operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified ARN in the request doesn't exist.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @sample AWSCostExplorer.DeleteCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/DeleteCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteCostCategoryDefinitionResult deleteCostCategoryDefinition(DeleteCostCategoryDefinitionRequest deleteCostCategoryDefinitionRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Returns the name, ARN, rules, definition, and effective dates of a Cost Category that's defined in the account.
+     * </p>
+     * <p>
+     * You have the option to use <code>EffectiveOn</code> to return a Cost Category that is active on a specific date.
+     * If there is no <code>EffectiveOn</code> specified, you’ll see a Cost Category that is effective on the current
+     * date. If Cost Category is still effective, <code>EffectiveEnd</code> is omitted in the response.
+     * </p>
+     * 
+     * @param describeCostCategoryDefinitionRequest
+     * @return Result of the DescribeCostCategoryDefinition operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified ARN in the request doesn't exist.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @sample AWSCostExplorer.DescribeCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/DescribeCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeCostCategoryDefinitionResult describeCostCategoryDefinition(DescribeCostCategoryDefinitionRequest describeCostCategoryDefinitionRequest);
+
+    /**
      * <p>
      * Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric, such as
      * <code>BlendedCosts</code> or <code>UsageQuantity</code>, that you want the request to return. You can also filter
@@ -89,6 +168,44 @@ public interface AWSCostExplorer {
      *      Documentation</a>
      */
     GetCostAndUsageResult getCostAndUsage(GetCostAndUsageRequest getCostAndUsageRequest);
+
+    /**
+     * <p>
+     * Retrieves cost and usage metrics with resources for your account. You can specify which cost and usage-related
+     * metric, such as <code>BlendedCosts</code> or <code>UsageQuantity</code>, that you want the request to return. You
+     * can also filter and group your data by various dimensions, such as <code>SERVICE</code> or <code>AZ</code>, in a
+     * specific time range. For a complete list of valid dimensions, see the <a
+     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html"
+     * >GetDimensionValues</a> operation. Master accounts in an organization in AWS Organizations have access to all
+     * member accounts. This API is currently available for the Amazon Elastic Compute Cloud – Compute service only.
+     * </p>
+     * <note>
+     * <p>
+     * This is an opt-in only feature. You can enable this feature from the Cost Explorer Settings page. For information
+     * on how to access the Settings page, see <a
+     * href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html">Controlling Access for Cost
+     * Explorer</a> in the <i>AWS Billing and Cost Management User Guide</i>.
+     * </p>
+     * </note>
+     * 
+     * @param getCostAndUsageWithResourcesRequest
+     * @return Result of the GetCostAndUsageWithResources operation returned by the service.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws BillExpirationException
+     *         The requested report expired. Update the date interval and try again.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @throws RequestChangedException
+     *         Your request parameters changed between pages. Try again with the old parameters or without a pagination
+     *         token.
+     * @sample AWSCostExplorer.GetCostAndUsageWithResources
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetCostAndUsageWithResources"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetCostAndUsageWithResourcesResult getCostAndUsageWithResources(GetCostAndUsageWithResourcesRequest getCostAndUsageWithResourcesRequest);
 
     /**
      * <p>
@@ -303,6 +420,122 @@ public interface AWSCostExplorer {
 
     /**
      * <p>
+     * Retrieves the Savings Plans covered for your account. This enables you to see how much of your cost is covered by
+     * a Savings Plan. An organization’s master account can see the coverage of the associated member accounts. For any
+     * time period, you can filter data for Savings Plans usage with the following dimensions:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>LINKED_ACCOUNT</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>REGION</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>SERVICE</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>INSTANCE_FAMILY</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * To determine valid values for a dimension, use the <code>GetDimensionValues</code> operation.
+     * </p>
+     * 
+     * @param getSavingsPlansCoverageRequest
+     * @return Result of the GetSavingsPlansCoverage operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @sample AWSCostExplorer.GetSavingsPlansCoverage
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansCoverage" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetSavingsPlansCoverageResult getSavingsPlansCoverage(GetSavingsPlansCoverageRequest getSavingsPlansCoverageRequest);
+
+    /**
+     * <p>
+     * Retrieves your request parameters, Savings Plan Recommendations Summary and Details.
+     * </p>
+     * 
+     * @param getSavingsPlansPurchaseRecommendationRequest
+     * @return Result of the GetSavingsPlansPurchaseRecommendation operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @sample AWSCostExplorer.GetSavingsPlansPurchaseRecommendation
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansPurchaseRecommendation"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetSavingsPlansPurchaseRecommendationResult getSavingsPlansPurchaseRecommendation(
+            GetSavingsPlansPurchaseRecommendationRequest getSavingsPlansPurchaseRecommendationRequest);
+
+    /**
+     * <p>
+     * Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity.
+     * Master accounts in an organization have access to member accounts. You can use <code>GetDimensionValues</code> in
+     * <code>SAVINGS_PLANS</code> to determine the possible dimension values.
+     * </p>
+     * <note>
+     * <p>
+     * You cannot group by any dimension values for <code>GetSavingsPlansUtilization</code>.
+     * </p>
+     * </note>
+     * 
+     * @param getSavingsPlansUtilizationRequest
+     * @return Result of the GetSavingsPlansUtilization operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @sample AWSCostExplorer.GetSavingsPlansUtilization
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansUtilization" target="_top">AWS
+     *      API Documentation</a>
+     */
+    GetSavingsPlansUtilizationResult getSavingsPlansUtilization(GetSavingsPlansUtilizationRequest getSavingsPlansUtilizationRequest);
+
+    /**
+     * <p>
+     * Retrieves attribute data along with aggregate utilization and savings data for a given time period. This doesn't
+     * support granular or grouped data (daily/monthly) in response. You can't retrieve data by dates in a single
+     * response similar to <code>GetSavingsPlanUtilization</code>, but you have the option to make multiple calls to
+     * <code>GetSavingsPlanUtilizationDetails</code> by providing individual dates. You can use
+     * <code>GetDimensionValues</code> in <code>SAVINGS_PLANS</code> to determine the possible dimension values.
+     * </p>
+     * <note>
+     * <p>
+     * <code>GetSavingsPlanUtilizationDetails</code> internally groups data by <code>SavingsPlansArn</code>.
+     * </p>
+     * </note>
+     * 
+     * @param getSavingsPlansUtilizationDetailsRequest
+     * @return Result of the GetSavingsPlansUtilizationDetails operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @throws DataUnavailableException
+     *         The requested data is unavailable.
+     * @throws InvalidNextTokenException
+     *         The pagination token is invalid. Try again without a pagination token.
+     * @sample AWSCostExplorer.GetSavingsPlansUtilizationDetails
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/GetSavingsPlansUtilizationDetails"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetSavingsPlansUtilizationDetailsResult getSavingsPlansUtilizationDetails(GetSavingsPlansUtilizationDetailsRequest getSavingsPlansUtilizationDetailsRequest);
+
+    /**
+     * <p>
      * Queries for available tag keys and tag values for a specified period. You can search the tag values for an
      * arbitrary string.
      * </p>
@@ -346,6 +579,59 @@ public interface AWSCostExplorer {
      *      Documentation</a>
      */
     GetUsageForecastResult getUsageForecast(GetUsageForecastRequest getUsageForecastRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Returns the name, ARN and effective dates of all Cost Categories defined in the account. You have the option to
+     * use <code>EffectiveOn</code> to return a list of Cost Categories that were active on a specific date. If there is
+     * no <code>EffectiveOn</code> specified, you’ll see Cost Categories that are effective on the current date. If Cost
+     * Category is still effective, <code>EffectiveEnd</code> is omitted in the response.
+     * </p>
+     * 
+     * @param listCostCategoryDefinitionsRequest
+     * @return Result of the ListCostCategoryDefinitions operation returned by the service.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @sample AWSCostExplorer.ListCostCategoryDefinitions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/ListCostCategoryDefinitions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListCostCategoryDefinitionsResult listCostCategoryDefinitions(ListCostCategoryDefinitionsRequest listCostCategoryDefinitionsRequest);
+
+    /**
+     * <important>
+     * <p>
+     * <i> <b>Cost Category is in public beta for AWS Billing and Cost Management and is subject to change. Your use of
+     * Cost Categories is subject to the Beta Service Participation terms of the <a
+     * href="https://aws.amazon.com/service-terms/">AWS Service Terms</a> (Section 1.10).</b> </i>
+     * </p>
+     * </important>
+     * <p>
+     * Updates an existing Cost Category. Changes made to the Cost Category rules will be used to categorize the current
+     * month’s expenses and future expenses. This won’t change categorization for the previous months.
+     * </p>
+     * 
+     * @param updateCostCategoryDefinitionRequest
+     * @return Result of the UpdateCostCategoryDefinition operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The specified ARN in the request doesn't exist.
+     * @throws ServiceQuotaExceededException
+     *         You've reached the limit on the number of resources you can create, or exceeded the size of an individual
+     *         resources.
+     * @throws LimitExceededException
+     *         You made too many calls in a short period of time. Try again later.
+     * @sample AWSCostExplorer.UpdateCostCategoryDefinition
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/UpdateCostCategoryDefinition"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateCostCategoryDefinitionResult updateCostCategoryDefinition(UpdateCostCategoryDefinitionRequest updateCostCategoryDefinitionRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -93,6 +93,14 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
     private String enhancedMonitoring;
     /**
      * <p>
+     * Settings for open monitoring using Prometheus.
+     * </p>
+     */
+    private OpenMonitoring openMonitoring;
+
+    private LoggingInfo loggingInfo;
+    /**
+     * <p>
      * The number of broker nodes in the cluster.
      * </p>
      */
@@ -103,6 +111,8 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String state;
+
+    private StateInfo stateInfo;
     /**
      * <p>
      * Tags attached to the cluster.
@@ -619,6 +629,78 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * Settings for open monitoring using Prometheus.
+     * </p>
+     * 
+     * @param openMonitoring
+     *        <p>
+     *        Settings for open monitoring using Prometheus.
+     *        </p>
+     */
+
+    public void setOpenMonitoring(OpenMonitoring openMonitoring) {
+        this.openMonitoring = openMonitoring;
+    }
+
+    /**
+     * <p>
+     * Settings for open monitoring using Prometheus.
+     * </p>
+     * 
+     * @return <p>
+     *         Settings for open monitoring using Prometheus.
+     *         </p>
+     */
+
+    public OpenMonitoring getOpenMonitoring() {
+        return this.openMonitoring;
+    }
+
+    /**
+     * <p>
+     * Settings for open monitoring using Prometheus.
+     * </p>
+     * 
+     * @param openMonitoring
+     *        <p>
+     *        Settings for open monitoring using Prometheus.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ClusterInfo withOpenMonitoring(OpenMonitoring openMonitoring) {
+        setOpenMonitoring(openMonitoring);
+        return this;
+    }
+
+    /**
+     * @param loggingInfo
+     */
+
+    public void setLoggingInfo(LoggingInfo loggingInfo) {
+        this.loggingInfo = loggingInfo;
+    }
+
+    /**
+     * @return
+     */
+
+    public LoggingInfo getLoggingInfo() {
+        return this.loggingInfo;
+    }
+
+    /**
+     * @param loggingInfo
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ClusterInfo withLoggingInfo(LoggingInfo loggingInfo) {
+        setLoggingInfo(loggingInfo);
+        return this;
+    }
+
+    /**
+     * <p>
      * The number of broker nodes in the cluster.
      * </p>
      * 
@@ -731,6 +813,32 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * @param stateInfo
+     */
+
+    public void setStateInfo(StateInfo stateInfo) {
+        this.stateInfo = stateInfo;
+    }
+
+    /**
+     * @return
+     */
+
+    public StateInfo getStateInfo() {
+        return this.stateInfo;
+    }
+
+    /**
+     * @param stateInfo
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ClusterInfo withStateInfo(StateInfo stateInfo) {
+        setStateInfo(stateInfo);
+        return this;
+    }
+
+    /**
      * <p>
      * Tags attached to the cluster.
      * </p>
@@ -775,6 +883,13 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see ClusterInfo#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public ClusterInfo addTagsEntry(String key, String value) {
         if (null == this.tags) {
@@ -875,10 +990,16 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
             sb.append("EncryptionInfo: ").append(getEncryptionInfo()).append(",");
         if (getEnhancedMonitoring() != null)
             sb.append("EnhancedMonitoring: ").append(getEnhancedMonitoring()).append(",");
+        if (getOpenMonitoring() != null)
+            sb.append("OpenMonitoring: ").append(getOpenMonitoring()).append(",");
+        if (getLoggingInfo() != null)
+            sb.append("LoggingInfo: ").append(getLoggingInfo()).append(",");
         if (getNumberOfBrokerNodes() != null)
             sb.append("NumberOfBrokerNodes: ").append(getNumberOfBrokerNodes()).append(",");
         if (getState() != null)
             sb.append("State: ").append(getState()).append(",");
+        if (getStateInfo() != null)
+            sb.append("StateInfo: ").append(getStateInfo()).append(",");
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getZookeeperConnectString() != null)
@@ -937,6 +1058,14 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getEnhancedMonitoring() != null && other.getEnhancedMonitoring().equals(this.getEnhancedMonitoring()) == false)
             return false;
+        if (other.getOpenMonitoring() == null ^ this.getOpenMonitoring() == null)
+            return false;
+        if (other.getOpenMonitoring() != null && other.getOpenMonitoring().equals(this.getOpenMonitoring()) == false)
+            return false;
+        if (other.getLoggingInfo() == null ^ this.getLoggingInfo() == null)
+            return false;
+        if (other.getLoggingInfo() != null && other.getLoggingInfo().equals(this.getLoggingInfo()) == false)
+            return false;
         if (other.getNumberOfBrokerNodes() == null ^ this.getNumberOfBrokerNodes() == null)
             return false;
         if (other.getNumberOfBrokerNodes() != null && other.getNumberOfBrokerNodes().equals(this.getNumberOfBrokerNodes()) == false)
@@ -944,6 +1073,10 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
         if (other.getState() == null ^ this.getState() == null)
             return false;
         if (other.getState() != null && other.getState().equals(this.getState()) == false)
+            return false;
+        if (other.getStateInfo() == null ^ this.getStateInfo() == null)
+            return false;
+        if (other.getStateInfo() != null && other.getStateInfo().equals(this.getStateInfo()) == false)
             return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
@@ -971,8 +1104,11 @@ public class ClusterInfo implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getCurrentVersion() == null) ? 0 : getCurrentVersion().hashCode());
         hashCode = prime * hashCode + ((getEncryptionInfo() == null) ? 0 : getEncryptionInfo().hashCode());
         hashCode = prime * hashCode + ((getEnhancedMonitoring() == null) ? 0 : getEnhancedMonitoring().hashCode());
+        hashCode = prime * hashCode + ((getOpenMonitoring() == null) ? 0 : getOpenMonitoring().hashCode());
+        hashCode = prime * hashCode + ((getLoggingInfo() == null) ? 0 : getLoggingInfo().hashCode());
         hashCode = prime * hashCode + ((getNumberOfBrokerNodes() == null) ? 0 : getNumberOfBrokerNodes().hashCode());
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
+        hashCode = prime * hashCode + ((getStateInfo() == null) ? 0 : getStateInfo().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getZookeeperConnectString() == null) ? 0 : getZookeeperConnectString().hashCode());
         return hashCode;

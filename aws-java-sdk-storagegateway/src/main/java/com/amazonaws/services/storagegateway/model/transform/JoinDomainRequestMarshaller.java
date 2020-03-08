@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,6 +36,8 @@ public class JoinDomainRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OrganizationalUnit").build();
     private static final MarshallingInfo<List> DOMAINCONTROLLERS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DomainControllers").build();
+    private static final MarshallingInfo<Integer> TIMEOUTINSECONDS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TimeoutInSeconds").build();
     private static final MarshallingInfo<String> USERNAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("UserName").build();
     private static final MarshallingInfo<String> PASSWORD_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -61,6 +63,7 @@ public class JoinDomainRequestMarshaller {
             protocolMarshaller.marshall(joinDomainRequest.getDomainName(), DOMAINNAME_BINDING);
             protocolMarshaller.marshall(joinDomainRequest.getOrganizationalUnit(), ORGANIZATIONALUNIT_BINDING);
             protocolMarshaller.marshall(joinDomainRequest.getDomainControllers(), DOMAINCONTROLLERS_BINDING);
+            protocolMarshaller.marshall(joinDomainRequest.getTimeoutInSeconds(), TIMEOUTINSECONDS_BINDING);
             protocolMarshaller.marshall(joinDomainRequest.getUserName(), USERNAME_BINDING);
             protocolMarshaller.marshall(joinDomainRequest.getPassword(), PASSWORD_BINDING);
         } catch (Exception e) {

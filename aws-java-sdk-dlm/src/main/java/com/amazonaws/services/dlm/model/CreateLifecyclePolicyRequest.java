@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,11 +47,14 @@ public class CreateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The configuration details of the lifecycle policy.
      * </p>
-     * <p>
-     * Target tags cannot be re-used across lifecycle policies.
-     * </p>
      */
     private PolicyDetails policyDetails;
+    /**
+     * <p>
+     * The tags to apply to the lifecycle policy during creation.
+     * </p>
+     */
+    private java.util.Map<String, String> tags;
 
     /**
      * <p>
@@ -199,14 +202,9 @@ public class CreateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The configuration details of the lifecycle policy.
      * </p>
-     * <p>
-     * Target tags cannot be re-used across lifecycle policies.
-     * </p>
      * 
      * @param policyDetails
-     *        The configuration details of the lifecycle policy.</p>
-     *        <p>
-     *        Target tags cannot be re-used across lifecycle policies.
+     *        The configuration details of the lifecycle policy.
      */
 
     public void setPolicyDetails(PolicyDetails policyDetails) {
@@ -217,13 +215,8 @@ public class CreateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The configuration details of the lifecycle policy.
      * </p>
-     * <p>
-     * Target tags cannot be re-used across lifecycle policies.
-     * </p>
      * 
-     * @return The configuration details of the lifecycle policy.</p>
-     *         <p>
-     *         Target tags cannot be re-used across lifecycle policies.
+     * @return The configuration details of the lifecycle policy.
      */
 
     public PolicyDetails getPolicyDetails() {
@@ -234,19 +227,82 @@ public class CreateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The configuration details of the lifecycle policy.
      * </p>
-     * <p>
-     * Target tags cannot be re-used across lifecycle policies.
-     * </p>
      * 
      * @param policyDetails
-     *        The configuration details of the lifecycle policy.</p>
-     *        <p>
-     *        Target tags cannot be re-used across lifecycle policies.
+     *        The configuration details of the lifecycle policy.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public CreateLifecyclePolicyRequest withPolicyDetails(PolicyDetails policyDetails) {
         setPolicyDetails(policyDetails);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the lifecycle policy during creation.
+     * </p>
+     * 
+     * @return The tags to apply to the lifecycle policy during creation.
+     */
+
+    public java.util.Map<String, String> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the lifecycle policy during creation.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to apply to the lifecycle policy during creation.
+     */
+
+    public void setTags(java.util.Map<String, String> tags) {
+        this.tags = tags;
+    }
+
+    /**
+     * <p>
+     * The tags to apply to the lifecycle policy during creation.
+     * </p>
+     * 
+     * @param tags
+     *        The tags to apply to the lifecycle policy during creation.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLifecyclePolicyRequest withTags(java.util.Map<String, String> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see CreateLifecyclePolicyRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLifecyclePolicyRequest addTagsEntry(String key, String value) {
+        if (null == this.tags) {
+            this.tags = new java.util.HashMap<String, String>();
+        }
+        if (this.tags.containsKey(key))
+            throw new IllegalArgumentException("Duplicated keys (" + key.toString() + ") are provided.");
+        this.tags.put(key, value);
+        return this;
+    }
+
+    /**
+     * Removes all the entries added into Tags.
+     *
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateLifecyclePolicyRequest clearTagsEntries() {
+        this.tags = null;
         return this;
     }
 
@@ -269,7 +325,9 @@ public class CreateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
         if (getState() != null)
             sb.append("State: ").append(getState()).append(",");
         if (getPolicyDetails() != null)
-            sb.append("PolicyDetails: ").append(getPolicyDetails());
+            sb.append("PolicyDetails: ").append(getPolicyDetails()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -300,6 +358,10 @@ public class CreateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
             return false;
         if (other.getPolicyDetails() != null && other.getPolicyDetails().equals(this.getPolicyDetails()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -312,6 +374,7 @@ public class CreateLifecyclePolicyRequest extends com.amazonaws.AmazonWebService
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());
         hashCode = prime * hashCode + ((getPolicyDetails() == null) ? 0 : getPolicyDetails().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

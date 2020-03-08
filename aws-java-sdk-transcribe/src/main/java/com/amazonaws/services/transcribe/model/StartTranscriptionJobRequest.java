@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,7 +40,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
     private String languageCode;
     /**
      * <p>
-     * The sample rate of the audio track in the input media file in Hertz.
+     * The sample rate, in Hertz, of the audio track in the input media file.
      * </p>
      * <p>
      * If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify the
@@ -52,12 +52,6 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
     /**
      * <p>
      * The format of the input media file.
-     * </p>
-     * <p>
-     * If you do not specify the format of the media file, Amazon Transcribe determines the format. If the format is not
-     * recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception. If you specify the
-     * format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     * <code>InternalFailureException</code> exception.
      * </p>
      */
     private String mediaFormat;
@@ -72,16 +66,19 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * The location where the transcription is stored.
      * </p>
      * <p>
-     * If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3
-     * bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
-     * <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put
-     * files in the bucket. For more information, see <a href=
+     * If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcript in the specified S3 bucket.
+     * When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
+     * <code>TranscriptFileUri</code> field. If you enable content redaction, the redacted transcript appears in
+     * <code>RedactedTranscriptFileUri</code>. If you enable content redaction and choose to output an unredacted
+     * transcript, that transcript's location still appears in the <code>TranscriptFileUri</code>. The S3 bucket must
+     * have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see <a href=
      * "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      * >Permissions Required for IAM User Roles</a>.
      * </p>
      * <p>
-     * Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed in
-     * your S3 bucket. You can't specify your own encryption key.
+     * You can specify an AWS Key Management Service (KMS) key to encrypt the output of your transcription using the
+     * <code>OutputEncryptionKMSKeyId</code> parameter. If you don't specify a KMS key, Amazon Transcribe uses the
+     * default Amazon S3 key for server-side encryption of transcripts that are placed in your S3 bucket.
      * </p>
      * <p>
      * If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL
@@ -92,10 +89,70 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
     private String outputBucketName;
     /**
      * <p>
+     * The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to encrypt the output of the
+     * transcription job. The user calling the <code>StartTranscriptionJob</code> operation must have permission to use
+     * the specified KMS key.
+     * </p>
+     * <p>
+     * You can use either of the following to identify a KMS key in the current account:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * KMS Key Alias: "alias/ExampleAlias"
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can use either of the following to identify a KMS key in the current account or another account:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:region:account ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ARN of a KMS Key Alias: "arn:aws:kms:region:account ID:alias/ExampleAlias"
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you don't specify an encryption key, the output of the transcription job is encrypted with the default Amazon
+     * S3 key (SSE-S3).
+     * </p>
+     * <p>
+     * If you specify a KMS key to encrypt your output, you must also specify an output location in the
+     * <code>OutputBucketName</code> parameter.
+     * </p>
+     */
+    private String outputEncryptionKMSKeyId;
+    /**
+     * <p>
      * A <code>Settings</code> object that provides optional settings for a transcription job.
      * </p>
      */
     private Settings settings;
+    /**
+     * <p>
+     * Provides information about how a transcription job is executed. Use this field to indicate that the job can be
+     * queued for deferred execution if the concurrency limit is reached and there are no slots available to immediately
+     * run the job.
+     * </p>
+     */
+    private JobExecutionSettings jobExecutionSettings;
+    /**
+     * <p>
+     * An object that contains the request parameters for content redaction.
+     * </p>
+     */
+    private ContentRedaction contentRedaction;
 
     /**
      * <p>
@@ -204,7 +261,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The sample rate of the audio track in the input media file in Hertz.
+     * The sample rate, in Hertz, of the audio track in the input media file.
      * </p>
      * <p>
      * If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify the
@@ -213,7 +270,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * </p>
      * 
      * @param mediaSampleRateHertz
-     *        The sample rate of the audio track in the input media file in Hertz. </p>
+     *        The sample rate, in Hertz, of the audio track in the input media file. </p>
      *        <p>
      *        If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify
      *        the sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should
@@ -227,7 +284,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The sample rate of the audio track in the input media file in Hertz.
+     * The sample rate, in Hertz, of the audio track in the input media file.
      * </p>
      * <p>
      * If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify the
@@ -235,7 +292,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <code>MediaSampleRateHertz</code> field blank and let Amazon Transcribe determine the sample rate.
      * </p>
      * 
-     * @return The sample rate of the audio track in the input media file in Hertz. </p>
+     * @return The sample rate, in Hertz, of the audio track in the input media file. </p>
      *         <p>
      *         If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify
      *         the sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should
@@ -249,7 +306,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
 
     /**
      * <p>
-     * The sample rate of the audio track in the input media file in Hertz.
+     * The sample rate, in Hertz, of the audio track in the input media file.
      * </p>
      * <p>
      * If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify the
@@ -258,7 +315,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * </p>
      * 
      * @param mediaSampleRateHertz
-     *        The sample rate of the audio track in the input media file in Hertz. </p>
+     *        The sample rate, in Hertz, of the audio track in the input media file. </p>
      *        <p>
      *        If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify
      *        the sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should
@@ -276,20 +333,9 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The format of the input media file.
      * </p>
-     * <p>
-     * If you do not specify the format of the media file, Amazon Transcribe determines the format. If the format is not
-     * recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception. If you specify the
-     * format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     * <code>InternalFailureException</code> exception.
-     * </p>
      * 
      * @param mediaFormat
-     *        The format of the input media file.</p>
-     *        <p>
-     *        If you do not specify the format of the media file, Amazon Transcribe determines the format. If the format
-     *        is not recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception. If you
-     *        specify the format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     *        <code>InternalFailureException</code> exception.
+     *        The format of the input media file.
      * @see MediaFormat
      */
 
@@ -301,19 +347,8 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The format of the input media file.
      * </p>
-     * <p>
-     * If you do not specify the format of the media file, Amazon Transcribe determines the format. If the format is not
-     * recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception. If you specify the
-     * format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     * <code>InternalFailureException</code> exception.
-     * </p>
      * 
-     * @return The format of the input media file.</p>
-     *         <p>
-     *         If you do not specify the format of the media file, Amazon Transcribe determines the format. If the
-     *         format is not recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception.
-     *         If you specify the format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     *         <code>InternalFailureException</code> exception.
+     * @return The format of the input media file.
      * @see MediaFormat
      */
 
@@ -325,20 +360,9 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The format of the input media file.
      * </p>
-     * <p>
-     * If you do not specify the format of the media file, Amazon Transcribe determines the format. If the format is not
-     * recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception. If you specify the
-     * format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     * <code>InternalFailureException</code> exception.
-     * </p>
      * 
      * @param mediaFormat
-     *        The format of the input media file.</p>
-     *        <p>
-     *        If you do not specify the format of the media file, Amazon Transcribe determines the format. If the format
-     *        is not recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception. If you
-     *        specify the format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     *        <code>InternalFailureException</code> exception.
+     *        The format of the input media file.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MediaFormat
      */
@@ -352,20 +376,9 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The format of the input media file.
      * </p>
-     * <p>
-     * If you do not specify the format of the media file, Amazon Transcribe determines the format. If the format is not
-     * recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception. If you specify the
-     * format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     * <code>InternalFailureException</code> exception.
-     * </p>
      * 
      * @param mediaFormat
-     *        The format of the input media file.</p>
-     *        <p>
-     *        If you do not specify the format of the media file, Amazon Transcribe determines the format. If the format
-     *        is not recognized, Amazon Transcribe returns an <code>InternalFailureException</code> exception. If you
-     *        specify the format, it must match the format detected by Amazon Transcribe, otherwise you get an
-     *        <code>InternalFailureException</code> exception.
+     *        The format of the input media file.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see MediaFormat
      */
@@ -420,16 +433,19 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * The location where the transcription is stored.
      * </p>
      * <p>
-     * If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3
-     * bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
-     * <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put
-     * files in the bucket. For more information, see <a href=
+     * If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcript in the specified S3 bucket.
+     * When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
+     * <code>TranscriptFileUri</code> field. If you enable content redaction, the redacted transcript appears in
+     * <code>RedactedTranscriptFileUri</code>. If you enable content redaction and choose to output an unredacted
+     * transcript, that transcript's location still appears in the <code>TranscriptFileUri</code>. The S3 bucket must
+     * have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see <a href=
      * "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      * >Permissions Required for IAM User Roles</a>.
      * </p>
      * <p>
-     * Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed in
-     * your S3 bucket. You can't specify your own encryption key.
+     * You can specify an AWS Key Management Service (KMS) key to encrypt the output of your transcription using the
+     * <code>OutputEncryptionKMSKeyId</code> parameter. If you don't specify a KMS key, Amazon Transcribe uses the
+     * default Amazon S3 key for server-side encryption of transcripts that are placed in your S3 bucket.
      * </p>
      * <p>
      * If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL
@@ -440,16 +456,21 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * @param outputBucketName
      *        The location where the transcription is stored.</p>
      *        <p>
-     *        If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3
+     *        If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcript in the specified S3
      *        bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
-     *        <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to
-     *        put files in the bucket. For more information, see <a href=
+     *        <code>TranscriptFileUri</code> field. If you enable content redaction, the redacted transcript appears in
+     *        <code>RedactedTranscriptFileUri</code>. If you enable content redaction and choose to output an unredacted
+     *        transcript, that transcript's location still appears in the <code>TranscriptFileUri</code>. The S3 bucket
+     *        must have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see
+     *        <a href=
      *        "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      *        >Permissions Required for IAM User Roles</a>.
      *        </p>
      *        <p>
-     *        Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed
-     *        in your S3 bucket. You can't specify your own encryption key.
+     *        You can specify an AWS Key Management Service (KMS) key to encrypt the output of your transcription using
+     *        the <code>OutputEncryptionKMSKeyId</code> parameter. If you don't specify a KMS key, Amazon Transcribe
+     *        uses the default Amazon S3 key for server-side encryption of transcripts that are placed in your S3
+     *        bucket.
      *        </p>
      *        <p>
      *        If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a
@@ -466,16 +487,19 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * The location where the transcription is stored.
      * </p>
      * <p>
-     * If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3
-     * bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
-     * <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put
-     * files in the bucket. For more information, see <a href=
+     * If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcript in the specified S3 bucket.
+     * When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
+     * <code>TranscriptFileUri</code> field. If you enable content redaction, the redacted transcript appears in
+     * <code>RedactedTranscriptFileUri</code>. If you enable content redaction and choose to output an unredacted
+     * transcript, that transcript's location still appears in the <code>TranscriptFileUri</code>. The S3 bucket must
+     * have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see <a href=
      * "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      * >Permissions Required for IAM User Roles</a>.
      * </p>
      * <p>
-     * Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed in
-     * your S3 bucket. You can't specify your own encryption key.
+     * You can specify an AWS Key Management Service (KMS) key to encrypt the output of your transcription using the
+     * <code>OutputEncryptionKMSKeyId</code> parameter. If you don't specify a KMS key, Amazon Transcribe uses the
+     * default Amazon S3 key for server-side encryption of transcripts that are placed in your S3 bucket.
      * </p>
      * <p>
      * If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL
@@ -485,16 +509,21 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * 
      * @return The location where the transcription is stored.</p>
      *         <p>
-     *         If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified
-     *         S3 bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in
-     *         the <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon
-     *         Transcribe to put files in the bucket. For more information, see <a href=
+     *         If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcript in the specified S3
+     *         bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in
+     *         the <code>TranscriptFileUri</code> field. If you enable content redaction, the redacted transcript
+     *         appears in <code>RedactedTranscriptFileUri</code>. If you enable content redaction and choose to output
+     *         an unredacted transcript, that transcript's location still appears in the <code>TranscriptFileUri</code>.
+     *         The S3 bucket must have permissions that allow Amazon Transcribe to put files in the bucket. For more
+     *         information, see <a href=
      *         "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      *         >Permissions Required for IAM User Roles</a>.
      *         </p>
      *         <p>
-     *         Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are
-     *         placed in your S3 bucket. You can't specify your own encryption key.
+     *         You can specify an AWS Key Management Service (KMS) key to encrypt the output of your transcription using
+     *         the <code>OutputEncryptionKMSKeyId</code> parameter. If you don't specify a KMS key, Amazon Transcribe
+     *         uses the default Amazon S3 key for server-side encryption of transcripts that are placed in your S3
+     *         bucket.
      *         </p>
      *         <p>
      *         If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a
@@ -511,16 +540,19 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * The location where the transcription is stored.
      * </p>
      * <p>
-     * If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3
-     * bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
-     * <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put
-     * files in the bucket. For more information, see <a href=
+     * If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcript in the specified S3 bucket.
+     * When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
+     * <code>TranscriptFileUri</code> field. If you enable content redaction, the redacted transcript appears in
+     * <code>RedactedTranscriptFileUri</code>. If you enable content redaction and choose to output an unredacted
+     * transcript, that transcript's location still appears in the <code>TranscriptFileUri</code>. The S3 bucket must
+     * have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see <a href=
      * "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      * >Permissions Required for IAM User Roles</a>.
      * </p>
      * <p>
-     * Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed in
-     * your S3 bucket. You can't specify your own encryption key.
+     * You can specify an AWS Key Management Service (KMS) key to encrypt the output of your transcription using the
+     * <code>OutputEncryptionKMSKeyId</code> parameter. If you don't specify a KMS key, Amazon Transcribe uses the
+     * default Amazon S3 key for server-side encryption of transcripts that are placed in your S3 bucket.
      * </p>
      * <p>
      * If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL
@@ -531,16 +563,21 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * @param outputBucketName
      *        The location where the transcription is stored.</p>
      *        <p>
-     *        If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcription in the specified S3
+     *        If you set the <code>OutputBucketName</code>, Amazon Transcribe puts the transcript in the specified S3
      *        bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
-     *        <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to
-     *        put files in the bucket. For more information, see <a href=
+     *        <code>TranscriptFileUri</code> field. If you enable content redaction, the redacted transcript appears in
+     *        <code>RedactedTranscriptFileUri</code>. If you enable content redaction and choose to output an unredacted
+     *        transcript, that transcript's location still appears in the <code>TranscriptFileUri</code>. The S3 bucket
+     *        must have permissions that allow Amazon Transcribe to put files in the bucket. For more information, see
+     *        <a href=
      *        "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      *        >Permissions Required for IAM User Roles</a>.
      *        </p>
      *        <p>
-     *        Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed
-     *        in your S3 bucket. You can't specify your own encryption key.
+     *        You can specify an AWS Key Management Service (KMS) key to encrypt the output of your transcription using
+     *        the <code>OutputEncryptionKMSKeyId</code> parameter. If you don't specify a KMS key, Amazon Transcribe
+     *        uses the default Amazon S3 key for server-side encryption of transcripts that are placed in your S3
+     *        bucket.
      *        </p>
      *        <p>
      *        If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a
@@ -551,6 +588,286 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
 
     public StartTranscriptionJobRequest withOutputBucketName(String outputBucketName) {
         setOutputBucketName(outputBucketName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to encrypt the output of the
+     * transcription job. The user calling the <code>StartTranscriptionJob</code> operation must have permission to use
+     * the specified KMS key.
+     * </p>
+     * <p>
+     * You can use either of the following to identify a KMS key in the current account:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * KMS Key Alias: "alias/ExampleAlias"
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can use either of the following to identify a KMS key in the current account or another account:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:region:account ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ARN of a KMS Key Alias: "arn:aws:kms:region:account ID:alias/ExampleAlias"
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you don't specify an encryption key, the output of the transcription job is encrypted with the default Amazon
+     * S3 key (SSE-S3).
+     * </p>
+     * <p>
+     * If you specify a KMS key to encrypt your output, you must also specify an output location in the
+     * <code>OutputBucketName</code> parameter.
+     * </p>
+     * 
+     * @param outputEncryptionKMSKeyId
+     *        The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to encrypt the output of
+     *        the transcription job. The user calling the <code>StartTranscriptionJob</code> operation must have
+     *        permission to use the specified KMS key.</p>
+     *        <p>
+     *        You can use either of the following to identify a KMS key in the current account:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        KMS Key Alias: "alias/ExampleAlias"
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        You can use either of the following to identify a KMS key in the current account or another account:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Amazon Resource Name (ARN) of a KMS Key:
+     *        "arn:aws:kms:region:account ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        ARN of a KMS Key Alias: "arn:aws:kms:region:account ID:alias/ExampleAlias"
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you don't specify an encryption key, the output of the transcription job is encrypted with the default
+     *        Amazon S3 key (SSE-S3).
+     *        </p>
+     *        <p>
+     *        If you specify a KMS key to encrypt your output, you must also specify an output location in the
+     *        <code>OutputBucketName</code> parameter.
+     */
+
+    public void setOutputEncryptionKMSKeyId(String outputEncryptionKMSKeyId) {
+        this.outputEncryptionKMSKeyId = outputEncryptionKMSKeyId;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to encrypt the output of the
+     * transcription job. The user calling the <code>StartTranscriptionJob</code> operation must have permission to use
+     * the specified KMS key.
+     * </p>
+     * <p>
+     * You can use either of the following to identify a KMS key in the current account:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * KMS Key Alias: "alias/ExampleAlias"
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can use either of the following to identify a KMS key in the current account or another account:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:region:account ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ARN of a KMS Key Alias: "arn:aws:kms:region:account ID:alias/ExampleAlias"
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you don't specify an encryption key, the output of the transcription job is encrypted with the default Amazon
+     * S3 key (SSE-S3).
+     * </p>
+     * <p>
+     * If you specify a KMS key to encrypt your output, you must also specify an output location in the
+     * <code>OutputBucketName</code> parameter.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to encrypt the output of
+     *         the transcription job. The user calling the <code>StartTranscriptionJob</code> operation must have
+     *         permission to use the specified KMS key.</p>
+     *         <p>
+     *         You can use either of the following to identify a KMS key in the current account:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         KMS Key Alias: "alias/ExampleAlias"
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         You can use either of the following to identify a KMS key in the current account or another account:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Amazon Resource Name (ARN) of a KMS Key:
+     *         "arn:aws:kms:region:account ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ARN of a KMS Key Alias: "arn:aws:kms:region:account ID:alias/ExampleAlias"
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         If you don't specify an encryption key, the output of the transcription job is encrypted with the default
+     *         Amazon S3 key (SSE-S3).
+     *         </p>
+     *         <p>
+     *         If you specify a KMS key to encrypt your output, you must also specify an output location in the
+     *         <code>OutputBucketName</code> parameter.
+     */
+
+    public String getOutputEncryptionKMSKeyId() {
+        return this.outputEncryptionKMSKeyId;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to encrypt the output of the
+     * transcription job. The user calling the <code>StartTranscriptionJob</code> operation must have permission to use
+     * the specified KMS key.
+     * </p>
+     * <p>
+     * You can use either of the following to identify a KMS key in the current account:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * KMS Key Alias: "alias/ExampleAlias"
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * You can use either of the following to identify a KMS key in the current account or another account:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:region:account ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ARN of a KMS Key Alias: "arn:aws:kms:region:account ID:alias/ExampleAlias"
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * If you don't specify an encryption key, the output of the transcription job is encrypted with the default Amazon
+     * S3 key (SSE-S3).
+     * </p>
+     * <p>
+     * If you specify a KMS key to encrypt your output, you must also specify an output location in the
+     * <code>OutputBucketName</code> parameter.
+     * </p>
+     * 
+     * @param outputEncryptionKMSKeyId
+     *        The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) key used to encrypt the output of
+     *        the transcription job. The user calling the <code>StartTranscriptionJob</code> operation must have
+     *        permission to use the specified KMS key.</p>
+     *        <p>
+     *        You can use either of the following to identify a KMS key in the current account:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        KMS Key Alias: "alias/ExampleAlias"
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        You can use either of the following to identify a KMS key in the current account or another account:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Amazon Resource Name (ARN) of a KMS Key:
+     *        "arn:aws:kms:region:account ID:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        ARN of a KMS Key Alias: "arn:aws:kms:region:account ID:alias/ExampleAlias"
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        If you don't specify an encryption key, the output of the transcription job is encrypted with the default
+     *        Amazon S3 key (SSE-S3).
+     *        </p>
+     *        <p>
+     *        If you specify a KMS key to encrypt your output, you must also specify an output location in the
+     *        <code>OutputBucketName</code> parameter.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTranscriptionJobRequest withOutputEncryptionKMSKeyId(String outputEncryptionKMSKeyId) {
+        setOutputEncryptionKMSKeyId(outputEncryptionKMSKeyId);
         return this;
     }
 
@@ -595,6 +912,98 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
     }
 
     /**
+     * <p>
+     * Provides information about how a transcription job is executed. Use this field to indicate that the job can be
+     * queued for deferred execution if the concurrency limit is reached and there are no slots available to immediately
+     * run the job.
+     * </p>
+     * 
+     * @param jobExecutionSettings
+     *        Provides information about how a transcription job is executed. Use this field to indicate that the job
+     *        can be queued for deferred execution if the concurrency limit is reached and there are no slots available
+     *        to immediately run the job.
+     */
+
+    public void setJobExecutionSettings(JobExecutionSettings jobExecutionSettings) {
+        this.jobExecutionSettings = jobExecutionSettings;
+    }
+
+    /**
+     * <p>
+     * Provides information about how a transcription job is executed. Use this field to indicate that the job can be
+     * queued for deferred execution if the concurrency limit is reached and there are no slots available to immediately
+     * run the job.
+     * </p>
+     * 
+     * @return Provides information about how a transcription job is executed. Use this field to indicate that the job
+     *         can be queued for deferred execution if the concurrency limit is reached and there are no slots available
+     *         to immediately run the job.
+     */
+
+    public JobExecutionSettings getJobExecutionSettings() {
+        return this.jobExecutionSettings;
+    }
+
+    /**
+     * <p>
+     * Provides information about how a transcription job is executed. Use this field to indicate that the job can be
+     * queued for deferred execution if the concurrency limit is reached and there are no slots available to immediately
+     * run the job.
+     * </p>
+     * 
+     * @param jobExecutionSettings
+     *        Provides information about how a transcription job is executed. Use this field to indicate that the job
+     *        can be queued for deferred execution if the concurrency limit is reached and there are no slots available
+     *        to immediately run the job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTranscriptionJobRequest withJobExecutionSettings(JobExecutionSettings jobExecutionSettings) {
+        setJobExecutionSettings(jobExecutionSettings);
+        return this;
+    }
+
+    /**
+     * <p>
+     * An object that contains the request parameters for content redaction.
+     * </p>
+     * 
+     * @param contentRedaction
+     *        An object that contains the request parameters for content redaction.
+     */
+
+    public void setContentRedaction(ContentRedaction contentRedaction) {
+        this.contentRedaction = contentRedaction;
+    }
+
+    /**
+     * <p>
+     * An object that contains the request parameters for content redaction.
+     * </p>
+     * 
+     * @return An object that contains the request parameters for content redaction.
+     */
+
+    public ContentRedaction getContentRedaction() {
+        return this.contentRedaction;
+    }
+
+    /**
+     * <p>
+     * An object that contains the request parameters for content redaction.
+     * </p>
+     * 
+     * @param contentRedaction
+     *        An object that contains the request parameters for content redaction.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTranscriptionJobRequest withContentRedaction(ContentRedaction contentRedaction) {
+        setContentRedaction(contentRedaction);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -618,8 +1027,14 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
             sb.append("Media: ").append(getMedia()).append(",");
         if (getOutputBucketName() != null)
             sb.append("OutputBucketName: ").append(getOutputBucketName()).append(",");
+        if (getOutputEncryptionKMSKeyId() != null)
+            sb.append("OutputEncryptionKMSKeyId: ").append(getOutputEncryptionKMSKeyId()).append(",");
         if (getSettings() != null)
-            sb.append("Settings: ").append(getSettings());
+            sb.append("Settings: ").append(getSettings()).append(",");
+        if (getJobExecutionSettings() != null)
+            sb.append("JobExecutionSettings: ").append(getJobExecutionSettings()).append(",");
+        if (getContentRedaction() != null)
+            sb.append("ContentRedaction: ").append(getContentRedaction());
         sb.append("}");
         return sb.toString();
     }
@@ -658,9 +1073,21 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
             return false;
         if (other.getOutputBucketName() != null && other.getOutputBucketName().equals(this.getOutputBucketName()) == false)
             return false;
+        if (other.getOutputEncryptionKMSKeyId() == null ^ this.getOutputEncryptionKMSKeyId() == null)
+            return false;
+        if (other.getOutputEncryptionKMSKeyId() != null && other.getOutputEncryptionKMSKeyId().equals(this.getOutputEncryptionKMSKeyId()) == false)
+            return false;
         if (other.getSettings() == null ^ this.getSettings() == null)
             return false;
         if (other.getSettings() != null && other.getSettings().equals(this.getSettings()) == false)
+            return false;
+        if (other.getJobExecutionSettings() == null ^ this.getJobExecutionSettings() == null)
+            return false;
+        if (other.getJobExecutionSettings() != null && other.getJobExecutionSettings().equals(this.getJobExecutionSettings()) == false)
+            return false;
+        if (other.getContentRedaction() == null ^ this.getContentRedaction() == null)
+            return false;
+        if (other.getContentRedaction() != null && other.getContentRedaction().equals(this.getContentRedaction()) == false)
             return false;
         return true;
     }
@@ -676,7 +1103,10 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
         hashCode = prime * hashCode + ((getMediaFormat() == null) ? 0 : getMediaFormat().hashCode());
         hashCode = prime * hashCode + ((getMedia() == null) ? 0 : getMedia().hashCode());
         hashCode = prime * hashCode + ((getOutputBucketName() == null) ? 0 : getOutputBucketName().hashCode());
+        hashCode = prime * hashCode + ((getOutputEncryptionKMSKeyId() == null) ? 0 : getOutputEncryptionKMSKeyId().hashCode());
         hashCode = prime * hashCode + ((getSettings() == null) ? 0 : getSettings().hashCode());
+        hashCode = prime * hashCode + ((getJobExecutionSettings() == null) ? 0 : getJobExecutionSettings().hashCode());
+        hashCode = prime * hashCode + ((getContentRedaction() == null) ? 0 : getContentRedaction().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,8 +16,9 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The authorization type. Valid values are NONE for open access, AWS_IAM for using AWS IAM permissions, and CUSTOM for
- * using a Lambda authorizer.
+ * The authorization type. For WebSocket APIs, valid values are NONE for open access, AWS_IAM for using AWS IAM
+ * permissions, and CUSTOM for using a Lambda authorizer. For HTTP APIs, valid values are NONE for open access, or JWT
+ * for using JSON Web Tokens.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -25,7 +26,8 @@ public enum AuthorizationType {
 
     NONE("NONE"),
     AWS_IAM("AWS_IAM"),
-    CUSTOM("CUSTOM");
+    CUSTOM("CUSTOM"),
+    JWT("JWT");
 
     private String value;
 

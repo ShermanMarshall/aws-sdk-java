@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains information about the network connection.
+ * Contains information about the NETWORK_CONNECTION action described in the finding.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/NetworkConnectionAction" target="_top">AWS
@@ -52,6 +52,12 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
      * </p>
      */
     private String protocol;
+    /**
+     * <p>
+     * Local IP information of the connection.
+     * </p>
+     */
+    private LocalIpDetails localIpDetails;
     /**
      * <p>
      * Remote IP information of the connection.
@@ -239,6 +245,46 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
 
     /**
      * <p>
+     * Local IP information of the connection.
+     * </p>
+     * 
+     * @param localIpDetails
+     *        Local IP information of the connection.
+     */
+
+    public void setLocalIpDetails(LocalIpDetails localIpDetails) {
+        this.localIpDetails = localIpDetails;
+    }
+
+    /**
+     * <p>
+     * Local IP information of the connection.
+     * </p>
+     * 
+     * @return Local IP information of the connection.
+     */
+
+    public LocalIpDetails getLocalIpDetails() {
+        return this.localIpDetails;
+    }
+
+    /**
+     * <p>
+     * Local IP information of the connection.
+     * </p>
+     * 
+     * @param localIpDetails
+     *        Local IP information of the connection.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public NetworkConnectionAction withLocalIpDetails(LocalIpDetails localIpDetails) {
+        setLocalIpDetails(localIpDetails);
+        return this;
+    }
+
+    /**
+     * <p>
      * Remote IP information of the connection.
      * </p>
      * 
@@ -337,6 +383,8 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
             sb.append("LocalPortDetails: ").append(getLocalPortDetails()).append(",");
         if (getProtocol() != null)
             sb.append("Protocol: ").append(getProtocol()).append(",");
+        if (getLocalIpDetails() != null)
+            sb.append("LocalIpDetails: ").append(getLocalIpDetails()).append(",");
         if (getRemoteIpDetails() != null)
             sb.append("RemoteIpDetails: ").append(getRemoteIpDetails()).append(",");
         if (getRemotePortDetails() != null)
@@ -371,6 +419,10 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
             return false;
         if (other.getProtocol() != null && other.getProtocol().equals(this.getProtocol()) == false)
             return false;
+        if (other.getLocalIpDetails() == null ^ this.getLocalIpDetails() == null)
+            return false;
+        if (other.getLocalIpDetails() != null && other.getLocalIpDetails().equals(this.getLocalIpDetails()) == false)
+            return false;
         if (other.getRemoteIpDetails() == null ^ this.getRemoteIpDetails() == null)
             return false;
         if (other.getRemoteIpDetails() != null && other.getRemoteIpDetails().equals(this.getRemoteIpDetails()) == false)
@@ -391,6 +443,7 @@ public class NetworkConnectionAction implements Serializable, Cloneable, Structu
         hashCode = prime * hashCode + ((getConnectionDirection() == null) ? 0 : getConnectionDirection().hashCode());
         hashCode = prime * hashCode + ((getLocalPortDetails() == null) ? 0 : getLocalPortDetails().hashCode());
         hashCode = prime * hashCode + ((getProtocol() == null) ? 0 : getProtocol().hashCode());
+        hashCode = prime * hashCode + ((getLocalIpDetails() == null) ? 0 : getLocalIpDetails().hashCode());
         hashCode = prime * hashCode + ((getRemoteIpDetails() == null) ? 0 : getRemoteIpDetails().hashCode());
         hashCode = prime * hashCode + ((getRemotePortDetails() == null) ? 0 : getRemotePortDetails().hashCode());
         return hashCode;

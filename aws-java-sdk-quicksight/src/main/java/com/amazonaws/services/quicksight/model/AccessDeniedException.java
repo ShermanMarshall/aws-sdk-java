@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,9 +16,9 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * You don't have access to this. The provided credentials couldn't be validated. You might not be authorized to carry
- * out the request. Ensure that your account is authorized to use the Amazon QuickSight service, that your policies have
- * the correct permissions, and that you are using the correct access keys.
+ * You don't have access to this item. The provided credentials couldn't be validated. You might not be authorized to
+ * carry out the request. Make sure that your account is authorized to use the Amazon QuickSight service, that your
+ * policies have the correct permissions, and that you are using the correct access keys.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -27,7 +27,7 @@ public class AccessDeniedException extends com.amazonaws.services.quicksight.mod
 
     /**
      * <p>
-     * The AWS request id for this request.
+     * The AWS request ID for this request.
      * </p>
      */
     private String requestId;
@@ -44,11 +44,11 @@ public class AccessDeniedException extends com.amazonaws.services.quicksight.mod
 
     /**
      * <p>
-     * The AWS request id for this request.
+     * The AWS request ID for this request.
      * </p>
      * 
      * @param requestId
-     *        The AWS request id for this request.
+     *        The AWS request ID for this request.
      */
 
     @com.fasterxml.jackson.annotation.JsonProperty("RequestId")
@@ -58,10 +58,10 @@ public class AccessDeniedException extends com.amazonaws.services.quicksight.mod
 
     /**
      * <p>
-     * The AWS request id for this request.
+     * The AWS request ID for this request.
      * </p>
      * 
-     * @return The AWS request id for this request.
+     * @return The AWS request ID for this request.
      */
 
     @com.fasterxml.jackson.annotation.JsonProperty("RequestId")
@@ -71,11 +71,11 @@ public class AccessDeniedException extends com.amazonaws.services.quicksight.mod
 
     /**
      * <p>
-     * The AWS request id for this request.
+     * The AWS request ID for this request.
      * </p>
      * 
      * @param requestId
-     *        The AWS request id for this request.
+     *        The AWS request ID for this request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

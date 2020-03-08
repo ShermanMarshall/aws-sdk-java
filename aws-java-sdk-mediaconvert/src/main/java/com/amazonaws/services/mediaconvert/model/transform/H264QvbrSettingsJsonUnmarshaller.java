@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,10 @@ public class H264QvbrSettingsJsonUnmarshaller implements Unmarshaller<H264QvbrSe
                 if (context.testExpression("qvbrQualityLevel", targetDepth)) {
                     context.nextToken();
                     h264QvbrSettings.setQvbrQualityLevel(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("qvbrQualityLevelFineTune", targetDepth)) {
+                    context.nextToken();
+                    h264QvbrSettings.setQvbrQualityLevelFineTune(context.getUnmarshaller(Double.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

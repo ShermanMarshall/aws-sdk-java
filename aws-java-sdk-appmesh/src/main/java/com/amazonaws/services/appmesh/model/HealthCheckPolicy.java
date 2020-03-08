@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * An object representing the health check policy for a virtual node's listener.
+ * An object that represents the health check policy for a virtual node's listener.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/appmesh-2019-01-25/HealthCheckPolicy" target="_top">AWS API
@@ -42,8 +42,8 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
     private Long intervalMillis;
     /**
      * <p>
-     * The destination path for the health check request. This is required only if the specified protocol is HTTP. If
-     * the protocol is TCP, this parameter is ignored.
+     * The destination path for the health check request. This value is only used if the specified protocol is HTTP or
+     * HTTP/2. For any other protocol, this value is ignored.
      * </p>
      */
     private String path;
@@ -56,7 +56,8 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
     private Integer port;
     /**
      * <p>
-     * The protocol for the health check request.
+     * The protocol for the health check request. If you specify <code>grpc</code>, then your service must conform to
+     * the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health Checking Protocol</a>.
      * </p>
      */
     private String protocol;
@@ -155,13 +156,13 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The destination path for the health check request. This is required only if the specified protocol is HTTP. If
-     * the protocol is TCP, this parameter is ignored.
+     * The destination path for the health check request. This value is only used if the specified protocol is HTTP or
+     * HTTP/2. For any other protocol, this value is ignored.
      * </p>
      * 
      * @param path
-     *        The destination path for the health check request. This is required only if the specified protocol is
-     *        HTTP. If the protocol is TCP, this parameter is ignored.
+     *        The destination path for the health check request. This value is only used if the specified protocol is
+     *        HTTP or HTTP/2. For any other protocol, this value is ignored.
      */
 
     public void setPath(String path) {
@@ -170,12 +171,12 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The destination path for the health check request. This is required only if the specified protocol is HTTP. If
-     * the protocol is TCP, this parameter is ignored.
+     * The destination path for the health check request. This value is only used if the specified protocol is HTTP or
+     * HTTP/2. For any other protocol, this value is ignored.
      * </p>
      * 
-     * @return The destination path for the health check request. This is required only if the specified protocol is
-     *         HTTP. If the protocol is TCP, this parameter is ignored.
+     * @return The destination path for the health check request. This value is only used if the specified protocol is
+     *         HTTP or HTTP/2. For any other protocol, this value is ignored.
      */
 
     public String getPath() {
@@ -184,13 +185,13 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The destination path for the health check request. This is required only if the specified protocol is HTTP. If
-     * the protocol is TCP, this parameter is ignored.
+     * The destination path for the health check request. This value is only used if the specified protocol is HTTP or
+     * HTTP/2. For any other protocol, this value is ignored.
      * </p>
      * 
      * @param path
-     *        The destination path for the health check request. This is required only if the specified protocol is
-     *        HTTP. If the protocol is TCP, this parameter is ignored.
+     *        The destination path for the health check request. This value is only used if the specified protocol is
+     *        HTTP or HTTP/2. For any other protocol, this value is ignored.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -247,11 +248,14 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The protocol for the health check request.
+     * The protocol for the health check request. If you specify <code>grpc</code>, then your service must conform to
+     * the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health Checking Protocol</a>.
      * </p>
      * 
      * @param protocol
-     *        The protocol for the health check request.
+     *        The protocol for the health check request. If you specify <code>grpc</code>, then your service must
+     *        conform to the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health
+     *        Checking Protocol</a>.
      * @see PortProtocol
      */
 
@@ -261,10 +265,13 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The protocol for the health check request.
+     * The protocol for the health check request. If you specify <code>grpc</code>, then your service must conform to
+     * the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health Checking Protocol</a>.
      * </p>
      * 
-     * @return The protocol for the health check request.
+     * @return The protocol for the health check request. If you specify <code>grpc</code>, then your service must
+     *         conform to the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health
+     *         Checking Protocol</a>.
      * @see PortProtocol
      */
 
@@ -274,11 +281,14 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The protocol for the health check request.
+     * The protocol for the health check request. If you specify <code>grpc</code>, then your service must conform to
+     * the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health Checking Protocol</a>.
      * </p>
      * 
      * @param protocol
-     *        The protocol for the health check request.
+     *        The protocol for the health check request. If you specify <code>grpc</code>, then your service must
+     *        conform to the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health
+     *        Checking Protocol</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PortProtocol
      */
@@ -290,11 +300,14 @@ public class HealthCheckPolicy implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The protocol for the health check request.
+     * The protocol for the health check request. If you specify <code>grpc</code>, then your service must conform to
+     * the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health Checking Protocol</a>.
      * </p>
      * 
      * @param protocol
-     *        The protocol for the health check request.
+     *        The protocol for the health check request. If you specify <code>grpc</code>, then your service must
+     *        conform to the <a href="https://github.com/grpc/grpc/blob/master/doc/health-checking.md">GRPC Health
+     *        Checking Protocol</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see PortProtocol
      */

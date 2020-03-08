@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,6 +30,8 @@ public class EndpointConfigurationMarshaller {
 
     private static final MarshallingInfo<List> TYPES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("types").build();
+    private static final MarshallingInfo<List> VPCENDPOINTIDS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("vpcEndpointIds").build();
 
     private static final EndpointConfigurationMarshaller instance = new EndpointConfigurationMarshaller();
 
@@ -48,6 +50,7 @@ public class EndpointConfigurationMarshaller {
 
         try {
             protocolMarshaller.marshall(endpointConfiguration.getTypes(), TYPES_BINDING);
+            protocolMarshaller.marshall(endpointConfiguration.getVpcEndpointIds(), VPCENDPOINTIDS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

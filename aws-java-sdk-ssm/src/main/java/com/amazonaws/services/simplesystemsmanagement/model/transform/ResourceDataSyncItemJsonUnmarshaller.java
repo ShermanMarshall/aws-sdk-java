@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,6 +52,14 @@ public class ResourceDataSyncItemJsonUnmarshaller implements Unmarshaller<Resour
                     context.nextToken();
                     resourceDataSyncItem.setSyncName(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("SyncType", targetDepth)) {
+                    context.nextToken();
+                    resourceDataSyncItem.setSyncType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("SyncSource", targetDepth)) {
+                    context.nextToken();
+                    resourceDataSyncItem.setSyncSource(ResourceDataSyncSourceWithStateJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("S3Destination", targetDepth)) {
                     context.nextToken();
                     resourceDataSyncItem.setS3Destination(ResourceDataSyncS3DestinationJsonUnmarshaller.getInstance().unmarshall(context));
@@ -63,6 +71,10 @@ public class ResourceDataSyncItemJsonUnmarshaller implements Unmarshaller<Resour
                 if (context.testExpression("LastSuccessfulSyncTime", targetDepth)) {
                     context.nextToken();
                     resourceDataSyncItem.setLastSuccessfulSyncTime(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
+                if (context.testExpression("SyncLastModifiedTime", targetDepth)) {
+                    context.nextToken();
+                    resourceDataSyncItem.setSyncLastModifiedTime(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
                 }
                 if (context.testExpression("LastStatus", targetDepth)) {
                     context.nextToken();

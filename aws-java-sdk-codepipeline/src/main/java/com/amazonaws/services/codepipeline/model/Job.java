@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -36,7 +36,7 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
     private String id;
     /**
      * <p>
-     * Additional data about a job.
+     * Other data about a job.
      * </p>
      */
     private JobData data;
@@ -96,11 +96,11 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Additional data about a job.
+     * Other data about a job.
      * </p>
      * 
      * @param data
-     *        Additional data about a job.
+     *        Other data about a job.
      */
 
     public void setData(JobData data) {
@@ -109,10 +109,10 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Additional data about a job.
+     * Other data about a job.
      * </p>
      * 
-     * @return Additional data about a job.
+     * @return Other data about a job.
      */
 
     public JobData getData() {
@@ -121,11 +121,11 @@ public class Job implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Additional data about a job.
+     * Other data about a job.
      * </p>
      * 
      * @param data
-     *        Additional data about a job.
+     *        Other data about a job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

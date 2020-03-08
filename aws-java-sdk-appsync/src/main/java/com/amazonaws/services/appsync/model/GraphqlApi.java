@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -88,6 +88,12 @@ public class GraphqlApi implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private java.util.List<AdditionalAuthenticationProvider> additionalAuthenticationProviders;
+    /**
+     * <p>
+     * A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     * </p>
+     */
+    private Boolean xrayEnabled;
 
     /**
      * <p>
@@ -428,6 +434,13 @@ public class GraphqlApi implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single Uris entry
+     *
+     * @see GraphqlApi#withUris
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public GraphqlApi addUrisEntry(String key, String value) {
         if (null == this.uris) {
             this.uris = new java.util.HashMap<String, String>();
@@ -488,6 +501,13 @@ public class GraphqlApi implements Serializable, Cloneable, StructuredPojo {
         setTags(tags);
         return this;
     }
+
+    /**
+     * Add a single Tags entry
+     *
+     * @see GraphqlApi#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public GraphqlApi addTagsEntry(String key, String value) {
         if (null == this.tags) {
@@ -581,6 +601,58 @@ public class GraphqlApi implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     * </p>
+     * 
+     * @param xrayEnabled
+     *        A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     */
+
+    public void setXrayEnabled(Boolean xrayEnabled) {
+        this.xrayEnabled = xrayEnabled;
+    }
+
+    /**
+     * <p>
+     * A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     * </p>
+     * 
+     * @return A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     */
+
+    public Boolean getXrayEnabled() {
+        return this.xrayEnabled;
+    }
+
+    /**
+     * <p>
+     * A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     * </p>
+     * 
+     * @param xrayEnabled
+     *        A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public GraphqlApi withXrayEnabled(Boolean xrayEnabled) {
+        setXrayEnabled(xrayEnabled);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     * </p>
+     * 
+     * @return A flag representing whether X-Ray tracing is enabled for this <code>GraphqlApi</code>.
+     */
+
+    public Boolean isXrayEnabled() {
+        return this.xrayEnabled;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -611,7 +683,9 @@ public class GraphqlApi implements Serializable, Cloneable, StructuredPojo {
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getAdditionalAuthenticationProviders() != null)
-            sb.append("AdditionalAuthenticationProviders: ").append(getAdditionalAuthenticationProviders());
+            sb.append("AdditionalAuthenticationProviders: ").append(getAdditionalAuthenticationProviders()).append(",");
+        if (getXrayEnabled() != null)
+            sb.append("XrayEnabled: ").append(getXrayEnabled());
         sb.append("}");
         return sb.toString();
     }
@@ -667,6 +741,10 @@ public class GraphqlApi implements Serializable, Cloneable, StructuredPojo {
         if (other.getAdditionalAuthenticationProviders() != null
                 && other.getAdditionalAuthenticationProviders().equals(this.getAdditionalAuthenticationProviders()) == false)
             return false;
+        if (other.getXrayEnabled() == null ^ this.getXrayEnabled() == null)
+            return false;
+        if (other.getXrayEnabled() != null && other.getXrayEnabled().equals(this.getXrayEnabled()) == false)
+            return false;
         return true;
     }
 
@@ -685,6 +763,7 @@ public class GraphqlApi implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getUris() == null) ? 0 : getUris().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getAdditionalAuthenticationProviders() == null) ? 0 : getAdditionalAuthenticationProviders().hashCode());
+        hashCode = prime * hashCode + ((getXrayEnabled() == null) ? 0 : getXrayEnabled().hashCode());
         return hashCode;
     }
 

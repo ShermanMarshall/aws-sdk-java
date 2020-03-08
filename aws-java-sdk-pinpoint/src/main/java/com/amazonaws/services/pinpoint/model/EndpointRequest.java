@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,13 +41,14 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * One or more custom attributes that describe the endpoint by associating a name with an array of values. For
-     * example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You can use
-     * these attributes as filter criteria when you create segments.
+     * example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
+     * these attributes as filter criteria when you create segments. Attribute names are case sensitive.
      * </p>
      * <p>
-     * When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:),
-     * question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that
-     * contain these characters. This limitation doesn't apply to attribute values.
+     * An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you
+     * define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question
+     * mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain
+     * these characters. This restriction doesn't apply to attribute values.
      * </p>
      */
     private java.util.Map<String, java.util.List<String>> attributes;
@@ -71,7 +72,13 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
     private String effectiveDate;
     /**
      * <p>
-     * Not used.
+     * Specifies whether to send messages or push notifications to the endpoint. Valid values are: ACTIVE, messages are
+     * sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint.
+     * </p>
+     * <p>
+     * Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing
+     * endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that has the
+     * same address specified by the Address property.
      * </p>
      */
     private String endpointStatus;
@@ -176,22 +183,25 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * One or more custom attributes that describe the endpoint by associating a name with an array of values. For
-     * example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You can use
-     * these attributes as filter criteria when you create segments.
+     * example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
+     * these attributes as filter criteria when you create segments. Attribute names are case sensitive.
      * </p>
      * <p>
-     * When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:),
-     * question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that
-     * contain these characters. This limitation doesn't apply to attribute values.
+     * An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you
+     * define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question
+     * mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain
+     * these characters. This restriction doesn't apply to attribute values.
      * </p>
      * 
      * @return One or more custom attributes that describe the endpoint by associating a name with an array of values.
-     *         For example, the value of a custom attribute named Interests might be: ["science", "music", "travel"].
-     *         You can use these attributes as filter criteria when you create segments.</p>
+     *         For example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"].
+     *         You can use these attributes as filter criteria when you create segments. Attribute names are case
+     *         sensitive.</p>
      *         <p>
+     *         An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters.
      *         When you define the name of a custom attribute, avoid using the following characters: number sign (#),
      *         colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display
-     *         attribute names that contain these characters. This limitation doesn't apply to attribute values.
+     *         attribute names that contain these characters. This restriction doesn't apply to attribute values.
      */
 
     public java.util.Map<String, java.util.List<String>> getAttributes() {
@@ -201,23 +211,26 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * One or more custom attributes that describe the endpoint by associating a name with an array of values. For
-     * example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You can use
-     * these attributes as filter criteria when you create segments.
+     * example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
+     * these attributes as filter criteria when you create segments. Attribute names are case sensitive.
      * </p>
      * <p>
-     * When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:),
-     * question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that
-     * contain these characters. This limitation doesn't apply to attribute values.
+     * An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you
+     * define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question
+     * mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain
+     * these characters. This restriction doesn't apply to attribute values.
      * </p>
      * 
      * @param attributes
      *        One or more custom attributes that describe the endpoint by associating a name with an array of values.
-     *        For example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You
-     *        can use these attributes as filter criteria when you create segments.</p>
+     *        For example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You
+     *        can use these attributes as filter criteria when you create segments. Attribute names are case
+     *        sensitive.</p>
      *        <p>
+     *        An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters.
      *        When you define the name of a custom attribute, avoid using the following characters: number sign (#),
      *        colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display
-     *        attribute names that contain these characters. This limitation doesn't apply to attribute values.
+     *        attribute names that contain these characters. This restriction doesn't apply to attribute values.
      */
 
     public void setAttributes(java.util.Map<String, java.util.List<String>> attributes) {
@@ -227,23 +240,26 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * One or more custom attributes that describe the endpoint by associating a name with an array of values. For
-     * example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You can use
-     * these attributes as filter criteria when you create segments.
+     * example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
+     * these attributes as filter criteria when you create segments. Attribute names are case sensitive.
      * </p>
      * <p>
-     * When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:),
-     * question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that
-     * contain these characters. This limitation doesn't apply to attribute values.
+     * An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you
+     * define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question
+     * mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain
+     * these characters. This restriction doesn't apply to attribute values.
      * </p>
      * 
      * @param attributes
      *        One or more custom attributes that describe the endpoint by associating a name with an array of values.
-     *        For example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You
-     *        can use these attributes as filter criteria when you create segments.</p>
+     *        For example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You
+     *        can use these attributes as filter criteria when you create segments. Attribute names are case
+     *        sensitive.</p>
      *        <p>
+     *        An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters.
      *        When you define the name of a custom attribute, avoid using the following characters: number sign (#),
      *        colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display
-     *        attribute names that contain these characters. This limitation doesn't apply to attribute values.
+     *        attribute names that contain these characters. This restriction doesn't apply to attribute values.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -251,6 +267,13 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
         setAttributes(attributes);
         return this;
     }
+
+    /**
+     * Add a single Attributes entry
+     *
+     * @see EndpointRequest#withAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public EndpointRequest addAttributesEntry(String key, java.util.List<String> value) {
         if (null == this.attributes) {
@@ -428,11 +451,22 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Not used.
+     * Specifies whether to send messages or push notifications to the endpoint. Valid values are: ACTIVE, messages are
+     * sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint.
+     * </p>
+     * <p>
+     * Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing
+     * endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that has the
+     * same address specified by the Address property.
      * </p>
      * 
      * @param endpointStatus
-     *        Not used.
+     *        Specifies whether to send messages or push notifications to the endpoint. Valid values are: ACTIVE,
+     *        messages are sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint.</p>
+     *        <p>
+     *        Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing
+     *        endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that
+     *        has the same address specified by the Address property.
      */
 
     public void setEndpointStatus(String endpointStatus) {
@@ -441,10 +475,21 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Not used.
+     * Specifies whether to send messages or push notifications to the endpoint. Valid values are: ACTIVE, messages are
+     * sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint.
+     * </p>
+     * <p>
+     * Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing
+     * endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that has the
+     * same address specified by the Address property.
      * </p>
      * 
-     * @return Not used.
+     * @return Specifies whether to send messages or push notifications to the endpoint. Valid values are: ACTIVE,
+     *         messages are sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint.</p>
+     *         <p>
+     *         Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing
+     *         endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that
+     *         has the same address specified by the Address property.
      */
 
     public String getEndpointStatus() {
@@ -453,11 +498,22 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * Not used.
+     * Specifies whether to send messages or push notifications to the endpoint. Valid values are: ACTIVE, messages are
+     * sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint.
+     * </p>
+     * <p>
+     * Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing
+     * endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that has the
+     * same address specified by the Address property.
      * </p>
      * 
      * @param endpointStatus
-     *        Not used.
+     *        Specifies whether to send messages or push notifications to the endpoint. Valid values are: ACTIVE,
+     *        messages are sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint.</p>
+     *        <p>
+     *        Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing
+     *        endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that
+     *        has the same address specified by the Address property.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -545,6 +601,13 @@ public class EndpointRequest implements Serializable, Cloneable, StructuredPojo 
         setMetrics(metrics);
         return this;
     }
+
+    /**
+     * Add a single Metrics entry
+     *
+     * @see EndpointRequest#withMetrics
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public EndpointRequest addMetricsEntry(String key, Double value) {
         if (null == this.metrics) {

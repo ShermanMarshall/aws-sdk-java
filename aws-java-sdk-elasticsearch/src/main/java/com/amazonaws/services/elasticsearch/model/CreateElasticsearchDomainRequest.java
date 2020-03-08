@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -23,7 +23,7 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
     /**
      * <p>
      * The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by
-     * an account within an AWS region. Domain names must start with a letter or number and can contain the following
+     * an account within an AWS region. Domain names must start with a lowercase letter and can contain the following
      * characters: a-z (lowercase), 0-9, and - (hyphen).
      * </p>
      */
@@ -106,17 +106,29 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
      * </p>
      */
     private java.util.Map<String, LogPublishingOption> logPublishingOptions;
+    /**
+     * <p>
+     * Options to specify configuration that will be applied to the domain endpoint.
+     * </p>
+     */
+    private DomainEndpointOptions domainEndpointOptions;
+    /**
+     * <p>
+     * Specifies advanced security options.
+     * </p>
+     */
+    private AdvancedSecurityOptionsInput advancedSecurityOptions;
 
     /**
      * <p>
      * The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by
-     * an account within an AWS region. Domain names must start with a letter or number and can contain the following
+     * an account within an AWS region. Domain names must start with a lowercase letter and can contain the following
      * characters: a-z (lowercase), 0-9, and - (hyphen).
      * </p>
      * 
      * @param domainName
      *        The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains
-     *        owned by an account within an AWS region. Domain names must start with a letter or number and can contain
+     *        owned by an account within an AWS region. Domain names must start with a lowercase letter and can contain
      *        the following characters: a-z (lowercase), 0-9, and - (hyphen).
      */
 
@@ -127,12 +139,12 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
     /**
      * <p>
      * The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by
-     * an account within an AWS region. Domain names must start with a letter or number and can contain the following
+     * an account within an AWS region. Domain names must start with a lowercase letter and can contain the following
      * characters: a-z (lowercase), 0-9, and - (hyphen).
      * </p>
      * 
      * @return The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains
-     *         owned by an account within an AWS region. Domain names must start with a letter or number and can contain
+     *         owned by an account within an AWS region. Domain names must start with a lowercase letter and can contain
      *         the following characters: a-z (lowercase), 0-9, and - (hyphen).
      */
 
@@ -143,13 +155,13 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
     /**
      * <p>
      * The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by
-     * an account within an AWS region. Domain names must start with a letter or number and can contain the following
+     * an account within an AWS region. Domain names must start with a lowercase letter and can contain the following
      * characters: a-z (lowercase), 0-9, and - (hyphen).
      * </p>
      * 
      * @param domainName
      *        The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains
-     *        owned by an account within an AWS region. Domain names must start with a letter or number and can contain
+     *        owned by an account within an AWS region. Domain names must start with a lowercase letter and can contain
      *        the following characters: a-z (lowercase), 0-9, and - (hyphen).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -628,6 +640,13 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
         return this;
     }
 
+    /**
+     * Add a single AdvancedOptions entry
+     *
+     * @see CreateElasticsearchDomainRequest#withAdvancedOptions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public CreateElasticsearchDomainRequest addAdvancedOptionsEntry(String key, String value) {
         if (null == this.advancedOptions) {
             this.advancedOptions = new java.util.HashMap<String, String>();
@@ -695,6 +714,13 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
         return this;
     }
 
+    /**
+     * Add a single LogPublishingOptions entry
+     *
+     * @see CreateElasticsearchDomainRequest#withLogPublishingOptions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public CreateElasticsearchDomainRequest addLogPublishingOptionsEntry(String key, LogPublishingOption value) {
         if (null == this.logPublishingOptions) {
             this.logPublishingOptions = new java.util.HashMap<String, LogPublishingOption>();
@@ -713,6 +739,86 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
 
     public CreateElasticsearchDomainRequest clearLogPublishingOptionsEntries() {
         this.logPublishingOptions = null;
+        return this;
+    }
+
+    /**
+     * <p>
+     * Options to specify configuration that will be applied to the domain endpoint.
+     * </p>
+     * 
+     * @param domainEndpointOptions
+     *        Options to specify configuration that will be applied to the domain endpoint.
+     */
+
+    public void setDomainEndpointOptions(DomainEndpointOptions domainEndpointOptions) {
+        this.domainEndpointOptions = domainEndpointOptions;
+    }
+
+    /**
+     * <p>
+     * Options to specify configuration that will be applied to the domain endpoint.
+     * </p>
+     * 
+     * @return Options to specify configuration that will be applied to the domain endpoint.
+     */
+
+    public DomainEndpointOptions getDomainEndpointOptions() {
+        return this.domainEndpointOptions;
+    }
+
+    /**
+     * <p>
+     * Options to specify configuration that will be applied to the domain endpoint.
+     * </p>
+     * 
+     * @param domainEndpointOptions
+     *        Options to specify configuration that will be applied to the domain endpoint.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateElasticsearchDomainRequest withDomainEndpointOptions(DomainEndpointOptions domainEndpointOptions) {
+        setDomainEndpointOptions(domainEndpointOptions);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies advanced security options.
+     * </p>
+     * 
+     * @param advancedSecurityOptions
+     *        Specifies advanced security options.
+     */
+
+    public void setAdvancedSecurityOptions(AdvancedSecurityOptionsInput advancedSecurityOptions) {
+        this.advancedSecurityOptions = advancedSecurityOptions;
+    }
+
+    /**
+     * <p>
+     * Specifies advanced security options.
+     * </p>
+     * 
+     * @return Specifies advanced security options.
+     */
+
+    public AdvancedSecurityOptionsInput getAdvancedSecurityOptions() {
+        return this.advancedSecurityOptions;
+    }
+
+    /**
+     * <p>
+     * Specifies advanced security options.
+     * </p>
+     * 
+     * @param advancedSecurityOptions
+     *        Specifies advanced security options.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateElasticsearchDomainRequest withAdvancedSecurityOptions(AdvancedSecurityOptionsInput advancedSecurityOptions) {
+        setAdvancedSecurityOptions(advancedSecurityOptions);
         return this;
     }
 
@@ -751,7 +857,11 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
         if (getAdvancedOptions() != null)
             sb.append("AdvancedOptions: ").append(getAdvancedOptions()).append(",");
         if (getLogPublishingOptions() != null)
-            sb.append("LogPublishingOptions: ").append(getLogPublishingOptions());
+            sb.append("LogPublishingOptions: ").append(getLogPublishingOptions()).append(",");
+        if (getDomainEndpointOptions() != null)
+            sb.append("DomainEndpointOptions: ").append(getDomainEndpointOptions()).append(",");
+        if (getAdvancedSecurityOptions() != null)
+            sb.append("AdvancedSecurityOptions: ").append(getAdvancedSecurityOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -814,6 +924,14 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
             return false;
         if (other.getLogPublishingOptions() != null && other.getLogPublishingOptions().equals(this.getLogPublishingOptions()) == false)
             return false;
+        if (other.getDomainEndpointOptions() == null ^ this.getDomainEndpointOptions() == null)
+            return false;
+        if (other.getDomainEndpointOptions() != null && other.getDomainEndpointOptions().equals(this.getDomainEndpointOptions()) == false)
+            return false;
+        if (other.getAdvancedSecurityOptions() == null ^ this.getAdvancedSecurityOptions() == null)
+            return false;
+        if (other.getAdvancedSecurityOptions() != null && other.getAdvancedSecurityOptions().equals(this.getAdvancedSecurityOptions()) == false)
+            return false;
         return true;
     }
 
@@ -834,6 +952,8 @@ public class CreateElasticsearchDomainRequest extends com.amazonaws.AmazonWebSer
         hashCode = prime * hashCode + ((getNodeToNodeEncryptionOptions() == null) ? 0 : getNodeToNodeEncryptionOptions().hashCode());
         hashCode = prime * hashCode + ((getAdvancedOptions() == null) ? 0 : getAdvancedOptions().hashCode());
         hashCode = prime * hashCode + ((getLogPublishingOptions() == null) ? 0 : getLogPublishingOptions().hashCode());
+        hashCode = prime * hashCode + ((getDomainEndpointOptions() == null) ? 0 : getDomainEndpointOptions().hashCode());
+        hashCode = prime * hashCode + ((getAdvancedSecurityOptions() == null) ? 0 : getAdvancedSecurityOptions().hashCode());
         return hashCode;
     }
 

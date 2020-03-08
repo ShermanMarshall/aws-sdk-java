@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -21,7 +21,7 @@ import javax.annotation.Generated;
  * <p>
  * For more information about how key state affects the use of a CMK, see <a
  * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use of a Customer
- * Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.
+ * Master Key</a> in the <i> <i>AWS Key Management Service Developer Guide</i> </i>.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")

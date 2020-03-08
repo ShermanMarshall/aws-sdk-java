@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,7 +30,7 @@ public class DescribeEngineDefaultClusterParametersRequest extends com.amazonaws
 
     /**
      * <p>
-     * The name of the DB cluster parameter group family to return the engine parameter information for.
+     * The name of the cluster parameter group family to return the engine parameter information for.
      * </p>
      */
     private String dBParameterGroupFamily;
@@ -64,11 +64,11 @@ public class DescribeEngineDefaultClusterParametersRequest extends com.amazonaws
 
     /**
      * <p>
-     * The name of the DB cluster parameter group family to return the engine parameter information for.
+     * The name of the cluster parameter group family to return the engine parameter information for.
      * </p>
      * 
      * @param dBParameterGroupFamily
-     *        The name of the DB cluster parameter group family to return the engine parameter information for.
+     *        The name of the cluster parameter group family to return the engine parameter information for.
      */
 
     public void setDBParameterGroupFamily(String dBParameterGroupFamily) {
@@ -77,10 +77,10 @@ public class DescribeEngineDefaultClusterParametersRequest extends com.amazonaws
 
     /**
      * <p>
-     * The name of the DB cluster parameter group family to return the engine parameter information for.
+     * The name of the cluster parameter group family to return the engine parameter information for.
      * </p>
      * 
-     * @return The name of the DB cluster parameter group family to return the engine parameter information for.
+     * @return The name of the cluster parameter group family to return the engine parameter information for.
      */
 
     public String getDBParameterGroupFamily() {
@@ -89,11 +89,11 @@ public class DescribeEngineDefaultClusterParametersRequest extends com.amazonaws
 
     /**
      * <p>
-     * The name of the DB cluster parameter group family to return the engine parameter information for.
+     * The name of the cluster parameter group family to return the engine parameter information for.
      * </p>
      * 
      * @param dBParameterGroupFamily
-     *        The name of the DB cluster parameter group family to return the engine parameter information for.
+     *        The name of the cluster parameter group family to return the engine parameter information for.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

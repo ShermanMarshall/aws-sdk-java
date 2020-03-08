@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,8 @@ public class UpdateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC endpoint,
-     * your SFTP server isn't accessible over the public internet.
+     * you can restrict access to your SFTP server to resources only within your VPC. To control incoming internet
+     * traffic, you will need to associate one or more Elastic IP addresses with your server's endpoint.
      * </p>
      */
     private EndpointDetails endpointDetails;
@@ -81,12 +82,15 @@ public class UpdateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC endpoint,
-     * your SFTP server isn't accessible over the public internet.
+     * you can restrict access to your SFTP server to resources only within your VPC. To control incoming internet
+     * traffic, you will need to associate one or more Elastic IP addresses with your server's endpoint.
      * </p>
      * 
      * @param endpointDetails
      *        The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC
-     *        endpoint, your SFTP server isn't accessible over the public internet.
+     *        endpoint, you can restrict access to your SFTP server to resources only within your VPC. To control
+     *        incoming internet traffic, you will need to associate one or more Elastic IP addresses with your server's
+     *        endpoint.
      */
 
     public void setEndpointDetails(EndpointDetails endpointDetails) {
@@ -96,11 +100,14 @@ public class UpdateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC endpoint,
-     * your SFTP server isn't accessible over the public internet.
+     * you can restrict access to your SFTP server to resources only within your VPC. To control incoming internet
+     * traffic, you will need to associate one or more Elastic IP addresses with your server's endpoint.
      * </p>
      * 
      * @return The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC
-     *         endpoint, your SFTP server isn't accessible over the public internet.
+     *         endpoint, you can restrict access to your SFTP server to resources only within your VPC. To control
+     *         incoming internet traffic, you will need to associate one or more Elastic IP addresses with your server's
+     *         endpoint.
      */
 
     public EndpointDetails getEndpointDetails() {
@@ -110,12 +117,15 @@ public class UpdateServerRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC endpoint,
-     * your SFTP server isn't accessible over the public internet.
+     * you can restrict access to your SFTP server to resources only within your VPC. To control incoming internet
+     * traffic, you will need to associate one or more Elastic IP addresses with your server's endpoint.
      * </p>
      * 
      * @param endpointDetails
      *        The virtual private cloud (VPC) endpoint settings that are configured for your SFTP server. With a VPC
-     *        endpoint, your SFTP server isn't accessible over the public internet.
+     *        endpoint, you can restrict access to your SFTP server to resources only within your VPC. To control
+     *        incoming internet traffic, you will need to associate one or more Elastic IP addresses with your server's
+     *        endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

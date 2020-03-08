@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.shield.model.transform;
 
+import java.util.List;
 import javax.annotation.Generated;
 
 import com.amazonaws.SdkClientException;
@@ -33,6 +34,8 @@ public class ProtectionMarshaller {
             .marshallLocationName("Name").build();
     private static final MarshallingInfo<String> RESOURCEARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ResourceArn").build();
+    private static final MarshallingInfo<List> HEALTHCHECKIDS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("HealthCheckIds").build();
 
     private static final ProtectionMarshaller instance = new ProtectionMarshaller();
 
@@ -53,6 +56,7 @@ public class ProtectionMarshaller {
             protocolMarshaller.marshall(protection.getId(), ID_BINDING);
             protocolMarshaller.marshall(protection.getName(), NAME_BINDING);
             protocolMarshaller.marshall(protection.getResourceArn(), RESOURCEARN_BINDING);
+            protocolMarshaller.marshall(protection.getHealthCheckIds(), HEALTHCHECKIDS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

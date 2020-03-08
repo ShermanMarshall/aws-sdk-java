@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,6 +39,10 @@ public class SigningProfileMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("signingParameters").build();
     private static final MarshallingInfo<String> STATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("status").build();
+    private static final MarshallingInfo<String> ARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("arn").build();
+    private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("tags").build();
 
     private static final SigningProfileMarshaller instance = new SigningProfileMarshaller();
 
@@ -61,6 +65,8 @@ public class SigningProfileMarshaller {
             protocolMarshaller.marshall(signingProfile.getPlatformId(), PLATFORMID_BINDING);
             protocolMarshaller.marshall(signingProfile.getSigningParameters(), SIGNINGPARAMETERS_BINDING);
             protocolMarshaller.marshall(signingProfile.getStatus(), STATUS_BINDING);
+            protocolMarshaller.marshall(signingProfile.getArn(), ARN_BINDING);
+            protocolMarshaller.marshall(signingProfile.getTags(), TAGS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

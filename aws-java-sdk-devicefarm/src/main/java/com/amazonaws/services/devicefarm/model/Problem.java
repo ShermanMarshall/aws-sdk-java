@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -68,37 +68,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * PENDING: A pending condition.
+     * PENDING
      * </p>
      * </li>
      * <li>
      * <p>
-     * PASSED: A passing condition.
+     * PASSED
      * </p>
      * </li>
      * <li>
      * <p>
-     * WARNED: A warning condition.
+     * WARNED
      * </p>
      * </li>
      * <li>
      * <p>
-     * FAILED: A failed condition.
+     * FAILED
      * </p>
      * </li>
      * <li>
      * <p>
-     * SKIPPED: A skipped condition.
+     * SKIPPED
      * </p>
      * </li>
      * <li>
      * <p>
-     * ERRORED: An error condition.
+     * ERRORED
      * </p>
      * </li>
      * <li>
      * <p>
-     * STOPPED: A stopped condition.
+     * STOPPED
      * </p>
      * </li>
      * </ul>
@@ -321,37 +321,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * PENDING: A pending condition.
+     * PENDING
      * </p>
      * </li>
      * <li>
      * <p>
-     * PASSED: A passing condition.
+     * PASSED
      * </p>
      * </li>
      * <li>
      * <p>
-     * WARNED: A warning condition.
+     * WARNED
      * </p>
      * </li>
      * <li>
      * <p>
-     * FAILED: A failed condition.
+     * FAILED
      * </p>
      * </li>
      * <li>
      * <p>
-     * SKIPPED: A skipped condition.
+     * SKIPPED
      * </p>
      * </li>
      * <li>
      * <p>
-     * ERRORED: An error condition.
+     * ERRORED
      * </p>
      * </li>
      * <li>
      * <p>
-     * STOPPED: A stopped condition.
+     * STOPPED
      * </p>
      * </li>
      * </ul>
@@ -364,37 +364,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        PENDING: A pending condition.
+     *        PENDING
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PASSED: A passing condition.
+     *        PASSED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        WARNED: A warning condition.
+     *        WARNED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FAILED: A failed condition.
+     *        FAILED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        SKIPPED: A skipped condition.
+     *        SKIPPED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ERRORED: An error condition.
+     *        ERRORED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        STOPPED: A stopped condition.
+     *        STOPPED
      *        </p>
      *        </li>
      * @see ExecutionResult
@@ -414,37 +414,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * PENDING: A pending condition.
+     * PENDING
      * </p>
      * </li>
      * <li>
      * <p>
-     * PASSED: A passing condition.
+     * PASSED
      * </p>
      * </li>
      * <li>
      * <p>
-     * WARNED: A warning condition.
+     * WARNED
      * </p>
      * </li>
      * <li>
      * <p>
-     * FAILED: A failed condition.
+     * FAILED
      * </p>
      * </li>
      * <li>
      * <p>
-     * SKIPPED: A skipped condition.
+     * SKIPPED
      * </p>
      * </li>
      * <li>
      * <p>
-     * ERRORED: An error condition.
+     * ERRORED
      * </p>
      * </li>
      * <li>
      * <p>
-     * STOPPED: A stopped condition.
+     * STOPPED
      * </p>
      * </li>
      * </ul>
@@ -456,37 +456,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      *         <ul>
      *         <li>
      *         <p>
-     *         PENDING: A pending condition.
+     *         PENDING
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         PASSED: A passing condition.
+     *         PASSED
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         WARNED: A warning condition.
+     *         WARNED
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         FAILED: A failed condition.
+     *         FAILED
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         SKIPPED: A skipped condition.
+     *         SKIPPED
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         ERRORED: An error condition.
+     *         ERRORED
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         STOPPED: A stopped condition.
+     *         STOPPED
      *         </p>
      *         </li>
      * @see ExecutionResult
@@ -506,37 +506,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * PENDING: A pending condition.
+     * PENDING
      * </p>
      * </li>
      * <li>
      * <p>
-     * PASSED: A passing condition.
+     * PASSED
      * </p>
      * </li>
      * <li>
      * <p>
-     * WARNED: A warning condition.
+     * WARNED
      * </p>
      * </li>
      * <li>
      * <p>
-     * FAILED: A failed condition.
+     * FAILED
      * </p>
      * </li>
      * <li>
      * <p>
-     * SKIPPED: A skipped condition.
+     * SKIPPED
      * </p>
      * </li>
      * <li>
      * <p>
-     * ERRORED: An error condition.
+     * ERRORED
      * </p>
      * </li>
      * <li>
      * <p>
-     * STOPPED: A stopped condition.
+     * STOPPED
      * </p>
      * </li>
      * </ul>
@@ -549,37 +549,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        PENDING: A pending condition.
+     *        PENDING
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PASSED: A passing condition.
+     *        PASSED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        WARNED: A warning condition.
+     *        WARNED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FAILED: A failed condition.
+     *        FAILED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        SKIPPED: A skipped condition.
+     *        SKIPPED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ERRORED: An error condition.
+     *        ERRORED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        STOPPED: A stopped condition.
+     *        STOPPED
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -601,37 +601,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * PENDING: A pending condition.
+     * PENDING
      * </p>
      * </li>
      * <li>
      * <p>
-     * PASSED: A passing condition.
+     * PASSED
      * </p>
      * </li>
      * <li>
      * <p>
-     * WARNED: A warning condition.
+     * WARNED
      * </p>
      * </li>
      * <li>
      * <p>
-     * FAILED: A failed condition.
+     * FAILED
      * </p>
      * </li>
      * <li>
      * <p>
-     * SKIPPED: A skipped condition.
+     * SKIPPED
      * </p>
      * </li>
      * <li>
      * <p>
-     * ERRORED: An error condition.
+     * ERRORED
      * </p>
      * </li>
      * <li>
      * <p>
-     * STOPPED: A stopped condition.
+     * STOPPED
      * </p>
      * </li>
      * </ul>
@@ -644,37 +644,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        PENDING: A pending condition.
+     *        PENDING
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PASSED: A passing condition.
+     *        PASSED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        WARNED: A warning condition.
+     *        WARNED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FAILED: A failed condition.
+     *        FAILED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        SKIPPED: A skipped condition.
+     *        SKIPPED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ERRORED: An error condition.
+     *        ERRORED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        STOPPED: A stopped condition.
+     *        STOPPED
      *        </p>
      *        </li>
      * @see ExecutionResult
@@ -694,37 +694,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      * <ul>
      * <li>
      * <p>
-     * PENDING: A pending condition.
+     * PENDING
      * </p>
      * </li>
      * <li>
      * <p>
-     * PASSED: A passing condition.
+     * PASSED
      * </p>
      * </li>
      * <li>
      * <p>
-     * WARNED: A warning condition.
+     * WARNED
      * </p>
      * </li>
      * <li>
      * <p>
-     * FAILED: A failed condition.
+     * FAILED
      * </p>
      * </li>
      * <li>
      * <p>
-     * SKIPPED: A skipped condition.
+     * SKIPPED
      * </p>
      * </li>
      * <li>
      * <p>
-     * ERRORED: An error condition.
+     * ERRORED
      * </p>
      * </li>
      * <li>
      * <p>
-     * STOPPED: A stopped condition.
+     * STOPPED
      * </p>
      * </li>
      * </ul>
@@ -737,37 +737,37 @@ public class Problem implements Serializable, Cloneable, StructuredPojo {
      *        <ul>
      *        <li>
      *        <p>
-     *        PENDING: A pending condition.
+     *        PENDING
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        PASSED: A passing condition.
+     *        PASSED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        WARNED: A warning condition.
+     *        WARNED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        FAILED: A failed condition.
+     *        FAILED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        SKIPPED: A skipped condition.
+     *        SKIPPED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ERRORED: An error condition.
+     *        ERRORED
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        STOPPED: A stopped condition.
+     *        STOPPED
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
